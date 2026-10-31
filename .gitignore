@@ -1,0 +1,35 @@
+# Local credentials. Keep only the empty example in source control.
+.env
+.env.*
+!.env.example
+
+# Python environments and generated files.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Local snapshots, databases, traces, and Neo4j volumes.
+/data/
+/logs/
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm
+/neo4j/data/
+/neo4j/logs/
+
+# Editor and OS files.
+.idea/
+.DS_Store
+Thumbs.db

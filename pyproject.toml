@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cheiron-clinicaltrials-agent"
+version = "0.1.0"
+description = "ClinicalTrials.gov query-to-visualization backend"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.162.0",
+    "httpx==0.28.1",
+    "neo4j==6.4.1",
+    "pydantic-settings==2.16.2",
+    "uvicorn==0.54.0",
+    "openai==3.42.0",
+    "langgraph==1.2.19",
+    "langgraph-checkpoint-sqlite==3.1.3",
+    "pytz==2026.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0", "ruff==0.17.3"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
