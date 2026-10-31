@@ -19,25 +19,25 @@
     {
       "example": "03_comparison",
       "status": "verified",
-      "exact_fields_checked": 32195,
-      "evidence_sets": 18,
-      "source_records": 796,
+      "exact_fields_checked": 5933,
+      "evidence_sets": 16,
+      "source_records": 176,
       "complete_item_sets_checked": true
     },
     {
       "example": "04_enrollment",
       "status": "verified",
-      "exact_fields_checked": 14657,
+      "exact_fields_checked": 7265,
       "evidence_sets": 8,
-      "source_records": 400,
+      "source_records": 149,
       "complete_item_sets_checked": true
     },
     {
       "example": "05_shared_drugs",
       "status": "verified",
-      "exact_fields_checked": 6513,
-      "evidence_sets": 18,
-      "source_records": 400,
+      "exact_fields_checked": 2668,
+      "evidence_sets": 19,
+      "source_records": 242,
       "complete_item_sets_checked": true
     }
   ],

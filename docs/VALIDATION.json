@@ -1,11 +1,26 @@
 {
-  "checked_at": "2026-10-31T16:09:12.371260+00:00",
+  "checked_at": "2026-10-31T16:57:52.652486+00:00",
+  "source_commit": "ea65a0a",
+  "source_code_hash": "cb98fe01524afeddbb062ca0a6a77a24d834a4b971cea13f403e44c583291b7d",
   "tests": {
-    "tests": "29",
-    "failures": "0",
+    "name": "pytest",
     "errors": "0",
+    "failures": "0",
     "skipped": "0",
-    "time": "6.294"
+    "tests": "68",
+    "time": "10.469",
+    "timestamp": "2026-11-01T00:48:48.576507+08:00",
+    "hostname": "shengkai_tp_x1e"
+  },
+  "docker_tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "68",
+    "time": "9.787",
+    "timestamp": "2026-10-31T16:54:26.705120+00:00",
+    "hostname": "5dc3b128c0cd"
   },
   "frozen_examples": {
     "checks": [
@@ -14,63 +29,167 @@
         "status": "verified",
         "exact_fields_checked": 14682,
         "evidence_sets": 9,
-        "source_records": 400
+        "source_records": 400,
+        "complete_item_sets_checked": true
       },
       {
         "example": "02_followup_trend",
         "status": "verified",
         "exact_fields_checked": 3276,
         "evidence_sets": 11,
-        "source_records": 400
+        "source_records": 400,
+        "complete_item_sets_checked": true
       },
       {
         "example": "03_comparison",
         "status": "verified",
-        "exact_fields_checked": 32195,
-        "evidence_sets": 18,
-        "source_records": 796
+        "exact_fields_checked": 5933,
+        "evidence_sets": 16,
+        "source_records": 176,
+        "complete_item_sets_checked": true
       },
       {
         "example": "04_enrollment",
         "status": "verified",
-        "exact_fields_checked": 14657,
+        "exact_fields_checked": 7265,
         "evidence_sets": 8,
-        "source_records": 400
+        "source_records": 149,
+        "complete_item_sets_checked": true
       },
       {
         "example": "05_shared_drugs",
         "status": "verified",
-        "exact_fields_checked": 6513,
-        "evidence_sets": 18,
-        "source_records": 400
+        "exact_fields_checked": 2668,
+        "evidence_sets": 19,
+        "source_records": 242,
+        "complete_item_sets_checked": true
       }
     ],
     "network_or_database_calls": 0,
     "model_calls": 0
   },
-  "http_smoke": {
-    "health": 200,
-    "docs": 200,
-    "openapi": 200,
-    "evidence": 200,
-    "dataset": 200,
-    "run": 200,
-    "completed_resume": 200,
-    "invalid_request": 422
+  "semantic_evaluation": {
+    "report": "evals/semantic_report.json",
+    "overall": {
+      "cases": 48,
+      "turns": 50,
+      "semantic_plan_accuracy": {
+        "numerator": 50,
+        "denominator": 50,
+        "rate": 1.0
+      },
+      "execute_plan_accuracy": {
+        "numerator": 37,
+        "denominator": 37,
+        "rate": 1.0
+      },
+      "incorrect_execution_rate": {
+        "numerator": 0,
+        "denominator": 50,
+        "rate": 0.0
+      },
+      "correct_clarification_rate": {
+        "numerator": 9,
+        "denominator": 9,
+        "rate": 1.0
+      },
+      "overclarification_rate": {
+        "numerator": 0,
+        "denominator": 37,
+        "rate": 0.0
+      },
+      "model_calls": 50,
+      "recorded_model_responses": 50,
+      "input_tokens": 124809,
+      "output_tokens": 11277,
+      "sum_turn_elapsed_seconds": 250.014,
+      "failed_cases": []
+    },
+    "splits": {
+      "development": {
+        "cases": 36,
+        "turns": 36,
+        "semantic_plan_accuracy": {
+          "numerator": 36,
+          "denominator": 36,
+          "rate": 1.0
+        },
+        "execute_plan_accuracy": {
+          "numerator": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "incorrect_execution_rate": {
+          "numerator": 0,
+          "denominator": 36,
+          "rate": 0.0
+        },
+        "correct_clarification_rate": {
+          "numerator": 5,
+          "denominator": 5,
+          "rate": 1.0
+        },
+        "overclarification_rate": {
+          "numerator": 0,
+          "denominator": 28,
+          "rate": 0.0
+        },
+        "model_calls": 36,
+        "recorded_model_responses": 36,
+        "input_tokens": 89659,
+        "output_tokens": 8240,
+        "sum_turn_elapsed_seconds": 179.42,
+        "failed_cases": []
+      },
+      "heldout": {
+        "cases": 12,
+        "turns": 14,
+        "semantic_plan_accuracy": {
+          "numerator": 14,
+          "denominator": 14,
+          "rate": 1.0
+        },
+        "execute_plan_accuracy": {
+          "numerator": 9,
+          "denominator": 9,
+          "rate": 1.0
+        },
+        "incorrect_execution_rate": {
+          "numerator": 0,
+          "denominator": 14,
+          "rate": 0.0
+        },
+        "correct_clarification_rate": {
+          "numerator": 4,
+          "denominator": 4,
+          "rate": 1.0
+        },
+        "overclarification_rate": {
+          "numerator": 0,
+          "denominator": 9,
+          "rate": 0.0
+        },
+        "model_calls": 14,
+        "recorded_model_responses": 14,
+        "input_tokens": 35150,
+        "output_tokens": 3037,
+        "sum_turn_elapsed_seconds": 70.594,
+        "failed_cases": []
+      }
+    }
   },
-  "docker_compose_syntax": "passed",
+  "graph_timeout_smoke": {
+    "kind": "live_neo4j_read_only_timeout_smoke",
+    "requested_budget_seconds": 0.05,
+    "stopped": true,
+    "error_type": "ClientError",
+    "error_code": "Neo.ClientError.Transaction.TransactionTimedOutClientConfiguration",
+    "elapsed_seconds": 0.641
+  },
   "docker_runtime": "passed",
-  "experiments": {
+  "docker_report": "DOCKER_VALIDATION.json",
+  "baseline_experiments": {
     "decision": false,
     "harness": false
-  },
-  "docker_report": "DOCKER_VALIDATION.json",
-  "docker_tests": {
-    "tests": "29",
-    "failures": "0",
-    "errors": "0",
-    "skipped": "0",
-    "time": "10.810"
-  },
-  "updated_at": "2026-10-31T16:25:02.174124+00:00"
+  }
 }

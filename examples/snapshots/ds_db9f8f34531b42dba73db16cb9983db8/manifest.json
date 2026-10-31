@@ -1,0 +1,26 @@
+{
+  "dataset_id": "ds_db9f8f34531b42dba73db16cb9983db8",
+  "query": {
+    "query.cond": "\"asthma\"",
+    "query.intr": "(\"dupilumab\")"
+  },
+  "query_hash": "ac3db0b1d0fa192e540401b80e5d8ab523d4fba88af49a74cee7768626223a91",
+  "started_at": "2026-10-31T16:53:33.771088+00:00",
+  "finished_at": "2026-10-31T16:53:36.664024+00:00",
+  "source_version_before": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "source_version_after": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "expected_count": 60,
+  "retrieved_unique_count": 60,
+  "pages": 1,
+  "duplicate_count": 0,
+  "complete": true,
+  "reason": null,
+  "raw_hash": "8a5dd4bb097576e41d3463bcb2513a649b6e36dd12bdff0abcd0d12e72e4b1fa",
+  "schema_version": "snapshot-v1"
+}

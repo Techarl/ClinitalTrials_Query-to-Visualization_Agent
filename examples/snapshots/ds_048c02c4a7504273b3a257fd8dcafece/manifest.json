@@ -1,0 +1,26 @@
+{
+  "dataset_id": "ds_048c02c4a7504273b3a257fd8dcafece",
+  "query": {
+    "query.cond": "\"asthma\"",
+    "query.intr": "(\"omalizumab\")"
+  },
+  "query_hash": "35177e86d5d78164abe150b12ec551bfddeacfe8b4515146b972f49b625c9785",
+  "started_at": "2026-10-31T16:53:37.436271+00:00",
+  "finished_at": "2026-10-31T16:53:38.713750+00:00",
+  "source_version_before": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "source_version_after": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "expected_count": 116,
+  "retrieved_unique_count": 116,
+  "pages": 1,
+  "duplicate_count": 0,
+  "complete": true,
+  "reason": null,
+  "raw_hash": "e9da6a96cda159ba42818be08d0ace4989ee9c53e47dffdeb6c4829e4a8f71e2",
+  "schema_version": "snapshot-v1"
+}

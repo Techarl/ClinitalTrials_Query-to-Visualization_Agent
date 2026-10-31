@@ -68,18 +68,18 @@ Each saved run used one real planner call:
 | --- | --- | --- |
 | [Phases](examples/01_phases/response.json) | Bar | 400 source studies |
 | [Phase 3 follow-up](examples/02_followup_trend/response.json) | Time series | Same cohort, Phase 3, start years 2015–2025; 27 studies |
-| [Drug comparison](examples/03_comparison/response.json) | Grouped bar | 400 pembrolizumab / 396 nivolumab source records; overlap disclosed |
-| [Enrollment](examples/04_enrollment/response.json) | Histogram | Missing enrollment excluded; actual/estimated types retained |
-| [Shared-drug sponsor links](examples/05_shared_drugs/response.json) | Network | Distinct shared interventions and all supporting studies |
+| [Drug comparison](examples/03_comparison/response.json) | Grouped bar | Asthma: 60 dupilumab / 116 omalizumab source records; overlap disclosed |
+| [Enrollment](examples/04_enrollment/response.json) | Histogram | Psoriasis/secukinumab: 149 source records; missing enrollment excluded |
+| [Shared-drug sponsor links](examples/05_shared_drugs/response.json) | Network | Rheumatoid arthritis/adalimumab: 242 source records; distinct shared interventions |
 
-These are frozen observations, not permanent live counts. Each includes the request, response, full evidence and trace. Raw source collections are under `examples/snapshots/`. Examples were generated from milestone `917f25a`, with runtime source hashes recorded; later recovery/interface hardening preserves the demonstrated calculations.
+These are frozen observations, not permanent live counts. Each includes the request, response, full evidence and trace. Raw source collections are under `examples/snapshots/`. All five were regenerated from the repaired `ea65a0a` source, with the same runtime code hash as the release semantic evaluation and Docker image. Older snapshots remain as immutable historical artifacts.
 
 ```powershell
 # Offline: no database, network or model calls:
 .\.venv\Scripts\python.exe -m app.verify_examples
 ```
 
-The independent checker reads raw sources without production normalization, aggregation or Cypher compilation. It verifies demonstrated cohort membership, plotted values, edge weights, contributors, hashes and 71,323 exact field values. See [verification report](examples/verification.json). Both implementations are AI-assisted and may share conceptual assumptions; semantic review remains valuable.
+The independent checker reads raw sources without production normalization, aggregation or Cypher compilation. It independently generates the complete expected rows/edges/nodes, including top-N order, zero buckets and role-specific contributors, and verifies hashes and 33,824 exact field values. Twenty-one schema-valid corruptions must fail its negative tests. See [verification report](examples/verification.json). Both implementations are AI-assisted and may share conceptual assumptions; semantic review remains valuable.
 
 ## Validation
 
@@ -96,6 +96,17 @@ Tests cover pagination, empty pages, deduplication, completeness, tampering, mul
 
 `python -m app.examples` intentionally regenerates live runs and makes paid main-model calls. It is separate from offline verification.
 
+The [round-one review response](docs/ROUND2_REVIEW_RESPONSE.zh-CN.md) maps R1–R9 to fixes and regressions. The frozen [semantic cases](docs/evals/semantic_cases.json) cover 48 cases / 50 actual main-model turns across diseases, English/Chinese, AND/OR/comparison, follow-ups and repeated clarification. The repaired source scored 50/50, including 37/37 executable plans and 9/9 clarification turns; this small engineer-authored set is not a population accuracy guarantee. An earlier pass scored 49/50; both observations are retained. Expected answers never enter planner input. This measures query-to-plan semantics, independently of numerical verification.
+
+```powershell
+# No paid calls: validate the case file:
+.\.venv\Scripts\python.exe -m app.semantic_eval
+# Explicitly paid, isolated model evaluation; no CTgov/Neo4j calls:
+.\.venv\Scripts\python.exe -m app.semantic_eval --live
+```
+
+See the full [semantic report](docs/evals/semantic_report.json). GitHub CI runs deterministic checks and real Neo4j fixtures with synthetic test credentials, without model keys or paid calls.
+
 ## Docker and submission
 
 ```powershell
@@ -105,7 +116,7 @@ docker compose up --build -d
 
 Compose uses Community Neo4j 2026.10.1, persistent volumes and one worker. API binds to loopback 8000; Neo4j host ports 7475/7688 avoid Desktop. The internal API URI is `bolt://neo4j:7687`. Stop another API on 8000 before using this alternative. An existing Neo4j volume retains its original password.
 
-Docker Desktop 25.0.3 verification passed: API image build, both service health checks, the same 29 regression tests inside Linux, and a real 400-study analysis followed by an API restart and a 27-study Phase 3 follow-up. Source evidence, paging, snapshot reuse and completed-run idempotency were checked. See [container validation](docs/DOCKER_VALIDATION.json). Native Desktop/Python execution was also exercised.
+Docker Desktop 25.0.3 verification passed: API image build, both service health checks, all 68 regression tests inside Linux, and a real 400-study analysis followed by an API restart and a 27-study Phase 3 follow-up. Source evidence, paging, snapshot reuse and completed-run idempotency were checked against the same repaired source. See [container validation](docs/DOCKER_VALIDATION.json). Native Desktop/Python execution was also exercised.
 
 To intentionally repeat the real two-call container smoke test (paid main-model calls):
 

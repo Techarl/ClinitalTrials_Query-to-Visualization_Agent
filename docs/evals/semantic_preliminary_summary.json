@@ -1,0 +1,68 @@
+{
+  "kind": "development_preliminary_not_frozen_release",
+  "overall": {
+    "cases": 48,
+    "turns": 50,
+    "semantic_plan_accuracy": {
+      "numerator": 49,
+      "denominator": 50,
+      "rate": 0.98
+    },
+    "execute_plan_accuracy": {
+      "numerator": 37,
+      "denominator": 37,
+      "rate": 1.0
+    },
+    "incorrect_execution_rate": {
+      "numerator": 0,
+      "denominator": 50,
+      "rate": 0.0
+    },
+    "correct_clarification_rate": {
+      "numerator": 9,
+      "denominator": 9,
+      "rate": 1.0
+    },
+    "overclarification_rate": {
+      "numerator": 0,
+      "denominator": 37,
+      "rate": 0.0
+    },
+    "model_calls": 50,
+    "recorded_model_responses": 50,
+    "input_tokens": 124827,
+    "output_tokens": 11199,
+    "sum_turn_elapsed_seconds": 254.187,
+    "failed_cases": [
+      "full_site"
+    ]
+  },
+  "source_code_hashes": [
+    "30b4d04f8e7c926e23c62d49d69677db89ca379779447a3575246ae2bebc163e",
+    "99207c471167429bb86f6ccb033dd173fef062b04347f6f3177f7eede245248f"
+  ],
+  "failure_details": [
+    {
+      "case": "full_site",
+      "turns": [
+        {
+          "request": {
+            "query": "Fetch every study on ClinicalTrials.gov and chart all sponsors.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "unsupported"
+          },
+          "errors": [
+            "action: expected unsupported, observed clarify"
+          ],
+          "observed_action": "clarify",
+          "message": "A site-wide analysis is not supported. Specify a condition, intervention, or lead sponsor to chart lead sponsors within that scope.",
+          "questions": [
+            "Which condition, intervention, or lead sponsor should define the studies to include?"
+          ]
+        }
+      ]
+    }
+  ]
+}

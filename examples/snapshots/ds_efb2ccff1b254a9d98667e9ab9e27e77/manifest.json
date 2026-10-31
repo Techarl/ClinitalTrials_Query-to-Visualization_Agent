@@ -1,0 +1,26 @@
+{
+  "dataset_id": "ds_efb2ccff1b254a9d98667e9ab9e27e77",
+  "query": {
+    "query.cond": "\"rheumatoid arthritis\"",
+    "query.intr": "(\"adalimumab\")"
+  },
+  "query_hash": "cbcd1291c275e63c7d772ee8833c0f29e28ce0828e5577e78b7765d1ed113584",
+  "started_at": "2026-10-31T16:54:00.808204+00:00",
+  "finished_at": "2026-10-31T16:54:04.458742+00:00",
+  "source_version_before": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "source_version_after": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "expected_count": 242,
+  "retrieved_unique_count": 242,
+  "pages": 1,
+  "duplicate_count": 0,
+  "complete": true,
+  "reason": null,
+  "raw_hash": "bffa648ba1435043129a5369ec91940f99a6be9ab78eb56691c2d86a588e8fd3",
+  "schema_version": "snapshot-v1"
+}

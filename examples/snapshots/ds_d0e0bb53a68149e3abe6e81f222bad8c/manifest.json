@@ -1,0 +1,26 @@
+{
+  "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+  "query": {
+    "query.cond": "\"psoriasis\"",
+    "query.intr": "(\"secukinumab\")"
+  },
+  "query_hash": "560ddb470088acacbf0e3e1f63c99e8f05aa96695f9f9677a4b1ad3d60df5fa0",
+  "started_at": "2026-10-31T16:53:45.843340+00:00",
+  "finished_at": "2026-10-31T16:53:49.064891+00:00",
+  "source_version_before": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "source_version_after": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "expected_count": 149,
+  "retrieved_unique_count": 149,
+  "pages": 1,
+  "duplicate_count": 0,
+  "complete": true,
+  "reason": null,
+  "raw_hash": "faf1e882f8c54732b9bf6c878a4c20a096005cd7a57ea2ed4e1f4339baac4cdb",
+  "schema_version": "snapshot-v1"
+}
