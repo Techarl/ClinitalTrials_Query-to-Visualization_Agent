@@ -1,6 +1,9 @@
 """Snapshot-scoped Neo4j imports and parameterized, allowlisted queries."""
 
 import re
+import time
+from contextlib import contextmanager
+from contextvars import ContextVar
 from typing import Any
 
 from neo4j import GraphDatabase, Query
@@ -8,6 +11,8 @@ from neo4j import GraphDatabase, Query
 from app.config import Settings
 from app.models import Filters
 from app.sources import Snapshot, content_hash
+
+_deadline: ContextVar[float | None] = ContextVar("graph_deadline", default=None)
 
 PHASE_LABELS = {
     "EARLY_PHASE1": "Early Phase 1",
@@ -148,13 +153,29 @@ class GraphRepository:
     def close(self):
         self.driver.close()
 
-    def query(self, cypher: str, params: dict | None = None) -> list[dict]:
-        records, _, _ = self.driver.execute_query(
-            Query(cypher, timeout=30),
-            parameters_=params or {},
-            database_=self.settings.neo4j_database,
+    @contextmanager
+    def budget(self, deadline: float | None):
+        previous = _deadline.get()
+        effective = (
+            previous if deadline is None else deadline if previous is None else min(previous, deadline)
         )
-        return [record.data() for record in records]
+        token = _deadline.set(effective)
+        try:
+            yield
+        finally:
+            _deadline.reset(token)
+
+    def query(self, cypher: str, params: dict | None = None) -> list[dict]:
+        remaining = 30 if _deadline.get() is None else _deadline.get() - time.monotonic()
+        if remaining <= 0:
+            raise TimeoutError("Graph execution exceeded the run deadline")
+        # Auto-commit avoids managed retry loops spending another transaction budget.
+        with self.driver.session(database=self.settings.neo4j_database) as session:
+            result = session.run(Query(cypher, timeout=min(30, remaining)), parameters=params or {})
+            records = [record.data() for record in result]
+        if _deadline.get() is not None and time.monotonic() >= _deadline.get():
+            raise TimeoutError("Graph execution exceeded the run deadline")
+        return records
 
     def setup(self):
         for label, prop in (
@@ -170,7 +191,11 @@ class GraphRepository:
             )
         self.query("CREATE INDEX trial_dataset IF NOT EXISTS FOR (r:TrialRecord) ON (r.dataset_id)")
 
-    def import_snapshot(self, snapshot: Snapshot, studies: list[dict]):
+    def import_snapshot(self, snapshot: Snapshot, studies: list[dict], deadline: float | None = None):
+        with self.budget(deadline):
+            self._import_snapshot(snapshot, studies)
+
+    def _import_snapshot(self, snapshot: Snapshot, studies: list[dict]):
         if not snapshot.complete or content_hash(studies) != snapshot.raw_hash:
             raise ValueError("Only verified complete snapshots can be imported")
         dataset_id = snapshot.dataset_id

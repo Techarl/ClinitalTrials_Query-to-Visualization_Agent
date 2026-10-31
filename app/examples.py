@@ -20,17 +20,17 @@ CASES = [
     ),
     (
         "03_comparison",
-        "Compare the phase distributions for pembrolizumab versus nivolumab studies in melanoma.",
+        "Compare the phase distributions for dupilumab versus omalizumab studies in asthma.",
         "grouped_bar",
     ),
     (
         "04_enrollment",
-        "Show a histogram of enrollment counts for melanoma studies involving pembrolizumab, using 8 equal-width bins. Include actual and estimated enrollment.",
+        "Show a histogram of enrollment counts for psoriasis studies involving secukinumab, using 8 equal-width bins. Include actual and estimated enrollment.",
         "histogram",
     ),
     (
         "05_shared_drugs",
-        "For melanoma studies involving pembrolizumab, show the 10 strongest sponsor-to-sponsor links through shared drug or biological interventions. Weight each link by the number of shared interventions, and include supporting studies.",
+        "For rheumatoid arthritis studies involving adalimumab, show the 10 strongest sponsor-to-sponsor links through shared drug or biological interventions. Weight each link by the number of shared interventions, and include supporting studies.",
         "network_graph",
     ),
 ]

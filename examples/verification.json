@@ -5,35 +5,40 @@
       "status": "verified",
       "exact_fields_checked": 14682,
       "evidence_sets": 9,
-      "source_records": 400
+      "source_records": 400,
+      "complete_item_sets_checked": true
     },
     {
       "example": "02_followup_trend",
       "status": "verified",
       "exact_fields_checked": 3276,
       "evidence_sets": 11,
-      "source_records": 400
+      "source_records": 400,
+      "complete_item_sets_checked": true
     },
     {
       "example": "03_comparison",
       "status": "verified",
       "exact_fields_checked": 32195,
       "evidence_sets": 18,
-      "source_records": 796
+      "source_records": 796,
+      "complete_item_sets_checked": true
     },
     {
       "example": "04_enrollment",
       "status": "verified",
       "exact_fields_checked": 14657,
       "evidence_sets": 8,
-      "source_records": 400
+      "source_records": 400,
+      "complete_item_sets_checked": true
     },
     {
       "example": "05_shared_drugs",
       "status": "verified",
       "exact_fields_checked": 6513,
       "evidence_sets": 18,
-      "source_records": 400
+      "source_records": 400,
+      "complete_item_sets_checked": true
     }
   ],
   "network_or_database_calls": 0,

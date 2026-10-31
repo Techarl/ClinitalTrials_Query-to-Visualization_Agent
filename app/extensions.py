@@ -9,7 +9,7 @@ from app.models import AnalysisPlan, PlannerDecision
 @dataclass(frozen=True)
 class HarnessConfig:
     version: str = "baseline-v1"
-    prompt_version: str = "planner-v1"
+    prompt_version: str = "planner-v2"
     field_catalog_version: str = "ctgov-fields-v1"
     system_instructions: str | None = None
     context_char_limit: int | None = None

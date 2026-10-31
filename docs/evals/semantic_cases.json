@@ -1,0 +1,1750 @@
+{
+  "version": "semantic-v1",
+  "annotation": "Engineer-authored expectations; no independent clinical annotation. Search-name equivalence is explicitly enumerated by case. Heldout cases are excluded from prompt edits and future experience retrieval.",
+  "cases": [
+    {
+      "id": "melanoma_phase",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show phase distribution for melanoma studies involving pembrolizumab.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "asthma_status",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show status counts for asthma studies involving dupilumab.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "status",
+            "cohorts": [
+              {
+                "condition": "asthma",
+                "interventions": [
+                  "dupilumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "diabetes_countries",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show the top 5 countries for type 2 diabetes studies involving metformin.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "country",
+            "cohorts": [
+              {
+                "condition": "type 2 diabetes",
+                "interventions": [
+                  "metformin"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ],
+            "top_n": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "breast_sponsor",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "Show the 7 largest lead sponsors by distinct breast cancer trial count for trastuzumab.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "sponsor",
+            "cohorts": [
+              {
+                "condition": "breast cancer",
+                "interventions": [
+                  "trastuzumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ],
+            "top_n": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "rheumatoid_histogram",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show a 6-bin enrollment histogram of rheumatoid arthritis studies involving adalimumab, actual enrollment only.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "histogram",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "rheumatoid arthritis",
+                "interventions": [
+                  "adalimumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": "ACTUAL"
+              }
+            ],
+            "histogram_bins": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "lung_trend",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Count lung cancer studies involving osimertinib by start year, starts from 2018 through 2025 inclusive.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "time_series",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "lung cancer",
+                "interventions": [
+                  "osimertinib"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": 2018,
+                "end_year": 2025,
+                "enrollment_type": null
+              }
+            ],
+            "time_field": "start_year"
+          }
+        }
+      ]
+    },
+    {
+      "id": "psoriasis_zh",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "按试验阶段统计银屑病中使用司库奇尤单抗（secukinumab）的研究。",
+            "language": "zh"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "psoriasis",
+                "interventions": [
+                  "secukinumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "hepatitis_zh",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "统计乙型肝炎（hepatitis B）中替诺福韦（tenofovir）研究的招募状态分布。",
+            "language": "zh"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "status",
+            "cohorts": [
+              {
+                "condition": "hepatitis B",
+                "interventions": [
+                  "tenofovir"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "or_population",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show phase distribution for melanoma trials involving either pembrolizumab OR nivolumab, as ONE pooled cohort.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab",
+                  "nivolumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "and_population",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show phase distribution for melanoma trials containing BOTH pembrolizumab AND nivolumab in the same study, as one cohort.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab",
+                  "nivolumab"
+                ],
+                "intervention_match": "all",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "compare_drugs",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Compare phase distributions: pembrolizumab versus nivolumab in melanoma, two separate cohorts.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              },
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "nivolumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "compare_conditions",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "Compare status distributions for asthma versus COPD, using dupilumab studies in both.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "status",
+            "cohorts": [
+              {
+                "condition": "asthma",
+                "interventions": [
+                  "dupilumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              },
+              {
+                "condition": "COPD",
+                "interventions": [
+                  "dupilumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "phase_combined",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Count melanoma pembrolizumab studies by status, including phase 2 or phase 3 (including combined phases).",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "status",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [
+                  "PHASE2",
+                  "PHASE3"
+                ],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "country_or",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show phase counts for asthma dupilumab studies with sites in Canada or the United States. Keep both countries as an OR filter.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "asthma",
+                "interventions": [
+                  "dupilumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [
+                  "Canada",
+                  "United States"
+                ],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "recruiting",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show countries for currently RECRUITING melanoma pembrolizumab studies.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "country",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [
+                  "RECRUITING"
+                ],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "posted_axis",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "Show first-posted-year counts for rheumatoid arthritis adalimumab studies. Do not apply any date bounds.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "time_series",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "rheumatoid arthritis",
+                "interventions": [
+                  "adalimumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ],
+            "time_field": "first_posted_year"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sponsor_drug",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show a lead-sponsor to drug network for asthma studies involving dupilumab, top 8 links.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "network",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "asthma",
+                "interventions": [
+                  "dupilumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ],
+            "relationship": "sponsor_drug",
+            "top_n": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "drug_cooccur",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show the top 12 drug co-occurrence links within individual breast cancer trastuzumab studies. I understand this is study-level, not arm-level.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "network",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "breast cancer",
+                "interventions": [
+                  "trastuzumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ],
+            "relationship": "drug_cooccurrence",
+            "top_n": 12
+          }
+        }
+      ]
+    },
+    {
+      "id": "shared_sponsor",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show the 5 strongest sponsor pairs linked through shared drugs in melanoma pembrolizumab studies. Weight by distinct shared interventions.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "network",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ],
+            "relationship": "sponsor_shared_drug",
+            "top_n": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "drug_only",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "Show phase distribution of all registered studies involving semaglutide, no disease restriction.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": null,
+                "interventions": [
+                  "semaglutide"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "lead_sponsor",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show study-type distribution for studies led by Mayo Clinic involving Parkinson disease.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "study_type",
+            "cohorts": [
+              {
+                "condition": "Parkinson disease",
+                "interventions": [],
+                "intervention_match": "any",
+                "sponsor": "Mayo Clinic",
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "sponsor_class",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show sponsor class counts for Crohn disease infliximab studies.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "sponsor_class",
+            "cohorts": [
+              {
+                "condition": "Crohn disease",
+                "interventions": [
+                  "infliximab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "intervention_types",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show intervention type counts for migraine erenumab studies.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "intervention_type",
+            "cohorts": [
+              {
+                "condition": "migraine",
+                "interventions": [
+                  "erenumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "estimated_hist",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "Show an enrollment histogram with 20 bins for obesity semaglutide studies, estimated enrollment only.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "histogram",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "obesity",
+                "interventions": [
+                  "semaglutide"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": "ESTIMATED"
+              }
+            ],
+            "histogram_bins": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "ambiguous_pd",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show phase distribution for PD trials.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "clarify"
+          }
+        }
+      ]
+    },
+    {
+      "id": "missing_drug",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show trials for this drug by phase.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "clarify"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ambiguous_logic",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show counts for melanoma studies involving pembrolizumab and nivolumab; I have not decided whether to pool, intersect, or compare them.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "clarify"
+          }
+        }
+      ]
+    },
+    {
+      "id": "posted_bounds",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "Show counts of studies first posted between 2015 and 2020 for melanoma pembrolizumab. Do not filter study start year.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "clarify"
+          }
+        }
+      ]
+    },
+    {
+      "id": "efficacy",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Compare survival benefit and cure rates of pembrolizumab versus nivolumab in melanoma.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "unsupported"
+          }
+        }
+      ]
+    },
+    {
+      "id": "treatment",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Which melanoma drug should I take? Recommend a dose.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "unsupported"
+          }
+        }
+      ]
+    },
+    {
+      "id": "full_site",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Fetch every study on ClinicalTrials.gov and chart all sponsors.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "unsupported"
+          }
+        }
+      ]
+    },
+    {
+      "id": "scatter",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "Make a scatterplot of average participant age versus mortality for asthma dupilumab trials.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "unsupported"
+          }
+        }
+      ]
+    },
+    {
+      "id": "followup_phase",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Keep the previous cohort, phase 3 only.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [
+                  "PHASE3"
+                ],
+                "statuses": [],
+                "countries": [
+                  "Canada"
+                ],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ],
+      "seed_plan": {
+        "operation": "category",
+        "cohorts": [
+          {
+            "id": "a",
+            "label": "Melanoma",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "intervention_match": "any",
+              "sponsor": null,
+              "phases": [],
+              "statuses": [],
+              "countries": [
+                "Canada"
+              ],
+              "start_year": null,
+              "end_year": null,
+              "enrollment_type": null
+            }
+          }
+        ],
+        "group_by": "phase",
+        "time_field": "start_year",
+        "relationship": "sponsor_drug",
+        "histogram_bins": 10,
+        "top_n": 20,
+        "title": "Clinical trial analysis",
+        "assumptions": []
+      }
+    },
+    {
+      "id": "followup_trend",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Keep all existing filters, but show start-year counts from 2015 to 2025.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "time_series",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [
+                  "Canada"
+                ],
+                "start_year": 2015,
+                "end_year": 2025,
+                "enrollment_type": null
+              }
+            ],
+            "time_field": "start_year"
+          }
+        }
+      ],
+      "seed_plan": {
+        "operation": "category",
+        "cohorts": [
+          {
+            "id": "a",
+            "label": "Melanoma",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "intervention_match": "any",
+              "sponsor": null,
+              "phases": [],
+              "statuses": [],
+              "countries": [
+                "Canada"
+              ],
+              "start_year": null,
+              "end_year": null,
+              "enrollment_type": null
+            }
+          }
+        ],
+        "group_by": "phase",
+        "time_field": "start_year",
+        "relationship": "sponsor_drug",
+        "histogram_bins": 10,
+        "top_n": 20,
+        "title": "Clinical trial analysis",
+        "assumptions": []
+      }
+    },
+    {
+      "id": "followup_top5",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Keep the previous cohort and show the top 5 lead sponsors.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "sponsor",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [
+                  "Canada"
+                ],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ],
+            "top_n": 5
+          }
+        }
+      ],
+      "seed_plan": {
+        "operation": "category",
+        "cohorts": [
+          {
+            "id": "a",
+            "label": "Melanoma",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "intervention_match": "any",
+              "sponsor": null,
+              "phases": [],
+              "statuses": [],
+              "countries": [
+                "Canada"
+              ],
+              "start_year": null,
+              "end_year": null,
+              "enrollment_type": null
+            }
+          }
+        ],
+        "group_by": "phase",
+        "time_field": "start_year",
+        "relationship": "sponsor_drug",
+        "histogram_bins": 10,
+        "top_n": 20,
+        "title": "Clinical trial analysis",
+        "assumptions": []
+      }
+    },
+    {
+      "id": "followup_bins",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "Keep the previous cohort, use an enrollment histogram with 20 bins.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "histogram",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [
+                  "Canada"
+                ],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ],
+            "histogram_bins": 20
+          }
+        }
+      ],
+      "seed_plan": {
+        "operation": "category",
+        "cohorts": [
+          {
+            "id": "a",
+            "label": "Melanoma",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "intervention_match": "any",
+              "sponsor": null,
+              "phases": [],
+              "statuses": [],
+              "countries": [
+                "Canada"
+              ],
+              "start_year": null,
+              "end_year": null,
+              "enrollment_type": null
+            }
+          }
+        ],
+        "group_by": "phase",
+        "time_field": "start_year",
+        "relationship": "sponsor_drug",
+        "histogram_bins": 10,
+        "top_n": 20,
+        "title": "Clinical trial analysis",
+        "assumptions": []
+      }
+    },
+    {
+      "id": "followup_clear_country",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Remove the country restriction only, keep the previous condition and drug, still grouped by phase.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ],
+      "seed_plan": {
+        "operation": "category",
+        "cohorts": [
+          {
+            "id": "a",
+            "label": "Melanoma",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "intervention_match": "any",
+              "sponsor": null,
+              "phases": [],
+              "statuses": [],
+              "countries": [
+                "Canada"
+              ],
+              "start_year": null,
+              "end_year": null,
+              "enrollment_type": null
+            }
+          }
+        ],
+        "group_by": "phase",
+        "time_field": "start_year",
+        "relationship": "sponsor_drug",
+        "histogram_bins": 10,
+        "top_n": 20,
+        "title": "Clinical trial analysis",
+        "assumptions": []
+      }
+    },
+    {
+      "id": "new_topic",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "New topic: show phase distribution for asthma dupilumab studies. Discard all previous filters.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "asthma",
+                "interventions": [
+                  "dupilumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ],
+      "seed_plan": {
+        "operation": "category",
+        "cohorts": [
+          {
+            "id": "a",
+            "label": "Melanoma",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "intervention_match": "any",
+              "sponsor": null,
+              "phases": [],
+              "statuses": [],
+              "countries": [
+                "Canada"
+              ],
+              "start_year": null,
+              "end_year": null,
+              "enrollment_type": null
+            }
+          }
+        ],
+        "group_by": "phase",
+        "time_field": "start_year",
+        "relationship": "sponsor_drug",
+        "histogram_bins": 10,
+        "top_n": 20,
+        "title": "Clinical trial analysis",
+        "assumptions": []
+      }
+    },
+    {
+      "id": "pending_resolved",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "pembrolizumab",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ],
+      "seed_pending": {
+        "request": {
+          "query": "Phase distribution for melanoma and this drug",
+          "filters": {
+            "condition": "melanoma"
+          }
+        },
+        "confirmed_filters": {
+          "condition": "melanoma"
+        },
+        "replies": [
+          {
+            "query": "the infusion from my appointment"
+          }
+        ],
+        "questions": [
+          "Please provide the drug name."
+        ]
+      }
+    },
+    {
+      "id": "pending_still_unclear",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "The same infusion, I do not know its name.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "clarify"
+          }
+        }
+      ],
+      "seed_pending": {
+        "request": {
+          "query": "Phase distribution for melanoma and this drug",
+          "filters": {
+            "condition": "melanoma"
+          }
+        },
+        "confirmed_filters": {
+          "condition": "melanoma"
+        },
+        "replies": [
+          {
+            "query": "the infusion from my appointment"
+          }
+        ],
+        "questions": [
+          "Please provide the drug name."
+        ]
+      }
+    },
+    {
+      "id": "pending_topic_switch",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "New topic, forget that drug: show asthma dupilumab studies by status.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "status",
+            "cohorts": [
+              {
+                "condition": "asthma",
+                "interventions": [
+                  "dupilumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ],
+      "seed_pending": {
+        "request": {
+          "query": "Phase distribution for melanoma and this drug",
+          "filters": {
+            "condition": "melanoma"
+          }
+        },
+        "confirmed_filters": {
+          "condition": "melanoma"
+        },
+        "replies": [
+          {
+            "query": "the infusion from my appointment"
+          }
+        ],
+        "questions": [
+          "Please provide the drug name."
+        ]
+      }
+    },
+    {
+      "id": "zh_lung",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "按开始年份统计肺癌中奥希替尼（osimertinib）的研究，开始年份为2019至2025年，包含边界。",
+            "language": "zh"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "time_series",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "lung cancer",
+                "interventions": [
+                  "osimertinib"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": 2019,
+                "end_year": 2025,
+                "enrollment_type": null
+              }
+            ],
+            "time_field": "start_year"
+          }
+        }
+      ]
+    },
+    {
+      "id": "brand_keytruda",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show phase distribution of melanoma studies involving Keytruda (pembrolizumab). Use the generic drug name.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "zh_compare",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "比较黑色素瘤（melanoma）中 pembrolizumab 与 nivolumab 两组研究的阶段分布，两种药分别统计。",
+            "language": "zh"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              },
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "nivolumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "explicit_all",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Phase counts for studies containing both specified drugs in melanoma, one intersection cohort.",
+            "language": "en",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab",
+                "nivolumab"
+              ],
+              "intervention_match": "all"
+            }
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab",
+                  "nivolumab"
+                ],
+                "intervention_match": "all",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "explicit_conflict",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show asthma phase counts, while the structured disease is melanoma.",
+            "language": "en",
+            "filters": {
+              "condition": "melanoma"
+            }
+          },
+          "expected": {
+            "action": "clarify"
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown_drug",
+      "split": "development",
+      "turns": [
+        {
+          "request": {
+            "query": "Show phase distribution for melanoma with the drug XYZUNKNOWN-742, which I may have misspelled; please establish its identity first.",
+            "language": "en"
+          },
+          "expected": {
+            "action": "clarify"
+          }
+        }
+      ]
+    },
+    {
+      "id": "repeated_clarification",
+      "split": "heldout",
+      "turns": [
+        {
+          "request": {
+            "query": "For melanoma and this drug, show phase counts.",
+            "language": "en",
+            "filters": {
+              "condition": "melanoma"
+            }
+          },
+          "expected": {
+            "action": "clarify"
+          }
+        },
+        {
+          "request": {
+            "query": "The infusion from my appointment",
+            "language": "en"
+          },
+          "expected": {
+            "action": "clarify"
+          }
+        },
+        {
+          "request": {
+            "query": "pembrolizumab",
+            "language": "en"
+          },
+          "expected": {
+            "action": "execute",
+            "operation": "category",
+            "group_by": "phase",
+            "cohorts": [
+              {
+                "condition": "melanoma",
+                "interventions": [
+                  "pembrolizumab"
+                ],
+                "intervention_match": "any",
+                "sponsor": null,
+                "phases": [],
+                "statuses": [],
+                "countries": [],
+                "start_year": null,
+                "end_year": null,
+                "enrollment_type": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

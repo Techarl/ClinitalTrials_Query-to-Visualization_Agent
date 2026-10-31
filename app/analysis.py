@@ -1,5 +1,6 @@
 """Deterministic graph analysis, chart construction, and exact source evidence."""
 
+import time
 from collections import defaultdict
 from math import floor
 
@@ -15,7 +16,7 @@ from app.models import (
     NetworkVisualization,
     TabularVisualization,
 )
-from app.sources import Snapshot, content_hash
+from app.sources import Snapshot, canonical_json, content_hash
 from app.storage import StateStore
 
 
@@ -81,12 +82,24 @@ class AnalysisEngine:
     def __init__(self, settings: Settings, graph: GraphRepository, store: StateStore):
         self.settings, self.graph, self.store = settings, graph, store
 
-    def run(self, plan: AnalysisPlan, datasets: dict[str, tuple[Snapshot, list[dict]]], run_id: str):
+    def run(
+        self,
+        plan: AnalysisPlan,
+        datasets: dict[str, tuple[Snapshot, list[dict]]],
+        run_id: str,
+        deadline: float | None = None,
+    ):
+        def check_budget():
+            if deadline is not None and time.monotonic() >= deadline:
+                raise TimeoutError("Analysis exceeded the run deadline")
+
+        check_budget()
         records_by_cohort = {}
         evidence_ids: set[str] = set()
         citations = {}
         cohort_meta = []
         for cohort in plan.cohorts:
+            check_budget()
             snapshot, raw_records = datasets[cohort.id]
             if not snapshot.complete:
                 raise ValueError("Incomplete source dataset cannot be analyzed")
@@ -119,6 +132,7 @@ class AnalysisEngine:
             )
 
         def evidence(cohort_id: str, contributor_ids: list[str] | set[str], rule: dict) -> str:
+            check_budget()
             snapshot = datasets[cohort_id][0]
             ids = sorted(set(contributor_ids))
             try:
@@ -220,6 +234,9 @@ class AnalysisEngine:
                 },
             )
         elif plan.operation == "histogram":
+            omitted_missing = sum(
+                r.get("enrollment") is None for records in records_by_cohort.values() for r in records
+            )
             values = [
                 r["enrollment"]
                 for records in records_by_cohort.values()
@@ -234,7 +251,6 @@ class AnalysisEngine:
                     buckets: dict[int, list[str]] = defaultdict(list)
                     for record in records_by_cohort[cohort.id]:
                         if record.get("enrollment") is None:
-                            omitted_missing += 1
                             continue
                         bucket = min(plan.histogram_bins - 1, floor((record["enrollment"] - lower) / width))
                         buckets[bucket].append(record["nct_id"])
@@ -383,7 +399,17 @@ class AnalysisEngine:
             "cohort_overlap_counts": overlap,
             "completeness": "complete",
             "source_semantics": "Official ClinicalTrials.gov condition/intervention/lead-sponsor search; other filters use snapshot fields.",
-            "metric_definition": "Distinct NCT IDs per category; multi-valued categories may overlap.",
+            "metric_definition": (
+                "Number of distinct shared DRUG/BIOLOGICAL identities per sponsor pair; supporting trials are counted separately."
+                if plan.operation == "network" and plan.relationship == "sponsor_shared_drug"
+                else "Distinct supporting NCT IDs per displayed edge."
+                if plan.operation == "network"
+                else "Distinct NCT IDs per enrollment bin; missing enrollment excluded."
+                if plan.operation == "histogram"
+                else f"Distinct NCT IDs per {plan.time_field}; missing dates excluded."
+                if plan.operation == "time_series"
+                else f"Distinct NCT IDs per {plan.group_by}; multi-valued categories may overlap."
+            ),
             "country_policy": "A country count includes studies listing any site there. Country filters also restrict country-chart categories. Study-level RECRUITING does not imply each site is recruiting.",
             "phase_policy": "Combined phases remain one combined category. Missing phases are Not reported.",
             "date_policy": "Year filters always use study start year; time-series x-axis uses the declared time_field. Actual and estimated start dates are included.",
@@ -393,13 +419,29 @@ class AnalysisEngine:
             "node_count_scope": "Union of supporting trials on displayed edges"
             if plan.operation == "network"
             else None,
+            "network_edge_limit": self.settings.network_max_edges if plan.operation == "network" else None,
             "presentation_clipping": clipping,
             "source_truncated": False,
             "excluded_missing_values": omitted_missing,
             "units": {"trial_count": "studies", "enrollment": "participants"},
             "sorting": "Years ascending; phases in clinical order; other categories by descending total count then label; network edges by descending weight then IDs.",
             "time_granularity": "year" if plan.operation == "time_series" else None,
-            "assumptions": plan.assumptions,
+            "assumptions": [
+                f"Operation: {plan.operation}; grouping: {plan.time_field if plan.operation == 'time_series' else plan.group_by if plan.operation == 'category' else plan.relationship if plan.operation == 'network' else 'enrollment'}. Start-year bounds are inclusive.",
+                *[f"{c.label}: {canonical_json(c.filters.model_dump())}" for c in plan.cohorts],
+            ],
+            "model_assumptions": plan.assumptions,
+            "analysis_scope": {
+                "operation": plan.operation,
+                "dimension": plan.time_field
+                if plan.operation == "time_series"
+                else plan.group_by
+                if plan.operation == "category"
+                else None,
+                "cohort_filters": {c.id: c.filters.model_dump() for c in plan.cohorts},
+                "year_bounds_field": "start_year",
+                "year_bounds_inclusive": True,
+            },
         }
         previews = {}
         for evidence_id in sorted(evidence_ids):

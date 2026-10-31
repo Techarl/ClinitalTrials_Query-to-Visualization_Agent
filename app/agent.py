@@ -200,10 +200,19 @@ class AgentRunner:
         conflicts = []
         for field, value in explicit.items():
             if field == "interventions":
-                proposed = {
-                    item.casefold() for cohort in plan.cohorts for item in cohort.filters.interventions
-                }
-                if proposed != {item.casefold() for item in value}:
+                required = {item.casefold() for item in value}
+                groups = [{item.casefold() for item in c.filters.interventions} for c in plan.cohorts]
+                comparison = request.intervention_scope == "comparison"
+                if comparison:
+                    valid = (
+                        request.filters.intervention_match == "any"
+                        and len(groups) == len(required)
+                        and all(len(group) == 1 for group in groups)
+                        and set().union(*groups) == required
+                    )
+                else:
+                    valid = all(group == required for group in groups)
+                if not valid:
                     conflicts.append(field)
             else:
 
@@ -254,10 +263,13 @@ class AgentRunner:
                 pending = state["session"].get("pending_clarification")
                 if not pending:
                     raise ValueError("Clarification mode requires a pending clarification")
-                pending_filters = pending["request"].get("filters") or {}
+                pending_filters = pending.get("confirmed_filters", pending["request"].get("filters") or {})
                 current_filters = request.filters.model_dump(exclude_unset=True) if request.filters else {}
                 merged_request = request.model_dump(exclude_unset=True)
                 merged_request["filters"] = {**pending_filters, **current_filters}
+                merged_request["intervention_scope"] = pending["request"].get(
+                    "intervention_scope", "population"
+                )
                 request = AnalysisRequest.model_validate(merged_request)
             conflicts = self._explicit_conflicts(request, plan)
             if conflicts:
@@ -351,21 +363,38 @@ class AgentRunner:
                 }
             )
         elif response.status == "needs_clarification":
+            decision = state.get("decision") or {}
+            prior = session.get("pending_clarification")
+            continuing = prior and decision.get("mode") == "clarification"
+            pending = (
+                dict(prior)
+                if continuing
+                else {"request": state["request"], "replies": [], "confirmed_filters": {}}
+            )
+            pending["confirmed_filters"] = {
+                **pending.get("confirmed_filters", pending["request"].get("filters") or {}),
+                **(state["request"].get("filters") or {}),
+            }
+            if continuing:
+                pending["replies"] = [*pending.get("replies", []), state["request"]]
+            pending.update(questions=response.questions, proposed_decision=state.get("decision"))
             session.update(
                 {
-                    "pending_clarification": {
-                        "request": state["request"],
-                        "questions": response.questions,
-                        "proposed_decision": state.get("decision"),
-                    },
+                    "pending_clarification": pending,
                     "last_run_id": state["run_id"],
                 }
             )
         if response.status in ("ok", "no_data", "needs_clarification"):
-            self.service.store.commit_session(state["session_id"], state["session_version"], session)
             response.meta["session_version"] = state["session_version"] + 1
-        self.service.store.finish_run(state["run_id"], response.model_dump(mode="json"), trace)
-        return response
+        completed = self.service.store.finalize_run(
+            state["run_id"],
+            state["session_version"],
+            session,
+            response.model_dump(mode="json"),
+            trace,
+            advance_session=response.status in ("ok", "no_data", "needs_clarification"),
+        )
+        return AnalysisResponse.model_validate(completed)
 
     def analyze(self, request: AnalysisRequest) -> AnalysisResponse:
         session_id = request.session_id or "session_" + uuid4().hex
@@ -379,11 +408,25 @@ class AgentRunner:
                 if parent["status"] not in ("ok", "no_data", "needs_clarification"):
                     raise StateConflict("Parent run must be a completed analysis or clarification")
                 if parent["status"] in ("ok", "no_data"):
-                    session = {
+                    session = self.service.store.run_session(request.parent_run_id) or {
                         **session,
                         "last_successful_plan": parent["meta"]["plan"],
                         "pending_clarification": None,
                     }
+                else:
+                    branch = self.service.store.run_session(request.parent_run_id)
+                    if branch is None:
+                        # Legacy completed runs retain their pre-run state in LangGraph.
+                        saved = self.graph.get_state({"configurable": {"thread_id": request.parent_run_id}})
+                        if not saved.values:
+                            raise StateConflict("Historical clarification has no saved branch state")
+                        branch = dict(saved.values["session"])
+                        branch["pending_clarification"] = {
+                            "request": self.service.store.run(request.parent_run_id)["request"],
+                            "questions": parent["questions"],
+                            "replies": [],
+                        }
+                    session = branch
             state: RunState = {
                 "request": request.model_dump(exclude_unset=True),
                 "session": session,
@@ -429,6 +472,9 @@ class AgentRunner:
         if run["response"] is not None:
             return AnalysisResponse.model_validate(run["response"])
         with self._lock(run["session_id"]):
+            run = self.service.store.run(run_id)
+            if run["response"] is not None:
+                return AnalysisResponse.model_validate(run["response"])
             config = {"configurable": {"thread_id": run_id}, "recursion_limit": 20}
             checkpoint = self.graph.get_state(config)
             if not checkpoint.values:

@@ -8,11 +8,16 @@ Models are in `app/models.py`. `/openapi.json` exposes API schemas and `/capabil
 | --- | --- | --- |
 | query | required string | Nonempty after trimming, max 4,000 characters |
 | filters | object/null | Optional explicit shared constraints |
+| intervention_scope | population/comparison | Default population: every cohort retains the whole explicit intervention array. comparison permits singleton drug cohorts only for any semantics. ALL cannot be split. |
 | session_id | string/null | Absent creates a session; letters/digits/underscore/hyphen, length 1–80 |
 | parent_run_id | string/null | Completed analysis/clarification from the same session |
 | language | en/zh | en; controls planner titles, labels, questions and explanation |
 
 Analysis is synchronous; deploy one worker. Same-session requests are serialized and version checked. New topics use complete plans without inherited conditions. Follow-ups use typed patches: omitted fields preserve values and clear_fields removes them. Pending clarification is separate from successful state.
+
+Clarification state retains the original request, cumulative replies, confirmed explicit filters and current questions across restarts. A historical parent restores that run's saved branch state. Successful session changes and completed results are committed atomically. Completed-run resume is idempotent.
+
+Patches also support top_n, histogram_bins, and cohort_label (select cohort_id when relabeling a comparison). Old model assumptions are invalidated after a patch. `meta.assumptions` and `meta.analysis_scope` are derived from the resolved plan; optional fresh model comments are separate in `meta.model_assumptions`.
 
 ### Filters
 
@@ -20,7 +25,7 @@ Analysis is synchronous; deploy one worker. Same-session requests are serialized
 | --- | --- | --- |
 | condition | string/null, max 200 | Literal official query.cond phrase |
 | interventions | string array, max 10 | Nonempty search names, each at most 200 characters |
-| intervention_match | any/all | Default any, source OR/AND; a comparison creates separate cohorts |
+| intervention_match | any/all | Default any, source OR/AND. Explicit shared arrays apply to every cohort unless intervention_scope=comparison. Natural-language comparisons without explicit intervention filters create separate cohorts. |
 | sponsor | string/null, max 200 | Lead sponsor via query.lead, not collaborator search |
 | phases | enum array | EARLY_PHASE1, PHASE1, PHASE2, PHASE3, PHASE4, NA; any contained phase |
 | statuses | enum array | Official study overall statuses, e.g. RECRUITING/COMPLETED |

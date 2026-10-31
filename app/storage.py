@@ -28,6 +28,9 @@ class StateStore:
                 CREATE TABLE IF NOT EXISTS evidence (
                     id TEXT PRIMARY KEY, run_id TEXT NOT NULL, contents TEXT NOT NULL);
             """)
+            columns = {row["name"] for row in conn.execute("PRAGMA table_info(runs)")}
+            if "session_state" not in columns:
+                conn.execute("ALTER TABLE runs ADD COLUMN session_state TEXT")
 
     @contextmanager
     def connect(self):
@@ -36,6 +39,9 @@ class StateStore:
         try:
             yield conn
             conn.commit()
+        except BaseException:
+            conn.rollback()
+            raise
         finally:
             conn.close()
 
@@ -55,12 +61,50 @@ class StateStore:
                 parent = conn.execute("SELECT * FROM runs WHERE id=?", (parent_id,)).fetchone()
                 if not parent or parent["session_id"] != session_id or not parent["response"]:
                     raise StateConflict("parent_run_id must identify a completed run in this session")
+                if json.loads(parent["response"])["status"] not in ("ok", "no_data", "needs_clarification"):
+                    raise StateConflict("Parent run must be a completed analysis or clarification")
             run_id = "run_" + uuid4().hex
             conn.execute(
-                "INSERT INTO runs VALUES (?,?,?,?,?,?,?)",
+                "INSERT INTO runs (id,session_id,parent_id,started_at,request,response,trace) VALUES (?,?,?,?,?,?,?)",
                 (run_id, session_id, parent_id, utc_now(), canonical_json(request), None, "[]"),
             )
         return run_id
+
+    def run_session(self, run_id: str) -> dict | None:
+        with self.connect() as conn:
+            row = conn.execute("SELECT session_state FROM runs WHERE id=?", (run_id,)).fetchone()
+        return json.loads(row["session_state"]) if row and row["session_state"] else None
+
+    def finalize_run(
+        self,
+        run_id: str,
+        expected_version: int,
+        state: dict,
+        response: dict,
+        trace: list[dict],
+        *,
+        advance_session: bool,
+    ) -> dict:
+        """Publish a result, its branch state, and session CAS in ONE durable transaction."""
+        with self.connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            run = conn.execute("SELECT * FROM runs WHERE id=?", (run_id,)).fetchone()
+            if run is None:
+                raise KeyError(run_id)
+            if run["response"]:
+                return json.loads(run["response"])
+            if advance_session:
+                changed = conn.execute(
+                    "UPDATE sessions SET version=version+1,state=? WHERE id=? AND version=?",
+                    (canonical_json(state), run["session_id"], expected_version),
+                ).rowcount
+                if changed != 1:
+                    raise StateConflict("Session changed during the run; retry against the latest parent")
+            conn.execute(
+                "UPDATE runs SET response=?,trace=?,session_state=? WHERE id=?",
+                (canonical_json(response), canonical_json(trace), canonical_json(state), run_id),
+            )
+        return response
 
     def finish_run(self, run_id: str, response: dict, trace: list[dict]):
         with self.connect() as conn:

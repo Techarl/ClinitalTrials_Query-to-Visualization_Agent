@@ -43,9 +43,14 @@ def main():
     parser.add_argument("--session-id")
     parser.add_argument("--parent-run-id")
     parser.add_argument("--filters", help="Optional JSON object containing explicit shared filters")
+    parser.add_argument("--intervention-scope", choices=["population", "comparison"], default="population")
     parser.add_argument("--output", type=Path, default=Path("data/latest_response.json"))
     args = parser.parse_args()
-    request_data = {"query": args.query, "language": args.language}
+    request_data = {
+        "query": args.query,
+        "language": args.language,
+        "intervention_scope": args.intervention_scope,
+    }
     if args.session_id:
         request_data["session_id"] = args.session_id
     if args.parent_run_id:

@@ -29,6 +29,12 @@ class AnalysisService:
     def execute_plan(
         self, plan: AnalysisPlan, run_id: str, session_id: str, trace: list, deadline: float
     ) -> AnalysisResponse:
+        with self.graph.budget(deadline):
+            return self._execute_plan(plan, run_id, session_id, trace, deadline)
+
+    def _execute_plan(
+        self, plan: AnalysisPlan, run_id: str, session_id: str, trace: list, deadline: float
+    ) -> AnalysisResponse:
         datasets = {}
         client = ClinicalTrialsClient(self.settings)
         try:
@@ -63,7 +69,7 @@ class AnalysisService:
                             "datasets": [snapshot.model_dump()],
                         },
                     )
-                self.graph.import_snapshot(snapshot, studies)
+                self.graph.import_snapshot(snapshot, studies, deadline)
                 trace.append(
                     {
                         "stage": "graph_import",
@@ -75,7 +81,7 @@ class AnalysisService:
                 datasets[cohort.id] = (snapshot, studies)
             if time.monotonic() >= deadline:
                 raise TimeoutError("Run budget exhausted before analysis")
-            visual, meta, provenance, empty = self.engine.run(plan, datasets, run_id)
+            visual, meta, provenance, empty = self.engine.run(plan, datasets, run_id, deadline=deadline)
             if time.monotonic() >= deadline:
                 raise TimeoutError("Run budget exhausted during analysis")
             trace.append(

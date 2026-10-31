@@ -121,6 +121,10 @@ class PlanPatch(Contract):
     time_field: Literal["start_year", "first_posted_year"] | None = None
     relationship: Literal["sponsor_drug", "drug_cooccurrence", "sponsor_shared_drug"] | None = None
     title: str | None = None
+    top_n: int | None = Field(default=None, ge=1, le=100)
+    histogram_bins: int | None = Field(default=None, ge=1, le=50)
+    cohort_label: str | None = Field(default=None, min_length=1, max_length=200)
+    assumptions: list[str] | None = Field(default=None, max_length=20)
 
     def apply(self, previous: AnalysisPlan) -> AnalysisPlan:
         updated = previous.model_dump()
@@ -134,7 +138,21 @@ class PlanPatch(Contract):
             if self.cohort_id is None or cohort["id"] == self.cohort_id:
                 cohort["filters"].update({key: defaults[key] for key in self.clear_fields})
                 cohort["filters"].update(changes)
-        for key in ("operation", "group_by", "time_field", "relationship", "title"):
+                if self.cohort_label is not None:
+                    cohort["label"] = self.cohort_label
+        # Narrative assumptions describe the old population/operation and cannot be inherited.
+        updated["assumptions"] = self.assumptions or []
+        if self.title is None:
+            updated["title"] = "Clinical trial analysis"
+        for key in (
+            "operation",
+            "group_by",
+            "time_field",
+            "relationship",
+            "title",
+            "top_n",
+            "histogram_bins",
+        ):
             if getattr(self, key) is not None:
                 updated[key] = getattr(self, key)
         return AnalysisPlan.model_validate(updated)
@@ -152,6 +170,7 @@ class PlannerDecision(Contract):
 class AnalysisRequest(Contract):
     query: str = Field(min_length=1, max_length=4000)
     filters: Filters | None = None
+    intervention_scope: Literal["population", "comparison"] = "population"
     session_id: str | None = Field(default=None, pattern=r"^[a-zA-Z0-9_-]{1,80}$")
     parent_run_id: str | None = Field(default=None, pattern=r"^[a-zA-Z0-9_-]{1,80}$")
     language: Literal["zh", "en"] = "en"

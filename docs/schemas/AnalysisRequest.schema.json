@@ -160,6 +160,15 @@
       ],
       "default": null
     },
+    "intervention_scope": {
+      "default": "population",
+      "enum": [
+        "population",
+        "comparison"
+      ],
+      "title": "Intervention Scope",
+      "type": "string"
+    },
     "session_id": {
       "anyOf": [
         {

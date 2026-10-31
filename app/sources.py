@@ -2,6 +2,8 @@
 
 import hashlib
 import json
+import logging
+import os
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -80,13 +82,24 @@ class SnapshotStore:
         self.root.mkdir(parents=True, exist_ok=True)
 
     def save(self, snapshot: Snapshot, studies: list[dict]) -> None:
+        if not snapshot.dataset_id.startswith("ds_") or not snapshot.dataset_id[3:].isalnum():
+            raise ValueError("Invalid dataset ID")
+        if content_hash(studies) != snapshot.raw_hash or len(studies) != snapshot.retrieved_unique_count:
+            raise ValueError("Snapshot integrity verification failed before publication")
         folder = self.root / snapshot.dataset_id
         folder.mkdir(exist_ok=False)
         # Exclusive writes: an existing snapshot is never overwritten.
         with (folder / "studies.json").open("x", encoding="utf-8") as handle:
             handle.write(canonical_json(studies))
-        with (folder / "manifest.json").open("x", encoding="utf-8") as handle:
+            handle.flush()
+            os.fsync(handle.fileno())
+        # The manifest is the publication marker. Interrupted writes are never discoverable.
+        temporary = folder / "manifest.pending"
+        with temporary.open("x", encoding="utf-8") as handle:
             handle.write(snapshot.model_dump_json(indent=2))
+            handle.flush()
+            os.fsync(handle.fileno())
+        temporary.replace(folder / "manifest.json")
 
     def load(self, dataset_id: str) -> tuple[Snapshot, list[dict]]:
         if not dataset_id.startswith("ds_") or not dataset_id[3:].isalnum():
@@ -106,16 +119,27 @@ class SnapshotStore:
         now = datetime.now(timezone.utc).timestamp()
         candidates = []
         for path in self.root.glob("ds_*/manifest.json"):
-            manifest = Snapshot.model_validate_json(path.read_text(encoding="utf-8"))
-            if (
-                manifest.query_hash == content_hash(query)
-                and manifest.complete
-                and now - datetime.fromisoformat(manifest.finished_at).timestamp() <= ttl
-            ):
-                candidates.append(manifest)
-        if candidates:
-            newest = max(candidates, key=lambda item: item.finished_at)
-            return self.load(newest.dataset_id)
+            try:
+                manifest = Snapshot.model_validate_json(path.read_text(encoding="utf-8"))
+                if manifest.dataset_id != path.parent.name:
+                    raise ValueError("Manifest directory mismatch")
+                if (
+                    manifest.query_hash == content_hash(query)
+                    and manifest.complete
+                    and now - datetime.fromisoformat(manifest.finished_at).timestamp() <= ttl
+                ):
+                    candidates.append(manifest)
+            except (ValueError, OSError) as error:
+                logging.getLogger(__name__).warning(
+                    "Ignoring corrupt snapshot %s (%s)", path.parent.name, type(error).__name__
+                )
+        for candidate in sorted(candidates, key=lambda item: item.finished_at, reverse=True):
+            try:
+                return self.load(candidate.dataset_id)
+            except (ValueError, OSError) as error:
+                logging.getLogger(__name__).warning(
+                    "Ignoring corrupt snapshot %s (%s)", candidate.dataset_id, type(error).__name__
+                )
         return None
 
 
