@@ -105,7 +105,15 @@ docker compose up --build -d
 
 Compose uses Community Neo4j 2026.10.1, persistent volumes and one worker. API binds to loopback 8000; Neo4j host ports 7475/7688 avoid Desktop. The internal API URI is `bolt://neo4j:7687`. Stop another API on 8000 before using this alternative. An existing Neo4j volume retains its original password.
 
-Compose syntax is validated. Container build/start was not tested because this machine's Docker engine is not running. Native Desktop/Python execution was exercised.
+Docker Desktop 25.0.3 verification passed: API image build, both service health checks, the same 29 regression tests inside Linux, and a real 400-study analysis followed by an API restart and a 27-study Phase 3 follow-up. Source evidence, paging, snapshot reuse and completed-run idempotency were checked. See [container validation](docs/DOCKER_VALIDATION.json). Native Desktop/Python execution was also exercised.
+
+To intentionally repeat the real two-call container smoke test (paid main-model calls):
+
+```powershell
+.\.venv\Scripts\python.exe scripts/smoke_docker.py --restart-api
+```
+
+If BuildKit cannot fetch a Docker Hub token, pull `python:3.12-slim` directly with `docker pull python:3.12-slim`, then retry the build. This worked around the registry-token timeout observed during validation. Changes to `.env` require `docker compose up -d api` to recreate the API with its new environment.
 
 ```powershell
 .\.venv\Scripts\python.exe scripts/package_submission.py

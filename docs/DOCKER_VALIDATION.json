@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-10-31T16:22:33.247653+00:00",
+  "status": "passed",
+  "runtime": "docker-compose",
+  "api_restart_between_turns": true,
+  "source_records": 400,
+  "followup_selected_records": 27,
+  "source_data_timestamp": "2026-10-30T09:00:04",
+  "source_hash": "5fc9be4c69e6918d4aeaba930ad9082a52facf4debfbe00d771e8cbe67ad75a3",
+  "first_run_id": "run_75fb3f2833544c6cafb5ebbbab44a453",
+  "followup_run_id": "run_5b9657dba484457bb467e381751ccd2e",
+  "model_calls": 2,
+  "evidence_paging": "passed",
+  "exact_source_fields": "passed",
+  "snapshot_cache_reuse": "passed",
+  "completed_resume_without_new_model_call": "passed",
+  "experiments": {
+    "decision": false,
+    "harness": false
+  },
+  "frozen_reference_comparison": "passed_same_source_hash",
+  "regression_tests": {
+    "tests": "29",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "10.810"
+  },
+  "pytest_warning": "Copied test directory is read-only; pytest cache warning only, all tests passed."
+}

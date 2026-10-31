@@ -59,9 +59,18 @@
     "invalid_request": 422
   },
   "docker_compose_syntax": "passed",
-  "docker_runtime": "not_tested_engine_unavailable",
+  "docker_runtime": "passed",
   "experiments": {
     "decision": false,
     "harness": false
-  }
+  },
+  "docker_report": "DOCKER_VALIDATION.json",
+  "docker_tests": {
+    "tests": "29",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "10.810"
+  },
+  "updated_at": "2026-10-31T16:25:02.174124+00:00"
 }
