@@ -1,0 +1,5752 @@
+{
+  "at": "2026-10-31T16:59:19.721656+00:00",
+  "experiment": "paired_postplanner_gate_replay",
+  "baseline_hash": "660959ef4c710a63e558947543c486d4ca8e931b35cf1b64cbf894a052a1af28",
+  "questions": {
+    "action": {
+      "type": "choice",
+      "instructions": "Classify the user's actual task using capabilities and original/pending constraints. Do not blindly agree with the proposed plan. Missing local data is never a reason for unsupported. A request explicitly for all-site data, unavailable metrics, clinical efficacy, or treatment advice is unsupported; a genuinely resolvable missing identity or unclear drug logic needs clarification.",
+      "criteria": {
+        "execute": "A clear supported bounded task, and the proposed complete/resolved plan faithfully preserves its population, AND/OR/comparison meaning, dates and metric.",
+        "clarify": "Essential identity, population, drug logic or date meaning is genuinely unresolved, or the proposed plan changes the user's conditions.",
+        "unsupported": "The explicitly requested capability is outside registered-study metadata counts and the supported visualizations, including full-site retrieval or clinical efficacy/advice."
+      }
+    },
+    "plan_preserves_request": {
+      "type": "noul",
+      "instructions": "For a proposed execute action, does the resolved plan preserve every original and accumulated user condition, AND/OR/compare, operation and date meaning? For clarify/unsupported, answer whether the proposed action is justified by the request.",
+      "criteria": {
+        "true": "The plan/action faithfully represents the request and relevant structured history.",
+        "false": "The plan/action silently changes the task, loses constraints, invents identities, or asks unnecessary clarification."
+      }
+    }
+  },
+  "thresholds": {
+    "action_probability": 0.65,
+    "plan_preserves_request": 0.8
+  },
+  "summary": {
+    "B+G": {
+      "observations": 50,
+      "gate_failures": 0,
+      "correct": 50,
+      "raw_gate_action_matches": 50,
+      "incorrect_executions": 0,
+      "overclarifications": 0,
+      "answered": 37,
+      "correct_clarifications": 9,
+      "gate_latency_p50_seconds": 2.797,
+      "gate_latency_p95_seconds": 4.281,
+      "end_to_end_p50_seconds": 7.798,
+      "end_to_end_p95_seconds": 11.719,
+      "input_tokens": 96043,
+      "output_tokens": 2403,
+      "provider_reported_cost_usd": null,
+      "mean_action_brier_descriptive_only": 7.643800000000008e-05
+    },
+    "B+D": {
+      "observations": 50,
+      "gate_failures": 0,
+      "correct": 25,
+      "raw_gate_action_matches": 46,
+      "incorrect_executions": 0,
+      "overclarifications": 25,
+      "answered": 12,
+      "correct_clarifications": 9,
+      "gate_latency_p50_seconds": 2.219,
+      "gate_latency_p95_seconds": 2.813,
+      "end_to_end_p50_seconds": 7.281,
+      "end_to_end_p95_seconds": 9.734,
+      "input_tokens": 111468,
+      "output_tokens": 3013,
+      "provider_reported_cost_usd": 0.004681656,
+      "mean_action_brier_descriptive_only": 0.162856
+    }
+  },
+  "baseline_correct": 50,
+  "splits": {
+    "development": {
+      "B+G": {
+        "observations": 36,
+        "gate_failures": 0,
+        "correct": 36,
+        "raw_gate_action_matches": 36,
+        "incorrect_executions": 0,
+        "overclarifications": 0,
+        "answered": 28,
+        "correct_clarifications": 5,
+        "gate_latency_p50_seconds": 2.797,
+        "gate_latency_p95_seconds": 3.594,
+        "end_to_end_p50_seconds": 7.798,
+        "end_to_end_p95_seconds": 10.843,
+        "input_tokens": 69294,
+        "output_tokens": 1665,
+        "provider_reported_cost_usd": null,
+        "mean_action_brier_descriptive_only": 2.727000000000003e-05
+      },
+      "B+D": {
+        "observations": 36,
+        "gate_failures": 0,
+        "correct": 18,
+        "raw_gate_action_matches": 33,
+        "incorrect_executions": 0,
+        "overclarifications": 18,
+        "answered": 10,
+        "correct_clarifications": 5,
+        "gate_latency_p50_seconds": 2.203,
+        "gate_latency_p95_seconds": 2.828,
+        "end_to_end_p50_seconds": 7.390000000000001,
+        "end_to_end_p95_seconds": 9.734,
+        "input_tokens": 80376,
+        "output_tokens": 2168,
+        "provider_reported_cost_usd": 0.003375792,
+        "mean_action_brier_descriptive_only": 0.14641111111111113
+      }
+    },
+    "heldout": {
+      "B+G": {
+        "observations": 14,
+        "gate_failures": 0,
+        "correct": 14,
+        "raw_gate_action_matches": 14,
+        "incorrect_executions": 0,
+        "overclarifications": 0,
+        "answered": 9,
+        "correct_clarifications": 4,
+        "gate_latency_p50_seconds": 2.766,
+        "gate_latency_p95_seconds": 7.75,
+        "end_to_end_p50_seconds": 8.171,
+        "end_to_end_p95_seconds": 12.375,
+        "input_tokens": 26749,
+        "output_tokens": 738,
+        "provider_reported_cost_usd": null,
+        "mean_action_brier_descriptive_only": 0.00020287000000000023
+      },
+      "B+D": {
+        "observations": 14,
+        "gate_failures": 0,
+        "correct": 7,
+        "raw_gate_action_matches": 13,
+        "incorrect_executions": 0,
+        "overclarifications": 7,
+        "answered": 2,
+        "correct_clarifications": 4,
+        "gate_latency_p50_seconds": 2.266,
+        "gate_latency_p95_seconds": 2.781,
+        "end_to_end_p50_seconds": 7.281,
+        "end_to_end_p95_seconds": 11.813,
+        "input_tokens": 31092,
+        "output_tokens": 845,
+        "provider_reported_cost_usd": 0.001305864,
+        "mean_action_brier_descriptive_only": 0.20514285714285715
+      }
+    }
+  },
+  "limitations": [
+    "Paired counterfactual replay from identical baseline contexts, not live gated conversations.",
+    "All variants retain baseline planning costs; gates add calls and latency.",
+    "Only gate probabilities measured; no claim of clinical calibration from this small sample.",
+    "Gate cannot generate missing plans or bypass baseline hard validators.",
+    "OpenAI cost unavailable; input/output tokens include the added gate only. Jev cost is provider-reported."
+  ],
+  "results": [
+    {
+      "case": "melanoma_phase",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.469
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.71,
+            "clarify": 0.24,
+            "unsupported": 0.05
+          },
+          "plan_preserves_request": 0.4
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465829-RhXSphC2Z4VJ1OdTnjTN",
+          "usage": {
+            "input_tokens": 2295,
+            "output_tokens": 60,
+            "cost": 9.639e-05
+          },
+          "elapsed_seconds": 2.359
+        },
+        "input_state_hash": "aec1419491186cd1246576c04d5526511bb3ffba98daa335e03da4112a72cf5f",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.359
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.001,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0979f3f031489073016ae61de44bf087d0bf90940dbb9b4e8b",
+          "usage": {
+            "input_tokens": 1975,
+            "input_tokens_details": {
+              "cache_write_tokens": 1972,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2019
+          },
+          "elapsed_seconds": 3.109,
+          "actual_cost": null
+        },
+        "input_state_hash": "aec1419491186cd1246576c04d5526511bb3ffba98daa335e03da4112a72cf5f",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.109
+      }
+    },
+    {
+      "case": "asthma_status",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "status",
+        "cohorts": [
+          {
+            "condition": "asthma",
+            "interventions": [
+              "dupilumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.515
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_06f608a68faab123016ae61de64ee087d0aed8d4020231b5e7",
+          "usage": {
+            "input_tokens": 1925,
+            "input_tokens_details": {
+              "cache_write_tokens": 1922,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1971
+          },
+          "elapsed_seconds": 2.5,
+          "actual_cost": null
+        },
+        "input_state_hash": "f841d3a6dccf5f2fb507c254180708f36ebc48cb1077375df2b4e88435f50499",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.5
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.67,
+            "clarify": 0.28,
+            "unsupported": 0.05
+          },
+          "plan_preserves_request": 0.42
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465831-bPUvX9Jw5Rr7CLDI5nSq",
+          "usage": {
+            "input_tokens": 2241,
+            "output_tokens": 60,
+            "cost": 9.4122e-05
+          },
+          "elapsed_seconds": 2.11
+        },
+        "input_state_hash": "f841d3a6dccf5f2fb507c254180708f36ebc48cb1077375df2b4e88435f50499",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.11
+      }
+    },
+    {
+      "case": "diabetes_countries",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "country",
+        "cohorts": [
+          {
+            "condition": "type 2 diabetes",
+            "interventions": [
+              "metformin"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ],
+        "top_n": 5
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 6.047
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.6,
+            "clarify": 0.27,
+            "unsupported": 0.13
+          },
+          "plan_preserves_request": 0.32
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465834-kCovS1SJ69HoZqi3KO3t",
+          "usage": {
+            "input_tokens": 2304,
+            "output_tokens": 60,
+            "cost": 9.6768e-05
+          },
+          "elapsed_seconds": 2.218
+        },
+        "input_state_hash": "b70583a113a80a773fa9b5507dd94c96dfe71ea3b7fabf859035622acf8ae510",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.218
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.998,
+            "clarify": 0.001,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0b2bdb860741fcec016ae61de8d98887d0ac8b30b5aa7f6682",
+          "usage": {
+            "input_tokens": 1983,
+            "input_tokens_details": {
+              "cache_write_tokens": 1980,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2027
+          },
+          "elapsed_seconds": 2.797,
+          "actual_cost": null
+        },
+        "input_state_hash": "b70583a113a80a773fa9b5507dd94c96dfe71ea3b7fabf859035622acf8ae510",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.797
+      }
+    },
+    {
+      "case": "breast_sponsor",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "sponsor",
+        "cohorts": [
+          {
+            "condition": "breast cancer",
+            "interventions": [
+              "trastuzumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ],
+        "top_n": 7
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.031
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0378ab6b873a8b34016ae61deb517487d0b1e467ddc844d88d",
+          "usage": {
+            "input_tokens": 1981,
+            "input_tokens_details": {
+              "cache_write_tokens": 1978,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2027
+          },
+          "elapsed_seconds": 2.563,
+          "actual_cost": null
+        },
+        "input_state_hash": "090b8828f14add45d94b1894e7405772fe38aca6dd3d65556caaecd979ea09ca",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.563
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.78,
+            "clarify": 0.1,
+            "unsupported": 0.12
+          },
+          "plan_preserves_request": 0.68
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465837-0JfpFoSUGNWwKNK8refu",
+          "usage": {
+            "input_tokens": 2292,
+            "output_tokens": 60,
+            "cost": 9.6264e-05
+          },
+          "elapsed_seconds": 2.781
+        },
+        "input_state_hash": "090b8828f14add45d94b1894e7405772fe38aca6dd3d65556caaecd979ea09ca",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.781
+      }
+    },
+    {
+      "case": "rheumatoid_histogram",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "histogram",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "rheumatoid arthritis",
+            "interventions": [
+              "adalimumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": "ACTUAL"
+          }
+        ],
+        "histogram_bins": 6
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.109
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.61,
+            "clarify": 0.33,
+            "unsupported": 0.06
+          },
+          "plan_preserves_request": 0.4
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465839-zoqiBcX32mcbpNMNmSet",
+          "usage": {
+            "input_tokens": 2288,
+            "output_tokens": 60,
+            "cost": 9.6096e-05
+          },
+          "elapsed_seconds": 2.188
+        },
+        "input_state_hash": "d11a26ee2b2b1efac9e11f4cf74672b65033aa55e1a38a2947163309d094e25d",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.188
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0008,
+            "unsupported": 0.0002
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0b9e722546bc27e5016ae61dee0ae487d08a05eed3592c8835",
+          "usage": {
+            "input_tokens": 1965,
+            "input_tokens_details": {
+              "cache_write_tokens": 1962,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2011
+          },
+          "elapsed_seconds": 2.984,
+          "actual_cost": null
+        },
+        "input_state_hash": "d11a26ee2b2b1efac9e11f4cf74672b65033aa55e1a38a2947163309d094e25d",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.0
+      }
+    },
+    {
+      "case": "lung_trend",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "time_series",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "lung cancer",
+            "interventions": [
+              "osimertinib"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": 2018,
+            "end_year": 2025,
+            "enrollment_type": null
+          }
+        ],
+        "time_field": "start_year"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.187
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.45,
+            "clarify": 0.5,
+            "unsupported": 0.05
+          },
+          "plan_preserves_request": 0.22
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465841-3DQo869Lvp9CNBDvFN2A",
+          "usage": {
+            "input_tokens": 2354,
+            "output_tokens": 61,
+            "cost": 9.8868e-05
+          },
+          "elapsed_seconds": 2.203
+        },
+        "input_state_hash": "c4826060c8451351e91fc6775af7d6866b078c396c73bb3c08f91526d8a8c876",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.203
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.001,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_081a86966a4087c3016ae61df0b4b887d0ab958dd5685fb3d2",
+          "usage": {
+            "input_tokens": 2011,
+            "input_tokens_details": {
+              "cache_write_tokens": 2008,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2055
+          },
+          "elapsed_seconds": 2.89,
+          "actual_cost": null
+        },
+        "input_state_hash": "c4826060c8451351e91fc6775af7d6866b078c396c73bb3c08f91526d8a8c876",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.89
+      }
+    },
+    {
+      "case": "psoriasis_zh",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "psoriasis",
+            "interventions": [
+              "secukinumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.578
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.998,
+            "clarify": 0.001,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_06e5b615c3311148016ae61df31cb887d0a0aa50e19670b4f9",
+          "usage": {
+            "input_tokens": 2023,
+            "input_tokens_details": {
+              "cache_write_tokens": 2020,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2067
+          },
+          "elapsed_seconds": 2.797,
+          "actual_cost": null
+        },
+        "input_state_hash": "133fc209e0760ded89dade7c307fa9a555adf0d8eb3b804bbb51772baf243b10",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.797
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.8,
+            "clarify": 0.16,
+            "unsupported": 0.04
+          },
+          "plan_preserves_request": 0.51
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465844-CjyW2IRyzxDeMnyejMqo",
+          "usage": {
+            "input_tokens": 2399,
+            "output_tokens": 60,
+            "cost": 0.000100758
+          },
+          "elapsed_seconds": 3.125
+        },
+        "input_state_hash": "133fc209e0760ded89dade7c307fa9a555adf0d8eb3b804bbb51772baf243b10",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 3.125
+      }
+    },
+    {
+      "case": "hepatitis_zh",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "status",
+        "cohorts": [
+          {
+            "condition": "hepatitis B",
+            "interventions": [
+              "tenofovir"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.125
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.74,
+            "clarify": 0.22,
+            "unsupported": 0.04
+          },
+          "plan_preserves_request": 0.48
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465847-w5AZFHEK9dCGIfZRm19c",
+          "usage": {
+            "input_tokens": 2423,
+            "output_tokens": 60,
+            "cost": 0.000101766
+          },
+          "elapsed_seconds": 2.36
+        },
+        "input_state_hash": "fc0121d70973823f253498d41ee3b25108344212885b10a75d607671fcdeb280",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.36
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.998,
+            "clarify": 0.001,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0ec86043cdc7d2d5016ae61df5de4087d097618cc5cde33aba",
+          "usage": {
+            "input_tokens": 2053,
+            "input_tokens_details": {
+              "cache_write_tokens": 2050,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2097
+          },
+          "elapsed_seconds": 3.187,
+          "actual_cost": null
+        },
+        "input_state_hash": "fc0121d70973823f253498d41ee3b25108344212885b10a75d607671fcdeb280",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.187
+      }
+    },
+    {
+      "case": "or_population",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab",
+              "nivolumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.188
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.6,
+            "clarify": 0.34,
+            "unsupported": 0.06
+          },
+          "plan_preserves_request": 0.42
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465850-TwgIdve6ku4dMp5nuxOx",
+          "usage": {
+            "input_tokens": 2351,
+            "output_tokens": 60,
+            "cost": 9.8742e-05
+          },
+          "elapsed_seconds": 2.219
+        },
+        "input_state_hash": "b89770d8a549ce69ff8a52dde1bbb29720dbed2233531c8cb74a5baacbeccd08",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.219
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_07f2daede3601366016ae61df8d0d887d0929264a4e79e0b2b",
+          "usage": {
+            "input_tokens": 2025,
+            "input_tokens_details": {
+              "cache_write_tokens": 2022,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2069
+          },
+          "elapsed_seconds": 2.719,
+          "actual_cost": null
+        },
+        "input_state_hash": "b89770d8a549ce69ff8a52dde1bbb29720dbed2233531c8cb74a5baacbeccd08",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.719
+      }
+    },
+    {
+      "case": "and_population",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab",
+              "nivolumab"
+            ],
+            "intervention_match": "all",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.719
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.61,
+            "clarify": 0.32,
+            "unsupported": 0.07
+          },
+          "plan_preserves_request": 0.35
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465852-aSkCGBnShfDbaryNsxdU",
+          "usage": {
+            "input_tokens": 2370,
+            "output_tokens": 60,
+            "cost": 9.954e-05
+          },
+          "elapsed_seconds": 2.453
+        },
+        "input_state_hash": "81fb182e9b38b7d5783bdd019963b63c0d861594a26b8d32245a0670ea518f0d",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.453
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_097cf1e4d95ad6e8016ae61dfb7bf487d0b943fd563388cf60",
+          "usage": {
+            "input_tokens": 2042,
+            "input_tokens_details": {
+              "cache_write_tokens": 2039,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2088
+          },
+          "elapsed_seconds": 2.938,
+          "actual_cost": null
+        },
+        "input_state_hash": "81fb182e9b38b7d5783bdd019963b63c0d861594a26b8d32245a0670ea518f0d",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.938
+      }
+    },
+    {
+      "case": "compare_drugs",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          },
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "nivolumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 7.156
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.47,
+            "clarify": 0.44,
+            "unsupported": 0.09
+          },
+          "plan_preserves_request": 0.31
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465855-tLObKrczY10Z9xQCx5uF",
+          "usage": {
+            "input_tokens": 2565,
+            "output_tokens": 60,
+            "cost": 0.00010773
+          },
+          "elapsed_seconds": 2.171
+        },
+        "input_state_hash": "bc36e782a49c6dfcef890b11e3547d4f018cc1b00a7b7ae5776a6451ff0c2f77",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.171
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.99,
+            "clarify": 0.009,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0c447a5fbeaacbb4016ae61dfe05fc87d0a4883dc3505456f0",
+          "usage": {
+            "input_tokens": 2167,
+            "input_tokens_details": {
+              "cache_write_tokens": 2164,
+              "cached_tokens": 0
+            },
+            "output_tokens": 64,
+            "output_tokens_details": {
+              "reasoning_tokens": 18
+            },
+            "total_tokens": 2231
+          },
+          "elapsed_seconds": 2.937,
+          "actual_cost": null
+        },
+        "input_state_hash": "bc36e782a49c6dfcef890b11e3547d4f018cc1b00a7b7ae5776a6451ff0c2f77",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.937
+      }
+    },
+    {
+      "case": "compare_conditions",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "status",
+        "cohorts": [
+          {
+            "condition": "asthma",
+            "interventions": [
+              "dupilumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          },
+          {
+            "condition": "COPD",
+            "interventions": [
+              "dupilumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.14
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.998,
+            "clarify": 0.001,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_055b847d42fdafb4016ae61e00662887d08189a62d87bfb357",
+          "usage": {
+            "input_tokens": 2169,
+            "input_tokens_details": {
+              "cache_write_tokens": 2166,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2213
+          },
+          "elapsed_seconds": 2.313,
+          "actual_cost": null
+        },
+        "input_state_hash": "1a9c05bb1e897e107646e24bfe42a9b7df6d57cf0e4d481d53681309e46fddcd",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.313
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.5,
+            "clarify": 0.38,
+            "unsupported": 0.12
+          },
+          "plan_preserves_request": 0.31
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465857-CPb3wyXjhylwjZusQcmG",
+          "usage": {
+            "input_tokens": 2564,
+            "output_tokens": 60,
+            "cost": 0.000107688
+          },
+          "elapsed_seconds": 2.125
+        },
+        "input_state_hash": "1a9c05bb1e897e107646e24bfe42a9b7df6d57cf0e4d481d53681309e46fddcd",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.141
+      }
+    },
+    {
+      "case": "phase_combined",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "status",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [
+              "PHASE2",
+              "PHASE3"
+            ],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.594
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.74,
+            "clarify": 0.21,
+            "unsupported": 0.05
+          },
+          "plan_preserves_request": 0.42
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465860-RFRbV3y541LoqtaWwbwz",
+          "usage": {
+            "input_tokens": 2401,
+            "output_tokens": 60,
+            "cost": 0.000100842
+          },
+          "elapsed_seconds": 2.094
+        },
+        "input_state_hash": "5ed559283f222df0fe71bdd3a46f5b2badefc95c1c2548ddf5cb64bad93ba99e",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.094
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.001,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0adfbbd7d98edb2d016ae61e02bbc087d094751078697c9810",
+          "usage": {
+            "input_tokens": 2080,
+            "input_tokens_details": {
+              "cache_write_tokens": 2077,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2124
+          },
+          "elapsed_seconds": 2.906,
+          "actual_cost": null
+        },
+        "input_state_hash": "5ed559283f222df0fe71bdd3a46f5b2badefc95c1c2548ddf5cb64bad93ba99e",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.906
+      }
+    },
+    {
+      "case": "country_or",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "asthma",
+            "interventions": [
+              "dupilumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [
+              "Canada",
+              "United States"
+            ],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.469
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.001,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0efabee9c73e19cd016ae61e0538d887d0935faebb5d261109",
+          "usage": {
+            "input_tokens": 2086,
+            "input_tokens_details": {
+              "cache_write_tokens": 2083,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2130
+          },
+          "elapsed_seconds": 2.5,
+          "actual_cost": null
+        },
+        "input_state_hash": "34edb6f10ea77e936e68ce512cc42b1c55fe869ed251d054369179f8428c35b7",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.5
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.87,
+            "clarify": 0.07,
+            "unsupported": 0.06
+          },
+          "plan_preserves_request": 0.61
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465862-jCkmfQ6FQzMccxqqs4vq",
+          "usage": {
+            "input_tokens": 2398,
+            "output_tokens": 60,
+            "cost": 0.000100716
+          },
+          "elapsed_seconds": 2.828
+        },
+        "input_state_hash": "34edb6f10ea77e936e68ce512cc42b1c55fe869ed251d054369179f8428c35b7",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.828
+      }
+    },
+    {
+      "case": "recruiting",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "country",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [
+              "RECRUITING"
+            ],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.984
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.998,
+            "clarify": 0.001,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0571f649aedc8401016ae61e07b38487d0911378e1aaed2770",
+          "usage": {
+            "input_tokens": 1982,
+            "input_tokens_details": {
+              "cache_write_tokens": 1979,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2026
+          },
+          "elapsed_seconds": 2.484,
+          "actual_cost": null
+        },
+        "input_state_hash": "da6aef0e1098ca7686b11af122adaf1e33d6d962badc405826da17b92f20d367",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.484
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.74,
+            "clarify": 0.2,
+            "unsupported": 0.06
+          },
+          "plan_preserves_request": 0.49
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465865-ZZ5V0grmWKnqSIj81Fbe",
+          "usage": {
+            "input_tokens": 2316,
+            "output_tokens": 60,
+            "cost": 9.7272e-05
+          },
+          "elapsed_seconds": 2.813
+        },
+        "input_state_hash": "da6aef0e1098ca7686b11af122adaf1e33d6d962badc405826da17b92f20d367",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.813
+      }
+    },
+    {
+      "case": "posted_axis",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "execute",
+        "operation": "time_series",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "rheumatoid arthritis",
+            "interventions": [
+              "adalimumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ],
+        "time_field": "first_posted_year"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.109
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.001,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_076d62443d3fc46e016ae61e0a37d087d09ee3abdbafc624a9",
+          "usage": {
+            "input_tokens": 1995,
+            "input_tokens_details": {
+              "cache_write_tokens": 1992,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2039
+          },
+          "elapsed_seconds": 3.062,
+          "actual_cost": null
+        },
+        "input_state_hash": "f92d817f69864821a87e3bac5af0e8d8aaeb719a545b04df22d7cd001b1dfb14",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.062
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.29,
+            "clarify": 0.67,
+            "unsupported": 0.04
+          },
+          "plan_preserves_request": 0.16
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465868-vJG5S5vMvccidQOofrnq",
+          "usage": {
+            "input_tokens": 2315,
+            "output_tokens": 61,
+            "cost": 9.723e-05
+          },
+          "elapsed_seconds": 2.125
+        },
+        "input_state_hash": "f92d817f69864821a87e3bac5af0e8d8aaeb719a545b04df22d7cd001b1dfb14",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.125
+      }
+    },
+    {
+      "case": "sponsor_drug",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "network",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "asthma",
+            "interventions": [
+              "dupilumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ],
+        "relationship": "sponsor_drug",
+        "top_n": 8
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.282
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.95,
+            "clarify": 0.05,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 0.84
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465870-d5TaprIpVdvBMPqwf18p",
+          "usage": {
+            "input_tokens": 2360,
+            "output_tokens": 60,
+            "cost": 9.912e-05
+          },
+          "elapsed_seconds": 2.344
+        },
+        "input_state_hash": "b60f29cbfbb725b979c44db1c0be36b926ca9425e839df88291ee9f28e626014",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.344
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.99,
+            "clarify": 0.009,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_00cd5b29b775c856016ae61e0d7b6887d091c3290bad16b8bd",
+          "usage": {
+            "input_tokens": 2039,
+            "input_tokens_details": {
+              "cache_write_tokens": 2036,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2083
+          },
+          "elapsed_seconds": 2.86,
+          "actual_cost": null
+        },
+        "input_state_hash": "b60f29cbfbb725b979c44db1c0be36b926ca9425e839df88291ee9f28e626014",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.86
+      }
+    },
+    {
+      "case": "drug_cooccur",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "network",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "breast cancer",
+            "interventions": [
+              "trastuzumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ],
+        "relationship": "drug_cooccurrence",
+        "top_n": 12
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.766
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.85,
+            "clarify": 0.14,
+            "unsupported": 0.01
+          },
+          "plan_preserves_request": 0.71
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465873-fWJyXtVIfaFx2qyLiZyH",
+          "usage": {
+            "input_tokens": 2411,
+            "output_tokens": 60,
+            "cost": 0.000101262
+          },
+          "elapsed_seconds": 2.172
+        },
+        "input_state_hash": "8a82e6a2e3b1621f8bf5720651a5a536fbb0c12540245c2a0ef5d3cb6fa0de8b",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.172
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.99,
+            "clarify": 0.009,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_04c7896e9dd842f3016ae61e0fb4fc87d0bfc40bfeb3e09d12",
+          "usage": {
+            "input_tokens": 2079,
+            "input_tokens_details": {
+              "cache_write_tokens": 2076,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2123
+          },
+          "elapsed_seconds": 3.281,
+          "actual_cost": null
+        },
+        "input_state_hash": "8a82e6a2e3b1621f8bf5720651a5a536fbb0c12540245c2a0ef5d3cb6fa0de8b",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.281
+      }
+    },
+    {
+      "case": "shared_sponsor",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "network",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ],
+        "relationship": "sponsor_shared_drug",
+        "top_n": 5
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 8.953
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.89,
+            "clarify": 0.09,
+            "unsupported": 0.02
+          },
+          "plan_preserves_request": 0.83
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465875-FxHNQRrBVl2HrRRn7lax",
+          "usage": {
+            "input_tokens": 2405,
+            "output_tokens": 60,
+            "cost": 0.00010101
+          },
+          "elapsed_seconds": 2.172
+        },
+        "input_state_hash": "b4ba576e9e9e6462b895184653e546f73ee9e216886df9f98646dd7365288d91",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.172
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.99,
+            "clarify": 0.005,
+            "unsupported": 0.005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0887ce41a2ffc9cd016ae61e124ee087d08e49ac1405e4eb74",
+          "usage": {
+            "input_tokens": 2083,
+            "input_tokens_details": {
+              "cache_write_tokens": 2080,
+              "cached_tokens": 0
+            },
+            "output_tokens": 76,
+            "output_tokens_details": {
+              "reasoning_tokens": 30
+            },
+            "total_tokens": 2159
+          },
+          "elapsed_seconds": 3.187,
+          "actual_cost": null
+        },
+        "input_state_hash": "b4ba576e9e9e6462b895184653e546f73ee9e216886df9f98646dd7365288d91",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.187
+      }
+    },
+    {
+      "case": "drug_only",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": null,
+            "interventions": [
+              "semaglutide"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.36
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_030658a9711317d0016ae61e1528ac87d089f73430ea8597a7",
+          "usage": {
+            "input_tokens": 1958,
+            "input_tokens_details": {
+              "cache_write_tokens": 1955,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2004
+          },
+          "elapsed_seconds": 2.515,
+          "actual_cost": null
+        },
+        "input_state_hash": "8531bda45e723311bebebb44d8fbf7613f63623f9bc44709a64d58874f58783a",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.515
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.68,
+            "clarify": 0.25,
+            "unsupported": 0.07
+          },
+          "plan_preserves_request": 0.47
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465878-QNdFdeXzlB681jWwSwhF",
+          "usage": {
+            "input_tokens": 2265,
+            "output_tokens": 60,
+            "cost": 9.513e-05
+          },
+          "elapsed_seconds": 2.344
+        },
+        "input_state_hash": "8531bda45e723311bebebb44d8fbf7613f63623f9bc44709a64d58874f58783a",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.344
+      }
+    },
+    {
+      "case": "lead_sponsor",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "study_type",
+        "cohorts": [
+          {
+            "condition": "Parkinson disease",
+            "interventions": [],
+            "intervention_match": "any",
+            "sponsor": "Mayo Clinic",
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.656
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0b95ccbb2f91151a016ae61e17a5c087d08d7837f5cc86349e",
+          "usage": {
+            "input_tokens": 1957,
+            "input_tokens_details": {
+              "cache_write_tokens": 1954,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2003
+          },
+          "elapsed_seconds": 2.5,
+          "actual_cost": null
+        },
+        "input_state_hash": "01c8aea4a9f3c2fe6b44c162f452cf1c96e24e6dcbe681c4b2467ee38c112524",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.5
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.66,
+            "clarify": 0.28,
+            "unsupported": 0.06
+          },
+          "plan_preserves_request": 0.32
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465881-mLat6TL8R7mBZ5Oeu7in",
+          "usage": {
+            "input_tokens": 2272,
+            "output_tokens": 60,
+            "cost": 9.5424e-05
+          },
+          "elapsed_seconds": 2.422
+        },
+        "input_state_hash": "01c8aea4a9f3c2fe6b44c162f452cf1c96e24e6dcbe681c4b2467ee38c112524",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.422
+      }
+    },
+    {
+      "case": "sponsor_class",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "sponsor_class",
+        "cohorts": [
+          {
+            "condition": "Crohn disease",
+            "interventions": [
+              "infliximab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.0
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.9,
+            "clarify": 0.08,
+            "unsupported": 0.02
+          },
+          "plan_preserves_request": 0.7
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465883-dap9LbTtxkqz50HtSKna",
+          "usage": {
+            "input_tokens": 2278,
+            "output_tokens": 60,
+            "cost": 9.5676e-05
+          },
+          "elapsed_seconds": 2.156
+        },
+        "input_state_hash": "a134b8d7ad294aeab9f6be2dcce85bd7f721513effc646faf44df5efd3421a67",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.156
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0008,
+            "unsupported": 0.0002
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_064266d1e329d54b016ae61e1a3cbc87d0b5449c04f324dab4",
+          "usage": {
+            "input_tokens": 1958,
+            "input_tokens_details": {
+              "cache_write_tokens": 1955,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2004
+          },
+          "elapsed_seconds": 3.266,
+          "actual_cost": null
+        },
+        "input_state_hash": "a134b8d7ad294aeab9f6be2dcce85bd7f721513effc646faf44df5efd3421a67",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.266
+      }
+    },
+    {
+      "case": "intervention_types",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "intervention_type",
+        "cohorts": [
+          {
+            "condition": "migraine",
+            "interventions": [
+              "erenumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 6.093
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0c7b2840cb3d4dae016ae61e1c70a487d097ab4e50700761cb",
+          "usage": {
+            "input_tokens": 1975,
+            "input_tokens_details": {
+              "cache_write_tokens": 1972,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2021
+          },
+          "elapsed_seconds": 2.703,
+          "actual_cost": null
+        },
+        "input_state_hash": "c0929b0a515337a54e3275a6c87e8b3a3179a05c39e5d3caae7e9829e65794fa",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.703
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.74,
+            "clarify": 0.22,
+            "unsupported": 0.04
+          },
+          "plan_preserves_request": 0.42
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465886-9xk8LmzSlLWRXXlM7lHI",
+          "usage": {
+            "input_tokens": 2292,
+            "output_tokens": 60,
+            "cost": 9.6264e-05
+          },
+          "elapsed_seconds": 2.281
+        },
+        "input_state_hash": "c0929b0a515337a54e3275a6c87e8b3a3179a05c39e5d3caae7e9829e65794fa",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.281
+      }
+    },
+    {
+      "case": "estimated_hist",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "execute",
+        "operation": "histogram",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "obesity",
+            "interventions": [
+              "semaglutide"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": "ESTIMATED"
+          }
+        ],
+        "histogram_bins": 20
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.422
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0a6da35f10258f69016ae61e1f397087d08ed352e020fe0a34",
+          "usage": {
+            "input_tokens": 1963,
+            "input_tokens_details": {
+              "cache_write_tokens": 1960,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2009
+          },
+          "elapsed_seconds": 2.563,
+          "actual_cost": null
+        },
+        "input_state_hash": "3e6be5dc81d9180fd3f68d62d6a3be6dbca9f459aa2db21c7a2cb3d5a79a25c8",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.563
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.69,
+            "clarify": 0.28,
+            "unsupported": 0.03
+          },
+          "plan_preserves_request": 0.39
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465888-Jwv7QZRiAKn1LFZ0KbbC",
+          "usage": {
+            "input_tokens": 2285,
+            "output_tokens": 60,
+            "cost": 9.597e-05
+          },
+          "elapsed_seconds": 2.344
+        },
+        "input_state_hash": "3e6be5dc81d9180fd3f68d62d6a3be6dbca9f459aa2db21c7a2cb3d5a79a25c8",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.344
+      }
+    },
+    {
+      "case": "ambiguous_pd",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "clarify"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.015
+      },
+      "B+G": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.01,
+            "clarify": 0.99,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_019c7c63028d71fa016ae61e21af1c87d08bb625ba82b6b4f7",
+          "usage": {
+            "input_tokens": 1551,
+            "input_tokens_details": {
+              "cache_write_tokens": 1548,
+              "cached_tokens": 0
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1596
+          },
+          "elapsed_seconds": 2.531,
+          "actual_cost": null
+        },
+        "input_state_hash": "a15596ccbd9a05d210d2dbb5276f91836c0d604f71bd211edb4b004ccfe182a0",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.531
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.02,
+            "clarify": 0.98,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 0.91
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465891-OY6OJG4GPelG3fQT5f8T",
+          "usage": {
+            "input_tokens": 1749,
+            "output_tokens": 61,
+            "cost": 7.3458e-05
+          },
+          "elapsed_seconds": 2.672
+        },
+        "input_state_hash": "a15596ccbd9a05d210d2dbb5276f91836c0d604f71bd211edb4b004ccfe182a0",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.672
+      }
+    },
+    {
+      "case": "missing_drug",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "clarify"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "elapsed_seconds": 2.828
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.01,
+            "clarify": 0.99,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 0.93
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465893-vWNTswLJA34ujepRToeU",
+          "usage": {
+            "input_tokens": 1735,
+            "output_tokens": 61,
+            "cost": 7.287e-05
+          },
+          "elapsed_seconds": 2.25
+        },
+        "input_state_hash": "28dd30eadae00bcc654ea7df61568225cf7a38107c9cdd45f0886ffa79dd3c2f",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.25
+      },
+      "B+G": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.001,
+            "clarify": 0.998,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_071960ceee1c970a016ae61e256c1087d0ac85b7ea51920031",
+          "usage": {
+            "input_tokens": 1541,
+            "input_tokens_details": {
+              "cache_write_tokens": 1538,
+              "cached_tokens": 0
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1586
+          },
+          "elapsed_seconds": 4.734,
+          "actual_cost": null
+        },
+        "input_state_hash": "28dd30eadae00bcc654ea7df61568225cf7a38107c9cdd45f0886ffa79dd3c2f",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 4.734
+      }
+    },
+    {
+      "case": "ambiguous_logic",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "clarify"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "elapsed_seconds": 7.656
+      },
+      "B+G": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.001,
+            "clarify": 0.998,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_06ab104f6e56ab92016ae61e27326887d0979251374ae63278",
+          "usage": {
+            "input_tokens": 1619,
+            "input_tokens_details": {
+              "cache_write_tokens": 1616,
+              "cached_tokens": 0
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1664
+          },
+          "elapsed_seconds": 3.187,
+          "actual_cost": null
+        },
+        "input_state_hash": "3f5e24ce56b5b0e13abfcc4471394de9cf4e96176f1e06edeea95414e90d76bf",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 3.187
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.04,
+            "clarify": 0.96,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 0.9
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465897-YC7ADmCbz5r9GThfdX6e",
+          "usage": {
+            "input_tokens": 1824,
+            "output_tokens": 61,
+            "cost": 7.6608e-05
+          },
+          "elapsed_seconds": 2.078
+        },
+        "input_state_hash": "3f5e24ce56b5b0e13abfcc4471394de9cf4e96176f1e06edeea95414e90d76bf",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.078
+      }
+    },
+    {
+      "case": "posted_bounds",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "clarify"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.469
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.38,
+            "clarify": 0.55,
+            "unsupported": 0.07
+          },
+          "plan_preserves_request": 0.4
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465899-SlPkiO8bDWP8u1AuyO0E",
+          "usage": {
+            "input_tokens": 1807,
+            "output_tokens": 61,
+            "cost": 7.5894e-05
+          },
+          "elapsed_seconds": 2.094
+        },
+        "input_state_hash": "55ab4a63d163a358e7944f70c1901fda787468a5871b8720e8c76f61fb0abb0c",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.094
+      },
+      "B+G": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.01,
+            "clarify": 0.96,
+            "unsupported": 0.03
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0dc65bd5e8e89484016ae61e2a2bb487d0a16115d28d0fcbbf",
+          "usage": {
+            "input_tokens": 1601,
+            "input_tokens_details": {
+              "cache_write_tokens": 1598,
+              "cached_tokens": 0
+            },
+            "output_tokens": 125,
+            "output_tokens_details": {
+              "reasoning_tokens": 78
+            },
+            "total_tokens": 1726
+          },
+          "elapsed_seconds": 4.266,
+          "actual_cost": null
+        },
+        "input_state_hash": "55ab4a63d163a358e7944f70c1901fda787468a5871b8720e8c76f61fb0abb0c",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 4.266
+      }
+    },
+    {
+      "case": "efficacy",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "unsupported"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 3.64
+      },
+      "B+G": {
+        "assessment": {
+          "action": "unsupported",
+          "probabilities": {
+            "execute": 0.0,
+            "clarify": 0.0,
+            "unsupported": 1.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0ed76d165612f2dc016ae61e2d49a087d0949fbf1491efdbb9",
+          "usage": {
+            "input_tokens": 1560,
+            "input_tokens_details": {
+              "cache_write_tokens": 1557,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1604
+          },
+          "elapsed_seconds": 2.719,
+          "actual_cost": null
+        },
+        "input_state_hash": "82a5680c0b5cecf2f4036c343f6be6a2c874e8a4cc6fd3d25e7ec4c29c639a49",
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "unsupported",
+        "elapsed_seconds": 2.719
+      },
+      "B+D": {
+        "assessment": {
+          "action": "unsupported",
+          "probabilities": {
+            "execute": 0.0,
+            "clarify": 0.01,
+            "unsupported": 0.99
+          },
+          "plan_preserves_request": 0.93
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465903-OGGWSjtLDQdb2LLltNZg",
+          "usage": {
+            "input_tokens": 1760,
+            "output_tokens": 60,
+            "cost": 7.392e-05
+          },
+          "elapsed_seconds": 2.125
+        },
+        "input_state_hash": "82a5680c0b5cecf2f4036c343f6be6a2c874e8a4cc6fd3d25e7ec4c29c639a49",
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "unsupported",
+        "elapsed_seconds": 2.125
+      }
+    },
+    {
+      "case": "treatment",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "unsupported"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 3.297
+      },
+      "B+G": {
+        "assessment": {
+          "action": "unsupported",
+          "probabilities": {
+            "execute": 0.0,
+            "clarify": 0.0,
+            "unsupported": 1.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_05faff3a3ac79599016ae61e2fcef487d0b66f1121eaf4e2a7",
+          "usage": {
+            "input_tokens": 1539,
+            "input_tokens_details": {
+              "cache_write_tokens": 1536,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1583
+          },
+          "elapsed_seconds": 2.406,
+          "actual_cost": null
+        },
+        "input_state_hash": "a2cc5b87096c74ead3256a6532a3b28ba6bdf0173225d078955697002f6c719c",
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "unsupported",
+        "elapsed_seconds": 2.406
+      },
+      "B+D": {
+        "assessment": {
+          "action": "unsupported",
+          "probabilities": {
+            "execute": 0.0,
+            "clarify": 0.0,
+            "unsupported": 1.0
+          },
+          "plan_preserves_request": 0.96
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465905-fStvfHRHMoxxL0efpLYV",
+          "usage": {
+            "input_tokens": 1738,
+            "output_tokens": 60,
+            "cost": 7.2996e-05
+          },
+          "elapsed_seconds": 2.141
+        },
+        "input_state_hash": "a2cc5b87096c74ead3256a6532a3b28ba6bdf0173225d078955697002f6c719c",
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "unsupported",
+        "elapsed_seconds": 2.141
+      }
+    },
+    {
+      "case": "full_site",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "unsupported"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.234
+      },
+      "B+D": {
+        "assessment": {
+          "action": "unsupported",
+          "probabilities": {
+            "execute": 0.0,
+            "clarify": 0.0,
+            "unsupported": 1.0
+          },
+          "plan_preserves_request": 0.95
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465907-wfAOfSD77d19g8rSagsd",
+          "usage": {
+            "input_tokens": 1734,
+            "output_tokens": 60,
+            "cost": 7.2828e-05
+          },
+          "elapsed_seconds": 2.203
+        },
+        "input_state_hash": "daea7f5afaace73c46f49c54e2a52f44665946208268e7079f0fa7e18bb74ff2",
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "unsupported",
+        "elapsed_seconds": 2.203
+      },
+      "B+G": {
+        "assessment": {
+          "action": "unsupported",
+          "probabilities": {
+            "execute": 0.0,
+            "clarify": 0.0,
+            "unsupported": 1.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_003d925c21a9b8e6016ae61e323f8887d0b3951783940e53c1",
+          "usage": {
+            "input_tokens": 1541,
+            "input_tokens_details": {
+              "cache_write_tokens": 1538,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1585
+          },
+          "elapsed_seconds": 3.453,
+          "actual_cost": null
+        },
+        "input_state_hash": "daea7f5afaace73c46f49c54e2a52f44665946208268e7079f0fa7e18bb74ff2",
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "unsupported",
+        "elapsed_seconds": 3.453
+      }
+    },
+    {
+      "case": "scatter",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "unsupported"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 2.875
+      },
+      "B+G": {
+        "assessment": {
+          "action": "unsupported",
+          "probabilities": {
+            "execute": 0.0,
+            "clarify": 0.0,
+            "unsupported": 1.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0c9a64df509a78f6016ae61e34ea5087d0a43cd6ba25a350cc",
+          "usage": {
+            "input_tokens": 1551,
+            "input_tokens_details": {
+              "cache_write_tokens": 1548,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1595
+          },
+          "elapsed_seconds": 2.406,
+          "actual_cost": null
+        },
+        "input_state_hash": "96f9d2930b9cb56d0620f39273483219df5f6cfe0d72dd3816e3a93738d430e8",
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "unsupported",
+        "elapsed_seconds": 2.406
+      },
+      "B+D": {
+        "assessment": {
+          "action": "unsupported",
+          "probabilities": {
+            "execute": 0.0,
+            "clarify": 0.01,
+            "unsupported": 0.99
+          },
+          "plan_preserves_request": 0.95
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465910-goDfmIS22kDZS1rom6vs",
+          "usage": {
+            "input_tokens": 1746,
+            "output_tokens": 60,
+            "cost": 7.3332e-05
+          },
+          "elapsed_seconds": 2.188
+        },
+        "input_state_hash": "96f9d2930b9cb56d0620f39273483219df5f6cfe0d72dd3816e3a93738d430e8",
+        "grade": {
+          "observed_action": "unsupported",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "unsupported",
+        "elapsed_seconds": 2.188
+      }
+    },
+    {
+      "case": "followup_phase",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [
+              "PHASE3"
+            ],
+            "statuses": [],
+            "countries": [
+              "Canada"
+            ],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.078
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_04a2efa18511f5c4016ae61e374dc087d09e47634f21f64b79",
+          "usage": {
+            "input_tokens": 2035,
+            "input_tokens_details": {
+              "cache_write_tokens": 2032,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2079
+          },
+          "elapsed_seconds": 2.828,
+          "actual_cost": null
+        },
+        "input_state_hash": "be2c07a073b6793879b26c7c5fd0cb6c1c1ef558df53f869c18ce209103a2b14",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.828
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.89,
+            "clarify": 0.1,
+            "unsupported": 0.01
+          },
+          "plan_preserves_request": 0.85
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465912-ghYvXTPfPgunNg7ETaT4",
+          "usage": {
+            "input_tokens": 2380,
+            "output_tokens": 60,
+            "cost": 9.996e-05
+          },
+          "elapsed_seconds": 2.312
+        },
+        "input_state_hash": "be2c07a073b6793879b26c7c5fd0cb6c1c1ef558df53f869c18ce209103a2b14",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.312
+      }
+    },
+    {
+      "case": "followup_trend",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "time_series",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [
+              "Canada"
+            ],
+            "start_year": 2015,
+            "end_year": 2025,
+            "enrollment_type": null
+          }
+        ],
+        "time_field": "start_year"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.688
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.77,
+            "clarify": 0.21,
+            "unsupported": 0.02
+          },
+          "plan_preserves_request": 0.54
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465915-5cqFnRJzw3LIOrtG5Z4B",
+          "usage": {
+            "input_tokens": 2468,
+            "output_tokens": 60,
+            "cost": 0.000103656
+          },
+          "elapsed_seconds": 2.328
+        },
+        "input_state_hash": "db7934182ef980137299343c64a282890c2f52e343a395112eefbc23d6bf33f0",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.328
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.998,
+            "clarify": 0.001,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_059746d8b350d24f016ae61e3a270887d0b0e787eeb7b2fdd1",
+          "usage": {
+            "input_tokens": 2088,
+            "input_tokens_details": {
+              "cache_write_tokens": 2085,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2132
+          },
+          "elapsed_seconds": 2.609,
+          "actual_cost": null
+        },
+        "input_state_hash": "db7934182ef980137299343c64a282890c2f52e343a395112eefbc23d6bf33f0",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.609
+      }
+    },
+    {
+      "case": "followup_top5",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "sponsor",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [
+              "Canada"
+            ],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ],
+        "top_n": 5
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.204
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.71,
+            "clarify": 0.28,
+            "unsupported": 0.01
+          },
+          "plan_preserves_request": 0.67
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465917-MYyoRHSysAEDXAKk63wB",
+          "usage": {
+            "input_tokens": 2371,
+            "output_tokens": 60,
+            "cost": 9.9582e-05
+          },
+          "elapsed_seconds": 2.219
+        },
+        "input_state_hash": "a4cc058d63d220064ae60619cea49cf95fe2fcce0652fc2d947c32eadb7876d4",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.219
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0008,
+            "unsupported": 0.0002
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0b3ea814907233d0016ae61e3dc24887d08465d68221009f89",
+          "usage": {
+            "input_tokens": 2026,
+            "input_tokens_details": {
+              "cache_write_tokens": 2023,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2072
+          },
+          "elapsed_seconds": 3.594,
+          "actual_cost": null
+        },
+        "input_state_hash": "a4cc058d63d220064ae60619cea49cf95fe2fcce0652fc2d947c32eadb7876d4",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.594
+      }
+    },
+    {
+      "case": "followup_bins",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "execute",
+        "operation": "histogram",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [
+              "Canada"
+            ],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ],
+        "histogram_bins": 20
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.281
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0008,
+            "unsupported": 0.0002
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0cbb41e0694a93c9016ae61e3f313087d0a9c0d269a8499574",
+          "usage": {
+            "input_tokens": 2032,
+            "input_tokens_details": {
+              "cache_write_tokens": 2029,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2076
+          },
+          "elapsed_seconds": 2.766,
+          "actual_cost": null
+        },
+        "input_state_hash": "66e5288c616eb68309fbcca7f700f80474b452fe337f78955657c3a65828c473",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.766
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.79,
+            "clarify": 0.18,
+            "unsupported": 0.03
+          },
+          "plan_preserves_request": 0.44
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465921-380DxJ8GTF8pZGU3f3EO",
+          "usage": {
+            "input_tokens": 2390,
+            "output_tokens": 60,
+            "cost": 0.00010038
+          },
+          "elapsed_seconds": 2.344
+        },
+        "input_state_hash": "66e5288c616eb68309fbcca7f700f80474b452fe337f78955657c3a65828c473",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.344
+      }
+    },
+    {
+      "case": "followup_clear_country",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 3.562
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_082b8941faac02ba016ae61e41c50887d0bde485f672da504d",
+          "usage": {
+            "input_tokens": 1993,
+            "input_tokens_details": {
+              "cache_write_tokens": 1990,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2039
+          },
+          "elapsed_seconds": 2.562,
+          "actual_cost": null
+        },
+        "input_state_hash": "6065482c5ecb698291486652fb449a9317a233b34559ee80773c4d1bae7ab5f8",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.562
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.79,
+            "clarify": 0.2,
+            "unsupported": 0.01
+          },
+          "plan_preserves_request": 0.72
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465923-bHfs8v0NAer2p1JU7hDb",
+          "usage": {
+            "input_tokens": 2333,
+            "output_tokens": 60,
+            "cost": 9.7986e-05
+          },
+          "elapsed_seconds": 2.203
+        },
+        "input_state_hash": "6065482c5ecb698291486652fb449a9317a233b34559ee80773c4d1bae7ab5f8",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.203
+      }
+    },
+    {
+      "case": "new_topic",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "asthma",
+            "interventions": [
+              "dupilumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.063
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.87,
+            "clarify": 0.12,
+            "unsupported": 0.01
+          },
+          "plan_preserves_request": 0.67
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465925-RpISi3ocPCzRclWX8pGW",
+          "usage": {
+            "input_tokens": 2472,
+            "output_tokens": 60,
+            "cost": 0.000103824
+          },
+          "elapsed_seconds": 2.078
+        },
+        "input_state_hash": "21a2ba557278e4dc69a7494de6927f1312c23696b73923d30a2fa570c9dab7b3",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.078
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0008,
+            "unsupported": 0.0002
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_05d7a12cc90bfb69016ae61e44511087d0bfaa6d02c9d19751",
+          "usage": {
+            "input_tokens": 2109,
+            "input_tokens_details": {
+              "cache_write_tokens": 2106,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2155
+          },
+          "elapsed_seconds": 2.578,
+          "actual_cost": null
+        },
+        "input_state_hash": "21a2ba557278e4dc69a7494de6927f1312c23696b73923d30a2fa570c9dab7b3",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.578
+      }
+    },
+    {
+      "case": "pending_resolved",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.625
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.33,
+            "clarify": 0.66,
+            "unsupported": 0.01
+          },
+          "plan_preserves_request": 0.24
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465927-0Ib8Brze9UtZouAp79s1",
+          "usage": {
+            "input_tokens": 2375,
+            "output_tokens": 61,
+            "cost": 9.975e-05
+          },
+          "elapsed_seconds": 2.094
+        },
+        "input_state_hash": "da67ba31850a9ec84d01e45fe6570ccf2949b2b8def14a3e2e2bf11758a4cd5d",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.094
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.998,
+            "clarify": 0.001,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0a2a8432e328a070016ae61e47ec3887d099dc838c9a7c7d98",
+          "usage": {
+            "input_tokens": 2029,
+            "input_tokens_details": {
+              "cache_write_tokens": 2026,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2073
+          },
+          "elapsed_seconds": 3.578,
+          "actual_cost": null
+        },
+        "input_state_hash": "da67ba31850a9ec84d01e45fe6570ccf2949b2b8def14a3e2e2bf11758a4cd5d",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.578
+      }
+    },
+    {
+      "case": "pending_still_unclear",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "clarify"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "elapsed_seconds": 3.766
+      },
+      "B+G": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.001,
+            "clarify": 0.998,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_05cc047d41b8c0c8016ae61e48ff4c87d0bd25fd4b5bf3eef5",
+          "usage": {
+            "input_tokens": 1634,
+            "input_tokens_details": {
+              "cache_write_tokens": 1631,
+              "cached_tokens": 0
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1679
+          },
+          "elapsed_seconds": 2.5,
+          "actual_cost": null
+        },
+        "input_state_hash": "3bdeddbb5ec0c34c4d8050c3bacad73a2ed4b04da9435095ab52053c3391b091",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.5
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.01,
+            "clarify": 0.99,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 0.93
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465931-IKeFM9whbKVmEQY8RiBp",
+          "usage": {
+            "input_tokens": 1862,
+            "output_tokens": 61,
+            "cost": 7.8204e-05
+          },
+          "elapsed_seconds": 2.188
+        },
+        "input_state_hash": "3bdeddbb5ec0c34c4d8050c3bacad73a2ed4b04da9435095ab52053c3391b091",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.188
+      }
+    },
+    {
+      "case": "pending_topic_switch",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "status",
+        "cohorts": [
+          {
+            "condition": "asthma",
+            "interventions": [
+              "dupilumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.156
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0c8915025d49295f016ae61e4b760c87d092799505126faa0e",
+          "usage": {
+            "input_tokens": 1984,
+            "input_tokens_details": {
+              "cache_write_tokens": 1981,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2030
+          },
+          "elapsed_seconds": 2.375,
+          "actual_cost": null
+        },
+        "input_state_hash": "10b7bce044d17e9830216cd3568f752d32b46817b734ea322965409c2e26644b",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.391
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.79,
+            "clarify": 0.17,
+            "unsupported": 0.04
+          },
+          "plan_preserves_request": 0.41
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465933-ByOudzR24lxqczUgYzCd",
+          "usage": {
+            "input_tokens": 2329,
+            "output_tokens": 60,
+            "cost": 9.7818e-05
+          },
+          "elapsed_seconds": 2.094
+        },
+        "input_state_hash": "10b7bce044d17e9830216cd3568f752d32b46817b734ea322965409c2e26644b",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.094
+      }
+    },
+    {
+      "case": "zh_lung",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "time_series",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "lung cancer",
+            "interventions": [
+              "osimertinib"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": 2019,
+            "end_year": 2025,
+            "enrollment_type": null
+          }
+        ],
+        "time_field": "start_year"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 6.219
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.001,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_09ac4a9ca1757ef8016ae61e4ddf9087d0a4fe6eb5167a2a87",
+          "usage": {
+            "input_tokens": 2100,
+            "input_tokens_details": {
+              "cache_write_tokens": 2097,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2144
+          },
+          "elapsed_seconds": 2.281,
+          "actual_cost": null
+        },
+        "input_state_hash": "aca5a926df330a7b08d07cedc867a5a84f24cd19ae68d4eebb25b42b7b520468",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.281
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.48,
+            "clarify": 0.49,
+            "unsupported": 0.03
+          },
+          "plan_preserves_request": 0.2
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465935-iIGknvUxTdwyEMkUaHfm",
+          "usage": {
+            "input_tokens": 2517,
+            "output_tokens": 61,
+            "cost": 0.000105714
+          },
+          "elapsed_seconds": 2.312
+        },
+        "input_state_hash": "aca5a926df330a7b08d07cedc867a5a84f24cd19ae68d4eebb25b42b7b520468",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.328
+      }
+    },
+    {
+      "case": "brand_keytruda",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.625
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_029c470de1c88921016ae61e50297887d09140dff6f00619e1",
+          "usage": {
+            "input_tokens": 1993,
+            "input_tokens_details": {
+              "cache_write_tokens": 1990,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2039
+          },
+          "elapsed_seconds": 2.641,
+          "actual_cost": null
+        },
+        "input_state_hash": "b14b703629d5c8ca1329939d495684f2daab256560f781b183e83ab6f32afed3",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.641
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.78,
+            "clarify": 0.18,
+            "unsupported": 0.04
+          },
+          "plan_preserves_request": 0.41
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465937-62cef3iw632ffhqi59il",
+          "usage": {
+            "input_tokens": 2313,
+            "output_tokens": 60,
+            "cost": 9.7146e-05
+          },
+          "elapsed_seconds": 2.109
+        },
+        "input_state_hash": "b14b703629d5c8ca1329939d495684f2daab256560f781b183e83ab6f32afed3",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.109
+      }
+    },
+    {
+      "case": "zh_compare",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          },
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "nivolumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 9.297
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.53,
+            "clarify": 0.4,
+            "unsupported": 0.07
+          },
+          "plan_preserves_request": 0.36
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465940-I7rXbv9qkxIKMyELgIrk",
+          "usage": {
+            "input_tokens": 2780,
+            "output_tokens": 60,
+            "cost": 0.00011676
+          },
+          "elapsed_seconds": 2.516
+        },
+        "input_state_hash": "e875eb82e5bfbc5f9e09d52f93eafc07dbd5842ae59aafdac3167584d01143f2",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 2.516
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.99,
+            "clarify": 0.01,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_015c0e1599add250016ae61e52c84487d091040047e6a25778",
+          "usage": {
+            "input_tokens": 2304,
+            "input_tokens_details": {
+              "cache_write_tokens": 2301,
+              "cached_tokens": 0
+            },
+            "output_tokens": 76,
+            "output_tokens_details": {
+              "reasoning_tokens": 30
+            },
+            "total_tokens": 2380
+          },
+          "elapsed_seconds": 3.078,
+          "actual_cost": null
+        },
+        "input_state_hash": "e875eb82e5bfbc5f9e09d52f93eafc07dbd5842ae59aafdac3167584d01143f2",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.078
+      }
+    },
+    {
+      "case": "explicit_all",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab",
+              "nivolumab"
+            ],
+            "intervention_match": "all",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.89
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.68,
+            "clarify": 0.21,
+            "unsupported": 0.11
+          },
+          "plan_preserves_request": 0.41
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465942-b8xh6XPWlFizWQergRyW",
+          "usage": {
+            "input_tokens": 2431,
+            "output_tokens": 60,
+            "cost": 0.000102102
+          },
+          "elapsed_seconds": 2.187
+        },
+        "input_state_hash": "ccd9217cb0cfdbe7ea1d698186cc448631e83c1daf9520e0e7c2962a419e7951",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.187
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.0005,
+            "unsupported": 0.0005
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0a2b5676dca16947016ae61e55958087d0b387e5e2abbe8375",
+          "usage": {
+            "input_tokens": 2090,
+            "input_tokens_details": {
+              "cache_write_tokens": 2087,
+              "cached_tokens": 0
+            },
+            "output_tokens": 46,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2136
+          },
+          "elapsed_seconds": 3.14,
+          "actual_cost": null
+        },
+        "input_state_hash": "ccd9217cb0cfdbe7ea1d698186cc448631e83c1daf9520e0e7c2962a419e7951",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 3.14
+      }
+    },
+    {
+      "case": "explicit_conflict",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "clarify"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "elapsed_seconds": 3.281
+      },
+      "B+G": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.001,
+            "clarify": 0.998,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_001ca96da32d9735016ae61e580f4887d0ad2ebb59967bcdef",
+          "usage": {
+            "input_tokens": 1557,
+            "input_tokens_details": {
+              "cache_write_tokens": 1554,
+              "cached_tokens": 0
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1602
+          },
+          "elapsed_seconds": 2.375,
+          "actual_cost": null
+        },
+        "input_state_hash": "47d6c27d52b4375c027d8cc840847adaa0082bd27f5bcb432de94ee8a2d7bf80",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.375
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.08,
+            "clarify": 0.92,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 0.87
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465945-2Y00O40UYThCZqFDwTaY",
+          "usage": {
+            "input_tokens": 1760,
+            "output_tokens": 61,
+            "cost": 7.392e-05
+          },
+          "elapsed_seconds": 2.11
+        },
+        "input_state_hash": "47d6c27d52b4375c027d8cc840847adaa0082bd27f5bcb432de94ee8a2d7bf80",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.125
+      }
+    },
+    {
+      "case": "unknown_drug",
+      "turn": 1,
+      "split": "development",
+      "expected": {
+        "action": "clarify"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "elapsed_seconds": 4.594
+      },
+      "B+G": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.001,
+            "clarify": 0.998,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0b589cea4fa3a99f016ae61e5a6f9087d08c54848417050e78",
+          "usage": {
+            "input_tokens": 1584,
+            "input_tokens_details": {
+              "cache_write_tokens": 1581,
+              "cached_tokens": 0
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1629
+          },
+          "elapsed_seconds": 2.578,
+          "actual_cost": null
+        },
+        "input_state_hash": "ff47de22b042428a8ae3a00a99e00bdaed3a2857c688e005530cb6a45f379e63",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.578
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.03,
+            "clarify": 0.97,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 0.92
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465947-O0OY3bQd2Gzj7HEry8Pw",
+          "usage": {
+            "input_tokens": 1787,
+            "output_tokens": 61,
+            "cost": 7.5054e-05
+          },
+          "elapsed_seconds": 2.797
+        },
+        "input_state_hash": "ff47de22b042428a8ae3a00a99e00bdaed3a2857c688e005530cb6a45f379e63",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.797
+      }
+    },
+    {
+      "case": "repeated_clarification",
+      "turn": 1,
+      "split": "heldout",
+      "expected": {
+        "action": "clarify"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "elapsed_seconds": 6.375
+      },
+      "B+G": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.001,
+            "clarify": 0.998,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_04f0a3821064187c016ae61e5d024c87d091bc9309975cc6ad",
+          "usage": {
+            "input_tokens": 1552,
+            "input_tokens_details": {
+              "cache_write_tokens": 1549,
+              "cached_tokens": 0
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1597
+          },
+          "elapsed_seconds": 2.469,
+          "actual_cost": null
+        },
+        "input_state_hash": "461b6537f79b6ddefe81797198c1bcb7bf84137aa9ebce53234024c4f940d9ef",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.469
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.0,
+            "clarify": 1.0,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 0.95
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465950-oAmhMBRa1yyREKp9rTWL",
+          "usage": {
+            "input_tokens": 1755,
+            "output_tokens": 61,
+            "cost": 7.371e-05
+          },
+          "elapsed_seconds": 2.219
+        },
+        "input_state_hash": "461b6537f79b6ddefe81797198c1bcb7bf84137aa9ebce53234024c4f940d9ef",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.219
+      }
+    },
+    {
+      "case": "repeated_clarification",
+      "turn": 2,
+      "split": "heldout",
+      "expected": {
+        "action": "clarify"
+      },
+      "B": {
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "elapsed_seconds": 3.969
+      },
+      "B+D": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.0,
+            "clarify": 0.99,
+            "unsupported": 0.01
+          },
+          "plan_preserves_request": 0.95
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465952-SgR4BYZqaaifSNaxn7QJ",
+          "usage": {
+            "input_tokens": 1992,
+            "output_tokens": 61,
+            "cost": 8.3664e-05
+          },
+          "elapsed_seconds": 2.219
+        },
+        "input_state_hash": "e37ae59e27f3f6708246d431eee041e5129c9557ec3b4d2d8bb5e63580b96ec5",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.219
+      },
+      "B+G": {
+        "assessment": {
+          "action": "clarify",
+          "probabilities": {
+            "execute": 0.001,
+            "clarify": 0.998,
+            "unsupported": 0.001
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_0b6fd50d3cd4ee39016ae61e64b4e087d0b8dea929a3d31e30",
+          "usage": {
+            "input_tokens": 1733,
+            "input_tokens_details": {
+              "cache_write_tokens": 1730,
+              "cached_tokens": 0
+            },
+            "output_tokens": 45,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1778
+          },
+          "elapsed_seconds": 7.75,
+          "actual_cost": null
+        },
+        "input_state_hash": "e37ae59e27f3f6708246d431eee041e5129c9557ec3b4d2d8bb5e63580b96ec5",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": true,
+          "overclarification": false
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 7.75
+      }
+    },
+    {
+      "case": "repeated_clarification",
+      "turn": 3,
+      "split": "heldout",
+      "expected": {
+        "action": "execute",
+        "operation": "category",
+        "group_by": "phase",
+        "cohorts": [
+          {
+            "condition": "melanoma",
+            "interventions": [
+              "pembrolizumab"
+            ],
+            "intervention_match": "any",
+            "sponsor": null,
+            "phases": [],
+            "statuses": [],
+            "countries": [],
+            "start_year": null,
+            "end_year": null,
+            "enrollment_type": null
+          }
+        ]
+      },
+      "B": {
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "elapsed_seconds": 5.375
+      },
+      "B+G": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.999,
+            "clarify": 0.001,
+            "unsupported": 0.0
+          },
+          "plan_preserves_request": 1.0
+        },
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "response_id": "resp_067a0fd50dd36355016ae61e63d48487d0bac8678e0e042c07",
+          "usage": {
+            "input_tokens": 2223,
+            "input_tokens_details": {
+              "cache_write_tokens": 2220,
+              "cached_tokens": 0
+            },
+            "output_tokens": 44,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 2267
+          },
+          "elapsed_seconds": 4.281,
+          "actual_cost": null
+        },
+        "input_state_hash": "e2c9ee54b3a36313045742408528fec3dd97dd54ca1c17b8c769293d8c771553",
+        "grade": {
+          "observed_action": "execute",
+          "correct": true,
+          "errors": [],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": false
+        },
+        "gated_status": "no_data",
+        "elapsed_seconds": 4.281
+      },
+      "B+D": {
+        "assessment": {
+          "action": "execute",
+          "probabilities": {
+            "execute": 0.71,
+            "clarify": 0.27,
+            "unsupported": 0.02
+          },
+          "plan_preserves_request": 0.52
+        },
+        "metadata": {
+          "provider": "TypeSafe",
+          "requested_model": "typesafe/jev-1.14",
+          "reported_model": "typesafe/jev-1.14-20261014",
+          "response_id": "gen-dec-1793465959-paV8rx6VL7ifIJHPo6JE",
+          "usage": {
+            "input_tokens": 2616,
+            "output_tokens": 60,
+            "cost": 0.000109872
+          },
+          "elapsed_seconds": 2.266
+        },
+        "input_state_hash": "e2c9ee54b3a36313045742408528fec3dd97dd54ca1c17b8c769293d8c771553",
+        "grade": {
+          "observed_action": "clarify",
+          "correct": false,
+          "errors": [
+            "action: expected execute, observed clarify"
+          ],
+          "incorrect_execution": false,
+          "correct_clarification": false,
+          "overclarification": true
+        },
+        "gated_status": "needs_clarification",
+        "elapsed_seconds": 2.266
+      }
+    }
+  ],
+  "experiment_implementation_commit": "69bd5ea",
+  "baseline_source_commit": "ea65a0a",
+  "summary_refresh_note": "Added raw-action and total-latency summaries offline without new API calls; fixed thresholds and all stored observations unchanged.",
+  "baseline_report": "semantic_report_ea65a0a.json",
+  "baseline_hash_note": "The original replay file omits the later archival source_commit/source_code_hashes annotations. Dropping only those two fields from the archived baseline reproduces baseline_hash; runtime results/contexts are identical."
+}

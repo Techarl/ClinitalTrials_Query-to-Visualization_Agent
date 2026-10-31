@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-31T17:40:12.876143+00:00",
+  "scope": "This round recorded generation calls only; earlier project work and account-wide usage excluded. Embedding usage listed separately without claiming an invoice.",
+  "openai_model": "gpt-6.1-sol",
+  "price_source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+  "cost_type": "standard list-rate estimate using recorded cache/read/write/output tokens; not provider invoice",
+  "main_generation_groups": [
+    {
+      "label": "preliminary_50_turns",
+      "calls": 50,
+      "input_tokens": 124827,
+      "output_tokens": 11199,
+      "estimated_usd": 0.1502097
+    },
+    {
+      "label": "archived_experiment_baseline_50_turns",
+      "calls": 50,
+      "input_tokens": 124809,
+      "output_tokens": 11277,
+      "estimated_usd": 0.1453575
+    },
+    {
+      "label": "final_baseline_50_turns",
+      "calls": 50,
+      "input_tokens": 124774,
+      "output_tokens": 11773,
+      "estimated_usd": 0.15023
+    },
+    {
+      "label": "five_examples_f3cc093",
+      "calls": 5,
+      "input_tokens": 12512,
+      "output_tokens": 1886,
+      "estimated_usd": 0.0221965
+    },
+    {
+      "label": "five_examples_final",
+      "calls": 5,
+      "input_tokens": 12513,
+      "output_tokens": 1732,
+      "estimated_usd": 0.020659
+    },
+    {
+      "label": "docker_pair_data/final-docker-smoke",
+      "calls": 2,
+      "input_tokens": 5166,
+      "output_tokens": 704,
+      "estimated_usd": 0.0087776
+    },
+    {
+      "label": "docker_pair_data/final-clean-docker-smoke",
+      "calls": 2,
+      "input_tokens": 5157,
+      "output_tokens": 612,
+      "estimated_usd": 0.007835100000000001
+    },
+    {
+      "label": "docker_pair_data/clean-docker-smoke",
+      "calls": 2,
+      "input_tokens": 5156,
+      "output_tokens": 678,
+      "estimated_usd": 0.0084926
+    },
+    {
+      "label": "docker_pair_data",
+      "calls": 2,
+      "input_tokens": 5155,
+      "output_tokens": 604,
+      "estimated_usd": 0.0077501
+    },
+    {
+      "label": "extra_gpt_gate_data/decision_probe/report.json",
+      "calls": 1,
+      "input_tokens": 1977,
+      "output_tokens": 46,
+      "estimated_usd": 0.005401
+    },
+    {
+      "label": "extra_gpt_gate_data/decision_round2/report.json",
+      "calls": 50,
+      "input_tokens": 96043,
+      "output_tokens": 2403,
+      "estimated_usd": 0.2640625
+    },
+    {
+      "label": "harness_data/harness_development_smoke/report.json",
+      "calls": 18,
+      "input_tokens": 37929,
+      "output_tokens": 4120,
+      "estimated_usd": 0.09037390000000001
+    },
+    {
+      "label": "harness_data/harness_heldout_69bd5ea/report.json",
+      "calls": 238,
+      "input_tokens": 531271,
+      "output_tokens": 49860,
+      "estimated_usd": 1.106343
+    }
+  ],
+  "recorded_generation_calls": 475,
+  "estimated_generation_usd": 1.9876885,
+  "openrouter_jev": {
+    "calls": 51,
+    "provider_reported_cost_usd": 0.004778004
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "entity_calls": 24,
+    "entity_input_tokens": 15599,
+    "harness_calls": 12,
+    "harness_input_tokens": 308,
+    "provider_invoice_cost": null
+  },
+  "baseline_default_experiments": false
+}

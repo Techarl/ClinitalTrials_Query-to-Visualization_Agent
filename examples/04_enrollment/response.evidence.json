@@ -1,2627 +1,5 @@
 {
-  "ev_0d032797f854d5740ccff08ed7a01345": {
-    "rule": {
-      "bin_end": 20167.0,
-      "bin_start": 17646.125,
-      "cohort_id": "psoriasis_secukinumab",
-      "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-      "end_inclusive": true,
-      "field": "enrollment",
-      "operation": "histogram"
-    },
-    "total_contributors": 2,
-    "citations": [
-      {
-        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-        "fields": [
-          {
-            "path": "/protocolSection/identificationModule/nctId",
-            "value": "NCT00508547"
-          },
-          {
-            "path": "/protocolSection/designModule",
-            "value": {
-              "designInfo": {
-                "observationalModel": "COHORT",
-                "timePerspective": "PROSPECTIVE"
-              },
-              "enrollmentInfo": {
-                "count": 20167,
-                "type": "ACTUAL"
-              },
-              "patientRegistry": true,
-              "studyType": "OBSERVATIONAL",
-              "targetDuration": "8 Years"
-            }
-          },
-          {
-            "path": "/protocolSection/designModule/studyType",
-            "value": "OBSERVATIONAL"
-          },
-          {
-            "path": "/protocolSection/designModule/enrollmentInfo",
-            "value": {
-              "count": 20167,
-              "type": "ACTUAL"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/overallStatus",
-            "value": "ACTIVE_NOT_RECRUITING"
-          },
-          {
-            "path": "/protocolSection/statusModule/startDateStruct",
-            "value": {
-              "date": "2007-06-21",
-              "type": "ACTUAL"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-            "value": {
-              "date": "2007-07-30",
-              "type": "ESTIMATED"
-            }
-          },
-          {
-            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-            "value": {
-              "class": "INDUSTRY",
-              "name": "Janssen Scientific Affairs, LLC"
-            }
-          },
-          {
-            "path": "/protocolSection/conditionsModule/conditions",
-            "value": [
-              "Psoriasis"
-            ]
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/1/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/2/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/3/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/4/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/5/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/6/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/7/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/8/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/9/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/10/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/11/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/12/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/13/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/14/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/15/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/16/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/17/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/18/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/19/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/20/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/21/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/22/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/23/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/24/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/25/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/26/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/27/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/28/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/29/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/30/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/31/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/32/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/33/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/34/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/35/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/36/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/37/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/38/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/39/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/40/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/41/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/42/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/43/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/44/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/45/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/46/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/47/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/48/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/49/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/50/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/51/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/52/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/53/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/54/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/55/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/56/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/57/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/58/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/59/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/60/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/61/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/62/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/63/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/64/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/65/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/66/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/67/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/68/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/69/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/70/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/71/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/72/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/73/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/74/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/75/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/76/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/77/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/78/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/79/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/80/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/81/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/82/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/83/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/84/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/85/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/86/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/87/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/88/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/89/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/90/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/91/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/92/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/93/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/94/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/95/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/96/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/97/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/98/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/99/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/100/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/101/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/102/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/103/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/104/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/105/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/106/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/107/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/108/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/109/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/110/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/111/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/112/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/113/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/114/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/115/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/116/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/117/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/118/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/119/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/120/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/121/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/122/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/123/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/124/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/125/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/126/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/127/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/128/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/129/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/130/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/131/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/132/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/133/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/134/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/135/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/136/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/137/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/138/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/139/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/140/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/141/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/142/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/143/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/144/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/145/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/146/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/147/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/148/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/149/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/150/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/151/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/152/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/153/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/154/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/155/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/156/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/157/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/158/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/159/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/160/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/161/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/162/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/163/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/164/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/165/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/166/country",
-            "value": "United States"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/167/country",
-            "value": "Argentina"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/168/country",
-            "value": "Argentina"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/169/country",
-            "value": "Argentina"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/170/country",
-            "value": "Argentina"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/171/country",
-            "value": "Argentina"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/172/country",
-            "value": "Australia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/173/country",
-            "value": "Australia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/174/country",
-            "value": "Australia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/175/country",
-            "value": "Australia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/176/country",
-            "value": "Australia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/177/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/178/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/179/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/180/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/181/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/182/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/183/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/184/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/185/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/186/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/187/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/188/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/189/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/190/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/191/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/192/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/193/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/194/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/195/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/196/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/197/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/198/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/199/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/200/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/201/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/202/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/203/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/204/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/205/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/206/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/207/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/208/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/209/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/210/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/211/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/212/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/213/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/214/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/215/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/216/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/217/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/218/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/219/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/220/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/221/country",
-            "value": "Canada"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/222/country",
-            "value": "Chile"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/223/country",
-            "value": "Chile"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/224/country",
-            "value": "Chile"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/225/country",
-            "value": "Colombia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/226/country",
-            "value": "Colombia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/227/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/228/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/229/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/230/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/231/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/232/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/233/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/234/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/235/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/236/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/237/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/238/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/239/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/240/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/241/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/242/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/243/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/244/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/245/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/246/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/247/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/248/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/249/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/250/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/251/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/252/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/253/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/254/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/255/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/256/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/257/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/258/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/259/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/260/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/261/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/262/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/263/country",
-            "value": "Japan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/264/country",
-            "value": "Mexico"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/265/country",
-            "value": "Mexico"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/266/country",
-            "value": "Mexico"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/267/country",
-            "value": "Mexico"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/268/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/269/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/270/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/271/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/272/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/273/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/274/country",
-            "value": "Portugal"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/275/country",
-            "value": "Portugal"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/276/country",
-            "value": "Portugal"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/277/country",
-            "value": "Portugal"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/278/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/279/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/280/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/281/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/282/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/283/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/284/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/285/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/286/country",
-            "value": "Slovenia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/287/country",
-            "value": "Slovenia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/288/country",
-            "value": "Slovenia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/289/country",
-            "value": "Slovenia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/290/country",
-            "value": "Slovenia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/291/country",
-            "value": "South Korea"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/292/country",
-            "value": "South Korea"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/293/country",
-            "value": "South Korea"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/294/country",
-            "value": "South Korea"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/295/country",
-            "value": "South Korea"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/296/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/297/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/298/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/299/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/300/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/301/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/302/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/303/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/304/country",
-            "value": "Sweden"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/305/country",
-            "value": "Sweden"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/306/country",
-            "value": "Sweden"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/307/country",
-            "value": "Sweden"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/308/country",
-            "value": "Taiwan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/309/country",
-            "value": "Taiwan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/310/country",
-            "value": "Taiwan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/311/country",
-            "value": "Taiwan"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/312/country",
-            "value": "Ukraine"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/313/country",
-            "value": "Ukraine"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/314/country",
-            "value": "Ukraine"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/315/country",
-            "value": "Ukraine"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/316/country",
-            "value": "Ukraine"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/317/country",
-            "value": "Ukraine"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/318/country",
-            "value": "Ukraine"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/319/country",
-            "value": "Ukraine"
-          }
-        ],
-        "missing_fields": [
-          "/protocolSection/designModule/phases"
-        ],
-        "nct_id": "NCT00508547",
-        "url": "https://clinicaltrials.gov/study/NCT00508547"
-      },
-      {
-        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-        "fields": [
-          {
-            "path": "/protocolSection/identificationModule/nctId",
-            "value": "NCT05320159"
-          },
-          {
-            "path": "/protocolSection/designModule",
-            "value": {
-              "designInfo": {
-                "observationalModel": "COHORT",
-                "timePerspective": "RETROSPECTIVE"
-              },
-              "enrollmentInfo": {
-                "count": 17743,
-                "type": "ACTUAL"
-              },
-              "patientRegistry": false,
-              "studyType": "OBSERVATIONAL"
-            }
-          },
-          {
-            "path": "/protocolSection/designModule/studyType",
-            "value": "OBSERVATIONAL"
-          },
-          {
-            "path": "/protocolSection/designModule/enrollmentInfo",
-            "value": {
-              "count": 17743,
-              "type": "ACTUAL"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/overallStatus",
-            "value": "COMPLETED"
-          },
-          {
-            "path": "/protocolSection/statusModule/startDateStruct",
-            "value": {
-              "date": "2021-02-03",
-              "type": "ACTUAL"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-            "value": {
-              "date": "2022-04-11",
-              "type": "ACTUAL"
-            }
-          },
-          {
-            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-            "value": {
-              "class": "INDUSTRY",
-              "name": "Novartis Pharmaceuticals"
-            }
-          },
-          {
-            "path": "/protocolSection/conditionsModule/conditions",
-            "value": [
-              "Psoriasis"
-            ]
-          },
-          {
-            "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-            "value": "Secukinumab"
-          },
-          {
-            "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-            "value": "DRUG"
-          },
-          {
-            "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-            "value": [
-              "Cosentyx"
-            ]
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-            "value": "United States"
-          }
-        ],
-        "missing_fields": [
-          "/protocolSection/designModule/phases"
-        ],
-        "nct_id": "NCT05320159",
-        "url": "https://clinicaltrials.gov/study/NCT05320159"
-      }
-    ]
-  },
-  "ev_16914b79018dd084265c3222d325be8b": {
-    "rule": {
-      "bin_end": 7562.625,
-      "bin_start": 5041.75,
-      "cohort_id": "psoriasis_secukinumab",
-      "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-      "end_inclusive": false,
-      "field": "enrollment",
-      "operation": "histogram"
-    },
-    "total_contributors": 1,
-    "citations": [
-      {
-        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-        "fields": [
-          {
-            "path": "/protocolSection/identificationModule/nctId",
-            "value": "NCT03496831"
-          },
-          {
-            "path": "/protocolSection/designModule",
-            "value": {
-              "designInfo": {
-                "observationalModel": "COHORT",
-                "timePerspective": "RETROSPECTIVE"
-              },
-              "enrollmentInfo": {
-                "count": 7500,
-                "type": "ESTIMATED"
-              },
-              "patientRegistry": false,
-              "studyType": "OBSERVATIONAL"
-            }
-          },
-          {
-            "path": "/protocolSection/designModule/studyType",
-            "value": "OBSERVATIONAL"
-          },
-          {
-            "path": "/protocolSection/designModule/enrollmentInfo",
-            "value": {
-              "count": 7500,
-              "type": "ESTIMATED"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/overallStatus",
-            "value": "COMPLETED"
-          },
-          {
-            "path": "/protocolSection/statusModule/startDateStruct",
-            "value": {
-              "date": "2006-01-01",
-              "type": "ACTUAL"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-            "value": {
-              "date": "2018-04-12",
-              "type": "ACTUAL"
-            }
-          },
-          {
-            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-            "value": {
-              "class": "OTHER",
-              "name": "Simon Krabbe"
-            }
-          },
-          {
-            "path": "/protocolSection/conditionsModule/conditions",
-            "value": [
-              "Rheumatoid Arthritis",
-              "Spondyloarthritis",
-              "Psoriatic Arthritis"
-            ]
-          },
-          {
-            "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-            "value": "Biologic Agents"
-          },
-          {
-            "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-            "value": "DRUG"
-          },
-          {
-            "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-            "value": [
-              "Abatacept",
-              "Adalimumab",
-              "Anakinra",
-              "Certolizumab",
-              "Etanercept",
-              "Golimumab",
-              "Infliximab",
-              "Rituximab",
-              "Secukinumab",
-              "Tocilizumab",
-              "Ustekinumab"
-            ]
-          }
-        ],
-        "missing_fields": [
-          "/protocolSection/designModule/phases"
-        ],
-        "nct_id": "NCT03496831",
-        "url": "https://clinicaltrials.gov/study/NCT03496831"
-      }
-    ]
-  },
-  "ev_192b75e9eb6f4355f5885f1075886d5d": {
-    "rule": {
-      "bin_end": 17646.125,
-      "bin_start": 15125.25,
-      "cohort_id": "psoriasis_secukinumab",
-      "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-      "end_inclusive": false,
-      "field": "enrollment",
-      "operation": "histogram"
-    },
-    "total_contributors": 1,
-    "citations": [
-      {
-        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-        "fields": [
-          {
-            "path": "/protocolSection/identificationModule/nctId",
-            "value": "NCT02409667"
-          },
-          {
-            "path": "/protocolSection/designModule/phases",
-            "value": [
-              "PHASE3"
-            ]
-          },
-          {
-            "path": "/protocolSection/designModule/studyType",
-            "value": "INTERVENTIONAL"
-          },
-          {
-            "path": "/protocolSection/designModule/enrollmentInfo",
-            "value": {
-              "count": 16487,
-              "type": "ACTUAL"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/overallStatus",
-            "value": "COMPLETED"
-          },
-          {
-            "path": "/protocolSection/statusModule/startDateStruct",
-            "value": {
-              "date": "2015-05-07",
-              "type": "ACTUAL"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-            "value": {
-              "date": "2015-04-07",
-              "type": "ESTIMATED"
-            }
-          },
-          {
-            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-            "value": {
-              "class": "INDUSTRY",
-              "name": "Novartis Pharmaceuticals"
-            }
-          },
-          {
-            "path": "/protocolSection/conditionsModule/conditions",
-            "value": [
-              "Plaque Psoriasis"
-            ]
-          },
-          {
-            "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-            "value": "Secukinumab"
-          },
-          {
-            "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-            "value": "BIOLOGICAL"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/1/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/2/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/3/country",
-            "value": "Austria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/4/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/5/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/6/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/7/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/8/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/9/country",
-            "value": "Belgium"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/10/country",
-            "value": "Bulgaria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/11/country",
-            "value": "Bulgaria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/12/country",
-            "value": "Bulgaria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/13/country",
-            "value": "Bulgaria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/14/country",
-            "value": "Bulgaria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/15/country",
-            "value": "Bulgaria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/16/country",
-            "value": "Bulgaria"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/17/country",
-            "value": "Croatia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/18/country",
-            "value": "Croatia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/19/country",
-            "value": "Croatia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/20/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/21/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/22/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/23/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/24/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/25/country",
-            "value": "Czechia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/26/country",
-            "value": "Denmark"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/27/country",
-            "value": "Denmark"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/28/country",
-            "value": "Finland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/29/country",
-            "value": "Finland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/30/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/31/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/32/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/33/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/34/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/35/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/36/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/37/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/38/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/39/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/40/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/41/country",
-            "value": "France"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/42/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/43/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/44/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/45/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/46/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/47/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/48/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/49/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/50/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/51/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/52/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/53/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/54/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/55/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/56/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/57/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/58/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/59/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/60/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/61/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/62/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/63/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/64/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/65/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/66/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/67/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/68/country",
-            "value": "Germany"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/69/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/70/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/71/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/72/country",
-            "value": "Greece"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/73/country",
-            "value": "Hungary"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/74/country",
-            "value": "Hungary"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/75/country",
-            "value": "Hungary"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/76/country",
-            "value": "Hungary"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/77/country",
-            "value": "Hungary"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/78/country",
-            "value": "Hungary"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/79/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/80/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/81/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/82/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/83/country",
-            "value": "Israel"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/84/country",
-            "value": "Italy"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/85/country",
-            "value": "Italy"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/86/country",
-            "value": "Italy"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/87/country",
-            "value": "Italy"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/88/country",
-            "value": "Italy"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/89/country",
-            "value": "Latvia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/90/country",
-            "value": "Latvia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/91/country",
-            "value": "Latvia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/92/country",
-            "value": "Latvia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/93/country",
-            "value": "Latvia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/94/country",
-            "value": "Lithuania"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/95/country",
-            "value": "Lithuania"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/96/country",
-            "value": "Lithuania"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/97/country",
-            "value": "Lithuania"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/98/country",
-            "value": "Lithuania"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/99/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/100/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/101/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/102/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/103/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/104/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/105/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/106/country",
-            "value": "Netherlands"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/107/country",
-            "value": "Poland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/108/country",
-            "value": "Poland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/109/country",
-            "value": "Poland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/110/country",
-            "value": "Poland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/111/country",
-            "value": "Poland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/112/country",
-            "value": "Poland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/113/country",
-            "value": "Poland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/114/country",
-            "value": "Poland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/115/country",
-            "value": "Poland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/116/country",
-            "value": "Poland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/117/country",
-            "value": "Portugal"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/118/country",
-            "value": "Portugal"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/119/country",
-            "value": "Portugal"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/120/country",
-            "value": "Portugal"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/121/country",
-            "value": "Portugal"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/122/country",
-            "value": "Portugal"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/123/country",
-            "value": "Russia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/124/country",
-            "value": "Russia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/125/country",
-            "value": "Russia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/126/country",
-            "value": "Russia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/127/country",
-            "value": "Russia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/128/country",
-            "value": "Russia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/129/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/130/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/131/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/132/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/133/country",
-            "value": "Slovakia"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/134/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/135/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/136/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/137/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/138/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/139/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/140/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/141/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/142/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/143/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/144/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/145/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/146/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/147/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/148/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/149/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/150/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/151/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/152/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/153/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/154/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/155/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/156/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/157/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/158/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/159/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/160/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/161/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/162/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/163/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/164/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/165/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/166/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/167/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/168/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/169/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/170/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/171/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/172/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/173/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/174/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/175/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/176/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/177/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/178/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/179/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/180/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/181/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/182/country",
-            "value": "Spain"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/183/country",
-            "value": "Sweden"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/184/country",
-            "value": "Sweden"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/185/country",
-            "value": "Sweden"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/186/country",
-            "value": "Sweden"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/187/country",
-            "value": "Sweden"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/188/country",
-            "value": "Switzerland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/189/country",
-            "value": "Switzerland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/190/country",
-            "value": "Switzerland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/191/country",
-            "value": "Switzerland"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/192/country",
-            "value": "United Kingdom"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/193/country",
-            "value": "United Kingdom"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/194/country",
-            "value": "United Kingdom"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/195/country",
-            "value": "United Kingdom"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/196/country",
-            "value": "United Kingdom"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/197/country",
-            "value": "United Kingdom"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/198/country",
-            "value": "United Kingdom"
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/199/country",
-            "value": "United Kingdom"
-          }
-        ],
-        "missing_fields": [],
-        "nct_id": "NCT02409667",
-        "url": "https://clinicaltrials.gov/study/NCT02409667"
-      }
-    ]
-  },
-  "ev_381303b748662719d51f0fc96de5cfff": {
-    "rule": {
-      "bin_end": 15125.25,
-      "bin_start": 12604.375,
-      "cohort_id": "psoriasis_secukinumab",
-      "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-      "end_inclusive": false,
-      "field": "enrollment",
-      "operation": "histogram"
-    },
-    "total_contributors": 0,
-    "citations": []
-  },
-  "ev_4186865f87a3fc7b39f0ed2598fabf5a": {
-    "rule": {
-      "bin_end": 5041.75,
-      "bin_start": 2520.875,
-      "cohort_id": "psoriasis_secukinumab",
-      "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-      "end_inclusive": false,
-      "field": "enrollment",
-      "operation": "histogram"
-    },
-    "total_contributors": 2,
-    "citations": [
-      {
-        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-        "fields": [
-          {
-            "path": "/protocolSection/identificationModule/nctId",
-            "value": "NCT01848028"
-          },
-          {
-            "path": "/protocolSection/designModule",
-            "value": {
-              "designInfo": {
-                "observationalModel": "COHORT",
-                "timePerspective": "PROSPECTIVE"
-              },
-              "enrollmentInfo": {
-                "count": 3500,
-                "type": "ESTIMATED"
-              },
-              "patientRegistry": true,
-              "studyType": "OBSERVATIONAL",
-              "targetDuration": "10 Years"
-            }
-          },
-          {
-            "path": "/protocolSection/designModule/studyType",
-            "value": "OBSERVATIONAL"
-          },
-          {
-            "path": "/protocolSection/designModule/enrollmentInfo",
-            "value": {
-              "count": 3500,
-              "type": "ESTIMATED"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/overallStatus",
-            "value": "RECRUITING"
-          },
-          {
-            "path": "/protocolSection/statusModule/startDateStruct",
-            "value": {
-              "date": "2008-01"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-            "value": {
-              "date": "2013-05-07",
-              "type": "ESTIMATED"
-            }
-          },
-          {
-            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-            "value": {
-              "class": "OTHER",
-              "name": "Universitätsklinikum Hamburg-Eppendorf"
-            }
-          },
-          {
-            "path": "/protocolSection/conditionsModule/conditions",
-            "value": [
-              "Psoriasis",
-              "Psoriatic-arthritis"
-            ]
-          },
-          {
-            "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-            "value": "Germany"
-          }
-        ],
-        "missing_fields": [
-          "/protocolSection/designModule/phases"
-        ],
-        "nct_id": "NCT01848028",
-        "url": "https://clinicaltrials.gov/study/NCT01848028"
-      },
-      {
-        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
-        "fields": [
-          {
-            "path": "/protocolSection/identificationModule/nctId",
-            "value": "NCT07881783"
-          },
-          {
-            "path": "/protocolSection/designModule",
-            "value": {
-              "designInfo": {
-                "observationalModel": "COHORT",
-                "timePerspective": "RETROSPECTIVE"
-              },
-              "enrollmentInfo": {
-                "count": 3718,
-                "type": "ESTIMATED"
-              },
-              "patientRegistry": false,
-              "studyType": "OBSERVATIONAL"
-            }
-          },
-          {
-            "path": "/protocolSection/designModule/studyType",
-            "value": "OBSERVATIONAL"
-          },
-          {
-            "path": "/protocolSection/designModule/enrollmentInfo",
-            "value": {
-              "count": 3718,
-              "type": "ESTIMATED"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/overallStatus",
-            "value": "NOT_YET_RECRUITING"
-          },
-          {
-            "path": "/protocolSection/statusModule/startDateStruct",
-            "value": {
-              "date": "2026-10-30",
-              "type": "ESTIMATED"
-            }
-          },
-          {
-            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-            "value": {
-              "date": "2026-10-19",
-              "type": "ACTUAL"
-            }
-          },
-          {
-            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-            "value": {
-              "class": "INDUSTRY",
-              "name": "Novartis Pharmaceuticals"
-            }
-          },
-          {
-            "path": "/protocolSection/conditionsModule/conditions",
-            "value": [
-              "Plaque Psoriasis"
-            ]
-          }
-        ],
-        "missing_fields": [
-          "/protocolSection/designModule/phases"
-        ],
-        "nct_id": "NCT07881783",
-        "url": "https://clinicaltrials.gov/study/NCT07881783"
-      }
-    ]
-  },
-  "ev_7e075546b47792e4f3664109ede69bac": {
+  "ev_1403676a4b93cbbbafb58d8367317410": {
     "rule": {
       "bin_end": 2520.875,
       "bin_start": 0.0,
@@ -33436,7 +30814,7 @@
       }
     ]
   },
-  "ev_e4489cb6ed4b48ff2489f63d2811ae0f": {
+  "ev_3c0b9f7fe836ddc27573b33d7fe890c8": {
     "rule": {
       "bin_end": 10083.5,
       "bin_start": 7562.625,
@@ -33543,7 +30921,1174 @@
       }
     ]
   },
-  "ev_ee503588424384f08dbacdf598d47bb9": {
+  "ev_77680a766facedc548ee3e8487d389ba": {
+    "rule": {
+      "bin_end": 15125.25,
+      "bin_start": 12604.375,
+      "cohort_id": "psoriasis_secukinumab",
+      "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+      "end_inclusive": false,
+      "field": "enrollment",
+      "operation": "histogram"
+    },
+    "total_contributors": 0,
+    "citations": []
+  },
+  "ev_80d3e4c14d90cbb1f7c27a24c2d31604": {
+    "rule": {
+      "bin_end": 17646.125,
+      "bin_start": 15125.25,
+      "cohort_id": "psoriasis_secukinumab",
+      "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+      "end_inclusive": false,
+      "field": "enrollment",
+      "operation": "histogram"
+    },
+    "total_contributors": 1,
+    "citations": [
+      {
+        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+        "fields": [
+          {
+            "path": "/protocolSection/identificationModule/nctId",
+            "value": "NCT02409667"
+          },
+          {
+            "path": "/protocolSection/designModule/phases",
+            "value": [
+              "PHASE3"
+            ]
+          },
+          {
+            "path": "/protocolSection/designModule/studyType",
+            "value": "INTERVENTIONAL"
+          },
+          {
+            "path": "/protocolSection/designModule/enrollmentInfo",
+            "value": {
+              "count": 16487,
+              "type": "ACTUAL"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/overallStatus",
+            "value": "COMPLETED"
+          },
+          {
+            "path": "/protocolSection/statusModule/startDateStruct",
+            "value": {
+              "date": "2015-05-07",
+              "type": "ACTUAL"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+            "value": {
+              "date": "2015-04-07",
+              "type": "ESTIMATED"
+            }
+          },
+          {
+            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+            "value": {
+              "class": "INDUSTRY",
+              "name": "Novartis Pharmaceuticals"
+            }
+          },
+          {
+            "path": "/protocolSection/conditionsModule/conditions",
+            "value": [
+              "Plaque Psoriasis"
+            ]
+          },
+          {
+            "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+            "value": "Secukinumab"
+          },
+          {
+            "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+            "value": "BIOLOGICAL"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/1/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/2/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/3/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/4/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/5/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/6/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/7/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/8/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/9/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/10/country",
+            "value": "Bulgaria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/11/country",
+            "value": "Bulgaria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/12/country",
+            "value": "Bulgaria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/13/country",
+            "value": "Bulgaria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/14/country",
+            "value": "Bulgaria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/15/country",
+            "value": "Bulgaria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/16/country",
+            "value": "Bulgaria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/17/country",
+            "value": "Croatia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/18/country",
+            "value": "Croatia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/19/country",
+            "value": "Croatia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/20/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/21/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/22/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/23/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/24/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/25/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/26/country",
+            "value": "Denmark"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/27/country",
+            "value": "Denmark"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/28/country",
+            "value": "Finland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/29/country",
+            "value": "Finland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/30/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/31/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/32/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/33/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/34/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/35/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/36/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/37/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/38/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/39/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/40/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/41/country",
+            "value": "France"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/42/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/43/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/44/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/45/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/46/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/47/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/48/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/49/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/50/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/51/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/52/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/53/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/54/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/55/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/56/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/57/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/58/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/59/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/60/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/61/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/62/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/63/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/64/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/65/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/66/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/67/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/68/country",
+            "value": "Germany"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/69/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/70/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/71/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/72/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/73/country",
+            "value": "Hungary"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/74/country",
+            "value": "Hungary"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/75/country",
+            "value": "Hungary"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/76/country",
+            "value": "Hungary"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/77/country",
+            "value": "Hungary"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/78/country",
+            "value": "Hungary"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/79/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/80/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/81/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/82/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/83/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/84/country",
+            "value": "Italy"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/85/country",
+            "value": "Italy"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/86/country",
+            "value": "Italy"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/87/country",
+            "value": "Italy"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/88/country",
+            "value": "Italy"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/89/country",
+            "value": "Latvia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/90/country",
+            "value": "Latvia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/91/country",
+            "value": "Latvia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/92/country",
+            "value": "Latvia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/93/country",
+            "value": "Latvia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/94/country",
+            "value": "Lithuania"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/95/country",
+            "value": "Lithuania"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/96/country",
+            "value": "Lithuania"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/97/country",
+            "value": "Lithuania"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/98/country",
+            "value": "Lithuania"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/99/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/100/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/101/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/102/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/103/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/104/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/105/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/106/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/107/country",
+            "value": "Poland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/108/country",
+            "value": "Poland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/109/country",
+            "value": "Poland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/110/country",
+            "value": "Poland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/111/country",
+            "value": "Poland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/112/country",
+            "value": "Poland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/113/country",
+            "value": "Poland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/114/country",
+            "value": "Poland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/115/country",
+            "value": "Poland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/116/country",
+            "value": "Poland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/117/country",
+            "value": "Portugal"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/118/country",
+            "value": "Portugal"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/119/country",
+            "value": "Portugal"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/120/country",
+            "value": "Portugal"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/121/country",
+            "value": "Portugal"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/122/country",
+            "value": "Portugal"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/123/country",
+            "value": "Russia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/124/country",
+            "value": "Russia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/125/country",
+            "value": "Russia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/126/country",
+            "value": "Russia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/127/country",
+            "value": "Russia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/128/country",
+            "value": "Russia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/129/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/130/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/131/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/132/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/133/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/134/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/135/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/136/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/137/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/138/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/139/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/140/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/141/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/142/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/143/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/144/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/145/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/146/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/147/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/148/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/149/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/150/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/151/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/152/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/153/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/154/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/155/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/156/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/157/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/158/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/159/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/160/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/161/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/162/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/163/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/164/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/165/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/166/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/167/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/168/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/169/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/170/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/171/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/172/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/173/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/174/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/175/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/176/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/177/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/178/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/179/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/180/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/181/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/182/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/183/country",
+            "value": "Sweden"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/184/country",
+            "value": "Sweden"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/185/country",
+            "value": "Sweden"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/186/country",
+            "value": "Sweden"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/187/country",
+            "value": "Sweden"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/188/country",
+            "value": "Switzerland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/189/country",
+            "value": "Switzerland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/190/country",
+            "value": "Switzerland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/191/country",
+            "value": "Switzerland"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/192/country",
+            "value": "United Kingdom"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/193/country",
+            "value": "United Kingdom"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/194/country",
+            "value": "United Kingdom"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/195/country",
+            "value": "United Kingdom"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/196/country",
+            "value": "United Kingdom"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/197/country",
+            "value": "United Kingdom"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/198/country",
+            "value": "United Kingdom"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/199/country",
+            "value": "United Kingdom"
+          }
+        ],
+        "missing_fields": [],
+        "nct_id": "NCT02409667",
+        "url": "https://clinicaltrials.gov/study/NCT02409667"
+      }
+    ]
+  },
+  "ev_a2daf225bc9f6c65e4a57f6886d88b37": {
+    "rule": {
+      "bin_end": 5041.75,
+      "bin_start": 2520.875,
+      "cohort_id": "psoriasis_secukinumab",
+      "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+      "end_inclusive": false,
+      "field": "enrollment",
+      "operation": "histogram"
+    },
+    "total_contributors": 2,
+    "citations": [
+      {
+        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+        "fields": [
+          {
+            "path": "/protocolSection/identificationModule/nctId",
+            "value": "NCT01848028"
+          },
+          {
+            "path": "/protocolSection/designModule",
+            "value": {
+              "designInfo": {
+                "observationalModel": "COHORT",
+                "timePerspective": "PROSPECTIVE"
+              },
+              "enrollmentInfo": {
+                "count": 3500,
+                "type": "ESTIMATED"
+              },
+              "patientRegistry": true,
+              "studyType": "OBSERVATIONAL",
+              "targetDuration": "10 Years"
+            }
+          },
+          {
+            "path": "/protocolSection/designModule/studyType",
+            "value": "OBSERVATIONAL"
+          },
+          {
+            "path": "/protocolSection/designModule/enrollmentInfo",
+            "value": {
+              "count": 3500,
+              "type": "ESTIMATED"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/overallStatus",
+            "value": "RECRUITING"
+          },
+          {
+            "path": "/protocolSection/statusModule/startDateStruct",
+            "value": {
+              "date": "2008-01"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+            "value": {
+              "date": "2013-05-07",
+              "type": "ESTIMATED"
+            }
+          },
+          {
+            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+            "value": {
+              "class": "OTHER",
+              "name": "Universitätsklinikum Hamburg-Eppendorf"
+            }
+          },
+          {
+            "path": "/protocolSection/conditionsModule/conditions",
+            "value": [
+              "Psoriasis",
+              "Psoriatic-arthritis"
+            ]
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+            "value": "Germany"
+          }
+        ],
+        "missing_fields": [
+          "/protocolSection/designModule/phases"
+        ],
+        "nct_id": "NCT01848028",
+        "url": "https://clinicaltrials.gov/study/NCT01848028"
+      },
+      {
+        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+        "fields": [
+          {
+            "path": "/protocolSection/identificationModule/nctId",
+            "value": "NCT07881783"
+          },
+          {
+            "path": "/protocolSection/designModule",
+            "value": {
+              "designInfo": {
+                "observationalModel": "COHORT",
+                "timePerspective": "RETROSPECTIVE"
+              },
+              "enrollmentInfo": {
+                "count": 3718,
+                "type": "ESTIMATED"
+              },
+              "patientRegistry": false,
+              "studyType": "OBSERVATIONAL"
+            }
+          },
+          {
+            "path": "/protocolSection/designModule/studyType",
+            "value": "OBSERVATIONAL"
+          },
+          {
+            "path": "/protocolSection/designModule/enrollmentInfo",
+            "value": {
+              "count": 3718,
+              "type": "ESTIMATED"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/overallStatus",
+            "value": "NOT_YET_RECRUITING"
+          },
+          {
+            "path": "/protocolSection/statusModule/startDateStruct",
+            "value": {
+              "date": "2026-10-30",
+              "type": "ESTIMATED"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+            "value": {
+              "date": "2026-10-19",
+              "type": "ACTUAL"
+            }
+          },
+          {
+            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+            "value": {
+              "class": "INDUSTRY",
+              "name": "Novartis Pharmaceuticals"
+            }
+          },
+          {
+            "path": "/protocolSection/conditionsModule/conditions",
+            "value": [
+              "Plaque Psoriasis"
+            ]
+          }
+        ],
+        "missing_fields": [
+          "/protocolSection/designModule/phases"
+        ],
+        "nct_id": "NCT07881783",
+        "url": "https://clinicaltrials.gov/study/NCT07881783"
+      }
+    ]
+  },
+  "ev_acd9088e1660748f345ac9107cbbeea5": {
+    "rule": {
+      "bin_end": 7562.625,
+      "bin_start": 5041.75,
+      "cohort_id": "psoriasis_secukinumab",
+      "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+      "end_inclusive": false,
+      "field": "enrollment",
+      "operation": "histogram"
+    },
+    "total_contributors": 1,
+    "citations": [
+      {
+        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+        "fields": [
+          {
+            "path": "/protocolSection/identificationModule/nctId",
+            "value": "NCT03496831"
+          },
+          {
+            "path": "/protocolSection/designModule",
+            "value": {
+              "designInfo": {
+                "observationalModel": "COHORT",
+                "timePerspective": "RETROSPECTIVE"
+              },
+              "enrollmentInfo": {
+                "count": 7500,
+                "type": "ESTIMATED"
+              },
+              "patientRegistry": false,
+              "studyType": "OBSERVATIONAL"
+            }
+          },
+          {
+            "path": "/protocolSection/designModule/studyType",
+            "value": "OBSERVATIONAL"
+          },
+          {
+            "path": "/protocolSection/designModule/enrollmentInfo",
+            "value": {
+              "count": 7500,
+              "type": "ESTIMATED"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/overallStatus",
+            "value": "COMPLETED"
+          },
+          {
+            "path": "/protocolSection/statusModule/startDateStruct",
+            "value": {
+              "date": "2006-01-01",
+              "type": "ACTUAL"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+            "value": {
+              "date": "2018-04-12",
+              "type": "ACTUAL"
+            }
+          },
+          {
+            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+            "value": {
+              "class": "OTHER",
+              "name": "Simon Krabbe"
+            }
+          },
+          {
+            "path": "/protocolSection/conditionsModule/conditions",
+            "value": [
+              "Rheumatoid Arthritis",
+              "Spondyloarthritis",
+              "Psoriatic Arthritis"
+            ]
+          },
+          {
+            "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+            "value": "Biologic Agents"
+          },
+          {
+            "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+            "value": "DRUG"
+          },
+          {
+            "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+            "value": [
+              "Abatacept",
+              "Adalimumab",
+              "Anakinra",
+              "Certolizumab",
+              "Etanercept",
+              "Golimumab",
+              "Infliximab",
+              "Rituximab",
+              "Secukinumab",
+              "Tocilizumab",
+              "Ustekinumab"
+            ]
+          }
+        ],
+        "missing_fields": [
+          "/protocolSection/designModule/phases"
+        ],
+        "nct_id": "NCT03496831",
+        "url": "https://clinicaltrials.gov/study/NCT03496831"
+      }
+    ]
+  },
+  "ev_b8b692d11a9f45b12a1ad6902013248d": {
     "rule": {
       "bin_end": 12604.375,
       "bin_start": 10083.5,
@@ -33555,5 +32100,1460 @@
     },
     "total_contributors": 0,
     "citations": []
+  },
+  "ev_c5bdf3e5cc22236d5f9931a3cd37cef6": {
+    "rule": {
+      "bin_end": 20167.0,
+      "bin_start": 17646.125,
+      "cohort_id": "psoriasis_secukinumab",
+      "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+      "end_inclusive": true,
+      "field": "enrollment",
+      "operation": "histogram"
+    },
+    "total_contributors": 2,
+    "citations": [
+      {
+        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+        "fields": [
+          {
+            "path": "/protocolSection/identificationModule/nctId",
+            "value": "NCT00508547"
+          },
+          {
+            "path": "/protocolSection/designModule",
+            "value": {
+              "designInfo": {
+                "observationalModel": "COHORT",
+                "timePerspective": "PROSPECTIVE"
+              },
+              "enrollmentInfo": {
+                "count": 20167,
+                "type": "ACTUAL"
+              },
+              "patientRegistry": true,
+              "studyType": "OBSERVATIONAL",
+              "targetDuration": "8 Years"
+            }
+          },
+          {
+            "path": "/protocolSection/designModule/studyType",
+            "value": "OBSERVATIONAL"
+          },
+          {
+            "path": "/protocolSection/designModule/enrollmentInfo",
+            "value": {
+              "count": 20167,
+              "type": "ACTUAL"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/overallStatus",
+            "value": "ACTIVE_NOT_RECRUITING"
+          },
+          {
+            "path": "/protocolSection/statusModule/startDateStruct",
+            "value": {
+              "date": "2007-06-21",
+              "type": "ACTUAL"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+            "value": {
+              "date": "2007-07-30",
+              "type": "ESTIMATED"
+            }
+          },
+          {
+            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+            "value": {
+              "class": "INDUSTRY",
+              "name": "Janssen Scientific Affairs, LLC"
+            }
+          },
+          {
+            "path": "/protocolSection/conditionsModule/conditions",
+            "value": [
+              "Psoriasis"
+            ]
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/1/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/2/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/3/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/4/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/5/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/6/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/7/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/8/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/9/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/10/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/11/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/12/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/13/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/14/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/15/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/16/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/17/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/18/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/19/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/20/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/21/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/22/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/23/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/24/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/25/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/26/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/27/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/28/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/29/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/30/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/31/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/32/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/33/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/34/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/35/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/36/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/37/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/38/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/39/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/40/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/41/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/42/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/43/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/44/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/45/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/46/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/47/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/48/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/49/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/50/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/51/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/52/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/53/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/54/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/55/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/56/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/57/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/58/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/59/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/60/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/61/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/62/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/63/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/64/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/65/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/66/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/67/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/68/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/69/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/70/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/71/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/72/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/73/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/74/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/75/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/76/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/77/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/78/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/79/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/80/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/81/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/82/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/83/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/84/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/85/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/86/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/87/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/88/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/89/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/90/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/91/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/92/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/93/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/94/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/95/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/96/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/97/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/98/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/99/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/100/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/101/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/102/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/103/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/104/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/105/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/106/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/107/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/108/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/109/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/110/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/111/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/112/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/113/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/114/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/115/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/116/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/117/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/118/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/119/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/120/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/121/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/122/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/123/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/124/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/125/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/126/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/127/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/128/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/129/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/130/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/131/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/132/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/133/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/134/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/135/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/136/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/137/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/138/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/139/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/140/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/141/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/142/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/143/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/144/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/145/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/146/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/147/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/148/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/149/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/150/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/151/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/152/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/153/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/154/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/155/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/156/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/157/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/158/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/159/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/160/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/161/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/162/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/163/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/164/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/165/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/166/country",
+            "value": "United States"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/167/country",
+            "value": "Argentina"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/168/country",
+            "value": "Argentina"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/169/country",
+            "value": "Argentina"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/170/country",
+            "value": "Argentina"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/171/country",
+            "value": "Argentina"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/172/country",
+            "value": "Australia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/173/country",
+            "value": "Australia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/174/country",
+            "value": "Australia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/175/country",
+            "value": "Australia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/176/country",
+            "value": "Australia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/177/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/178/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/179/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/180/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/181/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/182/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/183/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/184/country",
+            "value": "Austria"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/185/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/186/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/187/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/188/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/189/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/190/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/191/country",
+            "value": "Belgium"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/192/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/193/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/194/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/195/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/196/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/197/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/198/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/199/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/200/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/201/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/202/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/203/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/204/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/205/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/206/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/207/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/208/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/209/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/210/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/211/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/212/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/213/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/214/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/215/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/216/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/217/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/218/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/219/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/220/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/221/country",
+            "value": "Canada"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/222/country",
+            "value": "Chile"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/223/country",
+            "value": "Chile"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/224/country",
+            "value": "Chile"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/225/country",
+            "value": "Colombia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/226/country",
+            "value": "Colombia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/227/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/228/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/229/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/230/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/231/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/232/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/233/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/234/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/235/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/236/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/237/country",
+            "value": "Czechia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/238/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/239/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/240/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/241/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/242/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/243/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/244/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/245/country",
+            "value": "Greece"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/246/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/247/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/248/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/249/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/250/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/251/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/252/country",
+            "value": "Israel"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/253/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/254/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/255/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/256/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/257/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/258/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/259/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/260/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/261/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/262/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/263/country",
+            "value": "Japan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/264/country",
+            "value": "Mexico"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/265/country",
+            "value": "Mexico"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/266/country",
+            "value": "Mexico"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/267/country",
+            "value": "Mexico"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/268/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/269/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/270/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/271/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/272/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/273/country",
+            "value": "Netherlands"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/274/country",
+            "value": "Portugal"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/275/country",
+            "value": "Portugal"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/276/country",
+            "value": "Portugal"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/277/country",
+            "value": "Portugal"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/278/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/279/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/280/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/281/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/282/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/283/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/284/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/285/country",
+            "value": "Slovakia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/286/country",
+            "value": "Slovenia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/287/country",
+            "value": "Slovenia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/288/country",
+            "value": "Slovenia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/289/country",
+            "value": "Slovenia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/290/country",
+            "value": "Slovenia"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/291/country",
+            "value": "South Korea"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/292/country",
+            "value": "South Korea"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/293/country",
+            "value": "South Korea"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/294/country",
+            "value": "South Korea"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/295/country",
+            "value": "South Korea"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/296/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/297/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/298/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/299/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/300/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/301/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/302/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/303/country",
+            "value": "Spain"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/304/country",
+            "value": "Sweden"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/305/country",
+            "value": "Sweden"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/306/country",
+            "value": "Sweden"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/307/country",
+            "value": "Sweden"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/308/country",
+            "value": "Taiwan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/309/country",
+            "value": "Taiwan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/310/country",
+            "value": "Taiwan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/311/country",
+            "value": "Taiwan"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/312/country",
+            "value": "Ukraine"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/313/country",
+            "value": "Ukraine"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/314/country",
+            "value": "Ukraine"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/315/country",
+            "value": "Ukraine"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/316/country",
+            "value": "Ukraine"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/317/country",
+            "value": "Ukraine"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/318/country",
+            "value": "Ukraine"
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/319/country",
+            "value": "Ukraine"
+          }
+        ],
+        "missing_fields": [
+          "/protocolSection/designModule/phases"
+        ],
+        "nct_id": "NCT00508547",
+        "url": "https://clinicaltrials.gov/study/NCT00508547"
+      },
+      {
+        "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+        "fields": [
+          {
+            "path": "/protocolSection/identificationModule/nctId",
+            "value": "NCT05320159"
+          },
+          {
+            "path": "/protocolSection/designModule",
+            "value": {
+              "designInfo": {
+                "observationalModel": "COHORT",
+                "timePerspective": "RETROSPECTIVE"
+              },
+              "enrollmentInfo": {
+                "count": 17743,
+                "type": "ACTUAL"
+              },
+              "patientRegistry": false,
+              "studyType": "OBSERVATIONAL"
+            }
+          },
+          {
+            "path": "/protocolSection/designModule/studyType",
+            "value": "OBSERVATIONAL"
+          },
+          {
+            "path": "/protocolSection/designModule/enrollmentInfo",
+            "value": {
+              "count": 17743,
+              "type": "ACTUAL"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/overallStatus",
+            "value": "COMPLETED"
+          },
+          {
+            "path": "/protocolSection/statusModule/startDateStruct",
+            "value": {
+              "date": "2021-02-03",
+              "type": "ACTUAL"
+            }
+          },
+          {
+            "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+            "value": {
+              "date": "2022-04-11",
+              "type": "ACTUAL"
+            }
+          },
+          {
+            "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+            "value": {
+              "class": "INDUSTRY",
+              "name": "Novartis Pharmaceuticals"
+            }
+          },
+          {
+            "path": "/protocolSection/conditionsModule/conditions",
+            "value": [
+              "Psoriasis"
+            ]
+          },
+          {
+            "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+            "value": "Secukinumab"
+          },
+          {
+            "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+            "value": "DRUG"
+          },
+          {
+            "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+            "value": [
+              "Cosentyx"
+            ]
+          },
+          {
+            "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+            "value": "United States"
+          }
+        ],
+        "missing_fields": [
+          "/protocolSection/designModule/phases"
+        ],
+        "nct_id": "NCT05320159",
+        "url": "https://clinicaltrials.gov/study/NCT05320159"
+      }
+    ]
   }
 }

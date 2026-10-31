@@ -1,0 +1,78 @@
+{
+  "checked_at": "2026-10-31T17:43:35.434570+00:00",
+  "status": "passed",
+  "source_commit": "5344202",
+  "source_code_hash": "c67e1ac162d91e094da300953e28b438c80d00816e4fbe817eeb684f4dc773fd",
+  "verified_candidate_archive_sha256": "c5633a86cb39fe3d6ad8dc15226567812235d90b22274cdd8c65b8e6b80d9ec5",
+  "installation": "fresh venv; requirements.lock then pip install --no-deps .",
+  "credentials_present": false,
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "7",
+    "tests": "81",
+    "time": "15.296",
+    "timestamp": "2026-11-01T01:41:52.277538+08:00",
+    "hostname": "shengkai_tp_x1e"
+  },
+  "offline_verification": {
+    "checks": [
+      {
+        "example": "01_phases",
+        "status": "verified",
+        "exact_fields_checked": 14682,
+        "evidence_sets": 9,
+        "source_records": 400,
+        "complete_item_sets_checked": true
+      },
+      {
+        "example": "02_followup_trend",
+        "status": "verified",
+        "exact_fields_checked": 3276,
+        "evidence_sets": 11,
+        "source_records": 400,
+        "complete_item_sets_checked": true
+      },
+      {
+        "example": "03_comparison",
+        "status": "verified",
+        "exact_fields_checked": 5933,
+        "evidence_sets": 16,
+        "source_records": 176,
+        "complete_item_sets_checked": true
+      },
+      {
+        "example": "04_enrollment",
+        "status": "verified",
+        "exact_fields_checked": 7265,
+        "evidence_sets": 8,
+        "source_records": 149,
+        "complete_item_sets_checked": true
+      },
+      {
+        "example": "05_shared_drugs",
+        "status": "verified",
+        "exact_fields_checked": 2668,
+        "evidence_sets": 19,
+        "source_records": 242,
+        "complete_item_sets_checked": true
+      }
+    ],
+    "network_or_database_calls": 0,
+    "model_calls": 0
+  },
+  "api_boot": {
+    "status": "passed",
+    "runtime": "fresh-venv-from-final-submission-zip",
+    "entrypoint": "uvicorn app.main:create_app --factory",
+    "credentials_present": false,
+    "health": 200,
+    "docs": 200,
+    "openapi": 200,
+    "capabilities": 200,
+    "model_calls": 0
+  },
+  "pip_check": "passed",
+  "note": "The final archive adds completed validation documentation and the separately exercised offline accounting helper. app/, experiments/, tests/ and dependency/runtime contents must match this independently installed candidate; equality is checked after final packaging."
+}

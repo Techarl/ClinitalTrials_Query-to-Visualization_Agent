@@ -1,6 +1,6 @@
 {
   "frozen_reference_comparison": "passed_same_source_hash",
-  "checked_at": "2026-10-31T16:55:26.314066+00:00",
+  "checked_at": "2026-10-31T17:35:08.896173+00:00",
   "status": "passed",
   "runtime": "docker-compose",
   "api_restart_between_turns": true,
@@ -8,8 +8,8 @@
   "followup_selected_records": 27,
   "source_data_timestamp": "2026-10-30T09:00:04",
   "source_hash": "5fc9be4c69e6918d4aeaba930ad9082a52facf4debfbe00d771e8cbe67ad75a3",
-  "first_run_id": "run_cfbc9a0e433d469a82f1d3afa4e2dff9",
-  "followup_run_id": "run_c5452ea190e741be9a9f0a341937f40d",
+  "first_run_id": "run_63afa420738348b8ab1b48d29157fde6",
+  "followup_run_id": "run_f35085a63cf649c291496b57f4941f1b",
   "model_calls": 2,
   "evidence_paging": "passed",
   "exact_source_fields": "passed",
@@ -18,5 +18,7 @@
   "experiments": {
     "decision": false,
     "harness": false
-  }
+  },
+  "source_commit": "5344202",
+  "source_code_hash": "c67e1ac162d91e094da300953e28b438c80d00816e4fbe817eeb684f4dc773fd"
 }

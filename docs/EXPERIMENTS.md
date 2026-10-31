@@ -20,9 +20,9 @@ The extra GPT gate used 96,043 input / 2,403 output tokens. Jev used 111,468 inp
 
 ```powershell
 # Dry inspection, no model calls:
-.\.venv\Scripts\python.exe -m experiments.decision --baseline docs\evals\semantic_report.json --output data\decision_new
+.\.venv\Scripts\python.exe -m experiments.decision --baseline docs\evals\semantic_report_ea65a0a.json --output data\decision_new
 # Explicitly paid:
-.\.venv\Scripts\python.exe -m experiments.decision --baseline docs\evals\semantic_report.json --output data\decision_new --live
+.\.venv\Scripts\python.exe -m experiments.decision --baseline docs\evals\semantic_report_ea65a0a.json --output data\decision_new --live
 ```
 
 Protocol source: [OpenRouter Jev](https://openrouter.ai/docs/guides/community/jev), [Decisions API](https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-request). Typed output does not imply semantic correctness.
@@ -62,10 +62,47 @@ The runtime receives only current public task fields, observed executions and ea
 The one-development-task smoke completed all four paths at an estimated $0.0904 with identical correct results. Its empty experience library motivated recording explicit negative evidence when edits change no observable behavior; this implementation adjustment was made before the heldout run.
 
 ```powershell
-.\.venv\Scripts\python.exe -m experiments.harness --baseline docs\evals\semantic_report.json --output data\harness_new
-.\.venv\Scripts\python.exe -m experiments.harness --baseline docs\evals\semantic_report.json --output data\harness_new --live --max-estimated-usd 20
+.\.venv\Scripts\python.exe -m experiments.harness --baseline docs\evals\semantic_report_ea65a0a.json --output data\harness_new
+.\.venv\Scripts\python.exe -m experiments.harness --baseline docs\evals\semantic_report_ea65a0a.json --output data\harness_new --live --max-estimated-usd 20
 ```
 
 Original method: [Harness² paper](https://arxiv.org/abs/2610.14224), [official implementation](https://github.com/google-research/harness2). This repository implements its own restricted adaptation; it does not install or copy that executor.
 
-Final heldout results and evidence will be recorded separately after the run completes. No benefit is assumed in advance.
+The frozen 69bd5ea run is complete. Full traces, actual usage and the audited valid subset are retained in [harness_report.json](evals/harness_report.json).
+
+### Protocol audit during the run, before scores
+
+The frozen harness pilot passes a complete task transcript and its H0 replay to the editors. For the final three-turn `repeated_clarification` case, this exposes later user answers while designing guidance that will also be replayed at the first turn. It is therefore unsuitable as a causal online-conversation test. This issue was identified from code inspection before the runtime streams completed or gold scoring ran. The complete 12-task / 14-turn exploratory record will be preserved, while the valid comparison subset is the preceding **11 single-turn tasks**. The interactive case is diagnostic only; it cannot support a claim of better clarification memory. Baseline multi-turn validation remains separate. A future interactive PPC needs turn-by-turn causal editing.
+
+
+### Observed Harness² pilot results
+
+| Arm | Valid single-turn tasks | Correct | Incorrect executions | Overclarifications |
+| --- | --- | --- | --- | --- |
+| H0 | 11 | 11 | 0 | 0 |
+| H0 multisample | 11 | 11 | 0 | 0 |
+| PPC without memory | 11 | 11 | 0 | 0 |
+| PPC with memory | 11 | 11 | 0 | 0 |
+
+The retained exploratory 12-task/14-turn aggregate is also 14/14 in each arm; the multi-turn case remains diagnostic despite that score. The complete pilot made **238 new GPT calls** and used an estimated **$1.106343** at standard list rates, excluding the already-billed shared H0 references and the separately recorded embedding calls. The estimate uses actual cache/read/write and output token usage; it is not an invoice. The one-task development smoke cost estimate is recorded separately.
+
+The experience stream stored 12 unlabelled observations and performed 11 retrieval events, using 12 cached embedding requests / 308 input tokens. It adopted **zero reusable modified components**. One final plan signature differed from the reference without an adopted component; this is an observed difference, not proof of improvement. Most entries explicitly record no observed behavior change. This tests storage and retrieval plumbing, but does not establish beneficial component transfer or task-order robustness.
+
+There is no observed accuracy gain over the already-correct H0 on this small pilot. The extra computation and tokens therefore do not justify enabling online harness adaptation in the baseline. A stronger follow-up needs independently annotated harder tasks and causally isolated per-turn adaptation, rather than weakening H0 or hiding negative results.
+
+Subsequent CLI hardening defaults to single-turn tasks (11 heldout cases); `--include-transcript-diagnostic` explicitly includes the full-transcript diagnostic. API-error bodies are suppressed from research CLI exceptions. Those safety/default changes were made after the recorded 69bd5ea pilot; its raw observations and frozen provenance remain unchanged.
+
+## Artifact index
+
+- [Frozen semantic baseline used by the experiments](evals/semantic_report_ea65a0a.json)
+- [Decision paired replay](evals/decision_report.json)
+- [Hybrid candidate rankings and exact source references](evals/entity_retrieval_report.json)
+- [Harness runtime streams, scores and ledger](evals/harness_report.json)
+- [Unlabelled experience library](evals/harness_experience.json)
+
+The default service remains unchanged by these research results. No experimental benefit is claimed.
+
+
+For the valid 11 single-turn tasks, each compute-control/PPC arm made exactly 66 new GPT calls plus 11 reused H0 references (77 logical calls). Their estimated new GPT costs were $0.2512 (multisample), $0.4104 (PPC without memory), and $0.3085 (PPC with memory). Sum-of-component latency p50 was 28.766 / 34.109 / 30.393 seconds respectively; these sums exclude some initialization, file, embedding and cache overhead, so they are not exact end-to-end wall-clock measurements. Role-level accounting is reproducible with `python -m scripts.summarize_harness` and is retained in the report. Equal call counts do not imply equal token or dollar costs.
+
+Recorded API usage for this round is itemized in [API_USAGE.json](API_USAGE.json): 475 generation calls, approximately $1.9877 at recorded standard cache/input/output list rates; Jev reported $0.004778 for 51 calls including the connectivity probe. Embeddings made 36 calls / 15,907 input tokens, with no invoice amount returned. These figures exclude earlier project work and account-wide usage, and the OpenAI figure is an estimate rather than a bill.

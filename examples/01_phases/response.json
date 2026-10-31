@@ -1,7 +1,7 @@
 {
   "status": "ok",
-  "run_id": "run_93802b3175ec4d4a9af0451ca3dbcb87",
-  "session_id": "session_ced7d7054e0b416bb97b8e930c6fd510",
+  "run_id": "run_ee3afcacfec24d229a7ef75c2e9d5b98",
+  "session_id": "session_1fd72dc05024485ca87b6cb499a6d302",
   "visualization": {
     "type": "bar_chart",
     "title": "Phase distribution of melanoma studies involving pembrolizumab",
@@ -31,7 +31,7 @@
         "bin_start": null,
         "bin_end": null,
         "trial_count": 7,
-        "evidence_set_id": "ev_14d68a16cd2812505f9633a3981734d6",
+        "evidence_set_id": "ev_e0e46770b9712e178724ed3d777231dd",
         "contributor_count": 7
       },
       {
@@ -42,7 +42,7 @@
         "bin_start": null,
         "bin_end": null,
         "trial_count": 111,
-        "evidence_set_id": "ev_d9ac0d0d33d1bd510597feebfae29931",
+        "evidence_set_id": "ev_ab6aba3b67f197814e5d50d6ecdd1f84",
         "contributor_count": 111
       },
       {
@@ -53,7 +53,7 @@
         "bin_start": null,
         "bin_end": null,
         "trial_count": 87,
-        "evidence_set_id": "ev_d0eb2904ed268732098e21e9c12c75cb",
+        "evidence_set_id": "ev_4cfc72cb19e4b0f21114e08b962b84b5",
         "contributor_count": 87
       },
       {
@@ -64,7 +64,7 @@
         "bin_start": null,
         "bin_end": null,
         "trial_count": 125,
-        "evidence_set_id": "ev_e9ff58e038245dc03f64fd12a9d9348b",
+        "evidence_set_id": "ev_d79dbc017c84d8154ff5e8f00c70a7db",
         "contributor_count": 125
       },
       {
@@ -75,7 +75,7 @@
         "bin_start": null,
         "bin_end": null,
         "trial_count": 4,
-        "evidence_set_id": "ev_9405865d208e983dee96363d2b2b56fd",
+        "evidence_set_id": "ev_b9abec1c5d0e6adc64ee6a118400adba",
         "contributor_count": 4
       },
       {
@@ -86,7 +86,7 @@
         "bin_start": null,
         "bin_end": null,
         "trial_count": 25,
-        "evidence_set_id": "ev_dc6f559debc5f880a4a86adfa7916d98",
+        "evidence_set_id": "ev_e701c5a54b2827502fd19f7a13a7e420",
         "contributor_count": 25
       },
       {
@@ -97,7 +97,7 @@
         "bin_start": null,
         "bin_end": null,
         "trial_count": 1,
-        "evidence_set_id": "ev_ce451a62d517725a952c5f0e1a9ca60e",
+        "evidence_set_id": "ev_9151e4519d269f040630fe32e8fcc37b",
         "contributor_count": 1
       },
       {
@@ -108,7 +108,7 @@
         "bin_start": null,
         "bin_end": null,
         "trial_count": 9,
-        "evidence_set_id": "ev_5bfbf48352ed55a9b830d0293e703423",
+        "evidence_set_id": "ev_ffeae20cf0f7ca396ceb91b5e617a69a",
         "contributor_count": 9
       },
       {
@@ -119,7 +119,7 @@
         "bin_start": null,
         "bin_end": null,
         "trial_count": 31,
-        "evidence_set_id": "ev_9b603f4fb2c77a8682cf5fcc7a1167f1",
+        "evidence_set_id": "ev_0c30ecda5912c47b564a828bc084d2d7",
         "contributor_count": 31
       }
     ]
@@ -185,8 +185,8 @@
     ],
     "model_assumptions": [
       "Condition and intervention filters use official source search semantics, including source synonyms.",
-      "Counts represent distinct NCT IDs; combined phases remain a single combined category, and missing phase values are not treated as zero.",
-      "No date, status, country, or enrollment-type restrictions are applied."
+      "Counts represent distinct NCT IDs within each phase category; combined phases remain combined categories.",
+      "No date, status, country, or enrollment-type restrictions are applied. Missing phase values are not treated as zero."
     ],
     "analysis_scope": {
       "operation": "category",
@@ -240,8 +240,8 @@
       "title": "Phase distribution of melanoma studies involving pembrolizumab",
       "assumptions": [
         "Condition and intervention filters use official source search semantics, including source synonyms.",
-        "Counts represent distinct NCT IDs; combined phases remain a single combined category, and missing phase values are not treated as zero.",
-        "No date, status, country, or enrollment-type restrictions are applied."
+        "Counts represent distinct NCT IDs within each phase category; combined phases remain combined categories.",
+        "No date, status, country, or enrollment-type restrictions are applied. Missing phase values are not treated as zero."
       ]
     },
     "model": "gpt-6.1-sol",
@@ -250,7 +250,7 @@
     "harness_version": "baseline-v1",
     "prompt_version": "planner-v2",
     "field_catalog_version": "ctgov-fields-v1",
-    "code_hash": "cb98fe01524afeddbb062ca0a6a77a24d834a4b971cea13f403e44c583291b7d",
+    "code_hash": "c67e1ac162d91e094da300953e28b438c80d00816e4fbe817eeb684f4dc773fd",
     "python_version": "3.12.4",
     "model_calls": 1,
     "model_usage": [
@@ -259,19 +259,19 @@
         "requested_model": "gpt-6.1-sol",
         "reported_model": "gpt-6.1-sol",
         "reasoning_effort": "medium",
-        "response_id": "resp_0361e3f9b7ca8977016ae61cf5ca7887d0930088890dce1f1c",
-        "elapsed_seconds": 5.937,
+        "response_id": "resp_05d582f9597f932e016ae62671d94087d0ab671d31fb869851",
+        "elapsed_seconds": 4.391,
         "usage": {
           "input_tokens": 2434,
           "input_tokens_details": {
             "cache_write_tokens": 103,
             "cached_tokens": 2328
           },
-          "output_tokens": 232,
+          "output_tokens": 233,
           "output_tokens_details": {
             "reasoning_tokens": 0
           },
-          "total_tokens": 2666
+          "total_tokens": 2667
         },
         "actual_cost": null,
         "cost_note": "Provider cost not returned; token usage retained."
@@ -282,7 +282,7 @@
       "decision": false,
       "harness": false
     },
-    "langgraph_thread_id": "run_93802b3175ec4d4a9af0451ca3dbcb87",
+    "langgraph_thread_id": "run_ee3afcacfec24d229a7ef75c2e9d5b98",
     "session_version": 1
   },
   "provenance": {
@@ -316,166 +316,67 @@
       }
     ],
     "evidence": {
-      "ev_14d68a16cd2812505f9633a3981734d6": {
-        "contributor_count": 7,
+      "ev_0c30ecda5912c47b564a828bc084d2d7": {
+        "contributor_count": 31,
         "citations": [
           {
             "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
             "fields": [
               {
                 "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT01789827"
+                "value": "NCT02083484"
               },
               {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "EARLY_PHASE1"
-                ]
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
+                "path": "/protocolSection/designModule",
                 "value": {
-                  "count": 5,
-                  "type": "ACTUAL"
+                  "nPtrsToThisExpAccNctId": 1,
+                  "studyType": "EXPANDED_ACCESS"
                 }
               },
               {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "COMPLETED"
+                "path": "/protocolSection/designModule/studyType",
+                "value": "EXPANDED_ACCESS"
               },
               {
-                "path": "/protocolSection/statusModule/startDateStruct",
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "NO_LONGER_AVAILABLE"
+              },
+              {
+                "path": "/protocolSection/statusModule",
                 "value": {
-                  "date": "2014-03",
-                  "type": "ACTUAL"
+                  "lastUpdatePostDateStruct": {
+                    "date": "2018-01-26",
+                    "type": "ACTUAL"
+                  },
+                  "lastUpdateSubmitDate": "2018-01-25",
+                  "overallStatus": "NO_LONGER_AVAILABLE",
+                  "statusVerifiedDate": "2018-01",
+                  "studyFirstPostDateStruct": {
+                    "date": "2014-03-11",
+                    "type": "ESTIMATED"
+                  },
+                  "studyFirstSubmitDate": "2014-03-07",
+                  "studyFirstSubmitQcDate": "2014-03-07"
                 }
               },
               {
                 "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
                 "value": {
-                  "date": "2013-02-12",
+                  "date": "2014-03-11",
                   "type": "ESTIMATED"
                 }
               },
               {
                 "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
                 "value": {
-                  "class": "OTHER",
-                  "name": "Mayo Clinic"
+                  "class": "INDUSTRY",
+                  "name": "Merck Sharp & Dohme LLC"
                 }
               },
               {
                 "path": "/protocolSection/conditionsModule/conditions",
                 "value": [
-                  "Stage IV Skin Melanoma"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "Laboratory Biomarker Analysis"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "OTHER"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "Radionuclide Imaging"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "PROCEDURE"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
-                "value": [
-                  "nuclear medicine scan",
-                  "radioimaging",
-                  "Radionuclide Scanning",
-                  "Scan",
-                  "SCINTIGRAPHY"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "Technetium Tc 99 Hydrazinonicotinamide-Tricine-linked Interleukin-2"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
-                "value": "BIOLOGICAL"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
-                "value": [
-                  "99mTc-HYNIC-IL2"
-                ]
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "United States"
-              }
-            ],
-            "missing_fields": [],
-            "nct_id": "NCT01789827",
-            "url": "https://clinicaltrials.gov/study/NCT01789827"
-          },
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02591654"
-              },
-              {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "EARLY_PHASE1"
-                ]
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
-                "value": {
-                  "count": 6,
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "TERMINATED"
-              },
-              {
-                "path": "/protocolSection/statusModule/startDateStruct",
-                "value": {
-                  "date": "2015-10",
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2015-10-29",
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "OTHER",
-                  "name": "Columbia University"
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Malignant Melanoma, Metastatic"
+                  "Melanoma"
                 ]
               },
               {
@@ -484,310 +385,137 @@
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-                "value": [
-                  "MK-3475"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "FLT PET"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
-                "value": [
-                  "[18F]-fluorothymidine (FLT) PET"
-                ]
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "United States"
+                "value": "BIOLOGICAL"
               }
             ],
-            "missing_fields": [],
-            "nct_id": "NCT02591654",
-            "url": "https://clinicaltrials.gov/study/NCT02591654"
+            "missing_fields": [
+              "/protocolSection/designModule/phases",
+              "/protocolSection/designModule/enrollmentInfo",
+              "/protocolSection/statusModule/startDateStruct"
+            ],
+            "nct_id": "NCT02083484",
+            "url": "https://clinicaltrials.gov/study/NCT02083484"
           },
           {
             "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
             "fields": [
               {
                 "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT03276832"
+                "value": "NCT02581228"
               },
               {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "EARLY_PHASE1"
-                ]
+                "path": "/protocolSection/designModule",
+                "value": {
+                  "bioSpec": {
+                    "description": "Tumor tissue from an unresectable or metastatic site of disease will be collected for biomarker analyses. Paraffin-embedded tissue samples from patients treated with the immunotherapy drugs (with the previously obtained inform consent form) will be collected from the tissue bank of the hospital and according to the European Commission regulations.",
+                    "retention": "SAMPLES_WITHOUT_DNA"
+                  },
+                  "designInfo": {
+                    "observationalModel": "COHORT",
+                    "timePerspective": "RETROSPECTIVE"
+                  },
+                  "enrollmentInfo": {
+                    "count": 500,
+                    "type": "ESTIMATED"
+                  },
+                  "patientRegistry": false,
+                  "studyType": "OBSERVATIONAL"
+                }
               },
               {
                 "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
+                "value": "OBSERVATIONAL"
               },
               {
                 "path": "/protocolSection/designModule/enrollmentInfo",
                 "value": {
-                  "count": 7,
-                  "type": "ACTUAL"
+                  "count": 500,
+                  "type": "ESTIMATED"
                 }
               },
               {
                 "path": "/protocolSection/statusModule/overallStatus",
-                "value": "COMPLETED"
+                "value": "UNKNOWN"
               },
               {
                 "path": "/protocolSection/statusModule/startDateStruct",
                 "value": {
-                  "date": "2017-12-20",
-                  "type": "ACTUAL"
+                  "date": "2015-10"
                 }
               },
               {
                 "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
                 "value": {
-                  "date": "2017-09-08",
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "OTHER",
-                  "name": "Mayo Clinic"
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Metastatic Melanoma",
-                  "Stage IIIB Cutaneous Melanoma AJCC v7",
-                  "Stage IIIC Cutaneous Melanoma AJCC v7",
-                  "Stage IV Cutaneous Melanoma AJCC v6 and v7"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "Imiquimod"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-                "value": [
-                  "Aldara",
-                  "R 837",
-                  "S 26308",
-                  "Zyclara"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "Biopsy"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "PROCEDURE"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "Pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
-                "value": "BIOLOGICAL"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
-                "value": [
-                  "Keytruda",
-                  "Lambrolizumab",
-                  "MK-3475",
-                  "SCH 900475"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
-                "value": "Computed Tomography"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
-                "value": "PROCEDURE"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
-                "value": [
-                  "CAT",
-                  "CAT Scan",
-                  "Computed Axial Tomography",
-                  "Computerized Axial Tomography",
-                  "Computerized Tomography",
-                  "CT",
-                  "CT Scan"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/4/name",
-                "value": "Positron Emission Tomography"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/4/type",
-                "value": "PROCEDURE"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/4/otherNames",
-                "value": [
-                  "Medical Imaging, Positron Emission Tomography",
-                  "PET",
-                  "PET Scan",
-                  "Positron Emission Tomography Scan",
-                  "Positron-Emission Tomography",
-                  "proton magnetic resonance spectroscopic imaging",
-                  "PT"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/5/name",
-                "value": "Magnetic Resonance Imaging"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/5/type",
-                "value": "PROCEDURE"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/5/otherNames",
-                "value": [
-                  "Magnetic Resonance",
-                  "Magnetic Resonance Imaging Scan",
-                  "Medical Imaging, Magnetic Resonance / Nuclear Magnetic Resonance",
-                  "MR",
-                  "MR Imaging",
-                  "MRI",
-                  "MRI Scan",
-                  "MRIs",
-                  "Nuclear Magnetic Resonance Imaging",
-                  "NMRI",
-                  "Structural MRI",
-                  "sMRI"
-                ]
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "United States"
-              }
-            ],
-            "missing_fields": [],
-            "nct_id": "NCT03276832",
-            "url": "https://clinicaltrials.gov/study/NCT03276832"
-          }
-        ],
-        "preview_complete": false,
-        "url": "/evidence/ev_14d68a16cd2812505f9633a3981734d6"
-      },
-      "ev_5bfbf48352ed55a9b830d0293e703423": {
-        "contributor_count": 9,
-        "citations": [
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02716077"
-              },
-              {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "NA"
-                ]
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
-                "value": {
-                  "count": 6,
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "TERMINATED"
-              },
-              {
-                "path": "/protocolSection/statusModule/startDateStruct",
-                "value": {
-                  "date": "2016-03"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2016-03-23",
+                  "date": "2015-10-20",
                   "type": "ESTIMATED"
                 }
               },
               {
                 "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
                 "value": {
-                  "class": "OTHER",
-                  "name": "Abramson Cancer Center at Penn Medicine"
+                  "class": "INDUSTRY",
+                  "name": "Optimata Ltd."
                 }
               },
               {
                 "path": "/protocolSection/conditionsModule/conditions",
                 "value": [
-                  "Clinical Stage III Nodal or Intransit Disease or Resectable Stage IV Melanoma"
+                  "Melanoma"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "FDG PET/CT imaging"
+                "value": "ML-PrediCare"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "RADIATION"
+                "value": "DEVICE"
               },
               {
                 "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "United States"
+                "value": "Israel"
               }
             ],
-            "missing_fields": [],
-            "nct_id": "NCT02716077",
-            "url": "https://clinicaltrials.gov/study/NCT02716077"
+            "missing_fields": [
+              "/protocolSection/designModule/phases"
+            ],
+            "nct_id": "NCT02581228",
+            "url": "https://clinicaltrials.gov/study/NCT02581228"
           },
           {
             "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
             "fields": [
               {
                 "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02760225"
+                "value": "NCT02600143"
               },
               {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "NA"
-                ]
+                "path": "/protocolSection/designModule",
+                "value": {
+                  "bioSpec": {
+                    "description": "Intestinal biopsies, whole blood samples, stool samples",
+                    "retention": "SAMPLES_WITH_DNA"
+                  },
+                  "designInfo": {
+                    "observationalModel": "COHORT",
+                    "timePerspective": "PROSPECTIVE"
+                  },
+                  "enrollmentInfo": {
+                    "count": 123,
+                    "type": "ACTUAL"
+                  },
+                  "patientRegistry": false,
+                  "studyType": "OBSERVATIONAL"
+                }
               },
               {
                 "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
+                "value": "OBSERVATIONAL"
               },
               {
                 "path": "/protocolSection/designModule/enrollmentInfo",
                 "value": {
-                  "count": 18,
+                  "count": 123,
                   "type": "ACTUAL"
                 }
               },
@@ -798,14 +526,13 @@
               {
                 "path": "/protocolSection/statusModule/startDateStruct",
                 "value": {
-                  "date": "2016-10-24",
-                  "type": "ACTUAL"
+                  "date": "2013-08"
                 }
               },
               {
                 "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
                 "value": {
-                  "date": "2016-05-03",
+                  "date": "2015-11-09",
                   "type": "ESTIMATED"
                 }
               },
@@ -820,61 +547,39 @@
                 "path": "/protocolSection/conditionsModule/conditions",
                 "value": [
                   "Melanoma",
-                  "Non-small Cell Lung Cancer"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "89Zr-Pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-                "value": [
-                  "Injection of 89Zr-Pembrolizumab for imaging"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "89Zr-Pembrolizumab PET"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "DEVICE"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
-                "value": [
-                  "89Zr-Pembrolizumab PET scan(s)"
+                  "Colitis"
                 ]
               },
               {
                 "path": "/protocolSection/contactsLocationsModule/locations/0/country",
                 "value": "Netherlands"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/1/country",
-                "value": "Netherlands"
               }
             ],
-            "missing_fields": [],
-            "nct_id": "NCT02760225",
-            "url": "https://clinicaltrials.gov/study/NCT02760225"
-          },
+            "missing_fields": [
+              "/protocolSection/designModule/phases"
+            ],
+            "nct_id": "NCT02600143",
+            "url": "https://clinicaltrials.gov/study/NCT02600143"
+          }
+        ],
+        "preview_complete": false,
+        "url": "/evidence/ev_0c30ecda5912c47b564a828bc084d2d7"
+      },
+      "ev_4cfc72cb19e4b0f21114e08b962b84b5": {
+        "contributor_count": 87,
+        "citations": [
           {
             "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
             "fields": [
               {
                 "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02922283"
+                "value": "NCT02073123"
               },
               {
                 "path": "/protocolSection/designModule/phases",
                 "value": [
-                  "NA"
+                  "PHASE1",
+                  "PHASE2"
                 ]
               },
               {
@@ -884,93 +589,962 @@
               {
                 "path": "/protocolSection/designModule/enrollmentInfo",
                 "value": {
-                  "count": 19,
+                  "count": 131,
                   "type": "ACTUAL"
                 }
               },
               {
                 "path": "/protocolSection/statusModule/overallStatus",
-                "value": "TERMINATED"
+                "value": "COMPLETED"
               },
               {
                 "path": "/protocolSection/statusModule/startDateStruct",
                 "value": {
-                  "date": "2016-10-20",
+                  "date": "2014-07",
                   "type": "ACTUAL"
                 }
               },
               {
                 "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
                 "value": {
-                  "date": "2016-10-04",
+                  "date": "2014-02-27",
                   "type": "ESTIMATED"
                 }
               },
               {
                 "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
                 "value": {
-                  "class": "OTHER",
-                  "name": "University Medical Center Groningen"
+                  "class": "INDUSTRY",
+                  "name": "NewLink Genetics Corporation"
                 }
               },
               {
                 "path": "/protocolSection/conditionsModule/conditions",
                 "value": [
+                  "Metastatic Melanoma",
+                  "Stage III Melanoma",
+                  "Stage IV Melanoma"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "Indoximod"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+                "value": [
+                  "1-methyl-D-tryptophan",
+                  "D-1MT"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
+                "value": "Ipilimumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
+                "value": [
+                  "YERVOY",
+                  "MDX-010",
+                  "MDX-101"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
+                "value": "Nivolumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
+                "value": "Pembrolizumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/1/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/2/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/3/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/4/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/5/country",
+                "value": "United States"
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT02073123",
+            "url": "https://clinicaltrials.gov/study/NCT02073123"
+          },
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT02089685"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "PHASE1",
+                  "PHASE2"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 295,
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "COMPLETED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2014-03-17",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2014-03-18",
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "INDUSTRY",
+                  "name": "Merck Sharp & Dohme LLC"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Renal Cell Carcinoma",
                   "Melanoma"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "IL2-PET scan"
+                "value": "Pembrolizumab"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "DEVICE"
+                "value": "BIOLOGICAL"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
                 "value": [
-                  "[18F]FB-IL2 PET scan"
+                  "KEYTRUDA®",
+                  "MK-3475"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "Tumor biopsy"
+                "value": "PegIFN-2b"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "PROCEDURE"
+                "value": "BIOLOGICAL"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
+                "value": [
+                  "PegIntron®",
+                  "Sylatron®"
+                ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "CT scan"
+                "value": "Ipilimumab"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
-                "value": "DEVICE"
+                "value": "BIOLOGICAL"
               },
               {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
-                "value": "Biopsy of non-target tissue"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
-                "value": "PROCEDURE"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "Netherlands"
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
+                "value": [
+                  "Yervoy®"
+                ]
               }
             ],
             "missing_fields": [],
-            "nct_id": "NCT02922283",
-            "url": "https://clinicaltrials.gov/study/NCT02922283"
+            "nct_id": "NCT02089685",
+            "url": "https://clinicaltrials.gov/study/NCT02089685"
+          },
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT02130466"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "PHASE1",
+                  "PHASE2"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 184,
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "COMPLETED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2014-05-29",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2014-05-05",
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "INDUSTRY",
+                  "name": "Merck Sharp & Dohme LLC"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Melanoma",
+                  "Solid Tumors"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "Pembrolizumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "BIOLOGICAL"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+                "value": [
+                  "MK-3475",
+                  "KEYTRUDA®"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
+                "value": "Dabrafenib"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
+                "value": [
+                  "TAFINLAR®"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
+                "value": "Trametinib"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
+                "value": [
+                  "MEKINIST®"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
+                "value": "Placebo"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
+                "value": "DRUG"
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT02130466",
+            "url": "https://clinicaltrials.gov/study/NCT02130466"
           }
         ],
         "preview_complete": false,
-        "url": "/evidence/ev_5bfbf48352ed55a9b830d0293e703423"
+        "url": "/evidence/ev_4cfc72cb19e4b0f21114e08b962b84b5"
       },
-      "ev_9405865d208e983dee96363d2b2b56fd": {
+      "ev_9151e4519d269f040630fe32e8fcc37b": {
+        "contributor_count": 1,
+        "citations": [
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT03715205"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "PHASE4"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 150,
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "COMPLETED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2019-01-31",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2018-10-23",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "INDUSTRY",
+                  "name": "Merck Sharp & Dohme LLC"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Carcinoma, Non-Small-Cell Lung",
+                  "Melanoma"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "Pembrolizumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+                "value": [
+                  "KEYTRUDA®",
+                  "MK-3475"
+                ]
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+                "value": "India"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/1/country",
+                "value": "India"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/2/country",
+                "value": "India"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/3/country",
+                "value": "India"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/4/country",
+                "value": "India"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/5/country",
+                "value": "India"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/6/country",
+                "value": "India"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/7/country",
+                "value": "India"
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT03715205",
+            "url": "https://clinicaltrials.gov/study/NCT03715205"
+          }
+        ],
+        "preview_complete": true,
+        "url": "/evidence/ev_9151e4519d269f040630fe32e8fcc37b"
+      },
+      "ev_ab6aba3b67f197814e5d50d6ecdd1f84": {
+        "contributor_count": 111,
+        "citations": [
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT01295827"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "PHASE1"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 1260,
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "COMPLETED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2011-03-04",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2011-02-15",
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "INDUSTRY",
+                  "name": "Merck Sharp & Dohme LLC"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Cancer, Solid Tumor"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "Pembrolizumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "BIOLOGICAL"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+                "value": [
+                  "MK-3475",
+                  "KEYTRUDA®"
+                ]
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT01295827",
+            "url": "https://clinicaltrials.gov/study/NCT01295827"
+          },
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT01986426"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "PHASE1"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 80,
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "COMPLETED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2013-11",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2013-11-18",
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "INDUSTRY",
+                  "name": "Lytix Biopharma AS"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Cancer",
+                  "Melanoma",
+                  "Breast Cancer",
+                  "Head and Neck Cancer",
+                  "Lymphoma",
+                  "Triple-Negative Breast Cancer"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "LTX-315 consecutive lesions"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+                "value": [
+                  "Protocol version 4"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
+                "value": "LTX-315"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
+                "value": [
+                  "Arm B (Protocol version 6)"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
+                "value": "LTX-315 + ipilimumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
+                "value": [
+                  "Arm C (Protocol version 6)"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
+                "value": "LTX-315 + pembrolizumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
+                "value": [
+                  "Arm D (Protocol version 6)"
+                ]
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+                "value": "Belgium"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/1/country",
+                "value": "Belgium"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/2/country",
+                "value": "France"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/3/country",
+                "value": "France"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/4/country",
+                "value": "Italy"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/5/country",
+                "value": "Italy"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/6/country",
+                "value": "Italy"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/7/country",
+                "value": "Italy"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/8/country",
+                "value": "Norway"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/9/country",
+                "value": "Norway"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/10/country",
+                "value": "United Kingdom"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/11/country",
+                "value": "United Kingdom"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/12/country",
+                "value": "United Kingdom"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/13/country",
+                "value": "United Kingdom"
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT01986426",
+            "url": "https://clinicaltrials.gov/study/NCT01986426"
+          },
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT02009449"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "PHASE1"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 353,
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "COMPLETED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2013-11-15",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2013-12-12",
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "INDUSTRY",
+                  "name": "Eli Lilly and Company"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Melanoma",
+                  "Prostate Cancer",
+                  "Ovarian Cancer",
+                  "Renal Cell Carcinoma",
+                  "Colorectal Carcinoma",
+                  "Pancreatic Carcinoma",
+                  "Non-small Cell Lung Carcinoma",
+                  "Solid Tumors",
+                  "Breast Cancer"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "Pegilodecakin"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+                "value": [
+                  "LY3500518",
+                  "AM0010",
+                  "PEGylated recombinant human Interleukin-10",
+                  "PEG-rHuIL-10"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
+                "value": "Paclitaxel or Docetaxel and Carboplatin or Cisplatin"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
+                "value": [
+                  "Taxol or taxotere and paraplatin or platinol"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
+                "value": "FOLFOX (Oxaliplatin/Leucovorin/5-Fluorouracil)"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
+                "value": [
+                  "Eloxatin®/Leucovorin/5-FU"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
+                "value": "gemcitabine/nab-paclitaxel"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
+                "value": [
+                  "Gemzar/Abraxane ABI-007"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/4/name",
+                "value": "Capecitabine"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/4/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/4/otherNames",
+                "value": [
+                  "Xeloda"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/5/name",
+                "value": "Pazopanib"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/5/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/5/otherNames",
+                "value": [
+                  "GW786034"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/6/name",
+                "value": "Pembrolizumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/6/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/6/otherNames",
+                "value": [
+                  "Keytruda, MK-3475"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/7/name",
+                "value": "Paclitaxel"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/7/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/8/name",
+                "value": "nivolumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/8/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/8/otherNames",
+                "value": [
+                  "Opdivo"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/9/name",
+                "value": "Gemcitabine/carboplatin"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/9/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/9/otherNames",
+                "value": [
+                  "gemzar/paraplatin"
+                ]
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/1/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/2/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/3/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/4/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/5/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/6/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/7/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/8/country",
+                "value": "United States"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/9/country",
+                "value": "United States"
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT02009449",
+            "url": "https://clinicaltrials.gov/study/NCT02009449"
+          }
+        ],
+        "preview_complete": false,
+        "url": "/evidence/ev_ab6aba3b67f197814e5d50d6ecdd1f84"
+      },
+      "ev_b9abec1c5d0e6adc64ee6a118400adba": {
         "contributor_count": 4,
         "citations": [
           {
@@ -1628,386 +2202,21 @@
           }
         ],
         "preview_complete": false,
-        "url": "/evidence/ev_9405865d208e983dee96363d2b2b56fd"
+        "url": "/evidence/ev_b9abec1c5d0e6adc64ee6a118400adba"
       },
-      "ev_9b603f4fb2c77a8682cf5fcc7a1167f1": {
-        "contributor_count": 31,
+      "ev_d79dbc017c84d8154ff5e8f00c70a7db": {
+        "contributor_count": 125,
         "citations": [
           {
             "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
             "fields": [
               {
                 "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02083484"
-              },
-              {
-                "path": "/protocolSection/designModule",
-                "value": {
-                  "nPtrsToThisExpAccNctId": 1,
-                  "studyType": "EXPANDED_ACCESS"
-                }
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "EXPANDED_ACCESS"
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "NO_LONGER_AVAILABLE"
-              },
-              {
-                "path": "/protocolSection/statusModule",
-                "value": {
-                  "lastUpdatePostDateStruct": {
-                    "date": "2018-01-26",
-                    "type": "ACTUAL"
-                  },
-                  "lastUpdateSubmitDate": "2018-01-25",
-                  "overallStatus": "NO_LONGER_AVAILABLE",
-                  "statusVerifiedDate": "2018-01",
-                  "studyFirstPostDateStruct": {
-                    "date": "2014-03-11",
-                    "type": "ESTIMATED"
-                  },
-                  "studyFirstSubmitDate": "2014-03-07",
-                  "studyFirstSubmitQcDate": "2014-03-07"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2014-03-11",
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "INDUSTRY",
-                  "name": "Merck Sharp & Dohme LLC"
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Melanoma"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "Pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "BIOLOGICAL"
-              }
-            ],
-            "missing_fields": [
-              "/protocolSection/designModule/phases",
-              "/protocolSection/designModule/enrollmentInfo",
-              "/protocolSection/statusModule/startDateStruct"
-            ],
-            "nct_id": "NCT02083484",
-            "url": "https://clinicaltrials.gov/study/NCT02083484"
-          },
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02581228"
-              },
-              {
-                "path": "/protocolSection/designModule",
-                "value": {
-                  "bioSpec": {
-                    "description": "Tumor tissue from an unresectable or metastatic site of disease will be collected for biomarker analyses. Paraffin-embedded tissue samples from patients treated with the immunotherapy drugs (with the previously obtained inform consent form) will be collected from the tissue bank of the hospital and according to the European Commission regulations.",
-                    "retention": "SAMPLES_WITHOUT_DNA"
-                  },
-                  "designInfo": {
-                    "observationalModel": "COHORT",
-                    "timePerspective": "RETROSPECTIVE"
-                  },
-                  "enrollmentInfo": {
-                    "count": 500,
-                    "type": "ESTIMATED"
-                  },
-                  "patientRegistry": false,
-                  "studyType": "OBSERVATIONAL"
-                }
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "OBSERVATIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
-                "value": {
-                  "count": 500,
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "UNKNOWN"
-              },
-              {
-                "path": "/protocolSection/statusModule/startDateStruct",
-                "value": {
-                  "date": "2015-10"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2015-10-20",
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "INDUSTRY",
-                  "name": "Optimata Ltd."
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Melanoma"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "ML-PrediCare"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "DEVICE"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "Israel"
-              }
-            ],
-            "missing_fields": [
-              "/protocolSection/designModule/phases"
-            ],
-            "nct_id": "NCT02581228",
-            "url": "https://clinicaltrials.gov/study/NCT02581228"
-          },
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02600143"
-              },
-              {
-                "path": "/protocolSection/designModule",
-                "value": {
-                  "bioSpec": {
-                    "description": "Intestinal biopsies, whole blood samples, stool samples",
-                    "retention": "SAMPLES_WITH_DNA"
-                  },
-                  "designInfo": {
-                    "observationalModel": "COHORT",
-                    "timePerspective": "PROSPECTIVE"
-                  },
-                  "enrollmentInfo": {
-                    "count": 123,
-                    "type": "ACTUAL"
-                  },
-                  "patientRegistry": false,
-                  "studyType": "OBSERVATIONAL"
-                }
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "OBSERVATIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
-                "value": {
-                  "count": 123,
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "COMPLETED"
-              },
-              {
-                "path": "/protocolSection/statusModule/startDateStruct",
-                "value": {
-                  "date": "2013-08"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2015-11-09",
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "OTHER",
-                  "name": "University Medical Center Groningen"
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Melanoma",
-                  "Colitis"
-                ]
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "Netherlands"
-              }
-            ],
-            "missing_fields": [
-              "/protocolSection/designModule/phases"
-            ],
-            "nct_id": "NCT02600143",
-            "url": "https://clinicaltrials.gov/study/NCT02600143"
-          }
-        ],
-        "preview_complete": false,
-        "url": "/evidence/ev_9b603f4fb2c77a8682cf5fcc7a1167f1"
-      },
-      "ev_ce451a62d517725a952c5f0e1a9ca60e": {
-        "contributor_count": 1,
-        "citations": [
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT03715205"
+                "value": "NCT01704287"
               },
               {
                 "path": "/protocolSection/designModule/phases",
                 "value": [
-                  "PHASE4"
-                ]
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
-                "value": {
-                  "count": 150,
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "COMPLETED"
-              },
-              {
-                "path": "/protocolSection/statusModule/startDateStruct",
-                "value": {
-                  "date": "2019-01-31",
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2018-10-23",
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "INDUSTRY",
-                  "name": "Merck Sharp & Dohme LLC"
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Carcinoma, Non-Small-Cell Lung",
-                  "Melanoma"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "Pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-                "value": [
-                  "KEYTRUDA®",
-                  "MK-3475"
-                ]
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "India"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/1/country",
-                "value": "India"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/2/country",
-                "value": "India"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/3/country",
-                "value": "India"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/4/country",
-                "value": "India"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/5/country",
-                "value": "India"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/6/country",
-                "value": "India"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/7/country",
-                "value": "India"
-              }
-            ],
-            "missing_fields": [],
-            "nct_id": "NCT03715205",
-            "url": "https://clinicaltrials.gov/study/NCT03715205"
-          }
-        ],
-        "preview_complete": true,
-        "url": "/evidence/ev_ce451a62d517725a952c5f0e1a9ca60e"
-      },
-      "ev_d0eb2904ed268732098e21e9c12c75cb": {
-        "contributor_count": 87,
-        "citations": [
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02073123"
-              },
-              {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "PHASE1",
                   "PHASE2"
                 ]
               },
@@ -2018,7 +2227,7 @@
               {
                 "path": "/protocolSection/designModule/enrollmentInfo",
                 "value": {
-                  "count": 131,
+                  "count": 540,
                   "type": "ACTUAL"
                 }
               },
@@ -2029,14 +2238,321 @@
               {
                 "path": "/protocolSection/statusModule/startDateStruct",
                 "value": {
-                  "date": "2014-07",
+                  "date": "2012-11-20",
                   "type": "ACTUAL"
                 }
               },
               {
                 "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
                 "value": {
-                  "date": "2014-02-27",
+                  "date": "2012-10-11",
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "INDUSTRY",
+                  "name": "Merck Sharp & Dohme LLC"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Malignant Melanoma"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "Pembrolizumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "BIOLOGICAL"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+                "value": [
+                  "SCH 900475",
+                  "MK-3475",
+                  "KEYTRUDA®"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
+                "value": "Carboplatin"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
+                "value": [
+                  "PARAPLATIN®"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
+                "value": "Paclitaxel"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
+                "value": [
+                  "TAXOL®"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
+                "value": "Dacarbazine"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
+                "value": [
+                  "DTIC"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/4/name",
+                "value": "Temozolomide"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/4/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/4/otherNames",
+                "value": [
+                  "TEMODAR®"
+                ]
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT01704287",
+            "url": "https://clinicaltrials.gov/study/NCT01704287"
+          },
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT01993719"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "PHASE2"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 33,
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "COMPLETED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2013-12-12",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2013-11-25",
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "NIH",
+                  "name": "National Cancer Institute (NCI)"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Metastatic Melanoma"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "Aldesleukin"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+                "value": [
+                  "Proleukin"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
+                "value": "Fludarabine"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
+                "value": [
+                  "Fludara"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
+                "value": "Fludarabine"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
+                "value": [
+                  "Fludara"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
+                "value": "Cyclophosphamide"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
+                "value": [
+                  "Cytoxan"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/4/name",
+                "value": "Cyclophosphamide"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/4/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/4/otherNames",
+                "value": [
+                  "Cytoxan"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/5/name",
+                "value": "Cyclophosphamide"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/5/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/5/otherNames",
+                "value": [
+                  "Cytoxan"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/6/name",
+                "value": "Young TIL"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/6/type",
+                "value": "BIOLOGICAL"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/6/otherNames",
+                "value": [
+                  "Young Tumor Infiltrating Lymphocytes"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/7/name",
+                "value": "Pembrolizumab"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/7/type",
+                "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/7/otherNames",
+                "value": [
+                  "Keytruda"
+                ]
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+                "value": "United States"
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT01993719",
+            "url": "https://clinicaltrials.gov/study/NCT01993719"
+          },
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT02054520"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "PHASE2"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 47,
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "TERMINATED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2014-06"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2014-02-04",
                   "type": "ESTIMATED"
                 }
               },
@@ -2050,14 +2566,13 @@
               {
                 "path": "/protocolSection/conditionsModule/conditions",
                 "value": [
-                  "Metastatic Melanoma",
-                  "Stage III Melanoma",
-                  "Stage IV Melanoma"
+                  "Stage IV Melanoma",
+                  "Metastatic Melanoma"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "Indoximod"
+                "value": "HyperAcute®-Melanoma (HAM) Immunotherapy"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
@@ -2066,8 +2581,9 @@
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
                 "value": [
-                  "1-methyl-D-tryptophan",
-                  "D-1MT"
+                  "HyperAcute®-Melanoma",
+                  "HAM",
+                  "Dorgenmeltucel-L"
                 ]
               },
               {
@@ -2088,19 +2604,31 @@
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "Nivolumab"
+                "value": "Pembrolizumab"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
                 "value": "DRUG"
               },
               {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
+                "value": [
+                  "Keytruda"
+                ]
+              },
+              {
                 "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
-                "value": "Pembrolizumab"
+                "value": "Nivolumab"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
                 "value": "DRUG"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
+                "value": [
+                  "Opdivo"
+                ]
               },
               {
                 "path": "/protocolSection/contactsLocationsModule/locations/0/country",
@@ -2121,253 +2649,30 @@
               {
                 "path": "/protocolSection/contactsLocationsModule/locations/4/country",
                 "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/5/country",
-                "value": "United States"
               }
             ],
             "missing_fields": [],
-            "nct_id": "NCT02073123",
-            "url": "https://clinicaltrials.gov/study/NCT02073123"
-          },
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02089685"
-              },
-              {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "PHASE1",
-                  "PHASE2"
-                ]
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
-                "value": {
-                  "count": 295,
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "COMPLETED"
-              },
-              {
-                "path": "/protocolSection/statusModule/startDateStruct",
-                "value": {
-                  "date": "2014-03-17",
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2014-03-18",
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "INDUSTRY",
-                  "name": "Merck Sharp & Dohme LLC"
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Renal Cell Carcinoma",
-                  "Melanoma"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "Pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "BIOLOGICAL"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-                "value": [
-                  "KEYTRUDA®",
-                  "MK-3475"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "PegIFN-2b"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "BIOLOGICAL"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
-                "value": [
-                  "PegIntron®",
-                  "Sylatron®"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "Ipilimumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
-                "value": "BIOLOGICAL"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
-                "value": [
-                  "Yervoy®"
-                ]
-              }
-            ],
-            "missing_fields": [],
-            "nct_id": "NCT02089685",
-            "url": "https://clinicaltrials.gov/study/NCT02089685"
-          },
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02130466"
-              },
-              {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "PHASE1",
-                  "PHASE2"
-                ]
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
-                "value": {
-                  "count": 184,
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "COMPLETED"
-              },
-              {
-                "path": "/protocolSection/statusModule/startDateStruct",
-                "value": {
-                  "date": "2014-05-29",
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2014-05-05",
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "INDUSTRY",
-                  "name": "Merck Sharp & Dohme LLC"
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Melanoma",
-                  "Solid Tumors"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "Pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "BIOLOGICAL"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-                "value": [
-                  "MK-3475",
-                  "KEYTRUDA®"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "Dabrafenib"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
-                "value": [
-                  "TAFINLAR®"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "Trametinib"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
-                "value": [
-                  "MEKINIST®"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
-                "value": "Placebo"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
-                "value": "DRUG"
-              }
-            ],
-            "missing_fields": [],
-            "nct_id": "NCT02130466",
-            "url": "https://clinicaltrials.gov/study/NCT02130466"
+            "nct_id": "NCT02054520",
+            "url": "https://clinicaltrials.gov/study/NCT02054520"
           }
         ],
         "preview_complete": false,
-        "url": "/evidence/ev_d0eb2904ed268732098e21e9c12c75cb"
+        "url": "/evidence/ev_d79dbc017c84d8154ff5e8f00c70a7db"
       },
-      "ev_d9ac0d0d33d1bd510597feebfae29931": {
-        "contributor_count": 111,
+      "ev_e0e46770b9712e178724ed3d777231dd": {
+        "contributor_count": 7,
         "citations": [
           {
             "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
             "fields": [
               {
                 "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT01295827"
+                "value": "NCT01789827"
               },
               {
                 "path": "/protocolSection/designModule/phases",
                 "value": [
-                  "PHASE1"
+                  "EARLY_PHASE1"
                 ]
               },
               {
@@ -2377,7 +2682,7 @@
               {
                 "path": "/protocolSection/designModule/enrollmentInfo",
                 "value": {
-                  "count": 1260,
+                  "count": 5,
                   "type": "ACTUAL"
                 }
               },
@@ -2388,28 +2693,132 @@
               {
                 "path": "/protocolSection/statusModule/startDateStruct",
                 "value": {
-                  "date": "2011-03-04",
+                  "date": "2014-03",
                   "type": "ACTUAL"
                 }
               },
               {
                 "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
                 "value": {
-                  "date": "2011-02-15",
+                  "date": "2013-02-12",
                   "type": "ESTIMATED"
                 }
               },
               {
                 "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
                 "value": {
-                  "class": "INDUSTRY",
-                  "name": "Merck Sharp & Dohme LLC"
+                  "class": "OTHER",
+                  "name": "Mayo Clinic"
                 }
               },
               {
                 "path": "/protocolSection/conditionsModule/conditions",
                 "value": [
-                  "Cancer, Solid Tumor"
+                  "Stage IV Skin Melanoma"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "Laboratory Biomarker Analysis"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "OTHER"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
+                "value": "Radionuclide Imaging"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
+                "value": "PROCEDURE"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
+                "value": [
+                  "nuclear medicine scan",
+                  "radioimaging",
+                  "Radionuclide Scanning",
+                  "Scan",
+                  "SCINTIGRAPHY"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
+                "value": "Technetium Tc 99 Hydrazinonicotinamide-Tricine-linked Interleukin-2"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
+                "value": "BIOLOGICAL"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
+                "value": [
+                  "99mTc-HYNIC-IL2"
+                ]
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+                "value": "United States"
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT01789827",
+            "url": "https://clinicaltrials.gov/study/NCT01789827"
+          },
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT02591654"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "EARLY_PHASE1"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 6,
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "TERMINATED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2015-10",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2015-10-29",
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "OTHER",
+                  "name": "Columbia University"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Malignant Melanoma, Metastatic"
                 ]
               },
               {
@@ -2418,97 +2827,17 @@
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "BIOLOGICAL"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-                "value": [
-                  "MK-3475",
-                  "KEYTRUDA®"
-                ]
-              }
-            ],
-            "missing_fields": [],
-            "nct_id": "NCT01295827",
-            "url": "https://clinicaltrials.gov/study/NCT01295827"
-          },
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT01986426"
-              },
-              {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "PHASE1"
-                ]
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
-                "value": {
-                  "count": 80,
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "COMPLETED"
-              },
-              {
-                "path": "/protocolSection/statusModule/startDateStruct",
-                "value": {
-                  "date": "2013-11",
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2013-11-18",
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "INDUSTRY",
-                  "name": "Lytix Biopharma AS"
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Cancer",
-                  "Melanoma",
-                  "Breast Cancer",
-                  "Head and Neck Cancer",
-                  "Lymphoma",
-                  "Triple-Negative Breast Cancer"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "LTX-315 consecutive lesions"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
                 "value": "DRUG"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
                 "value": [
-                  "Protocol version 4"
+                  "MK-3475"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "LTX-315"
+                "value": "FLT PET"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
@@ -2517,109 +2846,29 @@
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
                 "value": [
-                  "Arm B (Protocol version 6)"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "LTX-315 + ipilimumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
-                "value": [
-                  "Arm C (Protocol version 6)"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
-                "value": "LTX-315 + pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
-                "value": [
-                  "Arm D (Protocol version 6)"
+                  "[18F]-fluorothymidine (FLT) PET"
                 ]
               },
               {
                 "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "Belgium"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/1/country",
-                "value": "Belgium"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/2/country",
-                "value": "France"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/3/country",
-                "value": "France"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/4/country",
-                "value": "Italy"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/5/country",
-                "value": "Italy"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/6/country",
-                "value": "Italy"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/7/country",
-                "value": "Italy"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/8/country",
-                "value": "Norway"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/9/country",
-                "value": "Norway"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/10/country",
-                "value": "United Kingdom"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/11/country",
-                "value": "United Kingdom"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/12/country",
-                "value": "United Kingdom"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/13/country",
-                "value": "United Kingdom"
+                "value": "United States"
               }
             ],
             "missing_fields": [],
-            "nct_id": "NCT01986426",
-            "url": "https://clinicaltrials.gov/study/NCT01986426"
+            "nct_id": "NCT02591654",
+            "url": "https://clinicaltrials.gov/study/NCT02591654"
           },
           {
             "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
             "fields": [
               {
                 "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02009449"
+                "value": "NCT03276832"
               },
               {
                 "path": "/protocolSection/designModule/phases",
                 "value": [
-                  "PHASE1"
+                  "EARLY_PHASE1"
                 ]
               },
               {
@@ -2629,7 +2878,7 @@
               {
                 "path": "/protocolSection/designModule/enrollmentInfo",
                 "value": {
-                  "count": 353,
+                  "count": 7,
                   "type": "ACTUAL"
                 }
               },
@@ -2640,41 +2889,36 @@
               {
                 "path": "/protocolSection/statusModule/startDateStruct",
                 "value": {
-                  "date": "2013-11-15",
+                  "date": "2017-12-20",
                   "type": "ACTUAL"
                 }
               },
               {
                 "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
                 "value": {
-                  "date": "2013-12-12",
-                  "type": "ESTIMATED"
+                  "date": "2017-09-08",
+                  "type": "ACTUAL"
                 }
               },
               {
                 "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
                 "value": {
-                  "class": "INDUSTRY",
-                  "name": "Eli Lilly and Company"
+                  "class": "OTHER",
+                  "name": "Mayo Clinic"
                 }
               },
               {
                 "path": "/protocolSection/conditionsModule/conditions",
                 "value": [
-                  "Melanoma",
-                  "Prostate Cancer",
-                  "Ovarian Cancer",
-                  "Renal Cell Carcinoma",
-                  "Colorectal Carcinoma",
-                  "Pancreatic Carcinoma",
-                  "Non-small Cell Lung Carcinoma",
-                  "Solid Tumors",
-                  "Breast Cancer"
+                  "Metastatic Melanoma",
+                  "Stage IIIB Cutaneous Melanoma AJCC v7",
+                  "Stage IIIC Cutaneous Melanoma AJCC v7",
+                  "Stage IV Cutaneous Melanoma AJCC v6 and v7"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "Pegilodecakin"
+                "value": "Imiquimod"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
@@ -2683,182 +2927,116 @@
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
                 "value": [
-                  "LY3500518",
-                  "AM0010",
-                  "PEGylated recombinant human Interleukin-10",
-                  "PEG-rHuIL-10"
+                  "Aldara",
+                  "R 837",
+                  "S 26308",
+                  "Zyclara"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "Paclitaxel or Docetaxel and Carboplatin or Cisplatin"
+                "value": "Biopsy"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
-                "value": [
-                  "Taxol or taxotere and paraplatin or platinol"
-                ]
+                "value": "PROCEDURE"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "FOLFOX (Oxaliplatin/Leucovorin/5-Fluorouracil)"
+                "value": "Pembrolizumab"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
-                "value": "DRUG"
+                "value": "BIOLOGICAL"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
                 "value": [
-                  "Eloxatin®/Leucovorin/5-FU"
+                  "Keytruda",
+                  "Lambrolizumab",
+                  "MK-3475",
+                  "SCH 900475"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
-                "value": "gemcitabine/nab-paclitaxel"
+                "value": "Computed Tomography"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
-                "value": "DRUG"
+                "value": "PROCEDURE"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
                 "value": [
-                  "Gemzar/Abraxane ABI-007"
+                  "CAT",
+                  "CAT Scan",
+                  "Computed Axial Tomography",
+                  "Computerized Axial Tomography",
+                  "Computerized Tomography",
+                  "CT",
+                  "CT Scan"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/4/name",
-                "value": "Capecitabine"
+                "value": "Positron Emission Tomography"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/4/type",
-                "value": "DRUG"
+                "value": "PROCEDURE"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/4/otherNames",
                 "value": [
-                  "Xeloda"
+                  "Medical Imaging, Positron Emission Tomography",
+                  "PET",
+                  "PET Scan",
+                  "Positron Emission Tomography Scan",
+                  "Positron-Emission Tomography",
+                  "proton magnetic resonance spectroscopic imaging",
+                  "PT"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/5/name",
-                "value": "Pazopanib"
+                "value": "Magnetic Resonance Imaging"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/5/type",
-                "value": "DRUG"
+                "value": "PROCEDURE"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/5/otherNames",
                 "value": [
-                  "GW786034"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/6/name",
-                "value": "Pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/6/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/6/otherNames",
-                "value": [
-                  "Keytruda, MK-3475"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/7/name",
-                "value": "Paclitaxel"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/7/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/8/name",
-                "value": "nivolumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/8/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/8/otherNames",
-                "value": [
-                  "Opdivo"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/9/name",
-                "value": "Gemcitabine/carboplatin"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/9/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/9/otherNames",
-                "value": [
-                  "gemzar/paraplatin"
+                  "Magnetic Resonance",
+                  "Magnetic Resonance Imaging Scan",
+                  "Medical Imaging, Magnetic Resonance / Nuclear Magnetic Resonance",
+                  "MR",
+                  "MR Imaging",
+                  "MRI",
+                  "MRI Scan",
+                  "MRIs",
+                  "Nuclear Magnetic Resonance Imaging",
+                  "NMRI",
+                  "Structural MRI",
+                  "sMRI"
                 ]
               },
               {
                 "path": "/protocolSection/contactsLocationsModule/locations/0/country",
                 "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/1/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/2/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/3/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/4/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/5/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/6/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/7/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/8/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/9/country",
-                "value": "United States"
               }
             ],
             "missing_fields": [],
-            "nct_id": "NCT02009449",
-            "url": "https://clinicaltrials.gov/study/NCT02009449"
+            "nct_id": "NCT03276832",
+            "url": "https://clinicaltrials.gov/study/NCT03276832"
           }
         ],
         "preview_complete": false,
-        "url": "/evidence/ev_d9ac0d0d33d1bd510597feebfae29931"
+        "url": "/evidence/ev_e0e46770b9712e178724ed3d777231dd"
       },
-      "ev_dc6f559debc5f880a4a86adfa7916d98": {
+      "ev_e701c5a54b2827502fd19f7a13a7e420": {
         "contributor_count": 25,
         "citations": [
           {
@@ -3772,22 +3950,22 @@
           }
         ],
         "preview_complete": false,
-        "url": "/evidence/ev_dc6f559debc5f880a4a86adfa7916d98"
+        "url": "/evidence/ev_e701c5a54b2827502fd19f7a13a7e420"
       },
-      "ev_e9ff58e038245dc03f64fd12a9d9348b": {
-        "contributor_count": 125,
+      "ev_ffeae20cf0f7ca396ceb91b5e617a69a": {
+        "contributor_count": 9,
         "citations": [
           {
             "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
             "fields": [
               {
                 "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT01704287"
+                "value": "NCT02716077"
               },
               {
                 "path": "/protocolSection/designModule/phases",
                 "value": [
-                  "PHASE2"
+                  "NA"
                 ]
               },
               {
@@ -3797,315 +3975,7 @@
               {
                 "path": "/protocolSection/designModule/enrollmentInfo",
                 "value": {
-                  "count": 540,
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "COMPLETED"
-              },
-              {
-                "path": "/protocolSection/statusModule/startDateStruct",
-                "value": {
-                  "date": "2012-11-20",
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2012-10-11",
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "INDUSTRY",
-                  "name": "Merck Sharp & Dohme LLC"
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Malignant Melanoma"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "Pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "BIOLOGICAL"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-                "value": [
-                  "SCH 900475",
-                  "MK-3475",
-                  "KEYTRUDA®"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "Carboplatin"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
-                "value": [
-                  "PARAPLATIN®"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "Paclitaxel"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
-                "value": [
-                  "TAXOL®"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
-                "value": "Dacarbazine"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
-                "value": [
-                  "DTIC"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/4/name",
-                "value": "Temozolomide"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/4/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/4/otherNames",
-                "value": [
-                  "TEMODAR®"
-                ]
-              }
-            ],
-            "missing_fields": [],
-            "nct_id": "NCT01704287",
-            "url": "https://clinicaltrials.gov/study/NCT01704287"
-          },
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT01993719"
-              },
-              {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "PHASE2"
-                ]
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
-                "value": {
-                  "count": 33,
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/overallStatus",
-                "value": "COMPLETED"
-              },
-              {
-                "path": "/protocolSection/statusModule/startDateStruct",
-                "value": {
-                  "date": "2013-12-12",
-                  "type": "ACTUAL"
-                }
-              },
-              {
-                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
-                "value": {
-                  "date": "2013-11-25",
-                  "type": "ESTIMATED"
-                }
-              },
-              {
-                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
-                "value": {
-                  "class": "NIH",
-                  "name": "National Cancer Institute (NCI)"
-                }
-              },
-              {
-                "path": "/protocolSection/conditionsModule/conditions",
-                "value": [
-                  "Metastatic Melanoma"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "Aldesleukin"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
-                "value": [
-                  "Proleukin"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "Fludarabine"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
-                "value": [
-                  "Fludara"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "Fludarabine"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
-                "value": [
-                  "Fludara"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
-                "value": "Cyclophosphamide"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
-                "value": [
-                  "Cytoxan"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/4/name",
-                "value": "Cyclophosphamide"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/4/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/4/otherNames",
-                "value": [
-                  "Cytoxan"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/5/name",
-                "value": "Cyclophosphamide"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/5/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/5/otherNames",
-                "value": [
-                  "Cytoxan"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/6/name",
-                "value": "Young TIL"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/6/type",
-                "value": "BIOLOGICAL"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/6/otherNames",
-                "value": [
-                  "Young Tumor Infiltrating Lymphocytes"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/7/name",
-                "value": "Pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/7/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/7/otherNames",
-                "value": [
-                  "Keytruda"
-                ]
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "United States"
-              }
-            ],
-            "missing_fields": [],
-            "nct_id": "NCT01993719",
-            "url": "https://clinicaltrials.gov/study/NCT01993719"
-          },
-          {
-            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
-            "fields": [
-              {
-                "path": "/protocolSection/identificationModule/nctId",
-                "value": "NCT02054520"
-              },
-              {
-                "path": "/protocolSection/designModule/phases",
-                "value": [
-                  "PHASE2"
-                ]
-              },
-              {
-                "path": "/protocolSection/designModule/studyType",
-                "value": "INTERVENTIONAL"
-              },
-              {
-                "path": "/protocolSection/designModule/enrollmentInfo",
-                "value": {
-                  "count": 47,
+                  "count": 6,
                   "type": "ACTUAL"
                 }
               },
@@ -4116,33 +3986,105 @@
               {
                 "path": "/protocolSection/statusModule/startDateStruct",
                 "value": {
-                  "date": "2014-06"
+                  "date": "2016-03"
                 }
               },
               {
                 "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
                 "value": {
-                  "date": "2014-02-04",
+                  "date": "2016-03-23",
                   "type": "ESTIMATED"
                 }
               },
               {
                 "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
                 "value": {
-                  "class": "INDUSTRY",
-                  "name": "NewLink Genetics Corporation"
+                  "class": "OTHER",
+                  "name": "Abramson Cancer Center at Penn Medicine"
                 }
               },
               {
                 "path": "/protocolSection/conditionsModule/conditions",
                 "value": [
-                  "Stage IV Melanoma",
-                  "Metastatic Melanoma"
+                  "Clinical Stage III Nodal or Intransit Disease or Resectable Stage IV Melanoma"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
-                "value": "HyperAcute®-Melanoma (HAM) Immunotherapy"
+                "value": "FDG PET/CT imaging"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "RADIATION"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+                "value": "United States"
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT02716077",
+            "url": "https://clinicaltrials.gov/study/NCT02716077"
+          },
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT02760225"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "NA"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 18,
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "COMPLETED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2016-10-24",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2016-05-03",
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "OTHER",
+                  "name": "University Medical Center Groningen"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Melanoma",
+                  "Non-small Cell Lung Cancer"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "89Zr-Pembrolizumab"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
@@ -4151,83 +4093,141 @@
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
                 "value": [
-                  "HyperAcute®-Melanoma",
-                  "HAM",
-                  "Dorgenmeltucel-L"
+                  "Injection of 89Zr-Pembrolizumab for imaging"
                 ]
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
-                "value": "Ipilimumab"
+                "value": "89Zr-Pembrolizumab PET"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
-                "value": "DRUG"
+                "value": "DEVICE"
               },
               {
                 "path": "/protocolSection/armsInterventionsModule/interventions/1/otherNames",
                 "value": [
-                  "YERVOY",
-                  "MDX-010",
-                  "MDX-101"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
-                "value": "Pembrolizumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/2/otherNames",
-                "value": [
-                  "Keytruda"
-                ]
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
-                "value": "Nivolumab"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
-                "value": "DRUG"
-              },
-              {
-                "path": "/protocolSection/armsInterventionsModule/interventions/3/otherNames",
-                "value": [
-                  "Opdivo"
+                  "89Zr-Pembrolizumab PET scan(s)"
                 ]
               },
               {
                 "path": "/protocolSection/contactsLocationsModule/locations/0/country",
-                "value": "United States"
+                "value": "Netherlands"
               },
               {
                 "path": "/protocolSection/contactsLocationsModule/locations/1/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/2/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/3/country",
-                "value": "United States"
-              },
-              {
-                "path": "/protocolSection/contactsLocationsModule/locations/4/country",
-                "value": "United States"
+                "value": "Netherlands"
               }
             ],
             "missing_fields": [],
-            "nct_id": "NCT02054520",
-            "url": "https://clinicaltrials.gov/study/NCT02054520"
+            "nct_id": "NCT02760225",
+            "url": "https://clinicaltrials.gov/study/NCT02760225"
+          },
+          {
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "fields": [
+              {
+                "path": "/protocolSection/identificationModule/nctId",
+                "value": "NCT02922283"
+              },
+              {
+                "path": "/protocolSection/designModule/phases",
+                "value": [
+                  "NA"
+                ]
+              },
+              {
+                "path": "/protocolSection/designModule/studyType",
+                "value": "INTERVENTIONAL"
+              },
+              {
+                "path": "/protocolSection/designModule/enrollmentInfo",
+                "value": {
+                  "count": 19,
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/overallStatus",
+                "value": "TERMINATED"
+              },
+              {
+                "path": "/protocolSection/statusModule/startDateStruct",
+                "value": {
+                  "date": "2016-10-20",
+                  "type": "ACTUAL"
+                }
+              },
+              {
+                "path": "/protocolSection/statusModule/studyFirstPostDateStruct",
+                "value": {
+                  "date": "2016-10-04",
+                  "type": "ESTIMATED"
+                }
+              },
+              {
+                "path": "/protocolSection/sponsorCollaboratorsModule/leadSponsor",
+                "value": {
+                  "class": "OTHER",
+                  "name": "University Medical Center Groningen"
+                }
+              },
+              {
+                "path": "/protocolSection/conditionsModule/conditions",
+                "value": [
+                  "Melanoma"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/name",
+                "value": "IL2-PET scan"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/type",
+                "value": "DEVICE"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/0/otherNames",
+                "value": [
+                  "[18F]FB-IL2 PET scan"
+                ]
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/name",
+                "value": "Tumor biopsy"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/1/type",
+                "value": "PROCEDURE"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/name",
+                "value": "CT scan"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/2/type",
+                "value": "DEVICE"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/name",
+                "value": "Biopsy of non-target tissue"
+              },
+              {
+                "path": "/protocolSection/armsInterventionsModule/interventions/3/type",
+                "value": "PROCEDURE"
+              },
+              {
+                "path": "/protocolSection/contactsLocationsModule/locations/0/country",
+                "value": "Netherlands"
+              }
+            ],
+            "missing_fields": [],
+            "nct_id": "NCT02922283",
+            "url": "https://clinicaltrials.gov/study/NCT02922283"
           }
         ],
         "preview_complete": false,
-        "url": "/evidence/ev_e9ff58e038245dc03f64fd12a9d9348b"
+        "url": "/evidence/ev_ffeae20cf0f7ca396ceb91b5e617a69a"
       }
     }
   },

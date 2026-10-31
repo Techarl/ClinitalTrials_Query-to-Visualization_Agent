@@ -1,0 +1,27 @@
+{
+  "frozen_reference_comparison": "passed_same_source_hash",
+  "checked_at": "2026-10-31T17:36:52.233678+00:00",
+  "status": "passed",
+  "runtime": "docker-compose",
+  "api_restart_between_turns": true,
+  "source_records": 400,
+  "followup_selected_records": 27,
+  "source_data_timestamp": "2026-10-30T09:00:04",
+  "source_hash": "5fc9be4c69e6918d4aeaba930ad9082a52facf4debfbe00d771e8cbe67ad75a3",
+  "first_run_id": "run_403bcf5e40174271867d13975e976564",
+  "followup_run_id": "run_cf9450e5ba544d7d9a7056104a966681",
+  "model_calls": 2,
+  "evidence_paging": "passed",
+  "exact_source_fields": "passed",
+  "snapshot_cache_reuse": "passed",
+  "completed_resume_without_new_model_call": "passed",
+  "experiments": {
+    "decision": false,
+    "harness": false
+  },
+  "source_commit": "5344202",
+  "source_code_hash": "c67e1ac162d91e094da300953e28b438c80d00816e4fbe817eeb684f4dc773fd",
+  "fresh_volumes": true,
+  "project": "cheiron_round2_clean",
+  "verification_override": "scripts/compose.clean.yaml"
+}

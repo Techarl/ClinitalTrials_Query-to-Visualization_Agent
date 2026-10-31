@@ -1,6 +1,6 @@
 {
   "query": "Keep the same condition and drug, only Phase 3, and show the number of studies starting each year from 2015 through 2025.",
   "language": "en",
-  "session_id": "session_ced7d7054e0b416bb97b8e930c6fd510",
-  "parent_run_id": "run_93802b3175ec4d4a9af0451ca3dbcb87"
+  "session_id": "session_1fd72dc05024485ca87b6cb499a6d302",
+  "parent_run_id": "run_ee3afcacfec24d229a7ef75c2e9d5b98"
 }

@@ -48,7 +48,7 @@ Default budget is two main-model attempts with SDK retries off. Source retries h
 - ExperienceStore is disabled: no cross-task learning or experience writes.
 - TraceSink records structured events for audit and later evaluation.
 
-No experimental adapter, optimizer, self-modification process or decision-model call is shipped. Both experiment flags stay false. No silent fallback model is used.
+The HTTP service keeps both experiment flags false. Separate opt-in research commands under `experiments/` implement decision-gate replay, hybrid source-name candidates and restricted planner-harness PPC with an experience library. They are outside the service import path and cannot edit its fixed calculation/evidence layer. See [protocols and results](EXPERIMENTS.md). No silent fallback model is used.
 
 ## Validation and remaining limits
 
@@ -56,6 +56,6 @@ The deterministic path was exercised before model integration. Five actual model
 
 Tests cover paging, integrity, fixture isolation, counts, missingness, networks, evidence, follow-ups, topic changes, conflicts, bounded repair, HTTP validation and interrupted recovery. A real Chinese clarification-and-answer flow also passed.
 
-Limits: bounded source searches; no alternative-date filtering, patient data, efficacy inference or unrestricted paths; imperfect semantic/entity interpretation; synchronous execution; one worker; no authentication or retention cleanup; no frontend/scatter plot; no experiments in the default service. Native Windows/Desktop and Docker/Linux execution were tested. Container verification includes 68 regression tests, real source acquisition, evidence checks, and a successful follow-up after an API restart. The same repaired code produced five cross-disease exports and the 48-case/50-turn semantic report; preliminary and release observations are reported separately.
+Limits: bounded source searches; no alternative-date filtering, patient data, efficacy inference or unrestricted paths; imperfect semantic/entity interpretation; synchronous execution; one worker; no authentication or retention cleanup; no frontend/scatter plot; no experiments in the default service. Native Windows/Desktop and Docker/Linux execution were tested. Container verification includes 81 tests, real source acquisition, evidence checks, and a successful follow-up after an API restart. The same repaired code produced five cross-disease exports and the 48-case/50-turn semantic report; preliminary and release observations are reported separately.
 
 The user supplied the architecture, and Codex implemented and revised code, prompts, tests and docs. No implementation code was copied from similar take-home repositories. Improvements would prioritize terminology-backed interpretation, broader evaluation, large-data jobs, retention, authenticated deployment, container CI and controlled experiments.

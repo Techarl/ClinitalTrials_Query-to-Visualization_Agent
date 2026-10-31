@@ -1,15 +1,15 @@
 {
-  "checked_at": "2026-10-31T16:57:52.652486+00:00",
-  "source_commit": "ea65a0a",
-  "source_code_hash": "cb98fe01524afeddbb062ca0a6a77a24d834a4b971cea13f403e44c583291b7d",
+  "checked_at": "2026-10-31T17:37:26.933339+00:00",
+  "source_commit": "5344202",
+  "source_code_hash": "c67e1ac162d91e094da300953e28b438c80d00816e4fbe817eeb684f4dc773fd",
   "tests": {
     "name": "pytest",
     "errors": "0",
     "failures": "0",
     "skipped": "0",
-    "tests": "68",
-    "time": "10.469",
-    "timestamp": "2026-11-01T00:48:48.576507+08:00",
+    "tests": "81",
+    "time": "14.113",
+    "timestamp": "2026-11-01T01:31:55.789935+08:00",
     "hostname": "shengkai_tp_x1e"
   },
   "docker_tests": {
@@ -17,10 +17,10 @@
     "errors": "0",
     "failures": "0",
     "skipped": "0",
-    "tests": "68",
-    "time": "9.787",
-    "timestamp": "2026-10-31T16:54:26.705120+00:00",
-    "hostname": "5dc3b128c0cd"
+    "tests": "81",
+    "time": "7.723",
+    "timestamp": "2026-10-31T17:35:44.346039+00:00",
+    "hostname": "90d2c4aad848"
   },
   "frozen_examples": {
     "checks": [
@@ -74,9 +74,9 @@
       "cases": 48,
       "turns": 50,
       "semantic_plan_accuracy": {
-        "numerator": 50,
+        "numerator": 49,
         "denominator": 50,
-        "rate": 1.0
+        "rate": 0.98
       },
       "execute_plan_accuracy": {
         "numerator": 37,
@@ -100,19 +100,21 @@
       },
       "model_calls": 50,
       "recorded_model_responses": 50,
-      "input_tokens": 124809,
-      "output_tokens": 11277,
-      "sum_turn_elapsed_seconds": 250.014,
-      "failed_cases": []
+      "input_tokens": 124774,
+      "output_tokens": 11773,
+      "sum_turn_elapsed_seconds": 236.656,
+      "failed_cases": [
+        "full_site"
+      ]
     },
     "splits": {
       "development": {
         "cases": 36,
         "turns": 36,
         "semantic_plan_accuracy": {
-          "numerator": 36,
+          "numerator": 35,
           "denominator": 36,
-          "rate": 1.0
+          "rate": 0.9722
         },
         "execute_plan_accuracy": {
           "numerator": 28,
@@ -136,10 +138,12 @@
         },
         "model_calls": 36,
         "recorded_model_responses": 36,
-        "input_tokens": 89659,
-        "output_tokens": 8240,
-        "sum_turn_elapsed_seconds": 179.42,
-        "failed_cases": []
+        "input_tokens": 89636,
+        "output_tokens": 8513,
+        "sum_turn_elapsed_seconds": 170.374,
+        "failed_cases": [
+          "full_site"
+        ]
       },
       "heldout": {
         "cases": 12,
@@ -171,13 +175,20 @@
         },
         "model_calls": 14,
         "recorded_model_responses": 14,
-        "input_tokens": 35150,
-        "output_tokens": 3037,
-        "sum_turn_elapsed_seconds": 70.594,
+        "input_tokens": 35138,
+        "output_tokens": 3260,
+        "sum_turn_elapsed_seconds": 66.282,
         "failed_cases": []
       }
     }
   },
+  "baseline_for_experiments": "evals/semantic_report_ea65a0a.json",
+  "research_implementation_commit": "69bd5ea",
+  "research_reports": [
+    "evals/decision_report.json",
+    "evals/entity_retrieval_report.json",
+    "evals/harness_report.json"
+  ],
   "graph_timeout_smoke": {
     "kind": "live_neo4j_read_only_timeout_smoke",
     "requested_budget_seconds": 0.05,
@@ -186,10 +197,30 @@
     "error_code": "Neo.ClientError.Transaction.TransactionTimedOutClientConfiguration",
     "elapsed_seconds": 0.641
   },
-  "docker_runtime": "passed",
   "docker_report": "DOCKER_VALIDATION.json",
+  "clean_compose_report": "CLEAN_DOCKER_VALIDATION.json",
+  "zip_report": "ZIP_VALIDATION.json",
   "baseline_experiments": {
     "decision": false,
     "harness": false
+  },
+  "github_actions": {
+    "http_status": 200,
+    "runs": [
+      {
+        "id": 41223264181,
+        "head_sha": "69bd5eae66c700fa2c3ef24dc35fec36e1afb544",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Techarl/ClinitalTrials_Query-to-Visualization_Agent/actions/runs/41223264181"
+      },
+      {
+        "id": 41222437976,
+        "head_sha": "f3cc093b8b29e1f63e339a12034ebac101b4ea9e",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Techarl/ClinitalTrials_Query-to-Visualization_Agent/actions/runs/41222437976"
+      }
+    ]
   }
 }

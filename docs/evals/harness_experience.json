@@ -1,0 +1,194 @@
+[
+  {
+    "id": "experience_0",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "breast_sponsor",
+    "behavioral_evidence": {
+      "reference_hash": "bf408c666d14f5ef9c9b67dd5b9dc49740c98e63c424c4e0326c4595a549a0ab",
+      "probe_hashes": [
+        "bf408c666d14f5ef9c9b67dd5b9dc49740c98e63c424c4e0326c4595a549a0ab",
+        "bf408c666d14f5ef9c9b67dd5b9dc49740c98e63c424c4e0326c4595a549a0ab"
+      ],
+      "composed_hash": "bf408c666d14f5ef9c9b67dd5b9dc49740c98e63c424c4e0326c4595a549a0ab",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_1",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "hepatitis_zh",
+    "behavioral_evidence": {
+      "reference_hash": "e430e2eb682907d3031fb378e6e4729a061835d499fdb22975e3a1910665330c",
+      "probe_hashes": [
+        "e430e2eb682907d3031fb378e6e4729a061835d499fdb22975e3a1910665330c",
+        "e430e2eb682907d3031fb378e6e4729a061835d499fdb22975e3a1910665330c"
+      ],
+      "composed_hash": "e430e2eb682907d3031fb378e6e4729a061835d499fdb22975e3a1910665330c",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_2",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "compare_conditions",
+    "behavioral_evidence": {
+      "reference_hash": "dae31a1ca8804e2927b252e70051dd5f2e2a9456d7ccce5fa7b6e4502d49bfd0",
+      "probe_hashes": [
+        "dae31a1ca8804e2927b252e70051dd5f2e2a9456d7ccce5fa7b6e4502d49bfd0",
+        "dae31a1ca8804e2927b252e70051dd5f2e2a9456d7ccce5fa7b6e4502d49bfd0"
+      ],
+      "composed_hash": "dae31a1ca8804e2927b252e70051dd5f2e2a9456d7ccce5fa7b6e4502d49bfd0",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_3",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "posted_axis",
+    "behavioral_evidence": {
+      "reference_hash": "fb1044bfd4c9cef336026d9fd00b38e49b40915e70f589e6d4d5a7621e0ddf16",
+      "probe_hashes": [
+        "e1896cc30fd991d0e765f111aa071c71cbfa49543899b308e80bacb28f4f4e22",
+        "e1896cc30fd991d0e765f111aa071c71cbfa49543899b308e80bacb28f4f4e22"
+      ],
+      "composed_hash": "fb1044bfd4c9cef336026d9fd00b38e49b40915e70f589e6d4d5a7621e0ddf16",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_4",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "drug_only",
+    "behavioral_evidence": {
+      "reference_hash": "cc182117461987b43cbf29a474eae5daee6c444ffd1ed392411694a5de4b28db",
+      "probe_hashes": [
+        "cc182117461987b43cbf29a474eae5daee6c444ffd1ed392411694a5de4b28db",
+        "cc182117461987b43cbf29a474eae5daee6c444ffd1ed392411694a5de4b28db"
+      ],
+      "composed_hash": "cc182117461987b43cbf29a474eae5daee6c444ffd1ed392411694a5de4b28db",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_5",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "estimated_hist",
+    "behavioral_evidence": {
+      "reference_hash": "ed5358e69234768ae6c04ad4eeca46461750b87bae8963e2722e2ba9eb0c57ce",
+      "probe_hashes": [
+        "ed5358e69234768ae6c04ad4eeca46461750b87bae8963e2722e2ba9eb0c57ce",
+        "ed5358e69234768ae6c04ad4eeca46461750b87bae8963e2722e2ba9eb0c57ce"
+      ],
+      "composed_hash": "ed5358e69234768ae6c04ad4eeca46461750b87bae8963e2722e2ba9eb0c57ce",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_6",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "posted_bounds",
+    "behavioral_evidence": {
+      "reference_hash": "76de9a3bc3219adafba5b1bb57c34228ec539cf1b98e50b53542a8a7a3689916",
+      "probe_hashes": [
+        "76de9a3bc3219adafba5b1bb57c34228ec539cf1b98e50b53542a8a7a3689916",
+        "76de9a3bc3219adafba5b1bb57c34228ec539cf1b98e50b53542a8a7a3689916"
+      ],
+      "composed_hash": "76de9a3bc3219adafba5b1bb57c34228ec539cf1b98e50b53542a8a7a3689916",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_7",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "scatter",
+    "behavioral_evidence": {
+      "reference_hash": "92d3cd308edb6b2b1ebc56098e1114e1e1419de4f89a0235046ee040bc338b98",
+      "probe_hashes": [
+        "92d3cd308edb6b2b1ebc56098e1114e1e1419de4f89a0235046ee040bc338b98",
+        "92d3cd308edb6b2b1ebc56098e1114e1e1419de4f89a0235046ee040bc338b98"
+      ],
+      "composed_hash": "92d3cd308edb6b2b1ebc56098e1114e1e1419de4f89a0235046ee040bc338b98",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_8",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "followup_bins",
+    "behavioral_evidence": {
+      "reference_hash": "d336274fe36f049437c4db6863fa3a2ac5e38aca8878a1c46d487c0eec07f0ce",
+      "probe_hashes": [
+        "d336274fe36f049437c4db6863fa3a2ac5e38aca8878a1c46d487c0eec07f0ce",
+        "d336274fe36f049437c4db6863fa3a2ac5e38aca8878a1c46d487c0eec07f0ce"
+      ],
+      "composed_hash": "d336274fe36f049437c4db6863fa3a2ac5e38aca8878a1c46d487c0eec07f0ce",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_9",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "pending_still_unclear",
+    "behavioral_evidence": {
+      "reference_hash": "76de9a3bc3219adafba5b1bb57c34228ec539cf1b98e50b53542a8a7a3689916",
+      "probe_hashes": [
+        "76de9a3bc3219adafba5b1bb57c34228ec539cf1b98e50b53542a8a7a3689916",
+        "76de9a3bc3219adafba5b1bb57c34228ec539cf1b98e50b53542a8a7a3689916"
+      ],
+      "composed_hash": "76de9a3bc3219adafba5b1bb57c34228ec539cf1b98e50b53542a8a7a3689916",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_10",
+    "text": "No observable action or population-plan change was found between this task's H0 reference and composed execution. No accuracy improvement is demonstrated. Retain H0 when no diagnosed problem justifies an edit.",
+    "component": null,
+    "evidence_task_id": "zh_compare",
+    "behavioral_evidence": {
+      "reference_hash": "a971513bde6fd8f56529e49a0dbf9b78436a6003bc9e4f7937d24f121bdcebe1",
+      "probe_hashes": [
+        "6e117b469d9d7917e5c48b83bd9b96b4c03a5c61f0d5578ec6b1a0e17ac0df74",
+        "6e117b469d9d7917e5c48b83bd9b96b4c03a5c61f0d5578ec6b1a0e17ac0df74"
+      ],
+      "composed_hash": "a971513bde6fd8f56529e49a0dbf9b78436a6003bc9e4f7937d24f121bdcebe1",
+      "changed": false
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  },
+  {
+    "id": "experience_11",
+    "text": "Observed: the reference and both probes retained the specified condition and requested grouping across repeated clarification, did not infer an unidentified intervention, and produced a filtered plan after the intervention was named. These observations do not establish semantic correctness or higher accuracy.",
+    "component": null,
+    "evidence_task_id": "repeated_clarification",
+    "behavioral_evidence": {
+      "reference_hash": "adf2b592bb424c0927da294e5a845e0c3db420da9e58767fa161f3bb4c65a217",
+      "probe_hashes": [
+        "adf2b592bb424c0927da294e5a845e0c3db420da9e58767fa161f3bb4c65a217",
+        "eb47253368d20087dcaf69b72254e68d9df80937e13c1e39198c2b011faf35a4"
+      ],
+      "composed_hash": "eb47253368d20087dcaf69b72254e68d9df80937e13c1e39198c2b011faf35a4",
+      "changed": true
+    },
+    "status": "unlabelled_observation_not_an_accuracy_claim"
+  }
+]
