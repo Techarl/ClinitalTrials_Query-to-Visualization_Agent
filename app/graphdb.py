@@ -235,6 +235,8 @@ class GraphRepository:
         if dimension not in expressions:
             raise ValueError("Unsupported grouping dimension")
         match, expression = expressions[dimension]
+        if dimension == "country" and filters.countries:
+            match = "MATCH (r)-[:HAS_COUNTRY]->(c:Country) WHERE c.name IN $countries"
         where, params = record_predicate("r", filters)
         return self.query(
             f"MATCH (r:TrialRecord) WHERE {where} {match} RETURN {expression} AS category, collect(DISTINCT r.nct_id) AS contributors",

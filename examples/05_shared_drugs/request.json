@@ -1,0 +1,4 @@
+{
+  "query": "For melanoma studies involving pembrolizumab, show the 10 strongest sponsor-to-sponsor links through shared drug or biological interventions. Weight each link by the number of shared interventions, and include supporting studies.",
+  "language": "en"
+}

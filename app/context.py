@@ -60,15 +60,19 @@ class ContextBuilder:
             "validation_errors": errors[-5:],
         }
         serialized = json.dumps(payload, ensure_ascii=False)
-        if len(PLANNER_PROMPT) + len(serialized) > self.settings.max_context_chars:
+        instructions = harness.system_instructions or PLANNER_PROMPT
+        limit = min(
+            self.settings.max_context_chars, harness.context_char_limit or self.settings.max_context_chars
+        )
+        if len(instructions) + len(serialized) > limit:
             # Never silently remove explicit user constraints to fit a budget.
             raise ValueError(
                 "Structured context exceeds the configured budget; start a new session or narrow the request"
             )
         return {
-            "system": PLANNER_PROMPT,
+            "system": instructions,
             "payload": serialized,
             "prompt_version": harness.prompt_version,
             "field_catalog_version": harness.field_catalog_version,
-            "chars": len(PLANNER_PROMPT) + len(serialized),
+            "chars": len(instructions) + len(serialized),
         }

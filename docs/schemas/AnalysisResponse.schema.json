@@ -1,0 +1,396 @@
+{
+  "$defs": {
+    "ChartRow": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "cohort": {
+          "title": "Cohort",
+          "type": "string"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Category"
+        },
+        "year": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Year"
+        },
+        "bin_start": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bin Start"
+        },
+        "bin_end": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bin End"
+        },
+        "trial_count": {
+          "minimum": 0,
+          "title": "Trial Count",
+          "type": "integer"
+        },
+        "evidence_set_id": {
+          "title": "Evidence Set Id",
+          "type": "string"
+        },
+        "contributor_count": {
+          "minimum": 0,
+          "title": "Contributor Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "cohort",
+        "trial_count",
+        "evidence_set_id",
+        "contributor_count"
+      ],
+      "title": "ChartRow",
+      "type": "object"
+    },
+    "Encoding": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "nominal",
+            "ordinal",
+            "quantitative",
+            "temporal",
+            "identifier"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "type",
+        "title"
+      ],
+      "title": "Encoding",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "NetworkData": {
+      "additionalProperties": false,
+      "properties": {
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/NetworkNode"
+          },
+          "title": "Nodes",
+          "type": "array"
+        },
+        "edges": {
+          "items": {
+            "$ref": "#/$defs/NetworkEdge"
+          },
+          "title": "Edges",
+          "type": "array"
+        }
+      },
+      "required": [
+        "nodes",
+        "edges"
+      ],
+      "title": "NetworkData",
+      "type": "object"
+    },
+    "NetworkEdge": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "weight": {
+          "title": "Weight",
+          "type": "integer"
+        },
+        "weight_metric": {
+          "enum": [
+            "distinct_trial_count",
+            "shared_intervention_count"
+          ],
+          "title": "Weight Metric",
+          "type": "string"
+        },
+        "shared_interventions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Shared Interventions",
+          "type": "array"
+        },
+        "evidence_set_id": {
+          "title": "Evidence Set Id",
+          "type": "string"
+        },
+        "contributor_count": {
+          "title": "Contributor Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "target",
+        "weight",
+        "weight_metric",
+        "evidence_set_id",
+        "contributor_count"
+      ],
+      "title": "NetworkEdge",
+      "type": "object"
+    },
+    "NetworkNode": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "entity_type": {
+          "enum": [
+            "sponsor",
+            "intervention"
+          ],
+          "title": "Entity Type",
+          "type": "string"
+        },
+        "trial_count": {
+          "title": "Trial Count",
+          "type": "integer"
+        },
+        "evidence_set_id": {
+          "title": "Evidence Set Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "entity_type",
+        "trial_count",
+        "evidence_set_id"
+      ],
+      "title": "NetworkNode",
+      "type": "object"
+    },
+    "NetworkVisualization": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "network_graph",
+          "default": "network_graph",
+          "title": "Type",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "encoding": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Encoding"
+          },
+          "title": "Encoding",
+          "type": "object"
+        },
+        "data": {
+          "$ref": "#/$defs/NetworkData"
+        }
+      },
+      "required": [
+        "title",
+        "encoding",
+        "data"
+      ],
+      "title": "NetworkVisualization",
+      "type": "object"
+    },
+    "TabularVisualization": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "bar_chart",
+            "grouped_bar",
+            "time_series",
+            "histogram"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "encoding": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Encoding"
+          },
+          "title": "Encoding",
+          "type": "object"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/$defs/ChartRow"
+          },
+          "title": "Data",
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "title",
+        "encoding",
+        "data"
+      ],
+      "title": "TabularVisualization",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "ok",
+        "needs_clarification",
+        "unsupported",
+        "no_data",
+        "incomplete",
+        "failed"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "session_id": {
+      "title": "Session Id",
+      "type": "string"
+    },
+    "visualization": {
+      "anyOf": [
+        {
+          "discriminator": {
+            "mapping": {
+              "bar_chart": "#/$defs/TabularVisualization",
+              "grouped_bar": "#/$defs/TabularVisualization",
+              "histogram": "#/$defs/TabularVisualization",
+              "network_graph": "#/$defs/NetworkVisualization",
+              "time_series": "#/$defs/TabularVisualization"
+            },
+            "propertyName": "type"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/TabularVisualization"
+            },
+            {
+              "$ref": "#/$defs/NetworkVisualization"
+            }
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Visualization"
+    },
+    "meta": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Meta",
+      "type": "object"
+    },
+    "provenance": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Provenance",
+      "type": "object"
+    },
+    "questions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Questions",
+      "type": "array"
+    },
+    "message": {
+      "default": "",
+      "title": "Message",
+      "type": "string"
+    }
+  },
+  "required": [
+    "status",
+    "run_id",
+    "session_id"
+  ],
+  "title": "AnalysisResponse",
+  "type": "object"
+}

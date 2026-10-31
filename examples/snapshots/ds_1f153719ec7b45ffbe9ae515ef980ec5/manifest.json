@@ -1,0 +1,26 @@
+{
+  "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+  "query": {
+    "query.cond": "\"melanoma\"",
+    "query.intr": "(\"pembrolizumab\")"
+  },
+  "query_hash": "d114c41ee9fde7522f133e4c3df7a0e076e1f83944c71f63170bd4e8304efaaf",
+  "started_at": "2026-10-31T15:38:22.082735+00:00",
+  "finished_at": "2026-10-31T15:38:27.287857+00:00",
+  "source_version_before": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "source_version_after": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "expected_count": 400,
+  "retrieved_unique_count": 400,
+  "pages": 2,
+  "duplicate_count": 0,
+  "complete": true,
+  "reason": null,
+  "raw_hash": "5fc9be4c69e6918d4aeaba930ad9082a52facf4debfbe00d771e8cbe67ad75a3",
+  "schema_version": "snapshot-v1"
+}

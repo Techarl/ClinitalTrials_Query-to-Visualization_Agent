@@ -1,0 +1,204 @@
+{
+  "$defs": {
+    "Filters": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Condition"
+        },
+        "interventions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Interventions",
+          "type": "array"
+        },
+        "intervention_match": {
+          "default": "any",
+          "enum": [
+            "any",
+            "all"
+          ],
+          "title": "Intervention Match",
+          "type": "string"
+        },
+        "sponsor": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sponsor"
+        },
+        "phases": {
+          "items": {
+            "enum": [
+              "EARLY_PHASE1",
+              "PHASE1",
+              "PHASE2",
+              "PHASE3",
+              "PHASE4",
+              "NA"
+            ],
+            "type": "string"
+          },
+          "title": "Phases",
+          "type": "array"
+        },
+        "statuses": {
+          "items": {
+            "enum": [
+              "RECRUITING",
+              "NOT_YET_RECRUITING",
+              "ACTIVE_NOT_RECRUITING",
+              "ENROLLING_BY_INVITATION",
+              "COMPLETED",
+              "SUSPENDED",
+              "TERMINATED",
+              "WITHDRAWN",
+              "UNKNOWN",
+              "AVAILABLE",
+              "NO_LONGER_AVAILABLE",
+              "TEMPORARILY_NOT_AVAILABLE",
+              "APPROVED_FOR_MARKETING",
+              "WITHHELD"
+            ],
+            "type": "string"
+          },
+          "title": "Statuses",
+          "type": "array"
+        },
+        "countries": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Countries",
+          "type": "array"
+        },
+        "start_year": {
+          "anyOf": [
+            {
+              "maximum": 2200,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Year"
+        },
+        "end_year": {
+          "anyOf": [
+            {
+              "maximum": 2200,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Year"
+        },
+        "enrollment_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "ACTUAL",
+                "ESTIMATED"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Enrollment Type"
+        }
+      },
+      "title": "Filters",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "query": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Query",
+      "type": "string"
+    },
+    "filters": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Filters"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "session_id": {
+      "anyOf": [
+        {
+          "pattern": "^[a-zA-Z0-9_-]{1,80}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Session Id"
+    },
+    "parent_run_id": {
+      "anyOf": [
+        {
+          "pattern": "^[a-zA-Z0-9_-]{1,80}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Run Id"
+    },
+    "language": {
+      "default": "en",
+      "enum": [
+        "zh",
+        "en"
+      ],
+      "title": "Language",
+      "type": "string"
+    }
+  },
+  "required": [
+    "query"
+  ],
+  "title": "AnalysisRequest",
+  "type": "object"
+}

@@ -384,7 +384,7 @@ class AnalysisEngine:
             "completeness": "complete",
             "source_semantics": "Official ClinicalTrials.gov condition/intervention/lead-sponsor search; other filters use snapshot fields.",
             "metric_definition": "Distinct NCT IDs per category; multi-valued categories may overlap.",
-            "country_policy": "A country count includes studies listing any site there. Study-level RECRUITING does not imply each site is recruiting.",
+            "country_policy": "A country count includes studies listing any site there. Country filters also restrict country-chart categories. Study-level RECRUITING does not imply each site is recruiting.",
             "phase_policy": "Combined phases remain one combined category. Missing phases are Not reported.",
             "date_policy": "Year filters always use study start year; time-series x-axis uses the declared time_field. Actual and estimated start dates are included.",
             "enrollment_policy": "Missing enrollment excluded; actual/estimated values retained and optionally filtered. Histogram bins are left-closed/right-open; last bin is right-closed.",

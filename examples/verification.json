@@ -1,0 +1,41 @@
+{
+  "checks": [
+    {
+      "example": "01_phases",
+      "status": "verified",
+      "exact_fields_checked": 14682,
+      "evidence_sets": 9,
+      "source_records": 400
+    },
+    {
+      "example": "02_followup_trend",
+      "status": "verified",
+      "exact_fields_checked": 3276,
+      "evidence_sets": 11,
+      "source_records": 400
+    },
+    {
+      "example": "03_comparison",
+      "status": "verified",
+      "exact_fields_checked": 32195,
+      "evidence_sets": 18,
+      "source_records": 796
+    },
+    {
+      "example": "04_enrollment",
+      "status": "verified",
+      "exact_fields_checked": 14657,
+      "evidence_sets": 8,
+      "source_records": 400
+    },
+    {
+      "example": "05_shared_drugs",
+      "status": "verified",
+      "exact_fields_checked": 6513,
+      "evidence_sets": 18,
+      "source_records": 400
+    }
+  ],
+  "network_or_database_calls": 0,
+  "model_calls": 0
+}

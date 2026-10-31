@@ -1,0 +1,37 @@
+[
+  {
+    "name": "01_phases",
+    "status": "ok",
+    "run_id": "run_07e8965732d445c88e329ca59843fb2b",
+    "chart_type": "bar_chart",
+    "model_calls": 1
+  },
+  {
+    "name": "02_followup_trend",
+    "status": "ok",
+    "run_id": "run_eefc2afd83ed4c19bb2b916cdc85f3cc",
+    "chart_type": "time_series",
+    "model_calls": 1
+  },
+  {
+    "name": "03_comparison",
+    "status": "ok",
+    "run_id": "run_350328b27c8d4153b2982c9563dafe9d",
+    "chart_type": "grouped_bar",
+    "model_calls": 1
+  },
+  {
+    "name": "04_enrollment",
+    "status": "ok",
+    "run_id": "run_34bccc065a4447b6a249669a0d8f1e78",
+    "chart_type": "histogram",
+    "model_calls": 1
+  },
+  {
+    "name": "05_shared_drugs",
+    "status": "ok",
+    "run_id": "run_6ff7df9575b24f7596d03a8a50306c41",
+    "chart_type": "network_graph",
+    "model_calls": 1
+  }
+]

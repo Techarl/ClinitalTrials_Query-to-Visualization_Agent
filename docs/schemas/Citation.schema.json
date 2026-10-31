@@ -1,0 +1,60 @@
+{
+  "$defs": {
+    "JsonValue": {},
+    "SourceField": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/$defs/JsonValue"
+        }
+      },
+      "required": [
+        "path",
+        "value"
+      ],
+      "title": "SourceField",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "dataset_id": {
+      "title": "Dataset Id",
+      "type": "string"
+    },
+    "nct_id": {
+      "title": "Nct Id",
+      "type": "string"
+    },
+    "url": {
+      "title": "Url",
+      "type": "string"
+    },
+    "fields": {
+      "items": {
+        "$ref": "#/$defs/SourceField"
+      },
+      "title": "Fields",
+      "type": "array"
+    },
+    "missing_fields": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Missing Fields",
+      "type": "array"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "nct_id",
+    "url",
+    "fields"
+  ],
+  "title": "Citation",
+  "type": "object"
+}

@@ -148,3 +148,43 @@ def test_explicit_conflict_and_cross_session_parent_are_blocked(tmp_path):
     except StateConflict:
         pass
     runner.close()
+
+
+def test_replaceable_policy_can_request_clarification_without_executing(tmp_path):
+    class ClarifyPolicy:
+        def evaluate(self, decision, context):
+            assert context["request"]["query"] == "melanoma phases"
+            return PlannerDecision(action="clarify", mode="new", questions=["Which population?"])
+
+    runner, service, _ = setup_runner(tmp_path, [PlannerDecision(action="execute", mode="new", plan=plan())])
+    runner.policy = ClarifyPolicy()
+    result = runner.analyze(AnalysisRequest(query="melanoma phases"))
+    assert result.status == "needs_clarification"
+    assert service.executed == []
+    runner.close()
+
+
+def test_harness_context_override_cannot_expand_the_hard_budget(tmp_path):
+    import pytest
+
+    from app.context import ContextBuilder
+    from app.extensions import HarnessConfig
+
+    settings = Settings(_env_file=None, app_data_dir=tmp_path, max_context_chars=8000)
+    builder = ContextBuilder(settings)
+    package = builder.build(
+        "planner",
+        AnalysisRequest(query="melanoma phases"),
+        {},
+        HarnessConfig(system_instructions="Alternate test instructions"),
+        [],
+    )
+    assert package["system"] == "Alternate test instructions"
+    with pytest.raises(ValueError, match="budget"):
+        builder.build(
+            "planner",
+            AnalysisRequest(query="melanoma phases"),
+            {},
+            HarnessConfig(system_instructions="x" * 9000, context_char_limit=100000),
+            [],
+        )

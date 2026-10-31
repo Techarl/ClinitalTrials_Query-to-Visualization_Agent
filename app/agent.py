@@ -16,8 +16,11 @@ from app.context import ContextBuilder
 from app.extensions import (
     BaselineDecisionPolicy,
     BaselineHarnessProvider,
+    DecisionPolicy,
     DisabledExperienceStore,
+    HarnessProvider,
     ListTraceSink,
+    resolve_plan,
 )
 from app.models import AnalysisPlan, AnalysisRequest, AnalysisResponse, PlannerDecision
 from app.providers import GenerationClient, GenerationFailure, OpenAIGenerationClient
@@ -43,14 +46,20 @@ class RunState(TypedDict, total=False):
 
 class AgentRunner:
     def __init__(
-        self, settings: Settings, service: AnalysisService, generator: GenerationClient | None = None
+        self,
+        settings: Settings,
+        service: AnalysisService,
+        generator: GenerationClient | None = None,
+        *,
+        policy: DecisionPolicy | None = None,
+        harness_provider: HarnessProvider | None = None,
     ):
         self.settings, self.service = settings, service
         self.generator = generator or OpenAIGenerationClient(settings)
         self.context = ContextBuilder(settings)
-        self.harness = BaselineHarnessProvider().load(settings.harness_version)
+        self.harness = (harness_provider or BaselineHarnessProvider()).load(settings.harness_version)
         self.experiences = DisabledExperienceStore()
-        self.policy = BaselineDecisionPolicy()
+        self.policy = policy or BaselineDecisionPolicy()
         self.connection = sqlite3.connect(
             settings.data_directory / "checkpoints.sqlite3", check_same_thread=False
         )
@@ -102,10 +111,30 @@ class AgentRunner:
 
     def _plan(self, state: RunState) -> dict:
         trace = list(state["trace"])
-        if state["calls"] >= self.settings.max_model_calls or time.time() >= state["deadline_epoch"]:
+        attempted = state["calls"]
+        recorded = self.service.store.run(state["run_id"])
+        if recorded:
+            persisted_attempts = max(
+                (event.get("call", 0) for event in recorded["trace"] if event["stage"] == "planner_request"),
+                default=0,
+            )
+            if persisted_attempts > attempted:
+                attempted = persisted_attempts
+                trace = list(recorded["trace"])
+                trace.append(
+                    {
+                        "stage": "recovered_unknown_model_outcome",
+                        "at": utc_now(),
+                        "call": attempted,
+                        "usage_unknown": True,
+                    }
+                )
+        if attempted >= self.settings.max_model_calls or time.time() >= state["deadline_epoch"]:
             return {
                 "response": self._response(state, "failed", "Planning budget exhausted."),
                 "decision": None,
+                "calls": attempted,
+                "trace": trace,
             }
         request = AnalysisRequest.model_validate(state["request"])
         package = self.context.build(
@@ -115,7 +144,7 @@ class AgentRunner:
             self.harness,
             state["repair_errors"],
         )
-        calls = state["calls"] + 1
+        calls = attempted + 1
         sink = ListTraceSink(trace)
         sink.record(
             {
@@ -199,19 +228,25 @@ class AgentRunner:
                 return {"response": self._response(state, "failed", "Plan repair budget exhausted.")}
             return {}
         decision = PlannerDecision.model_validate(state["decision"])
+        decision = self.policy.evaluate(decision, {"request": state["request"], "session": state["session"]})
+        decision = PlannerDecision.model_validate(decision)
         if decision.action == "unsupported":
-            return {"response": self._response(state, "unsupported", decision.explanation)}
+            return {
+                "response": self._response(state, "unsupported", decision.explanation),
+                "decision": decision.model_dump(),
+            }
         if decision.action == "clarify":
             if decision.questions:
                 return {
                     "response": self._response(
                         state, "needs_clarification", decision.explanation, decision.questions
-                    )
+                    ),
+                    "decision": decision.model_dump(),
                 }
         try:
             previous = state["session"].get("last_successful_plan")
             previous = AnalysisPlan.model_validate(previous) if previous else None
-            plan = self.policy.evaluate(decision, previous)
+            plan = resolve_plan(decision, previous)
             if plan is None:
                 raise ValueError("Execution requires a validated plan")
             request = AnalysisRequest.model_validate(state["request"])
@@ -240,7 +275,7 @@ class AgentRunner:
                 }
             for cohort in plan.cohorts:
                 source_query(cohort.filters)
-            return {"plan": plan.model_dump(), "repair_errors": []}
+            return {"plan": plan.model_dump(), "repair_errors": [], "decision": decision.model_dump()}
         except ValueError as error:
             if state["calls"] >= self.settings.max_model_calls:
                 return {
@@ -260,6 +295,8 @@ class AgentRunner:
     def _execute(self, state: RunState) -> dict:
         trace = list(state["trace"])
         try:
+            if time.time() >= state["deadline_epoch"]:
+                raise TimeoutError("Original run deadline expired")
             plan = AnalysisPlan.model_validate(state["plan"])
             response = self.service.execute_plan(
                 plan, state["run_id"], state["session_id"], trace, self._deadline(state)
@@ -295,6 +332,7 @@ class AgentRunner:
                 "python_version": platform.python_version(),
                 "model_calls": state["calls"],
                 "model_usage": metadata,
+                "usage_complete": not any(event.get("usage_unknown") for event in trace),
                 "experiments": {"decision": False, "harness": False},
                 "langgraph_thread_id": state["run_id"],
             }

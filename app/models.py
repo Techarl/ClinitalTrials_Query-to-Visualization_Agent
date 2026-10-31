@@ -158,6 +158,8 @@ class AnalysisRequest(Contract):
 
 
 class SourceField(Contract):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=False)
+
     path: str
     value: JsonValue
 
@@ -230,6 +232,9 @@ Visualization = Annotated[TabularVisualization | NetworkVisualization, Field(dis
 
 
 class AnalysisResponse(Contract):
+    # Request-oriented trimming must not alter verbatim provenance values.
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=False)
+
     status: Literal["ok", "needs_clarification", "unsupported", "no_data", "incomplete", "failed"]
     run_id: str
     session_id: str

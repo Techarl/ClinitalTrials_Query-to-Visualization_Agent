@@ -1,0 +1,4 @@
+{
+  "query": "Show a histogram of enrollment counts for melanoma studies involving pembrolizumab, using 8 equal-width bins. Include actual and estimated enrollment.",
+  "language": "en"
+}

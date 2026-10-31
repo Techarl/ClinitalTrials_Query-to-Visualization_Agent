@@ -1,0 +1,101 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "dataset_id": {
+      "title": "Dataset Id",
+      "type": "string"
+    },
+    "query": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Query",
+      "type": "object"
+    },
+    "query_hash": {
+      "title": "Query Hash",
+      "type": "string"
+    },
+    "started_at": {
+      "title": "Started At",
+      "type": "string"
+    },
+    "finished_at": {
+      "title": "Finished At",
+      "type": "string"
+    },
+    "source_version_before": {
+      "additionalProperties": true,
+      "title": "Source Version Before",
+      "type": "object"
+    },
+    "source_version_after": {
+      "additionalProperties": true,
+      "title": "Source Version After",
+      "type": "object"
+    },
+    "expected_count": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expected Count"
+    },
+    "retrieved_unique_count": {
+      "default": 0,
+      "title": "Retrieved Unique Count",
+      "type": "integer"
+    },
+    "pages": {
+      "default": 0,
+      "title": "Pages",
+      "type": "integer"
+    },
+    "duplicate_count": {
+      "default": 0,
+      "title": "Duplicate Count",
+      "type": "integer"
+    },
+    "complete": {
+      "default": false,
+      "title": "Complete",
+      "type": "boolean"
+    },
+    "reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reason"
+    },
+    "raw_hash": {
+      "title": "Raw Hash",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "snapshot-v1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "query",
+    "query_hash",
+    "started_at",
+    "finished_at",
+    "raw_hash"
+  ],
+  "title": "Snapshot",
+  "type": "object"
+}

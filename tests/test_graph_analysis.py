@@ -93,6 +93,17 @@ def test_zero_enrollment_is_not_missing(graph_data):
     assert meta["excluded_missing_values"] == 1
 
 
+def test_country_filter_selects_cohort_and_country_chart_categories(graph_data):
+    (visual, meta, _, _), _, _ = execute(
+        graph_data,
+        operation="category",
+        group_by="country",
+        filters=Filters(condition="synthetic fixture", countries=["Canada"]),
+    )
+    assert {row.category: row.trial_count for row in visual.data} == {"Canada": 1}
+    assert meta["cohorts"][0]["selected_trial_count"] == 1
+
+
 def test_time_series_has_zero_buckets_and_missing_dates_are_excluded(graph_data):
     (visual, meta, _, _), _, _ = execute(graph_data, operation="time_series")
     assert [(row.year, row.trial_count) for row in visual.data] == [(2020, 1), (2021, 0), (2022, 1)]

@@ -1,0 +1,26 @@
+{
+  "dataset_id": "ds_7ed156da326c493cbea540af6f2bbeab",
+  "query": {
+    "query.cond": "\"melanoma\"",
+    "query.intr": "(\"nivolumab\")"
+  },
+  "query_hash": "edddd0eec65887048acb274a20c5182c8511b041b51b8ddd76f0efef84df465f",
+  "started_at": "2026-10-31T15:49:25.650919+00:00",
+  "finished_at": "2026-10-31T15:49:33.762027+00:00",
+  "source_version_before": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "source_version_after": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "expected_count": 396,
+  "retrieved_unique_count": 396,
+  "pages": 2,
+  "duplicate_count": 0,
+  "complete": true,
+  "reason": null,
+  "raw_hash": "721f37373c2972a3b27f2c03d80c321341c98489470da87b0d6bf30ffb1d34b3",
+  "schema_version": "snapshot-v1"
+}

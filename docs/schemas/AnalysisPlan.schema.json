@@ -1,0 +1,259 @@
+{
+  "$defs": {
+    "Cohort": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,40}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "filters": {
+          "$ref": "#/$defs/Filters"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "filters"
+      ],
+      "title": "Cohort",
+      "type": "object"
+    },
+    "Filters": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Condition"
+        },
+        "interventions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Interventions",
+          "type": "array"
+        },
+        "intervention_match": {
+          "default": "any",
+          "enum": [
+            "any",
+            "all"
+          ],
+          "title": "Intervention Match",
+          "type": "string"
+        },
+        "sponsor": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sponsor"
+        },
+        "phases": {
+          "items": {
+            "enum": [
+              "EARLY_PHASE1",
+              "PHASE1",
+              "PHASE2",
+              "PHASE3",
+              "PHASE4",
+              "NA"
+            ],
+            "type": "string"
+          },
+          "title": "Phases",
+          "type": "array"
+        },
+        "statuses": {
+          "items": {
+            "enum": [
+              "RECRUITING",
+              "NOT_YET_RECRUITING",
+              "ACTIVE_NOT_RECRUITING",
+              "ENROLLING_BY_INVITATION",
+              "COMPLETED",
+              "SUSPENDED",
+              "TERMINATED",
+              "WITHDRAWN",
+              "UNKNOWN",
+              "AVAILABLE",
+              "NO_LONGER_AVAILABLE",
+              "TEMPORARILY_NOT_AVAILABLE",
+              "APPROVED_FOR_MARKETING",
+              "WITHHELD"
+            ],
+            "type": "string"
+          },
+          "title": "Statuses",
+          "type": "array"
+        },
+        "countries": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Countries",
+          "type": "array"
+        },
+        "start_year": {
+          "anyOf": [
+            {
+              "maximum": 2200,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Year"
+        },
+        "end_year": {
+          "anyOf": [
+            {
+              "maximum": 2200,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Year"
+        },
+        "enrollment_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "ACTUAL",
+                "ESTIMATED"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Enrollment Type"
+        }
+      },
+      "title": "Filters",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "operation": {
+      "enum": [
+        "category",
+        "time_series",
+        "histogram",
+        "network"
+      ],
+      "title": "Operation",
+      "type": "string"
+    },
+    "cohorts": {
+      "items": {
+        "$ref": "#/$defs/Cohort"
+      },
+      "maxItems": 4,
+      "minItems": 1,
+      "title": "Cohorts",
+      "type": "array"
+    },
+    "group_by": {
+      "default": "phase",
+      "enum": [
+        "phase",
+        "status",
+        "country",
+        "sponsor",
+        "sponsor_class",
+        "intervention_type",
+        "study_type"
+      ],
+      "title": "Group By",
+      "type": "string"
+    },
+    "time_field": {
+      "default": "start_year",
+      "enum": [
+        "start_year",
+        "first_posted_year"
+      ],
+      "title": "Time Field",
+      "type": "string"
+    },
+    "relationship": {
+      "default": "sponsor_drug",
+      "enum": [
+        "sponsor_drug",
+        "drug_cooccurrence",
+        "sponsor_shared_drug"
+      ],
+      "title": "Relationship",
+      "type": "string"
+    },
+    "histogram_bins": {
+      "default": 10,
+      "maximum": 50,
+      "minimum": 1,
+      "title": "Histogram Bins",
+      "type": "integer"
+    },
+    "top_n": {
+      "default": 20,
+      "maximum": 100,
+      "minimum": 1,
+      "title": "Top N",
+      "type": "integer"
+    },
+    "title": {
+      "default": "Clinical trial analysis",
+      "maxLength": 240,
+      "title": "Title",
+      "type": "string"
+    },
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 20,
+      "title": "Assumptions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "operation",
+    "cohorts"
+  ],
+  "title": "AnalysisPlan",
+  "type": "object"
+}
