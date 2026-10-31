@@ -112,6 +112,10 @@ def test_valid_synthetic_exports_pass_full_oracle(tmp_path, studies, operation):
         "no_citation_fields",
         "source_field",
         "cohort_filters",
+        "encoding_field",
+        "network_encoding",
+        "completeness_meta",
+        "missing_meta",
         "status",
         "missing_zero_year",
         "bin_boundary",
@@ -126,7 +130,11 @@ def test_valid_synthetic_exports_pass_full_oracle(tmp_path, studies, operation):
     ],
 )
 def test_schema_valid_corruption_is_rejected(tmp_path, studies, mutation):
-    network = mutation.startswith(("node_", "edge_")) or mutation in ("endpoint", "role_contributors")
+    network = mutation.startswith(("node_", "edge_")) or mutation in (
+        "endpoint",
+        "role_contributors",
+        "network_encoding",
+    )
     operation = (
         "network"
         if network
@@ -164,6 +172,12 @@ def test_schema_valid_corruption_is_rejected(tmp_path, studies, mutation):
             citation["fields"][0]["value"] = "fabricated"
     elif mutation == "cohort_filters":
         data["meta"]["cohorts"][0]["filters"]["phases"] = ["PHASE3"]
+    elif mutation in ("encoding_field", "network_encoding"):
+        data["visualization"]["encoding"]["weight" if network else "x"]["field"] = "fabricated_field"
+    elif mutation == "completeness_meta":
+        data["meta"]["completeness"] = "incomplete"
+    elif mutation == "missing_meta":
+        data["meta"]["cohorts"][0]["missing_start_year"] = 0
     elif mutation == "status":
         data["status"] = "no_data"
     elif mutation == "missing_zero_year":
@@ -205,3 +219,24 @@ def test_all_missing_enrollment_reports_exclusion_without_zero_imputation(tmp_pa
     assert response.meta["excluded_missing_values"] == 3
     assert response.meta["cohorts"][0]["missing_enrollment"] == 3
     assert verify(folder, tmp_path)["status"] == "verified"
+
+
+def test_no_data_cannot_hide_unreferenced_evidence(tmp_path, studies):
+    raw = deepcopy(studies)
+    for study in raw:
+        study["protocolSection"]["designModule"].pop("enrollmentInfo", None)
+    folder, response = build_export(tmp_path, raw, "histogram")
+    response.provenance["evidence"] = {
+        "ev_fake": {
+            "contributor_count": 0,
+            "citations": [],
+            "preview_complete": True,
+            "url": "/evidence/ev_fake",
+        }
+    }
+    (folder / "response.json").write_text(response.model_dump_json(), encoding="utf-8")
+    (folder / "response.evidence.json").write_text(
+        json.dumps({"ev_fake": {"rule": {}, "total_contributors": 0, "citations": []}}), encoding="utf-8"
+    )
+    with pytest.raises(AssertionError):
+        verify(folder, tmp_path)

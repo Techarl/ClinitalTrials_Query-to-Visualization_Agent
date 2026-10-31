@@ -1,0 +1,10 @@
+# Optional isolated verification project. Use with compose.yaml and -p cheiron_round2_clean.
+# Requires Docker Compose 2.24.4+ for !override.
+services:
+  neo4j:
+    ports: !override
+      - "127.0.0.1:7476:7474"
+      - "127.0.0.1:7689:7687"
+  api:
+    ports: !override
+      - "127.0.0.1:8011:8000"

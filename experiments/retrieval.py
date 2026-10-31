@@ -6,7 +6,7 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from openai import OpenAI
+from openai import APIError, OpenAI
 
 from app.sources import content_hash
 
@@ -43,9 +43,15 @@ class Embeddings:
         pairs = list(missing.items())
         for offset in range(0, len(pairs), 100):
             batch = pairs[offset : offset + 100]
-            response = self.client.embeddings.create(
-                model=self.model, input=[text for _, text in batch], dimensions=self.dimensions, timeout=60
-            )
+            try:
+                response = self.client.embeddings.create(
+                    model=self.model,
+                    input=[text for _, text in batch],
+                    dimensions=self.dimensions,
+                    timeout=60,
+                )
+            except APIError as error:
+                raise RuntimeError(f"Embedding API failed ({type(error).__name__})") from None
             assert len(response.data) == len(batch)
             for item in response.data:
                 vector = item.embedding

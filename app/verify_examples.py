@@ -60,6 +60,8 @@ def verify(folder: Path, root: Path) -> dict:
     response = AnalysisResponse.model_validate_json((folder / "response.json").read_text(encoding="utf-8"))
     assert response.status in ("ok", "no_data"), "Only completed analyses can be verified"
     plan = AnalysisPlan.model_validate(response.meta["plan"]).model_dump()
+    assert response.meta["completeness"] == "complete"
+    assert response.meta["source_truncated"] is False
     manifests, raw_by_dataset = {}, {}
     for manifest in response.provenance["datasets"]:
         dataset_id = manifest["dataset_id"]
@@ -92,6 +94,21 @@ def verify(folder: Path, root: Path) -> dict:
             for r in records
         )
         records_by_cohort[cohort["label"]] = records
+        assert actual["missing_start_year"] == sum(
+            not r["protocolSection"].get("statusModule", {}).get("startDateStruct", {}).get("date")
+            for r in records
+        )
+        assert actual["estimated_start_dates"] == sum(
+            r["protocolSection"].get("statusModule", {}).get("startDateStruct", {}).get("type") == "ESTIMATED"
+            for r in records
+        )
+        assert actual["enrollment_types"] == {
+            kind: sum(
+                r["protocolSection"].get("designModule", {}).get("enrollmentInfo", {}).get("type") == kind
+                for r in records
+            )
+            for kind in ("ACTUAL", "ESTIMATED")
+        }
         dataset_by_label[cohort["label"]] = dataset_id
     assert set(manifests) == set(dataset_by_label.values())
     evidence_path = folder / "response.evidence.json"
@@ -170,6 +187,30 @@ def verify(folder: Path, root: Path) -> dict:
         )
 
     visual = response.visualization
+    if visual is not None:
+        if plan["operation"] == "network":
+            channels = {
+                "node_id": ("id", "identifier"),
+                "node_label": ("label", "nominal"),
+                "node_type": ("entity_type", "nominal"),
+                "source": ("source", "identifier"),
+                "target": ("target", "identifier"),
+                "weight": ("weight", "quantitative"),
+            }
+        elif plan["operation"] == "histogram":
+            channels = {
+                "x": ("bin_start", "quantitative"),
+                "x2": ("bin_end", "quantitative"),
+                "y": ("trial_count", "quantitative"),
+                "series": ("cohort", "nominal"),
+            }
+        else:
+            channels = {
+                "x": ("year" if plan["operation"] == "time_series" else "category", "ordinal"),
+                "y": ("trial_count", "quantitative"),
+                "series": ("cohort", "nominal"),
+            }
+        assert {key: (value.field, value.type) for key, value in visual.encoding.items()} == channels
     if plan["operation"] != "network":
         expected, clipping, missing = expected_table(plan, records_by_cohort)
         has_data = any(item["ids"] for item in expected)
@@ -266,8 +307,7 @@ def verify(folder: Path, root: Path) -> dict:
         else:
             assert visual is None
     assert response.meta["presentation_clipping"] == clipping
-    if response.status == "ok":
-        assert used == set(evidence), "Unreferenced or missing evidence sets"
+    assert used == set(evidence), "Unreferenced or missing evidence sets"
     return {
         "example": folder.name,
         "status": "verified",

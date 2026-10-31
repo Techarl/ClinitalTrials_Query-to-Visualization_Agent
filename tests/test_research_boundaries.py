@@ -134,3 +134,25 @@ def test_unchanged_outputs_are_negative_experience_not_an_improvement():
     assert entry["component"] is None
     assert entry["behavioral_evidence"]["changed"] is False
     assert "No accuracy improvement" in entry["text"]
+
+
+def test_research_editor_failure_cannot_echo_provider_error_body(monkeypatch):
+    import traceback
+
+    from openai import APIError
+
+    from experiments.harness import HarnessEdit, generate
+
+    def fail(*args):
+        raise APIError(
+            "SENSITIVE_ERROR_MARKER",
+            request=httpx.Request("POST", "https://example.invalid"),
+            body={"echo": "SENSITIVE_ERROR_MARKER"},
+        )
+
+    monkeypatch.setattr("experiments.harness._generate", fail)
+    budget = Budget()
+    with pytest.raises(RuntimeError) as caught:
+        generate(None, budget, "fixed", {}, HarnessEdit)
+    assert "SENSITIVE_ERROR_MARKER" not in "".join(traceback.format_exception(caught.value))
+    assert budget.events[0]["status"] == "attempted_usage_unknown"

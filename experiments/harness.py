@@ -11,7 +11,7 @@ import json
 import time
 from pathlib import Path
 
-from openai import OpenAI
+from openai import APIError, OpenAI
 from pydantic import BaseModel, Field
 
 from app.agent import AgentRunner
@@ -136,6 +136,13 @@ def generate(settings, budget, instructions, payload, schema):
     text = json.dumps(payload, ensure_ascii=False)
     event = budget.before(len((instructions + text).encode("utf-8")))
     started = time.monotonic()
+    try:
+        return _generate(settings, budget, instructions, text, schema, event, started)
+    except APIError as error:
+        raise RuntimeError(f"Research editor API failed ({type(error).__name__})") from None
+
+
+def _generate(settings, budget, instructions, text, schema, event, started):
     with OpenAI(
         api_key=settings.openai_api_key.get_secret_value(),
         base_url=str(settings.openai_base_url),
@@ -300,9 +307,18 @@ def main():
     parser.add_argument("--limit", type=int, default=12)
     parser.add_argument("--live", action="store_true")
     parser.add_argument("--max-estimated-usd", type=float, default=20)
+    parser.add_argument(
+        "--include-transcript-diagnostic",
+        action="store_true",
+        help="Include multi-turn full-transcript replay as diagnostic only",
+    )
     args = parser.parse_args()
     document = json.loads((PROJECT_ROOT / "docs/evals/semantic_cases.json").read_text(encoding="utf-8"))
-    cases = [c for c in document["cases"] if c["split"] == args.split][: args.limit]
+    cases = [
+        c
+        for c in document["cases"]
+        if c["split"] == args.split and (len(c["turns"]) == 1 or args.include_transcript_diagnostic)
+    ][: args.limit]
     if not args.live:
         print(
             json.dumps(

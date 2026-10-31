@@ -55,8 +55,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-url", default="http://127.0.0.1:8000")
     parser.add_argument("--restart-api", action="store_true")
+    parser.add_argument("--compose-project", help="Optional isolated Compose project to restart")
+    parser.add_argument("--output-dir", type=Path, default=ROOT / "data")
     args = parser.parse_args()
-    output = ROOT / "data"
+    output = args.output_dir
     output.mkdir(exist_ok=True)
     with httpx.Client(base_url=args.base_url, timeout=330) as client:
         wait_for_health(client)
@@ -105,7 +107,10 @@ def main():
             flush=True,
         )
         if args.restart_api:
-            subprocess.run(["docker", "compose", "restart", "api"], cwd=ROOT, check=True, capture_output=True)
+            command = ["docker", "compose"]
+            if args.compose_project:
+                command.extend(["-p", args.compose_project])
+            subprocess.run([*command, "restart", "api"], cwd=ROOT, check=True, capture_output=True)
             wait_for_health(client)
         followup_http = client.post(
             "/analyze",
