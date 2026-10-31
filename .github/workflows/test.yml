@@ -32,7 +32,7 @@ jobs:
       - run: pip install -r requirements.lock
       - run: pip install --no-deps -e .
       - run: python -m pip check
-      - run: python -m ruff check app tests scripts
+      - run: python -m ruff check app tests scripts experiments
       - run: python -m pytest -q --live-neo4j
       - run: python -m app.verify_examples
       - run: python -m app.semantic_eval
