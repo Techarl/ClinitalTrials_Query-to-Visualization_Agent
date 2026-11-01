@@ -15,4 +15,4 @@ Semantic planning, source/number verification, and experimental runtime observat
 
 The decision report's baseline hash refers to the archived semantic report before two archival annotation fields (`source_commit`, `source_code_hashes`) were added. Removing only those fields reproduces the original decision baseline hash. The harness baseline hash matches the full archived file. Contexts, plans and usage are identical; expected answers are only consumed by the scorer.
 
-The final offline checker additionally verifies rendering field mappings, metadata and unreferenced evidence on empty results. Its 26 corruption cases must fail. See [validation](../VALIDATION.json), [review response](../ROUND2_REVIEW_RESPONSE.zh-CN.md), [experiment methods](../EXPERIMENTS.md), and [recorded API usage](../API_USAGE.json).
+The final offline checker additionally verifies rendering field mappings, metadata and unreferenced evidence on empty results. Its 26 corruption cases must fail. See [validation](../VALIDATION.json), [design and verification](../DESIGN.md), [experiment methods](../EXPERIMENTS.md), and [recorded API usage](../API_USAGE.json).

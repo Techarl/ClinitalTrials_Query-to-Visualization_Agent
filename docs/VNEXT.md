@@ -1,6 +1,6 @@
 # VNext analysis workspace
 
-V2 adds an observation-driven agent and a React/TypeScript/ECharts client while retaining the v1 API and historical examples. The [implementation record](VNEXT_PROGRESS.md) records historical acceptance runs. See the newer [review work](REVIEW_AND_PUBLIC_EVAL_PROGRESS.md), [UI acceptance](UI_REVIEW_FIXES.md), and [public evaluation guide](PUBLIC_EVALUATION.md); the earlier [research results](VNEXT_RESEARCH.md) remain preserved separately.
+V2 adds an observation-driven agent and a React/TypeScript/ECharts client while retaining the v1 API and historical examples. See [release source validation](release/source-validation.json), [UI acceptance](UI_REVIEW_FIXES.md), and the [public evaluation guide](PUBLIC_EVALUATION.md). The earlier [research results](VNEXT_RESEARCH.md) retain their original execution versions and limits.
 
 ## Start the workspace
 
