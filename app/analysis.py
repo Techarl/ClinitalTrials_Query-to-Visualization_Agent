@@ -1,8 +1,9 @@
 """Deterministic graph analysis, chart construction, and exact source evidence."""
 
 import time
+from bisect import bisect_right
 from collections import defaultdict
-from math import floor
+from fractions import Fraction
 
 from app.config import Settings
 from app.graphdb import GraphRepository
@@ -246,17 +247,24 @@ class AnalysisEngine:
             rows = []
             if values:
                 lower, upper = min(values), max(values)
-                width = max(1.0, (upper - lower) / plan.histogram_bins)
+                width = max(Fraction(1), Fraction(upper - lower, plan.histogram_bins))
+                # Round each exact boundary once, and assign against the SAME
+                # sequence that is serialized. No independent division or epsilon.
+                edges = [float(lower + index * width) for index in range(plan.histogram_bins + 1)]
+                if not (
+                    edges[0] <= lower and upper <= edges[-1] and all(a < b for a, b in zip(edges, edges[1:]))
+                ):
+                    raise ValueError("Enrollment histogram boundaries exceed chart numeric precision")
                 for cohort in plan.cohorts:
                     buckets: dict[int, list[str]] = defaultdict(list)
                     for record in records_by_cohort[cohort.id]:
                         if record.get("enrollment") is None:
                             continue
-                        bucket = min(plan.histogram_bins - 1, floor((record["enrollment"] - lower) / width))
+                        bucket = min(plan.histogram_bins - 1, bisect_right(edges, record["enrollment"]) - 1)
                         buckets[bucket].append(record["nct_id"])
                     for bucket in range(plan.histogram_bins):
                         ids = buckets[bucket]
-                        start, end = lower + bucket * width, lower + (bucket + 1) * width
+                        start, end = edges[bucket], edges[bucket + 1]
                         rule = {
                             "operation": "histogram",
                             "field": "enrollment",

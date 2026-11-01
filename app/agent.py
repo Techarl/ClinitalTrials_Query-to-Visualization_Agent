@@ -23,7 +23,7 @@ from app.extensions import (
     resolve_plan,
 )
 from app.models import AnalysisPlan, AnalysisRequest, AnalysisResponse, PlannerDecision
-from app.providers import GenerationClient, GenerationFailure, OpenAIGenerationClient
+from app.providers import GenerationClient, GenerationFailure, OpenAIGenerationClient, usage_is_complete
 from app.service import AnalysisService
 from app.sources import content_hash, source_query, utc_now
 from app.storage import StateConflict
@@ -109,26 +109,78 @@ class AgentRunner:
             questions=questions or [],
         ).model_dump(mode="json")
 
-    def _plan(self, state: RunState) -> dict:
-        trace = list(state["trace"])
-        attempted = state["calls"]
+    def _accounted_state(self, state: RunState) -> RunState:
+        """Reconcile durable requests/outcomes on every planning/finalization path."""
         recorded = self.service.store.run(state["run_id"])
-        if recorded:
-            persisted_attempts = max(
-                (event.get("call", 0) for event in recorded["trace"] if event["stage"] == "planner_request"),
-                default=0,
+        events = {}
+        for event in [
+            *(recorded["trace"] if recorded else []),
+            *state["trace"],
+            *self.service.store.model_journal(state["run_id"]),
+        ]:
+            event = dict(event)
+            key = (
+                (event["stage"], event["call"])
+                if event["stage"] in ("planner_request", "planner_response", "planner_failure")
+                else content_hash(event)
             )
-            if persisted_attempts > attempted:
-                attempted = persisted_attempts
-                trace = list(recorded["trace"])
+            events[key] = event
+        trace = list(events.values())
+        requests = {e["call"]: e for e in trace if e["stage"] == "planner_request"}
+        outcomes = {e["call"] for e in trace if e["stage"] in ("planner_response", "planner_failure")}
+        for event in trace:
+            if event["stage"] == "planner_response":
+                metadata = event.get("metadata")
+                event["usage_unknown"] = not usage_is_complete(
+                    metadata.get("usage") if isinstance(metadata, dict) else None
+                )
+        marked = {e.get("call") for e in trace if e["stage"] == "recovered_unknown_model_outcome"}
+        for call, request in requests.items():
+            if call not in outcomes and call not in marked:
                 trace.append(
                     {
                         "stage": "recovered_unknown_model_outcome",
-                        "at": utc_now(),
-                        "call": attempted,
+                        "at": request["at"],
+                        "call": call,
                         "usage_unknown": True,
                     }
                 )
+        trace.sort(key=lambda e: e.get("at", ""))
+        return {**state, "calls": max(state["calls"], max(requests, default=0)), "trace": trace}
+
+    def _plan(self, state: RunState) -> dict:
+        checkpoint_calls = state["calls"]
+        state = self._accounted_state(state)
+        trace = list(state["trace"])
+        attempted = state["calls"]
+        if attempted > checkpoint_calls:
+            # A provider outcome committed before a checkpoint-write crash is
+            # reusable. Do not pay again or discard a known valid decision.
+            outcome = next(
+                (
+                    e
+                    for e in reversed(trace)
+                    if e.get("call") == attempted and e["stage"] in ("planner_response", "planner_failure")
+                ),
+                None,
+            )
+            if outcome and outcome["stage"] == "planner_response":
+                return {"decision": outcome["decision"], "calls": attempted, "trace": trace, "response": None}
+            if outcome and not outcome.get("repairable", False):
+                return {
+                    "decision": None,
+                    "calls": attempted,
+                    "trace": trace,
+                    "response": self._response(state, "failed", f"Planner failed ({outcome['error_type']})."),
+                }
+            if outcome:
+                return {
+                    "decision": None,
+                    "calls": attempted,
+                    "trace": trace,
+                    "response": None,
+                    "repair_errors": outcome.get("errors", []),
+                }
         if attempted >= self.settings.max_model_calls or time.time() >= state["deadline_epoch"]:
             return {
                 "response": self._response(state, "failed", "Planning budget exhausted."),
@@ -156,7 +208,7 @@ class AgentRunner:
             }
         )
         # Persist an attempt before calling an external provider. A crash may still leave its usage unknown.
-        self.service.store.record_trace(state["run_id"], trace)
+        self.service.store.record_model_event(state["run_id"], trace[-1], trace)
         try:
             decision, metadata = self.generator.generate(package, self._deadline(state))
             sink.record(
@@ -168,6 +220,7 @@ class AgentRunner:
                     "metadata": metadata,
                 }
             )
+            self.service.store.record_model_event(state["run_id"], trace[-1], trace)
             return {"decision": decision.model_dump(), "calls": calls, "trace": trace, "response": None}
         except GenerationFailure as error:
             sink.record(
@@ -176,9 +229,12 @@ class AgentRunner:
                     "at": utc_now(),
                     "call": calls,
                     "error_type": error.kind,
+                    "repairable": error.repairable,
+                    "errors": error.errors,
                     "usage_unknown": True,
                 }
             )
+            self.service.store.record_model_event(state["run_id"], trace[-1], trace)
             response = (
                 None
                 if error.repairable and calls < self.settings.max_model_calls
@@ -190,6 +246,25 @@ class AgentRunner:
                 "trace": trace,
                 "repair_errors": error.errors,
                 "response": response,
+            }
+        except Exception as error:
+            # Includes SDK JSON/shape errors and unexpected provider exceptions.
+            # Preserve the attempt and expose only an error type, never its body.
+            sink.record(
+                {
+                    "stage": "planner_failure",
+                    "at": utc_now(),
+                    "call": calls,
+                    "error_type": type(error).__name__,
+                    "usage_unknown": True,
+                }
+            )
+            self.service.store.record_model_event(state["run_id"], trace[-1], trace)
+            return {
+                "decision": None,
+                "calls": calls,
+                "trace": trace,
+                "response": self._response(state, "failed", f"Planner failed ({type(error).__name__})."),
             }
 
     @staticmethod
@@ -267,9 +342,7 @@ class AgentRunner:
                 current_filters = request.filters.model_dump(exclude_unset=True) if request.filters else {}
                 merged_request = request.model_dump(exclude_unset=True)
                 merged_request["filters"] = {**pending_filters, **current_filters}
-                merged_request["intervention_scope"] = pending["request"].get(
-                    "intervention_scope", "population"
-                )
+                merged_request["intervention_scope"] = self._clarification_scope(request, pending)
                 request = AnalysisRequest.model_validate(merged_request)
             conflicts = self._explicit_conflicts(request, plan)
             if conflicts:
@@ -297,6 +370,14 @@ class AgentRunner:
                     "repair_errors": [str(error)[:1000]],
                 }
             return {"plan": None, "repair_errors": [str(error)[:1000]]}
+
+    @staticmethod
+    def _clarification_scope(request: AnalysisRequest, pending: dict) -> str:
+        if "intervention_scope" in request.model_fields_set:
+            return request.intervention_scope
+        return pending.get(
+            "confirmed_intervention_scope", pending["request"].get("intervention_scope", "population")
+        )
 
     @staticmethod
     def _route(state: RunState) -> str:
@@ -329,6 +410,7 @@ class AgentRunner:
             }
 
     def _persist(self, state: RunState) -> AnalysisResponse:
+        state = self._accounted_state(state)
         response = AnalysisResponse.model_validate(state["response"])
         trace = state["trace"]
         metadata = [event["metadata"] for event in trace if event["stage"] == "planner_response"]
@@ -375,6 +457,9 @@ class AgentRunner:
                 **pending.get("confirmed_filters", pending["request"].get("filters") or {}),
                 **(state["request"].get("filters") or {}),
             }
+            pending["confirmed_intervention_scope"] = self._clarification_scope(
+                AnalysisRequest.model_validate(state["request"]), pending
+            )
             if continuing:
                 pending["replies"] = [*pending.get("replies", []), state["request"]]
             pending.update(questions=response.questions, proposed_decision=state.get("decision"))
@@ -483,5 +568,18 @@ class AgentRunner:
             if version != checkpoint.values["session_version"]:
                 raise StateConflict("The session has advanced; resume would overwrite newer state")
             # Do not reset the original hard wall-clock budget on recovery.
-            final = self.graph.invoke(None, config)
-            return self._persist(final)
+            try:
+                final = self.graph.invoke(None, config)
+                return self._persist(final)
+            except StateConflict:
+                raise
+            except Exception as error:
+                current = {**checkpoint.values, **self.graph.get_state(config).values}
+                current["response"] = self._response(
+                    current, "failed", f"Run failed ({type(error).__name__})."
+                )
+                current["trace"] = [
+                    *current["trace"],
+                    {"stage": "run_failure", "at": utc_now(), "error_type": type(error).__name__},
+                ]
+                return self._persist(current)

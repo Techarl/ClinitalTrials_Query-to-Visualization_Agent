@@ -52,7 +52,7 @@ class SyntheticGraph:
         ]
 
 
-def build_export(tmp_path, studies, operation="category"):
+def build_export(tmp_path, studies, operation="category", bins=4):
     settings = Settings(_env_file=None, app_data_dir=tmp_path / "data")
     store = StateStore(settings.data_directory)
     source = SnapshotStore(tmp_path)
@@ -74,7 +74,7 @@ def build_export(tmp_path, studies, operation="category"):
         operation=operation,
         cohorts=[Cohort(id="a", label="Fixture", filters=filters)],
         relationship="sponsor_shared_drug",
-        histogram_bins=4,
+        histogram_bins=bins,
     )
     graph = SyntheticGraph(studies, snapshot.dataset_id)
     visual, meta, provenance, empty = AnalysisEngine(settings, graph, store).run(

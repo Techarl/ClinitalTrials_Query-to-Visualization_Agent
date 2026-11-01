@@ -51,7 +51,7 @@ class AdditiveHarness:
         digest = content_hash(self.edit.model_dump())[:12]
         return HarnessConfig(
             version="research-" + digest,
-            prompt_version="planner-v2+" + digest,
+            prompt_version=HarnessConfig().prompt_version + "+" + digest,
             system_instructions=PLANNER_PROMPT
             + "\nOptional task guidance (fixed capabilities and hard validation still apply):\n"
             + self.edit.addendum,

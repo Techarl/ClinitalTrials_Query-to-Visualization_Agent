@@ -1,6 +1,8 @@
 """Offline completeness and exact-evidence verification, independently from Neo4j."""
 
 import json
+import math
+from collections import Counter
 from pathlib import Path
 
 from app.config import PROJECT_ROOT
@@ -187,6 +189,39 @@ def verify(folder: Path, root: Path) -> dict:
         )
 
     visual = response.visualization
+    if plan["operation"] == "histogram" and visual is not None:
+        # This invariant uses the OUTPUT intervals and raw values directly. It
+        # remains effective even if both production and expected_table share a bug.
+        for label, records in records_by_cohort.items():
+            values = {
+                r["protocolSection"]["identificationModule"]["nctId"]: r["protocolSection"]
+                .get("designModule", {})
+                .get("enrollmentInfo", {})
+                .get("count")
+                for r in records
+            }
+            expected_ids = Counter({key: 1 for key, value in values.items() if value is not None})
+            seen = Counter()
+            rows = [row for row in visual.data if row.cohort == label]
+            assert len(rows) == plan["histogram_bins"], "Histogram interval count mismatch"
+            for index, row in enumerate(rows):
+                assert (
+                    math.isfinite(row.bin_start)
+                    and math.isfinite(row.bin_end)
+                    and row.bin_start < row.bin_end
+                ), "Invalid histogram interval"
+                if index:
+                    assert rows[index - 1].bin_end == row.bin_start, "Discontinuous histogram interval"
+                for citation in evidence[row.evidence_set_id]["citations"]:
+                    assert citation["dataset_id"] == dataset_by_label[label]
+                    value = values[citation["nct_id"]]
+                    assert (
+                        value is not None
+                        and row.bin_start <= value
+                        and (value < row.bin_end or (index == len(rows) - 1 and value <= row.bin_end))
+                    ), "Contributor outside declared histogram interval"
+                    seen[citation["nct_id"]] += 1
+            assert seen == expected_ids, "Histogram interval contributors must appear exactly once"
     if visual is not None:
         if plan["operation"] == "network":
             channels = {

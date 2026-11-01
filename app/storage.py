@@ -27,6 +27,9 @@ class StateStore:
                     started_at TEXT NOT NULL, request TEXT NOT NULL, response TEXT, trace TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS evidence (
                     id TEXT PRIMARY KEY, run_id TEXT NOT NULL, contents TEXT NOT NULL);
+                CREATE TABLE IF NOT EXISTS model_events (
+                    run_id TEXT NOT NULL, call INTEGER NOT NULL, stage TEXT NOT NULL,
+                    contents TEXT NOT NULL, PRIMARY KEY(run_id,call,stage));
             """)
             columns = {row["name"] for row in conn.execute("PRAGMA table_info(runs)")}
             if "session_state" not in columns:
@@ -116,6 +119,26 @@ class StateStore:
     def record_trace(self, run_id: str, trace: list[dict]):
         with self.connect() as conn:
             conn.execute("UPDATE runs SET trace=? WHERE id=?", (canonical_json(trace), run_id))
+
+    def record_model_event(self, run_id: str, event: dict, trace: list[dict] | None = None):
+        """Append an immutable request/outcome independently of checkpoint snapshots."""
+        if event["stage"] not in ("planner_request", "planner_response", "planner_failure"):
+            raise ValueError("Invalid model journal event")
+        with self.connect() as conn:
+            conn.execute(
+                "INSERT OR IGNORE INTO model_events VALUES (?,?,?,?)",
+                (run_id, event["call"], event["stage"], canonical_json(event)),
+            )
+            if trace is not None:
+                conn.execute("UPDATE runs SET trace=? WHERE id=?", (canonical_json(trace), run_id))
+
+    def model_journal(self, run_id: str) -> list[dict]:
+        with self.connect() as conn:
+            rows = conn.execute(
+                "SELECT contents FROM model_events WHERE run_id=? ORDER BY call, CASE stage WHEN 'planner_request' THEN 0 ELSE 1 END",
+                (run_id,),
+            ).fetchall()
+        return [json.loads(row["contents"]) for row in rows]
 
     def run(self, run_id: str) -> dict | None:
         with self.connect() as conn:

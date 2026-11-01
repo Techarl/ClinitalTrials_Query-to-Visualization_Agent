@@ -1,6 +1,6 @@
 """Conservative opt-in research ledger; estimates are not provider invoices."""
 
-from app.providers import OpenAIGenerationClient
+from app.providers import OpenAIGenerationClient, usage_is_complete
 
 PRICE_SOURCE = "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
 
@@ -31,7 +31,14 @@ class Budget:
         return event
 
     def after(self, event, metadata):
-        usage = metadata.get("usage") or {}
+        if not any(item is event for item in self.events):
+            raise ValueError("Unknown research budget reservation")
+        if event["status"] == "completed":
+            return
+        usage = metadata.get("usage")
+        if not usage_is_complete(usage):
+            event.update(status="completed_usage_unknown", metadata=metadata)
+            return
         estimate = estimate_cost(usage)
         self.estimated_usd += estimate - event["reserved_upper_estimate_usd"]
         event.update(status="completed", metadata=metadata, estimated_cost_usd=estimate)

@@ -5,8 +5,8 @@ top-N ties. Entity hashes implement the documented output identity contract only
 """
 
 from collections import defaultdict
+from decimal import Decimal, localcontext
 from itertools import combinations
-from math import floor
 
 from app.sources import content_hash
 
@@ -132,16 +132,31 @@ def expected_table(plan, records):
         values = [v for v in values if v is not None]
         if values:
             lo, hi = min(values), max(values)
-            width = max(1.0, (hi - lo) / plan["histogram_bins"])
+            # Independent construction and interval enumeration, not the
+            # production rational-boundary/binary-search assignment algorithm.
+            with localcontext() as ctx:
+                ctx.prec = 80
+                width = max(Decimal(1), Decimal(hi - lo) / Decimal(plan["histogram_bins"]))
+                edges = [
+                    float(Decimal(lo) + Decimal(index) * width) for index in range(plan["histogram_bins"] + 1)
+                ]
             for c in plan["cohorts"]:
                 buckets = defaultdict(set)
                 for raw in records[c["label"]]:
                     p = raw["protocolSection"]
                     value = p.get("designModule", {}).get("enrollmentInfo", {}).get("count")
                     if value is not None:
-                        buckets[min(plan["histogram_bins"] - 1, floor((value - lo) / width))].add(
-                            p["identificationModule"]["nctId"]
-                        )
+                        memberships = [
+                            index
+                            for index in range(plan["histogram_bins"])
+                            if edges[index] <= value
+                            and (
+                                value < edges[index + 1]
+                                or (index == plan["histogram_bins"] - 1 and value <= edges[index + 1])
+                            )
+                        ]
+                        assert len(memberships) == 1, "Histogram interval coverage must be exactly once"
+                        buckets[memberships[0]].add(p["identificationModule"]["nctId"])
                 for index in range(plan["histogram_bins"]):
                     rows.append(
                         {
@@ -149,8 +164,8 @@ def expected_table(plan, records):
                             "cohort": c["label"],
                             "category": None,
                             "year": None,
-                            "bin_start": lo + index * width,
-                            "bin_end": lo + (index + 1) * width,
+                            "bin_start": edges[index],
+                            "bin_end": edges[index + 1],
                             "ids": buckets[index],
                         }
                     )

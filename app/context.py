@@ -30,6 +30,7 @@ The payload contains current date, request, and only relevant structured session
 For a new topic, mode=new and a complete plan, inheriting NOTHING from previous analysis. Only an explicit follow-up inherits previous filters.
 For a follow-up to a previous successful plan, mode=refine, plan=null, and use PlanPatch. Unspecified patch fields remain null. Set changes in set_filters; use clear_fields to remove constraints. Do not erase unrelated constraints.
 For a clarification answer (including another clarify decision), mode=clarification. Use the ORIGINAL pending request, all accumulated replies and confirmed_filters, and current answer. Executing requires a complete plan retaining all those constraints. Only a clearly new topic uses mode=new and resets pending context.
+Clarification intervention_scope uses the current explicitly supplied value first, then pending.confirmed_intervention_scope, then the original request/default population. An omitted scope is not a new population choice. Current explicit corrections take precedence over the original request.
 PlanPatch can change top_n, histogram_bins, or one cohort_label. Old narrative assumptions are invalidated by a patch; supply only fresh relevant assumptions. Use a new title matching the final operation and filters.
 If parent_run_id selected a historical analysis, previous_plan is that analysis's plan.
 Questions must be in the requested language. Chart titles and cohort labels must also use that language.
@@ -52,7 +53,8 @@ class ContextBuilder:
             "current_local_datetime": datetime.now(timezone(self.settings.app_timezone)).isoformat(),
             "timezone": self.settings.app_timezone,
             "request": {
-                **request.model_dump(exclude_none=True),
+                **request.model_dump(exclude_none=True, exclude_unset=True),
+                "language": request.language,
                 "filters": request.filters.model_dump(exclude_unset=True)
                 if request.filters is not None
                 else None,

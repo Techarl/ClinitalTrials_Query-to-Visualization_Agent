@@ -16,6 +16,33 @@ class GenerationFailure(RuntimeError):
         self.kind, self.repairable, self.errors = kind, repairable, errors or []
 
 
+def usage_is_complete(usage) -> bool:
+    """Only settle known, consistent token counts, including cache billing data."""
+
+    def count(value):
+        return type(value) is int and value >= 0
+
+    if not isinstance(usage, dict) or not all(
+        count(usage.get(key)) for key in ("input_tokens", "output_tokens", "total_tokens")
+    ):
+        return False
+    if usage["total_tokens"] != usage["input_tokens"] + usage["output_tokens"]:
+        return False
+    details = usage.get("input_tokens_details")
+    if not isinstance(details, dict) or not all(
+        count(details.get(key)) for key in ("cached_tokens", "cache_write_tokens")
+    ):
+        return False
+    if details["cached_tokens"] + details["cache_write_tokens"] > usage["input_tokens"]:
+        return False
+    output_details = usage.get("output_tokens_details")
+    return output_details is None or (
+        isinstance(output_details, dict)
+        and count(output_details.get("reasoning_tokens", 0))
+        and output_details.get("reasoning_tokens", 0) <= usage["output_tokens"]
+    )
+
+
 class GenerationClient(Protocol):
     def generate(self, context: dict, deadline: float) -> tuple[PlannerDecision, dict]: ...
 
