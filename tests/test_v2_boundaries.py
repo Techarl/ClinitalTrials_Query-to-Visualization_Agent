@@ -233,3 +233,50 @@ def test_task_dependency_cannot_be_satisfied_by_independent_chart(tmp_path):
         assert final["status"] == "partial" and final["unmet_goals"] == ["later"]
     finally:
         agent.close()
+
+
+def test_sourced_identity_dependency_requires_matching_scope_names(tmp_path):
+    from app.v2.contracts import EntityInput
+    from app.v2.entities import register_entities
+
+    agent, store, state = setup_agent(tmp_path)
+    state["task"]["goals"] = [
+        Goal(id="identity", description="Resolve medicine", kind="entity").model_dump(),
+        Goal(id="g", description="phase", depends_on=["identity"]).model_dump(),
+    ]
+    register_entities(agent.registry)
+    output = agent.registry.tools["resolve_entity_candidates"].execute(
+        EntityInput(names=["Keytruda"], goal_id="identity"), state
+    )
+    state["result_ids"] = [output["result_id"]]
+    goal = state["task"]["goals"][1]
+    try:
+        matching = [({"filters": {"interventions": ["pembrolizumab"]}}, None, [])]
+        unrelated = [({"filters": {"interventions": ["nivolumab"]}}, None, [])]
+        assert agent.registry.identity_dependencies(goal, matching, state) == {output["result_id"]}
+        assert agent.registry.identity_dependencies(goal, unrelated, state) == set()
+        assert agent.registry.identity_dependencies({**goal, "depends_on": []}, matching, state) == set()
+        state["prior"] = {"result_ids": state["result_ids"]}
+        state["result_ids"] = []
+        assert agent.registry.identity_dependencies(goal, matching, state) == {output["result_id"]}
+    finally:
+        agent.close()
+
+
+def test_finalization_includes_verified_required_dependency_closure(tmp_path):
+    agent, store, state = setup_agent(tmp_path)
+    state["task"]["goals"] = [{"id": "identity", "depends_on": []}, {"id": "g", "depends_on": ["identity"]}]
+    artifacts = {
+        "identity_result": SimpleNamespace(goal_id="identity", dependencies=[]),
+        "chart_result": SimpleNamespace(goal_id="g", dependencies=["identity_result"]),
+    }
+    agent.registry.validate = lambda *args: {}
+    agent.registry.artifact = lambda handle, state: artifacts[handle]
+    state["result_ids"] = ["chart_result"]
+    try:
+        agent.finish(state, "completed", "done")
+        result = store.run(state["run_id"])
+        assert result["status"] == "completed" and not result["unmet_goals"]
+        assert set(result["result_ids"]) == set(artifacts)
+    finally:
+        agent.close()

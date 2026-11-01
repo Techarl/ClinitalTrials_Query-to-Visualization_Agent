@@ -368,11 +368,18 @@ class V2Agent:
     def finish(self, state, status, message):
         valid, completed_goals = [], set()
         failures = []
-        for handle in state.get("result_ids", []):
+        pending = list(state.get("result_ids", []))
+        seen = set()
+        while pending:
+            handle = pending.pop(0)
+            if handle in seen:
+                continue
+            seen.add(handle)
             try:
                 self.registry.validate(HandleInput(handle=handle), state)
                 artifact = self.registry.artifact(handle, state)
                 valid.append(handle)
+                pending.extend(h for h in artifact.dependencies if h not in seen)
             except (ValueError, KeyError, TimeoutError) as error:
                 failures.append(type(error).__name__)
         state["result_ids"] = valid

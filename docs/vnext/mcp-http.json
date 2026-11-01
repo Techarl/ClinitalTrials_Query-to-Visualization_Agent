@@ -1,0 +1,135 @@
+{
+  "status": "passed",
+  "tools": [
+    "create_tool_session",
+    "search_trials",
+    "inspect_query_scope",
+    "profile_dataset",
+    "analyze",
+    "select_entities",
+    "fetch_trial_details",
+    "inspect_evidence",
+    "validate_result",
+    "resolve_entity_candidates",
+    "official_count_overview",
+    "search_pubmed",
+    "fetch_articles",
+    "clarify_user",
+    "finalize_analysis",
+    "stop_with_limit",
+    "read_run",
+    "cancel_run"
+  ],
+  "run_id": "vr_22f9cb03812d496b95e27e946fb85614",
+  "matched_count": 400,
+  "phase_rows": [
+    {
+      "bin_end": null,
+      "bin_start": null,
+      "category": "Early Phase 1",
+      "cohort": "Population",
+      "contributor_count": 7,
+      "evidence_set_id": "ev_15d8765504b64458c618f76cee02d050",
+      "id": "c0:Early Phase 1",
+      "trial_count": 7,
+      "year": null
+    },
+    {
+      "bin_end": null,
+      "bin_start": null,
+      "category": "Phase 1",
+      "cohort": "Population",
+      "contributor_count": 111,
+      "evidence_set_id": "ev_35a63ec126ae6f289c4919b8b8a3777f",
+      "id": "c0:Phase 1",
+      "trial_count": 111,
+      "year": null
+    },
+    {
+      "bin_end": null,
+      "bin_start": null,
+      "category": "Phase 1 / Phase 2",
+      "cohort": "Population",
+      "contributor_count": 87,
+      "evidence_set_id": "ev_eea6cba9ca9e20c74646e8da5f89004c",
+      "id": "c0:Phase 1 / Phase 2",
+      "trial_count": 87,
+      "year": null
+    },
+    {
+      "bin_end": null,
+      "bin_start": null,
+      "category": "Phase 2",
+      "cohort": "Population",
+      "contributor_count": 125,
+      "evidence_set_id": "ev_6891aa9d727dd2bc2e228b06d549b995",
+      "id": "c0:Phase 2",
+      "trial_count": 125,
+      "year": null
+    },
+    {
+      "bin_end": null,
+      "bin_start": null,
+      "category": "Phase 2 / Phase 3",
+      "cohort": "Population",
+      "contributor_count": 4,
+      "evidence_set_id": "ev_bfb553adabfa77b0eb87dabeec4d15e5",
+      "id": "c0:Phase 2 / Phase 3",
+      "trial_count": 4,
+      "year": null
+    },
+    {
+      "bin_end": null,
+      "bin_start": null,
+      "category": "Phase 3",
+      "cohort": "Population",
+      "contributor_count": 25,
+      "evidence_set_id": "ev_45fdf0a53cb236a8fcbfcceabfcd7667",
+      "id": "c0:Phase 3",
+      "trial_count": 25,
+      "year": null
+    },
+    {
+      "bin_end": null,
+      "bin_start": null,
+      "category": "Phase 4",
+      "cohort": "Population",
+      "contributor_count": 1,
+      "evidence_set_id": "ev_8b89f067b46364f17d541d28cf86a056",
+      "id": "c0:Phase 4",
+      "trial_count": 1,
+      "year": null
+    },
+    {
+      "bin_end": null,
+      "bin_start": null,
+      "category": "Not applicable",
+      "cohort": "Population",
+      "contributor_count": 9,
+      "evidence_set_id": "ev_272a80aceb4e2fcb0b8d77f17f16d772",
+      "id": "c0:Not applicable",
+      "trial_count": 9,
+      "year": null
+    },
+    {
+      "bin_end": null,
+      "bin_start": null,
+      "category": "Not reported",
+      "cohort": "Population",
+      "contributor_count": 31,
+      "evidence_set_id": "ev_7dd63cff79a3edae1631bb239717e9ea",
+      "id": "c0:Not reported",
+      "trial_count": 31,
+      "year": null
+    }
+  ],
+  "evidence_contributors": 7,
+  "pmids": [
+    "38246194",
+    "39288737"
+  ],
+  "model_calls": 0,
+  "cross_session_token_rejected": true,
+  "cancel_before_source_call": true,
+  "transport": "http"
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-01",
+  "windows": {
+    "passed": 138,
+    "seconds": 22.09,
+    "real_neo4j": true
+  },
+  "isolated_linux_compose": {
+    "passed": 138,
+    "seconds": 33.18,
+    "real_neo4j": true,
+    "image_sha256": "25db20fcf08bcfb8e89f5f13d90d7ed94aa7c1f245326feabb407dfb6b3f3464"
+  },
+  "lint": "passed",
+  "pip_check": "passed",
+  "historical_example_raw_fields": 33824,
+  "http_acceptance": "docker-acceptance.json",
+  "browser_identity_continuation": "vr_cafd8a7ebec6472b9e7eda8be169da35"
+}

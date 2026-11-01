@@ -15,6 +15,7 @@ COPY requirements.lock pyproject.toml ./
 RUN python -m pip install --no-cache-dir -r requirements.lock
 COPY app ./app
 COPY evaluation ./evaluation
+COPY experiments ./experiments
 COPY --from=frontend /frontend/dist ./frontend/dist
 RUN python -m pip install --no-cache-dir --no-deps .
 RUN useradd --create-home appuser && mkdir -p /app/data && chown -R appuser:appuser /app

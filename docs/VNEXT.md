@@ -1,6 +1,6 @@
 # VNext analysis workspace
 
-V2 adds an observation-driven agent and a React/TypeScript/ECharts client while retaining the v1 API and historical examples. The [implementation record](VNEXT_PROGRESS.md) distinguishes implemented features, actual acceptance runs and research still in progress.
+V2 adds an observation-driven agent and a React/TypeScript/ECharts client while retaining the v1 API and historical examples. The [implementation record](VNEXT_PROGRESS.md) records actual acceptance runs. See also [research results and limitations](VNEXT_RESEARCH.md) and [public-project capability comparison](VNEXT_PARITY.md).
 
 ## Start the workspace
 

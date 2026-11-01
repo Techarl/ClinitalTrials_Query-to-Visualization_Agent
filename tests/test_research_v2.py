@@ -1,12 +1,15 @@
 from copy import deepcopy
+from types import SimpleNamespace
 
 import pytest
 
 from app.storage import StateStore
+from app.v2.context import SYSTEM, pack
 from app.v2.contracts import RunRequest
 from app.v2.costs import estimate
 from app.v2.store import V2Store
 from evaluation.runtime import PersistentBudget
+from evaluation.scorers import grade
 from experiments.decision_v2 import ATOMS, action_for
 from experiments.harness_v2 import Component, ExperienceBank, safe_component
 
@@ -54,6 +57,23 @@ def test_atomic_gate_distinguishes_system_repair_from_missing_user_information()
         assert action_for(bad) == expected
 
 
+def test_semantic_scorer_rejects_unrequested_restrictions():
+    from app.models import Filters
+    from app.v2.contracts import Goal, RunResult, TaskSpec
+
+    task = TaskSpec(
+        goal="phase",
+        filters=Filters(condition="asthma", countries=["United Kingdom"]),
+        goals=[Goal(id="g", description="phase")],
+    )
+    result = RunResult(run_id="r", session_id="s", status="completed", task=task)
+    verdict = grade(
+        result, {"status": "completed", "filters": {"condition": "asthma"}}, SimpleNamespace(), {}
+    )
+    assert not verdict["correct"]
+    assert "constraint:countries" in verdict["failures"]
+
+
 def test_experience_requires_change_and_adoption_and_deduplicates():
     bank = ExperienceBank()
     before = {"model_calls": 6, "observations": [{"tool": "validate_result"}], "trace": "before.json"}
@@ -84,3 +104,21 @@ def test_pending_original_request_survives_more_than_history_window(tmp_path):
     assert state["pending_request"]["query"] == original.query
     assert state["prior"]["original_request"]["query"] == original.query
     assert deepcopy(state["prior"]["task"])["filters"]["condition"] == "melanoma"
+
+
+def test_context_policy_changes_actual_packed_observations_at_fixed_budget():
+    state = {
+        "request": {"query": "preserve my scope"},
+        "constraints_version": 1,
+        "observations": [
+            {"tool": "analyze", "status": "error", "message": "x" * 900},
+            {"tool": "profile_dataset", "status": "ok", "summary": "y" * 900},
+            {"tool": "search_trials", "status": "ok", "summary": "z" * 900},
+        ],
+    }
+    relevant = pack(state, len(SYSTEM) + 1600, "relevant")
+    recent = pack(state, len(SYSTEM) + 1600, "recent")
+    assert relevant["packing"]["included_steps"] == [0]
+    assert recent["packing"]["included_steps"] == [2]
+    assert relevant["packing"]["omitted_steps"] and recent["packing"]["omitted_steps"]
+    assert "preserve my scope" in relevant["payload"] and "preserve my scope" in recent["payload"]

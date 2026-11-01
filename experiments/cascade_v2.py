@@ -145,6 +145,7 @@ def main():
         "strong_fixed": {},
         "injected_fixed": {"inject": True},
         "injected_jev_repair": {"inject": True, "gate": "atomic_compact"},
+        "injected_generative_repair": {"inject": True, "gate": "generative_compact"},
     }
     eligible = False
     if not args.repair_only:

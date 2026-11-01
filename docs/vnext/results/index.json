@@ -1,0 +1,38 @@
+{
+  "evaluation-initial": {
+    "file": "evaluation-initial.zip",
+    "sha256": "d96a70ffaa9d8a192fa3baadd0f2eeb25be25f82340ca7426cf56ed858e3bedf",
+    "bytes": 1450843,
+    "trace_files": 155
+  },
+  "evaluation-logic": {
+    "file": "evaluation-logic.zip",
+    "sha256": "a24c2aa084d588a203abd29b1a696d602e0b35c2d166b0e22f91655b95a0c629",
+    "bytes": 91374,
+    "trace_files": 15
+  },
+  "evaluation-final": {
+    "file": "evaluation-final.zip",
+    "sha256": "81777d8fe536a554d34f60908430cd684f0a8bef4828fa03988ce955a90c151c",
+    "bytes": 1579141,
+    "trace_files": 168
+  },
+  "decision": {
+    "file": "decision.zip",
+    "sha256": "ec8f26f7cd1db863cc869cc83fa1a8739ab2f5ad215b56e65bf4250b56e1c739",
+    "bytes": 204793,
+    "trace_files": 95
+  },
+  "repair": {
+    "file": "repair.zip",
+    "sha256": "53d0efb72c7478a6179849371d3bbb4a95385cf5b74193bccd2317691e47da1f",
+    "bytes": 450554,
+    "trace_files": 39
+  },
+  "harness": {
+    "file": "harness.zip",
+    "sha256": "4afcc5d1c620ce3a0bfe44c44124e8e1ed10e02b98ac5b8da54a3b156812704c",
+    "bytes": 2249724,
+    "trace_files": 225
+  }
+}

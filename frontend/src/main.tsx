@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Chart } from './Chart'
 import { api, terminal, statusText } from './types'
@@ -17,6 +17,8 @@ function App() {
   const shareToken = location.pathname.startsWith('/s/') ? location.pathname.split('/')[2] : null
   const [history, setHistory] = useState<History[]>([])
   const [runId,setRunId] = useState<string | null>(shareToken ? null : localStorage.getItem('trialscope.run'))
+  const activeRunId=useRef(runId)
+  activeRunId.current=runId
   const [run,setRun] = useState<Run | null>(null)
   const [events,setEvents] = useState<Event[]>([])
   const [query,setQuery] = useState('')
@@ -36,7 +38,7 @@ function App() {
   const [live,setLive] = useState(false)
   const [connection,setConnection] = useState('')
   const refreshHistory = () => api<{runs:History[]}>('/v2/runs').then(v=>setHistory(v.runs)).catch(()=>{})
-  const refresh = (rid:string) => api<Run>('/v2/runs/'+rid).then(value=>{setRun(value);return value})
+  const refresh = (rid:string) => api<Run>('/v2/runs/'+rid).then(value=>{if(activeRunId.current===rid)setRun(value);return value})
   useEffect(()=>{api('/health').then(()=>setLive(true)).catch(()=>setLive(false));if(!shareToken)refreshHistory()},[])
   useEffect(()=>{
     if (shareToken) {
@@ -46,7 +48,7 @@ function App() {
     if(!runId) return
     localStorage.setItem('trialscope.run',runId)
     let source:EventSource | null=null, disposed=false
-    setEvents([]);setError('');setConnection('正在恢复执行记录…')
+    setRun(null);setEvents([]);setError('');setConnection('正在恢复执行记录…')
     refresh(runId).then(value=>{
       if(disposed)return
       source = new EventSource(`/v2/runs/${runId}/events`)
@@ -64,7 +66,7 @@ function App() {
   },[runId])
 
   async function send(event:React.FormEvent) {
-    event.preventDefault();if(!query.trim())return
+    event.preventDefault();if(!query.trim() || (runId && !run))return
     setBusy(true);setError('');setShareUrl('');setShareId('')
     const explicit:Row={}
     for(const [key,value] of Object.entries(filters))if(value.trim())explicit[key]=['interventions','phases','countries'].includes(key)?value.split(',').map(s=>s.trim()).filter(Boolean):value

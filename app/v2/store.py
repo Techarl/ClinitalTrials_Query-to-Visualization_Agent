@@ -59,6 +59,24 @@ class V2Store:
                     "questions": pstate.get("questions", []),
                     "history": pstate.get("history", [])[-8:],
                 }
+                prior["artifacts"] = []
+                for handle in prior["result_ids"]:
+                    row = conn.execute(
+                        "SELECT data FROM v2_assets WHERE id=? AND session_id=? AND kind='result'",
+                        (handle, sid),
+                    ).fetchone()
+                    if row:
+                        artifact = json.loads(row["data"])["artifact"]
+                        prior["artifacts"].append(
+                            {
+                                "result_id": handle,
+                                **{
+                                    key: artifact[key]
+                                    for key in ("goal_id", "title", "source_type", "dependencies")
+                                },
+                                "analysis_parameters": artifact["metadata"].get("analysis_parameters"),
+                            }
+                        )
             state = {
                 "run_id": rid,
                 "session_id": sid,

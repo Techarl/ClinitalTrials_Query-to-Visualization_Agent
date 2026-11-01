@@ -1,6 +1,9 @@
 """Hidden semantic assertions plus raw-record/receipt verification, outside runtime prompts."""
 
+from app.models import Filters
 from app.v2.contracts import HandleInput
+
+SCORER_VERSION = "v2-complete-constraints"
 
 
 def equivalent(actual, expected):
@@ -16,11 +19,19 @@ def grade(result, expected, registry, state):
     if result.status != expected["status"]:
         failures.append("status")
     task = result.task.model_dump(mode="json") if result.task else {}
-    if "intervention_scope" in expected and task.get("intervention_scope") != expected["intervention_scope"]:
+    scope = expected.get("intervention_scope", "population")
+    if expected["status"] == "completed" and task.get("intervention_scope") != scope:
         failures.append("constraint:intervention_scope")
-    for key, value in expected.get("filters", {}).items():
+    wanted_filters = expected.get("filters", {})
+    if expected["status"] == "completed":
+        wanted_filters = Filters(**wanted_filters).model_dump()
+    for key, value in wanted_filters.items():
+        if key == "intervention_match" and len(wanted_filters.get("interventions", [])) <= 1:
+            continue  # AND/OR is equivalent for a single medicine.
         if not equivalent(task.get("filters", {}).get(key), value):
             failures.append("constraint:" + key)
+    if expected["status"] == "completed" and "date_range" not in expected and task.get("date_range"):
+        failures.append("unrequested_date_range")
     for key, value in expected.get("date_range", {}).items():
         if (task.get("date_range") or {}).get(key) != value:
             failures.append("date_range:" + key)
@@ -60,6 +71,7 @@ def grade(result, expected, registry, state):
             if not any(set(a.metadata["root_scopes"]) == expected_scopes and a.dependencies for a in trends):
                 failures.append("invented_or_unrelated_cohorts")
     return {
+        "scorer_version": SCORER_VERSION,
         "correct": not failures,
         "failures": failures,
         "independent_checks": checks,

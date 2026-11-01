@@ -1,0 +1,368 @@
+{
+  "evaluation-initial": {
+    "calls_including_editors_and_judges": 430,
+    "estimated_or_reserved_usd": 2.0308741,
+    "unknown_attempts": 0,
+    "scorer": "v2-complete-constraints",
+    "total": {
+      "episodes": 66,
+      "correct": 66,
+      "model_calls": 430,
+      "estimated_or_reserved_usd": 2.0308741,
+      "mean_seconds": 41.66559090909091,
+      "unknown_attempts": 0
+    },
+    "splits": {
+      "development": {
+        "episodes": 18,
+        "correct": 18,
+        "model_calls": 120,
+        "estimated_or_reserved_usd": 0.669821,
+        "mean_seconds": 52.095444444444446,
+        "unknown_attempts": 0
+      },
+      "calibration": {
+        "episodes": 16,
+        "correct": 16,
+        "model_calls": 104,
+        "estimated_or_reserved_usd": 0.45718770000000003,
+        "mean_seconds": 37.6975,
+        "unknown_attempts": 0
+      },
+      "heldout": {
+        "episodes": 32,
+        "correct": 32,
+        "model_calls": 206,
+        "estimated_or_reserved_usd": 0.9038654,
+        "mean_seconds": 37.78284375,
+        "unknown_attempts": 0
+      }
+    },
+    "failures": []
+  },
+  "evaluation-logic": {
+    "calls_including_editors_and_judges": 32,
+    "estimated_or_reserved_usd": 0.14025830000000006,
+    "unknown_attempts": 0,
+    "scorer": "v2-complete-constraints",
+    "total": {
+      "episodes": 6,
+      "correct": 6,
+      "model_calls": 32,
+      "estimated_or_reserved_usd": 0.1402583,
+      "mean_seconds": 32.7865,
+      "unknown_attempts": 0
+    },
+    "splits": {
+      "development": {
+        "episodes": 3,
+        "correct": 3,
+        "model_calls": 16,
+        "estimated_or_reserved_usd": 0.077069,
+        "mean_seconds": 43.927,
+        "unknown_attempts": 0
+      },
+      "calibration": {
+        "episodes": 0,
+        "correct": 0,
+        "model_calls": 0,
+        "estimated_or_reserved_usd": 0,
+        "mean_seconds": null,
+        "unknown_attempts": 0
+      },
+      "heldout": {
+        "episodes": 3,
+        "correct": 3,
+        "model_calls": 16,
+        "estimated_or_reserved_usd": 0.0631893,
+        "mean_seconds": 21.646,
+        "unknown_attempts": 0
+      }
+    },
+    "failures": []
+  },
+  "evaluation-final": {
+    "calls_including_editors_and_judges": 460,
+    "estimated_or_reserved_usd": 2.3240927000000045,
+    "unknown_attempts": 0,
+    "scorer": "v2-complete-constraints",
+    "total": {
+      "episodes": 72,
+      "correct": 72,
+      "model_calls": 460,
+      "estimated_or_reserved_usd": 2.3240927,
+      "mean_seconds": 46.027347222222225,
+      "unknown_attempts": 0
+    },
+    "splits": {
+      "development": {
+        "episodes": 21,
+        "correct": 21,
+        "model_calls": 135,
+        "estimated_or_reserved_usd": 0.7812636,
+        "mean_seconds": 57.07738095238095,
+        "unknown_attempts": 0
+      },
+      "calibration": {
+        "episodes": 16,
+        "correct": 16,
+        "model_calls": 102,
+        "estimated_or_reserved_usd": 0.4855946,
+        "mean_seconds": 43.05575,
+        "unknown_attempts": 0
+      },
+      "heldout": {
+        "episodes": 35,
+        "correct": 35,
+        "model_calls": 223,
+        "estimated_or_reserved_usd": 1.0572345,
+        "mean_seconds": 40.75577142857143,
+        "unknown_attempts": 0
+      }
+    },
+    "failures": []
+  },
+  "decision": {
+    "calls_including_editors_and_judges": 364,
+    "estimated_or_reserved_usd": 0.38990925,
+    "unknown_attempts": 0,
+    "cases": 91,
+    "results": {
+      "development": {
+        "composite_full": {
+          "cases": 33,
+          "judge_errors": 0,
+          "correct": 6,
+          "missed_errors": 0,
+          "false_blocks": 3,
+          "unnecessary_clarifications": 27,
+          "repairs_requested": 0
+        },
+        "atomic_full": {
+          "cases": 33,
+          "judge_errors": 0,
+          "correct": 9,
+          "missed_errors": 0,
+          "false_blocks": 5,
+          "unnecessary_clarifications": 0,
+          "repairs_requested": 10
+        },
+        "atomic_compact": {
+          "cases": 33,
+          "judge_errors": 0,
+          "correct": 2,
+          "missed_errors": 0,
+          "false_blocks": 9,
+          "unnecessary_clarifications": 0,
+          "repairs_requested": 5
+        },
+        "generative_compact": {
+          "cases": 33,
+          "judge_errors": 0,
+          "correct": 32,
+          "missed_errors": 0,
+          "false_blocks": 1,
+          "unnecessary_clarifications": 0,
+          "repairs_requested": 25
+        }
+      },
+      "calibration": {
+        "composite_full": {
+          "cases": 32,
+          "judge_errors": 0,
+          "correct": 8,
+          "missed_errors": 0,
+          "false_blocks": 2,
+          "unnecessary_clarifications": 23,
+          "repairs_requested": 0
+        },
+        "atomic_full": {
+          "cases": 32,
+          "judge_errors": 0,
+          "correct": 5,
+          "missed_errors": 0,
+          "false_blocks": 7,
+          "unnecessary_clarifications": 0,
+          "repairs_requested": 9
+        },
+        "atomic_compact": {
+          "cases": 32,
+          "judge_errors": 0,
+          "correct": 0,
+          "missed_errors": 0,
+          "false_blocks": 9,
+          "unnecessary_clarifications": 0,
+          "repairs_requested": 8
+        },
+        "generative_compact": {
+          "cases": 32,
+          "judge_errors": 0,
+          "correct": 29,
+          "missed_errors": 0,
+          "false_blocks": 2,
+          "unnecessary_clarifications": 0,
+          "repairs_requested": 23
+        }
+      },
+      "heldout": {
+        "composite_full": {
+          "cases": 26,
+          "judge_errors": 0,
+          "correct": 6,
+          "missed_errors": 0,
+          "false_blocks": 2,
+          "unnecessary_clarifications": 20,
+          "repairs_requested": 0
+        },
+        "atomic_full": {
+          "cases": 26,
+          "judge_errors": 0,
+          "correct": 6,
+          "missed_errors": 0,
+          "false_blocks": 7,
+          "unnecessary_clarifications": 0,
+          "repairs_requested": 12
+        },
+        "atomic_compact": {
+          "cases": 26,
+          "judge_errors": 0,
+          "correct": 0,
+          "missed_errors": 0,
+          "false_blocks": 8,
+          "unnecessary_clarifications": 0,
+          "repairs_requested": 6
+        },
+        "generative_compact": {
+          "cases": 26,
+          "judge_errors": 0,
+          "correct": 25,
+          "missed_errors": 0,
+          "false_blocks": 1,
+          "unnecessary_clarifications": 0,
+          "repairs_requested": 19
+        }
+      }
+    },
+    "origins": {
+      "natural_error": 0,
+      "synthetic_mutation": 63,
+      "observed_plan": 28
+    },
+    "thresholds": {
+      "composite_full": 0.5,
+      "atomic_full": 0.5,
+      "atomic_compact": 0.5,
+      "generative_compact": 0.5
+    },
+    "fixed_only": {
+      "development": {
+        "cases": 33,
+        "undetected_semantic_errors": 24
+      },
+      "calibration": {
+        "cases": 32,
+        "undetected_semantic_errors": 21
+      },
+      "heldout": {
+        "cases": 26,
+        "undetected_semantic_errors": 18
+      }
+    }
+  },
+  "repair": {
+    "calls_including_editors_and_judges": 134,
+    "estimated_or_reserved_usd": 0.5045788820000003,
+    "unknown_attempts": 0,
+    "arms": {
+      "injected_fixed": {
+        "episodes": 4,
+        "correct": 0,
+        "model_calls": 28,
+        "estimated_or_reserved_usd": 0.1204091,
+        "mean_seconds": 25.8515,
+        "unknown_attempts": 0
+      },
+      "injected_generative_repair": {
+        "episodes": 4,
+        "correct": 4,
+        "model_calls": 41,
+        "estimated_or_reserved_usd": 0.164026,
+        "mean_seconds": 42.8595,
+        "unknown_attempts": 0
+      },
+      "injected_jev_repair": {
+        "episodes": 4,
+        "correct": 2,
+        "model_calls": 39,
+        "estimated_or_reserved_usd": 0.11344529,
+        "mean_seconds": 36.86725,
+        "unknown_attempts": 0
+      },
+      "strong_fixed": {
+        "episodes": 4,
+        "correct": 4,
+        "model_calls": 26,
+        "estimated_or_reserved_usd": 0.1066985,
+        "mean_seconds": 28.32425,
+        "unknown_attempts": 0
+      }
+    },
+    "cascade_calibration_eligible": false
+  },
+  "harness": {
+    "calls_including_editors_and_judges": 535,
+    "estimated_or_reserved_usd": 2.3348588000000037,
+    "unknown_attempts": 0,
+    "arms_final_execution_only": {
+      "h0": {
+        "episodes": 6,
+        "correct": 6,
+        "model_calls": 43,
+        "estimated_or_reserved_usd": 0.1724376,
+        "mean_seconds": 33.24783333333333,
+        "unknown_attempts": 0
+      },
+      "ppc_no_memory": {
+        "episodes": 6,
+        "correct": 6,
+        "model_calls": 43,
+        "estimated_or_reserved_usd": 0.1725736,
+        "mean_seconds": 31.2005,
+        "unknown_attempts": 0
+      },
+      "ppc_memory": {
+        "episodes": 6,
+        "correct": 6,
+        "model_calls": 42,
+        "estimated_or_reserved_usd": 0.1593222,
+        "mean_seconds": 31.229166666666668,
+        "unknown_attempts": 0
+      },
+      "manual": {
+        "episodes": 6,
+        "correct": 6,
+        "model_calls": 34,
+        "estimated_or_reserved_usd": 0.1296228,
+        "mean_seconds": 27.78666666666667,
+        "unknown_attempts": 0
+      },
+      "same_budget_selected": {
+        "episodes": 6,
+        "correct": 6,
+        "model_calls": 42,
+        "estimated_or_reserved_usd": 0.1618681,
+        "mean_seconds": 31.156333333333333,
+        "unknown_attempts": 0
+      }
+    },
+    "memory": {
+      "retrieved": 0,
+      "applied": 0,
+      "adopted": 0,
+      "context_cap_activated": 0
+    },
+    "streams": 2,
+    "tasks": 6,
+    "cost_note": "Arm totals show final executions only; total study ledger above includes editors, all probes, retries and failures."
+  }
+}

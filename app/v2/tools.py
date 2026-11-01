@@ -404,6 +404,33 @@ class ToolRegistry:
             {**payload["artifact"], "result_id": handle, "artifact_id": "art_" + handle[7:]}
         )
 
+    def identity_dependencies(self, goal, scopes, state):
+        """Bind only sourced identity results covering the medicines actually analyzed."""
+        names = {name.casefold() for scope, _, _ in scopes for name in scope["filters"]["interventions"]}
+        dependencies = set()
+        if not names:
+            return dependencies
+        candidates = dict.fromkeys(
+            [*state.get("result_ids", []), *(state.get("prior") or {}).get("result_ids", [])]
+        )
+        for handle in candidates:
+            artifact = self.artifact(handle, state)
+            resolution = artifact.metadata.get("resolution")
+            if artifact.goal_id not in goal["depends_on"] or not resolution:
+                continue
+            confirmed = set()
+            for item in resolution["resolutions"]:
+                if item["resolution_status"] in ("exact", "alias"):
+                    candidate = item["candidates"][0]
+                    confirmed.update(
+                        name.casefold()
+                        for name in [item["raw_name"], candidate["canonical_name"], *candidate["aliases"]]
+                    )
+            if names <= confirmed:
+                self.validate(HandleInput(handle=handle), state)
+                dependencies.add(handle)
+        return dependencies
+
     def analyze(self, args, state):
         goal = self.goal(args.goal_id, state, operation=args.operation)
         for key, value in goal.get("parameters", {}).items():
@@ -516,6 +543,7 @@ class ToolRegistry:
                     for item in scope.get("lineage", [])
                     if "result_id" in item
                 }
+                | self.identity_dependencies(goal, scopes, state)
             ),
         )
         output = self.publish(artifact, state, {"scope_ids": args.scope_ids})

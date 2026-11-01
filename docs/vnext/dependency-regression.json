@@ -1,0 +1,287 @@
+{
+  "version": "vnext-execution-eval-v1",
+  "corpus": {
+    "entity_groups": {
+      "melanoma": "development",
+      "psoriasis": "calibration",
+      "asthma": "heldout",
+      "rheumatoid arthritis": "heldout"
+    },
+    "episode_count": 72,
+    "policy": "Entity-disjoint outer split, all originating dialogue turns/plan mutations grouped. Capability templates deliberately recur; this does not claim template-disjoint generalization."
+  },
+  "episodes": [
+    {
+      "episode_id": "ep_18b702d2e486c6",
+      "family": "dependent_entity_goal",
+      "split": "development",
+      "origin": "authored",
+      "correct": true,
+      "turns": 1,
+      "model_calls": 9,
+      "estimated_or_reserved_usd": 0.1246828,
+      "unknown_attempts": 0,
+      "invalid_tools": 0,
+      "failures": [
+        []
+      ],
+      "elapsed_seconds": 50.296,
+      "runtime_inputs": "current and past utterances only; no labels or future answers",
+      "skill": "",
+      "context_policy": "relevant"
+    }
+  ],
+  "summary": {
+    "development": {
+      "episodes": 1,
+      "correct": 1
+    },
+    "calibration": {
+      "episodes": 0,
+      "correct": 0
+    },
+    "heldout": {
+      "episodes": 0,
+      "correct": 0
+    }
+  },
+  "budget": {
+    "attempts": 9,
+    "estimated_or_reserved_usd": 0.12468280000000001,
+    "max_estimated_usd": 1.0,
+    "price_source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+    "price_note": "Standard API list-rate estimate, not invoice; unknown calls retain conservative byte-based reservations.",
+    "events": [
+      {
+        "status": "completed",
+        "reserved_upper_estimate_usd": 0.10188,
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "response_id": "resp_0051bff0c0d3d807016ae6c3d4466487d0837238de497a3b0f",
+          "usage": {
+            "input_tokens": 4475,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 4349
+            },
+            "output_tokens": 267,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 4742
+          },
+          "elapsed_seconds": 5.469
+        },
+        "estimated_cost_usd": 0.0033569,
+        "cost_basis": "versioned_model_rate_or_provider_usage_cost"
+      },
+      {
+        "status": "completed",
+        "reserved_upper_estimate_usd": 0.111365,
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "response_id": "resp_0eb268cda83270e0016ae6c3d7921887d0b629ec33f6a76026",
+          "usage": {
+            "input_tokens": 5474,
+            "input_tokens_details": {
+              "cache_write_tokens": 1270,
+              "cached_tokens": 4078
+            },
+            "output_tokens": 50,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 5524
+          },
+          "elapsed_seconds": 1.812
+        },
+        "estimated_cost_usd": 0.0043348,
+        "cost_basis": "versioned_model_rate_or_provider_usage_cost"
+      },
+      {
+        "status": "completed",
+        "reserved_upper_estimate_usd": 0.1123,
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "response_id": "resp_012407c8f9ba1c9d016ae6c3db859087d0b0ebf182388db623",
+          "usage": {
+            "input_tokens": 5611,
+            "input_tokens_details": {
+              "cache_write_tokens": 1407,
+              "cached_tokens": 4078
+            },
+            "output_tokens": 81,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 5692
+          },
+          "elapsed_seconds": 2.109
+        },
+        "estimated_cost_usd": 0.0049873,
+        "cost_basis": "versioned_model_rate_or_provider_usage_cost"
+      },
+      {
+        "status": "completed",
+        "reserved_upper_estimate_usd": 0.13959,
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "response_id": "resp_0d19f5df5a56a390016ae6c3e6209887d0af71fc606341157b",
+          "usage": {
+            "input_tokens": 9957,
+            "input_tokens_details": {
+              "cache_write_tokens": 5753,
+              "cached_tokens": 4078
+            },
+            "output_tokens": 79,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 10036
+          },
+          "elapsed_seconds": 4.985
+        },
+        "estimated_cost_usd": 0.0158323,
+        "cost_basis": "versioned_model_rate_or_provider_usage_cost"
+      },
+      {
+        "status": "completed",
+        "reserved_upper_estimate_usd": 0.1420125,
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "response_id": "resp_046328e3914a7d2c016ae6c3ece69087d09a819fd391c63b67",
+          "usage": {
+            "input_tokens": 10326,
+            "input_tokens_details": {
+              "cache_write_tokens": 6122,
+              "cached_tokens": 4078
+            },
+            "output_tokens": 164,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 10490
+          },
+          "elapsed_seconds": 2.703
+        },
+        "estimated_cost_usd": 0.0176048,
+        "cost_basis": "versioned_model_rate_or_provider_usage_cost"
+      },
+      {
+        "status": "completed",
+        "reserved_upper_estimate_usd": 0.1488025,
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "response_id": "resp_074f46c0eb6aa1af016ae6c3f39fb887d08d1e814345199f7d",
+          "usage": {
+            "input_tokens": 11379,
+            "input_tokens_details": {
+              "cache_write_tokens": 7175,
+              "cached_tokens": 4078
+            },
+            "output_tokens": 36,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 11415
+          },
+          "elapsed_seconds": 1.719
+        },
+        "estimated_cost_usd": 0.0189573,
+        "cost_basis": "versioned_model_rate_or_provider_usage_cost"
+      },
+      {
+        "status": "completed",
+        "reserved_upper_estimate_usd": 0.149335,
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "response_id": "resp_05137bf491ed0d56016ae6c3f6ee4487d0829c0a7040b2f6da",
+          "usage": {
+            "input_tokens": 11448,
+            "input_tokens_details": {
+              "cache_write_tokens": 7244,
+              "cached_tokens": 4078
+            },
+            "output_tokens": 39,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 11487
+          },
+          "elapsed_seconds": 1.704
+        },
+        "estimated_cost_usd": 0.019159799999999998,
+        "cost_basis": "versioned_model_rate_or_provider_usage_cost"
+      },
+      {
+        "status": "completed",
+        "reserved_upper_estimate_usd": 0.1498325,
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "response_id": "resp_07f69782f2fc7038016ae6c3f9f31887d092ad8a5ce2d920d3",
+          "usage": {
+            "input_tokens": 11517,
+            "input_tokens_details": {
+              "cache_write_tokens": 7313,
+              "cached_tokens": 4078
+            },
+            "output_tokens": 42,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 11559
+          },
+          "elapsed_seconds": 2.094
+        },
+        "estimated_cost_usd": 0.0193623,
+        "cost_basis": "versioned_model_rate_or_provider_usage_cost"
+      },
+      {
+        "status": "completed",
+        "reserved_upper_estimate_usd": 0.15036,
+        "metadata": {
+          "provider": "openai",
+          "requested_model": "gpt-6.1-sol",
+          "reported_model": "gpt-6.1-sol",
+          "response_id": "resp_06e2ce29af9de4cd016ae6c3fc5e2887d087bbf3a46a7964b2",
+          "usage": {
+            "input_tokens": 11591,
+            "input_tokens_details": {
+              "cache_write_tokens": 7387,
+              "cached_tokens": 4078
+            },
+            "output_tokens": 196,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 11787
+          },
+          "elapsed_seconds": 3.437
+        },
+        "estimated_cost_usd": 0.0210873,
+        "cost_basis": "versioned_model_rate_or_provider_usage_cost"
+      }
+    ]
+  },
+  "limits": [
+    "Entity-disjoint; capability templates recur.",
+    "Not a statistically representative benchmark.",
+    "Automatic explanation/actionability checks require human spot review."
+  ]
+}

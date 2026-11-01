@@ -1,0 +1,581 @@
+{
+  "manifest": {
+    "dataset_id": "ds_5fdf1d7b71dd4bacbf32290c91b5ff2d",
+    "query": {
+      "query.cond": "asthma"
+    },
+    "query_hash": "ce62c1c269d11e3c5def23efa28b4432f58db8a7979b887367aa2c0cb189c091",
+    "started_at": "2026-11-01T04:50:13.660150+00:00",
+    "finished_at": "2026-11-01T04:51:02.948607+00:00",
+    "source_version_before": {
+      "apiVersion": "2.0.5",
+      "dataTimestamp": "2026-10-30T09:00:04"
+    },
+    "source_version_after": {
+      "apiVersion": "2.0.5",
+      "dataTimestamp": "2026-10-30T09:00:04"
+    },
+    "expected_count": 5309,
+    "retrieved_unique_count": 5309,
+    "pages": 8,
+    "duplicate_count": 0,
+    "complete": true,
+    "reason": null,
+    "raw_hash": "1de4bdfd68fe59ec53ccf81c58573ae771e644c04489a20e49ddb3078b6bfe97",
+    "schema_version": "snapshot-v1"
+  },
+  "audit": {
+    "strategy": "disjoint_study_type_partition",
+    "root_count": 5309,
+    "root_receipt": {
+      "totalCount": 5309,
+      "studies": [
+        {
+          "protocolSection": {
+            "identificationModule": {
+              "nctId": "NCT01544634",
+              "orgStudyIdInfo": {
+                "id": "2011RC16"
+              },
+              "secondaryIdInfos": [
+                {
+                  "id": "2011-002512-89",
+                  "type": "EUDRACT_NUMBER"
+                }
+              ],
+              "organization": {
+                "fullName": "University of Dundee",
+                "class": "OTHER"
+              },
+              "briefTitle": "Beta Blocker Therapy in Mild to Moderate Asthmatics",
+              "officialTitle": "Evaluation of Any Steroid Sparing Effect of Beta Blocker Therapy on Airway Hyper-responsiveness in Stable, Mild to Moderate Asthmatics",
+              "acronym": "ANDA1"
+            },
+            "statusModule": {
+              "statusVerifiedDate": "2018-03",
+              "overallStatus": "COMPLETED",
+              "expandedAccessInfo": {
+                "hasExpandedAccess": false
+              },
+              "startDateStruct": {
+                "date": "2012-04-04",
+                "type": "ACTUAL"
+              },
+              "primaryCompletionDateStruct": {
+                "date": "2013-05-25",
+                "type": "ACTUAL"
+              },
+              "completionDateStruct": {
+                "date": "2013-05-25",
+                "type": "ACTUAL"
+              },
+              "studyFirstSubmitDate": "2012-02-24",
+              "studyFirstSubmitQcDate": "2012-02-29",
+              "studyFirstPostDateStruct": {
+                "date": "2012-03-06",
+                "type": "ESTIMATED"
+              },
+              "lastUpdateSubmitDate": "2018-03-29",
+              "lastUpdatePostDateStruct": {
+                "date": "2018-03-30",
+                "type": "ACTUAL"
+              }
+            },
+            "sponsorCollaboratorsModule": {
+              "responsibleParty": {
+                "type": "PRINCIPAL_INVESTIGATOR",
+                "investigatorFullName": "William J Anderson",
+                "investigatorTitle": "Clinical Research Fellow",
+                "investigatorAffiliation": "University of Dundee"
+              },
+              "leadSponsor": {
+                "name": "University of Dundee",
+                "class": "OTHER"
+              },
+              "collaborators": [
+                {
+                  "name": "Chief Scientist Office of the Scottish Government",
+                  "class": "OTHER_GOV"
+                }
+              ]
+            },
+            "oversightModule": {
+              "oversightHasDmc": false
+            },
+            "descriptionModule": {
+              "briefSummary": "Current asthma medicines include inhalers. A common type of inhaler is called a 'beta-agonist' (e.g. salbutamol). They improve asthma symptoms by stimulating areas in the airway causing it to widen. Although these drugs are useful short term, long term use can make asthma worse in some people.\n\n'Beta-blockers' are the complete opposite type of medication. Just now they are avoided in patients with asthma. Beta-blockers cause problems in asthmatics in the short term, including severe asthma attacks.\n\nThe other mainstay of inhaler treatment for asthma is inhaled steroid or 'preventer' medication. These work by dampening down the inflammation in the lungs that occurs in asthma.\n\nNew research has suggested that longer term use of beta-blockers can also reduce airway inflammation which may improve asthma control. This research was done in asthmatic patients who didn't need inhaled steroids to control their asthma. At the moment the investigators are studying to see if there is a benefit of beta-blocker use for asthma over and above asthmatics own usual doses of inhaled steroids.\n\nIn this study, the investigators will be trying to find out if adding a beta blocker to a smaller dose of steroid inhaler has the same effect on asthma control as just using a higher dose of steroid inhaler by itself."
+            },
+            "conditionsModule": {
+              "conditions": [
+                "Asthma"
+              ],
+              "keywords": [
+                "Asthma",
+                "Propranolol",
+                "Inhaled corticosteroids",
+                "Steroid sparing agent",
+                "Airway hyper-responsiveness"
+              ]
+            },
+            "designModule": {
+              "studyType": "INTERVENTIONAL",
+              "phases": [
+                "PHASE2"
+              ],
+              "designInfo": {
+                "allocation": "RANDOMIZED",
+                "interventionModel": "CROSSOVER",
+                "primaryPurpose": "TREATMENT",
+                "maskingInfo": {
+                  "masking": "TRIPLE",
+                  "whoMasked": [
+                    "PARTICIPANT",
+                    "INVESTIGATOR",
+                    "OUTCOMES_ASSESSOR"
+                  ]
+                }
+              },
+              "enrollmentInfo": {
+                "count": 16,
+                "type": "ACTUAL"
+              }
+            },
+            "armsInterventionsModule": {
+              "armGroups": [
+                {
+                  "label": "Propranolol + Low dose Qvar",
+                  "type": "EXPERIMENTAL",
+                  "interventionNames": [
+                    "Drug: Propranolol",
+                    "Drug: Qvar 50"
+                  ]
+                },
+                {
+                  "label": "Placebo + high dose Qvar",
+                  "type": "ACTIVE_COMPARATOR",
+                  "interventionNames": [
+                    "Drug: Placebo",
+                    "Drug: Qvar 100"
+                  ]
+                }
+              ],
+              "interventions": [
+                {
+                  "type": "DRUG",
+                  "name": "Propranolol",
+                  "description": "Propranolol: 10mg bd for 1 week, 20mg bd for 2 weeks, 80mg MR for 4 weeks.",
+                  "armGroupLabels": [
+                    "Propranolol + Low dose Qvar"
+                  ]
+                },
+                {
+                  "type": "DRUG",
+                  "name": "Placebo",
+                  "description": "Placebo tablets: 1 tab bd for 2 weeks, 1 tab od for 4 weeks",
+                  "armGroupLabels": [
+                    "Placebo + high dose Qvar"
+                  ]
+                },
+                {
+                  "type": "DRUG",
+                  "name": "Qvar 50",
+                  "description": "Qvar 50, 1 puff bd for 6 weeks",
+                  "armGroupLabels": [
+                    "Propranolol + Low dose Qvar"
+                  ]
+                },
+                {
+                  "type": "DRUG",
+                  "name": "Qvar 100",
+                  "description": "Qvar 100, 2 puffs bd for 6 weeks",
+                  "armGroupLabels": [
+                    "Placebo + high dose Qvar"
+                  ]
+                }
+              ]
+            },
+            "outcomesModule": {
+              "primaryOutcomes": [
+                {
+                  "measure": "Change in Histamine provocative concentration causing 20% fall in FEV1 (PC20)at 6 weeks",
+                  "description": "Measurement of airway hyper-reactivity (a hallmark of asthma).",
+                  "timeFrame": "Change from baseline to 6 weeks"
+                }
+              ],
+              "secondaryOutcomes": [
+                {
+                  "measure": "Change in Impulse oscillometry parameters at 6 weeks",
+                  "description": "Change in: Resistance at 5Hz, Resistance at 20Hz, Reactance at 5Hz, Frequency of resonance, Area under reactance curve.",
+                  "timeFrame": "Change from baseline to 6 weeks"
+                },
+                {
+                  "measure": "Change in Spirometry parameters at 6 weeks",
+                  "description": "Change in: Forced expiratory volume in 1 second (FEV1); forced vital capacity (FVC); forced expriatory flow between 25-75% of vital capacity; FEV1/FVC ratio.",
+                  "timeFrame": "Change from baseline to 6 weeks"
+                },
+                {
+                  "measure": "Change in resting heart rate at 6 weeks",
+                  "description": "Abosolute change in heart rate at 6 weeks will be a secondary outcome. Participants will measure their own heart rate at home on a daily basis and compare this to a given cut-off value, below which they will be advised to contact a trial doctor.",
+                  "timeFrame": "Change from baseline to 6 weeks"
+                },
+                {
+                  "measure": "Change in resting blood pressure at 6 weeks",
+                  "description": "Blood pressure will be monitored at each visit, or if patients develop symptoms that may be due to low blood pressure.",
+                  "timeFrame": "Change from baseline to 6 weeks"
+                },
+                {
+                  "measure": "Change in exhaled tidal nitric oxide levels at 6 weeks",
+                  "timeFrame": "Change from baseline to 6 weeks"
+                },
+                {
+                  "measure": "Change in overnight urinary cortisol/creatinine ratio (OUCC) at 6 weeks",
+                  "description": "Systemic effects from inhaled corticosteroids can be measured using OUCC.",
+                  "timeFrame": "Change from baseline to 6 weeks"
+                },
+                {
+                  "measure": "Change in symptom scores (Asthma control questionnaire and Asthma quality of life questionnaire) at 6 weeks",
+                  "timeFrame": "Change from baseline to 6 weeks"
+                }
+              ]
+            },
+            "eligibilityModule": {
+              "eligibilityCriteria": "Inclusion Criteria:\n\n* Stable mild to moderate asthma\n* Histamine PC20 \\</= 8mg/ml\n* Receiving inhaled corticosteroid 0-1000ug daily (BDP equivalent dose)\n* FEV1 \\> 60% predicted\n* Diurnal variability \\< 30%\n* Reliever use \\</= 8puffs/day\n* ECG demonstrating sinus rhythm\n\nExclusion Criteria:\n\n* Uncontrolled symptoms of asthma\n* Systolic BP\\<110mmHg\n* Heart rate\\<60bpm\n* Pregnancy or lactation\n* Heart block\n* Heart rate limiting medications currently prescribed\n* Asthma exacerbation within 6 months of study commencement",
+              "healthyVolunteers": false,
+              "sex": "ALL",
+              "minimumAge": "18 Years",
+              "maximumAge": "65 Years",
+              "stdAges": [
+                "ADULT",
+                "OLDER_ADULT"
+              ]
+            },
+            "contactsLocationsModule": {
+              "overallOfficials": [
+                {
+                  "name": "William J Anderson, MBChB",
+                  "affiliation": "University of Dundee",
+                  "role": "PRINCIPAL_INVESTIGATOR"
+                },
+                {
+                  "name": "Brian J Lipworth, MD",
+                  "affiliation": "University of Dundee",
+                  "role": "STUDY_DIRECTOR"
+                }
+              ],
+              "locations": [
+                {
+                  "facility": "Asthma and Allergy Research Group, University of Dundee",
+                  "city": "Dundee",
+                  "state": "Scotland",
+                  "zip": "DD1 9SY",
+                  "country": "United Kingdom",
+                  "geoPoint": {
+                    "lat": 56.46913,
+                    "lon": -2.97489
+                  }
+                }
+              ]
+            },
+            "referencesModule": {
+              "references": [
+                {
+                  "pmid": "21459857",
+                  "type": "BACKGROUND",
+                  "citation": "Morales DR, Guthrie B, Lipworth BJ, Donnan PT, Jackson C. Prescribing of beta-adrenoceptor antagonists in asthma: an observational study. Thorax. 2011 Jun;66(6):502-7. doi: 10.1136/thoraxjnl-2011-200067. Epub 2011 Apr 1."
+                },
+                {
+                  "pmid": "17689122",
+                  "type": "BACKGROUND",
+                  "citation": "Lin R, Peng H, Nguyen LP, Dudekula NB, Shardonofsky F, Knoll BJ, Parra S, Bond RA. Changes in beta 2-adrenoceptor and other signaling proteins produced by chronic administration of 'beta-blockers' in a murine asthma model. Pulm Pharmacol Ther. 2008;21(1):115-24. doi: 10.1016/j.pupt.2007.06.003. Epub 2007 Jul 4."
+                },
+                {
+                  "pmid": "18096872",
+                  "type": "BACKGROUND",
+                  "citation": "Nguyen LP, Omoluabi O, Parra S, Frieske JM, Clement C, Ammar-Aouchiche Z, Ho SB, Ehre C, Kesimer M, Knoll BJ, Tuvim MJ, Dickey BF, Bond RA. Chronic exposure to beta-blockers attenuates inflammation and mucin content in a murine asthma model. Am J Respir Cell Mol Biol. 2008 Mar;38(3):256-62. doi: 10.1165/rcmb.2007-0279RC. Epub 2007 Dec 20."
+                },
+                {
+                  "pmid": "17703976",
+                  "type": "BACKGROUND",
+                  "citation": "Hanania NA, Singh S, El-Wali R, Flashner M, Franklin AE, Garner WJ, Dickey BF, Parra S, Ruoss S, Shardonofsky F, O'Connor BJ, Page C, Bond RA. The safety and effects of the beta-blocker, nadolol, in mild asthma: an open-label pilot study. Pulm Pharmacol Ther. 2008;21(1):134-41. doi: 10.1016/j.pupt.2007.07.002. Epub 2007 Jul 17."
+                },
+                {
+                  "pmid": "19807697",
+                  "type": "BACKGROUND",
+                  "citation": "Lipworth BJ, Williamson PA. Think the impossible: beta-blockers for treating asthma. Clin Sci (Lond). 2009 Oct 12;118(2):115-20. doi: 10.1042/CS20090398."
+                },
+                {
+                  "pmid": "28065396",
+                  "type": "DERIVED",
+                  "citation": "Anderson WJ, Short PM, Jabbal S, Lipworth BJ. Inhaled corticosteroid dose response in asthma: Should we measure inflammation? Ann Allergy Asthma Immunol. 2017 Feb;118(2):179-185. doi: 10.1016/j.anai.2016.11.018. Epub 2017 Jan 3."
+                },
+                {
+                  "pmid": "24938324",
+                  "type": "DERIVED",
+                  "citation": "Anderson WJ, Short PM, Williamson PA, Manoharan A, Lipworth BJ. The inverse agonist propranolol confers no corticosteroid-sparing activity in mild-to-moderate persistent asthma. Clin Sci (Lond). 2014 Dec;127(11):635-43. doi: 10.1042/CS20140249."
+                }
+              ]
+            }
+          },
+          "derivedSection": {
+            "miscInfoModule": {
+              "versionHolder": "2026-10-30"
+            },
+            "conditionBrowseModule": {
+              "meshes": [
+                {
+                  "id": "D001249",
+                  "term": "Asthma"
+                },
+                {
+                  "id": "D012130",
+                  "term": "Respiratory Hypersensitivity"
+                }
+              ],
+              "ancestors": [
+                {
+                  "id": "D001982",
+                  "term": "Bronchial Diseases"
+                },
+                {
+                  "id": "D012140",
+                  "term": "Respiratory Tract Diseases"
+                },
+                {
+                  "id": "D008173",
+                  "term": "Lung Diseases, Obstructive"
+                },
+                {
+                  "id": "D008171",
+                  "term": "Lung Diseases"
+                },
+                {
+                  "id": "D006969",
+                  "term": "Hypersensitivity, Immediate"
+                },
+                {
+                  "id": "D006967",
+                  "term": "Hypersensitivity"
+                },
+                {
+                  "id": "D007154",
+                  "term": "Immune System Diseases"
+                }
+              ]
+            },
+            "interventionBrowseModule": {
+              "meshes": [
+                {
+                  "id": "D011433",
+                  "term": "Propranolol"
+                }
+              ],
+              "ancestors": [
+                {
+                  "id": "D050198",
+                  "term": "Phenoxypropanolamines"
+                },
+                {
+                  "id": "D011412",
+                  "term": "Propanolamines"
+                },
+                {
+                  "id": "D000605",
+                  "term": "Amino Alcohols"
+                },
+                {
+                  "id": "D000438",
+                  "term": "Alcohols"
+                },
+                {
+                  "id": "D009930",
+                  "term": "Organic Chemicals"
+                },
+                {
+                  "id": "D020005",
+                  "term": "Propanols"
+                },
+                {
+                  "id": "D000588",
+                  "term": "Amines"
+                },
+                {
+                  "id": "D009281",
+                  "term": "Naphthalenes"
+                },
+                {
+                  "id": "D011084",
+                  "term": "Polycyclic Aromatic Hydrocarbons"
+                },
+                {
+                  "id": "D006841",
+                  "term": "Hydrocarbons, Aromatic"
+                },
+                {
+                  "id": "D006844",
+                  "term": "Hydrocarbons, Cyclic"
+                },
+                {
+                  "id": "D006838",
+                  "term": "Hydrocarbons"
+                },
+                {
+                  "id": "D011083",
+                  "term": "Polycyclic Compounds"
+                }
+              ]
+            }
+          },
+          "hasResults": false
+        }
+      ],
+      "nextPageToken": "ZVJ76sWHmqU2wRk2CJf6_LLvzZHcI8Brd7KrgP4YlDie"
+    },
+    "partitions": [
+      {
+        "query": {
+          "query.cond": "asthma",
+          "filter.advanced": "AREA[StudyType]INTERVENTIONAL"
+        },
+        "manifest": {
+          "dataset_id": "ds_48ebb2a586c34139acb947ae0fc39f52",
+          "query": {
+            "query.cond": "asthma",
+            "filter.advanced": "AREA[StudyType]INTERVENTIONAL"
+          },
+          "query_hash": "64086123008e7714efa84140feb9d2abaaf9da122c0b2be4639ce49750ea6e13",
+          "started_at": "2026-11-01T04:50:13.660150+00:00",
+          "finished_at": "2026-11-01T04:50:49.752411+00:00",
+          "source_version_before": {
+            "apiVersion": "2.0.5",
+            "dataTimestamp": "2026-10-30T09:00:04"
+          },
+          "source_version_after": {
+            "apiVersion": "2.0.5",
+            "dataTimestamp": "2026-10-30T09:00:04"
+          },
+          "expected_count": 3826,
+          "retrieved_unique_count": 3826,
+          "pages": 4,
+          "duplicate_count": 0,
+          "complete": true,
+          "reason": null,
+          "raw_hash": "9cfea5fc755f4444fb50681d005afaefba12b21cb9d4b0bd2054fe21e56f3c3d",
+          "schema_version": "snapshot-v1"
+        },
+        "predicate": "AREA[StudyType]INTERVENTIONAL"
+      },
+      {
+        "query": {
+          "query.cond": "asthma",
+          "filter.advanced": "AREA[StudyType]OBSERVATIONAL"
+        },
+        "manifest": {
+          "dataset_id": "ds_af4ef858fb0a45a9988dc24be98bce52",
+          "query": {
+            "query.cond": "asthma",
+            "filter.advanced": "AREA[StudyType]OBSERVATIONAL"
+          },
+          "query_hash": "9fac75210b7418bbb61d3f8997dd7271d62ac0754dda89c0e4a005d52b63c3e8",
+          "started_at": "2026-11-01T04:50:52.149486+00:00",
+          "finished_at": "2026-11-01T04:50:59.958005+00:00",
+          "source_version_before": {
+            "apiVersion": "2.0.5",
+            "dataTimestamp": "2026-10-30T09:00:04"
+          },
+          "source_version_after": {
+            "apiVersion": "2.0.5",
+            "dataTimestamp": "2026-10-30T09:00:04"
+          },
+          "expected_count": 1480,
+          "retrieved_unique_count": 1480,
+          "pages": 2,
+          "duplicate_count": 0,
+          "complete": true,
+          "reason": null,
+          "raw_hash": "0b3f2606d9d53540176861191aa73510fe4600b21ba55aa94971d0b80e861cd6",
+          "schema_version": "snapshot-v1"
+        },
+        "predicate": "AREA[StudyType]OBSERVATIONAL"
+      },
+      {
+        "query": {
+          "query.cond": "asthma",
+          "filter.advanced": "AREA[StudyType]EXPANDED_ACCESS"
+        },
+        "manifest": {
+          "dataset_id": "ds_7c02f908144b4b0c81e0f351611a47cf",
+          "query": {
+            "query.cond": "asthma",
+            "filter.advanced": "AREA[StudyType]EXPANDED_ACCESS"
+          },
+          "query_hash": "03a166e6c2335adaa283710ece543b24fd4645cb63f14ac9804749a81cee1acd",
+          "started_at": "2026-11-01T04:51:00.341782+00:00",
+          "finished_at": "2026-11-01T04:51:01.738294+00:00",
+          "source_version_before": {
+            "apiVersion": "2.0.5",
+            "dataTimestamp": "2026-10-30T09:00:04"
+          },
+          "source_version_after": {
+            "apiVersion": "2.0.5",
+            "dataTimestamp": "2026-10-30T09:00:04"
+          },
+          "expected_count": 3,
+          "retrieved_unique_count": 3,
+          "pages": 1,
+          "duplicate_count": 0,
+          "complete": true,
+          "reason": null,
+          "raw_hash": "c7bae7b53c13a75faa2dbe1aaf77df16670ed4cf7f5f23919102cabe72ed415a",
+          "schema_version": "snapshot-v1"
+        },
+        "predicate": "AREA[StudyType]EXPANDED_ACCESS"
+      },
+      {
+        "query": {
+          "query.cond": "asthma",
+          "filter.advanced": "NOT (AREA[StudyType]INTERVENTIONAL OR AREA[StudyType]OBSERVATIONAL OR AREA[StudyType]EXPANDED_ACCESS)"
+        },
+        "manifest": {
+          "dataset_id": "ds_8d885441ff2d4de7b83e776dd1516bc8",
+          "query": {
+            "query.cond": "asthma",
+            "filter.advanced": "NOT (AREA[StudyType]INTERVENTIONAL OR AREA[StudyType]OBSERVATIONAL OR AREA[StudyType]EXPANDED_ACCESS)"
+          },
+          "query_hash": "7205f9900939ffcaa91c9bf371f37365bde015222e237a87247f36f6aac81817",
+          "started_at": "2026-11-01T04:51:01.739291+00:00",
+          "finished_at": "2026-11-01T04:51:02.649940+00:00",
+          "source_version_before": {
+            "apiVersion": "2.0.5",
+            "dataTimestamp": "2026-10-30T09:00:04"
+          },
+          "source_version_after": {
+            "apiVersion": "2.0.5",
+            "dataTimestamp": "2026-10-30T09:00:04"
+          },
+          "expected_count": 0,
+          "retrieved_unique_count": 0,
+          "pages": 1,
+          "duplicate_count": 0,
+          "complete": true,
+          "reason": null,
+          "raw_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "schema_version": "snapshot-v1"
+        },
+        "predicate": "NOT (AREA[StudyType]INTERVENTIONAL OR AREA[StudyType]OBSERVATIONAL OR AREA[StudyType]EXPANDED_ACCESS)"
+      }
+    ],
+    "union_count": 5309,
+    "unknown_values_in_complement": true,
+    "source_version_before": {
+      "apiVersion": "2.0.5",
+      "dataTimestamp": "2026-10-30T09:00:04"
+    },
+    "source_version_after": {
+      "apiVersion": "2.0.5",
+      "dataTimestamp": "2026-10-30T09:00:04"
+    }
+  },
+  "model_calls": 0,
+  "unique_records": 5309,
+  "complete": true
+}

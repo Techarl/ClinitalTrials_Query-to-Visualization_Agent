@@ -24,7 +24,7 @@ dependencies = [
 dev = ["pytest==9.2.0", "ruff==0.17.3"]
 
 [tool.setuptools.packages.find]
-include = ["app*", "evaluation*"]
+include = ["app*", "evaluation*", "experiments*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

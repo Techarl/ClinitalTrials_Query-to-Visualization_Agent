@@ -3,6 +3,8 @@ import * as echarts from 'echarts'
 import type { Artifact, Row } from './types'
 
 const palette = ['#176b59','#bf854a','#638ab0','#95749c','#879e63']
+const axisTitles: Record<string,string> = {enrollment:'Enrollment (participants)',trial_duration:'Trial duration (days)',start_year:'Start year',completion_year:'Completion year'}
+const columnTitles: Record<string,string> = {source:'机构 / 药物 A',target:'机构 / 药物 B',contributor_count:'贡献研究数',shared_interventions:'共享药物',weight:'关系权重',weight_metric:'权重口径',category:'类别',cohort:'比较组',trial_count:'研究数',year:'年份',bin_start:'区间起点',bin_end:'区间终点',nct_id:'试验编号',x_type:'X 数值类型',y_type:'Y 数值类型'}
 let mapPromise: Promise<any> | null = null
 const countryAliases: Record<string,string> = {'United States':'United States of America','Russian Federation':'Russia','Korea, Republic of':'South Korea','Iran, Islamic Republic of':'Iran','Viet Nam':'Vietnam','Tanzania, United Republic of':'United Republic of Tanzania','Czech Republic':'Czechia','Taiwan':'Taiwan','Congo, The Democratic Republic of the':'Democratic Republic of the Congo'}
 function loadMap() {
@@ -22,6 +24,7 @@ export function Chart({artifact, onEvidence}: {artifact: Artifact; onEvidence: (
   const [error, setError] = useState('')
   const visual = artifact.visualization
   const data: Row[] = !visual ? [] : Array.isArray(visual.data) ? visual.data : visual.data.edges
+  const nodeLabels: Record<string,string> = visual && !Array.isArray(visual.data) ? Object.fromEntries(visual.data.nodes.map(n=>[n.id,n.label])) : {}
   useEffect(() => {
     if (!element.current || !visual || renderer === 'table') return
     let disposed = false
@@ -43,15 +46,15 @@ export function Chart({artifact, onEvidence}: {artifact: Artifact; onEvidence: (
           series:[{type:'map',map:'world',roam:true,label:{show:false},emphasis:{label:{show:true}},
             data:data.filter(r=>names.has(countryAliases[r.category] || r.category)).map(r=>({...r,name:countryAliases[r.category] || r.category,value:r.trial_count}))}]})
       } else if (visual!.type === 'network_graph' && !Array.isArray(visual!.data)) {
-        chart.setOption({...base,legend:{show:false},series:[{type:'graph',layout:'force',roam:true,draggable:true,
+        chart.setOption({...base,legend:{show:false},series:[{type:'graph',layout:'force',roam:true,draggable:true,zoom:.7,
           force:{repulsion:220,edgeLength:[75,160],gravity:.08},label:{show:true,position:'right',fontSize:11,width:140,overflow:'truncate'},
           edgeLabel:{show:false},lineStyle:{color:'#b6c8bd',width:1.5,curveness:.1},emphasis:{focus:'adjacency',lineStyle:{width:4}},
           data:visual!.data.nodes.map(r=>({...r,name:r.label,value:r.trial_count,symbolSize:Math.min(42,14+Math.sqrt(r.trial_count)*3),itemStyle:{color:r.entity_type==='sponsor'?palette[0]:palette[1]}})),
           links:visual!.data.edges.map(r=>({...r,value:r.weight}))}]})
       } else if (visual!.type === 'scatter') {
         const groups = [...new Set(data.map(r=>r.cohort))]
-        chart.setOption({...base,xAxis:{type:'value',name:visual!.encoding.x.title,nameLocation:'middle',nameGap:30},
-          yAxis:{type:'value',name:visual!.encoding.y.title},dataZoom:[{type:'inside'}],
+        chart.setOption({...base,xAxis:{type:'value',name:axisTitles[visual!.encoding.x.title] || visual!.encoding.x.title,nameLocation:'middle',nameGap:30},
+          yAxis:{type:'value',name:axisTitles[visual!.encoding.y.title] || visual!.encoding.y.title},dataZoom:[{type:'inside'}],
           series:groups.map(group=>({name:group,type:'scatter',symbolSize:10,data:data.filter(r=>r.cohort===group).map(r=>({...r,value:[r.x,r.y],name:r.nct_id}))}))})
       } else {
         const label = (r:Row) => visual!.type==='histogram' ? `${Number(r.bin_start).toFixed(1)}–${Number(r.bin_end).toFixed(1)}` : String(r.category ?? r.year)
@@ -77,7 +80,7 @@ export function Chart({artifact, onEvidence}: {artifact: Artifact; onEvidence: (
       {artifact.alternative_renderers.includes('map') && <button className={renderer==='map'?'active':''} onClick={()=>setRenderer('map')}>国家地图</button>}
       <button className={renderer==='table'?'active':''} onClick={()=>setRenderer('table')}>数据 / 引用</button>
     </div><button className="text-button" onClick={()=>{const url=instance.current?.getDataURL({pixelRatio:2,backgroundColor:'#fff'});if(url){const a=document.createElement('a');a.href=url;a.download='trialscope-chart.png';a.click()}}}>导出 PNG ↗</button></div>
-    {renderer==='table' ? <div key="table" className="table-scroll"><table><thead><tr>{columns.map(c=><th key={c}>{c}</th>)}<th>来源</th></tr></thead><tbody>{data.map((r,i)=><tr key={i}>{columns.map(c=><td key={c}>{typeof r[c]==='object'?JSON.stringify(r[c]):String(r[c]??'—')}</td>)}<td><button onClick={()=>onEvidence(r.evidence_set_id)}>查看引用</button></td></tr>)}</tbody></table></div> : <div key="chart" className="chart" ref={element} role="img" aria-label={artifact.title+ '。可切换数据表通过键盘查看引用。'}/>}
+    {renderer==='table' ? <div key="table" className="table-scroll"><table><thead><tr>{columns.map(c=><th key={c}>{columnTitles[c] || c}</th>)}<th>来源</th></tr></thead><tbody>{data.map((r,i)=><tr key={i}>{columns.map(c=><td key={c}>{(c==='source'||c==='target') && nodeLabels[r[c]] ? nodeLabels[r[c]] : typeof r[c]==='object'?JSON.stringify(r[c]):String(r[c]??'—')}</td>)}<td><button onClick={()=>onEvidence(r.evidence_set_id)}>查看引用</button></td></tr>)}</tbody></table></div> : <div key="chart" className="chart" ref={element} role="img" aria-label={artifact.title+ '。可切换数据表通过键盘查看引用。'}/>}
     {error && <p className="error" role="alert">{error}</p>}
     {renderer==='map' && <p className="caption">地理底图：Natural Earth，公共领域。{unmapped.length>0 ? `未映射国家值（保留在数据表）：${unmapped.join('、')}` : '所有当前国家值均已映射。'}</p>}
     <p className="caption">点击图表元素查看对应来源；数据表提供相同的键盘可访问入口。</p>
