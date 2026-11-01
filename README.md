@@ -192,10 +192,10 @@ If BuildKit cannot fetch a Docker Hub token, pull `python:3.12-slim` directly wi
 .\.venv\Scripts\python.exe scripts/package_submission.py
 ```
 
-This builds `dist/cheiron-clinicaltrials-agent.zip` with an explicit allowlist and credential scan. Source, tests, docs, examples and evidence are included. `.env`, local databases, downloads, environments and Git history are excluded.
+This builds `dist/cheiron-clinicaltrials-agent.zip` with an explicit allowlist and credential scan. Source, tests, docs, examples and evidence are included. `.env`, private assignment/planning notes (`question/`), local databases, downloads, environments and Git history are excluded.
 
 ## AI use and improvements
 
-The user supplied the assignment and architecture handoff. OpenAI Codex drafted, implemented, tested and revised code, prompts, tests, reference checks and docs. Deliberate choices include constrained plans, immutable snapshots, fixed calculations, scoped relationships, full evidence and bounded recovery. No code from the similar take-home repositories in the handoff was copied.
+The user supplied the assignment and architecture requirements. OpenAI Codex drafted, implemented, tested and revised code, prompts, tests, reference checks and docs. Deliberate choices include constrained plans, immutable snapshots, fixed calculations, scoped relationships, full evidence and bounded recovery. No code from the reference take-home repositories was copied.
 
 Limits include bounded source searches, imperfect semantic/entity interpretation, one execution worker, no authentication or retention cleanup, and external-source availability. V2 has a frontend, streamed progress, scatter plots and a persisted tool loop; the compatible v1 endpoint still uses synchronous execution. Exact quotation matching establishes source integrity, not the correctness of every interpretation. Experimental configurations remain isolated; using an experience component does not itself establish automatic improvement.

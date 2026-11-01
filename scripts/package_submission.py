@@ -30,7 +30,6 @@ TOP_LEVEL_DIRS = (
     "tests",
     "docs",
     "examples",
-    "question",
     "scripts",
     "experiments",
     "evaluation",

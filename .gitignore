@@ -35,10 +35,5 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# Original assignment screenshots; keep local copies out of future commits.
-/question/微信图片_20261031195450.png
-/question/微信图片_20261031195501.png
-/question/微信图片_20261031195513.png
-/question/微信图片_20261031195524.png
-/question/微信图片_20261031195534.png
-/question/微信图片_20261031195545.png
+# Private assignment and planning notes stay local.
+/question/
