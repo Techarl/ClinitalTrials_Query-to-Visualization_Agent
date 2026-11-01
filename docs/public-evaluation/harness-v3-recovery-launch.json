@@ -1,0 +1,30 @@
+{
+  "executable": "<workspace>/.venv/Scripts/python.exe",
+  "formal_cap_usd": 43.9267027,
+  "arguments": [
+    "<workspace>/data/harness-v3-recovery01/resume_harness_v3.py",
+    "--capsule",
+    "<workspace>/data/harness-v3-capsule05",
+    "--output",
+    "<workspace>/data/harness-v3-formal05",
+    "--frozen",
+    "<workspace>/data/core300-frozen",
+    "--bank",
+    "<workspace>/data/harness-v3-main02/frozen-bank.json",
+    "--prior-ledger",
+    "<workspace>/data/harness-v3-main01/stopped-infrastructure-ledger.json",
+    "--prior-ledger",
+    "<workspace>/data/harness-v3-main02/completed-development-and-online-ledger.json",
+    "--total-ceiling-usd",
+    "53.33",
+    "--release-formal"
+  ],
+  "wrapper_sha256": "989814a076ac928ac03eccb085e7e46fd4b58a758e039624193677a5547735a6",
+  "pid": 18536,
+  "unknown_reservations_preserved": true,
+  "main_cap_usd": 53.33,
+  "deadlines_extended": false,
+  "launched_at": "2026-11-01T18:02:17.6657135+08:00",
+  "path_redaction": "Public redacted copy, not verbatim: the original absolute workspace prefix is replaced with <workspace>. The local launch receipt is retained unchanged.",
+  "original_local_receipt_sha256": "68e0b430cfa30fb244535adc771bd8f2f0b76d7e3da899a23a42cb5e81d4f0ae"
+}

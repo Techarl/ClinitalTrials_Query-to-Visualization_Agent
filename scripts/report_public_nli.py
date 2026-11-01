@@ -10,8 +10,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from zipfile import ZipFile
 
+from scripts.nli_recovery_reporting import final_recovery_audit, recovery_plan, tag_latency
+
 ARMS = ["hybrid", "cross_encoder", "jev", "luna", "full"]
 SEED = 20261101
+INTERRUPTED_PROTOCOL = "476bb042ff5273e16975f4e638aef8ff0c85e62877ca08a6bea540c038ea86ed"
 COMPARISONS = [(arm, baseline) for baseline in ("hybrid", "full") for arm in ARMS if arm != baseline]
 COMPARISONS += [("jev", "luna"), ("jev", "cross_encoder")]
 
@@ -233,7 +236,9 @@ def summarize(rows):
     for arm in ARMS:
         values = [r["arms"][arm] for r in rows]
         answers = [r["arms"][arm] for r in rows if r["answer_planned"]]
-        latency = [r["ranking_seconds"] for r in values if "ranking_seconds" in r]
+        raw_latency = [r["ranking_seconds"] for r in values if "ranking_seconds" in r]
+        latency = [r["ranking_seconds"] for r in values
+                   if "ranking_seconds" in r and r.get("ranking_latency_eligible", True)]
         context_lengths = [r["context_tokens"] for r in values if "context_tokens" in r]
         output[arm] = {
             "planned": n,
@@ -253,6 +258,13 @@ def summarize(rows):
                 "successful_samples": len(latency),
                 "p50_seconds": percentile(latency, 0.5),
                 "p95_seconds": percentile(latency, 0.95),
+                "excluded_interruption_samples": len(raw_latency) - len(latency),
+                "raw_saved_elapsed_diagnostic": {
+                    "samples": len(raw_latency),
+                    "p50_seconds": percentile(raw_latency, 0.5),
+                    "p95_seconds": percentile(raw_latency, 0.95),
+                    "interpretation": "May include cached partial retry work; never full task or fair model latency",
+                },
             },
             "serialized_context_tokens": {
                 "successful_samples": len(context_lengths),
@@ -282,6 +294,17 @@ def aggregate(rows, *, draws=4000):
             },
         }
     return output
+
+
+def common_case_latency(rows):
+    """Descriptive same-case timing control only; never another quality subset."""
+    eligible = [row for row in rows if all(row["arms"][arm]["completed"]
+                and row["arms"][arm].get("ranking_latency_eligible", True) for arm in ARMS)]
+    return {"planned_cases": len(rows), "retained_cases": len(eligible),
+            "excluded_cases": len(rows) - len(eligible),
+            "arms": {arm: values["implementation_ranking_latency"]
+                     for arm, values in summarize(eligible).items()},
+            "scope": "Identical cases with all five arms completed and no interruption flag; timing only. Asymmetric clients and execution periods remain confounded."}
 
 
 def ledger_summary(ledger):
@@ -459,6 +482,28 @@ def markdown(summary, costs):
                   "本地 MiniLM 的 CPU 时间没有换算成 USD；API 费用不等于完整部署成本。"
                   "无元数据的未知请求不能可靠归类为 embedding，仍保留在总费用中。"]
     total = costs["totals"]
+    recovery = summary.get("recovery")
+    if recovery:
+        previous = recovery["prior_ledger"]
+        lines += [
+            "", "## 运行中断与恢复", "",
+            "桌面进程中断后，执行器从与原协议一致的冻结源码恢复，保持 500 题、相同 200 题回答子集、"
+            "五组方法和原预算上限。保存的 arm 结果与片段评分缓存继续复用。",
+            f"恢复前快照含 {recovery['snapshot_files']} 个文件，按文件名确认 "
+            f"{recovery['cases_all_five_arm_results_saved']} 题的五组结果已落盘；这不是正确率。",
+            f"报告依据恢复前文件名，保守标记 {recovery['latency_excluded_arm_count']} 个 case/arm 的计时："
+            "已有题目活动但该组结果尚未落盘，或已有失败标记。这可能包含当时尚未开始的后续组。"
+            "这些组只从延迟分位数中排除，所有质量分母和配对分析保持不变。",
+            "原始 ranking_seconds 仍保留在逐题 JSON，另列为诊断统计；缓存恢复只计剩余步骤，"
+            "不能解释为一次完整排序或完整任务耗时。保留的时间也只描述本实现，不消除连接实现和运行时段差异。",
+            f"逐项核对恢复前账本是最终账本的完整前缀，保留原有 {previous['unknown_usage_attempts']} 次未知用量"
+            f"和 ${previous['unknown_reserved_usd']:.7f} 预留；恢复后另增加 "
+            f"{recovery['new_attempts_after_restart']} 次尝试。快照费用已包含在 formal_v2 中，不再次相加。",
+            "[恢复附录与延迟排除清单](public-evaluation/nli4ct-recovery.json) 保留快照、协议和关闭记录哈希；"
+            "不公开未脱敏的中间材料。",
+            "另提供五组均完成且均无中断标记的共同题目延迟摘要，仅用于同题描述性比较；"
+            "它不替代质量主分析，也不能消除客户端实现与执行时段差异。",
+        ]
     lines += [
         "",
         f"总计 **{total['attempts']} 次尝试，${total['estimated_or_reserved_usd']:.6f}**；"
@@ -482,12 +527,23 @@ def main():
     parser.add_argument("--strata", type=Path, default=Path("docs/public-evaluation/nli-input-strata.json"))
     parser.add_argument("--pilot", type=Path, default=Path("data/public-pilot-nli4ct-v1/ledger.json"))
     parser.add_argument("--aborted", type=Path, default=Path("data/nli4ct-official-test-v1/ledger.json"))
+    parser.add_argument("--recovery-manifest", type=Path, help="Required for the interrupted formal run")
+    parser.add_argument("--recovery-completion", type=Path, help="Successful CURRENT producer exit receipt")
+    parser.add_argument("--recovery-plan", type=Path,
+                        default=Path("docs/public-evaluation/nli-recovery-latency-plan.json"))
     args = parser.parse_args()
     report_path = args.study / "report.json"
     if not report_path.exists():
         parser.exit(2, "Formal report is not complete; no partial scores read and no outputs written.\n")
     # The runner creates report.json only after all planned executions and final scoring.
-    report, protocol, strata = read(report_path), read(args.study / "protocol.json"), read(args.strata)
+    protocol, strata = read(args.study / "protocol.json"), read(args.strata)
+    if bool(args.recovery_manifest) != bool(args.recovery_completion):
+        raise ValueError("Supply both recovery manifest and successful completion receipt")
+    if protocol["sha256"] == INTERRUPTED_PROTOCOL and not args.recovery_manifest:
+        raise ValueError("This interrupted formal protocol requires recovery disclosure")
+    if args.recovery_completion and read(args.recovery_completion).get("status") != "completed":
+        raise ValueError("Recovery producer has not closed successfully; final scores not read")
+    report = read(report_path)
     rows = validate_and_sanitize(report, protocol, strata)
     if hashlib.sha256(args.inputs.read_bytes()).hexdigest() != strata["input_sha256"]:
         raise ValueError("Registered input file changed")
@@ -504,11 +560,21 @@ def main():
                 raise ValueError("Frozen source archive mismatch")
     if digest(report["budget"]) != digest(read(args.study / "ledger.json")):
         raise ValueError("Formal ledger changed since final report")
+    recovery = None
+    if args.recovery_manifest:
+        recovery = final_recovery_audit(args.recovery_manifest, protocol, report["budget"],
+                                        args.recovery_completion, ledger_summary)
+        registered_plan = read(args.recovery_plan)
+        expected_plan = recovery_plan(read(args.recovery_manifest), protocol)
+        if registered_plan != expected_plan or any(recovery.get(key) != value for key, value in registered_plan.items()):
+            raise ValueError("Recovery latency rule differs from registered outcome-blind plan")
+        recovery["registered_plan_sha256"] = hashlib.sha256(args.recovery_plan.read_bytes()).hexdigest()
+        tag_latency(rows, recovery)
     costs = accounting(
         {"pilot": args.pilot, "aborted_v1": args.aborted, "formal_v2": args.study / "ledger.json"}
     )
     summary = {
-        "version": "nli4ct-final-v2",
+        "version": "nli4ct-final-v3",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "protocol_sha256": protocol["sha256"],
         "source_zip_sha256": hashlib.sha256(archive_path.read_bytes()).hexdigest(),
@@ -527,6 +593,8 @@ def main():
         },
         "supplementary_comparisons_registered_before_outcome_access": ["jev-minus-luna", "jev-minus-cross_encoder"],
         "strata": aggregate(rows),
+        "recovery": recovery,
+        "recovery_common_case_latency": common_case_latency(rows) if recovery else None,
         "limitations": [
             "Shared-trial cluster bootstrap; exploratory comparisons without multiplicity correction",
             "Wilson intervals assume independent cases and may understate uncertainty",
@@ -538,7 +606,10 @@ def main():
     # Publish only after every validation and aggregation succeeds.
     destination = Path("docs/public-evaluation")
     destination.mkdir(parents=True, exist_ok=True)
-    for name, value in (("summary", summary), ("cases", {"cases": rows}), ("accounting", costs)):
+    outputs = [("summary", summary), ("cases", {"cases": rows}), ("accounting", costs)]
+    if recovery:
+        outputs.append(("recovery", recovery))
+    for name, value in outputs:
         target = destination / f"nli4ct-{name}.json"
         temporary = target.with_suffix(".pending")
         temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")

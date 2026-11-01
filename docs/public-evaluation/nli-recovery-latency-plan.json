@@ -1,0 +1,69 @@
+{
+  "schema": "nli-recovery-latency-plan-v1",
+  "protocol_sha256": "476bb042ff5273e16975f4e638aef8ff0c85e62877ca08a6bea540c038ea86ed",
+  "snapshot_sha256": "c9d37015e4becdc20161f4a37ee2de52feb45d3fe7f2492d50158f289587dc66",
+  "snapshot_created_at": "2026-11-01T10:00:16.570654+00:00",
+  "snapshot_files": 14983,
+  "case_contents_read": false,
+  "outcomes_used": false,
+  "cases_with_any_saved_activity": 394,
+  "cases_all_five_arm_results_saved": 391,
+  "saved_arm_results": 1964,
+  "saved_arm_counts": {
+    "cross_encoder": 394,
+    "full": 391,
+    "hybrid": 394,
+    "jev": 394,
+    "luna": 391
+  },
+  "latency_exclusions": [
+    {
+      "case_id": "320ec115-31c3-47bf-a819-93d514b91eb3",
+      "arm": "luna",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 12,
+      "arm_result_saved_before_restart": false
+    },
+    {
+      "case_id": "320ec115-31c3-47bf-a819-93d514b91eb3",
+      "arm": "full",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 0,
+      "arm_result_saved_before_restart": false
+    },
+    {
+      "case_id": "dd27a6e7-3b83-4a84-bc40-5ba39617a1c1",
+      "arm": "luna",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 8,
+      "arm_result_saved_before_restart": false
+    },
+    {
+      "case_id": "dd27a6e7-3b83-4a84-bc40-5ba39617a1c1",
+      "arm": "full",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 0,
+      "arm_result_saved_before_restart": false
+    },
+    {
+      "case_id": "328417f9-8f45-4114-82d7-9396b6bc578e",
+      "arm": "luna",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 0,
+      "arm_result_saved_before_restart": false
+    },
+    {
+      "case_id": "328417f9-8f45-4114-82d7-9396b6bc578e",
+      "arm": "full",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 0,
+      "arm_result_saved_before_restart": false
+    }
+  ],
+  "latency_excluded_arm_count": 6,
+  "policy": "Exclude elapsed ranking times for any touched case whose arm result was absent, or with a prior failure marker. This conservatively includes possibly not-yet-started later arms. Keep every case/arm in quality denominators. Unexcluded timings are implementation observations, not end-to-end or pure model latency.",
+  "frozen_source": {
+    "identity": "476bb042ff5273e16975f4e638aef8ff0c85e62877ca08a6bea540c038ea86ed",
+    "files": 70
+  }
+}

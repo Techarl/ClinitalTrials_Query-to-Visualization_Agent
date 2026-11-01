@@ -1,0 +1,49 @@
+{
+  "version": "desktop-crash-recovery-amendment-v1",
+  "created_epoch": 1793527276.7079864,
+  "source_protocol_identity": "323f678f3e5d79934f724505581c4e54063f0e0558bbe2042cdc810ee5fd1416",
+  "original_source_identity_verified": true,
+  "amendment": "External cache and retry-loop recovery wrapper; original inference source unchanged; execution layer is amended and disclosed.",
+  "wrapper_sha256": "989814a076ac928ac03eccb085e7e46fd4b58a758e039624193677a5547735a6",
+  "tests_sha256": "9875e30ad0bce892e088733c903445f0a1845383126a2d76620a613c96615030",
+  "tests_passed": 6,
+  "prior_ledger_sha256": "2e219e7da7b1705941cefb714e0bc275cc86b8cf4b6dbaa57dc07d4a85f70e05",
+  "prior_attempts": 704,
+  "prior_estimated_or_reserved_usd": 5.741439300000008,
+  "prior_unknown_attempts": 1,
+  "unknown_reservations_released": false,
+  "deadlines_extended": false,
+  "interrupted_runs": [
+    {
+      "run_id": "vr_e6d9cb1725b34d80a2ede5587ee5fe35",
+      "recording": "ep_3c7a07dcbbd9b809/h0/turn-1-run.json",
+      "status": "running",
+      "deadline_epoch": 1793527472.0931013,
+      "expired_at_audit": false
+    },
+    {
+      "run_id": "vr_f6d7b527185b4200a2dc5ebb5352b906",
+      "recording": "ep_56169543e90792e1/usd-retries/attempt-8/turn-1-run.json",
+      "status": "failed",
+      "deadline_epoch": 1793527548.5271454,
+      "expired_at_audit": false
+    },
+    {
+      "run_id": "vr_4afe9df9307d41a1a223d32cfbb860bf",
+      "recording": "ep_baabc16ac22746bc/h0/turn-1-run.json",
+      "status": "running",
+      "deadline_epoch": 1793527450.050331,
+      "expired_at_audit": false
+    },
+    {
+      "run_id": "vr_14d04d7e87dd4d15b3229282c34172c5",
+      "recording": "ep_c51e4c81dabe1b13/usd-retries/attempt-6/turn-1-run.json",
+      "status": "partial",
+      "deadline_epoch": 1793527499.5352356,
+      "expired_at_audit": false
+    }
+  ],
+  "backup_files": 932,
+  "backup_sha256": "0b1feb4d1e1063186064a31dbb7d66296aada32657daa8b477ed3647a1ffcff8",
+  "completed_tasks": 6
+}

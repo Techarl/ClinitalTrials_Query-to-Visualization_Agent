@@ -176,6 +176,13 @@ def report(study, corpus_path):
     if not receipt.exists():
         raise ValueError("Formal process has not closed; no partial grades or active ledger inspected")
     raw, protocol, corpus = read(study / "report.json"), read(study / "protocol.json"), read(corpus_path)
+    amendment_path = study / "recovery-amendment.json"
+    recovery = read(amendment_path) if amendment_path.exists() else None
+    pending_tasks = {
+        item["recording"].split("/")[0] for item in (recovery or {}).get("interrupted_runs", [])
+    }
+    if recovery and recovery["source_protocol_identity"] != protocol["sha256"]:
+        raise ValueError("Recovery amendment belongs to another protocol")
     cases = validate_population(raw, protocol, corpus)
     source_hashes = protocol["identity"]["parameters"]["source_files"]
     if hashlib.sha256(corpus_path.read_bytes()).hexdigest() not in source_hashes.values():
@@ -237,6 +244,7 @@ def report(study, corpus_path):
                 "episode_id": case["id"],
                 "family": case["family"],
                 "entity_group": case["entity_group"],
+                "had_pending_recording_at_desktop_crash": case["id"] in pending_tasks,
                 "arms": arms,
                 "mechanism": row["mechanism"],
             }
@@ -248,6 +256,7 @@ def report(study, corpus_path):
         "task_exceptions": raw["task_exceptions"],
         "unrun_ids": raw["pending_or_unrun_ids"],
         "complete": len(rows) == 40 and not raw["task_exceptions"],
+        "recovery_amendment": recovery,
         "arms": aggregate(rows),
         "mechanisms": summarize_mechanisms(raw["results"]),
         "by_family": {
@@ -291,6 +300,7 @@ def report(study, corpus_path):
             "Skill read/apply and editor-declared reuse are mechanism evidence, not causal attribution of benefit.",
             "Editors and public adoption checks inspect the first/current turn only; final correctness is graded across the complete episode.",
             "Arm order is fixed within each task and provider/cache load is shared; observed latency and cost are not a randomized serving-efficiency estimate.",
+            "When a recovery amendment is present, the desktop crash and external cache-recovery wrapper qualify reproducibility and latency; original deadlines, unknown reservations and recorded failures were retained. A pending recording is not proof its failure was caused by the crash.",
         ],
     }
 

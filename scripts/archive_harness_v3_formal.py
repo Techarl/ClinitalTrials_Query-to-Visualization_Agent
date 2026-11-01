@@ -31,13 +31,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--study", type=Path, default=Path("data/harness-v3-formal05"))
     parser.add_argument("--cases", type=Path, default=Path("data/core300-frozen/cases.json"))
+    parser.add_argument("--credentials-file", type=Path, default=Path(".env"))
     parser.add_argument(
         "--destination", type=Path, default=Path("docs/public-evaluation/harness-v3-archives")
     )
     args = parser.parse_args()
     selected = records(args.study)
     result = report(args.study, args.cases)
-    credentials = dotenv_values(".env")
+    credentials = dotenv_values(args.credentials_file)
     keys = ("OPENAI_API_KEY", "OPENROUTER_API_KEY", "NEO4J_PASSWORD", "HF_TOKEN", "NCBI_API_KEY")
     secrets = [
         value.encode() for key in keys for value in (credentials.get(key), os.environ.get(key)) if value

@@ -218,6 +218,18 @@ def test_closed_report_reconciles_all_arms_and_full_population(tmp_path):
     assert "nli_arm_costs" not in result["formal_costs"]
     assert len(result["by_family"]) == 20
     assert all(v["h0"]["correct_over_planned"]["denominator"] == 2 for v in result["by_family"].values())
+    amendment = {
+        "source_protocol_identity": protocol["sha256"],
+        "interrupted_runs": [{"recording": "ep_00/h0/turn-1-run.json"}],
+    }
+    (tmp_path / "recovery-amendment.json").write_text(json.dumps(amendment))
+    recovered = report(tmp_path, corpus)
+    assert recovered["recovery_amendment"] == amendment
+    assert recovered["rows"][0]["had_pending_recording_at_desktop_crash"]
+    amendment["source_protocol_identity"] = "another protocol"
+    (tmp_path / "recovery-amendment.json").write_text(json.dumps(amendment))
+    with pytest.raises(ValueError, match="another protocol"):
+        report(tmp_path, corpus)
 
 
 def test_archive_requires_closed_receipt_and_excludes_runtime_and_active_alias(tmp_path):

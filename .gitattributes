@@ -11,3 +11,7 @@ examples/v2/** -text whitespace=cr-at-eol
 docs/public-evaluation/frozen-protocols/** -text whitespace=cr-at-eol
 docs/public-evaluation/harness-v3-archives/** -text whitespace=cr-at-eol
 docs/release/** -text whitespace=cr-at-eol
+
+# Published recovery code retains the exact bytes named by its execution receipt.
+scripts/resume_harness_v3.py -text whitespace=cr-at-eol
+tests/test_harness_crash_resume.py -text whitespace=cr-at-eol
