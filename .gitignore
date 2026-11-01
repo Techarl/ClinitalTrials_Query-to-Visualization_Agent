@@ -16,6 +16,7 @@ htmlcov/
 *.egg-info/
 build/
 dist/
+node_modules/
 
 # Local snapshots, databases, traces, and Neo4j volumes.
 /data/

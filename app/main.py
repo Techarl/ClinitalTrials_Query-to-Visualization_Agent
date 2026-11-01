@@ -4,11 +4,12 @@ import threading
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from app import __version__
 from app.agent import AgentRunner
-from app.config import Settings
+from app.config import PROJECT_ROOT, Settings
 from app.models import AnalysisPlan, AnalysisRequest, AnalysisResponse
 from app.service import AnalysisService
 from app.sources import SnapshotStore
@@ -20,7 +21,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(application):
+        application.state.v2.recover()
         yield
+        application.state.v2.close()
         if application.state.runner is not None:
             application.state.runner.close()
         if application.state.service is not None:
@@ -38,11 +41,21 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.state.initialization_lock = threading.Lock()
     store = StateStore(configuration.data_directory)
 
+    def service() -> AnalysisService:
+        with application.state.initialization_lock:
+            if application.state.service is None:
+                application.state.service = AnalysisService(configuration)
+            return application.state.service
+
+    from app.v2.api import install_routes
+    install_routes(application, configuration, service)
+
     def runner() -> AgentRunner:
         with application.state.initialization_lock:
             if application.state.runner is None:
                 try:
-                    application.state.service = AnalysisService(configuration)
+                    if application.state.service is None:
+                        application.state.service = AnalysisService(configuration)
                     application.state.runner = AgentRunner(configuration, application.state.service)
                 except Exception as error:
                     if application.state.service is not None:
@@ -119,6 +132,22 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "plan_schema": AnalysisPlan.model_json_schema(),
             "experiments": {"decision": False, "harness": False},
             "scope": "single-user local service; source search semantics are documented in response metadata",
+            "v2": {"schema_version": "v2.0", "runs": "/v2/runs", "events": "SSE with Last-Event-ID replay",
+                   "source_modes": ["full_evidence", "aggregate_overview"],
+                   "charts": ["bar_chart", "grouped_bar", "time_series", "histogram", "network_graph", "scatter", "country_map"]},
         }
+
+    frontend = PROJECT_ROOT / 'frontend' / 'dist'
+    if frontend.is_dir():
+        application.mount('/assets', StaticFiles(directory=frontend / 'assets'), name='frontend-assets')
+
+        @application.get('/', include_in_schema=False)
+        @application.get('/s/{token}', include_in_schema=False)
+        def workspace(token: str | None = None):
+            return FileResponse(frontend / 'index.html')
+
+        @application.get('/world.geojson', include_in_schema=False)
+        def world_map():
+            return FileResponse(frontend / 'world.geojson', media_type='application/geo+json')
 
     return application

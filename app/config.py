@@ -50,6 +50,14 @@ class Settings(BaseSettings):
     max_context_chars: int = Field(default=40000, ge=8000)
     evidence_preview_limit: int = Field(default=3, ge=0, le=20)
     network_max_edges: int = Field(default=100, ge=1, le=1000)
+    v2_max_model_calls: int = Field(default=18, ge=1, le=60)
+    v2_max_tool_calls: int = Field(default=24, ge=1, le=100)
+    v2_max_source_records: int = Field(default=50000, ge=1, le=200000)
+    v2_max_run_seconds: float = Field(default=900, gt=0)
+    v2_max_estimated_usd: float = Field(default=2, gt=0)
+    v2_context_chars: int = Field(default=28000, ge=8000, le=100000)
+    ncbi_email: str = ""
+    ncbi_api_key: SecretStr = Field(default=SecretStr(""), repr=False)
 
     @model_validator(mode="after")
     def require_baseline(self) -> Self:

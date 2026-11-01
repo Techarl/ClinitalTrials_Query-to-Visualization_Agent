@@ -1,0 +1,1600 @@
+{
+  "mcp_stdio": {
+    "status": "passed",
+    "tools": [
+      "create_tool_session",
+      "search_trials",
+      "inspect_query_scope",
+      "profile_dataset",
+      "analyze",
+      "select_entities",
+      "fetch_trial_details",
+      "inspect_evidence",
+      "validate_result",
+      "resolve_entity_candidates",
+      "official_count_overview",
+      "search_pubmed",
+      "fetch_articles",
+      "clarify_user",
+      "finalize_analysis",
+      "stop_with_limit",
+      "read_run"
+    ],
+    "run_id": "vr_0b9d0268e6ff486f835a3bbe917892b9",
+    "matched_count": 400,
+    "phase_rows": [
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Early Phase 1",
+        "cohort": "Population",
+        "contributor_count": 7,
+        "evidence_set_id": "ev_956b1a9236223b69e575453281ace5a5",
+        "id": "c0:Early Phase 1",
+        "trial_count": 7,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 1",
+        "cohort": "Population",
+        "contributor_count": 111,
+        "evidence_set_id": "ev_e34c2d3f5b7122e89d78c73e1d172dd6",
+        "id": "c0:Phase 1",
+        "trial_count": 111,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 1 / Phase 2",
+        "cohort": "Population",
+        "contributor_count": 87,
+        "evidence_set_id": "ev_bdeb3b2bf6bcfc09208f2a9f2b356f0f",
+        "id": "c0:Phase 1 / Phase 2",
+        "trial_count": 87,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 2",
+        "cohort": "Population",
+        "contributor_count": 125,
+        "evidence_set_id": "ev_91e1b6eccf7a320c2f592f28dd04acdf",
+        "id": "c0:Phase 2",
+        "trial_count": 125,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 2 / Phase 3",
+        "cohort": "Population",
+        "contributor_count": 4,
+        "evidence_set_id": "ev_a170e2f909fd6ac0634e3466b16ece11",
+        "id": "c0:Phase 2 / Phase 3",
+        "trial_count": 4,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 3",
+        "cohort": "Population",
+        "contributor_count": 25,
+        "evidence_set_id": "ev_4501ff34c30f0f406c126c3fde472ef4",
+        "id": "c0:Phase 3",
+        "trial_count": 25,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 4",
+        "cohort": "Population",
+        "contributor_count": 1,
+        "evidence_set_id": "ev_afe51d61392ae9caecaa41dc5a18dec6",
+        "id": "c0:Phase 4",
+        "trial_count": 1,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Not applicable",
+        "cohort": "Population",
+        "contributor_count": 9,
+        "evidence_set_id": "ev_36428ae81fb0581866750113cc18c9a4",
+        "id": "c0:Not applicable",
+        "trial_count": 9,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Not reported",
+        "cohort": "Population",
+        "contributor_count": 31,
+        "evidence_set_id": "ev_d783f4b723d2d161ba35028c55f35379",
+        "id": "c0:Not reported",
+        "trial_count": 31,
+        "year": null
+      }
+    ],
+    "evidence_contributors": 7,
+    "pmids": [
+      "38246194",
+      "39288737"
+    ],
+    "model_calls": 0,
+    "transport": "stdio"
+  },
+  "mcp_http": {
+    "status": "passed",
+    "tools": [
+      "create_tool_session",
+      "search_trials",
+      "inspect_query_scope",
+      "profile_dataset",
+      "analyze",
+      "select_entities",
+      "fetch_trial_details",
+      "inspect_evidence",
+      "validate_result",
+      "resolve_entity_candidates",
+      "official_count_overview",
+      "search_pubmed",
+      "fetch_articles",
+      "clarify_user",
+      "finalize_analysis",
+      "stop_with_limit",
+      "read_run"
+    ],
+    "run_id": "vr_b34e265187334069af3fc274f4322998",
+    "matched_count": 400,
+    "phase_rows": [
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Early Phase 1",
+        "cohort": "Population",
+        "contributor_count": 7,
+        "evidence_set_id": "ev_eed8053bd8918a7781104239a788f01e",
+        "id": "c0:Early Phase 1",
+        "trial_count": 7,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 1",
+        "cohort": "Population",
+        "contributor_count": 111,
+        "evidence_set_id": "ev_dd29cb27292d1832e5fabf5dae637828",
+        "id": "c0:Phase 1",
+        "trial_count": 111,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 1 / Phase 2",
+        "cohort": "Population",
+        "contributor_count": 87,
+        "evidence_set_id": "ev_d25b59d4303731ba46c8c2f1fc469137",
+        "id": "c0:Phase 1 / Phase 2",
+        "trial_count": 87,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 2",
+        "cohort": "Population",
+        "contributor_count": 125,
+        "evidence_set_id": "ev_3791bf6178d4d1a2d0d2ee02ebb6188d",
+        "id": "c0:Phase 2",
+        "trial_count": 125,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 2 / Phase 3",
+        "cohort": "Population",
+        "contributor_count": 4,
+        "evidence_set_id": "ev_2fdfd322f11210725fa6f66ac8e52935",
+        "id": "c0:Phase 2 / Phase 3",
+        "trial_count": 4,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 3",
+        "cohort": "Population",
+        "contributor_count": 25,
+        "evidence_set_id": "ev_a569f75c965e7a1bee8d0255585ef919",
+        "id": "c0:Phase 3",
+        "trial_count": 25,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Phase 4",
+        "cohort": "Population",
+        "contributor_count": 1,
+        "evidence_set_id": "ev_ca3976ee0fc1cf06dd077e1d10d20cf1",
+        "id": "c0:Phase 4",
+        "trial_count": 1,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Not applicable",
+        "cohort": "Population",
+        "contributor_count": 9,
+        "evidence_set_id": "ev_9c276b1dc988ee730773b8dc69d72acb",
+        "id": "c0:Not applicable",
+        "trial_count": 9,
+        "year": null
+      },
+      {
+        "bin_end": null,
+        "bin_start": null,
+        "category": "Not reported",
+        "cohort": "Population",
+        "contributor_count": 31,
+        "evidence_set_id": "ev_752d59a97806d189f8d6b7addca541e9",
+        "id": "c0:Not reported",
+        "trial_count": 31,
+        "year": null
+      }
+    ],
+    "evidence_contributors": 7,
+    "pmids": [
+      "38246194",
+      "39288737"
+    ],
+    "model_calls": 0,
+    "transport": "http"
+  },
+  "dependent": {
+    "status": "completed",
+    "run_id": "vr_6e11bdd467e04732a2331702ef99f282",
+    "usage": {
+      "model_calls": 8,
+      "usage_complete": true,
+      "unknown_attempts": 0,
+      "estimated_or_reserved_usd": 0.1050224,
+      "receipts": [
+        {
+          "elapsed_seconds": 5.0,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_0a77ff0b95fb0292016ae6b298173487d0afcc479f9357f5af",
+          "usage": {
+            "input_tokens": 4095,
+            "input_tokens_details": {
+              "cache_write_tokens": 3969,
+              "cached_tokens": 0
+            },
+            "output_tokens": 210,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 4305
+          }
+        },
+        {
+          "elapsed_seconds": 2.172,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_051b493c35a17b0d016ae6b29bd1f487d0bbf4b2836835fba2",
+          "usage": {
+            "input_tokens": 4710,
+            "input_tokens_details": {
+              "cache_write_tokens": 807,
+              "cached_tokens": 3777
+            },
+            "output_tokens": 71,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 4781
+          }
+        },
+        {
+          "elapsed_seconds": 2.328,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_09a0511627cc021e016ae6b2a05d8887d09fbc6a9ac18db5e3",
+          "usage": {
+            "input_tokens": 4846,
+            "input_tokens_details": {
+              "cache_write_tokens": 943,
+              "cached_tokens": 3777
+            },
+            "output_tokens": 80,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 4926
+          }
+        },
+        {
+          "elapsed_seconds": 4.156,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_080edb78d087bf71016ae6b2ab36e887d084e230bc3c28f0e7",
+          "usage": {
+            "input_tokens": 9187,
+            "input_tokens_details": {
+              "cache_write_tokens": 5284,
+              "cached_tokens": 3777
+            },
+            "output_tokens": 81,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 9268
+          }
+        },
+        {
+          "elapsed_seconds": 3.0,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_0e69f57b3c9bebdd016ae6b2b0fcbc87d09f6127f06610803b",
+          "usage": {
+            "input_tokens": 9496,
+            "input_tokens_details": {
+              "cache_write_tokens": 5593,
+              "cached_tokens": 3777
+            },
+            "output_tokens": 155,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 9651
+          }
+        },
+        {
+          "elapsed_seconds": 2.015,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_0345bff3090a1cea016ae6b2b7c99887d0956301d5a33ac629",
+          "usage": {
+            "input_tokens": 10535,
+            "input_tokens_details": {
+              "cache_write_tokens": 6632,
+              "cached_tokens": 3777
+            },
+            "output_tokens": 39,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 10574
+          }
+        },
+        {
+          "elapsed_seconds": 1.75,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_0118485cf982faab016ae6b2bb7ce487d0a5ff5ec122d6de98",
+          "usage": {
+            "input_tokens": 10607,
+            "input_tokens_details": {
+              "cache_write_tokens": 6704,
+              "cached_tokens": 3777
+            },
+            "output_tokens": 37,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 10644
+          }
+        },
+        {
+          "elapsed_seconds": 3.656,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_05cc61e736c43cf8016ae6b2bdad0087d083f5b0fea2e23dff",
+          "usage": {
+            "input_tokens": 10676,
+            "input_tokens_details": {
+              "cache_write_tokens": 6773,
+              "cached_tokens": 3777
+            },
+            "output_tokens": 187,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 10863
+          }
+        }
+      ],
+      "cost_basis": "GPT-6.1 Sol standard list-rate estimate; unknown attempts keep byte-based reservations, not an invoice"
+    },
+    "artifacts": [
+      {
+        "title": "Sponsor shared-drug network: melanoma studies involving pembrolizumab, starts 2015–2025",
+        "coverage": {
+          "statistics_basis": "complete_records",
+          "count_exactness": "exact",
+          "population_coverage": "complete",
+          "evidence_coverage": "complete_contributors",
+          "fetched_count": 362,
+          "matched_count": 362
+        },
+        "dependencies": []
+      },
+      {
+        "title": "Annual trial starts for top sponsors sharing drugs with Merck Sharp & Dohme LLC: melanoma pembrolizumab studies, 2015–2025",
+        "coverage": {
+          "statistics_basis": "complete_records",
+          "count_exactness": "exact",
+          "population_coverage": "complete",
+          "evidence_coverage": "complete_contributors",
+          "fetched_count": 10,
+          "matched_count": 10
+        },
+        "dependencies": [
+          "result_5b059ec8b753aef87a83b8d2ef24dd05"
+        ]
+      }
+    ]
+  },
+  "scatter": {
+    "status": "completed",
+    "run_id": "vr_65eb16c9d5604f92b6c6413632aa2fc3",
+    "usage": {
+      "model_calls": 6,
+      "usage_complete": true,
+      "unknown_attempts": 0,
+      "estimated_or_reserved_usd": 0.0390035,
+      "receipts": [
+        {
+          "elapsed_seconds": 4.625,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_03b37eecbacf4387016ae6b60f3be487d0992dfc8aef282625",
+          "usage": {
+            "input_tokens": 4051,
+            "input_tokens_details": {
+              "cache_write_tokens": 3925,
+              "cached_tokens": 0
+            },
+            "output_tokens": 128,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 4179
+          }
+        },
+        {
+          "elapsed_seconds": 1.86,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_018fdde5563f44f3016ae6b61246f887d0904359812b94d1f0",
+          "usage": {
+            "input_tokens": 4500,
+            "input_tokens_details": {
+              "cache_write_tokens": 581,
+              "cached_tokens": 3793
+            },
+            "output_tokens": 36,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 4536
+          }
+        },
+        {
+          "elapsed_seconds": 2.234,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_096c67b1ad6de267016ae6b615a0e887d0ab6c4b0ce01acd7c",
+          "usage": {
+            "input_tokens": 4635,
+            "input_tokens_details": {
+              "cache_write_tokens": 716,
+              "cached_tokens": 3793
+            },
+            "output_tokens": 80,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 4715
+          }
+        },
+        {
+          "elapsed_seconds": 1.953,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_0e273ebb8cad8cd1016ae6b61b74d887d0bf3ea5c2bc4e8142",
+          "usage": {
+            "input_tokens": 5955,
+            "input_tokens_details": {
+              "cache_write_tokens": 2036,
+              "cached_tokens": 3793
+            },
+            "output_tokens": 38,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 5993
+          }
+        },
+        {
+          "elapsed_seconds": 1.609,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_02d0560273c92792016ae6b61e39ac87d09911aaaed0dd3ae6",
+          "usage": {
+            "input_tokens": 6425,
+            "input_tokens_details": {
+              "cache_write_tokens": 2506,
+              "cached_tokens": 3793
+            },
+            "output_tokens": 40,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 6465
+          }
+        },
+        {
+          "elapsed_seconds": 3.859,
+          "provider": "openai",
+          "reported_model": "gpt-6.1-sol",
+          "requested_model": "gpt-6.1-sol",
+          "response_id": "resp_0cca85544eb23342016ae6b6212c9887d0af90022b6cbfe392",
+          "usage": {
+            "input_tokens": 6497,
+            "input_tokens_details": {
+              "cache_write_tokens": 2578,
+              "cached_tokens": 3793
+            },
+            "output_tokens": 152,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 6649
+          }
+        }
+      ],
+      "cost_basis": "GPT-6.1 Sol standard list-rate estimate; unknown attempts keep byte-based reservations, not an invoice"
+    },
+    "artifacts": [
+      {
+        "title": "Psoriasis studies involving secukinumab: enrollment vs trial duration (days)",
+        "coverage": {
+          "statistics_basis": "complete_records",
+          "count_exactness": "exact",
+          "population_coverage": "complete",
+          "evidence_coverage": "complete_contributors",
+          "fetched_count": 149,
+          "matched_count": 149
+        },
+        "dependencies": []
+      }
+    ]
+  },
+  "overview": {
+    "schema_version": "v2.0",
+    "run_id": "vr_66f8f542babc4641a4663d69ed1213e2",
+    "session_id": "vs_5a8056790c4e4701975d02cf2dbd669a",
+    "status": "completed",
+    "task": {
+      "goal": "Official study-type overview",
+      "mode": "new",
+      "filters": {
+        "condition": "asthma",
+        "interventions": [
+          "omalizumab"
+        ],
+        "intervention_match": "any",
+        "sponsor": null,
+        "phases": [],
+        "statuses": [],
+        "countries": [],
+        "start_year": null,
+        "end_year": null,
+        "enrollment_type": null
+      },
+      "date_range": null,
+      "intervention_scope": "population",
+      "source_mode": "aggregate_overview",
+      "goals": [
+        {
+          "id": "g",
+          "description": "official study types",
+          "kind": "chart",
+          "operation": "category",
+          "depends_on": []
+        }
+      ],
+      "clear_fields": []
+    },
+    "artifacts": [
+      {
+        "artifact_id": "art_b8368d28082ff60878a47c5cb7f5661e",
+        "result_id": "result_b8368d28082ff60878a47c5cb7f5661e",
+        "goal_id": "g",
+        "source_type": "clinicaltrials",
+        "scope_id": null,
+        "title": "Official counts by study_type",
+        "metric": "Official totalCount per mutually exclusive bucket",
+        "visualization": {
+          "data": [
+            {
+              "category": "INTERVENTIONAL",
+              "cohort": "Official overview",
+              "count_receipt_id": "count_e609631a9e8f05db9b44139c87cc1cca",
+              "evidence_set_id": "ev_4d484b6f90ef5bfcf6777a476bbb3581",
+              "sample_count": 3,
+              "trial_count": 85
+            },
+            {
+              "category": "OBSERVATIONAL",
+              "cohort": "Official overview",
+              "count_receipt_id": "count_818e77eb1e8a7c3618339723d829d0cd",
+              "evidence_set_id": "ev_3e879bc3427a44bce2db24099a02d785",
+              "sample_count": 3,
+              "trial_count": 31
+            },
+            {
+              "category": "EXPANDED_ACCESS",
+              "cohort": "Official overview",
+              "count_receipt_id": "count_7a1f86e2ed376d9a80f3befd7c1d409a",
+              "evidence_set_id": "ev_fa244306417f1b756d16bf3e0955c316",
+              "sample_count": 0,
+              "trial_count": 0
+            },
+            {
+              "category": "Not reported / other",
+              "cohort": "Official overview",
+              "count_receipt_id": "count_caa04eed79a5d262975c6724fdd4dcc2",
+              "evidence_set_id": "ev_1b03ee2c9150f5b5894d83b6bbf50402",
+              "sample_count": 0,
+              "trial_count": 0
+            }
+          ],
+          "encoding": {
+            "x": {
+              "field": "category",
+              "title": "study_type"
+            },
+            "y": {
+              "field": "trial_count",
+              "title": "Official trial count"
+            }
+          },
+          "title": "Official counts by study_type",
+          "type": "bar_chart"
+        },
+        "coverage": {
+          "statistics_basis": "official_counts",
+          "count_exactness": "exact",
+          "population_coverage": "count_only",
+          "evidence_coverage": "sample_only",
+          "fetched_count": 6,
+          "matched_count": 116
+        },
+        "warnings": [],
+        "dependencies": [],
+        "evidence_ids": [
+          "ev_4d484b6f90ef5bfcf6777a476bbb3581",
+          "ev_3e879bc3427a44bce2db24099a02d785",
+          "ev_fa244306417f1b756d16bf3e0955c316",
+          "ev_1b03ee2c9150f5b5894d83b6bbf50402"
+        ],
+        "metadata": {
+          "category_policy": "Single-valued status/study-type buckets plus explicit complement; sum checked against root count.",
+          "filters": {
+            "condition": "asthma",
+            "countries": [],
+            "end_year": null,
+            "enrollment_type": null,
+            "intervention_match": "any",
+            "interventions": [
+              "omalizumab"
+            ],
+            "phases": [],
+            "sponsor": null,
+            "start_year": null,
+            "statuses": []
+          },
+          "presentation_clipping": {
+            "applied": false,
+            "omitted_items": 0
+          },
+          "receipts": [
+            {
+              "at": "2026-11-01T03:48:57.804527+00:00",
+              "kind": "root_count",
+              "query": {
+                "countTotal": "true",
+                "format": "json",
+                "pageSize": 1,
+                "query.cond": "\"asthma\"",
+                "query.intr": "(\"omalizumab\")"
+              },
+              "raw": {
+                "nextPageToken": "ZVJ76sWHmqU2wRk2CJf6_LLvzZHcI8Brd7KrgP4enz-XtA",
+                "studies": [
+                  {
+                    "derivedSection": {
+                      "conditionBrowseModule": {
+                        "ancestors": [
+                          {
+                            "id": "D001982",
+                            "term": "Bronchial Diseases"
+                          },
+                          {
+                            "id": "D012140",
+                            "term": "Respiratory Tract Diseases"
+                          },
+                          {
+                            "id": "D008173",
+                            "term": "Lung Diseases, Obstructive"
+                          },
+                          {
+                            "id": "D008171",
+                            "term": "Lung Diseases"
+                          },
+                          {
+                            "id": "D012130",
+                            "term": "Respiratory Hypersensitivity"
+                          },
+                          {
+                            "id": "D006969",
+                            "term": "Hypersensitivity, Immediate"
+                          },
+                          {
+                            "id": "D006967",
+                            "term": "Hypersensitivity"
+                          },
+                          {
+                            "id": "D007154",
+                            "term": "Immune System Diseases"
+                          },
+                          {
+                            "id": "D012220",
+                            "term": "Rhinitis"
+                          },
+                          {
+                            "id": "D009668",
+                            "term": "Nose Diseases"
+                          },
+                          {
+                            "id": "D010038",
+                            "term": "Otorhinolaryngologic Diseases"
+                          },
+                          {
+                            "id": "D012873",
+                            "term": "Skin Diseases, Genetic"
+                          },
+                          {
+                            "id": "D030342",
+                            "term": "Genetic Diseases, Inborn"
+                          },
+                          {
+                            "id": "D009358",
+                            "term": "Congenital, Hereditary, and Neonatal Diseases and Abnormalities"
+                          },
+                          {
+                            "id": "D003872",
+                            "term": "Dermatitis"
+                          },
+                          {
+                            "id": "D012871",
+                            "term": "Skin Diseases"
+                          },
+                          {
+                            "id": "D017437",
+                            "term": "Skin and Connective Tissue Diseases"
+                          },
+                          {
+                            "id": "D017443",
+                            "term": "Skin Diseases, Eczematous"
+                          }
+                        ],
+                        "meshes": [
+                          {
+                            "id": "D001249",
+                            "term": "Asthma"
+                          },
+                          {
+                            "id": "D065631",
+                            "term": "Rhinitis, Allergic"
+                          },
+                          {
+                            "id": "D003876",
+                            "term": "Dermatitis, Atopic"
+                          }
+                        ]
+                      },
+                      "interventionBrowseModule": {
+                        "ancestors": [
+                          {
+                            "id": "D000888",
+                            "term": "Antibodies, Anti-Idiotypic"
+                          },
+                          {
+                            "id": "D000906",
+                            "term": "Antibodies"
+                          },
+                          {
+                            "id": "D007136",
+                            "term": "Immunoglobulins"
+                          },
+                          {
+                            "id": "D007162",
+                            "term": "Immunoproteins"
+                          },
+                          {
+                            "id": "D001798",
+                            "term": "Blood Proteins"
+                          },
+                          {
+                            "id": "D011506",
+                            "term": "Proteins"
+                          },
+                          {
+                            "id": "D000602",
+                            "term": "Amino Acids, Peptides, and Proteins"
+                          },
+                          {
+                            "id": "D061067",
+                            "term": "Antibodies, Monoclonal, Humanized"
+                          },
+                          {
+                            "id": "D000911",
+                            "term": "Antibodies, Monoclonal"
+                          },
+                          {
+                            "id": "D012712",
+                            "term": "Serum Globulins"
+                          },
+                          {
+                            "id": "D005916",
+                            "term": "Globulins"
+                          }
+                        ],
+                        "meshes": [
+                          {
+                            "id": "D000069444",
+                            "term": "Omalizumab"
+                          }
+                        ]
+                      },
+                      "miscInfoModule": {
+                        "versionHolder": "2026-10-30"
+                      }
+                    },
+                    "hasResults": true,
+                    "protocolSection": {
+                      "armsInterventionsModule": {
+                        "armGroups": [
+                          {
+                            "description": "Subjects will receive subcutaneous Omalizumab for 6 months. Prior to Omalizumab administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                            "interventionNames": [
+                              "Drug: Omalizumab"
+                            ],
+                            "label": "Omalizumab",
+                            "type": "EXPERIMENTAL"
+                          },
+                          {
+                            "description": "Subjects will receive subcutaneous placebo for 6 months. Prior to placebo administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                            "interventionNames": [
+                              "Drug: Placebo"
+                            ],
+                            "label": "Placebo",
+                            "type": "EXPERIMENTAL"
+                          }
+                        ],
+                        "interventions": [
+                          {
+                            "armGroupLabels": [
+                              "Omalizumab"
+                            ],
+                            "description": "Xolair (Omalizumab) will be given by subcutaneous injection according to Ige level and weight calculation.",
+                            "name": "Omalizumab",
+                            "otherNames": [
+                              "Xolair"
+                            ],
+                            "type": "DRUG"
+                          },
+                          {
+                            "armGroupLabels": [
+                              "Placebo"
+                            ],
+                            "description": "Placebo, given by subcutaneous injection.",
+                            "name": "Placebo",
+                            "type": "DRUG"
+                          }
+                        ]
+                      },
+                      "conditionsModule": {
+                        "conditions": [
+                          "Asthma",
+                          "Allergic Rhinitis",
+                          "Atopic Dermatitis"
+                        ]
+                      },
+                      "contactsLocationsModule": {
+                        "locations": [
+                          {
+                            "city": "Sacramento",
+                            "country": "United States",
+                            "facility": "UC Davis Department of Dermatology",
+                            "geoPoint": {
+                              "lat": 38.58157,
+                              "lon": -121.4944
+                            },
+                            "state": "California",
+                            "zip": "95816"
+                          }
+                        ],
+                        "overallOfficials": [
+                          {
+                            "affiliation": "University of California, Davis",
+                            "name": "Fu-Tong Liu, M.D., Ph.D.",
+                            "role": "PRINCIPAL_INVESTIGATOR"
+                          }
+                        ]
+                      },
+                      "descriptionModule": {
+                        "briefSummary": "The purpose of this study is to look at measures that will help scientists understand the way Omalizumab, an FDA-approved anti-allergy medication, works.",
+                        "detailedDescription": "IgE is a key molecule involved in immediate hypersensitivity and plays a major role in the pathogenesis of allergic diseases. Recently, a therapy based on the use of anti-IgE antibody has been developed by a pharmaceutical company, Genentech. A number of clinical trials have demonstrated that these antibodies are efficacious in treatment of allergies, including allergic rhinitis and asthma. The medication Omalizumab (Xolair) has recently been approved by the FDA for treatment of asthma.\n\nThe mechanism underlying the beneficial effect of this therapy is not completely understood, but is likely to be related to the marked reduction in the IgE level. Of note is the concomitant accumulation of IgE-anti-IgE complexes in the sera. Another remarkable effect of the treatment is the substantial reduction in the FcεRI level on basophils, which is likely a key factor contributing to the therapeutic benefit of the drug. The existing literature suggests that the reduction in the IgE level is likely to result in a down-regulation of another IgE receptor, FcεRII/CD23. Because of the known immunomodulatory function of FcεRII, anti-IgE therapy may result in alterations of the immune system, in addition to simple absorption of IgE.\n\nWe propose to conduct mechanistic studies of anti-IgE therapy. The objectives are to address how anti-IgE therapy works and how it might affect the immune system in general. The proposed studies also take advantage of this well-defined therapy to address some basic questions regarding the immune system. Our hypothesis is that anti-IgE therapy may have general effects on the immune system, such as reduced IgE-mediated antigen presentation by antigen-presenting cells and suppressed allergen-specific IgE and IgG production. The specific aims of the proposed research are:\n\n1. Determination of the effect of anti-IgE therapy on FcεRI expression and basophil responses. We will first confirm that anti-IgE therapy causes a reduction in the FcεRI level on basophils and then analyze whether this occurs at a transcriptional level. We will confirm that the therapy causes a reduction in basophil response to cross-linkage of FcεRI and then determine whether it also affects basophil response induced by non-IgE stimuli. The effect of the therapy on the FcεRI level on skin mast cells will also be investigated.\n2. Determination of the effect of anti-IgE therapy on FcεRII expression and antigen presentation. We will determine whether the therapy results in a down-regulation of FcεRII/CD23 on B cells. Because of the demonstrated function of FcεRII/CD23 in antigen presentation, we will determine the antigen presentation to T cells by B cells from anti-IgE-treated and control subjects.\n3. Determination of the effect of anti-IgE therapy on antibody production. We will determine whether anti-IgE therapy results in a suppression of IgE production, in addition to sequestration of IgE. Whether IgE-anti-IgE complexes directly suppress IgE production by B cells in vitro will be investigated."
+                      },
+                      "designModule": {
+                        "designInfo": {
+                          "allocation": "RANDOMIZED",
+                          "interventionModel": "CROSSOVER",
+                          "maskingInfo": {
+                            "masking": "DOUBLE",
+                            "whoMasked": [
+                              "PARTICIPANT",
+                              "INVESTIGATOR"
+                            ]
+                          },
+                          "primaryPurpose": "TREATMENT"
+                        },
+                        "enrollmentInfo": {
+                          "count": 6,
+                          "type": "ACTUAL"
+                        },
+                        "phases": [
+                          "PHASE4"
+                        ],
+                        "studyType": "INTERVENTIONAL"
+                      },
+                      "eligibilityModule": {
+                        "eligibilityCriteria": "Inclusion Criteria:\n\n* Mild or moderate persistent asthma\n* Allergic rhinitis\n* Atopic dermatitis\n\nExclusion Criteria:\n\n* Other lung diseases\n* Blood clotting disorder\n* Pregnant or lactating women",
+                        "healthyVolunteers": false,
+                        "maximumAge": "55 Years",
+                        "minimumAge": "18 Years",
+                        "sex": "ALL",
+                        "stdAges": [
+                          "ADULT"
+                        ]
+                      },
+                      "identificationModule": {
+                        "acronym": "Xolair",
+                        "briefTitle": "Immunologic Basis of Anti-IgE Therapy (Study II: On Patients With Asthma)",
+                        "nctId": "NCT00367016",
+                        "officialTitle": "Immunologic Basis of Anti-IgE Therapy (Study II: On Patients With Asthma)",
+                        "orgStudyIdInfo": {
+                          "id": "200312064"
+                        },
+                        "organization": {
+                          "class": "OTHER",
+                          "fullName": "University of California, Davis"
+                        }
+                      },
+                      "outcomesModule": {
+                        "primaryOutcomes": [
+                          {
+                            "description": "Skin biopsies were collected from patients after 0 (pre), 3 (pos1) and 6 (pos2) months of omalizumab (P11, P36, P42) or placebo (P7 and P38) treatment. The skin was fixed and the paraffin-embedded sections were stained for high affinity receptors. The average numbers of positively stained cells in each field were counted under a microscope at 400X magnification.",
+                            "measure": "FcεRI (High Affinity Receptor) Levels at 3 Months",
+                            "timeFrame": "3 months"
+                          },
+                          {
+                            "description": "Skin biopsies were collected from patients after 0 (pre), 3 (pos1) and 6 (pos2) months of omalizumab (P11, P36, P42) or placebo (P7 and P38) treatment. The skin was fixed and the paraffin-embedded sections were stained for high affinity receptors. The average numbers of positively stained cells in each field were counted under a microscope at 400X magnification.",
+                            "measure": "FcεRI (High Affinity Receptor) Levels at 6 Months",
+                            "timeFrame": "6 months"
+                          }
+                        ],
+                        "secondaryOutcomes": [
+                          {
+                            "description": "Total sera IgE levels are increased upon anti-IgE treatment. Sera from each patient were collected every month after omalizumab (P11, P36 and P42) or placebo (P7, P37 and P38) treatment. The sera IgE levels were measured by ELISA using polyclonal goat anti-human IgE as the capture antibody and HRP-goat anti-human IgE as the detection antibody.",
+                            "measure": "Total Sera IgE Levels at 6 Months",
+                            "timeFrame": "6 months"
+                          }
+                        ]
+                      },
+                      "oversightModule": {
+                        "oversightHasDmc": false
+                      },
+                      "referencesModule": {
+                        "seeAlsoLinks": [
+                          {
+                            "label": "University of California-Davis Department of Dermatology Clinical Research",
+                            "url": "http://www.ucdmc.ucdavis.edu/dermatology/research/clinical"
+                          }
+                        ]
+                      },
+                      "sponsorCollaboratorsModule": {
+                        "leadSponsor": {
+                          "class": "OTHER",
+                          "name": "University of California, Davis"
+                        },
+                        "responsibleParty": {
+                          "type": "SPONSOR"
+                        }
+                      },
+                      "statusModule": {
+                        "completionDateStruct": {
+                          "date": "2012-10-17",
+                          "type": "ACTUAL"
+                        },
+                        "expandedAccessInfo": {
+                          "hasExpandedAccess": false
+                        },
+                        "lastUpdatePostDateStruct": {
+                          "date": "2021-07-13",
+                          "type": "ACTUAL"
+                        },
+                        "lastUpdateSubmitDate": "2021-06-21",
+                        "overallStatus": "COMPLETED",
+                        "primaryCompletionDateStruct": {
+                          "date": "2012-10-17",
+                          "type": "ACTUAL"
+                        },
+                        "resultsFirstPostDateStruct": {
+                          "date": "2021-07-13",
+                          "type": "ACTUAL"
+                        },
+                        "resultsFirstSubmitDate": "2017-12-05",
+                        "resultsFirstSubmitQcDate": "2021-06-21",
+                        "startDateStruct": {
+                          "date": "2004-02"
+                        },
+                        "statusVerifiedDate": "2021-06",
+                        "studyFirstPostDateStruct": {
+                          "date": "2006-08-22",
+                          "type": "ESTIMATED"
+                        },
+                        "studyFirstSubmitDate": "2006-08-19",
+                        "studyFirstSubmitQcDate": "2006-08-19"
+                      }
+                    },
+                    "resultsSection": {
+                      "adverseEventsModule": {
+                        "eventGroups": [
+                          {
+                            "deathsNumAffected": 0,
+                            "deathsNumAtRisk": 3,
+                            "description": "Subjects will receive subcutaneous Omalizumab for 6 months. Prior to Omalizumab administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                            "id": "EG000",
+                            "otherNumAffected": 0,
+                            "otherNumAtRisk": 3,
+                            "seriousNumAffected": 0,
+                            "seriousNumAtRisk": 3,
+                            "title": "Omalizumab"
+                          },
+                          {
+                            "deathsNumAffected": 0,
+                            "deathsNumAtRisk": 3,
+                            "description": "Subjects will receive subcutaneous placebo for 6 months. Prior to placebo administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                            "id": "EG001",
+                            "otherNumAffected": 0,
+                            "otherNumAtRisk": 3,
+                            "seriousNumAffected": 0,
+                            "seriousNumAtRisk": 3,
+                            "title": "Placebo"
+                          }
+                        ],
+                        "frequencyThreshold": "0",
+                        "timeFrame": "12 months"
+                      },
+                      "baselineCharacteristicsModule": {
+                        "denoms": [
+                          {
+                            "counts": [
+                              {
+                                "groupId": "BG000",
+                                "value": "3"
+                              },
+                              {
+                                "groupId": "BG001",
+                                "value": "3"
+                              },
+                              {
+                                "groupId": "BG002",
+                                "value": "6"
+                              }
+                            ],
+                            "units": "Participants"
+                          }
+                        ],
+                        "groups": [
+                          {
+                            "description": "Subjects will receive subcutaneous Omalizumab for 6 months. Prior to Omalizumab administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                            "id": "BG000",
+                            "title": "Omalizumab"
+                          },
+                          {
+                            "description": "Subjects will receive subcutaneous placebo for 6 months. Prior to placebo administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                            "id": "BG001",
+                            "title": "Placebo"
+                          },
+                          {
+                            "description": "Total of all reporting groups",
+                            "id": "BG002",
+                            "title": "Total"
+                          }
+                        ],
+                        "measures": [
+                          {
+                            "classes": [
+                              {
+                                "categories": [
+                                  {
+                                    "measurements": [
+                                      {
+                                        "groupId": "BG000",
+                                        "value": "0"
+                                      },
+                                      {
+                                        "groupId": "BG001",
+                                        "value": "0"
+                                      },
+                                      {
+                                        "groupId": "BG002",
+                                        "value": "0"
+                                      }
+                                    ],
+                                    "title": "<=18 years"
+                                  },
+                                  {
+                                    "measurements": [
+                                      {
+                                        "groupId": "BG000",
+                                        "value": "2"
+                                      },
+                                      {
+                                        "groupId": "BG001",
+                                        "value": "3"
+                                      },
+                                      {
+                                        "groupId": "BG002",
+                                        "value": "5"
+                                      }
+                                    ],
+                                    "title": "Between 18 and 65 years"
+                                  },
+                                  {
+                                    "measurements": [
+                                      {
+                                        "groupId": "BG000",
+                                        "value": "1"
+                                      },
+                                      {
+                                        "groupId": "BG001",
+                                        "value": "0"
+                                      },
+                                      {
+                                        "groupId": "BG002",
+                                        "value": "1"
+                                      }
+                                    ],
+                                    "title": ">=65 years"
+                                  }
+                                ]
+                              }
+                            ],
+                            "paramType": "COUNT_OF_PARTICIPANTS",
+                            "title": "Age, Categorical",
+                            "unitOfMeasure": "Participants"
+                          },
+                          {
+                            "classes": [
+                              {
+                                "categories": [
+                                  {
+                                    "measurements": [
+                                      {
+                                        "groupId": "BG000",
+                                        "value": "2"
+                                      },
+                                      {
+                                        "groupId": "BG001",
+                                        "value": "1"
+                                      },
+                                      {
+                                        "groupId": "BG002",
+                                        "value": "3"
+                                      }
+                                    ],
+                                    "title": "Female"
+                                  },
+                                  {
+                                    "measurements": [
+                                      {
+                                        "groupId": "BG000",
+                                        "value": "1"
+                                      },
+                                      {
+                                        "groupId": "BG001",
+                                        "value": "2"
+                                      },
+                                      {
+                                        "groupId": "BG002",
+                                        "value": "3"
+                                      }
+                                    ],
+                                    "title": "Male"
+                                  }
+                                ]
+                              }
+                            ],
+                            "paramType": "COUNT_OF_PARTICIPANTS",
+                            "title": "Sex: Female, Male",
+                            "unitOfMeasure": "Participants"
+                          }
+                        ]
+                      },
+                      "moreInfoModule": {
+                        "certainAgreement": {
+                          "piSponsorEmployee": true,
+                          "restrictiveAgreement": false
+                        },
+                        "limitationsAndCaveats": {
+                          "description": "There are no limitations and caveats."
+                        },
+                        "pointOfContact": {
+                          "email": "fliu@ucdavis.edu",
+                          "organization": "University of California-Davis, Department of Dermatology",
+                          "phone": "916-734-6556",
+                          "title": "Fu-Tong Liu, M.D., Ph.D."
+                        }
+                      },
+                      "outcomeMeasuresModule": {
+                        "outcomeMeasures": [
+                          {
+                            "classes": [
+                              {
+                                "categories": [
+                                  {
+                                    "measurements": [
+                                      {
+                                        "groupId": "OG000",
+                                        "lowerLimit": "3",
+                                        "upperLimit": "38",
+                                        "value": "20.5"
+                                      },
+                                      {
+                                        "groupId": "OG001",
+                                        "lowerLimit": "8",
+                                        "upperLimit": "28",
+                                        "value": "13.66"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "denoms": [
+                              {
+                                "counts": [
+                                  {
+                                    "groupId": "OG000",
+                                    "value": "3"
+                                  },
+                                  {
+                                    "groupId": "OG001",
+                                    "value": "2"
+                                  }
+                                ],
+                                "units": "Participants"
+                              }
+                            ],
+                            "description": "Skin biopsies were collected from patients after 0 (pre), 3 (pos1) and 6 (pos2) months of omalizumab (P11, P36, P42) or placebo (P7 and P38) treatment. The skin was fixed and the paraffin-embedded sections were stained for high affinity receptors. The average numbers of positively stained cells in each field were counted under a microscope at 400X magnification.",
+                            "dispersionType": "Full Range",
+                            "groups": [
+                              {
+                                "description": "The subjects will be randomized to a treatment group and a placebo group. Prior to Omalizumab administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens.",
+                                "id": "OG000",
+                                "title": "Omalizumab"
+                              },
+                              {
+                                "description": "The subjects will be randomized to a treatment group and a placebo group. Prior to placebo administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens.",
+                                "id": "OG001",
+                                "title": "Placebo"
+                              }
+                            ],
+                            "paramType": "MEAN",
+                            "populationDescription": "Skin biopsy was not collected from one of the subjects randomized to placebo.",
+                            "reportingStatus": "POSTED",
+                            "timeFrame": "3 months",
+                            "title": "FcεRI (High Affinity Receptor) Levels at 3 Months",
+                            "type": "PRIMARY",
+                            "unitOfMeasure": "Positive cells per field"
+                          },
+                          {
+                            "classes": [
+                              {
+                                "categories": [
+                                  {
+                                    "measurements": [
+                                      {
+                                        "groupId": "OG000",
+                                        "lowerLimit": "5",
+                                        "upperLimit": "38",
+                                        "value": "17"
+                                      },
+                                      {
+                                        "groupId": "OG001",
+                                        "lowerLimit": "15",
+                                        "upperLimit": "30",
+                                        "value": "22.5"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "denoms": [
+                              {
+                                "counts": [
+                                  {
+                                    "groupId": "OG000",
+                                    "value": "3"
+                                  },
+                                  {
+                                    "groupId": "OG001",
+                                    "value": "2"
+                                  }
+                                ],
+                                "units": "Participants"
+                              }
+                            ],
+                            "description": "Skin biopsies were collected from patients after 0 (pre), 3 (pos1) and 6 (pos2) months of omalizumab (P11, P36, P42) or placebo (P7 and P38) treatment. The skin was fixed and the paraffin-embedded sections were stained for high affinity receptors. The average numbers of positively stained cells in each field were counted under a microscope at 400X magnification.",
+                            "dispersionType": "Full Range",
+                            "groups": [
+                              {
+                                "description": "Subjects will receive subcutaneous Omalizumab for 6 months. Prior to Omalizumab administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                                "id": "OG000",
+                                "title": "Omalizumab"
+                              },
+                              {
+                                "description": "Subjects will receive subcutaneous placebo for 6 months. Prior to placebo administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                                "id": "OG001",
+                                "title": "Placebo"
+                              }
+                            ],
+                            "paramType": "MEAN",
+                            "reportingStatus": "POSTED",
+                            "timeFrame": "6 months",
+                            "title": "FcεRI (High Affinity Receptor) Levels at 6 Months",
+                            "type": "PRIMARY",
+                            "unitOfMeasure": "Positive cells per field"
+                          },
+                          {
+                            "classes": [
+                              {
+                                "categories": [
+                                  {
+                                    "measurements": [
+                                      {
+                                        "groupId": "OG000",
+                                        "lowerLimit": "0",
+                                        "upperLimit": "600",
+                                        "value": "300"
+                                      },
+                                      {
+                                        "groupId": "OG001",
+                                        "lowerLimit": "300",
+                                        "upperLimit": "1200",
+                                        "value": "883.33"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "denoms": [
+                              {
+                                "counts": [
+                                  {
+                                    "groupId": "OG000",
+                                    "value": "3"
+                                  },
+                                  {
+                                    "groupId": "OG001",
+                                    "value": "3"
+                                  }
+                                ],
+                                "units": "Participants"
+                              }
+                            ],
+                            "description": "Total sera IgE levels are increased upon anti-IgE treatment. Sera from each patient were collected every month after omalizumab (P11, P36 and P42) or placebo (P7, P37 and P38) treatment. The sera IgE levels were measured by ELISA using polyclonal goat anti-human IgE as the capture antibody and HRP-goat anti-human IgE as the detection antibody.",
+                            "dispersionType": "Full Range",
+                            "groups": [
+                              {
+                                "description": "Subjects will receive subcutaneous Omalizumab for 6 months. Prior to Omalizumab administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                                "id": "OG000",
+                                "title": "Omalizumab"
+                              },
+                              {
+                                "description": "Subjects will receive subcutaneous placebo for 6 months. Prior to placebo administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                                "id": "OG001",
+                                "title": "Placebo"
+                              }
+                            ],
+                            "paramType": "MEAN",
+                            "reportingStatus": "POSTED",
+                            "timeFrame": "6 months",
+                            "title": "Total Sera IgE Levels at 6 Months",
+                            "type": "SECONDARY",
+                            "unitOfMeasure": "U/ml"
+                          }
+                        ]
+                      },
+                      "participantFlowModule": {
+                        "groups": [
+                          {
+                            "description": "Subjects will receive subcutaneous Omalizumab for 6 months. Prior to Omalizumab administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                            "id": "FG000",
+                            "title": "Omalizumab"
+                          },
+                          {
+                            "description": "Subjects will receive subcutaneous placebo for 6 months. Prior to placebo administration, all subjects will undergo screening studies, including spirometry, blood test and skin test. Blood test includes comprehensive metabolic panel, CBC, and total and free IgE levels. Skin test will be done with a panel of 7 common allergens",
+                            "id": "FG001",
+                            "title": "Placebo"
+                          }
+                        ],
+                        "periods": [
+                          {
+                            "milestones": [
+                              {
+                                "achievements": [
+                                  {
+                                    "groupId": "FG000",
+                                    "numSubjects": "3"
+                                  },
+                                  {
+                                    "groupId": "FG001",
+                                    "numSubjects": "3"
+                                  }
+                                ],
+                                "type": "STARTED"
+                              },
+                              {
+                                "achievements": [
+                                  {
+                                    "groupId": "FG000",
+                                    "numSubjects": "3"
+                                  },
+                                  {
+                                    "groupId": "FG001",
+                                    "numSubjects": "3"
+                                  }
+                                ],
+                                "type": "First Intervention"
+                              },
+                              {
+                                "achievements": [
+                                  {
+                                    "groupId": "FG000",
+                                    "numSubjects": "3"
+                                  },
+                                  {
+                                    "groupId": "FG001",
+                                    "numSubjects": "3"
+                                  }
+                                ],
+                                "type": "Second Intervention"
+                              },
+                              {
+                                "achievements": [
+                                  {
+                                    "groupId": "FG000",
+                                    "numSubjects": "3"
+                                  },
+                                  {
+                                    "groupId": "FG001",
+                                    "numSubjects": "3"
+                                  }
+                                ],
+                                "type": "COMPLETED"
+                              },
+                              {
+                                "achievements": [
+                                  {
+                                    "groupId": "FG000",
+                                    "numSubjects": "0"
+                                  },
+                                  {
+                                    "groupId": "FG001",
+                                    "numSubjects": "0"
+                                  }
+                                ],
+                                "type": "NOT COMPLETED"
+                              }
+                            ],
+                            "title": "Overall Study"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "totalCount": 116
+              }
+            },
+            {
+              "category": "INTERVENTIONAL",
+              "count": 85,
+              "receipt_id": "count_e609631a9e8f05db9b44139c87cc1cca"
+            },
+            {
+              "category": "OBSERVATIONAL",
+              "count": 31,
+              "receipt_id": "count_818e77eb1e8a7c3618339723d829d0cd"
+            },
+            {
+              "category": "EXPANDED_ACCESS",
+              "count": 0,
+              "receipt_id": "count_7a1f86e2ed376d9a80f3befd7c1d409a"
+            },
+            {
+              "category": "Not reported / other",
+              "count": 0,
+              "receipt_id": "count_caa04eed79a5d262975c6724fdd4dcc2"
+            }
+          ],
+          "source_version": {
+            "apiVersion": "2.0.5",
+            "dataTimestamp": "2026-10-30T09:00:04"
+          }
+        },
+        "alternative_renderers": [
+          "bar",
+          "table"
+        ]
+      }
+    ],
+    "questions": [],
+    "message": "Live official count receipts checked independently; citations are samples only.",
+    "unmet_goals": [],
+    "usage": {
+      "model_calls": 0,
+      "usage_complete": true,
+      "unknown_attempts": 0,
+      "estimated_or_reserved_usd": 0.0,
+      "receipts": [],
+      "cost_basis": "GPT-6.1 Sol standard list-rate estimate; unknown attempts keep byte-based reservations, not an invoice"
+    }
+  }
+}
