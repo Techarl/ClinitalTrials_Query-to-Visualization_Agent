@@ -2,6 +2,21 @@
 
 This work continues from `9e107fe`; historical reports are retained. Current work is not yet a new final release.
 
+## Checkpoint prepared on 2026-11-01
+
+| Workstream | Completed evidence | Remaining |
+|---|---|---|
+| Core300 | 300 episodes / 420 turns; 295/300 overall, 196/200 heldout; all thirty dependency cases audited with no grade changes | Final delivery-code checks remain separate from the frozen study |
+| TrialQA | 120 questions × two conditions; 237 post-run judgments; heldout cited correctness 64/79 in both conditions | No further formal calls planned |
+| NLI4CT | Frozen 500-question / 200-answer protocol and source archive | Formal execution and complete report are running/pending |
+| Harness v3 | Twenty development tasks and two online diagnostics; full forty-task/four-arm formal study launched at four workers | Formal comparisons, costs and post-run audit |
+| UI and examples | Current-history selection fix; portable-source UI; four curated groups/five turns; credential-free read-only viewer | Final root backend patch graduation and full release acceptance |
+| Packaging | Nested ZIP/gzip credential scanning and independent archive verifier tested | Clean final commit, package, fresh extraction/install/demo |
+
+See [Core results](CORE300_RESULTS.md), [dependency audit](CORE300_SELECTION_AUDIT.md), [TrialQA results](TRIALQA_PROTOCOL.md#completed-formal-study), [Harness launch](public-evaluation/harness-v3-formal-launch.json), and [recorded demo](DEMO.md). The final Harness main ceiling is $53.33 including its earlier main-stage costs; its newly available formal allowance is $43.9267027. The project gate reserves the entire $20 NLI ceiling and a $0.50 demonstration allowance, keeping the conservative new-phase bound at $99.999400907. These are budget reservations, not final expenditure or invoices.
+
+Checkpoint `72d95bd` was pushed to the private repository. Its [GitHub CI](https://github.com/Techarl/ClinitalTrials_Query-to-Visualization_Agent/actions/runs/41283144143) is green with **741 passed, 2 skipped and 9 xfailed**, as independently checked in the submission-readiness review. The expected failures expose known scope/scorer gaps; green CI does not mean those gaps are fixed. Earlier checkpoint counts below describe earlier test sets and are not the final release tally.
+
 ## Completed mechanisms
 
 - Comparison publication/finalization requires every medicine exactly once, including an explicit empty scope, and binds labels to identities.
@@ -25,6 +40,7 @@ This work continues from `9e107fe`; historical reports are retained. Current wor
 - A later checkpoint passed 718 native tests and 738 Linux tests with real Neo4j; Linux also recorded two strict expected failures from a new independent cross-check. These are intermediate counts, not final release results. [Integration receipt](public-evaluation/integration-checkpoint.json).
 - MCP stdio and HTTP each exercised actual chart/evidence tools, session token isolation and cancellation without model calls. The final HTTP run used verified PubMed cached receipts after a live upstream HTTP error.
 - Cross-check found incomplete inferred-date/list correction and an anchor/top-N grading loophole. Unapplied patches and shadow tests preserve the currently running study's source version. A complete-population post-run audit will report original and corrected grades separately.
+- Submission-readiness review additionally found that a goal change could reuse an earlier tool failure and that selecting the already-current history version could clear the result. The history fix is in the frontend and browser-verified. Five backend patches passed 51 tests and actual HTTP/browser checks in an isolated candidate; they remain unapplied to the root source while the frozen NLI execution runs. Candidate acceptance is not final root-release acceptance.
 
 ## Public data and pilots
 
@@ -38,7 +54,7 @@ This work continues from `9e107fe`; historical reports are retained. Current wor
 
 ## Still required before delivery
 
-- TrialQA pilot passed 2 questions in both arms; all 120 questions × two arms now run under a frozen protocol. Finish core300, NLI, TrialQA and Harness with complete failure/expense accounting.
+- TrialQA and Core300 have complete reports and independent audits. Finish NLI and Harness with equally complete accounting; retain TrialQA's $10.280054475 and Core300's $14.2884179 estimated-or-reserved formal costs, with pilots separately accounted.
 - Apply prepared scope/scorer and infrastructure follow-ups after immutable executions finish; rerun affected checks and explicitly distinguish executed study code from final delivery code.
 - Finish regression/integration/UI acceptance after all edits; record exact code/config versions for each study.
 - Report paired per-question results, input-only strata, confidence intervals and source/version limitations. Do not select favorable test subsets.

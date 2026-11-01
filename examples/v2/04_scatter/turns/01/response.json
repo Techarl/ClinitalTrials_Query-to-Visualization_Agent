@@ -1,0 +1,1786 @@
+{
+  "schema_version": "v2.0",
+  "run_id": "vr_d77b442157004195b23d4d3f8a30136e",
+  "session_id": "vs_83dc3452c91f4301a1b42e859c816106",
+  "status": "completed",
+  "task": {
+    "goal": "For psoriasis studies involving secukinumab, plot enrollment against trial duration in days using only exact start and completion dates, and report exclusions without imputing dates or enrollment.",
+    "mode": "new",
+    "filters": {
+      "condition": "psoriasis",
+      "interventions": [
+        "secukinumab"
+      ],
+      "intervention_match": "any",
+      "sponsor": null,
+      "phases": [],
+      "statuses": [],
+      "countries": [],
+      "start_year": null,
+      "end_year": null,
+      "enrollment_type": null
+    },
+    "date_range": null,
+    "intervention_scope": "population",
+    "source_mode": "full_evidence",
+    "goals": [
+      {
+        "id": "enrollment_duration",
+        "description": "Scatter plot of enrollment against duration in days calculated from exact start and completion dates; report missingness and excluded records.",
+        "kind": "chart",
+        "operation": "scatter",
+        "depends_on": [],
+        "parameters": {
+          "group_by": null,
+          "time_field": null,
+          "time_grain": null,
+          "relationship": null,
+          "histogram_bins": null,
+          "x": "trial_duration",
+          "y": "enrollment"
+        }
+      }
+    ],
+    "clear_fields": []
+  },
+  "artifacts": [
+    {
+      "artifact_id": "art_874ac12adaea8fee19304f2963b36186",
+      "result_id": "result_874ac12adaea8fee19304f2963b36186",
+      "goal_id": "enrollment_duration",
+      "source_type": "clinicaltrials",
+      "scope_id": "scope_bc7dadd4ebd5a3883c5c1ccaff0a9f59",
+      "title": "Psoriasis studies involving secukinumab: enrollment versus duration in days",
+      "metric": "One point per trial with valid x/y values",
+      "visualization": {
+        "data": [
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_7e25dbfde1cfd770449455062f76e219",
+            "item_id": "b5ec52315051268db7f4",
+            "nct_id": "NCT00508547",
+            "x": 8594,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 20167,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_ac22c115affa028e2cbd8662c60ff063",
+            "item_id": "c432fbfeed89cc9cdf4c",
+            "nct_id": "NCT00770965",
+            "x": 372,
+            "x_type": "ACTUAL",
+            "y": 80,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_8479226c410e2a89200c083481c4beba",
+            "item_id": "8db68cb8d01349ba16ff",
+            "nct_id": "NCT01132612",
+            "x": 2352,
+            "x_type": "ACTUAL",
+            "y": 275,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_196ca11bf1fd854d7fc55fcce80e25f4",
+            "item_id": "8cedb29be9e5e0204333",
+            "nct_id": "NCT01544595",
+            "x": 1833,
+            "x_type": "ACTUAL",
+            "y": 1147,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_e34665fa4122e7bf85307366a5966612",
+            "item_id": "4576d02d7c6b9de24561",
+            "nct_id": "NCT01555125",
+            "x": 1630,
+            "x_type": "ACTUAL",
+            "y": 177,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_78feebdd513da0c2122f3e2665c626ba",
+            "item_id": "002980ef26c664eb069a",
+            "nct_id": "NCT01636687",
+            "x": 1471,
+            "x_type": "ACTUAL",
+            "y": 182,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_26d8e87f4badb050236ca75b6c3d9f63",
+            "item_id": "2c6f240138268e233bb0",
+            "nct_id": "NCT01640951",
+            "x": 1691,
+            "x_type": "ACTUAL",
+            "y": 675,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_d237b1822b2d38406a74849212002dbc",
+            "item_id": "3d856857e0eb4b145cc0",
+            "nct_id": "NCT01752634",
+            "x": 2096,
+            "x_type": "ACTUAL",
+            "y": 397,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_d081ab66df2f5c288bab27ff4a8defa0",
+            "item_id": "2038be4a053c0c58482f",
+            "nct_id": "NCT01806597",
+            "x": 1232,
+            "x_type": "ACTUAL",
+            "y": 205,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_c1a91316ad9e166362d07a6379459558",
+            "item_id": "9702b5563e2fd670de62",
+            "nct_id": "NCT01807520",
+            "x": 1293,
+            "x_type": "ACTUAL",
+            "y": 198,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_69a19e18ccc342b1b34b46a9b874a660",
+            "item_id": "bd001ab86c5e74d441e4",
+            "nct_id": "NCT01892436",
+            "x": 1564,
+            "x_type": "ACTUAL",
+            "y": 460,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_1e01b67257e02454c807e2f6cb3f94ca",
+            "item_id": "14f15c7d39bd4f7898a3",
+            "nct_id": "NCT01952015",
+            "x": 937,
+            "x_type": "ACTUAL",
+            "y": 12,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_8402a7f388680454eac55cd36a42dde3",
+            "item_id": "00396f528703f732252c",
+            "nct_id": "NCT01961609",
+            "x": 1007,
+            "x_type": "ACTUAL",
+            "y": 235,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_bfe964be64a8a8793d842313120eb25f",
+            "item_id": "fdb058007ad8080c55a1",
+            "nct_id": "NCT01965132",
+            "x": 6420,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 10000,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_0867f51e89710d996f5e3baf5a9b629e",
+            "item_id": "fa518c94536459f2b3b2",
+            "nct_id": "NCT01989468",
+            "x": 1448,
+            "x_type": "ACTUAL",
+            "y": 414,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_b2dc3457aff2c990d2f8055f8357f304",
+            "item_id": "e70c1de9a09f37b81e32",
+            "nct_id": "NCT02008890",
+            "x": 1252,
+            "x_type": "ACTUAL",
+            "y": 237,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_4c1bb9333c400cacdb23b208e6c8ded0",
+            "item_id": "ea09d014c0bd6ca638d8",
+            "nct_id": "NCT02074982",
+            "x": 854,
+            "x_type": "ACTUAL",
+            "y": 676,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_28c52acd3d0fb672a9e15129f04218b0",
+            "item_id": "f7da35195181f84c80fe",
+            "nct_id": "NCT02144857",
+            "x": 3502,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 200,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_59a4d98b2ed43ed54b65fe9968fff131",
+            "item_id": "d502f1c99c5a6dbe4dff",
+            "nct_id": "NCT02267135",
+            "x": 434,
+            "x_type": "ACTUAL",
+            "y": 102,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_c4882217553a7b6e08fe89977790b63d",
+            "item_id": "3d81f597f91254f6de36",
+            "nct_id": "NCT02294227",
+            "x": 935,
+            "x_type": "ACTUAL",
+            "y": 341,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_76974ceffdfa0f6f5d6dae6334cb1c23",
+            "item_id": "b2ab596c9d415775b915",
+            "nct_id": "NCT02362789",
+            "x": 558,
+            "x_type": "ACTUAL",
+            "y": 132,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_b5b918ef9b1eabce2e4780585efc00cd",
+            "item_id": "d100ce2845344fbe1241",
+            "nct_id": "NCT02394561",
+            "x": 790,
+            "x_type": "ACTUAL",
+            "y": 434,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_2b344ab489fcbf578862d3405d9b7ee6",
+            "item_id": "57d2bd7d31a19d1a265b",
+            "nct_id": "NCT02404350",
+            "x": 1242,
+            "x_type": "ACTUAL",
+            "y": 997,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_05d3f6453e938384be7592963ed0a9b3",
+            "item_id": "2afabf9e5ddf20bdd8df",
+            "nct_id": "NCT02409667",
+            "x": 732,
+            "x_type": "ACTUAL",
+            "y": 16487,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_2ae97976f89eaf3e79aeb76ab26a6816",
+            "item_id": "ccdef607fb0e5c18946d",
+            "nct_id": "NCT02471144",
+            "x": 2739,
+            "x_type": "ACTUAL",
+            "y": 162,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_41af0e21c256dc152be60d401b2f765a",
+            "item_id": "bbf48ca9fc2f3c09afc0",
+            "nct_id": "NCT02474069",
+            "x": 585,
+            "x_type": "ACTUAL",
+            "y": 772,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_cf1ca209e8c81cb98d4be043f1b98970",
+            "item_id": "1767adf2e00235bb17c4",
+            "nct_id": "NCT02483234",
+            "x": 1218,
+            "x_type": "ACTUAL",
+            "y": 40,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_1a726becd0becc2e0ed9ed67a06a6bed",
+            "item_id": "662fed93ea4ee43a15c6",
+            "nct_id": "NCT02547714",
+            "x": 321,
+            "x_type": "ACTUAL",
+            "y": 34,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_402bd9b546250e1d5a2122c6c649be67",
+            "item_id": "9290e9b8c169bb1dbdd3",
+            "nct_id": "NCT02595970",
+            "x": 631,
+            "x_type": "ACTUAL",
+            "y": 120,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_2708ca885354998a732089964f436018",
+            "item_id": "76ee81582cc9cacd4c9e",
+            "nct_id": "NCT02607774",
+            "x": 369,
+            "x_type": "ACTUAL",
+            "y": 25,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_6cd8c4a36f848e2694f5b165771cac21",
+            "item_id": "2892e42370139740b031",
+            "nct_id": "NCT02662985",
+            "x": 1541,
+            "x_type": "ACTUAL",
+            "y": 166,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_49394f0ea3df79b0a2f47b494fe67c93",
+            "item_id": "27eaf9cc9e6cc377f47a",
+            "nct_id": "NCT02690701",
+            "x": 740,
+            "x_type": "ACTUAL",
+            "y": 91,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_ae62df4b80623d82d54e5a41d7ad5347",
+            "item_id": "737242a56fa1836721f9",
+            "nct_id": "NCT02721966",
+            "x": 996,
+            "x_type": "ACTUAL",
+            "y": 503,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_1a221add726d36730300c69debd99ada",
+            "item_id": "4389959090b823e2cfaa",
+            "nct_id": "NCT02745080",
+            "x": 1001,
+            "x_type": "ACTUAL",
+            "y": 853,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_bf83fd783ac53f3dc9e32f5f6019dd54",
+            "item_id": "8f8d8b600e2748398038",
+            "nct_id": "NCT02748863",
+            "x": 543,
+            "x_type": "ACTUAL",
+            "y": 214,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_2adc730785ac90b1f8c6c1ea737f2f9f",
+            "item_id": "754a179dc4f2d5585837",
+            "nct_id": "NCT02752776",
+            "x": 741,
+            "x_type": "ACTUAL",
+            "y": 1660,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_a4265c2f6be2b1a02cdbe76363932958",
+            "item_id": "f005a04e2df92832161c",
+            "nct_id": "NCT02771210",
+            "x": 1198,
+            "x_type": "ACTUAL",
+            "y": 204,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_3200648cec09be3bffbbb0d66ecd6d9c",
+            "item_id": "ecb84f4cc6eac907bc70",
+            "nct_id": "NCT02786186",
+            "x": 3683,
+            "x_type": "ACTUAL",
+            "y": 2376,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_e34d92b775b3ca5b392ee79554c9295e",
+            "item_id": "e2c466a5a813fa820830",
+            "nct_id": "NCT02798211",
+            "x": 891,
+            "x_type": "ACTUAL",
+            "y": 258,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_890e507a791906b1d942f5d8be5d7601",
+            "item_id": "ec2580905f0f11135cb0",
+            "nct_id": "NCT02826603",
+            "x": 747,
+            "x_type": "ACTUAL",
+            "y": 1114,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_a918646b6d51b34d18f56c5332f054f3",
+            "item_id": "f4fab8e84b6756d72e97",
+            "nct_id": "NCT02854163",
+            "x": 1068,
+            "x_type": "ACTUAL",
+            "y": 30,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_4217011ffb4f3c4ccac7d554b425c75c",
+            "item_id": "b80105befcce9659c82b",
+            "nct_id": "NCT03020199",
+            "x": 2272,
+            "x_type": "ACTUAL",
+            "y": 196,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_09ea75e3a4165355b9d3f787cad27fb6",
+            "item_id": "9042af3b8229244af1a0",
+            "nct_id": "NCT03055494",
+            "x": 679,
+            "x_type": "ACTUAL",
+            "y": 102,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_427682fd5ea8668b6c830d99199bd4a9",
+            "item_id": "26c886d479e5bcd073cb",
+            "nct_id": "NCT03066609",
+            "x": 630,
+            "x_type": "ACTUAL",
+            "y": 543,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_02f7c2f6bfc024c03f79d3cd5d515960",
+            "item_id": "a44273de6f1e08bf0254",
+            "nct_id": "NCT03090100",
+            "x": 511,
+            "x_type": "ACTUAL",
+            "y": 1048,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_7d7119ac719c30e136421d29754751ce",
+            "item_id": "2ae16b7226391ae570f8",
+            "nct_id": "NCT03131570",
+            "x": 1490,
+            "x_type": "ACTUAL",
+            "y": 23,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_d9f87570bdeab8c4ab5dbe56dac10e84",
+            "item_id": "2333cb368877d2e1b291",
+            "nct_id": "NCT03384745",
+            "x": 604,
+            "x_type": "ACTUAL",
+            "y": 313,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_123e48baf03b604f8711b4fd6e3e908e",
+            "item_id": "a70631e98428b73c54ec",
+            "nct_id": "NCT03440736",
+            "x": 1556,
+            "x_type": "ACTUAL",
+            "y": 781,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_17ab385474e2099b67dd4f8c25bc8a15",
+            "item_id": "545374a52b15a0150b55",
+            "nct_id": "NCT03478787",
+            "x": 792,
+            "x_type": "ACTUAL",
+            "y": 327,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_e092716722530cabb58050455ba1c066",
+            "item_id": "48f58245029cbc9a472a",
+            "nct_id": "NCT03496831",
+            "x": 4382,
+            "x_type": "ACTUAL",
+            "y": 7500,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_4f75be45e7d54de6bbef6da51ee558c8",
+            "item_id": "cc49fd015b66af9a7676",
+            "nct_id": "NCT03504852",
+            "x": 751,
+            "x_type": "ACTUAL",
+            "y": 331,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_fbf6170de86f0756353e928bded33640",
+            "item_id": "5d3052fbde3353f393df",
+            "nct_id": "NCT03535194",
+            "x": 708,
+            "x_type": "ACTUAL",
+            "y": 1484,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_626d6d47501044ab1172f75ffb81c364",
+            "item_id": "55c6fdb771b1e3102d4a",
+            "nct_id": "NCT03536884",
+            "x": 1883,
+            "x_type": "ACTUAL",
+            "y": 743,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_11f45514bc00d6e4bb9a2b73ddadf333",
+            "item_id": "c7b60936d443b428014b",
+            "nct_id": "NCT03553823",
+            "x": 379,
+            "x_type": "ACTUAL",
+            "y": 40,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_e05f1e2314f819ffa3be98fed390299d",
+            "item_id": "5aa64699d04bc402ac0f",
+            "nct_id": "NCT03556202",
+            "x": 1253,
+            "x_type": "ACTUAL",
+            "y": 1936,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_e8ed2cbc0a441c32726327e42995df0c",
+            "item_id": "bfeffe6b631fa073bd3b",
+            "nct_id": "NCT03589885",
+            "x": 595,
+            "x_type": "ACTUAL",
+            "y": 122,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_d8246813b9dee02a8d27d46f77552629",
+            "item_id": "c1d652b15a9f69ed8a2e",
+            "nct_id": "NCT03623867",
+            "x": 865,
+            "x_type": "ACTUAL",
+            "y": 40,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_19edefd268859f24e1680d1b1856bce4",
+            "item_id": "c858dbe4aed8df9fb5d4",
+            "nct_id": "NCT03668613",
+            "x": 1840,
+            "x_type": "ACTUAL",
+            "y": 84,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_51590e2c0119525e9c1c7ad1d52fd4d5",
+            "item_id": "3ef490becfa85940f6ec",
+            "nct_id": "NCT03828643",
+            "x": 23,
+            "x_type": "ACTUAL",
+            "y": 156,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_6aa078682a32fc0b18f9702f7d80ef91",
+            "item_id": "fb74b0c1b0278f0e2ab9",
+            "nct_id": "NCT03955861",
+            "x": 884,
+            "x_type": "ACTUAL",
+            "y": 80,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_b592f241f87c1199d76ab5a034e18fc2",
+            "item_id": "aa201a5360d40d38522c",
+            "nct_id": "NCT04080661",
+            "x": 2110,
+            "x_type": "ACTUAL",
+            "y": 82,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_4a2361f682b07a7d4b5a55090213e285",
+            "item_id": "d7610369198ea259085b",
+            "nct_id": "NCT04102007",
+            "x": 1091,
+            "x_type": "ACTUAL",
+            "y": 244,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_06d514c792f546cc09e231805fc0833a",
+            "item_id": "38b79e5d3c3006887d03",
+            "nct_id": "NCT04209205",
+            "x": 839,
+            "x_type": "ACTUAL",
+            "y": 381,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_1db2f0e3290f55538ce0c0520396f5a5",
+            "item_id": "673e1f27f5478297ec35",
+            "nct_id": "NCT04237116",
+            "x": 520,
+            "x_type": "ACTUAL",
+            "y": 10,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_95b456484f816d2c28adf6bdd2f27fc2",
+            "item_id": "e46ca5ef64b10c7bc27a",
+            "nct_id": "NCT04340076",
+            "x": 1625,
+            "x_type": "ACTUAL",
+            "y": 244,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_425144b2b76956c9bdefa66d900ecbbe",
+            "item_id": "4a6d966f8f985135f734",
+            "nct_id": "NCT04414605",
+            "x": 575,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 10,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_f2e3af24a8a0155cf6bc3a2f13def1a0",
+            "item_id": "dce4e8ba3b7a0d9a610b",
+            "nct_id": "NCT04469829",
+            "x": 882,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 70,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_a55a16e3b32889acd199ada0d1e009da",
+            "item_id": "c223c6870fc0d40b9613",
+            "nct_id": "NCT04488185",
+            "x": 142,
+            "x_type": "ACTUAL",
+            "y": 0,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_8d97ae46469ec5c66521026ad35f3368",
+            "item_id": "3b4ed2570c51e7276211",
+            "nct_id": "NCT04535999",
+            "x": 1208,
+            "x_type": "ACTUAL",
+            "y": 16,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_f7cf0aef3c4704e5a9a7677381bb8de8",
+            "item_id": "afebc21f2f72fe351f17",
+            "nct_id": "NCT04571567",
+            "x": 813,
+            "x_type": "ACTUAL",
+            "y": 20,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_7e5435fb5a4b65de7afb9f2d444d68b0",
+            "item_id": "d653b3f0c811c5e3192c",
+            "nct_id": "NCT04610476",
+            "x": 1826,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 270,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_654871c058d196fc208de863d21560e8",
+            "item_id": "27e3cb214b828fbec2a3",
+            "nct_id": "NCT04632927",
+            "x": 1401,
+            "x_type": "ACTUAL",
+            "y": 119,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_cea40aa0912b1732c7a715f7f460ef95",
+            "item_id": "841379119451bb225533",
+            "nct_id": "NCT04711343",
+            "x": 362,
+            "x_type": "ACTUAL",
+            "y": 216,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_ff96d3607568b86d8bdd1f53bc2dbffe",
+            "item_id": "eeca60507727de9e123b",
+            "nct_id": "NCT04711902",
+            "x": 624,
+            "x_type": "ACTUAL",
+            "y": 41,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_a028c64384c52ef1112a362524e6b439",
+            "item_id": "bd4f8b9b73236adaec07",
+            "nct_id": "NCT04717466",
+            "x": 1344,
+            "x_type": "ACTUAL",
+            "y": 20,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_98cf417a07d410533da432acb73e570f",
+            "item_id": "da26a41d1d8768f970f3",
+            "nct_id": "NCT04894890",
+            "x": 810,
+            "x_type": "ACTUAL",
+            "y": 1002,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_180cae083f2c1dbe441fa0aaad54bf78",
+            "item_id": "828a1df6c41c1cb9cdc1",
+            "nct_id": "NCT04967950",
+            "x": 534,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 60,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_a1cdf96971a7509a976f79aab0ba4a0d",
+            "item_id": "d2363822937606b7194b",
+            "nct_id": "NCT05080218",
+            "x": 925,
+            "x_type": "ACTUAL",
+            "y": 841,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_e7f98a3e0698bec453a1ef5219a3a2ae",
+            "item_id": "2824a7cc4a22208b0345",
+            "nct_id": "NCT05155098",
+            "x": 1244,
+            "x_type": "ACTUAL",
+            "y": 127,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_c96abac73bcab57bfe8e0a295ae7166c",
+            "item_id": "e6e786d97d1d74a2e62d",
+            "nct_id": "NCT05215561",
+            "x": 957,
+            "x_type": "ACTUAL",
+            "y": 36,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_d2b75e685f039f6e3473ea49c394cbb5",
+            "item_id": "0b175bfd55a47605b669",
+            "nct_id": "NCT05320159",
+            "x": 56,
+            "x_type": "ACTUAL",
+            "y": 17743,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_d3f26abb6c0650642ef5fbad84c0b8c3",
+            "item_id": "63f995fae199239c3c32",
+            "nct_id": "NCT05344482",
+            "x": 418,
+            "x_type": "ACTUAL",
+            "y": 277,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_f1dcad1393228f7f11808087510e91de",
+            "item_id": "1bd8344fa8e12a65e34c",
+            "nct_id": "NCT05368818",
+            "x": 150,
+            "x_type": "ACTUAL",
+            "y": 767,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_131c5734abf04256064b93c9c7ba253f",
+            "item_id": "a86fc29692141096a854",
+            "nct_id": "NCT05377944",
+            "x": 776,
+            "x_type": "ACTUAL",
+            "y": 502,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_4872da513c22c8a91e70cfcf85ed4c67",
+            "item_id": "eaf9ab3b593f4afe7315",
+            "nct_id": "NCT05388916",
+            "x": 903,
+            "x_type": "ACTUAL",
+            "y": 42,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_60f597ef5cc673f0558c4b2489aa9647",
+            "item_id": "89b02869da1dd70b2944",
+            "nct_id": "NCT05503875",
+            "x": 1825,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 100,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_73309edb3a1f503c0c3d85b20a11d7fd",
+            "item_id": "aea8ac5018b5842b3f1f",
+            "nct_id": "NCT05513014",
+            "x": 163,
+            "x_type": "ACTUAL",
+            "y": 1518,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_1238c04711984bd1e8ba826ec3d39c38",
+            "item_id": "6f80996cc8df9e4f79b9",
+            "nct_id": "NCT05650060",
+            "x": 337,
+            "x_type": "ACTUAL",
+            "y": 163,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_cecc95f888274ff4a3c2ba8f1f591f3f",
+            "item_id": "67c9fd2032eb35444276",
+            "nct_id": "NCT05677542",
+            "x": 212,
+            "x_type": "ACTUAL",
+            "y": 758,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_7241e43e2fc2b7d09cc0cd3ad7cf2e87",
+            "item_id": "582c176ed372f5dfae86",
+            "nct_id": "NCT05734482",
+            "x": 138,
+            "x_type": "ACTUAL",
+            "y": 130,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_3b06627e62457d7fe07727d1e4c85336",
+            "item_id": "7167adb9b86bd2489ea0",
+            "nct_id": "NCT05787236",
+            "x": 495,
+            "x_type": "ACTUAL",
+            "y": 79,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_ec3b4877d8ffe9b16916166f7a2e43e6",
+            "item_id": "7ccf241af23c6d9300c2",
+            "nct_id": "NCT05891964",
+            "x": 370,
+            "x_type": "ACTUAL",
+            "y": 50,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_0232bb9699aa200ca7701b436b068a11",
+            "item_id": "e071798ff7c6919a9ebf",
+            "nct_id": "NCT05957120",
+            "x": 331,
+            "x_type": "ACTUAL",
+            "y": 100,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_6993613ca8708720d50122916c6b3360",
+            "item_id": "bf93d9de223a0aa55b8d",
+            "nct_id": "NCT06126718",
+            "x": 180,
+            "x_type": "ACTUAL",
+            "y": 88,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_d9df99ae1fea3d4199bbf1eabd3f162c",
+            "item_id": "d5c1b967706989721b15",
+            "nct_id": "NCT06142357",
+            "x": 1341,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 199,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_7f030182cab86d47eaa7aabb2406a049",
+            "item_id": "47ff56004f43f00c56b8",
+            "nct_id": "NCT06172426",
+            "x": 20,
+            "x_type": "ACTUAL",
+            "y": 1171,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_13a5f39df54cd41fd1b13d68c5db9e7b",
+            "item_id": "c0e4232b39886ae99857",
+            "nct_id": "NCT06391996",
+            "x": 1643,
+            "x_type": "ACTUAL",
+            "y": 65,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_4923cdd269f3b33384d9621c0cedfa40",
+            "item_id": "7d60e04af00196c89160",
+            "nct_id": "NCT06398106",
+            "x": 1167,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 210,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_467b0824eef25f7935932070ac1eaa23",
+            "item_id": "2757e9a6adbdfd7c1fd7",
+            "nct_id": "NCT06398652",
+            "x": 569,
+            "x_type": "ACTUAL",
+            "y": 336,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_1b21b17bcd21f0c3984966175474e1b6",
+            "item_id": "051ac3b9ec3bcedecfdb",
+            "nct_id": "NCT06399432",
+            "x": 1536,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 36,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_8f7b4af3dc303c5887790fd651e925ea",
+            "item_id": "ad32ea73e66088d6a44a",
+            "nct_id": "NCT06600009",
+            "x": 333,
+            "x_type": "ACTUAL",
+            "y": 534,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_46b0513a3c3e36a27cfb1a93237433ef",
+            "item_id": "933f463c24695e568750",
+            "nct_id": "NCT06666114",
+            "x": 798,
+            "x_type": "ACTUAL",
+            "y": 232,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_1cdfcc5eacddec8a3170ac9271ac7843",
+            "item_id": "529d257a6b9c44c29ab4",
+            "nct_id": "NCT06715254",
+            "x": 860,
+            "x_type": "ACTUAL",
+            "y": 152,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_a6a2307d497675e146ba5214e89bcebb",
+            "item_id": "e31e07ddd8749ccbb804",
+            "nct_id": "NCT06729463",
+            "x": 119,
+            "x_type": "ACTUAL",
+            "y": 50,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_b5e59ea1d6f3ef12aa4e1a32bfd1a936",
+            "item_id": "1b1df88bc7e613dc4a87",
+            "nct_id": "NCT06786936",
+            "x": 697,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 50,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_177c3f0987bcba0ef7bf2953d97f3f6b",
+            "item_id": "721478c1f7c0049be560",
+            "nct_id": "NCT06801028",
+            "x": 130,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 60,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_1b8231d4b4673d806bffb819e2e034c8",
+            "item_id": "195f7f7163042f255581",
+            "nct_id": "NCT06945107",
+            "x": 602,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 308,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_d85568aebbf533791d255d5523973bc2",
+            "item_id": "e4b4525f7be3960ab2ea",
+            "nct_id": "NCT06982196",
+            "x": 985,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 160,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_35769e1dac33bd7c6affaed5a99ee137",
+            "item_id": "9789591a9a2e707a9d28",
+            "nct_id": "NCT07021495",
+            "x": 1616,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 840,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_cff966adf61a92801e1daf83bc71591d",
+            "item_id": "630daa5153f5a008fc07",
+            "nct_id": "NCT07041112",
+            "x": 4535,
+            "x_type": "ACTUAL",
+            "y": 1000,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_567ec1a35a000d6a8a3d44193b5ec9b5",
+            "item_id": "91e3e13d3719dc9e5453",
+            "nct_id": "NCT07140666",
+            "x": 149,
+            "x_type": "ACTUAL",
+            "y": 100,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_7c3aebc030f288aa34001b0257c818b3",
+            "item_id": "cf26b0e4faa5baa00555",
+            "nct_id": "NCT07149792",
+            "x": 1038,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 50,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_b12180d0485931f6e75a7b030c6a3b4b",
+            "item_id": "d1ce01d48298db41c3ef",
+            "nct_id": "NCT07243782",
+            "x": 540,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 76,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_cea7ae9332a0e51064d20f1eaa2983d6",
+            "item_id": "12b55b6bda40759e12ba",
+            "nct_id": "NCT07254325",
+            "x": 189,
+            "x_type": "ACTUAL",
+            "y": 114,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_4159f014fd3e616df9a1913bb5100f4f",
+            "item_id": "8a4662b85a555b383460",
+            "nct_id": "NCT07352566",
+            "x": 1400,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 10,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_67c14b3d0e99076a79645619528a3712",
+            "item_id": "365bb5bf8f7d643b9c80",
+            "nct_id": "NCT07386717",
+            "x": 730,
+            "x_type": "ACTUAL",
+            "y": 70,
+            "y_type": "ACTUAL"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_f98fbd13c65f179f0dca189a17b2d438",
+            "item_id": "b7c5a7cc7c8c89db0bfa",
+            "nct_id": "NCT07642544",
+            "x": 273,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 120,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_9fcd781f68009b7fd5a91f2676469b72",
+            "item_id": "f6f9461e58dbf6366ca9",
+            "nct_id": "NCT07683065",
+            "x": 191,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 150,
+            "y_type": "ESTIMATED"
+          },
+          {
+            "cohort": "Population",
+            "evidence_set_id": "ev_29d5f434486f4f06df6361a4ce499ae2",
+            "item_id": "5efc5e545b50d50fb63a",
+            "nct_id": "NCT07881783",
+            "x": 152,
+            "x_type": "ESTIMATED_OR_UNSPECIFIED",
+            "y": 3718,
+            "y_type": "ESTIMATED"
+          }
+        ],
+        "encoding": {
+          "series": {
+            "field": "cohort",
+            "title": "Cohort"
+          },
+          "x": {
+            "field": "x",
+            "title": "trial_duration"
+          },
+          "y": {
+            "field": "y",
+            "title": "enrollment"
+          }
+        },
+        "title": "Psoriasis studies involving secukinumab: enrollment versus duration in days",
+        "type": "scatter"
+      },
+      "coverage": {
+        "statistics_basis": "complete_records",
+        "count_exactness": "exact",
+        "population_coverage": "complete",
+        "evidence_coverage": "complete_contributors",
+        "fetched_count": 149,
+        "matched_count": 149
+      },
+      "warnings": [],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev_7e25dbfde1cfd770449455062f76e219",
+        "ev_ac22c115affa028e2cbd8662c60ff063",
+        "ev_8479226c410e2a89200c083481c4beba",
+        "ev_196ca11bf1fd854d7fc55fcce80e25f4",
+        "ev_e34665fa4122e7bf85307366a5966612",
+        "ev_78feebdd513da0c2122f3e2665c626ba",
+        "ev_26d8e87f4badb050236ca75b6c3d9f63",
+        "ev_d237b1822b2d38406a74849212002dbc",
+        "ev_d081ab66df2f5c288bab27ff4a8defa0",
+        "ev_c1a91316ad9e166362d07a6379459558",
+        "ev_69a19e18ccc342b1b34b46a9b874a660",
+        "ev_1e01b67257e02454c807e2f6cb3f94ca",
+        "ev_8402a7f388680454eac55cd36a42dde3",
+        "ev_bfe964be64a8a8793d842313120eb25f",
+        "ev_0867f51e89710d996f5e3baf5a9b629e",
+        "ev_b2dc3457aff2c990d2f8055f8357f304",
+        "ev_4c1bb9333c400cacdb23b208e6c8ded0",
+        "ev_28c52acd3d0fb672a9e15129f04218b0",
+        "ev_59a4d98b2ed43ed54b65fe9968fff131",
+        "ev_c4882217553a7b6e08fe89977790b63d",
+        "ev_76974ceffdfa0f6f5d6dae6334cb1c23",
+        "ev_b5b918ef9b1eabce2e4780585efc00cd",
+        "ev_2b344ab489fcbf578862d3405d9b7ee6",
+        "ev_05d3f6453e938384be7592963ed0a9b3",
+        "ev_2ae97976f89eaf3e79aeb76ab26a6816",
+        "ev_41af0e21c256dc152be60d401b2f765a",
+        "ev_cf1ca209e8c81cb98d4be043f1b98970",
+        "ev_1a726becd0becc2e0ed9ed67a06a6bed",
+        "ev_402bd9b546250e1d5a2122c6c649be67",
+        "ev_2708ca885354998a732089964f436018",
+        "ev_6cd8c4a36f848e2694f5b165771cac21",
+        "ev_49394f0ea3df79b0a2f47b494fe67c93",
+        "ev_ae62df4b80623d82d54e5a41d7ad5347",
+        "ev_1a221add726d36730300c69debd99ada",
+        "ev_bf83fd783ac53f3dc9e32f5f6019dd54",
+        "ev_2adc730785ac90b1f8c6c1ea737f2f9f",
+        "ev_a4265c2f6be2b1a02cdbe76363932958",
+        "ev_3200648cec09be3bffbbb0d66ecd6d9c",
+        "ev_e34d92b775b3ca5b392ee79554c9295e",
+        "ev_890e507a791906b1d942f5d8be5d7601",
+        "ev_a918646b6d51b34d18f56c5332f054f3",
+        "ev_4217011ffb4f3c4ccac7d554b425c75c",
+        "ev_09ea75e3a4165355b9d3f787cad27fb6",
+        "ev_427682fd5ea8668b6c830d99199bd4a9",
+        "ev_02f7c2f6bfc024c03f79d3cd5d515960",
+        "ev_7d7119ac719c30e136421d29754751ce",
+        "ev_d9f87570bdeab8c4ab5dbe56dac10e84",
+        "ev_123e48baf03b604f8711b4fd6e3e908e",
+        "ev_17ab385474e2099b67dd4f8c25bc8a15",
+        "ev_e092716722530cabb58050455ba1c066",
+        "ev_4f75be45e7d54de6bbef6da51ee558c8",
+        "ev_fbf6170de86f0756353e928bded33640",
+        "ev_626d6d47501044ab1172f75ffb81c364",
+        "ev_11f45514bc00d6e4bb9a2b73ddadf333",
+        "ev_e05f1e2314f819ffa3be98fed390299d",
+        "ev_e8ed2cbc0a441c32726327e42995df0c",
+        "ev_d8246813b9dee02a8d27d46f77552629",
+        "ev_19edefd268859f24e1680d1b1856bce4",
+        "ev_51590e2c0119525e9c1c7ad1d52fd4d5",
+        "ev_6aa078682a32fc0b18f9702f7d80ef91",
+        "ev_b592f241f87c1199d76ab5a034e18fc2",
+        "ev_4a2361f682b07a7d4b5a55090213e285",
+        "ev_06d514c792f546cc09e231805fc0833a",
+        "ev_1db2f0e3290f55538ce0c0520396f5a5",
+        "ev_95b456484f816d2c28adf6bdd2f27fc2",
+        "ev_425144b2b76956c9bdefa66d900ecbbe",
+        "ev_f2e3af24a8a0155cf6bc3a2f13def1a0",
+        "ev_a55a16e3b32889acd199ada0d1e009da",
+        "ev_8d97ae46469ec5c66521026ad35f3368",
+        "ev_f7cf0aef3c4704e5a9a7677381bb8de8",
+        "ev_7e5435fb5a4b65de7afb9f2d444d68b0",
+        "ev_654871c058d196fc208de863d21560e8",
+        "ev_cea40aa0912b1732c7a715f7f460ef95",
+        "ev_ff96d3607568b86d8bdd1f53bc2dbffe",
+        "ev_a028c64384c52ef1112a362524e6b439",
+        "ev_98cf417a07d410533da432acb73e570f",
+        "ev_180cae083f2c1dbe441fa0aaad54bf78",
+        "ev_a1cdf96971a7509a976f79aab0ba4a0d",
+        "ev_e7f98a3e0698bec453a1ef5219a3a2ae",
+        "ev_c96abac73bcab57bfe8e0a295ae7166c",
+        "ev_d2b75e685f039f6e3473ea49c394cbb5",
+        "ev_d3f26abb6c0650642ef5fbad84c0b8c3",
+        "ev_f1dcad1393228f7f11808087510e91de",
+        "ev_131c5734abf04256064b93c9c7ba253f",
+        "ev_4872da513c22c8a91e70cfcf85ed4c67",
+        "ev_60f597ef5cc673f0558c4b2489aa9647",
+        "ev_73309edb3a1f503c0c3d85b20a11d7fd",
+        "ev_1238c04711984bd1e8ba826ec3d39c38",
+        "ev_cecc95f888274ff4a3c2ba8f1f591f3f",
+        "ev_7241e43e2fc2b7d09cc0cd3ad7cf2e87",
+        "ev_3b06627e62457d7fe07727d1e4c85336",
+        "ev_ec3b4877d8ffe9b16916166f7a2e43e6",
+        "ev_0232bb9699aa200ca7701b436b068a11",
+        "ev_6993613ca8708720d50122916c6b3360",
+        "ev_d9df99ae1fea3d4199bbf1eabd3f162c",
+        "ev_7f030182cab86d47eaa7aabb2406a049",
+        "ev_13a5f39df54cd41fd1b13d68c5db9e7b",
+        "ev_4923cdd269f3b33384d9621c0cedfa40",
+        "ev_467b0824eef25f7935932070ac1eaa23",
+        "ev_1b21b17bcd21f0c3984966175474e1b6",
+        "ev_8f7b4af3dc303c5887790fd651e925ea",
+        "ev_46b0513a3c3e36a27cfb1a93237433ef",
+        "ev_1cdfcc5eacddec8a3170ac9271ac7843",
+        "ev_a6a2307d497675e146ba5214e89bcebb",
+        "ev_b5e59ea1d6f3ef12aa4e1a32bfd1a936",
+        "ev_177c3f0987bcba0ef7bf2953d97f3f6b",
+        "ev_1b8231d4b4673d806bffb819e2e034c8",
+        "ev_d85568aebbf533791d255d5523973bc2",
+        "ev_35769e1dac33bd7c6affaed5a99ee137",
+        "ev_cff966adf61a92801e1daf83bc71591d",
+        "ev_567ec1a35a000d6a8a3d44193b5ec9b5",
+        "ev_7c3aebc030f288aa34001b0257c818b3",
+        "ev_b12180d0485931f6e75a7b030c6a3b4b",
+        "ev_cea7ae9332a0e51064d20f1eaa2983d6",
+        "ev_4159f014fd3e616df9a1913bb5100f4f",
+        "ev_67c14b3d0e99076a79645619528a3712",
+        "ev_f98fbd13c65f179f0dca189a17b2d438",
+        "ev_9fcd781f68009b7fd5a91f2676469b72",
+        "ev_29d5f434486f4f06df6361a4ce499ae2"
+      ],
+      "metadata": {
+        "analysis_parameters": {
+          "goal_id": "enrollment_duration",
+          "group_by": "phase",
+          "histogram_bins": 10,
+          "labels": [],
+          "operation": "scatter",
+          "relationship": "sponsor_drug",
+          "scope_ids": [
+            "scope_bc7dadd4ebd5a3883c5c1ccaff0a9f59"
+          ],
+          "time_field": "start",
+          "time_grain": "year",
+          "title": "Psoriasis studies involving secukinumab: enrollment versus duration in days",
+          "top_n": 20,
+          "x": "trial_duration",
+          "y": "enrollment"
+        },
+        "cohorts": [
+          {
+            "excluded_count": 30,
+            "excluded_reasons": {
+              "duration_requires_exact_start_and_completion_days": 30
+            },
+            "label": "Population",
+            "selected_trial_count": 149,
+            "valid_count": 119,
+            "value_types": {
+              "ACTUAL/ACTUAL": 96,
+              "ACTUAL/ESTIMATED": 1,
+              "ESTIMATED_OR_UNSPECIFIED/ACTUAL": 3,
+              "ESTIMATED_OR_UNSPECIFIED/ESTIMATED": 19
+            }
+          }
+        ],
+        "date_filter_policy": "A source date interval must be fully contained in the requested range.",
+        "duration_policy": "Exact calendar days from start to completion; negative or imprecise dates excluded.",
+        "legacy_plan": null,
+        "lineage": [
+          {
+            "alias_handle": null,
+            "constraints_version": 1,
+            "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+            "date_filter_excluded": 0,
+            "date_range": null,
+            "filters": {
+              "condition": "psoriasis",
+              "countries": [],
+              "end_year": null,
+              "enrollment_type": null,
+              "intervention_match": "any",
+              "interventions": [
+                "secukinumab"
+              ],
+              "phases": [],
+              "sponsor": null,
+              "start_year": null,
+              "statuses": []
+            },
+            "label": "Population",
+            "lineage": [],
+            "nct_ids": [
+              "NCT00508547",
+              "NCT00669916",
+              "NCT00770965",
+              "NCT00805480",
+              "NCT00809614",
+              "NCT00941031",
+              "NCT01071252",
+              "NCT01090310",
+              "NCT01132612",
+              "NCT01169844",
+              "NCT01358578",
+              "NCT01365455",
+              "NCT01392326",
+              "NCT01406938",
+              "NCT01412944",
+              "NCT01537432",
+              "NCT01539213",
+              "NCT01544595",
+              "NCT01555125",
+              "NCT01636687",
+              "NCT01640951",
+              "NCT01752634",
+              "NCT01806597",
+              "NCT01807520",
+              "NCT01828086",
+              "NCT01848028",
+              "NCT01892436",
+              "NCT01900782",
+              "NCT01952015",
+              "NCT01961609",
+              "NCT01965132",
+              "NCT01989468",
+              "NCT02008890",
+              "NCT02074982",
+              "NCT02144857",
+              "NCT02267135",
+              "NCT02294227",
+              "NCT02362789",
+              "NCT02394561",
+              "NCT02404350",
+              "NCT02409667",
+              "NCT02471144",
+              "NCT02474069",
+              "NCT02474082",
+              "NCT02483234",
+              "NCT02547714",
+              "NCT02559622",
+              "NCT02592018",
+              "NCT02595970",
+              "NCT02607774",
+              "NCT02662985",
+              "NCT02690701",
+              "NCT02721966",
+              "NCT02745080",
+              "NCT02748863",
+              "NCT02752776",
+              "NCT02771210",
+              "NCT02786186",
+              "NCT02795416",
+              "NCT02798211",
+              "NCT02826603",
+              "NCT02854163",
+              "NCT03020199",
+              "NCT03055494",
+              "NCT03066609",
+              "NCT03090100",
+              "NCT03131570",
+              "NCT03149900",
+              "NCT03307447",
+              "NCT03358134",
+              "NCT03384745",
+              "NCT03440736",
+              "NCT03478787",
+              "NCT03496831",
+              "NCT03504852",
+              "NCT03535194",
+              "NCT03536884",
+              "NCT03553823",
+              "NCT03556202",
+              "NCT03589885",
+              "NCT03623867",
+              "NCT03668613",
+              "NCT03828643",
+              "NCT03955861",
+              "NCT04080661",
+              "NCT04102007",
+              "NCT04209205",
+              "NCT04237116",
+              "NCT04239859",
+              "NCT04340076",
+              "NCT04414605",
+              "NCT04469829",
+              "NCT04488185",
+              "NCT04535999",
+              "NCT04571567",
+              "NCT04610476",
+              "NCT04632927",
+              "NCT04711343",
+              "NCT04711902",
+              "NCT04717466",
+              "NCT04887597",
+              "NCT04894890",
+              "NCT04967950",
+              "NCT05080218",
+              "NCT05155098",
+              "NCT05215561",
+              "NCT05320159",
+              "NCT05344482",
+              "NCT05368818",
+              "NCT05377944",
+              "NCT05388916",
+              "NCT05503875",
+              "NCT05513014",
+              "NCT05650060",
+              "NCT05677542",
+              "NCT05734482",
+              "NCT05787236",
+              "NCT05891964",
+              "NCT05957120",
+              "NCT06110676",
+              "NCT06126718",
+              "NCT06142357",
+              "NCT06172426",
+              "NCT06391996",
+              "NCT06398106",
+              "NCT06398652",
+              "NCT06399432",
+              "NCT06600009",
+              "NCT06630559",
+              "NCT06666114",
+              "NCT06715254",
+              "NCT06729463",
+              "NCT06786936",
+              "NCT06801028",
+              "NCT06945107",
+              "NCT06982196",
+              "NCT07021495",
+              "NCT07041112",
+              "NCT07138898",
+              "NCT07140666",
+              "NCT07149792",
+              "NCT07243782",
+              "NCT07254325",
+              "NCT07352566",
+              "NCT07386717",
+              "NCT07485764",
+              "NCT07642544",
+              "NCT07683065",
+              "NCT07881783"
+            ],
+            "root_dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+            "root_scope_id": null
+          }
+        ],
+        "metric_definition": "One point per trial with valid x/y values",
+        "presentation_clipping": {
+          "applied": false,
+          "omitted_items": 0
+        },
+        "root_scopes": [
+          "scope_bc7dadd4ebd5a3883c5c1ccaff0a9f59"
+        ],
+        "source_manifests": [
+          {
+            "complete": true,
+            "dataset_id": "ds_d0e0bb53a68149e3abe6e81f222bad8c",
+            "duplicate_count": 0,
+            "expected_count": 149,
+            "finished_at": "2026-10-31T16:53:49.064891+00:00",
+            "pages": 1,
+            "query": {
+              "query.cond": "\"psoriasis\"",
+              "query.intr": "(\"secukinumab\")"
+            },
+            "query_hash": "560ddb470088acacbf0e3e1f63c99e8f05aa96695f9f9677a4b1ad3d60df5fa0",
+            "raw_hash": "faf1e882f8c54732b9bf6c878a4c20a096005cd7a57ea2ed4e1f4339baac4cdb",
+            "reason": null,
+            "retrieved_unique_count": 149,
+            "schema_version": "snapshot-v1",
+            "source_version_after": {
+              "apiVersion": "2.0.5",
+              "dataTimestamp": "2026-10-30T09:00:04"
+            },
+            "source_version_before": {
+              "apiVersion": "2.0.5",
+              "dataTimestamp": "2026-10-30T09:00:04"
+            },
+            "started_at": "2026-10-31T16:53:45.843340+00:00"
+          }
+        ],
+        "time_field": "start",
+        "time_granularity": "year",
+        "units": {
+          "enrollment": "participants",
+          "trial_duration": "days"
+        }
+      },
+      "alternative_renderers": [
+        "table"
+      ]
+    }
+  ],
+  "questions": [],
+  "message": "Results are assembled from validated artifacts. See each chart for its scope, metric, exclusions and source evidence.",
+  "unmet_goals": [],
+  "usage": {
+    "model_calls": 6,
+    "usage_complete": true,
+    "unknown_attempts": 0,
+    "estimated_or_reserved_usd": 0.0308288,
+    "receipts": [
+      {
+        "elapsed_seconds": 4.266,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_0d9e82c92cef0d24016ae6befb88b887d0a6427ddd1c57d33f",
+        "usage": {
+          "input_tokens": 4373,
+          "input_tokens_details": {
+            "cache_write_tokens": 169,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 122,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4495
+        }
+      },
+      {
+        "elapsed_seconds": 1.656,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_03214ecd089730c0016ae6befeb03087d093fea36a39a07fd0",
+        "usage": {
+          "input_tokens": 4882,
+          "input_tokens_details": {
+            "cache_write_tokens": 678,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 37,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4919
+        }
+      },
+      {
+        "elapsed_seconds": 2.578,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_0ed97a96c29d3f38016ae6bf034df087d0a0436c2f7a0a3857",
+        "usage": {
+          "input_tokens": 5019,
+          "input_tokens_details": {
+            "cache_write_tokens": 815,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 80,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5099
+        }
+      },
+      {
+        "elapsed_seconds": 2.532,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_0a4e84b1b3c48918016ae6bf15eff087d0a012685c6c361a36",
+        "usage": {
+          "input_tokens": 6300,
+          "input_tokens_details": {
+            "cache_write_tokens": 2096,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 34,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 6334
+        }
+      },
+      {
+        "elapsed_seconds": 3.312,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_02be7eb1fe974ab2016ae6bf1c1e5487d08ea21501b2b748aa",
+        "usage": {
+          "input_tokens": 6367,
+          "input_tokens_details": {
+            "cache_write_tokens": 2163,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 40,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 6407
+        }
+      },
+      {
+        "elapsed_seconds": 6.703,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_011f4c712718e0d7016ae6bf2107bc87d0b889429ff11ca841",
+        "usage": {
+          "input_tokens": 6839,
+          "input_tokens_details": {
+            "cache_write_tokens": 2635,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 235,
+          "output_tokens_details": {
+            "reasoning_tokens": 81
+          },
+          "total_tokens": 7074
+        }
+      }
+    ],
+    "cost_basis": "Versioned standard short-context model rates or explicit provider usage.cost; unknown attempts keep conservative reservations, not an invoice"
+  }
+}

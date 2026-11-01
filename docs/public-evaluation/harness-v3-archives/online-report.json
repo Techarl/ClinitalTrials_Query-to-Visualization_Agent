@@ -1,0 +1,567 @@
+{
+  "planned_ids": [
+    "ep_dd66d2a67715afd0",
+    "ep_89414e78c31e40d1"
+  ],
+  "planned_count": 2,
+  "evaluated_count": 2,
+  "unrun_ids": [],
+  "rows": [
+    {
+      "episode_id": "ep_dd66d2a67715afd0",
+      "row": {
+        "episode_id": "ep_dd66d2a67715afd0",
+        "entity_group": "melanoma",
+        "family": "compound_phase_start",
+        "h0": {
+          "episode_id": "ep_dd66d2a67715afd0",
+          "family": "compound_phase_start",
+          "split": "development",
+          "origin": "authored",
+          "correct": true,
+          "turns": 1,
+          "model_calls": 7,
+          "estimated_or_reserved_usd": 0.0441886,
+          "unknown_attempts": 0,
+          "invalid_tools": 0,
+          "failures": [
+            []
+          ],
+          "elapsed_seconds": 48.047,
+          "runtime_inputs": "current and past utterances only; no labels or future answers",
+          "skill": "",
+          "context_policy": "relevant"
+        },
+        "ppc_memory": {
+          "general": {
+            "skill": "For a freshly created chart, when the tool implementation guarantees that a successful analyze call synchronously validates the published result, retain its returned handle without issuing a redundant standalone validate_result call. Continue with remaining goals, then finalize using every required result handle. Explicitly validate reused results or results affected by changed constraints; never bypass validation failures or finalization checks.",
+            "context_policy": "relevant",
+            "source_experience_ids": [],
+            "experience_policy": "on_gap",
+            "rationale": "The observed execution separately validated newly published charts even though analyze publishes through a function that already invokes the same verifier before returning success. Avoiding those duplicate calls reduces redundant tool use while preserving all deliverables and existing verification gates."
+          },
+          "domain": {
+            "skill": "For newly generated clinical-trial charts, treat a successful analyze response as already validated: publication invokes the existing verifier before returning. Retain each returned result handle, continue any remaining declared goals, and finalize with all requested results. Do not add standalone validate_result calls for these fresh results unless a concrete validation gap arises; retain required checks for reused results or changed task constraints.",
+            "context_policy": "relevant",
+            "source_experience_ids": [],
+            "experience_policy": "on_gap",
+            "rationale": "The supplied implementation validates each chart during publication, while the observed execution added a standalone validation call for each fresh chart. Omitting those redundant calls preserves the existing verifier and all requested artifacts while reducing tool calls."
+          },
+          "composition": {
+            "component": {
+              "skill": "For a fresh chart, omit standalone validate_result only when the tool implementation guarantees that a successful analyze response follows synchronous validation by the existing verifier. Retain its returned result handle, complete the remaining declared goals, and finalize with all required result handles. Preserve validation checks for reused results or changed constraints, and never bypass validation failures or finalization checks.",
+              "context_policy": "relevant",
+              "source_experience_ids": [],
+              "experience_policy": "on_gap",
+              "rationale": "Publication already invokes the existing verifier before analyze returns successfully. Both probes omitted duplicate standalone validation calls while preserving every requested artifact and completing with no unmet goals. No experience lessons were supplied for citation."
+            },
+            "observation": "The baseline made two standalone validation calls after successful chart creation and used seven model calls. Both probes removed those redundant calls and used five model calls, while retaining both charts with identical reported counts and complete evidence coverage. This supports the bounded procedure without changing verifiers or context policy."
+          },
+          "retrieved": [],
+          "applied": [],
+          "executor_read_skill_ids": [],
+          "executor_activated_skill_ids": [],
+          "application_limit": "Editor provenance IDs and executor activation are observable; neither alone proves behavioral benefit.",
+          "adopted": false,
+          "adoption_rule": "public completion/error/call/cost improvement only; hidden audit is report-only",
+          "experience_id": "79b52e47431f2bc513e0",
+          "final": {
+            "episode_id": "ep_dd66d2a67715afd0",
+            "family": "compound_phase_start",
+            "split": "development",
+            "origin": "authored",
+            "correct": true,
+            "turns": 1,
+            "model_calls": 7,
+            "estimated_or_reserved_usd": 0.0440372,
+            "unknown_attempts": 0,
+            "invalid_tools": 0,
+            "failures": [
+              []
+            ],
+            "elapsed_seconds": 47.391,
+            "runtime_inputs": "current and past utterances only; no labels or future answers",
+            "skill": "",
+            "context_policy": "relevant"
+          },
+          "probe_behavior": {
+            "baseline": [
+              true,
+              0,
+              0,
+              -7,
+              -49116,
+              -505,
+              -0.0441886
+            ],
+            "combined": [
+              true,
+              0,
+              0,
+              -7,
+              -49835,
+              -562,
+              -0.0573777
+            ]
+          },
+          "context_policy_effective": false,
+          "editor_errors": [],
+          "model_calls_including_editors": 27,
+          "bank_checkpoint": {
+            "79b52e47431f2bc513e0": {
+              "id": "79b52e47431f2bc513e0",
+              "applicability": "redundant_verification",
+              "families": [
+                "compound_phase_start"
+              ],
+              "component": {
+                "skill": "For a fresh chart, omit standalone validate_result only when the tool implementation guarantees that a successful analyze response follows synchronous validation by the existing verifier. Retain its returned result handle, complete the remaining declared goals, and finalize with all required result handles. Preserve validation checks for reused results or changed constraints, and never bypass validation failures or finalization checks.",
+                "context_policy": "relevant",
+                "source_experience_ids": [],
+                "experience_policy": "on_gap",
+                "rationale": "Publication already invokes the existing verifier before analyze returns successfully. Both probes omitted duplicate standalone validation calls while preserving every requested artifact and completing with no unmet goals. No experience lessons were supplied for citation."
+              },
+              "adopted": false,
+              "behavior": {
+                "before_calls": 7,
+                "after_calls": 7,
+                "before_errors": 0,
+                "after_errors": 0
+              },
+              "supporting_traces": [
+                "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-online02\\ep_dd66d2a67715afd0\\h0\\turn-1.json",
+                "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-online02\\ep_dd66d2a67715afd0\\memory\\final\\turn-1.json"
+              ],
+              "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+            }
+          }
+        },
+        "mechanism": {
+          "counts": {},
+          "ids": {
+            "read": [],
+            "applied": []
+          },
+          "limit": "Read/activation events establish mechanism use, not causal improvement."
+        },
+        "incoming_bank_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "costs": {
+          "h0": {
+            "calls": 7,
+            "usd": 0.0441886,
+            "input_tokens": 49116,
+            "output_tokens": 505,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 19.65795087814331,
+            "calls_without_latency": 0
+          },
+          "no-memory": {
+            "calls": 0,
+            "usd": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 0,
+            "calls_without_latency": 0
+          },
+          "memory": {
+            "calls": 27,
+            "usd": 0.3427169,
+            "input_tokens": 227630,
+            "output_tokens": 2796,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 95.36975431442261,
+            "calls_without_latency": 0
+          },
+          "usd-retries": {
+            "calls": 0,
+            "usd": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 0,
+            "calls_without_latency": 0
+          }
+        },
+        "cost_interpretation": "Each PPC and retry arm includes the same H0 expense in its total; shared H0 is paid once and disclosed separately."
+      },
+      "incoming_bank_count": 0,
+      "ablations": {
+        "proactive": {
+          "summary": {
+            "episode_id": "ep_dd66d2a67715afd0",
+            "family": "compound_phase_start",
+            "split": "development",
+            "origin": "authored",
+            "correct": true,
+            "turns": 1,
+            "model_calls": 7,
+            "estimated_or_reserved_usd": 0.0568012,
+            "unknown_attempts": 0,
+            "invalid_tools": 0,
+            "failures": [
+              []
+            ],
+            "elapsed_seconds": 45.5,
+            "runtime_inputs": "current and past utterances only; no labels or future answers",
+            "skill": "\nAt the beginning of a nontrivial task, search for applicable experience, read a relevant version, and activate it only when its applicability matches.",
+            "context_policy": "relevant"
+          },
+          "mechanism": {
+            "counts": {},
+            "ids": {
+              "read": [],
+              "applied": []
+            },
+            "limit": "Read/activation events establish mechanism use, not causal improvement."
+          },
+          "costs": {
+            "calls": 7,
+            "usd": 0.0568012,
+            "input_tokens": 49534,
+            "output_tokens": 522,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 19.367862462997437,
+            "calls_without_latency": 0
+          }
+        },
+        "disabled": {
+          "summary": {
+            "episode_id": "ep_dd66d2a67715afd0",
+            "family": "compound_phase_start",
+            "split": "development",
+            "origin": "authored",
+            "correct": true,
+            "turns": 1,
+            "model_calls": 7,
+            "estimated_or_reserved_usd": 0.0561148,
+            "unknown_attempts": 0,
+            "invalid_tools": 0,
+            "failures": [
+              []
+            ],
+            "elapsed_seconds": 45.437,
+            "runtime_inputs": "current and past utterances only; no labels or future answers",
+            "skill": "",
+            "context_policy": "relevant"
+          },
+          "mechanism": {
+            "counts": {},
+            "ids": {
+              "read": [],
+              "applied": []
+            },
+            "limit": "Read/activation events establish mechanism use, not causal improvement."
+          },
+          "costs": {
+            "calls": 7,
+            "usd": 0.0561148,
+            "input_tokens": 48134,
+            "output_tokens": 524,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 19.29230761528015,
+            "calls_without_latency": 0
+          }
+        }
+      }
+    },
+    {
+      "episode_id": "ep_89414e78c31e40d1",
+      "row": {
+        "episode_id": "ep_89414e78c31e40d1",
+        "entity_group": "psoriasis",
+        "family": "compound_phase_start",
+        "h0": {
+          "episode_id": "ep_89414e78c31e40d1",
+          "family": "compound_phase_start",
+          "split": "development",
+          "origin": "authored",
+          "correct": true,
+          "turns": 1,
+          "model_calls": 7,
+          "estimated_or_reserved_usd": 0.0437836,
+          "unknown_attempts": 0,
+          "invalid_tools": 0,
+          "failures": [
+            []
+          ],
+          "elapsed_seconds": 35.0,
+          "runtime_inputs": "current and past utterances only; no labels or future answers",
+          "skill": "",
+          "context_policy": "relevant"
+        },
+        "ppc_memory": {
+          "general": {
+            "skill": "For multiple chart goals sharing identical population constraints, retrieve one complete scope and reuse its returned handle for each analysis. Track each declared goal's returned result handle and validation status. Before finalization, check that every requested goal and dependency is represented, then submit all required result handles together. Do not repeat successful searches or analyses unless constraints change or a concrete failure requires repair; retain existing validation requirements.",
+            "context_policy": "relevant",
+            "source_experience_ids": [],
+            "experience_policy": "on_gap",
+            "rationale": "The observed execution completed all requested charts using one shared retrieval and preserved both results. This procedure generalizes that successful pattern to prevent redundant retrieval or recomputation and accidental artifact omission. It leaves verification unchanged and does not activate the unadopted lesson."
+          },
+          "domain": {
+            "skill": "For multiple clinical-trial count charts sharing identical population constraints, declare every chart goal and its explicit grouping or date field and grain before retrieval. Fetch the complete population once and reuse its returned scope handle for each independent chart; do not repeat the search merely because the aggregation changes. Retain each successful result handle and finalize with all requested results after satisfying existing validation requirements. Retrieve again if population constraints change.",
+            "context_policy": "relevant",
+            "source_experience_ids": [],
+            "experience_policy": "on_gap",
+            "rationale": "The observed execution completed both chart goals using one complete population search and separate aggregations, preserving both artifacts. Reusing the shared scope avoids redundant retrieval without changing evidence, calculations, or verification. The unadopted verification-skipping lesson is not activated or reused."
+          },
+          "composition": {
+            "component": {
+              "skill": "",
+              "context_policy": "relevant",
+              "source_experience_ids": [],
+              "experience_policy": "on_gap",
+              "rationale": "No procedural change demonstrated an improvement. Both tested procedures retained the baseline action sequence and completion behavior. Keep the existing policies and validation requirements; do not activate the unadopted verification-skipping lesson."
+            },
+            "observation": "The baseline and both probes completed with both requested artifacts preserved and no unmet goals. Each used seven model calls, one population search, two analyses, and two standalone validations. Neither probe reduced redundant calls or improved completion, and both used slightly more input tokens. An empty skill avoids adding procedure text without an observed benefit."
+          },
+          "retrieved": [
+            "79b52e47431f2bc513e0"
+          ],
+          "applied": [],
+          "executor_read_skill_ids": [],
+          "executor_activated_skill_ids": [],
+          "application_limit": "Editor provenance IDs and executor activation are observable; neither alone proves behavioral benefit.",
+          "adopted": true,
+          "adoption_rule": "public completion/error/call/cost improvement only; hidden audit is report-only",
+          "experience_id": null,
+          "final": {
+            "episode_id": "ep_89414e78c31e40d1",
+            "family": "compound_phase_start",
+            "split": "development",
+            "origin": "authored",
+            "correct": true,
+            "turns": 1,
+            "model_calls": 7,
+            "estimated_or_reserved_usd": 0.0428276,
+            "unknown_attempts": 0,
+            "invalid_tools": 0,
+            "failures": [
+              []
+            ],
+            "elapsed_seconds": 37.687,
+            "runtime_inputs": "current and past utterances only; no labels or future answers",
+            "skill": "",
+            "context_policy": "relevant"
+          },
+          "probe_behavior": {
+            "baseline": [
+              true,
+              0,
+              0,
+              -7,
+              -48902,
+              -518,
+              -0.0437836
+            ],
+            "combined": [
+              true,
+              0,
+              0,
+              -7,
+              -48766,
+              -511,
+              -0.0427376
+            ]
+          },
+          "context_policy_effective": false,
+          "editor_errors": [],
+          "model_calls_including_editors": 31,
+          "bank_checkpoint": {
+            "79b52e47431f2bc513e0": {
+              "id": "79b52e47431f2bc513e0",
+              "applicability": "redundant_verification",
+              "families": [
+                "compound_phase_start"
+              ],
+              "component": {
+                "skill": "For a fresh chart, omit standalone validate_result only when the tool implementation guarantees that a successful analyze response follows synchronous validation by the existing verifier. Retain its returned result handle, complete the remaining declared goals, and finalize with all required result handles. Preserve validation checks for reused results or changed constraints, and never bypass validation failures or finalization checks.",
+                "context_policy": "relevant",
+                "source_experience_ids": [],
+                "experience_policy": "on_gap",
+                "rationale": "Publication already invokes the existing verifier before analyze returns successfully. Both probes omitted duplicate standalone validation calls while preserving every requested artifact and completing with no unmet goals. No experience lessons were supplied for citation."
+              },
+              "adopted": false,
+              "behavior": {
+                "before_calls": 7,
+                "after_calls": 7,
+                "before_errors": 0,
+                "after_errors": 0
+              },
+              "supporting_traces": [
+                "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-online02\\ep_dd66d2a67715afd0\\h0\\turn-1.json",
+                "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-online02\\ep_dd66d2a67715afd0\\memory\\final\\turn-1.json"
+              ],
+              "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+            }
+          }
+        },
+        "mechanism": {
+          "counts": {},
+          "ids": {
+            "read": [],
+            "applied": []
+          },
+          "limit": "Read/activation events establish mechanism use, not causal improvement."
+        },
+        "incoming_bank_sha256": "a59c745753a01b89fc5165c5f662cef85926387824637f70240afd0607196fdc",
+        "costs": {
+          "h0": {
+            "calls": 7,
+            "usd": 0.0437836,
+            "input_tokens": 48902,
+            "output_tokens": 518,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 17.6927649974823,
+            "calls_without_latency": 0
+          },
+          "no-memory": {
+            "calls": 0,
+            "usd": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 0,
+            "calls_without_latency": 0
+          },
+          "memory": {
+            "calls": 31,
+            "usd": 0.3634956,
+            "input_tokens": 259737,
+            "output_tokens": 2868,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 101.90376782417297,
+            "calls_without_latency": 0
+          },
+          "usd-retries": {
+            "calls": 0,
+            "usd": 0,
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 0,
+            "calls_without_latency": 0
+          }
+        },
+        "cost_interpretation": "Each PPC and retry arm includes the same H0 expense in its total; shared H0 is paid once and disclosed separately."
+      },
+      "incoming_bank_count": 1,
+      "ablations": {
+        "proactive": {
+          "summary": {
+            "episode_id": "ep_89414e78c31e40d1",
+            "family": "compound_phase_start",
+            "split": "development",
+            "origin": "authored",
+            "correct": true,
+            "turns": 1,
+            "model_calls": 7,
+            "estimated_or_reserved_usd": 0.0435524,
+            "unknown_attempts": 0,
+            "invalid_tools": 0,
+            "failures": [
+              []
+            ],
+            "elapsed_seconds": 36.266,
+            "runtime_inputs": "current and past utterances only; no labels or future answers",
+            "skill": "\nAt the beginning of a nontrivial task, search for applicable experience, read a relevant version, and activate it only when its applicability matches.",
+            "context_policy": "relevant"
+          },
+          "mechanism": {
+            "counts": {},
+            "ids": {
+              "read": [],
+              "applied": []
+            },
+            "limit": "Read/activation events establish mechanism use, not causal improvement."
+          },
+          "costs": {
+            "calls": 7,
+            "usd": 0.043552400000000005,
+            "input_tokens": 49074,
+            "output_tokens": 509,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 18.603963375091553,
+            "calls_without_latency": 0
+          }
+        },
+        "disabled": {
+          "summary": {
+            "episode_id": "ep_89414e78c31e40d1",
+            "family": "compound_phase_start",
+            "split": "development",
+            "origin": "authored",
+            "correct": true,
+            "turns": 1,
+            "model_calls": 7,
+            "estimated_or_reserved_usd": 0.0436966,
+            "unknown_attempts": 0,
+            "invalid_tools": 0,
+            "failures": [
+              []
+            ],
+            "elapsed_seconds": 39.797,
+            "runtime_inputs": "current and past utterances only; no labels or future answers",
+            "skill": "",
+            "context_policy": "relevant"
+          },
+          "mechanism": {
+            "counts": {},
+            "ids": {
+              "read": [],
+              "applied": []
+            },
+            "limit": "Read/activation events establish mechanism use, not causal improvement."
+          },
+          "costs": {
+            "calls": 7,
+            "usd": 0.0436966,
+            "input_tokens": 47740,
+            "output_tokens": 531,
+            "unknown_usage_calls": 0,
+            "measured_api_seconds": 20.515084505081177,
+            "calls_without_latency": 0
+          }
+        }
+      }
+    }
+  ],
+  "final_online_bank": {
+    "79b52e47431f2bc513e0": {
+      "id": "79b52e47431f2bc513e0",
+      "applicability": "redundant_verification",
+      "families": [
+        "compound_phase_start"
+      ],
+      "component": {
+        "skill": "For a fresh chart, omit standalone validate_result only when the tool implementation guarantees that a successful analyze response follows synchronous validation by the existing verifier. Retain its returned result handle, complete the remaining declared goals, and finalize with all required result handles. Preserve validation checks for reused results or changed constraints, and never bypass validation failures or finalization checks.",
+        "context_policy": "relevant",
+        "source_experience_ids": [],
+        "experience_policy": "on_gap",
+        "rationale": "Publication already invokes the existing verifier before analyze returns successfully. Both probes omitted duplicate standalone validation calls while preserving every requested artifact and completing with no unmet goals. No experience lessons were supplied for citation."
+      },
+      "adopted": false,
+      "behavior": {
+        "before_calls": 7,
+        "after_calls": 7,
+        "before_errors": 0,
+        "after_errors": 0
+      },
+      "supporting_traces": [
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-online02\\ep_dd66d2a67715afd0\\h0\\turn-1.json",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-online02\\ep_dd66d2a67715afd0\\memory\\final\\turn-1.json"
+      ],
+      "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+    }
+  },
+  "cumulative_main_ledger": {
+    "calls": 743,
+    "usd": 8.3686404,
+    "input_tokens": 6021380,
+    "output_tokens": 79429,
+    "unknown_usage_calls": 0,
+    "measured_api_seconds": 2463.31161403656,
+    "calls_without_latency": 0
+  },
+  "limit": "Independent empty-bank online diagnostic; no online entries enter formal transfer bank"
+}

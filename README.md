@@ -10,6 +10,8 @@ Research results: [VNext execution, repair and Harness studies](docs/VNEXT_RESEA
 
 The next review phase adds [public datasets and frozen evaluation](docs/PUBLIC_EVALUATION.md), [Jev fairness and controlled latency](docs/JEV_FAIRNESS_REVIEW.md), and a [browser-verified UI revision](docs/UI_REVIEW_FIXES.md). The [progress record](docs/REVIEW_AND_PUBLIC_EVAL_PROGRESS.md) distinguishes implemented fixes, completed checks and studies still running. Historical scores below refer to their original versions, not the new expanded benchmark.
 
+**2026-11-01 checkpoint:** [Core300](docs/CORE300_RESULTS.md) completed at 295/300 overall and 196/200 heldout; the full dependency audit changed no grades. [TrialQA](docs/TRIALQA_PROTOCOL.md#completed-formal-study) completed both 120-question conditions, with citation-supported heldout correctness 64/79 in each. NLI4CT and the four-worker Harness formal comparison are still running. These distinct benchmarks are not combined into one success rate; this checkpoint is not the final delivery.
+
 ## Local setup
 
 Requirements: Python 3.12+, Neo4j, and an OpenAI Platform key with access to `gpt-6.1-sol` through Responses. Native verification used Windows, Python 3.12.4 and Neo4j Desktop / Neo4j 2026.10.1. Dependencies are pinned.
@@ -22,7 +24,7 @@ python -m venv .venv
 Copy-Item .env.example .env
 ```
 
-Fill `OPENAI_API_KEY` and `NEO4J_PASSWORD` in `.env`. On the prepared machine, keep Desktop and `clinicaltrials-dev` running; URI is `bolt://127.0.0.1:7687`, user/database `neo4j`, and the password is already stored locally. Environment variables override the file. Real credentials must not enter `.env.example`.
+Fill `OPENAI_API_KEY` and your own `NEO4J_PASSWORD` in `.env`. For native Neo4j, set `NEO4J_URI`, `NEO4J_USERNAME` and `NEO4J_DATABASE` to your instance; a typical local URI is `bolt://127.0.0.1:7687`. Docker Compose configures its internal URI separately. Environment variables override the file. Real credentials must not enter `.env.example`.
 
 OpenRouter is optional and is never called by the default application. Both API experiment flags remain false; `/analyze` retains baseline-v1 and `/v2/runs` uses the observation-driven tool loop. Historical research commands are described in [the experiment protocol and results](docs/EXPERIMENTS.md). Main-model effort defaults to `medium`; changing to `high` is explicit and recorded.
 
@@ -35,7 +37,36 @@ OpenRouter is optional and is never called by the default application. Both API 
 
 Open [interactive API docs](http://127.0.0.1:8000/docs). `/health` is liveness and makes no downstream calls. This is a single-user local service; authentication and multi-tenant deployment are outside this submission.
 
-## Use
+## Use the workspace
+
+Build the frontend with `npm --prefix frontend ci` and `npm --prefix frontend run build`, then open the API server's root URL (normally <http://127.0.0.1:8000/>). The workspace shows streamed tool progress, result versions, inherited filters, charts and source quotations. Click a chart value to inspect its contributing studies. [The VNext guide](docs/VNEXT.md) documents the observation-driven agent, CLI, MCP, sharing and exports.
+
+| Review path | What to inspect |
+| --- | --- |
+| Product and interaction | [UI acceptance and screenshots](docs/UI_REVIEW_FIXES.md), [VNext contracts](docs/VNEXT.md) |
+| Recorded V2 demonstrations | [Four examples / five real model turns](examples/v2/README.md), complete results, evidence, traces and offline verification |
+| Statistical reproducibility | [Five frozen examples](examples/verification.json), [core300 protocol](docs/CORE300_PROTOCOL.md), public snapshots in `docs/public-evaluation/core300-sources.zip` |
+| External evidence benchmarks | [Public evaluation index](docs/PUBLIC_EVALUATION.md), [TrialQA protocol](docs/TRIALQA_PROTOCOL.md) |
+| Research controls and limits | [Jev fairness review](docs/JEV_FAIRNESS_REVIEW.md), [controlled latency](docs/JEV_LATENCY_CONTROL.md), [Harness v3 protocol](docs/HARNESS_V3_PROTOCOL.md) |
+| Current delivery status | [Completed fixes, checks and remaining studies](docs/REVIEW_AND_PUBLIC_EVAL_PROGRESS.md) |
+
+The public evaluation protocols describe planned populations; a protocol is not a completed result. Ongoing studies receive separate final reports with failures and all attempted-call costs retained.
+
+Start an automatic V2 run with `POST /v2/runs`:
+
+```json
+{"query":"For melanoma studies involving pembrolizumab, show phase counts with complete contributor evidence."}
+```
+
+Poll `GET /v2/runs/{run_id}` or consume `/v2/runs/{run_id}/events`. Follow-ups carry the returned `session_id` and the selected `parent_run_id`. Use the same `submission_id` when retrying an unchanged request after a transport failure.
+
+```powershell
+.venv/Scripts/python.exe -m app.v2.cli "For psoriasis studies involving secukinumab, plot enrollment against trial duration in days." --output data/v2-result.json
+```
+
+The V2 defaults allow 18 model calls, 24 tool calls and 900 seconds per run, subject to an estimated/reserved $2 model budget. [Reviewer guide](docs/REVIEWER_GUIDE.md) · [Recorded-demo script](docs/DEMO.md).
+
+### Compatible baseline API
 
 POST `/analyze`; only `query` is required:
 
@@ -57,6 +88,10 @@ To exercise the deterministic pipeline with a handwritten plan and no model call
 
 ## Design and tradeoffs
 
+V2 uses a bounded model–tool observation loop: a typed task defines the requested goals, registered tools retrieve and calculate results, and observations inform the next model action. Source text is read through bounded pages; exact quotations must come from pages actually read. Skills can be searched, read and explicitly activated. Deterministic checks enforce scope, comparison completeness and evidence before completion. The [VNext design](docs/VNEXT.md) describes this current path and its budgets.
+
+The compatible v1 `/analyze` path used for the five historical examples retains its smaller planner workflow:
+
 - Bounded context contains the current request, structured session state, field rules and repair feedback. Raw study JSON stays outside prompts.
 - Responses structured output produces a plan, patch or clarification. Explicit-filter conflicts require clarification. Default budget is two model attempts, with SDK retries off.
 - Literal source terms define an official search universe, including source synonym behavior. Full pagination, distinct IDs, source totals and before/after timestamps are checked. Incomplete acquisition produces no chart.
@@ -67,6 +102,17 @@ To exercise the deterministic pipeline with a handwritten plan and no model call
 See [design details and limitations](docs/DESIGN.md). Presentation clipping is distinct from source truncation. Tool errors never become zero studies. There is no arbitrary query/code execution or silent model fallback.
 
 ## Five actual runs
+
+For current-contract V2 recordings, start with [the curated V2 index](examples/v2/README.md). Its phase, follow-up, medicine-comparison and scatter examples retain complete evidence and source identities; the independent offline verifier checks 57,805 exact fields. A historical dependent-query failure is preserved separately, not counted among the qualified examples. These are recorded executions on frozen data, not freshly generated outputs from the final release.
+
+For an interactive, credential-free walkthrough, build the frontend and run `python -m uvicorn scripts.view_recorded_examples:create_app --factory --host 127.0.0.1 --port 8013`, then open <http://127.0.0.1:8013/>. The separate read-only viewer verifies the saved records before displaying charts and citations. It cannot start new analyses; [the demo guide](docs/DEMO.md) explains both modes.
+
+```powershell
+# V2 recordings: no database, network or model calls:
+.venv/Scripts/python.exe -m scripts.verify_v2_examples
+```
+
+The five examples below are the compatible V1 historical runs.
 
 Each saved run used one real planner call:
 
@@ -150,4 +196,4 @@ This builds `dist/cheiron-clinicaltrials-agent.zip` with an explicit allowlist a
 
 The user supplied the assignment and architecture handoff. OpenAI Codex drafted, implemented, tested and revised code, prompts, tests, reference checks and docs. Deliberate choices include constrained plans, immutable snapshots, fixed calculations, scoped relationships, full evidence and bounded recovery. No code from the similar take-home repositories in the handoff was copied.
 
-Limits include bounded source searches, imperfect semantic/entity interpretation, synchronous execution, one worker, no authentication or retention cleanup, and no frontend/scatter plot. Improvements would prioritize terminology-backed interpretation, independently annotated evaluation, large-dataset jobs and authenticated deployment. Experimental configurations remain isolated; no automatic improvement is claimed.
+Limits include bounded source searches, imperfect semantic/entity interpretation, one execution worker, no authentication or retention cleanup, and external-source availability. V2 has a frontend, streamed progress, scatter plots and a persisted tool loop; the compatible v1 endpoint still uses synchronous execution. Exact quotation matching establishes source integrity, not the correctness of every interpretation. Experimental configurations remain isolated; using an experience component does not itself establish automatic improvement.

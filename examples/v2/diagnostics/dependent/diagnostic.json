@@ -1,0 +1,22 @@
+{
+  "directory": "diagnostics/dependent",
+  "episode_id": "ep_be43ca02cfbaea",
+  "description": "Historical dependency example with known missing terminal zero buckets; not a passing demo.",
+  "turns": [
+    {
+      "directory": "turns/01",
+      "run_id": "vr_0b854ec0e70e45f4a9f74d216caa0b59",
+      "parent_run_id": null
+    }
+  ],
+  "expected_dependency": {
+    "dependent_selection": true,
+    "anchor_sponsor": "Merck Sharp & Dohme LLC",
+    "selection_top_n": 3
+  },
+  "selection_linkage_failures": [],
+  "validation_error": "Missing or duplicated result points",
+  "qualified_demo": false,
+  "finding": "Annual trend ends at 2024 despite an explicit inclusive 2015–2025 request; three 2025 zero buckets are absent. Original output is preserved unchanged.",
+  "selection_linkage": "Requested Merck Sharp & Dohme LLC / top three linkage passes the separately recorded audit."
+}

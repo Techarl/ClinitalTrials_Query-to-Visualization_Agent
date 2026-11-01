@@ -1,0 +1,50 @@
+{
+  "contains": "Frozen protocols and code only; no raw NLI4CT or gated TrialQA dataset",
+  "studies": {
+    "nli4ct": {
+      "status": "frozen execution source; result completion reported separately",
+      "identity_sha256": "476bb042ff5273e16975f4e638aef8ff0c85e62877ca08a6bea540c038ea86ed",
+      "source_files": 70,
+      "files": {
+        "nli4ct-protocol.json": {
+          "sha256": "3756205c712e97fb6a345f5c393d69c461b164ef1cc6bb91c5946f87cd279ca5",
+          "bytes": 42995
+        },
+        "nli4ct-source.zip": {
+          "sha256": "efe39b63dcac870be6c2b069636a07946f91074dd236c402b6dcde945af72a0d",
+          "bytes": 178575
+        }
+      }
+    },
+    "core300": {
+      "status": "frozen execution source; result completion reported separately",
+      "identity_sha256": "e5b17d6cde2b9333c115c004c8018230665be13957e1c3ccd6cc646ce1c45237",
+      "source_files": 74,
+      "files": {
+        "core300-protocol.json": {
+          "sha256": "4995f728ccc4c3c8d46aeb9f34e6d07ce3050081d3f0c724e9576ff8cfda828a",
+          "bytes": 405298
+        },
+        "core300-source.zip": {
+          "sha256": "97573e2f37aa3918634663743a3f96260999ebcf73e9e17572db8644e7b49115",
+          "bytes": 198193
+        }
+      }
+    },
+    "trialqa": {
+      "status": "frozen execution source; result completion reported separately",
+      "identity_sha256": "6b48f80e796c01fa94006ca3f737714e8a253d55ac4200441fbd88436232cfe3",
+      "source_files": 49,
+      "files": {
+        "trialqa-protocol.json": {
+          "sha256": "64d5c53bd871f7e2a384314c3a767b863f1622204580c11844a702c100e47128",
+          "bytes": 34558
+        },
+        "trialqa-source.zip": {
+          "sha256": "58e85318c836fcb28929de7b2d2437494df0aab51f7033b06f7ac9bbb0874371",
+          "bytes": 124315
+        }
+      }
+    }
+  }
+}

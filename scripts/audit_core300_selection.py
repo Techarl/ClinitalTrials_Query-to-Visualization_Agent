@@ -96,6 +96,52 @@ def revised_failures(original, expected, artifacts, journal):
     )
 
 
+def markdown(result):
+    lines = [
+        "# Core300 数据依赖关联审计",
+        "",
+        "这是一项运行结束后的限定评分审计：验证用户要求的 anchor 与 top-N，是否连接到实际选择结果、"
+        "趋势所用 scope、每条 sponsor lineage 及图表依赖。原始模型输出、原始成绩和费用账本均保留。"
+        "这不是模型改进实验，也不是对全部任务重新进行语义评分。",
+        "",
+        f"原始报告内容 SHA-256：`{result['original_report_sha256']}`。",
+        f"执行协议 SHA-256：`{result['study_sha256']}`。",
+        "",
+        "| 范围 | 原始成功 | 关联审计后成功 | 分母 |",
+        "|---|---:|---:|---:|",
+    ]
+    for name in ("all", "development", "calibration", "heldout"):
+        before = result["original"]["all"] if name == "all" else result["original"]["split"][name]
+        after = (
+            result["linkage_rescored"]["all"] if name == "all" else result["linkage_rescored"]["split"][name]
+        )
+        lines.append(f"| {name} | {before['successes']} | {after['successes']} | {before['denominator']} |")
+    turns = result["audited_dependent_turns"]
+    linked = sum(not row["linkage_failures"] for row in turns)
+    changed = result["changed_episodes"]
+    lines += [
+        "",
+        f"共检查 **{len(turns)} 个依赖分析轮次**；其中 **{linked} 个**具备所要求的关联链，"
+        f"**{len(turns) - linked} 个**未形成通过检查的完整链。共有 **{len(changed)} 个 episode** 的正确标记发生变化。",
+        "",
+        "三项旧的 dependency-linkage 检查由上述更严格的关联检查替换，其他冻结失败项逐项保留。"
+        "失败任务继续进入分母；没有选择性重跑，没有借助审计结果修改执行输出。"
+        "未改变总分不能证明所有其他评分规则均完备。",
+        "",
+        "[完整逐轮审计与原始/审计后分层统计](public-evaluation/core300-selection-audit.json) · "
+        "[原始正式结果](CORE300_RESULTS.md)",
+        "",
+    ]
+    if changed:
+        lines += ["变动 episode：", ""]
+        lines += [
+            f"- `{row['episode_id']}`：{row['original_correct']} → {row['audit_correct']}。"
+            for row in changed
+        ]
+        lines.append("")
+    return "\n".join(lines)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--study", type=Path, default=Path("data/core300-formal-v1"))
@@ -163,6 +209,7 @@ def main():
     target = Path("docs/public-evaluation/core300-selection-audit.json")
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    Path("docs/CORE300_SELECTION_AUDIT.md").write_text(markdown(result), encoding="utf-8")
     print(json.dumps({"changed_episodes": len(changed), "audited_dependent_turns": len(turn_details)}))
 
 

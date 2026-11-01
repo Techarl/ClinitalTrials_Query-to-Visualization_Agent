@@ -1,0 +1,58 @@
+{
+  "ds_1f153719ec7b45ffbe9ae515ef980ec5": {
+    "started_at": "2026-10-31T15:38:22.082735+00:00",
+    "finished_at": "2026-10-31T15:38:27.287857+00:00",
+    "raw_hash": "5fc9be4c69e6918d4aeaba930ad9082a52facf4debfbe00d771e8cbe67ad75a3",
+    "records": 400,
+    "manifest_file_sha256": "29d1ee77e8399a0d4b6e7c7c8af32efbc8c654711a82b634f60b1ee6dfb5e58a"
+  },
+  "ds_048c02c4a7504273b3a257fd8dcafece": {
+    "started_at": "2026-10-31T16:53:37.436271+00:00",
+    "finished_at": "2026-10-31T16:53:38.713750+00:00",
+    "raw_hash": "e9da6a96cda159ba42818be08d0ace4989ee9c53e47dffdeb6c4829e4a8f71e2",
+    "records": 116,
+    "manifest_file_sha256": "253957242d0325bccdcf96beeedd8197e2727e63268d26af2b7174fd38b5f439"
+  },
+  "ds_db9f8f34531b42dba73db16cb9983db8": {
+    "started_at": "2026-10-31T16:53:33.771088+00:00",
+    "finished_at": "2026-10-31T16:53:36.664024+00:00",
+    "raw_hash": "8a5dd4bb097576e41d3463bcb2513a649b6e36dd12bdff0abcd0d12e72e4b1fa",
+    "records": 60,
+    "manifest_file_sha256": "7dbbb749bfb4e2a0dfa8fbc478c271b1f13e79129e8752b76d3074a43d9806b3"
+  },
+  "ds_d0e0bb53a68149e3abe6e81f222bad8c": {
+    "started_at": "2026-10-31T16:53:45.843340+00:00",
+    "finished_at": "2026-10-31T16:53:49.064891+00:00",
+    "raw_hash": "faf1e882f8c54732b9bf6c878a4c20a096005cd7a57ea2ed4e1f4339baac4cdb",
+    "records": 149,
+    "manifest_file_sha256": "62ea472a9e615ce41bf2829d33daaa9ca3e68b140effcd0464d0639effab7912"
+  },
+  "ds_362059424ec3ce5c2363a36f778fce30": {
+    "started_at": "2026-10-31T15:38:22.082735+00:00",
+    "finished_at": "2026-10-31T15:38:27.287857+00:00",
+    "raw_hash": "b795321cbad15094f6198a7df33dd1964744dda583ead08d5c36e63e12b7d907",
+    "records": 4,
+    "manifest_file_sha256": "8badd4abfeb7fca6c103cb21251d41f4c674699469acde9fd7f82e2763934253"
+  },
+  "ds_3f9c96d96f4edcfd567965051a5c852e": {
+    "started_at": "2026-10-31T15:38:22.082735+00:00",
+    "finished_at": "2026-10-31T15:38:27.287857+00:00",
+    "raw_hash": "eb4711cc4a8766a0a8dae4312b0bd6733f2a8fd60c8a3f3addb2ab2f517183f4",
+    "records": 362,
+    "manifest_file_sha256": "816630382e556adc8612df9e2cf67e962a404ecdca79512e5a80da27b369515c"
+  },
+  "ds_4c0a52c0676a55d120b627b9114f6156": {
+    "started_at": "2026-10-31T15:38:22.082735+00:00",
+    "finished_at": "2026-10-31T15:38:27.287857+00:00",
+    "raw_hash": "e362449e02a864562c5f79287b3107684a8b0d2d31a8edd4d6d59fbdbc931f31",
+    "records": 3,
+    "manifest_file_sha256": "00c133b13810edab4eac4f3369a536894ac26bdb5201d3aaa53e66a51aad7792"
+  },
+  "ds_fcd45524f6787858526c00f95415cc23": {
+    "started_at": "2026-10-31T15:38:22.082735+00:00",
+    "finished_at": "2026-10-31T15:38:27.287857+00:00",
+    "raw_hash": "9cc30924f7554669f606a716096fff70755b595abb338a16b72bacc0e1d80131",
+    "records": 3,
+    "manifest_file_sha256": "bafb77608f89c847b05ee210dba6b28c66f67982d43f3f07edf982cf36f47806"
+  }
+}

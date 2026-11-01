@@ -1,0 +1,553 @@
+{
+  "sha256": "28ea1e546bb50b9aa0cbc0cc75175eea2951f64c732d7a2221da4fac94d56f2c",
+  "identity": {
+    "entries": {
+      "49a2ed2246d46b646373": {
+        "id": "49a2ed2246d46b646373",
+        "applicability": "redundant_verification",
+        "families": [
+          "single_status"
+        ],
+        "component": {
+          "skill": "Avoid duplicate validation: when the documented tool implementation validates a newly published result before returning successfully, do not call validate_result solely to repeat that check. Proceed to finalization only when all requested goals, dependencies, and evidence requirements are satisfied. Use explicit validation for reused results, tools without guaranteed internal validation, or concrete validation gaps. Preserve all existing verifier and finalization checks.",
+          "context_policy": "relevant",
+          "source_experience_ids": [],
+          "experience_policy": "on_gap",
+          "rationale": "The public implementation validates results during analysis publication. The procedure removes only a redundant external validation call, without changing evidence, verifiers, or requested deliverables. No retrieved lessons were reused."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_eefd6e73e7f0ed18\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_eefd6e73e7f0ed18\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "4a3fbc1ddd8d034986ec": {
+        "id": "4a3fbc1ddd8d034986ec",
+        "applicability": "redundant_verification",
+        "families": [
+          "single_country"
+        ],
+        "component": {
+          "skill": "For full-evidence categorical analyses, check that returned coverage reports complete records, exact counts, complete population coverage, and complete contributor evidence. If the documented publication path guarantees internal validation before successful return, finalize once all requested goals and dependencies are satisfied; do not call validate_result merely to repeat that validation. Explicitly validate reused results, results from publication paths without that guarantee, or results with concrete validation gaps. Preserve all internal verifiers and finalization checks.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public implementation validates results during publication. The coverage-specific probe omitted the redundant external validation and completed with four model calls rather than five, retaining complete contributor evidence and no unmet goals. The general-worded probe still repeated validation, supporting the more specific procedure. No verifier or evidence requirement changes."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_9eb83ff267eb8eff\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_9eb83ff267eb8eff\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "27c57cdebd6466abf81b": {
+        "id": "27c57cdebd6466abf81b",
+        "applicability": "redundant_verification",
+        "families": [
+          "single_study_type"
+        ],
+        "component": {
+          "skill": "For full-evidence categorical analyses, confirm that successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the newly created result before returning successfully, finalize once all requested goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, requested evidence requirements, and returned advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "4a3fbc1ddd8d034986ec"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public publication implementation invokes validation before returning successfully. Both tested phrasings omitted the redundant external validation and completed with four model calls rather than five, retaining complete contributor evidence, advisories, and no unmet goals. The general categorical procedure achieved the same observed improvement as the narrower wording, so no grouping-specific restriction is needed."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_f059134c3c141ae6\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_f059134c3c141ae6\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "808c58caef2d804e823d": {
+        "id": "808c58caef2d804e823d",
+        "applicability": "redundant_verification",
+        "families": [
+          "single_time_start"
+        ],
+        "component": {
+          "skill": "For a newly published full-evidence chart, confirm complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the result before returning successfully, do not call validate_result solely to repeat that check. Finalize only when every requested goal and dependency is satisfied, retaining requested zero-count periods, exclusion reporting, evidence, and advisories. Explicitly validate reused results, results from paths without guaranteed internal validation, or concrete validation gaps. Preserve all internal verifiers and finalization checks.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public publication implementation already invokes validation before successful return. Adopted lessons support omitting an external call that only repeats this validation. The general chart procedure is preferred over the more elaborate temporal wording; it preserves every requested deliverable without adding inspection steps."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 6,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_8d607a0a639aaa4d\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_8d607a0a639aaa4d\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "610b917ff5f4a6aa9f30": {
+        "id": "610b917ff5f4a6aa9f30",
+        "applicability": "redundant_verification",
+        "families": [
+          "single_time_completion"
+        ],
+        "component": {
+          "skill": "For full-evidence time series, explicitly bind the requested date field and grain, retaining zero-count periods and date-exclusion reporting in the goal. After successful analysis, confirm complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the newly created result before returning successfully, proceed to finalization once all goals and dependencies are satisfied; do not call validate_result solely to repeat publication validation. Preserve zero periods, exclusion metadata, and advisories in the artifact. Do not reconstruct the series from a clipped summary or treat missing dates as zero-count periods. Explicitly validate reused results, results from paths without guaranteed internal validation, or concrete validation gaps. Preserve all internal verifiers and finalization checks.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public implementation validates temporal results during publication. The time-series-specific probe omitted the duplicate external validation and completed in four model calls rather than five, with complete contributor evidence, no errors, and no unmet goals. The general-worded probe still repeated validation, supporting the more specific procedure. No statistical, evidence, or verifier changes are proposed."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_f68d3e3542b5cb5a\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_f68d3e3542b5cb5a\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "9eda4c989172911dfd38": {
+        "id": "9eda4c989172911dfd38",
+        "applicability": "redundant_verification",
+        "families": [
+          "single_time_first_posted"
+        ],
+        "component": {
+          "skill": "For a newly published full-evidence chart, confirm successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the result before returning successfully, finalize once all requested goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Preserve requested chart parameters, zero-count periods, exclusion reporting, evidence requirements, and advisories. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Keep all internal verifiers and finalization checks unchanged.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public publication implementation already invokes validation before successful return. Both the general and temporal-specific probes omitted the redundant external validation and completed with four model calls instead of five, with complete contributor coverage and no reported unmet goals. Since both wordings achieved the same observed improvement, retain the smaller general procedure rather than adding a temporal-specific restriction."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_fc1b27d066015b07\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_fc1b27d066015b07\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "8b46693e6106284971ba": {
+        "id": "8b46693e6106284971ba",
+        "applicability": "redundant_verification",
+        "families": [
+          "single_histogram"
+        ],
+        "component": {
+          "skill": "For a newly published full-evidence chart, confirm coverage reports complete_records, exact counts, complete population coverage, and complete_contributors, and that the analysis matches the requested chart parameters. If the documented publication path validates the result before returning successfully, finalize once all goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, and returned advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public publication implementation invokes validation before successful return. Both the general and histogram-specific probes omitted the redundant external validation and completed with no unmet goals. Since the narrower wording showed no additional completion benefit, retain the general procedure without changing verifiers or statistical calculations."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_b5c8e36b3e24ec9b\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_b5c8e36b3e24ec9b\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "8f3dce390b845d923813": {
+        "id": "8f3dce390b845d923813",
+        "applicability": "redundant_verification",
+        "families": [
+          "compound_phase_start"
+        ],
+        "component": {
+          "skill": "For each newly published full-evidence chart, confirm successful analysis and coverage reporting complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the result before returning successfully, do not call validate_result solely to repeat that check. Retain every requested deliverable's result handle and finalize with all required results only after all goals and dependencies are satisfied. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve internal verifiers, finalization checks, evidence requirements, and advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "Adopted lessons support avoiding external validation that duplicates guaranteed publication-time validation. Both probes removed the duplicate checks while preserving all requested artifacts and complete contributor evidence. The general procedure achieved the same observed improvement as the additional scope-reuse wording, so no extra procedural change is needed."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 7,
+          "after_calls": 5,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_3dcc9fb13de3b2c4\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_3dcc9fb13de3b2c4\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "2d665b5b81e2901d093b": {
+        "id": "2d665b5b81e2901d093b",
+        "applicability": "redundant_verification",
+        "families": [
+          "compound_status_completion"
+        ],
+        "component": {
+          "skill": "For multi-chart full-evidence analyses, track each requested goal and its returned result handle. Confirm each successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates newly created results before returning successfully, omit validate_result calls that merely repeat that check, including for categorical and time-series charts using that path. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Once all goals and dependencies are satisfied, finalize with every requested result handle to preserve all artifacts. Retain all internal verifiers, finalization checks, evidence requirements, and advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "Reused lessons support avoiding duplicate external validation, and the public implementation confirms that categorical and time-series results share publication-time validation. Both probes omitted the two redundant validation calls and completed with five model calls rather than seven, preserving both artifacts with complete contributor evidence and no unmet goals. No verifier or evidence requirement changes."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 7,
+          "after_calls": 5,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_6bc16151591ef4d0\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_6bc16151591ef4d0\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "b7586c1f7b6f03732aa2": {
+        "id": "b7586c1f7b6f03732aa2",
+        "applicability": "redundant_verification",
+        "families": [
+          "compound_country_first_posted"
+        ],
+        "component": {
+          "skill": "For newly published full-evidence categorical and time-series charts, confirm successful analysis and coverage reporting complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates each result before returning successfully, do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or concrete validation gaps. Retain every requested chart's returned result handle and include all of them in finalization once all goals and dependencies are satisfied. Preserve all internal verifiers, finalization checks, evidence requirements, and advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "Reused lessons support conditionally omitting duplicate external validation. The public implementation confirms that categorical and time-series results share an internally validating publication path. Both probes omitted the two redundant validation calls while preserving every requested artifact and complete evidence coverage. No verifier or evidence requirement changes."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 7,
+          "after_calls": 5,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_89766f92d80f212c\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_89766f92d80f212c\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "ace083ab1f13fe4aa1d2": {
+        "id": "ace083ab1f13fe4aa1d2",
+        "applicability": "redundant_verification",
+        "families": [
+          "compound_study_type_primary_completion"
+        ],
+        "component": {
+          "skill": "For each newly published full-evidence chart, confirm successful analysis and coverage reporting complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the result before returning successfully, do not call validate_result solely to repeat that check. Retain every returned result handle and finalize with all requested artifacts only when every goal and dependency is satisfied. Explicitly validate reused results, results from publication paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, and advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "Reused lessons support avoiding duplicate external validation when publication already validates results. The public implementation provides this guarantee for categorical and temporal charts. Both observed probes omitted the two redundant validation calls, reducing model calls from seven to five while preserving all requested artifacts, complete contributor evidence, and no unmet goals. The simpler per-result rule achieved the same observed improvement as the broader shared-scope procedure."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 7,
+          "after_calls": 5,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_6bc5b2aa0f3f0de1\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_6bc5b2aa0f3f0de1\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "5ee4fc1317043207c6dd": {
+        "id": "5ee4fc1317043207c6dd",
+        "applicability": "redundant_verification",
+        "families": [
+          "dependent_top2"
+        ],
+        "component": {
+          "skill": "Avoid duplicate validation of newly published results. When the documented publication path validates a result before returning successfully, treat that return as validation for the unchanged result under current constraints. Apply this to analysis and entity-selection results using that path. Before finalizing, confirm that all requested goals and dependencies are satisfied, coverage meets evidence requirements, and all required artifacts are included. Do not call validate_result solely to repeat publication validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, advisories, and evidence requirements.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public implementation validates both analysis and entity-selection results during publication. Both probes omitted three redundant standalone validation calls and completed with six model calls instead of nine, retaining all requested artifacts, complete contributor evidence, and no unmet goals. The general procedure achieved the same observed improvement as the domain-specific variant, so the additional workflow instructions are unnecessary."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 9,
+          "after_calls": 6,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_dd49762f4b7fc14c\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_dd49762f4b7fc14c\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "54122da81fa0be3ee4aa": {
+        "id": "54122da81fa0be3ee4aa",
+        "applicability": "redundant_verification",
+        "families": [
+          "dependent_top3"
+        ],
+        "component": {
+          "skill": "Avoid duplicate validation of newly published results. When the documented publication path validates an artifact before returning successfully, including chart and entity-ranking artifacts, do not call validate_result solely to repeat that check. Before finalizing, confirm that every requested goal and dependency is satisfied, required artifacts are retained, and population and contributor evidence coverage meet the request. Explicitly validate reused artifacts, artifacts from paths without guaranteed internal validation, or concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, and advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public implementation validates chart and entity-ranking artifacts during publication. Both probes omitted three redundant external validation calls and completed with six model calls instead of nine, retaining all requested artifacts, exact counts, complete population and contributor coverage, and no unmet goals. The general procedure achieved the same observed improvement as the domain-specific version, so additional workflow instructions are unnecessary."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 9,
+          "after_calls": 6,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_9421f2ecc8d1ec33\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_9421f2ecc8d1ec33\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "1dedda6d4e0e729f85a3": {
+        "id": "1dedda6d4e0e729f85a3",
+        "applicability": "redundant_verification",
+        "families": [
+          "dialogue_start"
+        ],
+        "component": {
+          "skill": "For full-evidence categorical analyses, confirm that successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. When the documented publication path validates a newly created result before returning successfully, do not call validate_result solely to repeat that validation. Finalize only after all requested goals and dependencies are satisfied. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, metrics, and returned advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "4a3fbc1ddd8d034986ec",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public publication implementation validates results before successful return. Both probes omitted the redundant external validation and completed with four model calls rather than five, preserving categorical results, complete contributor evidence, and no unmet goals. The general procedure performed as well as the grouping-specific variant, so the additional restriction is unnecessary."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_1fafa85e0ea93628\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_1fafa85e0ea93628\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "815d06e8dfe827ba21f3": {
+        "id": "815d06e8dfe827ba21f3",
+        "applicability": "redundant_verification",
+        "families": [
+          "dialogue_completion"
+        ],
+        "component": {
+          "skill": "For full-evidence categorical analyses, confirm that successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates a newly created result before returning successfully, finalize once all requested goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve internal verifiers, finalization checks, requested evidence, category labels, metrics, and advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "4a3fbc1ddd8d034986ec",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public publication implementation already invokes validation. Both observed probes omitted only the redundant external validation and completed with four model calls rather than five, with no errors or unmet goals and unchanged categorical results and complete contributor coverage. Retain the existing context and experience policies; no evidence supports changing them."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_687dc2f45a408b67\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_687dc2f45a408b67\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "1183bc4b9775d5de9d2e": {
+        "id": "1183bc4b9775d5de9d2e",
+        "applicability": "redundant_verification",
+        "families": [
+          "dialogue_first_posted"
+        ],
+        "component": {
+          "skill": "For full-evidence categorical analyses, confirm that successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the newly created result before returning successfully, finalize once all requested goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, category definitions, and returned advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "4a3fbc1ddd8d034986ec",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public publication implementation invokes validation before returning successfully. Both observed probes omitted the redundant external validation and completed with four model calls rather than five, retaining the same categorical results, complete contributor evidence, and no unmet goals. General and domain-specific wording showed the same improvement, so no narrower restriction is supported. This changes call selection only, not evidence or verifiers."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_79ff53de6582a7f9\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_79ff53de6582a7f9\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "1611e1d97d9b6fcb82e9": {
+        "id": "1611e1d97d9b6fcb82e9",
+        "applicability": "redundant_verification",
+        "families": [
+          "dialogue_primary_completion"
+        ],
+        "component": {
+          "skill": "For full-evidence categorical analyses, confirm that successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the newly created result before returning successfully, finalize once all requested goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, and returned advisories.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "27c57cdebd6466abf81b",
+            "4a3fbc1ddd8d034986ec",
+            "49a2ed2246d46b646373"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The public publication implementation already invokes validation. Both probes omitted the redundant external validation and completed with four model calls rather than five, without errors or unmet goals and with unchanged categorical results and complete contributor evidence. The general procedure achieved the same observed improvement as the grouping-specific wording, so the additional restriction is unnecessary. No verifier or evidence requirement is changed."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_d7e4b2695e973b15\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_d7e4b2695e973b15\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "4e777d055b79e50fc0fd": {
+        "id": "4e777d055b79e50fc0fd",
+        "applicability": "redundant_verification",
+        "families": [
+          "boundary_empty_time"
+        ],
+        "component": {
+          "skill": "For a newly published full-evidence analysis, confirm successful return and coverage of complete_records, exact counts, complete population, and complete_contributors. If the documented publication path guarantees internal validation before successful return, do not call validate_result solely to repeat it. For bounded time series requesting zero periods, check that tool-produced period coverage matches the requested range and grain; an empty-cohort advisory alone is not a validation gap. Finalize only when all requested goals and dependencies are satisfied. Explicitly validate reused results, results from paths without guaranteed internal validation, or concrete validation gaps. Preserve constraints, advisories, evidence requirements, internal verifiers, and finalization checks.",
+          "context_policy": "relevant",
+          "source_experience_ids": [
+            "49a2ed2246d46b646373",
+            "27c57cdebd6466abf81b"
+          ],
+          "experience_policy": "on_gap",
+          "rationale": "The documented publication path already validates new results. Both tested procedures removed the duplicate external validation and completed with four model calls rather than five, preserving complete exact coverage, requested period coverage, advisories, and no unmet goals. The broader procedure achieved the same observed improvement as the narrower one, so no annual-start-specific restriction is needed."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 5,
+          "after_calls": 4,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_46af7ce8f8788be0\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_46af7ce8f8788be0\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      },
+      "f3afc9dbb808a8f16da4": {
+        "id": "f3afc9dbb808a8f16da4",
+        "applicability": "boundary_unsupported_causality",
+        "families": [
+          "boundary_unsupported_causality"
+        ],
+        "component": {
+          "skill": "For tasks containing only textual answer goals, use focused lookup_trials followed by read_source on the specific fields needed for each deliverable, rather than chart analysis. Before publish_text_answer, check that every quotation occurs in a successful read with the same source_handle and pointer used in the finding; reading a parent object does not replace reading the cited pointer. Reuse matching reads across goals instead of repeating them. Follow pagination when the intended claim requires unread content; otherwise keep the claim bounded to inspected fields. Publish a source-grounded artifact for every declared goal, preserving explicit evidence limitations, and finalize only after the existing validation requirements are met.",
+          "context_policy": "relevant",
+          "source_experience_ids": [],
+          "experience_policy": "on_gap",
+          "rationale": "Both probes completed all textual goals, unlike the initial execution, which stopped after task definition. The focused-field probe used eight model calls without a reported tool error. The broader-reading probe used fifteen, repeated a parent-object read, and encountered a publication error requiring an exact-field read. This procedure retains the successful textual route and adds a narrow pointer-consistency check targeting the observed redundant read and rejected publication. No retrieved lesson IDs were available."
+        },
+        "adopted": true,
+        "behavior": {
+          "before_calls": 2,
+          "after_calls": 9,
+          "before_errors": 0,
+          "after_errors": 0
+        },
+        "supporting_traces": [
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_427ea43047ce2746\\h0\\turn-1.json",
+          "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_427ea43047ce2746\\memory\\final\\turn-1.json"
+        ],
+        "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "version": "recorded-v2-examples-v1",
+  "examples": [
+    {
+      "directory": "01_phase",
+      "episode_id": "ep_cc08257acaf2ab",
+      "description": "Phase distribution with complete contributor evidence.",
+      "turns": [
+        {
+          "directory": "turns/01",
+          "run_id": "vr_310b8c87067d4d90be1de4007ba7eb30",
+          "parent_run_id": null
+        }
+      ]
+    },
+    {
+      "directory": "02_followup",
+      "episode_id": "ep_29ecf95b351f79",
+      "description": "Two turns in one session: change the annual date axis while retaining the population.",
+      "turns": [
+        {
+          "directory": "turns/01",
+          "run_id": "vr_578df654103845c3bacd4be472d56ffc",
+          "parent_run_id": null
+        },
+        {
+          "directory": "turns/02",
+          "run_id": "vr_b767a7e44a58448d93a923494279e2e6",
+          "parent_run_id": "vr_578df654103845c3bacd4be472d56ffc"
+        }
+      ]
+    },
+    {
+      "directory": "03_comparison",
+      "episode_id": "ep_f2b353bd6b6774",
+      "description": "Asthma drug comparison with independently preserved cohorts.",
+      "turns": [
+        {
+          "directory": "turns/01",
+          "run_id": "vr_8b3508e85e114fb8b10275ed8e1c70d0",
+          "parent_run_id": null
+        }
+      ]
+    },
+    {
+      "directory": "04_scatter",
+      "episode_id": "ep_cc386097b10b14",
+      "description": "Enrollment versus duration, with exact-date exclusions.",
+      "turns": [
+        {
+          "directory": "turns/01",
+          "run_id": "vr_d77b442157004195b23d4d3f8a30136e",
+          "parent_run_id": null
+        }
+      ]
+    }
+  ],
+  "diagnostics": [
+    {
+      "directory": "diagnostics/dependent",
+      "episode_id": "ep_be43ca02cfbaea",
+      "description": "Historical dependency example with known missing terminal zero buckets; not a passing demo.",
+      "turns": [
+        {
+          "directory": "turns/01",
+          "run_id": "vr_0b854ec0e70e45f4a9f74d216caa0b59",
+          "parent_run_id": null
+        }
+      ],
+      "expected_dependency": {
+        "dependent_selection": true,
+        "anchor_sponsor": "Merck Sharp & Dohme LLC",
+        "selection_top_n": 3
+      },
+      "selection_linkage_failures": [],
+      "validation_error": "Missing or duplicated result points"
+    }
+  ],
+  "recording_type": "live model on frozen ClinicalTrials.gov records / recorded V2"
+}

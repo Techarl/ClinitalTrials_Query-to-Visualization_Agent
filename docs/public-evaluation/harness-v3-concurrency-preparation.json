@@ -1,0 +1,58 @@
+{
+  "version": "three-worker-preparation",
+  "workers": 3,
+  "paid_formal_calls": 0,
+  "created_at": "2026-11-01T15:23:53.836986",
+  "tests": {
+    "synthetic": "9 passed",
+    "neo4j": {
+      "workers": 3,
+      "paid_model_calls": 0,
+      "source": "synthetic fixtures only",
+      "same_snapshot": [
+        {
+          "dataset_id": "ds_43c551442d804a5e9c47e7f63b5e8b17",
+          "records": 3
+        },
+        {
+          "dataset_id": "ds_43c551442d804a5e9c47e7f63b5e8b17",
+          "records": 3
+        },
+        {
+          "dataset_id": "ds_43c551442d804a5e9c47e7f63b5e8b17",
+          "records": 3
+        }
+      ],
+      "distinct_snapshots": [
+        {
+          "dataset_id": "ds_c5de90d6f5ca4b7aa7f8efc57f41f8a7",
+          "records": 1
+        },
+        {
+          "dataset_id": "ds_e58afa9659594006b36ebee01917d579",
+          "records": 2
+        },
+        {
+          "dataset_id": "ds_f7f6a3441ba24e1e9e71319acab33bf6",
+          "records": 3
+        }
+      ],
+      "passed": true,
+      "fixture_snapshots_cleaned": [
+        "ds_43c551442d804a5e9c47e7f63b5e8b17",
+        "ds_c5de90d6f5ca4b7aa7f8efc57f41f8a7",
+        "ds_e58afa9659594006b36ebee01917d579",
+        "ds_f7f6a3441ba24e1e9e71319acab33bf6"
+      ]
+    }
+  },
+  "basis": "Parent authorized infrastructure-only worker increase before formal outputs; no task/model/prompt/arm/probe changes",
+  "source_changes_vs_capsule02": [
+    "New formal driver: thread-local scopes, scoped event proxy, 3-worker bounded admission, same-snapshot import lock honoring existing deadline"
+  ],
+  "formal_release": false,
+  "source_archive": "data/review-followup/harness-v3-capsule04-preparation.zip",
+  "source_archive_sha256": "d971bea6a19224b24da7bbc5ebee4f5c5a92819c7240cd1903c19e30c326b61c",
+  "manifest_sha256": "5398f88a50a134773a15cb9a4dba0716088bbdd817178c3a5d78962dbdb89e9e",
+  "code_files": 96
+}

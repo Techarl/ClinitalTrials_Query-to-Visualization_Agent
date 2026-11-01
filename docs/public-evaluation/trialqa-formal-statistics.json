@@ -1,0 +1,362 @@
+{
+  "protocol_hash": "6b48f80e796c01fa94006ca3f737714e8a253d55ac4200441fbd88436232cfe3",
+  "completed_report_sha256": "5465ca09c1a0d100d99d12f228f34e3adb19686f38cb9bd9378e35007f6290ab",
+  "source_archive": {
+    "archive_matches_frozen_manifest": true,
+    "files": 49,
+    "current_workspace_differs": []
+  },
+  "source_snapshots_match_frozen_manifest": true,
+  "independent_raw_source_quotation_check": "all case findings rechecked against pinned trial records",
+  "summary": {
+    "all": {
+      "arms": {
+        "given_sources": {
+          "denominator": 120,
+          "correct": 106,
+          "cited_correct": 96,
+          "quote_integrity": 119,
+          "runtime_statuses": {
+            "completed": 119,
+            "limited": 1
+          },
+          "judge_missing": 0,
+          "source_reads": 252,
+          "latency_p50_seconds": 19.820500000030734,
+          "latency_p95_seconds": 30.936400000052522
+        },
+        "frozen_retrieval": {
+          "denominator": 120,
+          "correct": 105,
+          "cited_correct": 95,
+          "quote_integrity": 118,
+          "runtime_statuses": {
+            "completed": 117,
+            "partial": 1,
+            "failed": 1,
+            "limited": 1
+          },
+          "judge_missing": 0,
+          "source_reads": 200,
+          "latency_p50_seconds": 23.226500000047963,
+          "latency_p95_seconds": 37.043250000028635
+        }
+      },
+      "paired_cited_correct": {
+        "questions": 120,
+        "groups": 102,
+        "contrast": "frozen_retrieval-minus-given_sources",
+        "difference": -0.008333333333333333,
+        "cluster_bootstrap95": [
+          -0.07627118644067797,
+          0.058823529411764705
+        ],
+        "arm_cluster_bootstrap95": {
+          "given_sources": [
+            0.7217391304347827,
+            0.8712266899766897
+          ],
+          "frozen_retrieval": [
+            0.7083333333333334,
+            0.8666666666666667
+          ]
+        },
+        "draws": 10000,
+        "seed": 20261101,
+        "paired_question_counts": {
+          "given_1_retrieval_1": 88,
+          "given_0_retrieval_0": 17,
+          "given_1_retrieval_0": 8,
+          "given_0_retrieval_1": 7
+        },
+        "sign_flip": {
+          "method": "exact_groupwise_arm_swap",
+          "nonzero_groups": 14,
+          "assignments": 16384,
+          "two_sided_p": 1.0
+        }
+      }
+    },
+    "development": {
+      "arms": {
+        "given_sources": {
+          "denominator": 19,
+          "correct": 18,
+          "cited_correct": 14,
+          "quote_integrity": 19,
+          "runtime_statuses": {
+            "completed": 19
+          },
+          "judge_missing": 0,
+          "source_reads": 30,
+          "latency_p50_seconds": 16.905999999959022,
+          "latency_p95_seconds": 22.79810000004944
+        },
+        "frozen_retrieval": {
+          "denominator": 19,
+          "correct": 18,
+          "cited_correct": 16,
+          "quote_integrity": 18,
+          "runtime_statuses": {
+            "completed": 18,
+            "failed": 1
+          },
+          "judge_missing": 0,
+          "source_reads": 30,
+          "latency_p50_seconds": 21.68799999996554,
+          "latency_p95_seconds": 29.87360000003827
+        }
+      },
+      "paired_cited_correct": {
+        "questions": 19,
+        "groups": 17,
+        "contrast": "frozen_retrieval-minus-given_sources",
+        "difference": 0.10526315789473684,
+        "cluster_bootstrap95": [
+          -0.10526315789473684,
+          0.3
+        ],
+        "arm_cluster_bootstrap95": {
+          "given_sources": [
+            0.5294117647058824,
+            0.9090909090909091
+          ],
+          "frozen_retrieval": [
+            0.6470588235294118,
+            1.0
+          ]
+        },
+        "draws": 10000,
+        "seed": 20261101,
+        "paired_question_counts": {
+          "given_1_retrieval_1": 13,
+          "given_0_retrieval_0": 2,
+          "given_0_retrieval_1": 3,
+          "given_1_retrieval_0": 1
+        },
+        "sign_flip": {
+          "method": "exact_groupwise_arm_swap",
+          "nonzero_groups": 4,
+          "assignments": 16,
+          "two_sided_p": 0.625
+        }
+      }
+    },
+    "calibration": {
+      "arms": {
+        "given_sources": {
+          "denominator": 22,
+          "correct": 18,
+          "cited_correct": 18,
+          "quote_integrity": 21,
+          "runtime_statuses": {
+            "completed": 21,
+            "limited": 1
+          },
+          "judge_missing": 0,
+          "source_reads": 49,
+          "latency_p50_seconds": 22.008000000030734,
+          "latency_p95_seconds": 32.274150000006195
+        },
+        "frozen_retrieval": {
+          "denominator": 22,
+          "correct": 16,
+          "cited_correct": 15,
+          "quote_integrity": 21,
+          "runtime_statuses": {
+            "completed": 21,
+            "limited": 1
+          },
+          "judge_missing": 0,
+          "source_reads": 36,
+          "latency_p50_seconds": 24.624999999941792,
+          "latency_p95_seconds": 39.22004999996279
+        }
+      },
+      "paired_cited_correct": {
+        "questions": 22,
+        "groups": 20,
+        "contrast": "frozen_retrieval-minus-given_sources",
+        "difference": -0.13636363636363635,
+        "cluster_bootstrap95": [
+          -0.3,
+          0.0
+        ],
+        "arm_cluster_bootstrap95": {
+          "given_sources": [
+            0.6363636363636364,
+            0.9565217391304348
+          ],
+          "frozen_retrieval": [
+            0.45454545454545453,
+            0.8695652173913043
+          ]
+        },
+        "draws": 10000,
+        "seed": 20261101,
+        "paired_question_counts": {
+          "given_0_retrieval_0": 4,
+          "given_1_retrieval_1": 15,
+          "given_1_retrieval_0": 3
+        },
+        "sign_flip": {
+          "method": "exact_groupwise_arm_swap",
+          "nonzero_groups": 3,
+          "assignments": 8,
+          "two_sided_p": 0.25
+        }
+      }
+    },
+    "heldout": {
+      "arms": {
+        "given_sources": {
+          "denominator": 79,
+          "correct": 70,
+          "cited_correct": 64,
+          "quote_integrity": 79,
+          "runtime_statuses": {
+            "completed": 79
+          },
+          "judge_missing": 0,
+          "source_reads": 173,
+          "latency_p50_seconds": 19.79700000002049,
+          "latency_p95_seconds": 31.10600000005214
+        },
+        "frozen_retrieval": {
+          "denominator": 79,
+          "correct": 71,
+          "cited_correct": 64,
+          "quote_integrity": 79,
+          "runtime_statuses": {
+            "completed": 78,
+            "partial": 1
+          },
+          "judge_missing": 0,
+          "source_reads": 134,
+          "latency_p50_seconds": 22.968999999924563,
+          "latency_p95_seconds": 37.149500000022805
+        }
+      },
+      "paired_cited_correct": {
+        "questions": 79,
+        "groups": 65,
+        "contrast": "frozen_retrieval-minus-given_sources",
+        "difference": 0.0,
+        "cluster_bootstrap95": [
+          -0.07894736842105263,
+          0.07792207792207792
+        ],
+        "arm_cluster_bootstrap95": {
+          "given_sources": [
+            0.7125,
+            0.8947368421052632
+          ],
+          "frozen_retrieval": [
+            0.7142857142857143,
+            0.8987341772151899
+          ]
+        },
+        "draws": 10000,
+        "seed": 20261101,
+        "paired_question_counts": {
+          "given_1_retrieval_1": 60,
+          "given_0_retrieval_0": 11,
+          "given_1_retrieval_0": 4,
+          "given_0_retrieval_1": 4
+        },
+        "sign_flip": {
+          "method": "exact_groupwise_arm_swap",
+          "nonzero_groups": 7,
+          "assignments": 128,
+          "two_sided_p": 1.0
+        }
+      }
+    }
+  },
+  "accounting": {
+    "attempts": 1699,
+    "known_cost_usd": 10.067919475000032,
+    "unknown_usage_attempts": 2,
+    "unknown_reserved_usd": 0.21213500000000002,
+    "estimated_or_reserved_usd": 10.280054475000032,
+    "embedding_attempts": 0,
+    "embedding_cost_usd": 0.0,
+    "model_attempts": {
+      "gpt-6.1-sol": 1460,
+      "unknown": 2,
+      "gpt-6-luna": 237
+    },
+    "stages": {
+      "runtime": {
+        "attempts": 1460,
+        "estimated_or_reserved_usd": 10.041677000000018
+      },
+      "execution": {
+        "attempts": 2,
+        "estimated_or_reserved_usd": 0.21213500000000002
+      },
+      "judge": {
+        "attempts": 237,
+        "estimated_or_reserved_usd": 0.026242475000000026
+      }
+    }
+  },
+  "unknown_usage_attempts": [
+    {
+      "case_id": "cb24b338-504f-4643-91bb-a346be0a7190",
+      "arm": "frozen_retrieval",
+      "stage": "execution",
+      "status": "attempted_usage_unknown",
+      "reserved_upper_estimate_usd": 0.1153475
+    },
+    {
+      "case_id": "8c0425f7-84b8-4ea2-b902-354b37a61a5a",
+      "arm": "frozen_retrieval",
+      "stage": "execution",
+      "status": "attempted_usage_unknown",
+      "reserved_upper_estimate_usd": 0.0967875
+    }
+  ],
+  "noncompleted_runtime": [
+    {
+      "id": "cb24b338-504f-4643-91bb-a346be0a7190",
+      "arm": "frozen_retrieval",
+      "status": "partial",
+      "error_types": [
+        "PermissionError"
+      ]
+    },
+    {
+      "id": "8c0425f7-84b8-4ea2-b902-354b37a61a5a",
+      "arm": "frozen_retrieval",
+      "status": "failed",
+      "error_types": [
+        "APIConnectionError"
+      ]
+    },
+    {
+      "id": "e2d9d00a-1d6a-4ede-8ec2-6b65f4e47a57",
+      "arm": "given_sources",
+      "status": "limited",
+      "error_types": []
+    },
+    {
+      "id": "e2d9d00a-1d6a-4ede-8ec2-6b65f4e47a57",
+      "arm": "frozen_retrieval",
+      "status": "limited",
+      "error_types": []
+    }
+  ],
+  "limits": [
+    "Frozen-corpus lookup over 102 official linked records, not full-web retrieval",
+    "All 120 questions retained in the source audit; current JSON can differ from the benchmark snapshot",
+    "Fallible automated Luna judge; no claim to reproduce the official LABBench2 scoring harness",
+    "Given-source arm has official source identities; retrieval arm gets question text only",
+    "Quote integrity verifies verbatim sources, not semantic entailment",
+    "120 questions include 19 development, 22 calibration, 79 heldout; only the heldout subset was untouched in project development.",
+    "Cited correctness uses a fallible automated Luna judge; exact quotations alone do not prove semantic entailment.",
+    "Intervals resample whole NCT-connected groups. Split comparisons are exploratory, without multiplicity correction.",
+    "Missing answers/judgments remain unsuccessful in the operational denominator; infrastructure failures are not silently retried.",
+    "Current frozen CTgov records can differ from the benchmark source version; not an official LABBench2 score."
+  ]
+}

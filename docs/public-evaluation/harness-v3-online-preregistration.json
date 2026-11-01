@@ -1,0 +1,29 @@
+{
+  "version": "independent-empty-bank-online-v1",
+  "episodes": [
+    {
+      "id": "ep_dd66d2a67715afd0",
+      "family": "compound_phase_start",
+      "entity_group": "melanoma"
+    },
+    {
+      "id": "ep_89414e78c31e40d1",
+      "family": "compound_phase_start",
+      "entity_group": "psoriasis"
+    }
+  ],
+  "initial_bank": {},
+  "selection": "All two unused development episodes of compound_phase_start, original source order, different diseases; excluded twenty main development IDs",
+  "policies": [
+    "PPC public-feedback online",
+    "proactive",
+    "disabled"
+  ],
+  "instruction": "At the beginning of a nontrivial task, search for applicable experience, read a relevant version, and activate it only when its applicability matches.",
+  "ablations": "Each task receives only prior-task bank; no current-task lesson; separate bank never enters formal transfer",
+  "max_usd": 55,
+  "ledger": "main02 cumulative ledger after development process closes",
+  "runner_sha256": "fcc8e51a0f099f4e6b00a536bc5d34ee05408254135e72285dcdec7fdf69b914",
+  "paid_online_calls": 0,
+  "limitation": "Two development tasks are mechanism diagnostics, not formal efficacy"
+}

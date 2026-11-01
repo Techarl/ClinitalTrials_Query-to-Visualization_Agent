@@ -1,0 +1,1155 @@
+{
+  "version": "core300-final-v1",
+  "generated_at": "2026-11-01T08:50:57.878636+00:00",
+  "study_sha256": "e5b17d6cde2b9333c115c004c8018230665be13957e1c3ccd6cc646ce1c45237",
+  "environment_sha256": "ef04ac11340b684f106ad0103a7258c08ef38dac817195829f66d2de33cf324c",
+  "report_sha256": "bcf758d42138f102d584ad7fd9c85887639455de4b031f76e589ed78cc163b5f",
+  "turn_audit": {
+    "saved_turns": 420,
+    "response_status_counts": {
+      "completed": 400,
+      "limited": 15,
+      "partial": 3,
+      "failed": 2
+    },
+    "check_occurrences": {
+      "runtime_receipt_or_field_verifier": 506,
+      "independent_sqlite_raw_json": 198,
+      "independent_parent_scope_membership": 282
+    },
+    "failed_turn_diagnostics": [
+      {
+        "episode_id": "ep_4e3a5a15e6eace3c",
+        "turn": 1,
+        "response_status": "partial",
+        "model_error_types": [
+          "APITimeoutError"
+        ],
+        "tool_errors": []
+      },
+      {
+        "episode_id": "ep_59294b2ffabede77",
+        "turn": 1,
+        "response_status": "partial",
+        "model_error_types": [],
+        "tool_errors": [
+          {
+            "tool": "select_entities",
+            "error_type": "ClientError"
+          }
+        ]
+      },
+      {
+        "episode_id": "ep_c63f6ff70355dcd7",
+        "turn": 1,
+        "response_status": "failed",
+        "model_error_types": [
+          "APITimeoutError"
+        ],
+        "tool_errors": []
+      },
+      {
+        "episode_id": "ep_e3276466708534eb",
+        "turn": 1,
+        "response_status": "partial",
+        "model_error_types": [],
+        "tool_errors": [
+          {
+            "tool": "analyze",
+            "error_type": "ClientError"
+          },
+          {
+            "tool": "select_entities",
+            "error_type": "ClientError"
+          }
+        ]
+      },
+      {
+        "episode_id": "ep_f9adf337490f6c40",
+        "turn": 1,
+        "response_status": "failed",
+        "model_error_types": [
+          "InternalServerError"
+        ],
+        "tool_errors": []
+      }
+    ],
+    "note": "Check occurrences are not independent test cases; a chart may receive multiple checks."
+  },
+  "all": {
+    "successes": 295,
+    "denominator": 300,
+    "rate": 0.9833333333333333,
+    "wilson95": [
+      0.9615846051669054,
+      0.9928605226493666
+    ],
+    "clusters": 15,
+    "cluster_bootstrap95": [
+      0.9666666666666667,
+      0.9966666666666667
+    ],
+    "draws": 4000,
+    "seed": 20261101,
+    "few_cluster_warning": true,
+    "planned_turns": 420,
+    "status_counts": {
+      "graded": 300
+    },
+    "incorrect_or_failed": 5,
+    "failure_code_occurrences": {
+      "status": 5,
+      "artifact": 5,
+      "dependent_selection_missing": 2,
+      "constraint": 3
+    }
+  },
+  "split": {
+    "calibration": {
+      "successes": 39,
+      "denominator": 40,
+      "rate": 0.975,
+      "wilson95": [
+        0.8711863103652591,
+        0.9955731684973186
+      ],
+      "clusters": 2,
+      "cluster_bootstrap95": [
+        0.95,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 56,
+      "status_counts": {
+        "graded": 40
+      },
+      "incorrect_or_failed": 1,
+      "failure_code_occurrences": {
+        "status": 1,
+        "artifact": 1
+      }
+    },
+    "development": {
+      "successes": 60,
+      "denominator": 60,
+      "rate": 1.0,
+      "wilson95": [
+        0.93982814785791,
+        0.9999999999999998
+      ],
+      "clusters": 3,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 84,
+      "status_counts": {
+        "graded": 60
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "heldout": {
+      "successes": 196,
+      "denominator": 200,
+      "rate": 0.98,
+      "wilson95": [
+        0.9497129130941735,
+        0.9921955735836505
+      ],
+      "clusters": 10,
+      "cluster_bootstrap95": [
+        0.96,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 280,
+      "status_counts": {
+        "graded": 200
+      },
+      "incorrect_or_failed": 4,
+      "failure_code_occurrences": {
+        "status": 4,
+        "artifact": 4,
+        "dependent_selection_missing": 2,
+        "constraint": 3
+      }
+    }
+  },
+  "family": {
+    "boundary_empty_time": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "boundary_precision": {
+      "successes": 10,
+      "denominator": 10,
+      "rate": 1.0,
+      "wilson95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "clusters": 10,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 10,
+      "status_counts": {
+        "graded": 10
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "boundary_unsupported_causality": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "compound_country_first_posted": {
+      "successes": 14,
+      "denominator": 15,
+      "rate": 0.9333333333333333,
+      "wilson95": [
+        0.7018347012621998,
+        0.9881331045067315
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        0.8,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 1,
+      "failure_code_occurrences": {
+        "status": 1
+      }
+    },
+    "compound_phase_start": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "compound_status_completion": {
+      "successes": 14,
+      "denominator": 15,
+      "rate": 0.9333333333333333,
+      "wilson95": [
+        0.7018347012621998,
+        0.9881331045067315
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        0.8,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 1,
+      "failure_code_occurrences": {
+        "status": 1,
+        "constraint": 3,
+        "artifact": 2
+      }
+    },
+    "compound_study_type_primary_completion": {
+      "successes": 5,
+      "denominator": 5,
+      "rate": 1.0,
+      "wilson95": [
+        0.5655175352168251,
+        1
+      ],
+      "clusters": 5,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 5,
+      "status_counts": {
+        "graded": 5
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "dependent_top2": {
+      "successes": 14,
+      "denominator": 15,
+      "rate": 0.9333333333333333,
+      "wilson95": [
+        0.7018347012621998,
+        0.9881331045067315
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        0.8,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 1,
+      "failure_code_occurrences": {
+        "status": 1,
+        "artifact": 1,
+        "dependent_selection_missing": 1
+      }
+    },
+    "dependent_top3": {
+      "successes": 14,
+      "denominator": 15,
+      "rate": 0.9333333333333333,
+      "wilson95": [
+        0.7018347012621998,
+        0.9881331045067315
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        0.8,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 1,
+      "failure_code_occurrences": {
+        "status": 1,
+        "artifact": 1,
+        "dependent_selection_missing": 1
+      }
+    },
+    "dialogue_completion": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 45,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "dialogue_first_posted": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 45,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "dialogue_primary_completion": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 45,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "dialogue_start": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 45,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "single_country": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "single_histogram": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "single_phase": {
+      "successes": 14,
+      "denominator": 15,
+      "rate": 0.9333333333333333,
+      "wilson95": [
+        0.7018347012621998,
+        0.9881331045067315
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        0.8,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 1,
+      "failure_code_occurrences": {
+        "status": 1,
+        "artifact": 1
+      }
+    },
+    "single_status": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "single_study_type": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "single_time_completion": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "single_time_first_posted": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "single_time_start": {
+      "successes": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson95": [
+        0.7961166989641515,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 15,
+      "status_counts": {
+        "graded": 15
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    }
+  },
+  "category": {
+    "boundary": {
+      "successes": 40,
+      "denominator": 40,
+      "rate": 1.0,
+      "wilson95": [
+        0.9123783988027135,
+        1
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 40,
+      "status_counts": {
+        "graded": 40
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "compound_or_dependent": {
+      "successes": 76,
+      "denominator": 80,
+      "rate": 0.95,
+      "wilson95": [
+        0.8783772379535698,
+        0.9803864454644556
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        0.8875,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 80,
+      "status_counts": {
+        "graded": 80
+      },
+      "incorrect_or_failed": 4,
+      "failure_code_occurrences": {
+        "status": 4,
+        "artifact": 4,
+        "dependent_selection_missing": 2,
+        "constraint": 3
+      }
+    },
+    "multi_turn": {
+      "successes": 60,
+      "denominator": 60,
+      "rate": 1.0,
+      "wilson95": [
+        0.93982814785791,
+        0.9999999999999998
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 180,
+      "status_counts": {
+        "graded": 60
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "single": {
+      "successes": 119,
+      "denominator": 120,
+      "rate": 0.9916666666666667,
+      "wilson95": [
+        0.9543037087549505,
+        0.998527444266658
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        0.975,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 120,
+      "status_counts": {
+        "graded": 120
+      },
+      "incorrect_or_failed": 1,
+      "failure_code_occurrences": {
+        "status": 1,
+        "artifact": 1
+      }
+    }
+  },
+  "entity_group": {
+    "Crohn disease": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "asthma": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "breast cancer": {
+      "successes": 18,
+      "denominator": 20,
+      "rate": 0.9,
+      "wilson95": [
+        0.6989663547715128,
+        0.9721335187862319
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        0.9,
+        0.9
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 2,
+      "failure_code_occurrences": {
+        "status": 2,
+        "artifact": 2,
+        "dependent_selection_missing": 2
+      }
+    },
+    "depression": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "melanoma": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "migraine": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "multiple sclerosis": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "non-small cell lung cancer": {
+      "successes": 19,
+      "denominator": 20,
+      "rate": 0.95,
+      "wilson95": [
+        0.763868806553258,
+        0.9911185511992047
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        0.95,
+        0.95
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 1,
+      "failure_code_occurrences": {
+        "status": 1,
+        "constraint": 3,
+        "artifact": 2
+      }
+    },
+    "obesity": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "ovarian cancer": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "prostate cancer": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "psoriasis": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "rheumatoid arthritis": {
+      "successes": 20,
+      "denominator": 20,
+      "rate": 1.0,
+      "wilson95": [
+        0.8388748419471806,
+        1
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        1.0,
+        1.0
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 0,
+      "failure_code_occurrences": {}
+    },
+    "type 2 diabetes": {
+      "successes": 19,
+      "denominator": 20,
+      "rate": 0.95,
+      "wilson95": [
+        0.763868806553258,
+        0.9911185511992047
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        0.95,
+        0.95
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 1,
+      "failure_code_occurrences": {
+        "status": 1,
+        "artifact": 1
+      }
+    },
+    "ulcerative colitis": {
+      "successes": 19,
+      "denominator": 20,
+      "rate": 0.95,
+      "wilson95": [
+        0.763868806553258,
+        0.9911185511992047
+      ],
+      "clusters": 1,
+      "cluster_bootstrap95": [
+        0.95,
+        0.95
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 28,
+      "status_counts": {
+        "graded": 20
+      },
+      "incorrect_or_failed": 1,
+      "failure_code_occurrences": {
+        "status": 1
+      }
+    }
+  },
+  "limits": [
+    "Template-derived episodes, not 300 independent authored questions",
+    "Only 15 total / 10 heldout disease groups; uncertainty estimates are exploratory",
+    "SQL numeric oracle covers categories and shared-drug network, not every chart type"
+  ]
+}

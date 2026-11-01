@@ -1,0 +1,1277 @@
+{
+  "studies": {
+    "pilot": {
+      "ledger_sha256": "2a97ef217ac08f97545c5fa0c29fbed0172b6587be2c018dc76fa8669902dd94",
+      "attempts": 57,
+      "known_cost_usd": 0.44139080000000014,
+      "unknown_usage_attempts": 0,
+      "unknown_reserved_usd": 0.0,
+      "estimated_or_reserved_usd": 0.44139080000000014,
+      "embedding_attempts": 0,
+      "embedding_cost_usd": 0.0,
+      "model_attempts": {
+        "gpt-6.1-sol": 57
+      },
+      "stages": {
+        "ranking_or_untagged": {
+          "attempts": 57,
+          "estimated_or_reserved_usd": 0.44139080000000014
+        }
+      },
+      "nli_arm_costs": {
+        "shared_or_unattributed": {
+          "attempts": 57,
+          "known_cost_usd": 0.44139080000000014,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.44139080000000014
+        }
+      },
+      "attribution_note": "Only explicit NLI arm tags are assigned. Embedding and untagged/unknown-model attempts stay shared or unattributed; do not interpret identified embedding counts as complete when usage is missing."
+    },
+    "formal": {
+      "ledger_sha256": "d02859de13e9b275f67115bea15fc2bd36ebf7da0705876bde8da494f8a6da32",
+      "attempts": 2271,
+      "known_cost_usd": 13.915365399999992,
+      "unknown_usage_attempts": 3,
+      "unknown_reserved_usd": 0.3730525,
+      "estimated_or_reserved_usd": 14.288417899999992,
+      "embedding_attempts": 0,
+      "embedding_cost_usd": 0.0,
+      "model_attempts": {
+        "gpt-6.1-sol": 2268,
+        "unknown": 3
+      },
+      "stages": {
+        "execution": {
+          "attempts": 2271,
+          "estimated_or_reserved_usd": 14.288417899999992
+        }
+      },
+      "nli_arm_costs": {
+        "shared_or_unattributed": {
+          "attempts": 2271,
+          "known_cost_usd": 13.915365399999992,
+          "unknown_usage_attempts": 3,
+          "unknown_reserved_usd": 0.3730525,
+          "estimated_or_reserved_usd": 14.288417899999992
+        }
+      },
+      "attribution_note": "Only explicit NLI arm tags are assigned. Embedding and untagged/unknown-model attempts stay shared or unattributed; do not interpret identified embedding counts as complete when usage is missing."
+    }
+  },
+  "totals": {
+    "attempts": 2328,
+    "known_cost_usd": 14.356756199999992,
+    "unknown_usage_attempts": 3,
+    "unknown_reserved_usd": 0.3730525,
+    "estimated_or_reserved_usd": 14.729808699999992,
+    "embedding_attempts": 0,
+    "embedding_cost_usd": 0.0
+  },
+  "duplicate_ledger_inputs_skipped": [],
+  "identical_content_ledgers_retained": [],
+  "note": "Provider-reported cost or versioned estimates, not invoices. Unknown usage retains reservations. Embedding costs are included in totals, not added again. All attempts include failures. Only the same physical input file is deduplicated. Equal-content independent files remain counted and flagged; their identity cannot be resolved from content alone. No per-response-ID deduplication: repeated attempts may be separately billable.",
+  "formal_episode_tags": {
+    "ep_6913e4fcb0548a44": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020899
+    },
+    "ep_6d05f7ccb5062845": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022426500000000002
+    },
+    "ep_9de4920e7b95036f": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020718200000000003
+    },
+    "ep_f059134c3c141ae6": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.018803999999999998
+    },
+    "ep_f308c019bc5fa620": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021979000000000002
+    },
+    "ep_e1096803c70c1275": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021829
+    },
+    "ep_0a0f7f236de861e9": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020411500000000003
+    },
+    "ep_fc1b27d066015b07": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0219215
+    },
+    "ep_dd66d2a67715afd0": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.044313599999999995
+    },
+    "ep_6bc16151591ef4d0": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0446936
+    },
+    "ep_8f80d11a8782081a": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0474986
+    },
+    "ep_ef144722959e6fde": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.040321100000000006
+    },
+    "ep_dd49762f4b7fc14c": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12468570000000001
+    },
+    "ep_c913616dc21fb6cb": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12650319999999998
+    },
+    "ep_b18ad7624ebb1f7d": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0817295
+    },
+    "ep_687dc2f45a408b67": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08224700000000001
+    },
+    "ep_0492d57dca856e82": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08311450000000001
+    },
+    "ep_c687181da487c048": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.082932
+    },
+    "ep_46af7ce8f8788be0": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021276500000000004
+    },
+    "ep_1b1f7ecba9a4e501": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0079821
+    },
+    "ep_3f6bac8948da75f0": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020474
+    },
+    "ep_eefd6e73e7f0ed18": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0206465
+    },
+    "ep_70ef21ad56285e79": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0222265
+    },
+    "ep_c2fc3ab95cb8322b": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0176065
+    },
+    "ep_8d607a0a639aaa4d": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022631500000000002
+    },
+    "ep_ae11d369fdf4647b": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022344000000000003
+    },
+    "ep_3a59eb8243982d3d": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.029391300000000002
+    },
+    "ep_b5c8e36b3e24ec9b": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0205565
+    },
+    "ep_89414e78c31e40d1": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0435861
+    },
+    "ep_537e49727c24617d": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0435686
+    },
+    "ep_89766f92d80f212c": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0465736
+    },
+    "ep_eaaf3c4b8945bcbe": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.038426100000000005
+    },
+    "ep_9421f2ecc8d1ec33": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12169319999999997
+    },
+    "ep_f1aceb36aca6bb21": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12146569999999998
+    },
+    "ep_3ae3deb2d66dd023": {
+      "attempts": 14,
+      "estimated_or_reserved_usd": 0.0760672
+    },
+    "ep_4b387c981f7cec28": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.081287
+    },
+    "ep_79ff53de6582a7f9": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08238200000000001
+    },
+    "ep_ad31ed0ebcd02a2f": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.082797
+    },
+    "ep_f4afad60e8616878": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.029805200000000004
+    },
+    "ep_427ea43047ce2746": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0084571
+    },
+    "ep_f69e668794a23887": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020579
+    },
+    "ep_6bca5190f64eb6b0": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0199665
+    },
+    "ep_9eb83ff267eb8eff": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021522200000000002
+    },
+    "ep_39389f690134f5b1": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0177765
+    },
+    "ep_01f64536e2859de3": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0219365
+    },
+    "ep_f68d3e3542b5cb5a": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021684000000000002
+    },
+    "ep_06092e9b2aac13c1": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021964
+    },
+    "ep_ea795d907e7707f5": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021276500000000004
+    },
+    "ep_3dcc9fb13de3b2c4": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.043113599999999995
+    },
+    "ep_a62973523a577a70": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0426511
+    },
+    "ep_512e2ee202986bae": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.047118600000000004
+    },
+    "ep_6bc5b2aa0f3f0de1": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0384086
+    },
+    "ep_acab7db6e54e45d3": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.11490320000000001
+    },
+    "ep_13095ce06b325c48": {
+      "attempts": 8,
+      "estimated_or_reserved_usd": 0.0941334
+    },
+    "ep_1fafa85e0ea93628": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.080942
+    },
+    "ep_91b02c3e63410094": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0816695
+    },
+    "ep_2e9c492d0af82344": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.082057
+    },
+    "ep_d7e4b2695e973b15": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0819995
+    },
+    "ep_20f52a7afc652b82": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020694
+    },
+    "ep_b23b7108da36ee58": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0077521000000000005
+    },
+    "ep_f99c15b928a27fd1": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.019811500000000003
+    },
+    "ep_0069906d873116d7": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0210015
+    },
+    "ep_381d1dd6e07d7795": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022399000000000002
+    },
+    "ep_13687a115720d64c": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.018244000000000003
+    },
+    "ep_b4de2d68335ed3d3": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0217565
+    },
+    "ep_95723dccc73c5dd2": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0219765
+    },
+    "ep_7c28273270441135": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021719000000000002
+    },
+    "ep_8aaa027f627f3077": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020919
+    },
+    "ep_e97dbc660f566688": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0424411
+    },
+    "ep_8fee855ba7589d2f": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0438761
+    },
+    "ep_491554c2c9afb505": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0467211
+    },
+    "ep_01d912353a3d357a": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.038453600000000004
+    },
+    "ep_409157e87b152efa": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12005319999999998
+    },
+    "ep_b447711ebae31fa0": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12113819999999999
+    },
+    "ep_ea99418a89d77126": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08103450000000001
+    },
+    "ep_32de7996a1c3b0ec": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08078199999999999
+    },
+    "ep_94961e303dac5c7d": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08227949999999999
+    },
+    "ep_9ea6ebfbaa93c931": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0824445
+    },
+    "ep_f20a58901133484a": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020984
+    },
+    "ep_0eaa0b95c401a57b": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0079721
+    },
+    "ep_c63f6ff70355dcd7": {
+      "attempts": 3,
+      "estimated_or_reserved_usd": 0.1262696
+    },
+    "ep_d38be819d0d43b69": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021406500000000002
+    },
+    "ep_6710e0ae04d6bae2": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0229515
+    },
+    "ep_0cbbddf830cf6793": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.017974000000000004
+    },
+    "ep_fae0ce02fe141769": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0222865
+    },
+    "ep_12794900f6c69dd4": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022129000000000003
+    },
+    "ep_919e6ba7cf079864": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022164
+    },
+    "ep_23b1643ba7c5ed1a": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021124
+    },
+    "ep_522039a4d6c23d02": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0440486
+    },
+    "ep_3abc942d5b714d46": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0440986
+    },
+    "ep_eab94401222a0169": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0474411
+    },
+    "ep_e5a4dbbb7cc3677a": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0384436
+    },
+    "ep_1ea74c40189a6eeb": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12352069999999998
+    },
+    "ep_ede13f73886e25fb": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1247607
+    },
+    "ep_ca7c4dcf5f16af16": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.083417
+    },
+    "ep_77465205cf46d115": {
+      "attempts": 14,
+      "estimated_or_reserved_usd": 0.0782797
+    },
+    "ep_0796b066eba1fdeb": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0848045
+    },
+    "ep_d817d39493f1d1d3": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08415199999999999
+    },
+    "ep_9adf8a6bafbde9e3": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0213965
+    },
+    "ep_9bb875dd6e601a3a": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0078171
+    },
+    "ep_5e8fddbd9405ce9f": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021691500000000002
+    },
+    "ep_afb553d6feef1301": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020709
+    },
+    "ep_277d0c0aac9063b4": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0226965
+    },
+    "ep_4759921ec7b0894d": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0190015
+    },
+    "ep_8f18edaf20ff3bf0": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0225165
+    },
+    "ep_82e619e18ee41fbb": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022589
+    },
+    "ep_855a9787abfc76d8": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022519
+    },
+    "ep_677039db48ccf2a0": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0215615
+    },
+    "ep_6e4b4d955abad544": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0459211
+    },
+    "ep_f9adf337490f6c40": {
+      "attempts": 1,
+      "estimated_or_reserved_usd": 0.1156825
+    },
+    "ep_1d8bc718d00653ec": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.047978599999999996
+    },
+    "ep_706664288981b2f0": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1208482
+    },
+    "ep_ef91b55cd9951a8d": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1235382
+    },
+    "ep_869420282a281128": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.084422
+    },
+    "ep_42c56f97fe79bc4e": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0840395
+    },
+    "ep_359ce6c73846189d": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0846595
+    },
+    "ep_5ed225a819bb54ba": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0844545
+    },
+    "ep_b464c66de3464c60": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021041499999999998
+    },
+    "ep_986d646908ffb26f": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0085771
+    },
+    "ep_2560a559603b764c": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.0332663
+    },
+    "ep_f6d84a27335800c0": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0210065
+    },
+    "ep_615fb55fc9ef1f6a": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0220265
+    },
+    "ep_74367e582636b364": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0220415
+    },
+    "ep_38f6f6641ad0421e": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0185315
+    },
+    "ep_1736e050b9229b7b": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021859
+    },
+    "ep_56169543e90792e1": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022384
+    },
+    "ep_58a033d736564aa3": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021949
+    },
+    "ep_c51e4c81dabe1b13": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020839
+    },
+    "ep_97973422e6a701fc": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.04411109999999999
+    },
+    "ep_ddc6fb3db780c06a": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0457236
+    },
+    "ep_77b26c260d83d204": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0465661
+    },
+    "ep_e3276466708534eb": {
+      "attempts": 11,
+      "estimated_or_reserved_usd": 0.0997953
+    },
+    "ep_59294b2ffabede77": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0905361
+    },
+    "ep_dd9a293fc7dc53b2": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0820095
+    },
+    "ep_399b692cce4d458a": {
+      "attempts": 14,
+      "estimated_or_reserved_usd": 0.07642220000000001
+    },
+    "ep_e1a889bf41b74304": {
+      "attempts": 14,
+      "estimated_or_reserved_usd": 0.07616969999999999
+    },
+    "ep_213efb983e1dfd93": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0824145
+    },
+    "ep_2c9a2744219eda30": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020761500000000002
+    },
+    "ep_1854cfc4ba6c08ac": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.007722100000000001
+    },
+    "ep_e1ac86559580256a": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.034386299999999995
+    },
+    "ep_d1a6449b307cc79b": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020394000000000002
+    },
+    "ep_b1472c37c47900f0": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0209165
+    },
+    "ep_7f09be5033f8ad4f": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0228215
+    },
+    "ep_d6c7d8b836d259b5": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0185015
+    },
+    "ep_3f84bd1d5cccb10f": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0222165
+    },
+    "ep_b808c57156a7939f": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0224165
+    },
+    "ep_34071bf02ab9fc6e": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022139
+    },
+    "ep_d7a426ce5cf91d85": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0210315
+    },
+    "ep_baabc16ac22746bc": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0417911
+    },
+    "ep_3c7a07dcbbd9b809": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0433736
+    },
+    "ep_4e3a5a15e6eace3c": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.15429669999999998
+    },
+    "ep_c5c96e99aeb932a3": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12062070000000001
+    },
+    "ep_c1085cadec89949a": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1245407
+    },
+    "ep_bdec8db3472fbfe6": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08253450000000001
+    },
+    "ep_80b781efc78d44fd": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08289949999999999
+    },
+    "ep_e236437900af8029": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.083247
+    },
+    "ep_c66680ea91a08bd9": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0826595
+    },
+    "ep_f38c345da23d6c1e": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0299592
+    },
+    "ep_67630a1bac5c62b5": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0081171
+    },
+    "ep_8294447776f71c0e": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.0330463
+    },
+    "ep_afa1cc1e29d84fbf": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0210715
+    },
+    "ep_da06dc4357c0f746": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0209265
+    },
+    "ep_64e5a2bca02fe100": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0225115
+    },
+    "ep_51acc042bac1715e": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.018106499999999998
+    },
+    "ep_0c4a4e2f711fa63e": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022131500000000002
+    },
+    "ep_f8f2ebeb5179a2da": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021984
+    },
+    "ep_157f80206073542c": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0219065
+    },
+    "ep_8494f2b1b50a7475": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0209115
+    },
+    "ep_a3250cc38ffb4f12": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.04319359999999999
+    },
+    "ep_308998f0a460e4d5": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0468886
+    },
+    "ep_01da6d7b01baf473": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0434011
+    },
+    "ep_420dafb6bf966b37": {
+      "attempts": 8,
+      "estimated_or_reserved_usd": 0.1008034
+    },
+    "ep_32a58a9d62c93ae0": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1255982
+    },
+    "ep_d365a4e311f16162": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.082437
+    },
+    "ep_4e28d44d7336aea8": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08199700000000001
+    },
+    "ep_c655ab8d176e46a0": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.083857
+    },
+    "ep_3b0c4dfc2c0d8345": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.083187
+    },
+    "ep_d077d889447412a6": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0211265
+    },
+    "ep_0b055b0d5124efbf": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0081321
+    },
+    "ep_6505e24391ab1279": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.0343713
+    },
+    "ep_b640aff7958d053c": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020774
+    },
+    "ep_8004e8de4215df25": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021514000000000002
+    },
+    "ep_9525606c3dbb23af": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021996500000000002
+    },
+    "ep_e485d0b18f65109c": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.018234
+    },
+    "ep_263ab295a7c22a9a": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021789
+    },
+    "ep_ab591632106e8169": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0218915
+    },
+    "ep_0437258e229c57d2": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022164000000000003
+    },
+    "ep_9c3c9e23b9fe0ccb": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020296500000000002
+    },
+    "ep_8ff5b18058e65b51": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0434636
+    },
+    "ep_2c5d7189c0cde2d5": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0453036
+    },
+    "ep_c4e75c3fefc9dfd1": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.04682359999999999
+    },
+    "ep_c9b2bd1c4a27ea78": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1186882
+    },
+    "ep_25ef49de77a48f46": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1206732
+    },
+    "ep_d2ed0650efdfb7da": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.081847
+    },
+    "ep_9796ce37e09812d7": {
+      "attempts": 14,
+      "estimated_or_reserved_usd": 0.0758797
+    },
+    "ep_ac27cec4b0f79479": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.082872
+    },
+    "ep_dde2a4cc8a954a24": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08247700000000001
+    },
+    "ep_5dfebc818ce52655": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020664000000000002
+    },
+    "ep_59cc90962b88b2a7": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0077371
+    },
+    "ep_adafb070fb9001cc": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.0335038
+    },
+    "ep_bf5a064aec2482e4": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.019359
+    },
+    "ep_c9f2382acd96ad6c": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020224
+    },
+    "ep_e20416fae8deba04": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021809000000000002
+    },
+    "ep_aec08f825c88a471": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.017461499999999998
+    },
+    "ep_d3b34dd44609dda5": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0215365
+    },
+    "ep_811a19c6eddecd76": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020956500000000003
+    },
+    "ep_b0c792860788a856": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021679
+    },
+    "ep_11717c8dad813aa1": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020464000000000003
+    },
+    "ep_cb563aaa01f7bbd2": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0411111
+    },
+    "ep_1eac9b4fdcff1f2f": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0519838
+    },
+    "ep_5971f8105e6d4647": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.046553599999999994
+    },
+    "ep_a6ac341ebb26af26": {
+      "attempts": 10,
+      "estimated_or_reserved_usd": 0.11862049999999999
+    },
+    "ep_880d18ae47edb51b": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.11429319999999998
+    },
+    "ep_6a46b58558e5b1f9": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.07950199999999999
+    },
+    "ep_e9439a49e69ba06d": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.079032
+    },
+    "ep_ff6da1e4bf43e3d7": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.080252
+    },
+    "ep_21af93c0c0de0ad7": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.07986199999999999
+    },
+    "ep_3eacfab11103192d": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021021500000000002
+    },
+    "ep_3e6842639a9faed6": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0077071
+    },
+    "ep_8b8469c5183d7100": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.0326638
+    },
+    "ep_a547fcb778c4a5a0": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0212215
+    },
+    "ep_9cc72cc36fae53c3": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021764000000000002
+    },
+    "ep_c11a243a6135eeac": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022599
+    },
+    "ep_50250939167214a1": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0185915
+    },
+    "ep_87a48f0474c03ba8": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021899
+    },
+    "ep_70192081acf9d0fd": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0217815
+    },
+    "ep_1f392810a9bb35f3": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0219015
+    },
+    "ep_4f1ebfdc89738296": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0208915
+    },
+    "ep_02a20746b74472fa": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0444386
+    },
+    "ep_59216bb5bdc26ae1": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0449261
+    },
+    "ep_67d361aa537736fb": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0466161
+    },
+    "ep_1282bfd4d464d0c2": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1223457
+    },
+    "ep_eba66df87f4d4473": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12430569999999999
+    },
+    "ep_eb30611990be95a2": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08240199999999999
+    },
+    "ep_dfabd541a77c5893": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08256200000000001
+    },
+    "ep_22a000e96836e35e": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08337699999999999
+    },
+    "ep_776fd95c3b2e9b5f": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0829145
+    },
+    "ep_4eec359590b59c57": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0210415
+    },
+    "ep_172ae65eea7945f6": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0080721
+    },
+    "ep_5b377dc7191c708b": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.0341263
+    },
+    "ep_492149b3b53b6cb9": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020439000000000002
+    },
+    "ep_ed5cdc4019aa0f35": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0213115
+    },
+    "ep_48468964c20289a4": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0219065
+    },
+    "ep_734b7d5021bb5afa": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.018279
+    },
+    "ep_5d35b60ac59c62dd": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0220215
+    },
+    "ep_6e937f1b32521417": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.0254313
+    },
+    "ep_dc2a6445f3a4ec04": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021566500000000002
+    },
+    "ep_985fe77460236c0e": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020419
+    },
+    "ep_5c548bf619174dc0": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0429311
+    },
+    "ep_936e0b031904ce3a": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0447161
+    },
+    "ep_2d9d59bf169648bd": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0465536
+    },
+    "ep_8c8ceeb734a51e76": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.11534319999999998
+    },
+    "ep_ffb16bf904285848": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1167332
+    },
+    "ep_6aa60fb7075be497": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0805245
+    },
+    "ep_0f1bdb79749070d6": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0810595
+    },
+    "ep_8ab99abab842363f": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08179199999999999
+    },
+    "ep_a8f9de242cda6ed3": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08098450000000001
+    },
+    "ep_acfdecd69c41e2ea": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0208765
+    },
+    "ep_2183d0962279b7cd": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0078471
+    },
+    "ep_67158ddb06a62d16": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.0323988
+    },
+    "ep_84aebd043f33386d": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0211865
+    },
+    "ep_18ea63d2ce543827": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021009
+    },
+    "ep_a3ef9ff844d3d23a": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.022269
+    },
+    "ep_7972cba25fe330c6": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.018444000000000002
+    },
+    "ep_a5b9c26efd032fb8": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021906500000000002
+    },
+    "ep_bb1bf4acc5c397eb": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021634
+    },
+    "ep_ca741510ec828263": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021824
+    },
+    "ep_f89e7d8cb19ce174": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020419000000000003
+    },
+    "ep_d6aab6372c0df035": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0444861
+    },
+    "ep_0b50ebae5f13ed95": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.044463600000000006
+    },
+    "ep_3774af0325c3df50": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0474911
+    },
+    "ep_c65ada9e23a9fce4": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1198082
+    },
+    "ep_48c8c5de792aeb28": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12128320000000001
+    },
+    "ep_8231b4c6321be2cd": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08244449999999999
+    },
+    "ep_ef332511794ce607": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08198949999999999
+    },
+    "ep_ef4b64d32b2d9f4b": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.08182700000000001
+    },
+    "ep_c6641a33f2ad0a0f": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0820745
+    },
+    "ep_a4527cde3fd0f3d2": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0208565
+    },
+    "ep_fe1a76f6f652132a": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.0078671
+    },
+    "ep_ebfeadb6bea35c31": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.0338988
+    },
+    "ep_022dfddb02b12e5f": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021134
+    },
+    "ep_4ed91b279e8f21e7": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021304
+    },
+    "ep_409c1d1ac3bfe5e1": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0223565
+    },
+    "ep_b9e9656a942a913a": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0177565
+    },
+    "ep_d0a34aa5b6b9bed5": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0217615
+    },
+    "ep_9dbb702c084ca598": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.021889000000000002
+    },
+    "ep_c4ce0446de827eb4": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0221365
+    },
+    "ep_b4873f1a86a6691d": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.0205765
+    },
+    "ep_ddf50fb42965aff6": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0448761
+    },
+    "ep_776f4b90d3902f75": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0446036
+    },
+    "ep_1e8120583b6caba6": {
+      "attempts": 7,
+      "estimated_or_reserved_usd": 0.0461061
+    },
+    "ep_471049b003427237": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.12129319999999999
+    },
+    "ep_34ec52357ba23701": {
+      "attempts": 9,
+      "estimated_or_reserved_usd": 0.1257257
+    },
+    "ep_d2a4ff2b7c1799eb": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0822495
+    },
+    "ep_0f7856332166989d": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0819545
+    },
+    "ep_65335aae78bca7db": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.0827845
+    },
+    "ep_5844b1b11ad12c5a": {
+      "attempts": 15,
+      "estimated_or_reserved_usd": 0.082527
+    },
+    "ep_ecf05ad1c9d8293b": {
+      "attempts": 5,
+      "estimated_or_reserved_usd": 0.020844
+    },
+    "ep_da1f4a759f02e716": {
+      "attempts": 2,
+      "estimated_or_reserved_usd": 0.008387100000000001
+    },
+    "ep_a1dfcbb3e4bea8ef": {
+      "attempts": 6,
+      "estimated_or_reserved_usd": 0.033428799999999995
+    }
+  }
+}

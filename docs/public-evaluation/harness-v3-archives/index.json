@@ -1,0 +1,82 @@
+{
+  "contents": "Closed Harness v3 protocols, exact execution source, frozen bank, full ledger attempts and public execution traces. No raw gated dataset; frozen public CTgov data distributed separately.",
+  "formal_status": "running; forty unique tasks, four arms, four workers, one order",
+  "files": {
+    "development-protocol.json": {
+      "sha256": "79f81992e91771e25ef8efaf3d0a6a329e990bc154366bc6dbabb6b20e480f25",
+      "bytes": 22658
+    },
+    "development-source.zip": {
+      "sha256": "08167e24764d6189d0b5977cb6ad22c450acbc7bd0c51bb2f5c8f42e72413328",
+      "bytes": 201020
+    },
+    "online-protocol.json": {
+      "sha256": "a71b4b8a2d2407ed050655c45e6d69b105cdc7414d69801853903626250fb9fc",
+      "bytes": 20939
+    },
+    "online-source.zip": {
+      "sha256": "0a51300ad2e8bbf2cf2e71f9ad3d9590ab25f2b08157d7ebc0b46980a553e392",
+      "bytes": 203187
+    },
+    "frozen-development-bank.json": {
+      "sha256": "09bd78be621d54f0a108e7907597a9971416b71a0a4e01488837c734fe314ebc",
+      "bytes": 42048
+    },
+    "development-report.json": {
+      "sha256": "1f4edaab20c1509dc048bca8beab96e5731dc3d9d641aa95d7ed6d41e296f496",
+      "bytes": 618635
+    },
+    "online-report.json": {
+      "sha256": "c6c0e623e26b3342f94cf90badac5d821715660791a2514f53cd2c6b5f58bfcc",
+      "bytes": 26448
+    },
+    "closed-ledgers.zip": {
+      "sha256": "8d58c66f8dc94f408fddaad301b947a207d2fa4cea167f8f25110f48f694159f",
+      "bytes": 88973
+    },
+    "public-execution-traces.zip": {
+      "sha256": "275616aea2c4793c76120db3e738836dbdf098d8b0e28a7e130d1efcd8bcf761",
+      "bytes": 4293529
+    },
+    "formal-protocol.json": {
+      "sha256": "af3d4375dc9c5779f4a2b3336607555970fb8bf04d80550dd60312c90f86e222",
+      "bytes": 63571
+    },
+    "formal-source.zip": {
+      "sha256": "ada6eaec32a91665288a20041cd97955aec05370afd5d331ab4c037f742e230d",
+      "bytes": 204802
+    },
+    "formal-budget-gate.json": {
+      "sha256": "6656ef39de4124d1b9151abac42777a5a308866b844002841beca75bbea9c792",
+      "bytes": 18522
+    },
+    "auxiliary-frozen-sources.zip": {
+      "sha256": "c48dc47db359005d067aecb0efab7a3fcaa03d4c9d222f1ab120d74b85bce7d5",
+      "bytes": 6726535
+    },
+    "formal-preparation-tests.zip": {
+      "sha256": "d276052ab6777d0afbeb2f09ee58d14890775ab3f55683883cba0aba6b9d2cf7",
+      "bytes": 11430
+    }
+  },
+  "protocols": {
+    "development": {
+      "identity_sha256": "a72b1ee75518d94df4a54fe6e6cb627a45132f605ab9fe7ea36f07b981477783",
+      "source_files": 75
+    },
+    "online": {
+      "identity_sha256": "d476c99e60ac6a612bc6c483be3e46d239b96b916b4a0024fe9a4ad0bf67e0be",
+      "source_files": 76
+    },
+    "formal": {
+      "identity_sha256": "323f678f3e5d79934f724505581c4e54063f0e0558bbe2042cdc810ee5fd1416",
+      "source_files": 75
+    }
+  },
+  "public_trace_files": 642,
+  "closed_ledger_files": 4,
+  "credential_scan": "Passed against configured credential byte strings without persisting them",
+  "trace_scope": "Every closed non-runtime JSON recording, proposal, summary and checkpoint under the selected development/online directories; runtime SQLite stores and duplicated snapshots are not in this trace archive.",
+  "auxiliary_source_files": 16,
+  "restore": "Exact execution code is in formal-source.zip. The public core300-sources.zip restores core inputs; auxiliary-frozen-sources.zip restores the remaining evaluation/frozen files under the capsule. Raw Windows protocol path strings identify original execution; use a new protocol/output for a fresh rerun elsewhere. Public traces are recorded outputs, not deterministic promises about new model calls."
+}

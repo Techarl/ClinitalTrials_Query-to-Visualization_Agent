@@ -1,0 +1,63 @@
+{
+  "version": "four-worker-preparation",
+  "workers": 4,
+  "paid_formal_calls": 0,
+  "created_at": "2026-11-01T16:45:39.064391",
+  "tests": {
+    "synthetic": "9 passed",
+    "neo4j": {
+      "workers": 4,
+      "paid_model_calls": 0,
+      "source": "synthetic fixtures only",
+      "same_snapshot": [
+        {
+          "dataset_id": "ds_d887a8ddedc84a8eb34dc55afae00873",
+          "records": 3
+        },
+        {
+          "dataset_id": "ds_d887a8ddedc84a8eb34dc55afae00873",
+          "records": 3
+        },
+        {
+          "dataset_id": "ds_d887a8ddedc84a8eb34dc55afae00873",
+          "records": 3
+        },
+        {
+          "dataset_id": "ds_d887a8ddedc84a8eb34dc55afae00873",
+          "records": 3
+        }
+      ],
+      "distinct_snapshots": [
+        {
+          "dataset_id": "ds_d32391ee49304c72a2774c1cac27aba1",
+          "records": 1
+        },
+        {
+          "dataset_id": "ds_bf98e77c2cf84cd0abe2e849092c7b83",
+          "records": 2
+        },
+        {
+          "dataset_id": "ds_ab7896f070fb4bdebbf232f0c3f6d9ae",
+          "records": 3
+        },
+        {
+          "dataset_id": "ds_4b1452d841c34db89a3e2a7e4f260b1c",
+          "records": 4
+        }
+      ],
+      "passed": true,
+      "fixture_snapshots_cleaned": [
+        "ds_d887a8ddedc84a8eb34dc55afae00873",
+        "ds_d32391ee49304c72a2774c1cac27aba1",
+        "ds_bf98e77c2cf84cd0abe2e849092c7b83",
+        "ds_ab7896f070fb4bdebbf232f0c3f6d9ae",
+        "ds_4b1452d841c34db89a3e2a7e4f260b1c"
+      ]
+    }
+  },
+  "basis": "Explicit user request for four workers received before formal freeze or paid calls. Preserve all forty tasks, four arms, models, prompts, scoring and budget ceiling. Capsule04 retained.",
+  "source_archive": "data/review-followup/harness-v3-capsule05-preparation.zip",
+  "source_archive_sha256": "09e3c6d219d206e3b5107df2a7d16fa712d16d89883af94e88927ad2ca5c5e73",
+  "manifest_sha256": "c9008e7c5e0a1464ab37942d3f04483045206f565349830aaa17c23afa01534a",
+  "code_files": 96
+}

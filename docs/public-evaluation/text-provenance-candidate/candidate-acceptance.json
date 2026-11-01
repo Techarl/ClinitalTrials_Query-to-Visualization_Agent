@@ -1,0 +1,29 @@
+{
+  "verified_at": "2026-11-01T08:17:16.631041+00:00",
+  "candidate_files_hash": "4e822b297c497443bc94710d41b0e24bd784c1c221d5cb006aa86c5d7e04d573",
+  "candidate_file_count": 109,
+  "root_frozen_source_unchanged": true,
+  "candidate_tests": {
+    "passed": 51,
+    "failed": 0,
+    "kind": "normal production imports in candidate cwd",
+    "command": [
+      "C:\\Users\\10664\\Projects\\cheiron_takeHome\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "tests",
+      "-q",
+      "--basetemp",
+      "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api-test-temp-v2"
+    ],
+    "evidence": "Observed pytest stdout: 51 passed in 10.50s"
+  },
+  "http_status": "passed",
+  "run_id": "vr_aadcbbe7e4404dea842137a9083a1a5c",
+  "model_calls": 0,
+  "http_receipt": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api-runtime\\http-acceptance.json",
+  "server_attestation": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api-runtime\\server-attestation.json",
+  "launch_receipt": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api-runtime\\launch-receipt.json",
+  "port": 8012,
+  "limits": "Independent candidate acceptance only, not final root release/full CI; no model-quality or browser-interaction claim."
+}

@@ -1,0 +1,29 @@
+{
+  "version": "harness-v3-formal-launch-v1",
+  "recorded_at": "2026-11-01T08:49:01.264243+00:00",
+  "status": "running",
+  "session_id": 83807,
+  "process_ids": [
+    78084,
+    77604
+  ],
+  "cwd": "data/harness-v3-capsule05",
+  "study": "data/harness-v3-formal05",
+  "workers": 4,
+  "planned_unique_tasks": 40,
+  "arms": 4,
+  "orders": 1,
+  "main_study_ceiling_usd": 53.33,
+  "formal_remaining_usd": 43.9267027,
+  "new_phase_upper_bound_usd": 99.99940090700002,
+  "nli_reserved_usd": 20,
+  "demo_reserved_usd": 0.5,
+  "protocol_file_sha256": "af3d4375dc9c5779f4a2b3336607555970fb8bf04d80550dd60312c90f86e222",
+  "protocol_identity_sha256": "323f678f3e5d79934f724505581c4e54063f0e0558bbe2042cdc810ee5fd1416",
+  "budget_gate_sha256": "6656ef39de4124d1b9151abac42777a5a308866b844002841beca75bbea9c792",
+  "source_archive_sha256": "ada6eaec32a91665288a20041cd97955aec05370afd5d331ab4c037f742e230d",
+  "source_archive_members_verified": true,
+  "credential_scan": "passed",
+  "completed_tasks": null,
+  "note": "Launch receipt only, not a result. Monitor stdout/status counts, never read the active ledger. Cost totals are estimates plus unknown-usage reservations, not invoices."
+}

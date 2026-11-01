@@ -1,0 +1,158 @@
+{
+  "status": "verified",
+  "examples": 4,
+  "turns": 5,
+  "exact_fields_checked": 57805,
+  "results": [
+    {
+      "example": "01_phase",
+      "turns": [
+        {
+          "run_id": "vr_310b8c87067d4d90be1de4007ba7eb30",
+          "results": [
+            {
+              "result_id": "result_5fa80aca9b3138ebed3d6ef0fb9eeb8e",
+              "validated": true,
+              "exact_fields_checked": 14682,
+              "complete_item_sets_checked": true
+            }
+          ]
+        }
+      ],
+      "validated": true
+    },
+    {
+      "example": "02_followup",
+      "turns": [
+        {
+          "run_id": "vr_578df654103845c3bacd4be472d56ffc",
+          "results": [
+            {
+              "result_id": "result_69a090eb425f05bcfea9d0ded4e83678",
+              "validated": true,
+              "exact_fields_checked": 15453,
+              "complete_item_sets_checked": true
+            }
+          ]
+        },
+        {
+          "run_id": "vr_b767a7e44a58448d93a923494279e2e6",
+          "results": [
+            {
+              "result_id": "result_93bfdcb713e5fc5e4270cb33f06b44a2",
+              "validated": true,
+              "exact_fields_checked": 15453,
+              "complete_item_sets_checked": true
+            }
+          ]
+        }
+      ],
+      "validated": true
+    },
+    {
+      "example": "03_comparison",
+      "turns": [
+        {
+          "run_id": "vr_8b3508e85e114fb8b10275ed8e1c70d0",
+          "results": [
+            {
+              "result_id": "result_5ff58fbb5ece42e1d673dd87231b1a7e",
+              "validated": true,
+              "exact_fields_checked": 5933,
+              "complete_item_sets_checked": true
+            }
+          ]
+        }
+      ],
+      "validated": true
+    },
+    {
+      "example": "04_scatter",
+      "turns": [
+        {
+          "run_id": "vr_d77b442157004195b23d4d3f8a30136e",
+          "results": [
+            {
+              "result_id": "result_874ac12adaea8fee19304f2963b36186",
+              "validated": true,
+              "exact_fields_checked": 6284,
+              "complete_item_sets_checked": true
+            }
+          ]
+        }
+      ],
+      "validated": true
+    }
+  ],
+  "limits": "Checks original exported artifacts, complete contributor sets and raw fields. This is not a fresh model run or a broad natural-language benchmark.",
+  "verification_source_sha256": {
+    "app/agent.py": "3dff43ee1c111f8fb4b777d363096904c77a858ba9e9728f9ae7562dbc1e35ac",
+    "app/analysis.py": "f9352371fe3df65c0bbfd5c9cb65364e357028892c07219fc018c4bc43b916ef",
+    "app/cli.py": "94f737877c2f32f14401780212c4d5471d3edd2c3fb3b97f363fbe47e9ea12b9",
+    "app/config.py": "c62df2e1cfa2024953db1a7588e880640b8a4105fdd9ca0ae14d3ee31980aceb",
+    "app/context.py": "cfa7fec2505483d3bb0dabfe7bdae754c21991b6be901acb8f461e72e3204c8f",
+    "app/diagnostics.py": "8ced97486da7fb04779b442742108220ac9a8a3f2802d720b3c98c3a2273e948",
+    "app/examples.py": "b3fd64c351fd070da7764331c37c60ef3a6a3cdcce9e52fc5c73b14c25a8b747",
+    "app/extensions.py": "9c885502b1bd40766de60198b4607e2c34eba3c2145a8794cba28d1f026dcd94",
+    "app/graphdb.py": "cf0cd67590c45a7fbfadba715644053239317b57fb4fa25de9804f45552dce73",
+    "app/handwritten_demo.py": "97f3b82b32573a8823608ecce063a801644e4b1ed7b6ba2c7d2364477cb626ba",
+    "app/main.py": "52bb2e56129a966bc6ced59461ceaaccc7e2e54e0a51ee07eea3b29edfba8a07",
+    "app/models.py": "2a079400dff7fdc3a2b3f438d8dd4d7c6669be104e75759080eefbdf44e835b0",
+    "app/providers.py": "3b7aa9013dff50044a6d87743af1eacf14663b6fd1e711fe71470d6f4ec3a1f6",
+    "app/reference.py": "33b822b72be549a828991be461fc946de4d80519d69a17729a7cd4c0b53903a0",
+    "app/semantic_eval.py": "bc6ee5a8bbe61b0f4ac3e5363d9463cd93e398f0acfc0dfb49632212c5a6360b",
+    "app/service.py": "f1cd18bba6e29a85e8bc7ddf7b6117d6c57910f2e62dc7df1bb2cb2b7c4cfaba",
+    "app/sources.py": "dd3dd80b29b6d3f133959dadfb72854d37c08f1a5f006ee5cf16cc63677cf5ff",
+    "app/storage.py": "7909a7837a5d0044ec4baae1066bc08ec4d18fc38f05d7f44e33c42b992c8131",
+    "app/verify_examples.py": "4d3321e24e9a8560c87ed7e3cb3b096bcce2f9323bf35c8ee543fe226f4e3555",
+    "app/__init__.py": "53e1f8b3233ee1a0680549ced4cd2435edf953fc2e3df6cabfc72350240a753d",
+    "app/v2/acquisition.py": "3f6ab49631504fea20d9744a21d4e312a03fd5d3d28f8a98dbb48361b6d5f7a4",
+    "app/v2/agent.py": "174c900edfe5b1592e97a091e9d6b0dbcd657786e106037c355f28270a9580ff",
+    "app/v2/api.py": "6c7a4083ce844c9e4bf4e5df6f054aa107354a2915fe8ff49c0f169407499bd3",
+    "app/v2/charts.py": "a02df8023205c95010aa441b672e874941050490fe445cb8d2b548491b6bd12b",
+    "app/v2/cli.py": "9efb8b53e8af3c0f9afe486b1a15708076e5ceb197dc619526618a9199f40974",
+    "app/v2/context.py": "a1d1c1e96fc28a3173ad5a30532dd39713a064ba4b4ce4e92d139a1ffd49ec74",
+    "app/v2/contracts.py": "cd7295e2d8bfb3308f823ad6f2c2a172dc97f2e42ea5c2a2173a889ba0052689",
+    "app/v2/costs.py": "256e1cfa2e80e41757e45663828286b34443343d18f9f601d94be9e7fe7b911a",
+    "app/v2/dates.py": "142ddc1999cac3078c8f1ccd911224581d9fddf0fb181a858704d4e3566ca5a5",
+    "app/v2/entities.py": "2c0be49b66827e30d8c1b4b16e3eab4a40327a5ae1fe4636bb429f4eea2b8083",
+    "app/v2/evidence_selection.py": "cc878e5dea0025bd2cac65cdfba12712bb74e8ad56193461bf8e5adc6db84cc0",
+    "app/v2/integrations.py": "bfb5ed03d1e753bf19687784d7207e31f69ae0c06f373810ef12c29de85e0984",
+    "app/v2/mcp_server.py": "55b9133a7d5930b9bf9939431fddb5db79d0c3383ac312d5689e4ad0acf4a708",
+    "app/v2/overview.py": "b5bc7d33aff4131c6843f0b148b670a22bd6ea5ff3288422a82a62db59b41531",
+    "app/v2/pubmed.py": "f6a4b0f1eae097c2698db016b7044ee66888350845d1dcab57dedae5aa723900",
+    "app/v2/reading.py": "59206c7648df6a75980306dab4fc77cd5da39f44af1506a6f060712373d05a1e",
+    "app/v2/receipts.py": "55030032bd8a16e10e78b4d3379a1119fd451451449e1b00a66f70979f0e71b1",
+    "app/v2/skills.py": "e50113320497c9b84082f61998b927e7dfba0e85ed3916c71a80c8f58a199bbd",
+    "app/v2/store.py": "f2d20ab0284f6c78f4285bf93b3ce395a8c190587f281ebb7a1d8cfc2d893aee",
+    "app/v2/tools.py": "a77d59dbbeb79c52e33631992ea299e3b42dcdb4cc9b00332373ae39898340eb",
+    "app/v2/verify.py": "b712b15f2a49367b10ca1611cb43bda99955a4b04d068cd7cf2e22382addded1",
+    "app/v2/__init__.py": "41a9d5209460e4192e110fa27e5f5ec3de4eb0d325817f893181e95a15e94463",
+    "scripts/archive_core_sources.py": "ead2cbc0ca4dc4c9762f31d6bfe17aaab9ee570720d29572bc535f3573629105",
+    "scripts/audit_core300_selection.py": "bfd463d35cfae56c4f23822fa56ea488c5f2a371f6859d9dba8cefea641f8190",
+    "scripts/audit_passage_extraction.py": "994c4ff5780c78982282c7794e67e1fe7d4e2e9292e2196ab80ed7102b6d6f34",
+    "scripts/build_semantic_cases.py": "59a8f2ce310fb7a75ac9d3eb26a55aee67ff95dec0ef3aff7ff93fc643d9a2d9",
+    "scripts/download_public_benchmarks.py": "0bb2c12b2f6224e795e93406ad21eabfebbb435c813bd1cc4bb23075984691b7",
+    "scripts/export_schemas.py": "3d4a38fbc025c464f8df497e7b2af084522d1e47094165fe1a75a020f45f1f1d",
+    "scripts/export_v2_examples.py": "b5a0475a3aa288fda2678a88b509b82817a028d4e20822a86ffc9da470e1347d",
+    "scripts/export_vnext_results.py": "4a32975fd8c789824896a8bfea7af825705a6df2e4865dfcb9a347ed0ffa6a9b",
+    "scripts/package_submission.py": "a8442ab3b82b344be30fc0a4cd2fae7d5517305b2ef48eeec79b3928f91b3040",
+    "scripts/register_passage_scope_control.py": "37526545b72e747e9860cf02bfd84debab319aa39dca5b759c32e6fb677cb5ec",
+    "scripts/replay_frozen_examples.py": "6287345c96ec0357b6adb494fb8c350897ccb81acc621585fdb1f47eba8fa4df",
+    "scripts/report_core300.py": "e6dd1e6e7782c281cc10aeec17da4e775e657ea34ed4957e918a5dcdbe660427",
+    "scripts/report_passage_gap.py": "fb9c98cc80e34523288b4bd6624666687814b5d5e99d452ec5e70d73c6122374",
+    "scripts/report_passage_selection.py": "c5798aac952307a0a7cb19f63ba55f545924b2c1aab0f41b636fdc1d8e121b33",
+    "scripts/report_public_nli.py": "4921e3f43139fbab6cafc04fb902d4eda25eb1ed0ea972da806eb1642db097b7",
+    "scripts/report_trialqa.py": "f31459f22e137918ea5617d10ab422215364afc81010a8b470bf17387196e9ef",
+    "scripts/setup_passage_reranker.py": "cac99d3e009729d73676795710c268bb5f8f3fd6131e9b6a7861017e1a82bb62",
+    "scripts/smoke_docker.py": "59b83fe7c8bb99f8b1975eb38d252cf07e7a66fb7dfd4b4cb37b91f6b6fc16b3",
+    "scripts/summarize_harness.py": "d224ff5506eaf4631127cf82bc5c5f4b05386d674df46daaac640dd2c04693c1",
+    "scripts/verify_v2_examples.py": "57a8ed791458513790c751cc8d17ea43e5cc535b569334b61e25b02f4b6108c1",
+    "scripts/vnext_http_acceptance.py": "5731d79e179ebaafcae1ac11ac4cc7c23c2b65e11d8df0a3497107c2100f9d86",
+    "scripts/vnext_mcp_smoke.py": "7725046a0cfd8b704dc6b5dd56ea38355a01f411d19200814abe14d6884ce229",
+    "scripts/vnext_overview_smoke.py": "0f98fc882e83787cd7b7dff86125198b57db60f3a0d561a2272136d69413223a",
+    "scripts/vnext_smoke.py": "9bc7ecd75078ff3f1906ffb385513d4ee5667e355c08dd8fc4cb64881ba32f61",
+    "scripts/vnext_text_http_acceptance.py": "83197dcd4587871cc777a320794b0301b7c20141212119ac07ab05f222220ff9",
+    "scripts/vnext_wide_smoke.py": "00c84a91767534744061b0004aa7a2ec1b2e1a70182ee42d9c4398d793857894"
+  }
+}

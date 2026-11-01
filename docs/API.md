@@ -2,6 +2,44 @@
 
 Models are in `app/models.py`. `/openapi.json` exposes API schemas and `/capabilities` the plan schema. Unknown request fields are rejected. Cohorts are study collections, not patient-level cohorts.
 
+## V2 portable text citations and evidence exports
+
+The frontend supports the additive `text-finding-v1` metadata contract below. **Deployment note:** its backend implementation is prepared in `data/review-followup/portable-text-provenance.patch` and must be applied after the frozen formal evaluations finish. Until then, existing answers use the legacy fallback; this section does not claim the pending backend patch is already serving requests.
+
+An answer artifact (`source_type: "answer"`) contains `metadata.answer`, `metadata.findings`, and limitations. The model supplies only each finding's `source_handle`, JSON Pointer `pointer`, and exact `quotation`. The server derives source metadata from the owned immutable record; model-provided URLs and provenance are not accepted.
+
+| Finding field | Meaning |
+| --- | --- |
+| `provenance.version`, `resolution` | `text-finding-v1`, `exact` for the new recorded metadata |
+| `provenance.source_type`, `document_id`, `title`, `url` | ClinicalTrials.gov record/NCT ID or PubMed article/PMID, source title, and official URL constructed from its identity |
+| `provenance.citation_id` | Deterministic citation identity for the document version, source pointer, and quotation |
+| `provenance.source_hash`, `source_hash_scope` | SHA-256 of the canonical saved readable source container, labelled `canonical_source_text_container` |
+| `provenance.document_hash`, `document_pointer` | SHA-256 of the individual trial/article JSON and its position in the saved container |
+| `provenance.field_value_hash`, `quotation_hash` | Separate hashes of the exact resolved field value and quotation |
+| `provenance.receipt_hash`, `retrieved_at` | Optional acquisition receipt hash and saved retrieval time; null where not recorded. A PubMed receipt hash describes the acquisition XML, distinct from the readable JSON hashes |
+| `provenance.hash_serialization` | `canonical_json_v1`; hashes describe saved content, not current live webpage bytes |
+| `provenance.version_notice` | Explicit notice that current content at the official URL may differ from the saved version |
+| `source_field.pointer`, `value_included`, `value` | Exact source pointer and field value when included; false/null when omitted |
+| `source_field.exact_quoted_value`, `serialized_character_count`, `omission_reason` | Exact quotation, field size, and an explicit explanation when the full field is omitted |
+
+Whole source containers/documents are not embedded in every finding. Other resolved fields are included only up to 32,000 serialized characters. Larger fields retain the exact quotation, length and hash with `field_exceeds_32000_characters`; whole documents use `whole_source_container`. An omitted value is not an empty source field. Exact quotation/source verification does not establish semantic entailment of the generated answer.
+
+`GET /v2/runs/{run_id}/export?format=evidence` retains the existing chart map entries (`evidence_set_id` → complete evidence page). When answer artifacts are present, it additionally includes the reserved key `__text_evidence__`:
+
+```json
+{
+  "ev_chart_example": {"citations": [], "total_contributors": 0},
+  "__text_evidence__": {
+    "schema": "text-evidence-v1",
+    "artifacts": [{"result_id": "answer_example", "goal_id": "answer", "findings": []}]
+  }
+}
+```
+
+This illustration describes the container shape, not a real result. The text export's findings include the original handle/pointer/quotation plus provenance and exact field values subject to the bounds above. Consumers must treat `__text_evidence__` separately from statistical contributor sets; it is not a chart evidence ID. Chart-only exports keep the original shape. Answer-only results expose the evidence download in the UI; mixed runs label it as chart and text source evidence. CSV remains for chart data.
+
+The normal JSON result export and read-only share result preserve the same artifact metadata. Legacy artifacts remain readable: missing provenance is not inferred from IDs mentioned in a quotation. The text evidence export marks it as `resolution: "not_recorded"` with an explicit notice. The UI shows its original quotation, pointer and internal handle, without inventing an official link. For enriched citations the UI links only an exact recognised official URL/identity combination and displays fields, hashes, and the version notice in an expandable panel.
+
 ## POST /analyze
 
 | Field | Type | Default and validation |

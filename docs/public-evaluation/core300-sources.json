@@ -1,0 +1,249 @@
+{
+  "populations": [
+    {
+      "dataset_id": "ds_07dcd2c0a6d7472083ec15de44e6e280",
+      "query": {
+        "query.cond": "\"asthma\"",
+        "query.intr": "(\"omalizumab\")"
+      },
+      "expected_count": 116,
+      "retrieved_unique_count": 116,
+      "complete": true,
+      "raw_hash": "e9da6a96cda159ba42818be08d0ace4989ee9c53e47dffdeb6c4829e4a8f71e2",
+      "finished_at": "2026-11-01T05:53:44.554759+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_0bdbc24714324140b2f82b947c2cab11",
+      "query": {
+        "query.cond": "\"Crohn disease\"",
+        "query.intr": "(\"infliximab\")"
+      },
+      "expected_count": 191,
+      "retrieved_unique_count": 191,
+      "complete": true,
+      "raw_hash": "a13e30714fcf4c676fd34c79de617214f6e16901408f954d29237cbc3898c14a",
+      "finished_at": "2026-11-01T05:55:11.583062+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_0d4a262c0c844bcaa9543edfa206b02c",
+      "query": {
+        "query.cond": "\"breast cancer\"",
+        "query.intr": "(\"trastuzumab\")"
+      },
+      "expected_count": 1333,
+      "retrieved_unique_count": 1333,
+      "complete": true,
+      "raw_hash": "b25c14c174f6f21956106c524c269499bbeec86b5fa37c67b02ac7f710b883e8",
+      "finished_at": "2026-11-01T05:54:57.186521+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_113e143471ab41d1b3d75a150be1ca1f",
+      "query": {
+        "query.cond": "\"rheumatoid arthritis\"",
+        "query.intr": "(\"adalimumab\")"
+      },
+      "expected_count": 242,
+      "retrieved_unique_count": 242,
+      "complete": true,
+      "raw_hash": "bffa648ba1435043129a5369ec91940f99a6be9ab78eb56691c2d86a588e8fd3",
+      "finished_at": "2026-11-01T05:53:59.455022+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_117c477e444546bab855e0a4cc8db76c",
+      "query": {
+        "query.cond": "\"non-small cell lung cancer\"",
+        "query.intr": "(\"osimertinib\")"
+      },
+      "expected_count": 320,
+      "retrieved_unique_count": 320,
+      "complete": true,
+      "raw_hash": "d1043bead68f36983c66b04b6e68a629bc5dadbd02be6170cc11d28f67ca35a1",
+      "finished_at": "2026-11-01T05:54:16.773972+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_1f6f7bb6797f42638aef1913b6331177",
+      "query": {
+        "query.cond": "\"multiple sclerosis\"",
+        "query.intr": "(\"ocrelizumab\")"
+      },
+      "expected_count": 140,
+      "retrieved_unique_count": 140,
+      "complete": true,
+      "raw_hash": "cb598dbcc35970bc6457668bd2a2e12d38cb0d700554c636c434600ffc670142",
+      "finished_at": "2026-11-01T05:55:16.156648+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_3c87a7538a004f0ea49a0b86e91bc670",
+      "query": {
+        "query.cond": "\"depression\"",
+        "query.intr": "(\"esketamine\")"
+      },
+      "expected_count": 109,
+      "retrieved_unique_count": 109,
+      "complete": true,
+      "raw_hash": "564b5fa071452c1e2dd40b710c3cee2a8d4f57fc258c8142d8ec02b7fd019be1",
+      "finished_at": "2026-11-01T05:55:34.540799+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_7517c34f9e224af0ac659f6a11e9e6cc",
+      "query": {
+        "query.cond": "\"obesity\"",
+        "query.intr": "(\"semaglutide\")"
+      },
+      "expected_count": 364,
+      "retrieved_unique_count": 364,
+      "complete": true,
+      "raw_hash": "a5249365b327256f1d7543adde5ab3d51112e99726419c8187aa0360bcd6e28e",
+      "finished_at": "2026-11-01T05:55:50.530606+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_8afc7eda6e544be0ae9c7206f86639b6",
+      "query": {
+        "query.cond": "\"prostate cancer\"",
+        "query.intr": "(\"enzalutamide\")"
+      },
+      "expected_count": 415,
+      "retrieved_unique_count": 415,
+      "complete": true,
+      "raw_hash": "60b696016e8e4ecff65db65cfa794aefbbd6cfbcb228907effeb1736350364f9",
+      "finished_at": "2026-11-01T05:55:27.965343+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_a3e219c2b6734b35901e923d6d2f01e1",
+      "query": {
+        "query.cond": "\"psoriasis\"",
+        "query.intr": "(\"secukinumab\")"
+      },
+      "expected_count": 149,
+      "retrieved_unique_count": 149,
+      "complete": true,
+      "raw_hash": "faf1e882f8c54732b9bf6c878a4c20a096005cd7a57ea2ed4e1f4339baac4cdb",
+      "finished_at": "2026-11-01T05:53:38.509097+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_a958afc813a24914bd37e0f7466fc5a3",
+      "query": {
+        "query.cond": "\"ovarian cancer\"",
+        "query.intr": "(\"olaparib\")"
+      },
+      "expected_count": 149,
+      "retrieved_unique_count": 149,
+      "complete": true,
+      "raw_hash": "bebd15d401cde90015e8c988174ceacf33b51e6e5ae7252f770fe901965db833",
+      "finished_at": "2026-11-01T05:55:44.484128+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_ab8e7eae617644e397362a1abe5b47f4",
+      "query": {
+        "query.cond": "\"melanoma\"",
+        "query.intr": "(\"pembrolizumab\")"
+      },
+      "expected_count": 400,
+      "retrieved_unique_count": 400,
+      "complete": true,
+      "raw_hash": "5fc9be4c69e6918d4aeaba930ad9082a52facf4debfbe00d771e8cbe67ad75a3",
+      "finished_at": "2026-11-01T05:53:31.437579+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_bb1bf54d566c4a42940e5259d27d70ea",
+      "query": {
+        "query.cond": "\"migraine\"",
+        "query.intr": "(\"erenumab\")"
+      },
+      "expected_count": 66,
+      "retrieved_unique_count": 66,
+      "complete": true,
+      "raw_hash": "1e1ce928d458c6f8bd58966adf8d279cd867b1db9c3bb1089cac2e27836bf0c8",
+      "finished_at": "2026-11-01T05:55:22.210151+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_c5dc196b3c784b2f8e0d54f8608ec06d",
+      "query": {
+        "query.cond": "\"type 2 diabetes\"",
+        "query.intr": "(\"empagliflozin\")"
+      },
+      "expected_count": 269,
+      "retrieved_unique_count": 269,
+      "complete": true,
+      "raw_hash": "d9df0570621e75317737aa93ec5dc7562fc61355d01d9c3e5fb52c9f525add13",
+      "finished_at": "2026-11-01T05:54:05.485800+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    },
+    {
+      "dataset_id": "ds_c947f9cfd1874ff896079a11c8483d07",
+      "query": {
+        "query.cond": "\"ulcerative colitis\"",
+        "query.intr": "(\"vedolizumab\")"
+      },
+      "expected_count": 113,
+      "retrieved_unique_count": 113,
+      "complete": true,
+      "raw_hash": "3c3c95827cd6f2bfefc227b66281832e65d29fa9c4d6ea3d4b0491f019fd582a",
+      "finished_at": "2026-11-01T05:55:06.781053+00:00",
+      "source_version_after": {
+        "apiVersion": "2.0.5",
+        "dataTimestamp": "2026-10-30T09:00:04"
+      }
+    }
+  ],
+  "population_count": 15,
+  "population_record_sum": 4376,
+  "unique_trial_count": 4349,
+  "runtime_manifest_count": 19,
+  "note": "The 15 primary populations overlap; sum of population records is not unique trials. The replay also exposes registered auxiliary snapshots. Frozen official query results are not an independently adjudicated ontology or universal drug-alias recall benchmark."
+}

@@ -1,0 +1,27 @@
+{
+  "executable": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\.venv\\Scripts\\python.exe",
+  "cwd": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api",
+  "imports": {
+    "app.main": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api\\app\\main.py",
+    "app.v2.agent": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api\\app\\v2\\agent.py",
+    "app.v2.tools": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api\\app\\v2\\tools.py",
+    "app.v2.reading": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api\\app\\v2\\reading.py",
+    "app.v2.api": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api\\app\\v2\\api.py",
+    "evaluation.scorers": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api\\evaluation\\scorers.py",
+    "evaluation.runtime": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api\\evaluation\\runtime.py"
+  },
+  "import_sha256": {
+    "app.main": "52bb2e56129a966bc6ced59461ceaaccc7e2e54e0a51ee07eea3b29edfba8a07",
+    "app.v2.agent": "392fd4d4b4a8f9da9ca9e010afd40ba94a652b9d4f6cbdcf64bbb2744518b2b1",
+    "app.v2.tools": "333e1081926f9b1a50740806730af5e1e8bfbd665e8d8d769dab6c8cdaace94f",
+    "app.v2.reading": "77e9071907d1625b8fc50095bce491b39f343c03e7f9b7781c6b237d5f9aaa98",
+    "app.v2.api": "48e86e33e8737088b3e74472ddda49ff79816a65338806c9947e402dac612a4b",
+    "evaluation.scorers": "9c93738c9073bb7379afc38a3d6d3b4f7ae0265715b11b486096260ae9b55ab5",
+    "evaluation.runtime": "9d194aff67191f766c29738732292e4c3a834cdaf793142c3f633038d572aac7"
+  },
+  "app_data_dir": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\release-candidate-api-runtime",
+  "host": "127.0.0.1",
+  "port": 8012,
+  "automatic_recovery_initial_state": "fresh empty runtime",
+  "no_model_calls_requested": true
+}

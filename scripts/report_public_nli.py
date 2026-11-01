@@ -12,6 +12,8 @@ from zipfile import ZipFile
 
 ARMS = ["hybrid", "cross_encoder", "jev", "luna", "full"]
 SEED = 20261101
+COMPARISONS = [(arm, baseline) for baseline in ("hybrid", "full") for arm in ARMS if arm != baseline]
+COMPARISONS += [("jev", "luna"), ("jev", "cross_encoder")]
 
 
 def digest(value):
@@ -140,11 +142,28 @@ def validate_and_sanitize(report, protocol, strata, *, expected_cases=500, expec
         if type(source.get("complete")) is not bool:
             raise ValueError("Missing complete-evidence metric")
         answer_planned = key[0] in answer_ids
+        if completed:
+            selected, ranking = source.get("selected_ids"), source.get("ranking")
+            for items in (selected, ranking):
+                if not isinstance(items, list) or any(not isinstance(item, str) for item in items):
+                    raise ValueError("Missing or invalid selected/ranked IDs")
+                require_unique(items, "selected/ranked evidence IDs")
+            if not set(selected) <= set(ranking):
+                raise ValueError("Selected evidence outside the ranked pool")
+            if key[1] != "full" and len(ranking) > params["candidate_limit"]:
+                raise ValueError("Ranking exceeds frozen candidate limit")
+            if key[1] == "full" and selected != ranking:
+                raise ValueError("Full-text control did not retain its full ranked source")
         if completed and answer_planned:
             if type(source.get("answer_correct")) is not bool or not isinstance(source.get("answer"), dict):
                 raise ValueError("Planned answer missing from completed result")
             if type(source["answer"].get("citation_ids_valid")) is not bool:
                 raise ValueError("Missing citation validation")
+            citations = source["answer"].get("evidence_ids")
+            if not isinstance(citations, list) or any(not isinstance(item, str) for item in citations):
+                raise ValueError("Missing answer citation IDs")
+            if source["answer"]["citation_ids_valid"] != (set(citations) <= set(selected)):
+                raise ValueError("Citation membership flag disagrees with selected evidence")
         if not answer_planned and (source.get("answer") or source.get("answer_correct") is not None):
             raise ValueError("Unexpected answer outside frozen subset")
         # Never export statement text, selected sentences, predictions, or official gold.
@@ -157,15 +176,23 @@ def validate_and_sanitize(report, protocol, strata, *, expected_cases=500, expec
             "citation_ids_valid": bool(
                 completed and answer_planned and source.get("answer", {}).get("citation_ids_valid")
             ),
+            "nonempty_citations": bool(completed and answer_planned and source["answer"]["evidence_ids"]),
         }
         for field in ("context_tokens", "ranking_seconds"):
             value = source.get(field)
-            if completed and value is not None:
+            if completed:
                 if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
                     raise ValueError("Invalid execution measurement")
+                if field == "context_tokens" and (type(value) is not int or (key[1] != "full" and value > params["context_tokens"])):
+                    raise ValueError("Context exceeds frozen selection budget")
                 indexed[key][field] = value
     if len(indexed) != expected_cases * len(ARMS):
         raise ValueError("Incomplete formal report: every planned case/arm must be terminal")
+    for case_id in ids:
+        pools = [set(source["ranking"]) for source in report["cases"]
+                 if source["id"] == case_id and source["status"] == "completed" and source["arm"] != "full"]
+        if pools and any(pool != pools[0] for pool in pools[1:]):
+            raise ValueError("Selectors used different candidate pools")
     rows = []
     safe_strata = (
         "case_id",
@@ -207,6 +234,7 @@ def summarize(rows):
         values = [r["arms"][arm] for r in rows]
         answers = [r["arms"][arm] for r in rows if r["answer_planned"]]
         latency = [r["ranking_seconds"] for r in values if "ranking_seconds" in r]
+        context_lengths = [r["context_tokens"] for r in values if "context_tokens" in r]
         output[arm] = {
             "planned": n,
             "completed": sum(r["completed"] for r in values),
@@ -215,12 +243,22 @@ def summarize(rows):
             "complete_evidence": wilson(sum(r["complete_evidence"] for r in values), n),
             "answer_correct": wilson(sum(r["answer_correct"] for r in answers), answer_n),
             "valid_citation_ids": wilson(sum(r["citation_ids_valid"] for r in answers), answer_n),
+            "nonempty_citations": wilson(sum(r["nonempty_citations"] for r in answers), answer_n),
+            "answer_correct_with_nonempty_valid_ids": wilson(
+                sum(r["answer_correct"] and r["citation_ids_valid"] and r["nonempty_citations"] for r in answers), answer_n
+            ),
             "mean_evidence_recall": sum(r["evidence_recall"] for r in values) / n if n else None,
             "mean_evidence_precision": sum(r["evidence_precision"] for r in values) / n if n else None,
             "implementation_ranking_latency": {
                 "successful_samples": len(latency),
                 "p50_seconds": percentile(latency, 0.5),
                 "p95_seconds": percentile(latency, 0.95),
+            },
+            "serialized_context_tokens": {
+                "successful_samples": len(context_lengths),
+                "mean": sum(context_lengths) / len(context_lengths) if context_lengths else None,
+                "p50": percentile(context_lengths, 0.5), "p95": percentile(context_lengths, 0.95),
+                "scope": "cl100k_base count of selected passage JSON only; excludes question, instructions and model output",
             },
         }
     return output
@@ -240,9 +278,7 @@ def aggregate(rows, *, draws=4000):
                     metric: paired_cluster_difference(subset, arm, baseline, metric, draws=draws)
                     for metric in ("complete_evidence", "answer_correct")
                 }
-                for baseline in ("hybrid", "full")
-                for arm in ARMS
-                if arm != baseline
+                for arm, baseline in COMPARISONS
             },
         }
     return output
@@ -255,19 +291,32 @@ def ledger_summary(ledger):
     known = unknown = embeddings = 0.0
     unknown_count = embedding_count = 0
     models, stages = Counter(), defaultdict(lambda: {"attempts": 0, "estimated_or_reserved_usd": 0.0})
+    arm_costs = defaultdict(lambda: {"attempts": 0, "known_cost_usd": 0.0,
+                                   "unknown_usage_attempts": 0, "unknown_reserved_usd": 0.0,
+                                   "estimated_or_reserved_usd": 0.0})
     for event in events:
         metadata = event.get("metadata") or {}
         model = metadata.get("reported_model") or metadata.get("requested_model") or "unknown"
         models[model] += 1
         if event["status"] == "completed":
             cost = event["estimated_cost_usd"]
-            known += cost
         else:
             cost = event["reserved_upper_estimate_usd"]
-            unknown += cost
-            unknown_count += 1
         if type(cost) not in (int, float) or not math.isfinite(cost) or cost < 0:
             raise ValueError("Invalid ledger cost")
+        if event["status"] == "completed":
+            known += cost
+        else:
+            unknown += cost
+            unknown_count += 1
+        arm = event.get("arm") if event.get("arm") in ARMS else "shared_or_unattributed"
+        arm_costs[arm]["attempts"] += 1
+        arm_costs[arm]["estimated_or_reserved_usd"] += cost
+        if event["status"] == "completed":
+            arm_costs[arm]["known_cost_usd"] += cost
+        else:
+            arm_costs[arm]["unknown_usage_attempts"] += 1
+            arm_costs[arm]["unknown_reserved_usd"] += cost
         embedding = "embedding" in model
         if embedding:
             embeddings += cost
@@ -287,19 +336,25 @@ def ledger_summary(ledger):
         "embedding_cost_usd": embeddings,
         "model_attempts": dict(models),
         "stages": dict(stages),
+        "nli_arm_costs": dict(arm_costs),
+        "attribution_note": "Only explicit NLI arm tags are assigned. Embedding and untagged/unknown-model attempts stay shared or unattributed; do not interpret identified embedding counts as complete when usage is missing.",
     }
 
 
 def accounting(paths):
-    """Deduplicate supplied file aliases/copies, never collapse genuine repeated API attempts."""
-    studies, seen, skipped = {}, set(), []
+    """Deduplicate the same physical file, not independent equal-content ledgers."""
+    studies, seen_paths, seen_content, skipped, identical = {}, [], {}, [], []
     for name, path in paths.items():
-        ledger = read(path)
-        fingerprint = digest(ledger)
-        if fingerprint in seen:
+        path = Path(path).resolve(strict=True)
+        if any(path.samefile(previous) for previous in seen_paths):
             skipped.append(name)
             continue
-        seen.add(fingerprint)
+        seen_paths.append(path)
+        ledger = read(path)
+        fingerprint = digest(ledger)
+        if fingerprint in seen_content:
+            identical.append({"ledger": name, "same_content_as": seen_content[fingerprint]})
+        seen_content[fingerprint] = name
         studies[name] = {"ledger_sha256": fingerprint, **ledger_summary(ledger)}
     totals = {
         k: sum(study[k] for study in studies.values())
@@ -317,9 +372,11 @@ def accounting(paths):
         "studies": studies,
         "totals": totals,
         "duplicate_ledger_inputs_skipped": skipped,
+        "identical_content_ledgers_retained": identical,
         "note": "Provider-reported cost or versioned estimates, not invoices. Unknown usage retains reservations. "
         "Embedding costs are included in totals, not added again. All attempts include failures. "
-        "No per-response-ID deduplication: repeated attempts may be separately billable.",
+        "Only the same physical input file is deduplicated. Equal-content independent files remain counted and flagged; "
+        "their identity cannot be resolved from content alone. No per-response-ID deduplication: repeated attempts may be separately billable.",
     }
 
 
@@ -367,10 +424,21 @@ def markdown(summary, costs):
         "该实验检验给定试验材料内的证据选择，不衡量全库召回或图表正确性。"
         "引用 ID 有效仅说明引用来自选中材料，不能证明引用支持结论。"
         "当回答调用失败导致整组结果未保存时，证据指标也按失败计零；这是正式执行器的端到端计分口径。",
+        "1024 token 指 cl100k_base 对候选段落 JSON 的计数，包含段落标识与元数据，"
+        "不包含问题、指令、精排请求或输出，不等于各组完整链路输入相同。全文组是额外信息对照。"
+        "各组仍采用同一顺序贪心装配器：跳过放不下的候选，继续尝试后续段落，不做截断或相关性阈值筛选。",
+        "回答模型与 reasoning 来自冻结协议，五组保持一致。原始声明及完整候选元数据都提供给精排器；"
+        "Jev/Luna 另使用相同相关性 rubric，MiniLM 使用固定的查询—候选编码。"
+        "这里只比较预定系统配置，不声称各模型经过同等充分调优。",
+        "Jev−Luna 与 Jev−cross_encoder 的直接配对区间在未读取正式成绩时补充登记。"
+        "引用 ID 的集合合法性允许空列表，因此 JSON 另列非空引用率与“标签正确且有非空合法 ID”的联合指标；"
+        "该联合指标仍不证明引用的语义支持或必要证据完整覆盖。",
         "",
         "正式运行中的 Jev 每段新建 HTTP 客户端，Luna 复用客户端，时延包含不同客户端实现开销，"
         "不能当作纯模型速度排序。[独立公平时延控制](JEV_LATENCY_CONTROL.md) 已使用相同持久连接与并发验证这一影响；"
         "其少量开发集结果与本测试质量结果分开报告。原八题研究仍保留在 [原报告](PASSAGE_SELECTION_RESULTS.md)。",
+        "排名计时不包括共享 embedding 预热和初召回，也可能包含中断恢复后的评分缓存读取；"
+        "不能用它代表端到端耗时或公平的模型服务延迟。",
         "",
         "费用（包括失败、预留与共享 embedding；以下为估算或提供商返回值，并非账单）：",
         "",
@@ -381,6 +449,15 @@ def markdown(summary, costs):
         lines.append(
             f"| {name} | {row['attempts']} | {row['known_cost_usd']:.6f} | {row['unknown_reserved_usd']:.6f} |"
         )
+    formal = costs["studies"].get("formal_v2", {})
+    if formal.get("nli_arm_costs"):
+        lines += ["", "正式运行按显式组别标签归属的费用（每组包括精排和回答尝试）：", "",
+                  "| 组别 | 请求 | 已知费用 USD | 未知预留 USD |", "|---|---:|---:|---:|"]
+        for name, row in formal["nli_arm_costs"].items():
+            lines.append(f"| {name} | {row['attempts']} | {row['known_cost_usd']:.6f} | {row['unknown_reserved_usd']:.6f} |")
+        lines += ["", "共享 embedding 与无法归属的请求单列，不平均分摊或重复加到每组。"
+                  "本地 MiniLM 的 CPU 时间没有换算成 USD；API 费用不等于完整部署成本。"
+                  "无元数据的未知请求不能可靠归类为 embedding，仍保留在总费用中。"]
     total = costs["totals"]
     lines += [
         "",
@@ -431,7 +508,7 @@ def main():
         {"pilot": args.pilot, "aborted_v1": args.aborted, "formal_v2": args.study / "ledger.json"}
     )
     summary = {
-        "version": "nli4ct-final-v1",
+        "version": "nli4ct-final-v2",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "protocol_sha256": protocol["sha256"],
         "source_zip_sha256": hashlib.sha256(archive_path.read_bytes()).hexdigest(),
@@ -439,6 +516,16 @@ def main():
         "report_sha256": digest(report),
         "main_denominator": 500,
         "answer_denominator": 200,
+        "execution_contract": {
+            "answer_model_requested": protocol["identity"]["settings"]["openai_model"],
+            "answer_reasoning": protocol["identity"]["settings"]["openai_reasoning_effort"],
+            "decision_model_requested": protocol["identity"]["settings"]["openrouter_decision_model"],
+            **{key: protocol["identity"]["parameters"][key] for key in (
+                "generic_model", "generic_reasoning", "cross_encoder", "context_tokens", "candidate_limit",
+                "tokenizer", "case_workers", "rank_workers",
+            )},
+        },
+        "supplementary_comparisons_registered_before_outcome_access": ["jev-minus-luna", "jev-minus-cross_encoder"],
         "strata": aggregate(rows),
         "limitations": [
             "Shared-trial cluster bootstrap; exploratory comparisons without multiplicity correction",

@@ -33,10 +33,45 @@ Run the pilot explicitly:
 
 Local traces include runtime inputs and full source quotations. The shareable JSON report excludes question text, reference answers, raw records and tool traces.
 
+The formal producer uses `--output data/trialqa-formal-v1 --split all --limit 0 --max-usd 15 --export docs/public-evaluation/trialqa-formal-v1.json`. Do not start a second producer in that directory while it is running. After it publishes `report.json`, generate the independent statistical report:
+
+```powershell
+.venv/Scripts/python.exe -m scripts.report_trialqa --run data/trialqa-formal-v1 --output docs/public-evaluation/trialqa-formal-statistics.json
+```
+
+The reporter refuses partial studies, verifies every planned question/condition, checks source-archive and raw-record hashes, independently rechecks quotations against the frozen source records, and reconciles known cost plus unknown-usage reservations. It computes per-split cited correctness and the group-level paired statistics above without loading reference answers. Current-workspace differences from the archived executed source are reported explicitly.
+
 ## Development pilot result
 
 The frozen v2 pilot ran two hash-selected development questions in both conditions. Both conditions completed 2/2, received 2/2 correct and citation-supported judgments, and preserved exact quotations. Retrieval runs issued their own keyword searches before reading the trial source. This is a four-run mechanism and cost check, not evidence of general accuracy or superiority of either condition.
 
-The complete ledger records 22 execution calls and four post-execution judge calls, with estimated API cost **$0.1405541** and no missing usage. Individual executions took 14.6–20.0 seconds. The manifest groups all 120 questions into 19 development, 22 calibration and 79 heldout questions across 102 trial-connected components. Formal execution has not started.
+The complete pilot ledger records 22 execution calls and four post-execution judge calls, with estimated API cost **$0.1405541** and no missing usage. Individual executions took 14.6–20.0 seconds. The manifest groups all 120 questions into 19 development, 22 calibration and 79 heldout questions across 102 trial-connected components. The completed formal study is reported separately below.
 
 The earlier v1 smoke run stopped before any API calls because the budget wrapper did not expose the production planner's lock/path/report interface. Its four failed initialization receipts are retained locally as a runner diagnostic, excluded from Agent performance claims. A targeted production-planner regression test covers the fix; seven TrialQA adapter tests pass. The v2 report is the completed pilot result.
+
+## Completed formal study
+
+All **120 questions × two conditions** ran under the frozen protocol. Only after all 240 executions terminated did the evaluator load reference answers and run 237 Luna judgments; three executions published no answer and were scored unsuccessful without a judge call. No failed case was selectively rerun. These are project-adapted TrialQA results with a fallible automated judge, not an official LABBench2 score.
+
+| Split | Questions | Given sources: correct | Given sources: cited correct | Frozen retrieval: correct | Frozen retrieval: cited correct |
+|---|---:|---:|---:|---:|---:|
+| Development | 19 | 18 | 14 | 18 | 16 |
+| Calibration | 22 | 18 | 18 | 16 | 15 |
+| Heldout | 79 | 70 | **64** | 71 | **64** |
+| All | 120 | 106 | **96** | 105 | **95** |
+
+The primary cited-correctness difference, frozen retrieval minus given sources, is **−0.83 percentage points**, with a 95% NCT-group bootstrap interval of **[−7.63, +5.88] points** and exact groupwise sign-flip p = **1.0**. The heldout difference is **0 points**, interval **[−7.89, +7.79]**, p = **1.0**. These results do not establish a difference or equivalence. The 10,000 bootstrap samples preserve all questions within each NCT-connected component and pair both conditions; there are 102 groups overall and 65 in heldout. Split analyses are exploratory and uncorrected for multiple comparisons.
+
+Runtime completion is separate from answer quality. Given sources finished 119/120 runs, with one explicit limitation. Frozen retrieval finished 117/120, with one explicit limitation, one partial run after a `PermissionError`, and one failed run after an `APIConnectionError`. The partial run had already published an answer, so it remains eligible for independent answer grading while its runtime status stays partial. The durable diagnostic retains the exception type, but not a traceback or exact filesystem path; the cause of the permission failure is not established.
+
+All **237 published answers** passed independent exact-quotation checks against the pinned raw trial records. That does not imply adequate semantic support: across both conditions, **20 answers judged correct did not have sufficient quoted support for all material claims**. Typical issues were extra comparison details, subgroup labels or interpretive statements outside the quoted passage. This gap is a reason to retain semantic citation evaluation alongside exact quotation validation.
+
+The known capability limitation was a location-array counting question: both conditions read the CANOPY-A record but stopped because the frozen reading tool surface lacked a deterministic array-count operation. Another example gave a requested calculation expression without computing its final percentage. These identify a concrete missing tool capability; the results were not repaired after seeing reference answers.
+
+Post-run source review also identified reference/current-record differences in at least three illustrative questions: HBI0101 liver-function thresholds (`ab08df93-4040-4b5d-8da0-1fe298d339d8`), the Keynote-522 AE observation window (`c89cdd12-6f70-434f-9473-67b07bfb6633`), and AMETRINE-PEDS Week-12 outcome counts (`0cac45cf-4a07-4ab9-8c58-7998d74dca84`). The latter was independently recounted from the frozen outcome array and agreed with the Agent's current-record answer. These examples are not an exhaustive source-version adjudication and do not change the original scores. The pre-execution audit had already marked 70/120 cases for version/format review; that flag is not proof that 70 questions are unanswerable or mislabeled. No cases were removed.
+
+Median execution latency was 19.82 seconds with given sources and 23.23 seconds with frozen retrieval; the respective 95th percentiles were 30.94 and 37.04 seconds. This measures the implemented single-host pipelines, not isolated model latency.
+
+Formal accounting contains **1,699 recorded attempts**: 1,462 execution attempts including two unknown-usage attempts, plus 237 judge calls. Known usage corresponds to **$10.067919475** in versioned API estimates; the two unknown attempts retain **$0.212135** in reservations, for a total estimated-or-reserved **$10.280054475**. These are not invoice totals. The earlier pilot's $0.1405541 is separate; combined formal-plus-pilot accounting is 1,725 attempts and $10.420608575 estimated-or-reserved. The aborted smoke run cost zero.
+
+Artifacts: [complete runner report](public-evaluation/trialqa-formal-v1.json), [independent statistics and accounting](public-evaluation/trialqa-formal-statistics.json), [frozen protocol](public-evaluation/frozen-protocols/trialqa-protocol.json), and [executed source archive](public-evaluation/frozen-protocols/trialqa-source.zip). All 49 archived source files matched their frozen hashes; the pinned question/record hashes and all published source quotations also passed verification. The independent reporter and runtime adapter have **17 passing regression tests**. Original questions, reference answers, trial records and full execution journals remain in local ignored storage.

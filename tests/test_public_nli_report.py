@@ -59,6 +59,8 @@ def fixture():
                     else None,
                     context_tokens=100,
                     ranking_seconds=2.5,
+                    selected_ids=["PRIVATE ID", "p2"] if arm == "full" else ["PRIVATE ID"],
+                    ranking=["PRIVATE ID", "p2"],
                     statement="DO NOT EXPORT THIS",
                 )
             cases.append(row)
@@ -148,6 +150,7 @@ def test_every_registered_stratum_and_all_arms_are_retained():
     assert strata["full_context_fits_1024=True"]["arms"]["jev"]["complete_evidence"]["denominator"] == 2
     assert strata["section=Results"]["arms"]["jev"]["answer_correct"]["denominator"] == 0
     assert set(strata["all"]["arms"]) == set(report.ARMS)
+    assert {"jev-minus-luna", "jev-minus-cross_encoder"} <= set(strata["all"]["paired_differences"])
 
 
 def ledger():
@@ -171,17 +174,20 @@ def ledger():
     }
 
 
-def test_ledger_includes_unknown_embedding_and_deduplicates_only_exact_ledger_copies(tmp_path):
+def test_ledger_retains_independent_equal_content_and_deduplicates_only_file_aliases(tmp_path):
     original = tmp_path / "original.json"
     duplicate = tmp_path / "duplicate.json"
     original.write_text(json.dumps(ledger()))
     duplicate.write_text(json.dumps(ledger(), indent=2))
-    costs = report.accounting({"pilot": original, "pilot_copy": duplicate})
+    costs = report.accounting({"pilot": original, "pilot_alias": original.parent / "." / original.name})
     assert costs["totals"]["estimated_or_reserved_usd"] == pytest.approx(0.302)
     assert costs["totals"]["unknown_usage_attempts"] == 1
     assert costs["totals"]["embedding_cost_usd"] == pytest.approx(0.002)
     assert costs["totals"]["attempts"] == 3
-    assert costs["duplicate_ledger_inputs_skipped"] == ["pilot_copy"]
+    assert costs["duplicate_ledger_inputs_skipped"] == ["pilot_alias"]
+    repeated = report.accounting({"pilot": original, "independent": duplicate})
+    assert repeated["totals"]["attempts"] == 6
+    assert repeated["identical_content_ledgers_retained"] == [{"ledger": "independent", "same_content_as": "pilot"}]
     other = copy.deepcopy(ledger())
     other["events"][0]["estimated_cost_usd"] = 0.15
     other["estimated_or_reserved_usd"] = 0.352
@@ -193,6 +199,56 @@ def test_ledger_includes_unknown_embedding_and_deduplicates_only_exact_ledger_co
     other["attempts"], other["estimated_or_reserved_usd"] = 3, 0
     with pytest.raises(ValueError, match="reconcile"):
         report.ledger_summary(other)
+
+
+@pytest.mark.parametrize("mutation,match", [
+    (lambda row: row.update(context_tokens=1025), "selection budget"),
+    (lambda row: row.pop("context_tokens"), "execution measurement"),
+    (lambda row: row.update(ranking=["PRIVATE ID"] + [str(i) for i in range(24)]), "candidate limit"),
+    (lambda row: row.update(selected_ids=["outside"]), "outside the ranked"),
+    (lambda row: row.update(ranking=["PRIVATE ID", "other"]), "different candidate pools"),
+    (lambda row: row["answer"].update(citation_ids_valid=False), "membership flag"),
+])
+def test_budget_pool_and_citation_contracts_are_enforced(mutation, match):
+    raw, protocol, strata = fixture()
+    mutation(raw["cases"][0])
+    with pytest.raises(ValueError, match=match):
+        report.validate_and_sanitize(raw, protocol, strata, expected_cases=4, expected_answers=2)
+
+
+def test_full_control_exemption_and_empty_citations_are_explicit():
+    raw, protocol, strata = fixture()
+    full = next(row for row in raw["cases"] if row["id"] == "a" and row["arm"] == "full")
+    full["context_tokens"] = 8000
+    full["answer"]["evidence_ids"] = []
+    rows = report.validate_and_sanitize(raw, protocol, strata, expected_cases=4, expected_answers=2)
+    values = report.summarize(rows)["full"]
+    assert values["answer_correct"]["successes"] == 1
+    assert values["valid_citation_ids"]["successes"] == 2  # Empty subset is membership-valid.
+    assert values["nonempty_citations"]["successes"] == 1
+    assert values["answer_correct_with_nonempty_valid_ids"]["successes"] == 0
+
+
+def test_tagged_arm_costs_keep_unknown_attempts_and_shared_embeddings_separate():
+    value = ledger()
+    value["events"][0]["arm"] = "luna"
+    value["events"][2]["arm"] = "jev"
+    costs = report.ledger_summary(value)
+    assert costs["nli_arm_costs"]["jev"]["unknown_reserved_usd"] == 0.2
+    assert costs["nli_arm_costs"]["luna"]["known_cost_usd"] == 0.1
+    assert costs["nli_arm_costs"]["shared_or_unattributed"]["known_cost_usd"] == 0.002
+    assert sum(row["estimated_or_reserved_usd"] for row in costs["nli_arm_costs"].values()) == pytest.approx(0.302)
+
+
+def test_two_identical_unknown_ledgers_are_not_assumed_to_be_copies(tmp_path):
+    value = {"attempts": 1, "estimated_or_reserved_usd": 0.2,
+             "events": [{"status": "attempted_usage_unknown", "reserved_upper_estimate_usd": 0.2}]}
+    first, second = tmp_path / "attempt1.json", tmp_path / "attempt2.json"
+    for path in (first, second):
+        path.write_text(json.dumps(value))
+    costs = report.accounting({"first_run": first, "second_run": second})
+    assert costs["totals"]["unknown_usage_attempts"] == 2
+    assert costs["totals"]["unknown_reserved_usd"] == pytest.approx(0.4)
 
 
 def test_absent_report_does_not_read_partial_case_outputs_or_emit_results(tmp_path, monkeypatch):

@@ -1,0 +1,763 @@
+{
+  "sha256": "323f678f3e5d79934f724505581c4e54063f0e0558bbe2042cdc810ee5fd1416",
+  "identity": {
+    "version": 1,
+    "settings": {
+      "openai_model": "gpt-6.1-sol",
+      "openai_reasoning_effort": "medium",
+      "openai_base_url": "https://api.openai.com/v1",
+      "openrouter_decision_model": "typesafe/jev-1.14",
+      "openrouter_decisions_url": "https://openrouter.ai/api/alpha/decisions",
+      "v2_max_model_calls": "18",
+      "v2_max_tool_calls": "24",
+      "v2_max_run_seconds": "900.0",
+      "v2_max_estimated_usd": "2.0",
+      "v2_context_chars": "28000"
+    },
+    "code": {
+      "app/__init__.py": "53e1f8b3233ee1a0680549ced4cd2435edf953fc2e3df6cabfc72350240a753d",
+      "app/agent.py": "3dff43ee1c111f8fb4b777d363096904c77a858ba9e9728f9ae7562dbc1e35ac",
+      "app/analysis.py": "f9352371fe3df65c0bbfd5c9cb65364e357028892c07219fc018c4bc43b916ef",
+      "app/cli.py": "94f737877c2f32f14401780212c4d5471d3edd2c3fb3b97f363fbe47e9ea12b9",
+      "app/config.py": "c62df2e1cfa2024953db1a7588e880640b8a4105fdd9ca0ae14d3ee31980aceb",
+      "app/context.py": "cfa7fec2505483d3bb0dabfe7bdae754c21991b6be901acb8f461e72e3204c8f",
+      "app/diagnostics.py": "8ced97486da7fb04779b442742108220ac9a8a3f2802d720b3c98c3a2273e948",
+      "app/examples.py": "b3fd64c351fd070da7764331c37c60ef3a6a3cdcce9e52fc5c73b14c25a8b747",
+      "app/extensions.py": "9c885502b1bd40766de60198b4607e2c34eba3c2145a8794cba28d1f026dcd94",
+      "app/graphdb.py": "cf0cd67590c45a7fbfadba715644053239317b57fb4fa25de9804f45552dce73",
+      "app/handwritten_demo.py": "97f3b82b32573a8823608ecce063a801644e4b1ed7b6ba2c7d2364477cb626ba",
+      "app/main.py": "52bb2e56129a966bc6ced59461ceaaccc7e2e54e0a51ee07eea3b29edfba8a07",
+      "app/models.py": "2a079400dff7fdc3a2b3f438d8dd4d7c6669be104e75759080eefbdf44e835b0",
+      "app/providers.py": "3b7aa9013dff50044a6d87743af1eacf14663b6fd1e711fe71470d6f4ec3a1f6",
+      "app/reference.py": "33b822b72be549a828991be461fc946de4d80519d69a17729a7cd4c0b53903a0",
+      "app/semantic_eval.py": "bc6ee5a8bbe61b0f4ac3e5363d9463cd93e398f0acfc0dfb49632212c5a6360b",
+      "app/service.py": "f1cd18bba6e29a85e8bc7ddf7b6117d6c57910f2e62dc7df1bb2cb2b7c4cfaba",
+      "app/sources.py": "dd3dd80b29b6d3f133959dadfb72854d37c08f1a5f006ee5cf16cc63677cf5ff",
+      "app/storage.py": "7909a7837a5d0044ec4baae1066bc08ec4d18fc38f05d7f44e33c42b992c8131",
+      "app/v2/__init__.py": "41a9d5209460e4192e110fa27e5f5ec3de4eb0d325817f893181e95a15e94463",
+      "app/v2/acquisition.py": "3f6ab49631504fea20d9744a21d4e312a03fd5d3d28f8a98dbb48361b6d5f7a4",
+      "app/v2/agent.py": "174c900edfe5b1592e97a091e9d6b0dbcd657786e106037c355f28270a9580ff",
+      "app/v2/api.py": "6c7a4083ce844c9e4bf4e5df6f054aa107354a2915fe8ff49c0f169407499bd3",
+      "app/v2/charts.py": "a02df8023205c95010aa441b672e874941050490fe445cb8d2b548491b6bd12b",
+      "app/v2/cli.py": "9efb8b53e8af3c0f9afe486b1a15708076e5ceb197dc619526618a9199f40974",
+      "app/v2/context.py": "a1d1c1e96fc28a3173ad5a30532dd39713a064ba4b4ce4e92d139a1ffd49ec74",
+      "app/v2/contracts.py": "cd7295e2d8bfb3308f823ad6f2c2a172dc97f2e42ea5c2a2173a889ba0052689",
+      "app/v2/costs.py": "256e1cfa2e80e41757e45663828286b34443343d18f9f601d94be9e7fe7b911a",
+      "app/v2/dates.py": "142ddc1999cac3078c8f1ccd911224581d9fddf0fb181a858704d4e3566ca5a5",
+      "app/v2/entities.py": "2c0be49b66827e30d8c1b4b16e3eab4a40327a5ae1fe4636bb429f4eea2b8083",
+      "app/v2/evidence_selection.py": "cc878e5dea0025bd2cac65cdfba12712bb74e8ad56193461bf8e5adc6db84cc0",
+      "app/v2/integrations.py": "bfb5ed03d1e753bf19687784d7207e31f69ae0c06f373810ef12c29de85e0984",
+      "app/v2/mcp_server.py": "55b9133a7d5930b9bf9939431fddb5db79d0c3383ac312d5689e4ad0acf4a708",
+      "app/v2/overview.py": "b5bc7d33aff4131c6843f0b148b670a22bd6ea5ff3288422a82a62db59b41531",
+      "app/v2/pubmed.py": "f6a4b0f1eae097c2698db016b7044ee66888350845d1dcab57dedae5aa723900",
+      "app/v2/reading.py": "59206c7648df6a75980306dab4fc77cd5da39f44af1506a6f060712373d05a1e",
+      "app/v2/receipts.py": "55030032bd8a16e10e78b4d3379a1119fd451451449e1b00a66f70979f0e71b1",
+      "app/v2/skills.py": "e50113320497c9b84082f61998b927e7dfba0e85ed3916c71a80c8f58a199bbd",
+      "app/v2/store.py": "f2d20ab0284f6c78f4285bf93b3ce395a8c190587f281ebb7a1d8cfc2d893aee",
+      "app/v2/tools.py": "a77d59dbbeb79c52e33631992ea299e3b42dcdb4cc9b00332373ae39898340eb",
+      "app/v2/verify.py": "b712b15f2a49367b10ca1611cb43bda99955a4b04d068cd7cf2e22382addded1",
+      "app/verify_examples.py": "4d3321e24e9a8560c87ed7e3cb3b096bcce2f9323bf35c8ee543fe226f4e3555",
+      "evaluation/__init__.py": "e6c4006bb7272b269582c4c28c070b232c5ab214f1929a41d29e779e23e0bea1",
+      "evaluation/build_challenge.py": "5f57fffc0092e8cc646beef6386107af0521c05ec07d81b19a48ece67bfd4a43",
+      "evaluation/contracts.py": "0c5da2a8c916fe44e310f336c504c1650e25437fe55cba16818972cdcd8999f2",
+      "evaluation/core300.py": "132f544b804ec655661b916fb646fc3b0bb54690b8ffb2a3ca65cd8c3dbb7772",
+      "evaluation/protocol.py": "edc4cb2bba146b0f886c8651e1638acf1d79a4497e05b1212c375b8ea4ee70ec",
+      "evaluation/public_datasets.py": "519610dc4d4dbb5537982de5fcea2314cfe8f560f7d94e4990227a28ce0af8ae",
+      "evaluation/replay.py": "f8cccc4fa0bbfd1c99b70c0c8b7272697a73c22a5c9070e7f61ebe6a33cee607",
+      "evaluation/rescore_v2.py": "f853a75348832d536e09b38f24b5ffdb97bc191ea4151ed4d1d7a8029f61853a",
+      "evaluation/run_v2.py": "5270683a8eeb7f32b5e3c4200319cde1f1349cf89fc566ebdc810606f0adc80e",
+      "evaluation/runtime.py": "9d194aff67191f766c29738732292e4c3a834cdaf793142c3f633038d572aac7",
+      "evaluation/scorers.py": "e16bbbf5a340c4d6410d2804181137e6f2e07b2f1d034e84070d72f46533b365",
+      "evaluation/splits.py": "0281e31b81311b69d2bc284bb1c5ff74559d7deef7ffebbf8ba1158d7810be3b",
+      "evaluation/sql_oracle.py": "780904ebb99945ea3ef02f7adefdb60376079a1c71d9e1309b22e2e915ee63ae",
+      "evaluation/trialqa_study.py": "9e8c2fa999c7f46844e60510ccb3a87dd3b189a05370b7e26712568cee23f7d8",
+      "experiments/__init__.py": "797915ca9f76e26bc1cb5c911f409ab32c4a395d44d7ab691935ceb81378063c",
+      "experiments/budget.py": "368b9f604f971553de47e3e695527a2f7122feead878c7cdc47dcadd10b9013f",
+      "experiments/cascade_v2.py": "345a4c6613ed7dd7d0a056a2a403d3c40bb513dd987b4ed49d77453c840d3def",
+      "experiments/decision.py": "3d1cabbb0b32c4ca49c5bb4d333befad5591781586c02fa5d5dc6ef187220007",
+      "experiments/decision_v2.py": "02fe7d4731bdfa57c6ea44a7deb8661413207b71dd0209dcc06a3f47b2c261c1",
+      "experiments/entity_retrieval.py": "29d7b01c6bde84bd7b62b51ca30a2ac561817dc7f6abe45d2162651bbcee5e8d",
+      "experiments/harness.py": "d0fcacd08ca33648295a010231785d4ccf86fcac1bc15dbf5bbc24c29fb4999c",
+      "experiments/harness_v2.py": "5e3d7b49e52ba8abd00f0e209501652905fda633332efe0a963b9a20a966103d",
+      "experiments/harness_v3.py": "9fbb354eabc4e5788e71eb204f3dff01136db7c385336e7d6c72dd2d81f122b0",
+      "experiments/harness_v3_launch.py": "a6edf52ec9c554af9b927798c3f84227fb7c78b8fcaaeaf8c9ae7e8fff524dde",
+      "experiments/harness_v3_parallel.py": "ee9e65c6af584733006d8f50451e5f2ecd670569012cf9f8c810ef006f913c32",
+      "experiments/jev_latency_control.py": "c5b57145f8f165cf55f98136509806766f5d66fb258b4aa1f2d721fe813e23dc",
+      "experiments/nli4ct_study.py": "079c33316cfcf8d187a7cfa0ba41f7f52f76e0d6c96f366271b3e3bb50a53dd9",
+      "experiments/passage_corpus.py": "90ff55e5b8efd3242f563206e273a9bc6952a943fb00ce20e3645fa063a93b73",
+      "experiments/passage_gap_recovery.py": "e0a6e088cc34f96cced81823186093a1eb643174a5643fa0a22198eb7308764e",
+      "experiments/passage_scope_control.py": "77924c045c3301e538db47ce824874b6ea952ce208f5a5d2af42a2abb9895a30",
+      "experiments/passage_selection.py": "12cc64a44668e41b9b72c6a77d639dc4237ae6d0087ee6cb9db2c3e055cd0fe7",
+      "experiments/retrieval.py": "7718b9e147e56e5dea99effba733adf4d69b77e6f3701930730cc458cb3c7411",
+      "requirements.lock": "50e3b650d8ef7cffa11ee2e462c4595db6804b4b3665d1c2d511a0315fb8373c"
+    },
+    "parameters": {
+      "version": "harness-v3-frozen-transfer-four-workers",
+      "workers": 4,
+      "order": [
+        "ep_5e8fddbd9405ce9f",
+        "ep_afb553d6feef1301",
+        "ep_277d0c0aac9063b4",
+        "ep_4759921ec7b0894d",
+        "ep_1736e050b9229b7b",
+        "ep_56169543e90792e1",
+        "ep_58a033d736564aa3",
+        "ep_c51e4c81dabe1b13",
+        "ep_baabc16ac22746bc",
+        "ep_3c7a07dcbbd9b809",
+        "ep_4e3a5a15e6eace3c",
+        "ep_c5c96e99aeb932a3",
+        "ep_32a58a9d62c93ae0",
+        "ep_d365a4e311f16162",
+        "ep_4e28d44d7336aea8",
+        "ep_c655ab8d176e46a0",
+        "ep_dde2a4cc8a954a24",
+        "ep_5dfebc818ce52655",
+        "ep_59cc90962b88b2a7",
+        "ep_adafb070fb9001cc",
+        "ep_bf5a064aec2482e4",
+        "ep_c9f2382acd96ad6c",
+        "ep_e20416fae8deba04",
+        "ep_aec08f825c88a471",
+        "ep_87a48f0474c03ba8",
+        "ep_70192081acf9d0fd",
+        "ep_1f392810a9bb35f3",
+        "ep_4f1ebfdc89738296",
+        "ep_5c548bf619174dc0",
+        "ep_936e0b031904ce3a",
+        "ep_2d9d59bf169648bd",
+        "ep_8c8ceeb734a51e76",
+        "ep_48c8c5de792aeb28",
+        "ep_8231b4c6321be2cd",
+        "ep_ef332511794ce607",
+        "ep_ef4b64d32b2d9f4b",
+        "ep_5844b1b11ad12c5a",
+        "ep_ecf05ad1c9d8293b",
+        "ep_da1f4a759f02e716",
+        "ep_a1dfcbb3e4bea8ef"
+      ],
+      "planned_unique_tasks": 40,
+      "planned_runs": 40,
+      "source_files": {
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\cases.json": "aa1b76cb3045f19e36e623a85dff872a4bbe2819fd3bada2c64ef0291fb4041e",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\pilot.json": "127830b15d293400a2dfaf2ab1abd70f54ffb69f2f512524332044c04cf3ccdc",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\population-plan.json": "85ce08a08946d306aac7f93c9e9aae2d2d5303930f4d97c6457d4da262233dc1",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_07dcd2c0a6d7472083ec15de44e6e280\\manifest.json": "589e376bb4e645643234cf310f359fe57578eb98ef5d9437b8aa41133e3e4fcd",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_07dcd2c0a6d7472083ec15de44e6e280\\studies.json": "e9da6a96cda159ba42818be08d0ace4989ee9c53e47dffdeb6c4829e4a8f71e2",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_0bdbc24714324140b2f82b947c2cab11\\manifest.json": "a8689cae76e26c902cea91460ffe1dc4a7e0fff530ea8d598334500fce733706",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_0bdbc24714324140b2f82b947c2cab11\\studies.json": "a13e30714fcf4c676fd34c79de617214f6e16901408f954d29237cbc3898c14a",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_0d4a262c0c844bcaa9543edfa206b02c\\manifest.json": "e316fa07f5da18cf5088e61377b02128e1907b672621e2d17524400d1c08c9f0",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_0d4a262c0c844bcaa9543edfa206b02c\\studies.json": "b25c14c174f6f21956106c524c269499bbeec86b5fa37c67b02ac7f710b883e8",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_113e143471ab41d1b3d75a150be1ca1f\\manifest.json": "67df91b850958cb30b5ff03b1bff57cf67e6b387a5cc6784504d0b7e124d89fc",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_113e143471ab41d1b3d75a150be1ca1f\\studies.json": "bffa648ba1435043129a5369ec91940f99a6be9ab78eb56691c2d86a588e8fd3",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_117c477e444546bab855e0a4cc8db76c\\manifest.json": "674531da3ea2a3b6f8b1576cec328ce1d0844fdd1523512d674f97896bd92e34",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_117c477e444546bab855e0a4cc8db76c\\studies.json": "d1043bead68f36983c66b04b6e68a629bc5dadbd02be6170cc11d28f67ca35a1",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_1f6f7bb6797f42638aef1913b6331177\\manifest.json": "455a149415629facce498f2282b0604c27f7a9d7bd15ae1bd151d04ad70cc8cd",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_1f6f7bb6797f42638aef1913b6331177\\studies.json": "cb598dbcc35970bc6457668bd2a2e12d38cb0d700554c636c434600ffc670142",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_3c87a7538a004f0ea49a0b86e91bc670\\manifest.json": "2f132f7ebfc905c8adf80907c73cb223181a198e51834dd5cb6cbf011d37703d",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_3c87a7538a004f0ea49a0b86e91bc670\\studies.json": "564b5fa071452c1e2dd40b710c3cee2a8d4f57fc258c8142d8ec02b7fd019be1",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_7517c34f9e224af0ac659f6a11e9e6cc\\manifest.json": "8038708da237094dae9ff3190a6f8869a1100e22c8e0af4ab67777b3a66c1e9d",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_7517c34f9e224af0ac659f6a11e9e6cc\\studies.json": "a5249365b327256f1d7543adde5ab3d51112e99726419c8187aa0360bcd6e28e",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_8afc7eda6e544be0ae9c7206f86639b6\\manifest.json": "cc0a26cbe98b1f965b580d1f2c809a9b67c692da9059dffc8e996e8501c33a0a",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_8afc7eda6e544be0ae9c7206f86639b6\\studies.json": "60b696016e8e4ecff65db65cfa794aefbbd6cfbcb228907effeb1736350364f9",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_a3e219c2b6734b35901e923d6d2f01e1\\manifest.json": "07917d81720647249bcc9c6fa86d14a81c487fecf1a7fb4702fc239be06e8a9a",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_a3e219c2b6734b35901e923d6d2f01e1\\studies.json": "faf1e882f8c54732b9bf6c878a4c20a096005cd7a57ea2ed4e1f4339baac4cdb",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_a958afc813a24914bd37e0f7466fc5a3\\manifest.json": "74dbd5730da6314a63df7e40b73204f9f73ad268b075b1517d3b97b6f49680f1",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_a958afc813a24914bd37e0f7466fc5a3\\studies.json": "bebd15d401cde90015e8c988174ceacf33b51e6e5ae7252f770fe901965db833",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_ab8e7eae617644e397362a1abe5b47f4\\manifest.json": "fc268d47d198174c9313b7fab1d4c7d1a1ce5ab36b605719499fcd2cd2b5a09c",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_ab8e7eae617644e397362a1abe5b47f4\\studies.json": "5fc9be4c69e6918d4aeaba930ad9082a52facf4debfbe00d771e8cbe67ad75a3",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_bb1bf54d566c4a42940e5259d27d70ea\\manifest.json": "62dd42c32163eaa93a10313c993d708b20d115626720a2a802a53811584e2c40",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_bb1bf54d566c4a42940e5259d27d70ea\\studies.json": "1e1ce928d458c6f8bd58966adf8d279cd867b1db9c3bb1089cac2e27836bf0c8",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_c5dc196b3c784b2f8e0d54f8608ec06d\\manifest.json": "e3dd007599ef5fd63ab64c260fe5e62f9fec01735ecde2a5063d11d67e0ecc7b",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_c5dc196b3c784b2f8e0d54f8608ec06d\\studies.json": "d9df0570621e75317737aa93ec5dc7562fc61355d01d9c3e5fb52c9f525add13",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_c947f9cfd1874ff896079a11c8483d07\\manifest.json": "25dd28bb732126b98c0e561a0e88d6f2c2f30dd014bc08e588033e6775619824",
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\core300-frozen\\snapshots\\ds_c947f9cfd1874ff896079a11c8483d07\\studies.json": "3c3c95827cd6f2bfefc227b66281832e65d29fa9c4d6ea3d4b0491f019fd582a",
+        "evaluation\\frozen\\pubmed\\1b3fda263f12e807d865169ee46856f8fe5b9251df2431ebe911aebbfcdd7f8c.json": "5aff24f0e1c0ea59020fbf5a5f03da4257e8a0ba95fd5771680d80d4e46f3843",
+        "evaluation\\frozen\\pubmed\\3372ee389900f24eddc85b3cf9d6411faf824fd05792b827c62fe5edd3efa159.json": "df91da2dc2b1fb4945cfb7f534d6806e5dd7c2e1adbe378ad22979fedafded4c",
+        "evaluation\\frozen\\pubmed\\3b72ca2c08a64c1fa497f6f4f43a55bfdb410f743786f516a47b7e938b8b8683.json": "430eef18c6fa0c25f4f7b960cc89ffc37abc2af00f2d6767c1cf95caaba1dbb7",
+        "evaluation\\frozen\\pubmed\\7c48b30bcb748f4252ab0b96fb81cfaedfeb7f22434d88dcf84e8dcdcd443069.json": "2f5d0b0aa06ec7e2f2a906910fadfc2ae7a83e744aad1d3c26338ce704536107",
+        "evaluation\\frozen\\pubmed\\801f247804826c2ee86be50a09ec724416e070d0d68a5e460def811da3baa219.json": "00ed7c8e3c23c7a1b4a2d5925af75961c6983fb21d464127bd271016ed6f8822",
+        "evaluation\\frozen\\pubmed\\9a8840e92b47a9b79d39ed4a9e79310cf73c0da91f7f5593fe7ede4d8d433568.json": "9aa2b306275e016c654b9a2944e3fe337c447c70a543ba11fe287f9d53209f7c",
+        "evaluation\\frozen\\pubmed\\bc7f0f6a7716fd8fc0f032b35c26293a3d25778f1097cd3cbe94d75d8d4b59e8.json": "ce85dd44708de85f3c0d057b9582cf837b5f848ba0e74e9367ea1037dbf43298",
+        "evaluation\\frozen\\pubmed\\f57a92d84f855c01b657946cd646b43dc89d5f146c8340dfafe43ff840d579c7.json": "ac6e60c8544304dac244440b9c21fe67ff5c183eb6955a6dcb5cfa54913498b5",
+        "evaluation\\frozen\\snapshots\\ds_32df02d16e6d4d43bbe53721712bdee3\\manifest.json": "4274f87275ce96931c98da640eac40e5fbc2baa53c231095ad120da339d218fd",
+        "evaluation\\frozen\\snapshots\\ds_32df02d16e6d4d43bbe53721712bdee3\\studies.json": "85c87a9360a6737c1cf4b349dde4dd8797676f964ac53966c32f408c423edc38",
+        "evaluation\\frozen\\snapshots\\ds_4e3ae78483304866998a97fc8f2515dd\\manifest.json": "296413fe7a12676a35b9b8d6e6c2d1eeff55c280be4814ea75aeaf7740a136d7",
+        "evaluation\\frozen\\snapshots\\ds_4e3ae78483304866998a97fc8f2515dd\\studies.json": "6efd59cf900778fa9414a14493d2502c4c042d39f69d01d6e5fa248e0d163ece",
+        "evaluation\\frozen\\snapshots\\ds_82f92d4a06a4490294caf15e86e3c5d3\\manifest.json": "915d219f45fedc189b9d45b361c2defa0e8249290962c06d41f92504ef9f7850",
+        "evaluation\\frozen\\snapshots\\ds_82f92d4a06a4490294caf15e86e3c5d3\\studies.json": "3c7e48030f6dfd7604f876ba01ea8905fd70f6ea6c350cb45c39e60f9e7c301f",
+        "evaluation\\frozen\\snapshots\\ds_8ded29e749d04c3fb21f78976efcbc68\\manifest.json": "3ba3f33d4a4abe32362a14f15b8b92d3431ea4b721de44497a3073c80993c1a5",
+        "evaluation\\frozen\\snapshots\\ds_8ded29e749d04c3fb21f78976efcbc68\\studies.json": "8c3b771f0ce27f38c50d5795fea0886e609c352acd119030392450d83fdce0a4"
+      },
+      "frozen_bank_sha256": "09bd78be621d54f0a108e7907597a9971416b71a0a4e01488837c734fe314ebc",
+      "bank": {
+        "49a2ed2246d46b646373": {
+          "id": "49a2ed2246d46b646373",
+          "applicability": "redundant_verification",
+          "families": [
+            "single_status"
+          ],
+          "component": {
+            "skill": "Avoid duplicate validation: when the documented tool implementation validates a newly published result before returning successfully, do not call validate_result solely to repeat that check. Proceed to finalization only when all requested goals, dependencies, and evidence requirements are satisfied. Use explicit validation for reused results, tools without guaranteed internal validation, or concrete validation gaps. Preserve all existing verifier and finalization checks.",
+            "context_policy": "relevant",
+            "source_experience_ids": [],
+            "experience_policy": "on_gap",
+            "rationale": "The public implementation validates results during analysis publication. The procedure removes only a redundant external validation call, without changing evidence, verifiers, or requested deliverables. No retrieved lessons were reused."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_eefd6e73e7f0ed18\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_eefd6e73e7f0ed18\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "4a3fbc1ddd8d034986ec": {
+          "id": "4a3fbc1ddd8d034986ec",
+          "applicability": "redundant_verification",
+          "families": [
+            "single_country"
+          ],
+          "component": {
+            "skill": "For full-evidence categorical analyses, check that returned coverage reports complete records, exact counts, complete population coverage, and complete contributor evidence. If the documented publication path guarantees internal validation before successful return, finalize once all requested goals and dependencies are satisfied; do not call validate_result merely to repeat that validation. Explicitly validate reused results, results from publication paths without that guarantee, or results with concrete validation gaps. Preserve all internal verifiers and finalization checks.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public implementation validates results during publication. The coverage-specific probe omitted the redundant external validation and completed with four model calls rather than five, retaining complete contributor evidence and no unmet goals. The general-worded probe still repeated validation, supporting the more specific procedure. No verifier or evidence requirement changes."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_9eb83ff267eb8eff\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_9eb83ff267eb8eff\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "27c57cdebd6466abf81b": {
+          "id": "27c57cdebd6466abf81b",
+          "applicability": "redundant_verification",
+          "families": [
+            "single_study_type"
+          ],
+          "component": {
+            "skill": "For full-evidence categorical analyses, confirm that successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the newly created result before returning successfully, finalize once all requested goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, requested evidence requirements, and returned advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "4a3fbc1ddd8d034986ec"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public publication implementation invokes validation before returning successfully. Both tested phrasings omitted the redundant external validation and completed with four model calls rather than five, retaining complete contributor evidence, advisories, and no unmet goals. The general categorical procedure achieved the same observed improvement as the narrower wording, so no grouping-specific restriction is needed."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_f059134c3c141ae6\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_f059134c3c141ae6\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "808c58caef2d804e823d": {
+          "id": "808c58caef2d804e823d",
+          "applicability": "redundant_verification",
+          "families": [
+            "single_time_start"
+          ],
+          "component": {
+            "skill": "For a newly published full-evidence chart, confirm complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the result before returning successfully, do not call validate_result solely to repeat that check. Finalize only when every requested goal and dependency is satisfied, retaining requested zero-count periods, exclusion reporting, evidence, and advisories. Explicitly validate reused results, results from paths without guaranteed internal validation, or concrete validation gaps. Preserve all internal verifiers and finalization checks.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public publication implementation already invokes validation before successful return. Adopted lessons support omitting an external call that only repeats this validation. The general chart procedure is preferred over the more elaborate temporal wording; it preserves every requested deliverable without adding inspection steps."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 6,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_8d607a0a639aaa4d\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_8d607a0a639aaa4d\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "610b917ff5f4a6aa9f30": {
+          "id": "610b917ff5f4a6aa9f30",
+          "applicability": "redundant_verification",
+          "families": [
+            "single_time_completion"
+          ],
+          "component": {
+            "skill": "For full-evidence time series, explicitly bind the requested date field and grain, retaining zero-count periods and date-exclusion reporting in the goal. After successful analysis, confirm complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the newly created result before returning successfully, proceed to finalization once all goals and dependencies are satisfied; do not call validate_result solely to repeat publication validation. Preserve zero periods, exclusion metadata, and advisories in the artifact. Do not reconstruct the series from a clipped summary or treat missing dates as zero-count periods. Explicitly validate reused results, results from paths without guaranteed internal validation, or concrete validation gaps. Preserve all internal verifiers and finalization checks.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public implementation validates temporal results during publication. The time-series-specific probe omitted the duplicate external validation and completed in four model calls rather than five, with complete contributor evidence, no errors, and no unmet goals. The general-worded probe still repeated validation, supporting the more specific procedure. No statistical, evidence, or verifier changes are proposed."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_f68d3e3542b5cb5a\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_f68d3e3542b5cb5a\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "9eda4c989172911dfd38": {
+          "id": "9eda4c989172911dfd38",
+          "applicability": "redundant_verification",
+          "families": [
+            "single_time_first_posted"
+          ],
+          "component": {
+            "skill": "For a newly published full-evidence chart, confirm successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the result before returning successfully, finalize once all requested goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Preserve requested chart parameters, zero-count periods, exclusion reporting, evidence requirements, and advisories. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Keep all internal verifiers and finalization checks unchanged.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public publication implementation already invokes validation before successful return. Both the general and temporal-specific probes omitted the redundant external validation and completed with four model calls instead of five, with complete contributor coverage and no reported unmet goals. Since both wordings achieved the same observed improvement, retain the smaller general procedure rather than adding a temporal-specific restriction."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_fc1b27d066015b07\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_fc1b27d066015b07\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "8b46693e6106284971ba": {
+          "id": "8b46693e6106284971ba",
+          "applicability": "redundant_verification",
+          "families": [
+            "single_histogram"
+          ],
+          "component": {
+            "skill": "For a newly published full-evidence chart, confirm coverage reports complete_records, exact counts, complete population coverage, and complete_contributors, and that the analysis matches the requested chart parameters. If the documented publication path validates the result before returning successfully, finalize once all goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, and returned advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public publication implementation invokes validation before successful return. Both the general and histogram-specific probes omitted the redundant external validation and completed with no unmet goals. Since the narrower wording showed no additional completion benefit, retain the general procedure without changing verifiers or statistical calculations."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_b5c8e36b3e24ec9b\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_b5c8e36b3e24ec9b\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "8f3dce390b845d923813": {
+          "id": "8f3dce390b845d923813",
+          "applicability": "redundant_verification",
+          "families": [
+            "compound_phase_start"
+          ],
+          "component": {
+            "skill": "For each newly published full-evidence chart, confirm successful analysis and coverage reporting complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the result before returning successfully, do not call validate_result solely to repeat that check. Retain every requested deliverable's result handle and finalize with all required results only after all goals and dependencies are satisfied. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve internal verifiers, finalization checks, evidence requirements, and advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "Adopted lessons support avoiding external validation that duplicates guaranteed publication-time validation. Both probes removed the duplicate checks while preserving all requested artifacts and complete contributor evidence. The general procedure achieved the same observed improvement as the additional scope-reuse wording, so no extra procedural change is needed."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 7,
+            "after_calls": 5,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_3dcc9fb13de3b2c4\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_3dcc9fb13de3b2c4\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "2d665b5b81e2901d093b": {
+          "id": "2d665b5b81e2901d093b",
+          "applicability": "redundant_verification",
+          "families": [
+            "compound_status_completion"
+          ],
+          "component": {
+            "skill": "For multi-chart full-evidence analyses, track each requested goal and its returned result handle. Confirm each successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates newly created results before returning successfully, omit validate_result calls that merely repeat that check, including for categorical and time-series charts using that path. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Once all goals and dependencies are satisfied, finalize with every requested result handle to preserve all artifacts. Retain all internal verifiers, finalization checks, evidence requirements, and advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "Reused lessons support avoiding duplicate external validation, and the public implementation confirms that categorical and time-series results share publication-time validation. Both probes omitted the two redundant validation calls and completed with five model calls rather than seven, preserving both artifacts with complete contributor evidence and no unmet goals. No verifier or evidence requirement changes."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 7,
+            "after_calls": 5,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_6bc16151591ef4d0\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_6bc16151591ef4d0\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "b7586c1f7b6f03732aa2": {
+          "id": "b7586c1f7b6f03732aa2",
+          "applicability": "redundant_verification",
+          "families": [
+            "compound_country_first_posted"
+          ],
+          "component": {
+            "skill": "For newly published full-evidence categorical and time-series charts, confirm successful analysis and coverage reporting complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates each result before returning successfully, do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or concrete validation gaps. Retain every requested chart's returned result handle and include all of them in finalization once all goals and dependencies are satisfied. Preserve all internal verifiers, finalization checks, evidence requirements, and advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "Reused lessons support conditionally omitting duplicate external validation. The public implementation confirms that categorical and time-series results share an internally validating publication path. Both probes omitted the two redundant validation calls while preserving every requested artifact and complete evidence coverage. No verifier or evidence requirement changes."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 7,
+            "after_calls": 5,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_89766f92d80f212c\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_89766f92d80f212c\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "ace083ab1f13fe4aa1d2": {
+          "id": "ace083ab1f13fe4aa1d2",
+          "applicability": "redundant_verification",
+          "families": [
+            "compound_study_type_primary_completion"
+          ],
+          "component": {
+            "skill": "For each newly published full-evidence chart, confirm successful analysis and coverage reporting complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the result before returning successfully, do not call validate_result solely to repeat that check. Retain every returned result handle and finalize with all requested artifacts only when every goal and dependency is satisfied. Explicitly validate reused results, results from publication paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, and advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "Reused lessons support avoiding duplicate external validation when publication already validates results. The public implementation provides this guarantee for categorical and temporal charts. Both observed probes omitted the two redundant validation calls, reducing model calls from seven to five while preserving all requested artifacts, complete contributor evidence, and no unmet goals. The simpler per-result rule achieved the same observed improvement as the broader shared-scope procedure."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 7,
+            "after_calls": 5,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_6bc5b2aa0f3f0de1\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_6bc5b2aa0f3f0de1\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "5ee4fc1317043207c6dd": {
+          "id": "5ee4fc1317043207c6dd",
+          "applicability": "redundant_verification",
+          "families": [
+            "dependent_top2"
+          ],
+          "component": {
+            "skill": "Avoid duplicate validation of newly published results. When the documented publication path validates a result before returning successfully, treat that return as validation for the unchanged result under current constraints. Apply this to analysis and entity-selection results using that path. Before finalizing, confirm that all requested goals and dependencies are satisfied, coverage meets evidence requirements, and all required artifacts are included. Do not call validate_result solely to repeat publication validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, advisories, and evidence requirements.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public implementation validates both analysis and entity-selection results during publication. Both probes omitted three redundant standalone validation calls and completed with six model calls instead of nine, retaining all requested artifacts, complete contributor evidence, and no unmet goals. The general procedure achieved the same observed improvement as the domain-specific variant, so the additional workflow instructions are unnecessary."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 9,
+            "after_calls": 6,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_dd49762f4b7fc14c\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_dd49762f4b7fc14c\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "54122da81fa0be3ee4aa": {
+          "id": "54122da81fa0be3ee4aa",
+          "applicability": "redundant_verification",
+          "families": [
+            "dependent_top3"
+          ],
+          "component": {
+            "skill": "Avoid duplicate validation of newly published results. When the documented publication path validates an artifact before returning successfully, including chart and entity-ranking artifacts, do not call validate_result solely to repeat that check. Before finalizing, confirm that every requested goal and dependency is satisfied, required artifacts are retained, and population and contributor evidence coverage meet the request. Explicitly validate reused artifacts, artifacts from paths without guaranteed internal validation, or concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, and advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public implementation validates chart and entity-ranking artifacts during publication. Both probes omitted three redundant external validation calls and completed with six model calls instead of nine, retaining all requested artifacts, exact counts, complete population and contributor coverage, and no unmet goals. The general procedure achieved the same observed improvement as the domain-specific version, so additional workflow instructions are unnecessary."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 9,
+            "after_calls": 6,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_9421f2ecc8d1ec33\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_9421f2ecc8d1ec33\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "1dedda6d4e0e729f85a3": {
+          "id": "1dedda6d4e0e729f85a3",
+          "applicability": "redundant_verification",
+          "families": [
+            "dialogue_start"
+          ],
+          "component": {
+            "skill": "For full-evidence categorical analyses, confirm that successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. When the documented publication path validates a newly created result before returning successfully, do not call validate_result solely to repeat that validation. Finalize only after all requested goals and dependencies are satisfied. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, metrics, and returned advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "4a3fbc1ddd8d034986ec",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public publication implementation validates results before successful return. Both probes omitted the redundant external validation and completed with four model calls rather than five, preserving categorical results, complete contributor evidence, and no unmet goals. The general procedure performed as well as the grouping-specific variant, so the additional restriction is unnecessary."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_1fafa85e0ea93628\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_1fafa85e0ea93628\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "815d06e8dfe827ba21f3": {
+          "id": "815d06e8dfe827ba21f3",
+          "applicability": "redundant_verification",
+          "families": [
+            "dialogue_completion"
+          ],
+          "component": {
+            "skill": "For full-evidence categorical analyses, confirm that successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates a newly created result before returning successfully, finalize once all requested goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve internal verifiers, finalization checks, requested evidence, category labels, metrics, and advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "4a3fbc1ddd8d034986ec",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public publication implementation already invokes validation. Both observed probes omitted only the redundant external validation and completed with four model calls rather than five, with no errors or unmet goals and unchanged categorical results and complete contributor coverage. Retain the existing context and experience policies; no evidence supports changing them."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_687dc2f45a408b67\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_687dc2f45a408b67\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "1183bc4b9775d5de9d2e": {
+          "id": "1183bc4b9775d5de9d2e",
+          "applicability": "redundant_verification",
+          "families": [
+            "dialogue_first_posted"
+          ],
+          "component": {
+            "skill": "For full-evidence categorical analyses, confirm that successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the newly created result before returning successfully, finalize once all requested goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, category definitions, and returned advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "4a3fbc1ddd8d034986ec",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public publication implementation invokes validation before returning successfully. Both observed probes omitted the redundant external validation and completed with four model calls rather than five, retaining the same categorical results, complete contributor evidence, and no unmet goals. General and domain-specific wording showed the same improvement, so no narrower restriction is supported. This changes call selection only, not evidence or verifiers."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_79ff53de6582a7f9\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_79ff53de6582a7f9\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "1611e1d97d9b6fcb82e9": {
+          "id": "1611e1d97d9b6fcb82e9",
+          "applicability": "redundant_verification",
+          "families": [
+            "dialogue_primary_completion"
+          ],
+          "component": {
+            "skill": "For full-evidence categorical analyses, confirm that successful analysis reports complete_records, exact counts, complete population coverage, and complete_contributors. If the documented publication path validates the newly created result before returning successfully, finalize once all requested goals and dependencies are satisfied; do not call validate_result solely to repeat that validation. Explicitly validate reused results, results from paths without guaranteed internal validation, or results with concrete validation gaps. Preserve all internal verifiers, finalization checks, evidence requirements, and returned advisories.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "27c57cdebd6466abf81b",
+              "4a3fbc1ddd8d034986ec",
+              "49a2ed2246d46b646373"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The public publication implementation already invokes validation. Both probes omitted the redundant external validation and completed with four model calls rather than five, without errors or unmet goals and with unchanged categorical results and complete contributor evidence. The general procedure achieved the same observed improvement as the grouping-specific wording, so the additional restriction is unnecessary. No verifier or evidence requirement is changed."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_d7e4b2695e973b15\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_d7e4b2695e973b15\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "4e777d055b79e50fc0fd": {
+          "id": "4e777d055b79e50fc0fd",
+          "applicability": "redundant_verification",
+          "families": [
+            "boundary_empty_time"
+          ],
+          "component": {
+            "skill": "For a newly published full-evidence analysis, confirm successful return and coverage of complete_records, exact counts, complete population, and complete_contributors. If the documented publication path guarantees internal validation before successful return, do not call validate_result solely to repeat it. For bounded time series requesting zero periods, check that tool-produced period coverage matches the requested range and grain; an empty-cohort advisory alone is not a validation gap. Finalize only when all requested goals and dependencies are satisfied. Explicitly validate reused results, results from paths without guaranteed internal validation, or concrete validation gaps. Preserve constraints, advisories, evidence requirements, internal verifiers, and finalization checks.",
+            "context_policy": "relevant",
+            "source_experience_ids": [
+              "49a2ed2246d46b646373",
+              "27c57cdebd6466abf81b"
+            ],
+            "experience_policy": "on_gap",
+            "rationale": "The documented publication path already validates new results. Both tested procedures removed the duplicate external validation and completed with four model calls rather than five, preserving complete exact coverage, requested period coverage, advisories, and no unmet goals. The broader procedure achieved the same observed improvement as the narrower one, so no annual-start-specific restriction is needed."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 5,
+            "after_calls": 4,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_46af7ce8f8788be0\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_46af7ce8f8788be0\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        },
+        "f3afc9dbb808a8f16da4": {
+          "id": "f3afc9dbb808a8f16da4",
+          "applicability": "boundary_unsupported_causality",
+          "families": [
+            "boundary_unsupported_causality"
+          ],
+          "component": {
+            "skill": "For tasks containing only textual answer goals, use focused lookup_trials followed by read_source on the specific fields needed for each deliverable, rather than chart analysis. Before publish_text_answer, check that every quotation occurs in a successful read with the same source_handle and pointer used in the finding; reading a parent object does not replace reading the cited pointer. Reuse matching reads across goals instead of repeating them. Follow pagination when the intended claim requires unread content; otherwise keep the claim bounded to inspected fields. Publish a source-grounded artifact for every declared goal, preserving explicit evidence limitations, and finalize only after the existing validation requirements are met.",
+            "context_policy": "relevant",
+            "source_experience_ids": [],
+            "experience_policy": "on_gap",
+            "rationale": "Both probes completed all textual goals, unlike the initial execution, which stopped after task definition. The focused-field probe used eight model calls without a reported tool error. The broader-reading probe used fifteen, repeated a parent-object read, and encountered a publication error requiring an exact-field read. This procedure retains the successful textual route and adds a narrow pointer-consistency check targeting the observed redundant read and rejected publication. No retrieved lesson IDs were available."
+          },
+          "adopted": true,
+          "behavior": {
+            "before_calls": 2,
+            "after_calls": 9,
+            "before_errors": 0,
+            "after_errors": 0
+          },
+          "supporting_traces": [
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_427ea43047ce2746\\h0\\turn-1.json",
+            "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\development\\ep_427ea43047ce2746\\memory\\final\\turn-1.json"
+          ],
+          "limitations": "Observed on frozen task execution; retrieval does not imply reuse will help another task."
+        }
+      },
+      "prior_receipts": {
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main01\\stopped-infrastructure-ledger.json": {
+          "sha256": "06b659a00f88753a26067b392b4d4f3e8b05fbe225b0fe844b4c5159fe57da16",
+          "usd": 1.0346569,
+          "attempts": 74
+        },
+        "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-main02\\completed-development-and-online-ledger.json": {
+          "sha256": "05bc3b13679117fe891353086554c7712b7d229ed0b2a4fc3fdd40a4ec2cf776",
+          "usd": 8.3686404,
+          "attempts": 743
+        }
+      },
+      "prior_usd": 9.4032973,
+      "formal_remaining_usd": 43.9267027,
+      "total_ceiling_usd": 53.33,
+      "admission": "Predefined admission order, at most four tasks in flight; completed tasks may finish out of order",
+      "graph_isolation": "Per-task SQLite and output directories; shared immutable snapshot projections; same dataset import lock honors original deadline",
+      "accounting": "Thread-local scope plus per-scope PPC event view; global lock, ledger and reservations",
+      "infrastructure_stop": "Stop admitting tasks after PermissionError appears in two independent task receipts; allow in-flight tasks to close",
+      "selection": "Existing PPC public quality; hidden grades report-only; frozen bank copied per task"
+    }
+  }
+}

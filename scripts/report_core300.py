@@ -229,7 +229,7 @@ def tagged_costs(ledger, episodes):
 
 def audit_turns(study, rows):
     """Only called after final completeness validation; export aggregate check identities."""
-    counts, statuses, seen = Counter(), Counter(), 0
+    counts, statuses, seen, diagnostics = Counter(), Counter(), 0, []
     for row in rows:
         correctness = []
         for number in range(1, row["planned_turns"] + 1):
@@ -242,6 +242,25 @@ def audit_turns(study, rows):
             seen += 1
             correctness.append(turn["grade"]["correct"])
             statuses[turn["response"]["status"]] += 1
+            if not turn["grade"]["correct"]:
+                model_errors, tool_errors = [], []
+                for entry in turn.get("journal", []):
+                    output = entry.get("output") or {}
+                    if entry["kind"] == "model" and (output.get("metadata") or {}).get("error_type"):
+                        model_errors.append(output["metadata"]["error_type"])
+                    if entry["kind"] == "tool" and output.get("status") == "error":
+                        tool_errors.append(
+                            {"tool": entry["input"]["name"], "error_type": output.get("error_type")}
+                        )
+                diagnostics.append(
+                    {
+                        "episode_id": row["episode_id"],
+                        "turn": number,
+                        "response_status": turn["response"]["status"],
+                        "model_error_types": model_errors,
+                        "tool_errors": tool_errors,
+                    }
+                )
             for check in turn["grade"]["independent_checks"]:
                 counts[check.get("oracle", "runtime_receipt_or_field_verifier")] += 1
         if row["status"] == "graded" and all(correctness) != row["correct"]:
@@ -250,6 +269,7 @@ def audit_turns(study, rows):
         "saved_turns": seen,
         "response_status_counts": dict(statuses),
         "check_occurrences": dict(counts),
+        "failed_turn_diagnostics": diagnostics,
         "note": "Check occurrences are not independent test cases; a chart may receive multiple checks.",
     }
 
@@ -380,6 +400,28 @@ def result_text(summary, sources, costs):
         "[逐题指标](public-evaluation/core300-cases.json) · "
         "[来源人口](public-evaluation/core300-sources.json) · "
         "[费用账本汇总](public-evaluation/core300-accounting.json)",
+        "",
+        f"执行状态与成功指标须分开理解：正式保存 {summary['turn_audit']['saved_turns']} 轮，其中包括按题目要求拒绝不支持因果判断的轮次。"
+        "不能把全部正确 episode 都描述成成功生成了图表。下列诊断只引用已保存的错误类型，不推断未记录的根因：",
+        "",
+        "| Episode | 轮次状态 | 模型调用错误 | 工具错误 |",
+        "|---|---|---|---|",
+    ]
+    for row in summary["turn_audit"]["failed_turn_diagnostics"]:
+        models = ", ".join(row["model_error_types"]) or "未记录"
+        tools = (
+            ", ".join(f"{e['tool']}: {e['error_type'] or '未记录'}" for e in row["tool_errors"]) or "未记录"
+        )
+        lines.append(f"| `{row['episode_id']}` | {row['response_status']} | {models} | {tools} |")
+    lines += [
+        "",
+        "这些失败均保留在原始分母，未选择性重跑。图工具的 ClientError 未保存具体 Neo4j code 或完整 traceback，"
+        "不能据此确定是超时、竞争或其他数据库原因。后续代码修复不改变本次冻结结果。",
+        "",
+        "另见 [数据依赖关联审计](CORE300_SELECTION_AUDIT.md)：对全部要求依赖选择的轮次核对 anchor、top-N、"
+        "scope、lineage 和 artifact dependencies；原始分数与审计分数并列，其他评分规则保留。",
+        "[冻结协议文件](public-evaluation/frozen-protocols/core300-protocol.json) 与 "
+        "[执行源码归档](public-evaluation/frozen-protocols/core300-source.zip) 标识本次运行版本。",
         "",
     ]
     return "\n".join(lines)

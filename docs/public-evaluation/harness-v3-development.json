@@ -1,0 +1,67 @@
+{
+  "version": "harness-v3-development-closed-v1",
+  "recorded_at": "2026-11-01T08:11:33.344468+00:00",
+  "planned_tasks": 20,
+  "completed_tasks": 20,
+  "unrun_ids": [],
+  "unique_families": 20,
+  "entity_groups": {
+    "melanoma": 7,
+    "psoriasis": 7,
+    "asthma": 6
+  },
+  "h0": {
+    "correct_report_only": 20,
+    "final_execution_model_calls": 154,
+    "final_execution_usd": 0.9440857
+  },
+  "ppc_memory": {
+    "correct_report_only": 19,
+    "final_execution_model_calls": 133,
+    "final_execution_usd": 0.7229196,
+    "publicly_adopted_tasks": 19,
+    "editor_retrieval_events": 48,
+    "editor_declared_source_ids": 35,
+    "executor_actual_read_events": 0,
+    "executor_actual_activation_events": 0,
+    "context_policy_effective_tasks": 0,
+    "executor_mechanism_counts": {}
+  },
+  "frozen_bank": {
+    "entries": 19,
+    "adopted": 19,
+    "negative": 0,
+    "sha256": "09bd78be621d54f0a108e7907597a9971416b71a0a4e01488837c734fe314ebc"
+  },
+  "total_including_editors_probes_unselected_and_failures": {
+    "calls": 643,
+    "usd": 7.3742906999999995,
+    "input_tokens": 5241513,
+    "output_tokens": 70656,
+    "unknown_usage_calls": 0,
+    "measured_api_seconds": 2150.9081580638885,
+    "calls_without_latency": 0
+  },
+  "closed_ledger_sha256": "6680a7cfaf837a48eb1b6f7b1d840c18c22b4ecd48568a2f08f1864b505b7294",
+  "closed_ledger": "data/harness-v3-main02/completed-development-ledger.json",
+  "protocol_sha256": "79f81992e91771e25ef8efaf3d0a6a329e990bc154366bc6dbabb6b20e480f25",
+  "limitations": [
+    "Development tasks are used to accumulate public-feedback experience, not an independent heldout efficacy result.",
+    "Editor-declared reuse is separate from executor search/read/apply; injected procedure text is not autonomous skill retrieval.",
+    "Final execution cost excludes editing/probe overhead; use total ledger for research cost.",
+    "Historical main01 infrastructure failures, pilot and smoke costs remain separately retained."
+  ],
+  "development_failures_report_only": [
+    {
+      "episode_id": "ep_427ea43047ce2746",
+      "family": "boundary_unsupported_causality",
+      "arm": "ppc_memory",
+      "failure_codes": [
+        [
+          "status"
+        ]
+      ],
+      "adopted_on_public_feedback": true
+    }
+  ]
+}

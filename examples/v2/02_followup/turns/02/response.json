@@ -1,0 +1,3003 @@
+{
+  "schema_version": "v2.0",
+  "run_id": "vr_b767a7e44a58448d93a923494279e2e6",
+  "session_id": "vs_9b50691c06cb498fad07b79f4895536e",
+  "status": "completed",
+  "task": {
+    "goal": "Count melanoma studies involving pembrolizumab by study completion month, preserving all prior population constraints.",
+    "mode": "followup",
+    "filters": {
+      "condition": "melanoma",
+      "interventions": [
+        "pembrolizumab"
+      ],
+      "intervention_match": "any",
+      "sponsor": null,
+      "phases": [],
+      "statuses": [],
+      "countries": [],
+      "start_year": null,
+      "end_year": null,
+      "enrollment_type": null
+    },
+    "date_range": null,
+    "intervention_scope": "population",
+    "source_mode": "full_evidence",
+    "goals": [
+      {
+        "id": "completions_by_month",
+        "description": "Count melanoma studies involving pembrolizumab by completion month.",
+        "kind": "chart",
+        "operation": "time_series",
+        "depends_on": [],
+        "parameters": {
+          "group_by": null,
+          "time_field": "completion",
+          "time_grain": "month",
+          "relationship": null,
+          "histogram_bins": null,
+          "x": null,
+          "y": null
+        }
+      }
+    ],
+    "clear_fields": []
+  },
+  "artifacts": [
+    {
+      "artifact_id": "art_93bfdcb713e5fc5e4270cb33f06b44a2",
+      "result_id": "result_93bfdcb713e5fc5e4270cb33f06b44a2",
+      "goal_id": "completions_by_month",
+      "source_type": "clinicaltrials",
+      "scope_id": "scope_be405aacbd4cd7b69c66eae7150c9213",
+      "title": "Melanoma studies involving pembrolizumab by completion month",
+      "metric": "Distinct trials by source date period",
+      "visualization": {
+        "data": [
+          {
+            "category": "2017-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_dcb5c4dea6d9c3a6845085a7fbf73d70",
+            "item_id": "7e149b54a776369cb881",
+            "trial_count": 1
+          },
+          {
+            "category": "2017-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_93bf7afc7c625685204922cf3ab036c4",
+            "item_id": "03ef5d08009160f62e20",
+            "trial_count": 0
+          },
+          {
+            "category": "2017-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c6a628b3ccdfabc4700f8db12e59508d",
+            "item_id": "d7eec935f6740bfadb4c",
+            "trial_count": 0
+          },
+          {
+            "category": "2017-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f5e01c77dc19cd4be34685c277477a02",
+            "item_id": "ff76d42772d447e0d04d",
+            "trial_count": 0
+          },
+          {
+            "category": "2017-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_bac64fd5972dc7fb1f6977520c529fba",
+            "item_id": "d3890a39726dec163fa1",
+            "trial_count": 0
+          },
+          {
+            "category": "2017-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8089f624e76c18312482c671e8d2d4f0",
+            "item_id": "1976cddd1c33bd9e87a9",
+            "trial_count": 1
+          },
+          {
+            "category": "2017-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_2fbf24d813215411cee7868afe260164",
+            "item_id": "cd0a386f8e1d049ea6f0",
+            "trial_count": 2
+          },
+          {
+            "category": "2017-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_07ae3e2ce7bc619224d122afda999fdd",
+            "item_id": "f8d7bed5c852623e6ade",
+            "trial_count": 1
+          },
+          {
+            "category": "2017-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_5c96d3e2e804d2c2a71ce7e90ea43aea",
+            "item_id": "687cbef1a8bda441b351",
+            "trial_count": 0
+          },
+          {
+            "category": "2017-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ea34a7cca0a1fcc1e6aa450a8701c384",
+            "item_id": "c41078591bc5c5e01b9d",
+            "trial_count": 1
+          },
+          {
+            "category": "2017-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_7d59b9602bb78d0bd6b9e9edca48623b",
+            "item_id": "2b5ef4399dd3a5bc881a",
+            "trial_count": 0
+          },
+          {
+            "category": "2018-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_76610d8a1b94a46cd221f5223d6bba15",
+            "item_id": "e9c3beaa1038ad80d8ab",
+            "trial_count": 1
+          },
+          {
+            "category": "2018-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a3e4a199e06c236aed06fb71421f06b1",
+            "item_id": "42ff1514e61b3cc8174e",
+            "trial_count": 0
+          },
+          {
+            "category": "2018-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_da3f6e6009970e5b8f4a9340242526af",
+            "item_id": "4e35eb158222a94aa423",
+            "trial_count": 1
+          },
+          {
+            "category": "2018-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4e218c700c59501835d7ab36d746718b",
+            "item_id": "a7c589f5a3fe0f8faacf",
+            "trial_count": 0
+          },
+          {
+            "category": "2018-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e6c70dda6c083e2ffa709d70e6a75f13",
+            "item_id": "d5b7746c6b6847be8978",
+            "trial_count": 0
+          },
+          {
+            "category": "2018-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_97d3cb9532e30ba8f42cf790ae9c4c50",
+            "item_id": "d0d7b544fd3f5000dea3",
+            "trial_count": 4
+          },
+          {
+            "category": "2018-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0da0ac1705e6f0ae57623b5552f86417",
+            "item_id": "5d399e97d164198d7ab3",
+            "trial_count": 1
+          },
+          {
+            "category": "2018-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_33110b77f8ead7fa249843a8e82c9ae2",
+            "item_id": "e438d7e51f8a25ac1894",
+            "trial_count": 1
+          },
+          {
+            "category": "2018-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_af6a31ffd702d351e5e4c5dd520a12ce",
+            "item_id": "2758a0999abcf79d030d",
+            "trial_count": 0
+          },
+          {
+            "category": "2018-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a20f07346ea51c206ba8390f2ac17aad",
+            "item_id": "c5e2451de6f2d46aeb18",
+            "trial_count": 2
+          },
+          {
+            "category": "2018-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_414b6978fb5bd4df92844334410e0df6",
+            "item_id": "da93ec0678fd100ce06d",
+            "trial_count": 1
+          },
+          {
+            "category": "2018-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c767f861033cb23b1a012ba7944d651a",
+            "item_id": "9a4b10e04caa4dea3325",
+            "trial_count": 3
+          },
+          {
+            "category": "2019-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8ea337ce60fccb38b43fc462a8201ab8",
+            "item_id": "237304cc8d7329a205a5",
+            "trial_count": 2
+          },
+          {
+            "category": "2019-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4a76245388d5fc94847c87db22e92737",
+            "item_id": "f4c42ed3dd60e9048b87",
+            "trial_count": 1
+          },
+          {
+            "category": "2019-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_98110420e31b09e0c25a94d60cbb7331",
+            "item_id": "297fa55fa09ab956c06d",
+            "trial_count": 1
+          },
+          {
+            "category": "2019-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0f750f06b9dcd2b855efbd62666cc2ae",
+            "item_id": "d0b71380eaa49b976083",
+            "trial_count": 2
+          },
+          {
+            "category": "2019-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_2dc25078f18b9b3ced84769c40126607",
+            "item_id": "2132737875efcaf1f1fe",
+            "trial_count": 0
+          },
+          {
+            "category": "2019-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0d6d3040104cb4ea12fb67df59c5a6bd",
+            "item_id": "25ec9da691b947f8697c",
+            "trial_count": 1
+          },
+          {
+            "category": "2019-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8826418215dbf4dd3138992dc7f28a6d",
+            "item_id": "305a8b89a7dce4cba024",
+            "trial_count": 1
+          },
+          {
+            "category": "2019-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_73d7405d405c671013498087ac27c77f",
+            "item_id": "75de3ad3e37b0ce05847",
+            "trial_count": 3
+          },
+          {
+            "category": "2019-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e55ae3bd5126f7f70070848324ddbeea",
+            "item_id": "373c6c6ee2ac9dbd615e",
+            "trial_count": 1
+          },
+          {
+            "category": "2019-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_dcd35cf839999b8a531453d4fbf9f7cd",
+            "item_id": "37d8d85c516671f3cb81",
+            "trial_count": 3
+          },
+          {
+            "category": "2019-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_2d9a4c7407e1ef3008ca63aa6ec54727",
+            "item_id": "ea1b346d314060b4e051",
+            "trial_count": 3
+          },
+          {
+            "category": "2019-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_328717337b186970aeddadf3d7a8b331",
+            "item_id": "28f163b74e5ff4d40a78",
+            "trial_count": 1
+          },
+          {
+            "category": "2020-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f8c60fc845138c68b4d08577cfd40688",
+            "item_id": "925cd1bdf6383ffb3fb1",
+            "trial_count": 1
+          },
+          {
+            "category": "2020-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_2505014c99362e839de68267da329016",
+            "item_id": "e7dcc7a68456b6351cca",
+            "trial_count": 2
+          },
+          {
+            "category": "2020-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ff1d9d6448703d46376171838c973332",
+            "item_id": "e055254ecddb21ad1439",
+            "trial_count": 3
+          },
+          {
+            "category": "2020-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_befe3e0bd14d56adba7d9e51e6739412",
+            "item_id": "c24da60cc0a7816203d7",
+            "trial_count": 2
+          },
+          {
+            "category": "2020-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_2cdca3c27209246ccd597fb4caed2eb8",
+            "item_id": "cefcca1f94d3d7e7bd62",
+            "trial_count": 0
+          },
+          {
+            "category": "2020-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_25967dc90dfcd772ed53923a05ca9e56",
+            "item_id": "41476bf7754217138e4f",
+            "trial_count": 1
+          },
+          {
+            "category": "2020-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_21137ed95263403603f333da54e6ca6e",
+            "item_id": "1391524b6a9407009f9f",
+            "trial_count": 4
+          },
+          {
+            "category": "2020-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_abdf43f025fe1eacb3b5401e1c4723c6",
+            "item_id": "f929269bc2eb65f9ad36",
+            "trial_count": 2
+          },
+          {
+            "category": "2020-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d6c68fa4868589f798e5f5dcd345fa83",
+            "item_id": "cc2f6be66d6b873a2f26",
+            "trial_count": 1
+          },
+          {
+            "category": "2020-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_71fe42b864c80ddeb183103e60e5ce65",
+            "item_id": "106440686b6f776d0c8f",
+            "trial_count": 1
+          },
+          {
+            "category": "2020-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_03f19fd317739faef486aef263e35fd9",
+            "item_id": "f964c1968e63ac3dce8e",
+            "trial_count": 4
+          },
+          {
+            "category": "2020-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_81ccb07a6105fdf636682984aba6caea",
+            "item_id": "7b81c775d73a1c27e094",
+            "trial_count": 1
+          },
+          {
+            "category": "2021-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_6e9323d1f9e26ea1d6d942cf82bc56e9",
+            "item_id": "48bd36e9801d426d7fc9",
+            "trial_count": 1
+          },
+          {
+            "category": "2021-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f45a8407f403a1e840ff60958390d948",
+            "item_id": "6af702d32f2028b9fc87",
+            "trial_count": 1
+          },
+          {
+            "category": "2021-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_18df2a98be0a5fd6dfaf5e6195a508e0",
+            "item_id": "0e33ce392c4f8daf18c1",
+            "trial_count": 3
+          },
+          {
+            "category": "2021-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_9160006cd361c35a6afc3ae6c26c3d23",
+            "item_id": "9e472fcec38d9de2e89e",
+            "trial_count": 3
+          },
+          {
+            "category": "2021-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_865ba17692b4d4057d3c05317182dc33",
+            "item_id": "24ea9209e1cb3ae4a376",
+            "trial_count": 1
+          },
+          {
+            "category": "2021-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4292e0c29c376e17cc1a6bfa901e2747",
+            "item_id": "84dd2f41ce9b869ba45c",
+            "trial_count": 0
+          },
+          {
+            "category": "2021-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e528ef84859a8488e1f9a43fa122ae39",
+            "item_id": "08e601e89122966c7fea",
+            "trial_count": 1
+          },
+          {
+            "category": "2021-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_02f6ec6a05f3ae56445383272bd572be",
+            "item_id": "407b980295ff0a42122e",
+            "trial_count": 1
+          },
+          {
+            "category": "2021-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_7220119521eb95015ffff60728d420e0",
+            "item_id": "7fa321f1e23897584fef",
+            "trial_count": 2
+          },
+          {
+            "category": "2021-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f474add9b85a6127b87d13fa32086bf5",
+            "item_id": "db74165993e8a6c84af0",
+            "trial_count": 1
+          },
+          {
+            "category": "2021-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c0ef32b951988a1a361679d0fd21a54a",
+            "item_id": "ee4e8e8b0aa43f6f5caa",
+            "trial_count": 1
+          },
+          {
+            "category": "2021-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_b0fe4de6b942024e51b269cee90f8fad",
+            "item_id": "8802babe6683db8af04f",
+            "trial_count": 2
+          },
+          {
+            "category": "2022-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4817a83e2dce80f6c0af41f3afe391fe",
+            "item_id": "31b3de71168ed29d287c",
+            "trial_count": 2
+          },
+          {
+            "category": "2022-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ebabb2b7ca1910d7004ef8cab77bc16a",
+            "item_id": "0977b790be72ff809c06",
+            "trial_count": 4
+          },
+          {
+            "category": "2022-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_fd249c204a45178a7ae29c1f07bc8add",
+            "item_id": "0c222fcbc1b704dfb65e",
+            "trial_count": 2
+          },
+          {
+            "category": "2022-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ecad22ba5600a4ef4648c15cc9ab954e",
+            "item_id": "f463fa7b93deb9875fa4",
+            "trial_count": 1
+          },
+          {
+            "category": "2022-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8133e5841900d696cdcd185cc1a18fff",
+            "item_id": "96310823a11c765b9395",
+            "trial_count": 0
+          },
+          {
+            "category": "2022-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4f9487ba000a598ca711c6ce0c5e714f",
+            "item_id": "392a185c5661e4257e2e",
+            "trial_count": 4
+          },
+          {
+            "category": "2022-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_207f11b38394de9c8f13d42538f472a6",
+            "item_id": "bab1bf2cdef143b0917f",
+            "trial_count": 4
+          },
+          {
+            "category": "2022-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_12f27d34672b7aaae3fcb1f8d77578f7",
+            "item_id": "9571fa679c7efd9d9383",
+            "trial_count": 0
+          },
+          {
+            "category": "2022-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c559a5b6029accbbf60309058f44219d",
+            "item_id": "30547aa811339971ce79",
+            "trial_count": 3
+          },
+          {
+            "category": "2022-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_b94ca06439ffcb996b99f4be2c8a110b",
+            "item_id": "617fb16bcbc1c20724e0",
+            "trial_count": 6
+          },
+          {
+            "category": "2022-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_7ba9b8526afb5677da9e5b94a5accd96",
+            "item_id": "e5bf6ee3990cb5d56434",
+            "trial_count": 2
+          },
+          {
+            "category": "2022-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4f86dbbc83b4b2e268c8f4257054c12f",
+            "item_id": "2fe88cd8ae3eac324f36",
+            "trial_count": 4
+          },
+          {
+            "category": "2023-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4a1e54243407cacf28aad80490bbdffc",
+            "item_id": "4740165181adc4ce3061",
+            "trial_count": 2
+          },
+          {
+            "category": "2023-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_55e45fb60c7404c95d573cff7aeee533",
+            "item_id": "1dd3b7142bf826d696c4",
+            "trial_count": 1
+          },
+          {
+            "category": "2023-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f74b09c498a5a9633c9b1d643af058f4",
+            "item_id": "b90497f40531d61020f1",
+            "trial_count": 1
+          },
+          {
+            "category": "2023-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_594000f17b3fa102b2a316659d77aae4",
+            "item_id": "c55cbc0bc0524e2b69eb",
+            "trial_count": 2
+          },
+          {
+            "category": "2023-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_6e281b1fd564d63e07485eed0530982b",
+            "item_id": "dcb71f2f4ee3ece5811c",
+            "trial_count": 3
+          },
+          {
+            "category": "2023-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_55c41517b48c3428873948dcbd122463",
+            "item_id": "236b1421c442583618a0",
+            "trial_count": 4
+          },
+          {
+            "category": "2023-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8fa217c2601fbcebc7d3757517002bf5",
+            "item_id": "574abad9c68fa79a5f36",
+            "trial_count": 6
+          },
+          {
+            "category": "2023-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_395bf51c08798954001022675c52032f",
+            "item_id": "9d46fa57f3b8d595e55b",
+            "trial_count": 6
+          },
+          {
+            "category": "2023-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0a5a5412069447c9fb94f2d856771d7a",
+            "item_id": "aaa0a579c6dc87ccec74",
+            "trial_count": 1
+          },
+          {
+            "category": "2023-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0333074e1eac5f2002638afb14eceec3",
+            "item_id": "86262145ef7f03c9f854",
+            "trial_count": 3
+          },
+          {
+            "category": "2023-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_3205db59adf3be1c430193aa5fd71cca",
+            "item_id": "9bc5750d86d24194970f",
+            "trial_count": 3
+          },
+          {
+            "category": "2023-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_fab28b42f6edbf2eca2f92ec84a189fa",
+            "item_id": "ab444c6ef2db395f59d5",
+            "trial_count": 6
+          },
+          {
+            "category": "2024-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_157dbfa2b156f01e29f8383ec7690d31",
+            "item_id": "e331a3a4fbc321f83fd2",
+            "trial_count": 1
+          },
+          {
+            "category": "2024-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_5349955aa7ca0aa69eaf0ed1337620cd",
+            "item_id": "ca9f2e44d1016cc50ad1",
+            "trial_count": 1
+          },
+          {
+            "category": "2024-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_3007262447c27a93fdcc26429945d8f6",
+            "item_id": "5a76b6d42a2351f7df60",
+            "trial_count": 5
+          },
+          {
+            "category": "2024-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_1a75cb28f4bc57ab54fb5ece52e0ba31",
+            "item_id": "41d037f32afa7c18e745",
+            "trial_count": 1
+          },
+          {
+            "category": "2024-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_19664f5a2f476df5489735142001fdab",
+            "item_id": "8fef22f63962d66ffa3f",
+            "trial_count": 2
+          },
+          {
+            "category": "2024-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a9796eb0f11e38f18743fb74a3601975",
+            "item_id": "78f61a84bb4c1802fe70",
+            "trial_count": 2
+          },
+          {
+            "category": "2024-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0ca307c756789fdd2c1c38026c92bf26",
+            "item_id": "2adee272de61b5230ac6",
+            "trial_count": 1
+          },
+          {
+            "category": "2024-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_57b0366f4e9c29cf372bbefd38cd08d9",
+            "item_id": "05036d4a6e79d5d123bc",
+            "trial_count": 1
+          },
+          {
+            "category": "2024-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_bd493036716c60be74f59a7f0a7d0a07",
+            "item_id": "4044154cff3af364f6ce",
+            "trial_count": 3
+          },
+          {
+            "category": "2024-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e27789fb0c306c5d753ff02bf3515037",
+            "item_id": "fda8395be73102ac1d05",
+            "trial_count": 3
+          },
+          {
+            "category": "2024-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_91dca7f6dd10433adca21bb86bcd4606",
+            "item_id": "4cd567538f3d5b241704",
+            "trial_count": 6
+          },
+          {
+            "category": "2024-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c164bc4f60d87364d65c162796eb6e3f",
+            "item_id": "9ffbcbb87e88e56b606c",
+            "trial_count": 4
+          },
+          {
+            "category": "2025-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_bfc6039b983a2fc6d946567914b04cb6",
+            "item_id": "481fc1b1916de1d64841",
+            "trial_count": 1
+          },
+          {
+            "category": "2025-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_b111de36e7b1bfc82710ef9cf947f4d4",
+            "item_id": "7fa28603b89de488883c",
+            "trial_count": 2
+          },
+          {
+            "category": "2025-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_1346235b7cc9280d317b74ff5a758cf6",
+            "item_id": "ae08f0e3eed4e560d890",
+            "trial_count": 3
+          },
+          {
+            "category": "2025-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_49e5a99ca19ba66971f8d780ef444597",
+            "item_id": "16958ec78696151c070a",
+            "trial_count": 2
+          },
+          {
+            "category": "2025-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_2691a46fd75bd35b51f37f1aa8ab3719",
+            "item_id": "e9423769de0d51cf0b74",
+            "trial_count": 5
+          },
+          {
+            "category": "2025-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ab47e88d1f294def03400ef7298fbe4f",
+            "item_id": "abf9b90bdfca04573058",
+            "trial_count": 3
+          },
+          {
+            "category": "2025-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_60891a2d75257f64ce5ef2f7d0c97721",
+            "item_id": "202b95295f6ab29ed3d7",
+            "trial_count": 8
+          },
+          {
+            "category": "2025-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_90510e02ea154801e7f2d4222709a150",
+            "item_id": "bba2fdb7c12365e79e35",
+            "trial_count": 3
+          },
+          {
+            "category": "2025-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_96df850496f713608fa5a544cdb62508",
+            "item_id": "ae8d690c19a418a4a98b",
+            "trial_count": 6
+          },
+          {
+            "category": "2025-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_5e8333bb0d2d262304beb5caf38837af",
+            "item_id": "3b116b722a682547cdfa",
+            "trial_count": 4
+          },
+          {
+            "category": "2025-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_7ea3022a6b9af41e22037913e89b5fbc",
+            "item_id": "527b5808a2a0c9ee93aa",
+            "trial_count": 2
+          },
+          {
+            "category": "2025-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_1b6427328ce3856908f09fa9ad63f0ae",
+            "item_id": "afc500eb2dae739baf8f",
+            "trial_count": 10
+          },
+          {
+            "category": "2026-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_5d22cce8457e6e97177f9a7d0e7b396a",
+            "item_id": "aba89b8c5e0fa89356d1",
+            "trial_count": 1
+          },
+          {
+            "category": "2026-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_1a6d98eefb3e4d4123e023c9be03ead2",
+            "item_id": "607507218ec2090e4e66",
+            "trial_count": 6
+          },
+          {
+            "category": "2026-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_233f1deee62c4635a4bc1767773ab329",
+            "item_id": "adb1307f169cb43a02b8",
+            "trial_count": 7
+          },
+          {
+            "category": "2026-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_2a1825166c9b4014c0388744380046c2",
+            "item_id": "7a571e8b287db14b0dbf",
+            "trial_count": 1
+          },
+          {
+            "category": "2026-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f30240b33376f58cc0da1ca2f710c0a4",
+            "item_id": "e2afe62fa0e2ed9b7836",
+            "trial_count": 3
+          },
+          {
+            "category": "2026-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d9d2cefbfcab448f16f4d7b3bfc9d339",
+            "item_id": "1ba132c45567ef472fc3",
+            "trial_count": 4
+          },
+          {
+            "category": "2026-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_084248c8ac0494a13062e7f57985a18e",
+            "item_id": "aa92e3092adf24891a92",
+            "trial_count": 4
+          },
+          {
+            "category": "2026-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e5348f8c9b71ce9d237273b3463fb654",
+            "item_id": "26aa496dfe2744b7a644",
+            "trial_count": 5
+          },
+          {
+            "category": "2026-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_9430699452493b3d8afd11ea4f1189c4",
+            "item_id": "635ade701357c23c96ba",
+            "trial_count": 0
+          },
+          {
+            "category": "2026-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0ddd3ba96b99ec1927ef9cae76904e54",
+            "item_id": "feba7252377d134354c9",
+            "trial_count": 3
+          },
+          {
+            "category": "2026-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f1add376d96c7a76e0641fef253cae3b",
+            "item_id": "e61e80ff04ee93205ed1",
+            "trial_count": 2
+          },
+          {
+            "category": "2026-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0363186fb28c4a027443864cee85bab6",
+            "item_id": "922a15891547b26c8252",
+            "trial_count": 5
+          },
+          {
+            "category": "2027-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c7278918f77be76e2ee72bbfaa2e9680",
+            "item_id": "c1a286113633ebd42486",
+            "trial_count": 8
+          },
+          {
+            "category": "2027-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_3c7b693854f7ade92ba86dfc0db94fda",
+            "item_id": "7f4c08c159eaaa49c0ae",
+            "trial_count": 2
+          },
+          {
+            "category": "2027-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_b04b3264137085cc5d605485028920cd",
+            "item_id": "1bfe8371f2c5102536ab",
+            "trial_count": 1
+          },
+          {
+            "category": "2027-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d096885d14c9fc766db7af7f5c801ad7",
+            "item_id": "b0ada1f71d670b94def0",
+            "trial_count": 3
+          },
+          {
+            "category": "2027-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0082eb3700fc004c05a953dc298a7413",
+            "item_id": "a59e9f67730e22ef7ca3",
+            "trial_count": 5
+          },
+          {
+            "category": "2027-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_aaf2c6fc7c152bda524b7513cf4abdf1",
+            "item_id": "8eb241bc75056295a4b9",
+            "trial_count": 5
+          },
+          {
+            "category": "2027-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e66938ee99ec8851896dc11434fed6e9",
+            "item_id": "9354c4035734699550e9",
+            "trial_count": 5
+          },
+          {
+            "category": "2027-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_03cebcfe498269ebf44882c25f22c07c",
+            "item_id": "1cbb142124a5d78baf65",
+            "trial_count": 5
+          },
+          {
+            "category": "2027-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8fe1c4a8a93ea9969bfb4d8724ab07ab",
+            "item_id": "7ddab4db0df49ba7cc42",
+            "trial_count": 4
+          },
+          {
+            "category": "2027-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ce63095cc6115f7d8b269e9919e1fcdd",
+            "item_id": "326177a32497047cb080",
+            "trial_count": 3
+          },
+          {
+            "category": "2027-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_17c13684750b306a9f386fb5fef1b15d",
+            "item_id": "33a8ffea7de8556e0599",
+            "trial_count": 1
+          },
+          {
+            "category": "2027-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_9e2c0c2ebe34b6711d2135af46bb1ddc",
+            "item_id": "c5a605905263fbcaea88",
+            "trial_count": 6
+          },
+          {
+            "category": "2028-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_fa109e2264a6a1ca351c245ea0f06c8e",
+            "item_id": "111a935a428c72162968",
+            "trial_count": 2
+          },
+          {
+            "category": "2028-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_402c1d0ed56ec813cdc719d7f494cf0d",
+            "item_id": "f305331d06d9c18dd125",
+            "trial_count": 1
+          },
+          {
+            "category": "2028-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_5ff723ed7dab0a2ab6ac456ecea091de",
+            "item_id": "9000f778dab71c8bd0d3",
+            "trial_count": 3
+          },
+          {
+            "category": "2028-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_81fa510b7fa7abe5d48baf21f8e3e133",
+            "item_id": "8f0396937295425c1d8a",
+            "trial_count": 1
+          },
+          {
+            "category": "2028-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d0e2eb0a7dedb3f34ac566242f839c28",
+            "item_id": "11b5a4fa3996f0ce1b5c",
+            "trial_count": 2
+          },
+          {
+            "category": "2028-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e9a762176aec61e005f3b41dfbe30a4c",
+            "item_id": "739d22e0c9bf8acca03c",
+            "trial_count": 6
+          },
+          {
+            "category": "2028-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e421d1ba6de8e690c2d8deb417c6484e",
+            "item_id": "739068eeac061acf3fea",
+            "trial_count": 4
+          },
+          {
+            "category": "2028-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_6cbea877d5c8d67c127f08bbae5439ab",
+            "item_id": "2af898044c4f577fe9c1",
+            "trial_count": 0
+          },
+          {
+            "category": "2028-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_84cafc2dc378141f439f072bde0ce8e5",
+            "item_id": "8413cb6d1f8b478844ef",
+            "trial_count": 0
+          },
+          {
+            "category": "2028-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_9847379ebe0568f3cb452a79ef0bf78c",
+            "item_id": "d58676b154e85db815d4",
+            "trial_count": 4
+          },
+          {
+            "category": "2028-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_3b975c52e1073c65f72ce95505b21a9b",
+            "item_id": "2ce8e81f024265691235",
+            "trial_count": 2
+          },
+          {
+            "category": "2028-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a13051520f4f0f6996a88c74893caa49",
+            "item_id": "e54575ca4816987aa0c7",
+            "trial_count": 5
+          },
+          {
+            "category": "2029-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_fc4ce916edc609180eb9a33f59eb3d19",
+            "item_id": "5dee46d9c0267114892e",
+            "trial_count": 1
+          },
+          {
+            "category": "2029-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4eba145003db12c853924791c8852fec",
+            "item_id": "fbb64a1297b49bd16d2e",
+            "trial_count": 0
+          },
+          {
+            "category": "2029-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d6b051282d2b396a9e5b19d66e8a22bd",
+            "item_id": "1d7a11a8487e4861a0b8",
+            "trial_count": 1
+          },
+          {
+            "category": "2029-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_6f2dc43bef5517f140880457968bc42e",
+            "item_id": "2509a8a2f66de6becf24",
+            "trial_count": 1
+          },
+          {
+            "category": "2029-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_780d285532f670820ab46887bd394028",
+            "item_id": "7e1baf719011f7bac152",
+            "trial_count": 1
+          },
+          {
+            "category": "2029-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_b7e9033159d7cc1eba3687a8d6bf99d0",
+            "item_id": "fb82729dcedae0733021",
+            "trial_count": 2
+          },
+          {
+            "category": "2029-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_704226517f6a623d9c3141bc7a3be7ce",
+            "item_id": "a039a925d594118fd1ca",
+            "trial_count": 0
+          },
+          {
+            "category": "2029-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_37f5817b38b3617bca7dc8e4136a4931",
+            "item_id": "656eed44fb45f6bb8b2c",
+            "trial_count": 2
+          },
+          {
+            "category": "2029-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_be762f276bc47a4ac4bb945adff263b3",
+            "item_id": "256351a435c5e3d12623",
+            "trial_count": 1
+          },
+          {
+            "category": "2029-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_3244b123d33a1efe73ba70e6cc20d6e9",
+            "item_id": "1bcf2caa80b84b189f75",
+            "trial_count": 0
+          },
+          {
+            "category": "2029-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_6b5a300a7dc32107e1611e9f234a22a5",
+            "item_id": "ed7c7327c776c93df243",
+            "trial_count": 0
+          },
+          {
+            "category": "2029-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8ede05d59f23926c65925a06609d35a2",
+            "item_id": "5ea4d983876de0aac2c5",
+            "trial_count": 5
+          },
+          {
+            "category": "2030-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ae8852d405f9872a1db6802fae9b32bb",
+            "item_id": "3fb8c23450622bf971c6",
+            "trial_count": 0
+          },
+          {
+            "category": "2030-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d3ba79cfb2e50a39e15f6288fa0e2bc6",
+            "item_id": "81f05a0de891242d4ec6",
+            "trial_count": 0
+          },
+          {
+            "category": "2030-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_44c765e13681c0ab369b0fea4ea6a8a8",
+            "item_id": "6ee8abb035f5099e44a3",
+            "trial_count": 1
+          },
+          {
+            "category": "2030-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_60ea2295e9c8f20a7379aafb39a7d85e",
+            "item_id": "c2a11f444bb62af65b6d",
+            "trial_count": 1
+          },
+          {
+            "category": "2030-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c18f9f6a0f46dd97e455a1b50bbd4207",
+            "item_id": "895f467361880b96ebbc",
+            "trial_count": 0
+          },
+          {
+            "category": "2030-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d032de5d042f62171d834e737413a416",
+            "item_id": "f1bdb7ef4e274b995a0b",
+            "trial_count": 1
+          },
+          {
+            "category": "2030-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_3c80937164bbf8fd1d57320f03098942",
+            "item_id": "8719070e8d04ee7a6380",
+            "trial_count": 0
+          },
+          {
+            "category": "2030-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_133bbfbca7f899de8c9d72bd7113c6bd",
+            "item_id": "b2dc6f9bceec562b5f1a",
+            "trial_count": 0
+          },
+          {
+            "category": "2030-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0a8cf3a8ebd4f76037fcbbe71f0a4858",
+            "item_id": "4db8fc1100e8bf3fba9e",
+            "trial_count": 3
+          },
+          {
+            "category": "2030-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_607c367a5e87e1e61b52f93096bdecc3",
+            "item_id": "0551f29eea6338dbc6a7",
+            "trial_count": 0
+          },
+          {
+            "category": "2030-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_116aebc9118902689f1d0671e1e8c407",
+            "item_id": "2656bfee62fec401859e",
+            "trial_count": 3
+          },
+          {
+            "category": "2030-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_dc6ee26c938c8eaa9fd29cf08b34a9c5",
+            "item_id": "218f7c24f14665ce82bf",
+            "trial_count": 1
+          },
+          {
+            "category": "2031-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c744a440a93ca5626894bc68958ca5c5",
+            "item_id": "e9b2e14ad85ac68ea6f4",
+            "trial_count": 0
+          },
+          {
+            "category": "2031-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0ae8770617cffe29badecdfd7270a25b",
+            "item_id": "a43587263eeaef88ca15",
+            "trial_count": 1
+          },
+          {
+            "category": "2031-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_412d76a91501d34a2e3cd851cc2c23d8",
+            "item_id": "4c25df87095c18542ea6",
+            "trial_count": 1
+          },
+          {
+            "category": "2031-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c711875638073e82612668801e9bb4a7",
+            "item_id": "2118b2458d5d8ae9a4e5",
+            "trial_count": 1
+          },
+          {
+            "category": "2031-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c6707ae9c6012ddbb1a4637aee3ea4c3",
+            "item_id": "08a649012189ff18e206",
+            "trial_count": 2
+          },
+          {
+            "category": "2031-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a80af434bd2f1bd2c04bef77cfccb5d9",
+            "item_id": "921eb379967ef3cd8e29",
+            "trial_count": 0
+          },
+          {
+            "category": "2031-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_595b8358d61154cf48d228cd12f53809",
+            "item_id": "96efd4d1c8c8c87aeea8",
+            "trial_count": 1
+          },
+          {
+            "category": "2031-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8ada9b2930fe08ed8c3c768582ee1739",
+            "item_id": "f7cd893238946ff25a2b",
+            "trial_count": 0
+          },
+          {
+            "category": "2031-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a40049c8b0690a75835cbeb73d3e97f3",
+            "item_id": "dd3993f238c454a82a49",
+            "trial_count": 3
+          },
+          {
+            "category": "2031-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_681dc57119c9fd9575ad0e3d5b55a661",
+            "item_id": "5f53c48dc4d07fa7eead",
+            "trial_count": 0
+          },
+          {
+            "category": "2031-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_b0007278bc816f5106e670558a60aa72",
+            "item_id": "2859e8dd19e5cd08c554",
+            "trial_count": 0
+          },
+          {
+            "category": "2031-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_606c747cffa3886b90c0ea3ced6e0b34",
+            "item_id": "09cbdd7969fe7e524d14",
+            "trial_count": 1
+          },
+          {
+            "category": "2032-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_9cccb5191586f7b3d6c09bb679425919",
+            "item_id": "ed8c8e3c113c072a42d6",
+            "trial_count": 0
+          },
+          {
+            "category": "2032-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_aba6f8de4ba7fc1170cfbf7227e51b65",
+            "item_id": "1acbb2053892e7384d27",
+            "trial_count": 0
+          },
+          {
+            "category": "2032-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_92c65132b0c74e360a0493fffdd40495",
+            "item_id": "31d81fb62802430aefff",
+            "trial_count": 1
+          },
+          {
+            "category": "2032-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ec1cdea1f3bb77abfa1e78faa94be772",
+            "item_id": "2e211f8d1a88de49a208",
+            "trial_count": 1
+          },
+          {
+            "category": "2032-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a2e423211d4e5de4e2826888e547f8b2",
+            "item_id": "60ab4744435f4d4e499f",
+            "trial_count": 0
+          },
+          {
+            "category": "2032-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0a79a75215d7a3e05e46c4680240d561",
+            "item_id": "6706da88fa344ae67827",
+            "trial_count": 1
+          },
+          {
+            "category": "2032-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_47dfc6551a4e165a86b51e31adca0b91",
+            "item_id": "eac47eafac426bea2698",
+            "trial_count": 1
+          },
+          {
+            "category": "2032-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c13dfc48a580e05d9559c08773268743",
+            "item_id": "70920f6134fec82e59f1",
+            "trial_count": 2
+          },
+          {
+            "category": "2032-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_25cb02f270f35174b98f795cd91721ce",
+            "item_id": "90e304e77db11963664a",
+            "trial_count": 0
+          },
+          {
+            "category": "2032-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_9b439ceb304bdf0ee8fe9e602e275ed2",
+            "item_id": "a7606cb9dde45e3b7632",
+            "trial_count": 0
+          },
+          {
+            "category": "2032-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8c79299ce69742db63dcd4e41172a2cd",
+            "item_id": "b7a3b95bc219ebe2c803",
+            "trial_count": 1
+          },
+          {
+            "category": "2032-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_bd9045c21e6b976be68bb1227c2cfdb5",
+            "item_id": "0e981eabf90539ba9ef4",
+            "trial_count": 0
+          },
+          {
+            "category": "2033-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ef9919b350896d87010254582a3cbeaa",
+            "item_id": "d467a025640c18685ca2",
+            "trial_count": 1
+          },
+          {
+            "category": "2033-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_08a6a1dc1cf9d85a9f91dccbb555a582",
+            "item_id": "687277da71b55743f0a1",
+            "trial_count": 0
+          },
+          {
+            "category": "2033-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_7019e6d3268d8872a49f713e8b15c99c",
+            "item_id": "d8c0bdbf3d3c9ffb94f8",
+            "trial_count": 0
+          },
+          {
+            "category": "2033-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_6160b71246ef7f6ee59bc5a782fb84ca",
+            "item_id": "32d175a3d3eab25c425c",
+            "trial_count": 0
+          },
+          {
+            "category": "2033-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_88b632e746fd56480d516b410ad6661c",
+            "item_id": "92c940fb362b05c9631c",
+            "trial_count": 0
+          },
+          {
+            "category": "2033-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_fb834ca2f82edec9989da2f03387d107",
+            "item_id": "8ee3bcd8b708532cf41b",
+            "trial_count": 0
+          },
+          {
+            "category": "2033-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_3cea8d01f07789ddca507f6a52936bd5",
+            "item_id": "971d6fa80804e16e9876",
+            "trial_count": 1
+          },
+          {
+            "category": "2033-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a0916f9c9afb340848ed4d358cbce801",
+            "item_id": "5c7cb8bbd294c339cbac",
+            "trial_count": 0
+          },
+          {
+            "category": "2033-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_7983e21c6f318c9058aaa87f27856d62",
+            "item_id": "83c167e1ada170bce437",
+            "trial_count": 1
+          },
+          {
+            "category": "2033-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_57dd432f978bc08fef563dff729e8ba8",
+            "item_id": "851743b9f209ab9d6ee7",
+            "trial_count": 1
+          },
+          {
+            "category": "2033-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0026d530205ffeb5a0fb72aa5e9abaa6",
+            "item_id": "bca45c2de618d4db91b1",
+            "trial_count": 0
+          },
+          {
+            "category": "2033-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_aad241a696307aea0d4adf83d999dda7",
+            "item_id": "edd4b0d4bdb6d0c20c54",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_bda136e1d4e32ef0e8dab026d486e4d7",
+            "item_id": "46aaaa61a0b5e5f3b8d6",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d7131aea6422a451000bbd9abc4d4679",
+            "item_id": "e8a0dfc1cd16d4cf1433",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_eee828e82cc99792f20db3cf44c0fa8c",
+            "item_id": "f3d787c87ef25492f9b9",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_1408ffc3ccb6937e8275930a97fa8b95",
+            "item_id": "179d6d3073629a85b0c2",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d0165e020e98c89356d3dd65099adf36",
+            "item_id": "71e4996892b5ed76a5c2",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_bedebb3f8a873b7dc06fbcac63ea99c0",
+            "item_id": "9f8d885fbd9db037fc8c",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ba7f8595d01981399cf88c6535ac15d5",
+            "item_id": "5be1f76428233bcbf47d",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e4b37ccf178ca1467a9c7fe9fc709bab",
+            "item_id": "1bdacdabd7439723d29d",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_38f79b9c67164aec1b4c723a111816ba",
+            "item_id": "46c5efdd7c94356bead2",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_137701473f1a734b89a0ff76fba04f57",
+            "item_id": "fd6307f903e34af41b75",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_6d7398d99a03bf9d73ecfb0952ec0bcf",
+            "item_id": "8f84531111eff8d6c446",
+            "trial_count": 0
+          },
+          {
+            "category": "2034-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_efb1612bd1b99609fcdacbf8729bf1b8",
+            "item_id": "03ca8f4dbdad587f8022",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f3869354839e1f96e31480e82a551336",
+            "item_id": "384da14088cbcef7a630",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0f34a5bdf01e4375152eed2ef07bfae3",
+            "item_id": "c5bf741cffb5423343af",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d27d92464834119fa78244ba7c44c77f",
+            "item_id": "0d58f2ca7980cf52b2c6",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c61cc516846e3cc3561c928f466299a7",
+            "item_id": "a9fdf62b364b0b6ae1a4",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a952899f106d15eff2e3cebe603deb37",
+            "item_id": "25b56d9cb35860a1091a",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0f3f5d48ead74f782a6b7db9fd099127",
+            "item_id": "1982cda330ae99138ad9",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_c24d845c89ab0accc6b316372c221106",
+            "item_id": "529ed6914882bc224eac",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_184287af67e52b4f13e67a5e555929cc",
+            "item_id": "505c2e0f067ef8a3c8bf",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_577d860a9812664f3bf32d354f375ed0",
+            "item_id": "accb216bfc0250071d25",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_51bc122fcf8d014ff26defc501774722",
+            "item_id": "295483e858b43c3a3db0",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4f84d017ce9f53ed1d25b6fe43598e9e",
+            "item_id": "998c7e0d7669b68c40d8",
+            "trial_count": 0
+          },
+          {
+            "category": "2035-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_557b2f3f1431f06d182fdc86bac6c288",
+            "item_id": "348375e11638d51f57fa",
+            "trial_count": 0
+          },
+          {
+            "category": "2036-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_3974ff4eefba69853fc018bf33fe4eaf",
+            "item_id": "6b938bc8a4245bc67772",
+            "trial_count": 0
+          },
+          {
+            "category": "2036-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a36a0286d31c8c9c135b0b329ab5f032",
+            "item_id": "b7f402257cab89a723df",
+            "trial_count": 0
+          },
+          {
+            "category": "2036-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8805cf0bb167bde89f8554ba3471f30d",
+            "item_id": "878235eddfc325f61368",
+            "trial_count": 0
+          },
+          {
+            "category": "2036-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_5fb72d276cf41ace03d0e88d371e05f3",
+            "item_id": "7f86c3ff5a6f03e7fdbc",
+            "trial_count": 0
+          },
+          {
+            "category": "2036-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ac9da9c7d5f1fede7af00debbea023f6",
+            "item_id": "bd533c8886880cc1c41b",
+            "trial_count": 1
+          },
+          {
+            "category": "2036-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d10641380b8fc97da8113f15c4afeb93",
+            "item_id": "6444fef267e8c78bd228",
+            "trial_count": 0
+          },
+          {
+            "category": "2036-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_2cf016c2947aa612a64df9af0e43ae62",
+            "item_id": "1fd894f9173a154b89f6",
+            "trial_count": 0
+          },
+          {
+            "category": "2036-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a860e1827a1a245a772a339acd7a9d67",
+            "item_id": "6e40dd3aff31debf0625",
+            "trial_count": 0
+          },
+          {
+            "category": "2036-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0630e7b5630d72f7144e075408ad0e94",
+            "item_id": "b3efb8844f51b8b2973c",
+            "trial_count": 0
+          },
+          {
+            "category": "2036-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8e8c90e24777ecf12261f616125d7584",
+            "item_id": "59975b6c14811029ad51",
+            "trial_count": 0
+          },
+          {
+            "category": "2036-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_dcadc01fdd252dd85d62822eeaccc9c3",
+            "item_id": "811a059b601bdfa800be",
+            "trial_count": 1
+          },
+          {
+            "category": "2036-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_731d5c55f587933c84e5a1b700977f6c",
+            "item_id": "014ee8c80b46556f06a4",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_9cec9814ef07f3a8a375ec227309be63",
+            "item_id": "2c4863721738b9477db8",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a73a5382e7e1a44ee7abfa5ab80dde11",
+            "item_id": "81e779b820ccaf3e5949",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_fe6e5900af07c5abf24d8878792af461",
+            "item_id": "2ada6c3252f22f8d1fc0",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_9ab56d176563622eca4710d07d9f77ff",
+            "item_id": "04e5f7a1de1add2fff09",
+            "trial_count": 1
+          },
+          {
+            "category": "2037-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_760c09b2c44c0b36da197d0c45bdaa1d",
+            "item_id": "5ff0761fa15a1c87dba9",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e96085c615605d9a30538d4e5d422061",
+            "item_id": "133f36b78984d425b56a",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_62c43e858cd6ccdff44d52466a4595a0",
+            "item_id": "645e4db5c2522ce34363",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_19b4eb91225a06a8ebed7c259e04e04a",
+            "item_id": "15b97d1cbb760d9428a2",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_33025226d7539557e5eb22f43e2a5176",
+            "item_id": "69fc092649e0a09ad3a8",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4753032628c4f59a8556f355b1439947",
+            "item_id": "9f512eb3b6941f8e6df1",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_4525f256c9262eae5af5363a9fdad8c8",
+            "item_id": "401a382b1067213f3c28",
+            "trial_count": 0
+          },
+          {
+            "category": "2037-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_fb85fc1870fade93e6ebaf44897f4202",
+            "item_id": "03c716cd8ab927d67211",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_51aae62bc405f5e4ebc691d595536ba4",
+            "item_id": "ea918d5ee441b54af264",
+            "trial_count": 1
+          },
+          {
+            "category": "2038-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_9005495feac3df562777913f296a5b8c",
+            "item_id": "7e38ea609427877d7a4d",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_50e5a7a25cf5bdef3bb9f21d55a1a0e4",
+            "item_id": "231c72027c1ae4f3b32a",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_26a02290e33c8dd8d32dd355768be44b",
+            "item_id": "991b83df8367489ef8db",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_53d932d257179934bdbe2d846a655684",
+            "item_id": "6d1c5b186b77fefde02c",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_bd99ee4021440c74a33bdcebffbf790b",
+            "item_id": "8c0823f0536c654c7fa7",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_3b8572a1ed6a55c4d028c1e2e7916771",
+            "item_id": "aafea455cd97199bc195",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_ca5bb0b7ea417b9bc121432fd6e4f0fc",
+            "item_id": "0f276e0285b566734163",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a08f23ededd97444bec22918cc385e71",
+            "item_id": "364b691c00df1d2b1063",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_42bde20aa73273351477033b5190b1ae",
+            "item_id": "bebbf82f645099984332",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e22b17b8636445c45578404d95a7a70b",
+            "item_id": "df0e28cf1b3fe330f05a",
+            "trial_count": 0
+          },
+          {
+            "category": "2038-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_dfaac284b78ead1678dd62eff017b71a",
+            "item_id": "75293744bee2b95e241d",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_92ca127ccc8ca3e1d4675fc3d2cb3070",
+            "item_id": "0b458af0ea04872782ae",
+            "trial_count": 1
+          },
+          {
+            "category": "2039-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f6da48e19e35f35c4b3e1c3de3491ea7",
+            "item_id": "7c3de35acbb6d90fbf28",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_818d899e223179474aad26e302c298c5",
+            "item_id": "d65070a64b5a9fa258fe",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8a9599a3128b367741c08758ef0aa291",
+            "item_id": "8ff62d1868ff9c8de4c9",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f046604747410e427b4491695645f055",
+            "item_id": "337b88ba82197d900133",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_1668cc4bba8af693761c110fc14c0e2b",
+            "item_id": "3aeff79d25acf70eb62d",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_d28f1a2640963fe2791471d06fd9f98b",
+            "item_id": "8fab4ecb8903f00886a7",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_b01a5b4d3589528408ee96839eb2b25f",
+            "item_id": "bcc1ceb65a93e5d1737b",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_2097100d8de78950049f0e818fcfff46",
+            "item_id": "a52cfb7599ee616e77f1",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e5ca2d2847fd6e12eb104fb422fb7d47",
+            "item_id": "dcc7038da2962d14385a",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a04ebeb669a89d02d3dd520b3c9612d8",
+            "item_id": "c1decb872cb61c458283",
+            "trial_count": 0
+          },
+          {
+            "category": "2039-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_8ef5731e00ab6711c5adbd091b9c2efe",
+            "item_id": "2d1f98a433fde66fbe7a",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-01",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f2f890bea5f7cf99f74e1f659606f280",
+            "item_id": "9a773d6b3da5d8ecca9a",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-02",
+            "cohort": "Population",
+            "evidence_set_id": "ev_98b0771c127d85cdd77319e7563f1ec8",
+            "item_id": "d70b426b24933e66fb38",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-03",
+            "cohort": "Population",
+            "evidence_set_id": "ev_f96609cd42115b74292f67dca6b226d6",
+            "item_id": "6051d208c50fa1f89311",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-04",
+            "cohort": "Population",
+            "evidence_set_id": "ev_2675e9042e2eda7db40b9b79fa9624c4",
+            "item_id": "5efa7e0a005264155cae",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-05",
+            "cohort": "Population",
+            "evidence_set_id": "ev_477b900e39b6fdcf0ded8724e1473262",
+            "item_id": "ade32f23fd378ce6ffb6",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-06",
+            "cohort": "Population",
+            "evidence_set_id": "ev_e66554de44b63969643f1623210d4ee5",
+            "item_id": "031a4fb5e6f98d382e1e",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-07",
+            "cohort": "Population",
+            "evidence_set_id": "ev_a100902f8eb9d55ddc910d0137f30656",
+            "item_id": "cb337681c0a8bd8d85f6",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-08",
+            "cohort": "Population",
+            "evidence_set_id": "ev_5d914c665d715bd7163415ae0515125b",
+            "item_id": "5060577bfe7910fe580c",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-09",
+            "cohort": "Population",
+            "evidence_set_id": "ev_0af112bf3f24a79257d356ca83271cd7",
+            "item_id": "84c733c5e8426294abf2",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-10",
+            "cohort": "Population",
+            "evidence_set_id": "ev_869e4c994bbbb665ebb3f09cfe9963b8",
+            "item_id": "801ad013bf7ff97c2085",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-11",
+            "cohort": "Population",
+            "evidence_set_id": "ev_cfe73a7dc7c56d7703726d5976131297",
+            "item_id": "481a884bd4edfc3b0926",
+            "trial_count": 0
+          },
+          {
+            "category": "2040-12",
+            "cohort": "Population",
+            "evidence_set_id": "ev_3fe1e5e5816924c5c2cdd0b1033d00a9",
+            "item_id": "20b7394dafc3c8550d58",
+            "trial_count": 2
+          }
+        ],
+        "encoding": {
+          "series": {
+            "field": "cohort",
+            "title": "Cohort"
+          },
+          "x": {
+            "field": "category",
+            "title": "completion (month)"
+          },
+          "y": {
+            "field": "trial_count",
+            "title": "Distinct trials"
+          }
+        },
+        "title": "Melanoma studies involving pembrolizumab by completion month",
+        "type": "time_series"
+      },
+      "coverage": {
+        "statistics_basis": "complete_records",
+        "count_exactness": "exact",
+        "population_coverage": "complete",
+        "evidence_coverage": "complete_contributors",
+        "fetched_count": 400,
+        "matched_count": 400
+      },
+      "warnings": [],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev_dcb5c4dea6d9c3a6845085a7fbf73d70",
+        "ev_8089f624e76c18312482c671e8d2d4f0",
+        "ev_2fbf24d813215411cee7868afe260164",
+        "ev_07ae3e2ce7bc619224d122afda999fdd",
+        "ev_ea34a7cca0a1fcc1e6aa450a8701c384",
+        "ev_76610d8a1b94a46cd221f5223d6bba15",
+        "ev_da3f6e6009970e5b8f4a9340242526af",
+        "ev_97d3cb9532e30ba8f42cf790ae9c4c50",
+        "ev_0da0ac1705e6f0ae57623b5552f86417",
+        "ev_33110b77f8ead7fa249843a8e82c9ae2",
+        "ev_a20f07346ea51c206ba8390f2ac17aad",
+        "ev_414b6978fb5bd4df92844334410e0df6",
+        "ev_c767f861033cb23b1a012ba7944d651a",
+        "ev_8ea337ce60fccb38b43fc462a8201ab8",
+        "ev_4a76245388d5fc94847c87db22e92737",
+        "ev_98110420e31b09e0c25a94d60cbb7331",
+        "ev_0f750f06b9dcd2b855efbd62666cc2ae",
+        "ev_0d6d3040104cb4ea12fb67df59c5a6bd",
+        "ev_8826418215dbf4dd3138992dc7f28a6d",
+        "ev_73d7405d405c671013498087ac27c77f",
+        "ev_e55ae3bd5126f7f70070848324ddbeea",
+        "ev_dcd35cf839999b8a531453d4fbf9f7cd",
+        "ev_2d9a4c7407e1ef3008ca63aa6ec54727",
+        "ev_328717337b186970aeddadf3d7a8b331",
+        "ev_f8c60fc845138c68b4d08577cfd40688",
+        "ev_2505014c99362e839de68267da329016",
+        "ev_ff1d9d6448703d46376171838c973332",
+        "ev_befe3e0bd14d56adba7d9e51e6739412",
+        "ev_25967dc90dfcd772ed53923a05ca9e56",
+        "ev_21137ed95263403603f333da54e6ca6e",
+        "ev_abdf43f025fe1eacb3b5401e1c4723c6",
+        "ev_d6c68fa4868589f798e5f5dcd345fa83",
+        "ev_71fe42b864c80ddeb183103e60e5ce65",
+        "ev_03f19fd317739faef486aef263e35fd9",
+        "ev_81ccb07a6105fdf636682984aba6caea",
+        "ev_6e9323d1f9e26ea1d6d942cf82bc56e9",
+        "ev_f45a8407f403a1e840ff60958390d948",
+        "ev_18df2a98be0a5fd6dfaf5e6195a508e0",
+        "ev_9160006cd361c35a6afc3ae6c26c3d23",
+        "ev_865ba17692b4d4057d3c05317182dc33",
+        "ev_e528ef84859a8488e1f9a43fa122ae39",
+        "ev_02f6ec6a05f3ae56445383272bd572be",
+        "ev_7220119521eb95015ffff60728d420e0",
+        "ev_f474add9b85a6127b87d13fa32086bf5",
+        "ev_c0ef32b951988a1a361679d0fd21a54a",
+        "ev_b0fe4de6b942024e51b269cee90f8fad",
+        "ev_4817a83e2dce80f6c0af41f3afe391fe",
+        "ev_ebabb2b7ca1910d7004ef8cab77bc16a",
+        "ev_fd249c204a45178a7ae29c1f07bc8add",
+        "ev_ecad22ba5600a4ef4648c15cc9ab954e",
+        "ev_4f9487ba000a598ca711c6ce0c5e714f",
+        "ev_207f11b38394de9c8f13d42538f472a6",
+        "ev_c559a5b6029accbbf60309058f44219d",
+        "ev_b94ca06439ffcb996b99f4be2c8a110b",
+        "ev_7ba9b8526afb5677da9e5b94a5accd96",
+        "ev_4f86dbbc83b4b2e268c8f4257054c12f",
+        "ev_4a1e54243407cacf28aad80490bbdffc",
+        "ev_55e45fb60c7404c95d573cff7aeee533",
+        "ev_f74b09c498a5a9633c9b1d643af058f4",
+        "ev_594000f17b3fa102b2a316659d77aae4",
+        "ev_6e281b1fd564d63e07485eed0530982b",
+        "ev_55c41517b48c3428873948dcbd122463",
+        "ev_8fa217c2601fbcebc7d3757517002bf5",
+        "ev_395bf51c08798954001022675c52032f",
+        "ev_0a5a5412069447c9fb94f2d856771d7a",
+        "ev_0333074e1eac5f2002638afb14eceec3",
+        "ev_3205db59adf3be1c430193aa5fd71cca",
+        "ev_fab28b42f6edbf2eca2f92ec84a189fa",
+        "ev_157dbfa2b156f01e29f8383ec7690d31",
+        "ev_5349955aa7ca0aa69eaf0ed1337620cd",
+        "ev_3007262447c27a93fdcc26429945d8f6",
+        "ev_1a75cb28f4bc57ab54fb5ece52e0ba31",
+        "ev_19664f5a2f476df5489735142001fdab",
+        "ev_a9796eb0f11e38f18743fb74a3601975",
+        "ev_0ca307c756789fdd2c1c38026c92bf26",
+        "ev_57b0366f4e9c29cf372bbefd38cd08d9",
+        "ev_bd493036716c60be74f59a7f0a7d0a07",
+        "ev_e27789fb0c306c5d753ff02bf3515037",
+        "ev_91dca7f6dd10433adca21bb86bcd4606",
+        "ev_c164bc4f60d87364d65c162796eb6e3f",
+        "ev_bfc6039b983a2fc6d946567914b04cb6",
+        "ev_b111de36e7b1bfc82710ef9cf947f4d4",
+        "ev_1346235b7cc9280d317b74ff5a758cf6",
+        "ev_49e5a99ca19ba66971f8d780ef444597",
+        "ev_2691a46fd75bd35b51f37f1aa8ab3719",
+        "ev_ab47e88d1f294def03400ef7298fbe4f",
+        "ev_60891a2d75257f64ce5ef2f7d0c97721",
+        "ev_90510e02ea154801e7f2d4222709a150",
+        "ev_96df850496f713608fa5a544cdb62508",
+        "ev_5e8333bb0d2d262304beb5caf38837af",
+        "ev_7ea3022a6b9af41e22037913e89b5fbc",
+        "ev_1b6427328ce3856908f09fa9ad63f0ae",
+        "ev_5d22cce8457e6e97177f9a7d0e7b396a",
+        "ev_1a6d98eefb3e4d4123e023c9be03ead2",
+        "ev_233f1deee62c4635a4bc1767773ab329",
+        "ev_2a1825166c9b4014c0388744380046c2",
+        "ev_f30240b33376f58cc0da1ca2f710c0a4",
+        "ev_d9d2cefbfcab448f16f4d7b3bfc9d339",
+        "ev_084248c8ac0494a13062e7f57985a18e",
+        "ev_e5348f8c9b71ce9d237273b3463fb654",
+        "ev_0ddd3ba96b99ec1927ef9cae76904e54",
+        "ev_f1add376d96c7a76e0641fef253cae3b",
+        "ev_0363186fb28c4a027443864cee85bab6",
+        "ev_c7278918f77be76e2ee72bbfaa2e9680",
+        "ev_3c7b693854f7ade92ba86dfc0db94fda",
+        "ev_b04b3264137085cc5d605485028920cd",
+        "ev_d096885d14c9fc766db7af7f5c801ad7",
+        "ev_0082eb3700fc004c05a953dc298a7413",
+        "ev_aaf2c6fc7c152bda524b7513cf4abdf1",
+        "ev_e66938ee99ec8851896dc11434fed6e9",
+        "ev_03cebcfe498269ebf44882c25f22c07c",
+        "ev_8fe1c4a8a93ea9969bfb4d8724ab07ab",
+        "ev_ce63095cc6115f7d8b269e9919e1fcdd",
+        "ev_17c13684750b306a9f386fb5fef1b15d",
+        "ev_9e2c0c2ebe34b6711d2135af46bb1ddc",
+        "ev_fa109e2264a6a1ca351c245ea0f06c8e",
+        "ev_402c1d0ed56ec813cdc719d7f494cf0d",
+        "ev_5ff723ed7dab0a2ab6ac456ecea091de",
+        "ev_81fa510b7fa7abe5d48baf21f8e3e133",
+        "ev_d0e2eb0a7dedb3f34ac566242f839c28",
+        "ev_e9a762176aec61e005f3b41dfbe30a4c",
+        "ev_e421d1ba6de8e690c2d8deb417c6484e",
+        "ev_9847379ebe0568f3cb452a79ef0bf78c",
+        "ev_3b975c52e1073c65f72ce95505b21a9b",
+        "ev_a13051520f4f0f6996a88c74893caa49",
+        "ev_fc4ce916edc609180eb9a33f59eb3d19",
+        "ev_d6b051282d2b396a9e5b19d66e8a22bd",
+        "ev_6f2dc43bef5517f140880457968bc42e",
+        "ev_780d285532f670820ab46887bd394028",
+        "ev_b7e9033159d7cc1eba3687a8d6bf99d0",
+        "ev_37f5817b38b3617bca7dc8e4136a4931",
+        "ev_be762f276bc47a4ac4bb945adff263b3",
+        "ev_8ede05d59f23926c65925a06609d35a2",
+        "ev_44c765e13681c0ab369b0fea4ea6a8a8",
+        "ev_60ea2295e9c8f20a7379aafb39a7d85e",
+        "ev_d032de5d042f62171d834e737413a416",
+        "ev_0a8cf3a8ebd4f76037fcbbe71f0a4858",
+        "ev_116aebc9118902689f1d0671e1e8c407",
+        "ev_dc6ee26c938c8eaa9fd29cf08b34a9c5",
+        "ev_0ae8770617cffe29badecdfd7270a25b",
+        "ev_412d76a91501d34a2e3cd851cc2c23d8",
+        "ev_c711875638073e82612668801e9bb4a7",
+        "ev_c6707ae9c6012ddbb1a4637aee3ea4c3",
+        "ev_595b8358d61154cf48d228cd12f53809",
+        "ev_a40049c8b0690a75835cbeb73d3e97f3",
+        "ev_606c747cffa3886b90c0ea3ced6e0b34",
+        "ev_92c65132b0c74e360a0493fffdd40495",
+        "ev_ec1cdea1f3bb77abfa1e78faa94be772",
+        "ev_0a79a75215d7a3e05e46c4680240d561",
+        "ev_47dfc6551a4e165a86b51e31adca0b91",
+        "ev_c13dfc48a580e05d9559c08773268743",
+        "ev_8c79299ce69742db63dcd4e41172a2cd",
+        "ev_ef9919b350896d87010254582a3cbeaa",
+        "ev_3cea8d01f07789ddca507f6a52936bd5",
+        "ev_7983e21c6f318c9058aaa87f27856d62",
+        "ev_57dd432f978bc08fef563dff729e8ba8",
+        "ev_ac9da9c7d5f1fede7af00debbea023f6",
+        "ev_dcadc01fdd252dd85d62822eeaccc9c3",
+        "ev_9ab56d176563622eca4710d07d9f77ff",
+        "ev_51aae62bc405f5e4ebc691d595536ba4",
+        "ev_92ca127ccc8ca3e1d4675fc3d2cb3070",
+        "ev_3fe1e5e5816924c5c2cdd0b1033d00a9",
+        "ev_93bf7afc7c625685204922cf3ab036c4",
+        "ev_c6a628b3ccdfabc4700f8db12e59508d",
+        "ev_f5e01c77dc19cd4be34685c277477a02",
+        "ev_bac64fd5972dc7fb1f6977520c529fba",
+        "ev_5c96d3e2e804d2c2a71ce7e90ea43aea",
+        "ev_7d59b9602bb78d0bd6b9e9edca48623b",
+        "ev_a3e4a199e06c236aed06fb71421f06b1",
+        "ev_4e218c700c59501835d7ab36d746718b",
+        "ev_e6c70dda6c083e2ffa709d70e6a75f13",
+        "ev_af6a31ffd702d351e5e4c5dd520a12ce",
+        "ev_2dc25078f18b9b3ced84769c40126607",
+        "ev_2cdca3c27209246ccd597fb4caed2eb8",
+        "ev_4292e0c29c376e17cc1a6bfa901e2747",
+        "ev_8133e5841900d696cdcd185cc1a18fff",
+        "ev_12f27d34672b7aaae3fcb1f8d77578f7",
+        "ev_9430699452493b3d8afd11ea4f1189c4",
+        "ev_6cbea877d5c8d67c127f08bbae5439ab",
+        "ev_84cafc2dc378141f439f072bde0ce8e5",
+        "ev_4eba145003db12c853924791c8852fec",
+        "ev_704226517f6a623d9c3141bc7a3be7ce",
+        "ev_3244b123d33a1efe73ba70e6cc20d6e9",
+        "ev_6b5a300a7dc32107e1611e9f234a22a5",
+        "ev_ae8852d405f9872a1db6802fae9b32bb",
+        "ev_d3ba79cfb2e50a39e15f6288fa0e2bc6",
+        "ev_c18f9f6a0f46dd97e455a1b50bbd4207",
+        "ev_3c80937164bbf8fd1d57320f03098942",
+        "ev_133bbfbca7f899de8c9d72bd7113c6bd",
+        "ev_607c367a5e87e1e61b52f93096bdecc3",
+        "ev_c744a440a93ca5626894bc68958ca5c5",
+        "ev_a80af434bd2f1bd2c04bef77cfccb5d9",
+        "ev_8ada9b2930fe08ed8c3c768582ee1739",
+        "ev_681dc57119c9fd9575ad0e3d5b55a661",
+        "ev_b0007278bc816f5106e670558a60aa72",
+        "ev_9cccb5191586f7b3d6c09bb679425919",
+        "ev_aba6f8de4ba7fc1170cfbf7227e51b65",
+        "ev_a2e423211d4e5de4e2826888e547f8b2",
+        "ev_25cb02f270f35174b98f795cd91721ce",
+        "ev_9b439ceb304bdf0ee8fe9e602e275ed2",
+        "ev_bd9045c21e6b976be68bb1227c2cfdb5",
+        "ev_08a6a1dc1cf9d85a9f91dccbb555a582",
+        "ev_7019e6d3268d8872a49f713e8b15c99c",
+        "ev_6160b71246ef7f6ee59bc5a782fb84ca",
+        "ev_88b632e746fd56480d516b410ad6661c",
+        "ev_fb834ca2f82edec9989da2f03387d107",
+        "ev_a0916f9c9afb340848ed4d358cbce801",
+        "ev_0026d530205ffeb5a0fb72aa5e9abaa6",
+        "ev_aad241a696307aea0d4adf83d999dda7",
+        "ev_bda136e1d4e32ef0e8dab026d486e4d7",
+        "ev_d7131aea6422a451000bbd9abc4d4679",
+        "ev_eee828e82cc99792f20db3cf44c0fa8c",
+        "ev_1408ffc3ccb6937e8275930a97fa8b95",
+        "ev_d0165e020e98c89356d3dd65099adf36",
+        "ev_bedebb3f8a873b7dc06fbcac63ea99c0",
+        "ev_ba7f8595d01981399cf88c6535ac15d5",
+        "ev_e4b37ccf178ca1467a9c7fe9fc709bab",
+        "ev_38f79b9c67164aec1b4c723a111816ba",
+        "ev_137701473f1a734b89a0ff76fba04f57",
+        "ev_6d7398d99a03bf9d73ecfb0952ec0bcf",
+        "ev_efb1612bd1b99609fcdacbf8729bf1b8",
+        "ev_f3869354839e1f96e31480e82a551336",
+        "ev_0f34a5bdf01e4375152eed2ef07bfae3",
+        "ev_d27d92464834119fa78244ba7c44c77f",
+        "ev_c61cc516846e3cc3561c928f466299a7",
+        "ev_a952899f106d15eff2e3cebe603deb37",
+        "ev_0f3f5d48ead74f782a6b7db9fd099127",
+        "ev_c24d845c89ab0accc6b316372c221106",
+        "ev_184287af67e52b4f13e67a5e555929cc",
+        "ev_577d860a9812664f3bf32d354f375ed0",
+        "ev_51bc122fcf8d014ff26defc501774722",
+        "ev_4f84d017ce9f53ed1d25b6fe43598e9e",
+        "ev_557b2f3f1431f06d182fdc86bac6c288",
+        "ev_3974ff4eefba69853fc018bf33fe4eaf",
+        "ev_a36a0286d31c8c9c135b0b329ab5f032",
+        "ev_8805cf0bb167bde89f8554ba3471f30d",
+        "ev_5fb72d276cf41ace03d0e88d371e05f3",
+        "ev_d10641380b8fc97da8113f15c4afeb93",
+        "ev_2cf016c2947aa612a64df9af0e43ae62",
+        "ev_a860e1827a1a245a772a339acd7a9d67",
+        "ev_0630e7b5630d72f7144e075408ad0e94",
+        "ev_8e8c90e24777ecf12261f616125d7584",
+        "ev_731d5c55f587933c84e5a1b700977f6c",
+        "ev_9cec9814ef07f3a8a375ec227309be63",
+        "ev_a73a5382e7e1a44ee7abfa5ab80dde11",
+        "ev_fe6e5900af07c5abf24d8878792af461",
+        "ev_760c09b2c44c0b36da197d0c45bdaa1d",
+        "ev_e96085c615605d9a30538d4e5d422061",
+        "ev_62c43e858cd6ccdff44d52466a4595a0",
+        "ev_19b4eb91225a06a8ebed7c259e04e04a",
+        "ev_33025226d7539557e5eb22f43e2a5176",
+        "ev_4753032628c4f59a8556f355b1439947",
+        "ev_4525f256c9262eae5af5363a9fdad8c8",
+        "ev_fb85fc1870fade93e6ebaf44897f4202",
+        "ev_9005495feac3df562777913f296a5b8c",
+        "ev_50e5a7a25cf5bdef3bb9f21d55a1a0e4",
+        "ev_26a02290e33c8dd8d32dd355768be44b",
+        "ev_53d932d257179934bdbe2d846a655684",
+        "ev_bd99ee4021440c74a33bdcebffbf790b",
+        "ev_3b8572a1ed6a55c4d028c1e2e7916771",
+        "ev_ca5bb0b7ea417b9bc121432fd6e4f0fc",
+        "ev_a08f23ededd97444bec22918cc385e71",
+        "ev_42bde20aa73273351477033b5190b1ae",
+        "ev_e22b17b8636445c45578404d95a7a70b",
+        "ev_dfaac284b78ead1678dd62eff017b71a",
+        "ev_f6da48e19e35f35c4b3e1c3de3491ea7",
+        "ev_818d899e223179474aad26e302c298c5",
+        "ev_8a9599a3128b367741c08758ef0aa291",
+        "ev_f046604747410e427b4491695645f055",
+        "ev_1668cc4bba8af693761c110fc14c0e2b",
+        "ev_d28f1a2640963fe2791471d06fd9f98b",
+        "ev_b01a5b4d3589528408ee96839eb2b25f",
+        "ev_2097100d8de78950049f0e818fcfff46",
+        "ev_e5ca2d2847fd6e12eb104fb422fb7d47",
+        "ev_a04ebeb669a89d02d3dd520b3c9612d8",
+        "ev_8ef5731e00ab6711c5adbd091b9c2efe",
+        "ev_f2f890bea5f7cf99f74e1f659606f280",
+        "ev_98b0771c127d85cdd77319e7563f1ec8",
+        "ev_f96609cd42115b74292f67dca6b226d6",
+        "ev_2675e9042e2eda7db40b9b79fa9624c4",
+        "ev_477b900e39b6fdcf0ded8724e1473262",
+        "ev_e66554de44b63969643f1623210d4ee5",
+        "ev_a100902f8eb9d55ddc910d0137f30656",
+        "ev_5d914c665d715bd7163415ae0515125b",
+        "ev_0af112bf3f24a79257d356ca83271cd7",
+        "ev_869e4c994bbbb665ebb3f09cfe9963b8",
+        "ev_cfe73a7dc7c56d7703726d5976131297"
+      ],
+      "metadata": {
+        "analysis_parameters": {
+          "goal_id": "completions_by_month",
+          "group_by": "phase",
+          "histogram_bins": 10,
+          "labels": [],
+          "operation": "time_series",
+          "relationship": "sponsor_drug",
+          "scope_ids": [
+            "scope_be405aacbd4cd7b69c66eae7150c9213"
+          ],
+          "time_field": "completion",
+          "time_grain": "month",
+          "title": "Melanoma studies involving pembrolizumab by completion month",
+          "top_n": 20,
+          "x": "trial_duration",
+          "y": "enrollment"
+        },
+        "cohorts": [
+          {
+            "excluded_count": 2,
+            "excluded_reasons": {
+              "missing_or_insufficient_date_precision": 2
+            },
+            "label": "Population",
+            "selected_trial_count": 400,
+            "valid_count": 398,
+            "value_types": {
+              "ACTUAL": 208,
+              "ESTIMATED": 190
+            }
+          }
+        ],
+        "date_filter_policy": "A source date interval must be fully contained in the requested range.",
+        "duration_policy": "Exact calendar days from start to completion; negative or imprecise dates excluded.",
+        "legacy_plan": null,
+        "lineage": [
+          {
+            "alias_handle": null,
+            "constraints_version": 1,
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "date_filter_excluded": 0,
+            "date_range": null,
+            "filters": {
+              "condition": "melanoma",
+              "countries": [],
+              "end_year": null,
+              "enrollment_type": null,
+              "intervention_match": "any",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "phases": [],
+              "sponsor": null,
+              "start_year": null,
+              "statuses": []
+            },
+            "label": "Population",
+            "lineage": [],
+            "nct_ids": [
+              "NCT01295827",
+              "NCT01704287",
+              "NCT01789827",
+              "NCT01866319",
+              "NCT01986426",
+              "NCT01993719",
+              "NCT02009449",
+              "NCT02054520",
+              "NCT02073123",
+              "NCT02083484",
+              "NCT02085070",
+              "NCT02089685",
+              "NCT02112032",
+              "NCT02122861",
+              "NCT02130466",
+              "NCT02178722",
+              "NCT02180061",
+              "NCT02263508",
+              "NCT02298959",
+              "NCT02302339",
+              "NCT02306850",
+              "NCT02318771",
+              "NCT02332668",
+              "NCT02339324",
+              "NCT02346955",
+              "NCT02359851",
+              "NCT02362594",
+              "NCT02376699",
+              "NCT02407171",
+              "NCT02419495",
+              "NCT02423863",
+              "NCT02432963",
+              "NCT02434354",
+              "NCT02437136",
+              "NCT02452424",
+              "NCT02475213",
+              "NCT02493361",
+              "NCT02500576",
+              "NCT02506153",
+              "NCT02515227",
+              "NCT02521870",
+              "NCT02557321",
+              "NCT02562625",
+              "NCT02565992",
+              "NCT02574533",
+              "NCT02575404",
+              "NCT02581228",
+              "NCT02591654",
+              "NCT02595866",
+              "NCT02600143",
+              "NCT02600169",
+              "NCT02617849",
+              "NCT02621021",
+              "NCT02625337",
+              "NCT02635672",
+              "NCT02644369",
+              "NCT02644967",
+              "NCT02646748",
+              "NCT02661100",
+              "NCT02663258",
+              "NCT02673970",
+              "NCT02676869",
+              "NCT02680184",
+              "NCT02681549",
+              "NCT02697630",
+              "NCT02706353",
+              "NCT02716077",
+              "NCT02719015",
+              "NCT02740920",
+              "NCT02743819",
+              "NCT02744209",
+              "NCT02748564",
+              "NCT02752074",
+              "NCT02760225",
+              "NCT02775851",
+              "NCT02783300",
+              "NCT02791594",
+              "NCT02799095",
+              "NCT02812693",
+              "NCT02816021",
+              "NCT02818023",
+              "NCT02821000",
+              "NCT02823405",
+              "NCT02858869",
+              "NCT02858921",
+              "NCT02872259",
+              "NCT02875132",
+              "NCT02890368",
+              "NCT02896335",
+              "NCT02902042",
+              "NCT02909348",
+              "NCT02922283",
+              "NCT02965716",
+              "NCT02981303",
+              "NCT02990416",
+              "NCT03003676",
+              "NCT03006887",
+              "NCT03009058",
+              "NCT03021460",
+              "NCT03050060",
+              "NCT03070392",
+              "NCT03084640",
+              "NCT03089606",
+              "NCT03092453",
+              "NCT03111901",
+              "NCT03131908",
+              "NCT03132675",
+              "NCT03140137",
+              "NCT03149029",
+              "NCT03158935",
+              "NCT03161431",
+              "NCT03197636",
+              "NCT03200847",
+              "NCT03228667",
+              "NCT03229278",
+              "NCT03236935",
+              "NCT03239145",
+              "NCT03241927",
+              "NCT03265080",
+              "NCT03273153",
+              "NCT03276832",
+              "NCT03277352",
+              "NCT03278665",
+              "NCT03301636",
+              "NCT03311308",
+              "NCT03311542",
+              "NCT03313206",
+              "NCT03325101",
+              "NCT03329950",
+              "NCT03341143",
+              "NCT03348891",
+              "NCT03356470",
+              "NCT03361228",
+              "NCT03384836",
+              "NCT03396952",
+              "NCT03407170",
+              "NCT03448666",
+              "NCT03474497",
+              "NCT03476174",
+              "NCT03511391",
+              "NCT03514901",
+              "NCT03534635",
+              "NCT03538314",
+              "NCT03544723",
+              "NCT03553836",
+              "NCT03563729",
+              "NCT03589339",
+              "NCT03590054",
+              "NCT03595683",
+              "NCT03611868",
+              "NCT03620019",
+              "NCT03621982",
+              "NCT03633110",
+              "NCT03637803",
+              "NCT03645928",
+              "NCT03665597",
+              "NCT03684785",
+              "NCT03693014",
+              "NCT03698019",
+              "NCT03715205",
+              "NCT03755739",
+              "NCT03757689",
+              "NCT03765229",
+              "NCT03772899",
+              "NCT03773744",
+              "NCT03776136",
+              "NCT03799003",
+              "NCT03809624",
+              "NCT03815058",
+              "NCT03815682",
+              "NCT03818893",
+              "NCT03820986",
+              "NCT03829254",
+              "NCT03841110",
+              "NCT03842943",
+              "NCT03843593",
+              "NCT03849469",
+              "NCT03872947",
+              "NCT03873818",
+              "NCT03875079",
+              "NCT03881488",
+              "NCT03897881",
+              "NCT03957551",
+              "NCT03966456",
+              "NCT04007744",
+              "NCT04017897",
+              "NCT04032704",
+              "NCT04044859",
+              "NCT04068181",
+              "NCT04074096",
+              "NCT04079166",
+              "NCT04083599",
+              "NCT04107168",
+              "NCT04114136",
+              "NCT04116320",
+              "NCT04129515",
+              "NCT04130516",
+              "NCT04140526",
+              "NCT04146064",
+              "NCT04148937",
+              "NCT04152863",
+              "NCT04157517",
+              "NCT04157985",
+              "NCT04187872",
+              "NCT04198766",
+              "NCT04205227",
+              "NCT04207086",
+              "NCT04234113",
+              "NCT04244552",
+              "NCT04268368",
+              "NCT04282044",
+              "NCT04301011",
+              "NCT04303169",
+              "NCT04305041",
+              "NCT04305054",
+              "NCT04318717",
+              "NCT04348916",
+              "NCT04370587",
+              "NCT04386967",
+              "NCT04452214",
+              "NCT04462406",
+              "NCT04473027",
+              "NCT04483778",
+              "NCT04485013",
+              "NCT04490564",
+              "NCT04513028",
+              "NCT04541108",
+              "NCT04546074",
+              "NCT04570332",
+              "NCT04581382",
+              "NCT04594187",
+              "NCT04609566",
+              "NCT04616248",
+              "NCT04622566",
+              "NCT04631731",
+              "NCT04633902",
+              "NCT04657991",
+              "NCT04697576",
+              "NCT04700072",
+              "NCT04703426",
+              "NCT04708418",
+              "NCT04725331",
+              "NCT04752826",
+              "NCT04768881",
+              "NCT04787042",
+              "NCT04796194",
+              "NCT04799054",
+              "NCT04830124",
+              "NCT04834973",
+              "NCT04855435",
+              "NCT04860076",
+              "NCT04866810",
+              "NCT04889118",
+              "NCT04902040",
+              "NCT04904185",
+              "NCT04913025",
+              "NCT04913337",
+              "NCT04930783",
+              "NCT04951583",
+              "NCT04955743",
+              "NCT04971499",
+              "NCT04987996",
+              "NCT04990479",
+              "NCT04993677",
+              "NCT04995094",
+              "NCT05034536",
+              "NCT05060432",
+              "NCT05061017",
+              "NCT05069935",
+              "NCT05081609",
+              "NCT05086692",
+              "NCT05091346",
+              "NCT05105100",
+              "NCT05144698",
+              "NCT05155033",
+              "NCT05155254",
+              "NCT05176470",
+              "NCT05180799",
+              "NCT05215574",
+              "NCT05229614",
+              "NCT05269381",
+              "NCT05280314",
+              "NCT05282901",
+              "NCT05303493",
+              "NCT05304546",
+              "NCT05308901",
+              "NCT05309421",
+              "NCT05311618",
+              "NCT05338580",
+              "NCT05341349",
+              "NCT05352672",
+              "NCT05358938",
+              "NCT05383170",
+              "NCT05420324",
+              "NCT05432622",
+              "NCT05436990",
+              "NCT05479812",
+              "NCT05492682",
+              "NCT05524935",
+              "NCT05527795",
+              "NCT05537740",
+              "NCT05544929",
+              "NCT05545969",
+              "NCT05549297",
+              "NCT05576077",
+              "NCT05581004",
+              "NCT05585034",
+              "NCT05585320",
+              "NCT05608291",
+              "NCT05611229",
+              "NCT05614102",
+              "NCT05620134",
+              "NCT05647954",
+              "NCT05653882",
+              "NCT05665595",
+              "NCT05669352",
+              "NCT05669430",
+              "NCT05708950",
+              "NCT05709821",
+              "NCT05714371",
+              "NCT05714553",
+              "NCT05727904",
+              "NCT05739006",
+              "NCT05740501",
+              "NCT05746897",
+              "NCT05751928",
+              "NCT05764395",
+              "NCT05824975",
+              "NCT05859074",
+              "NCT05877430",
+              "NCT05913388",
+              "NCT05926960",
+              "NCT05933577",
+              "NCT05970497",
+              "NCT05986331",
+              "NCT05987332",
+              "NCT06030037",
+              "NCT06047379",
+              "NCT06099782",
+              "NCT06108479",
+              "NCT06120712",
+              "NCT06131398",
+              "NCT06153238",
+              "NCT06171178",
+              "NCT06190249",
+              "NCT06212388",
+              "NCT06242470",
+              "NCT06249048",
+              "NCT06264180",
+              "NCT06265025",
+              "NCT06270706",
+              "NCT06284590",
+              "NCT06307093",
+              "NCT06320353",
+              "NCT06488482",
+              "NCT06540391",
+              "NCT06545682",
+              "NCT06551064",
+              "NCT06599619",
+              "NCT06624644",
+              "NCT06627595",
+              "NCT06651151",
+              "NCT06697301",
+              "NCT06743126",
+              "NCT06771544",
+              "NCT06784648",
+              "NCT06784778",
+              "NCT06797297",
+              "NCT06880549",
+              "NCT06889610",
+              "NCT06894771",
+              "NCT06906822",
+              "NCT06961006",
+              "NCT06976021",
+              "NCT06984328",
+              "NCT06999980",
+              "NCT07040436",
+              "NCT07092670",
+              "NCT07130032",
+              "NCT07160335",
+              "NCT07223424",
+              "NCT07256184",
+              "NCT07287917",
+              "NCT07349303",
+              "NCT07376317",
+              "NCT07410676",
+              "NCT07422779",
+              "NCT07428252",
+              "NCT07436390",
+              "NCT07448831",
+              "NCT07475572",
+              "NCT07565285",
+              "NCT07574047",
+              "NCT07581509",
+              "NCT07634380",
+              "NCT07740941",
+              "NCT07749586",
+              "NCT07751042",
+              "NCT07817901",
+              "NCT07883759"
+            ],
+            "root_dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "root_scope_id": null
+          }
+        ],
+        "metric_definition": "Distinct trials by source date period",
+        "presentation_clipping": {
+          "applied": false,
+          "omitted_items": 0
+        },
+        "root_scopes": [
+          "scope_be405aacbd4cd7b69c66eae7150c9213"
+        ],
+        "source_manifests": [
+          {
+            "complete": true,
+            "dataset_id": "ds_1f153719ec7b45ffbe9ae515ef980ec5",
+            "duplicate_count": 0,
+            "expected_count": 400,
+            "finished_at": "2026-10-31T15:38:27.287857+00:00",
+            "pages": 2,
+            "query": {
+              "query.cond": "\"melanoma\"",
+              "query.intr": "(\"pembrolizumab\")"
+            },
+            "query_hash": "d114c41ee9fde7522f133e4c3df7a0e076e1f83944c71f63170bd4e8304efaaf",
+            "raw_hash": "5fc9be4c69e6918d4aeaba930ad9082a52facf4debfbe00d771e8cbe67ad75a3",
+            "reason": null,
+            "retrieved_unique_count": 400,
+            "schema_version": "snapshot-v1",
+            "source_version_after": {
+              "apiVersion": "2.0.5",
+              "dataTimestamp": "2026-10-30T09:00:04"
+            },
+            "source_version_before": {
+              "apiVersion": "2.0.5",
+              "dataTimestamp": "2026-10-30T09:00:04"
+            },
+            "started_at": "2026-10-31T15:38:22.082735+00:00"
+          }
+        ],
+        "time_field": "completion",
+        "time_granularity": "month",
+        "units": {
+          "enrollment": "participants",
+          "trial_duration": "days"
+        }
+      },
+      "alternative_renderers": [
+        "table"
+      ]
+    }
+  ],
+  "questions": [],
+  "message": "Results are assembled from validated artifacts. See each chart for its scope, metric, exclusions and source evidence.",
+  "unmet_goals": [],
+  "usage": {
+    "model_calls": 5,
+    "usage_complete": true,
+    "unknown_attempts": 0,
+    "estimated_or_reserved_usd": 0.0254415,
+    "receipts": [
+      {
+        "elapsed_seconds": 3.703,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_06bcf2b5c12e31cd016ae6be67f91c87d08d4ff8547ff06ef9",
+        "usage": {
+          "input_tokens": 4747,
+          "input_tokens_details": {
+            "cache_write_tokens": 543,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 162,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4909
+        }
+      },
+      {
+        "elapsed_seconds": 2.687,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_0a7ab46e5291a110016ae6be6b471487d0be1dcb2647ae9ae0",
+        "usage": {
+          "input_tokens": 5212,
+          "input_tokens_details": {
+            "cache_write_tokens": 1008,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 74,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5286
+        }
+      },
+      {
+        "elapsed_seconds": 1.953,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_0be2151ae9b409cd016ae6be71ae6887d0af52baa5597e62c7",
+        "usage": {
+          "input_tokens": 5347,
+          "input_tokens_details": {
+            "cache_write_tokens": 1143,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 78,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5425
+        }
+      },
+      {
+        "elapsed_seconds": 4.203,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_0b43f5818a242d9b016ae6be8b297887d0b144ade8413d3ec7",
+        "usage": {
+          "input_tokens": 6352,
+          "input_tokens_details": {
+            "cache_write_tokens": 2148,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 38,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 6390
+        }
+      },
+      {
+        "elapsed_seconds": 3.969,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_03262e53198586f5016ae6be9d477887d086aeb2b54f0272e4",
+        "usage": {
+          "input_tokens": 6423,
+          "input_tokens_details": {
+            "cache_write_tokens": 2219,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 97,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 6520
+        }
+      }
+    ],
+    "cost_basis": "Versioned standard short-context model rates or explicit provider usage.cost; unknown attempts keep conservative reservations, not an invoice"
+  }
+}

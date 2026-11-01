@@ -1,0 +1,909 @@
+{
+  "schema_version": "v2.0",
+  "run_id": "vr_8b3508e85e114fb8b10275ed8e1c70d0",
+  "session_id": "vs_bfa1d657cff546d582fdb25033fd6e46",
+  "status": "completed",
+  "task": {
+    "goal": "Compare asthma clinical trials of omalizumab and dupilumab as separate medicine cohorts, showing phase counts and complete contributor evidence.",
+    "mode": "new",
+    "filters": {
+      "condition": "asthma",
+      "interventions": [
+        "omalizumab",
+        "dupilumab"
+      ],
+      "intervention_match": "any",
+      "sponsor": null,
+      "phases": [],
+      "statuses": [],
+      "countries": [],
+      "start_year": null,
+      "end_year": null,
+      "enrollment_type": null
+    },
+    "date_range": null,
+    "intervention_scope": "comparison",
+    "source_mode": "full_evidence",
+    "goals": [
+      {
+        "id": "phase_counts",
+        "description": "Compare phase counts for separate omalizumab and dupilumab asthma trial cohorts, with complete evidence for each count.",
+        "kind": "chart",
+        "operation": "category",
+        "depends_on": [],
+        "parameters": {
+          "group_by": "phase",
+          "time_field": null,
+          "time_grain": null,
+          "relationship": null,
+          "histogram_bins": null,
+          "x": null,
+          "y": null
+        }
+      }
+    ],
+    "clear_fields": []
+  },
+  "artifacts": [
+    {
+      "artifact_id": "art_5ff58fbb5ece42e1d673dd87231b1a7e",
+      "result_id": "result_5ff58fbb5ece42e1d673dd87231b1a7e",
+      "goal_id": "phase_counts",
+      "source_type": "clinicaltrials",
+      "scope_id": "scope_76a327d25122f424a52e2780f317e64d",
+      "title": "Asthma trials: phase counts for omalizumab versus dupilumab",
+      "metric": "Distinct NCT IDs per phase; multi-valued categories may overlap.",
+      "visualization": {
+        "data": [
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 1",
+            "cohort": "omalizumab",
+            "contributor_count": 4,
+            "evidence_set_id": "ev_c45ead0d1387076d74b7e5c55410c6c6",
+            "id": "c0:Phase 1",
+            "trial_count": 4,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 1 / Phase 2",
+            "cohort": "omalizumab",
+            "contributor_count": 1,
+            "evidence_set_id": "ev_12fa171301351340ff7e8b0f3ac6929a",
+            "id": "c0:Phase 1 / Phase 2",
+            "trial_count": 1,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 2",
+            "cohort": "omalizumab",
+            "contributor_count": 11,
+            "evidence_set_id": "ev_d6c5fbe21e9cf0b21e22b57a36f77fc3",
+            "id": "c0:Phase 2",
+            "trial_count": 11,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 2 / Phase 3",
+            "cohort": "omalizumab",
+            "contributor_count": 4,
+            "evidence_set_id": "ev_0c26f7e10452b095aabae42886c71c3c",
+            "id": "c0:Phase 2 / Phase 3",
+            "trial_count": 4,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 3",
+            "cohort": "omalizumab",
+            "contributor_count": 21,
+            "evidence_set_id": "ev_7e9a16d1c4be4b5211e5476809dbaee8",
+            "id": "c0:Phase 3",
+            "trial_count": 21,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 4",
+            "cohort": "omalizumab",
+            "contributor_count": 39,
+            "evidence_set_id": "ev_3c6bff00e36f185394d7234b22f2598a",
+            "id": "c0:Phase 4",
+            "trial_count": 39,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Not applicable",
+            "cohort": "omalizumab",
+            "contributor_count": 5,
+            "evidence_set_id": "ev_6ddae158de274440b34ef0a52d98426d",
+            "id": "c0:Not applicable",
+            "trial_count": 5,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Not reported",
+            "cohort": "omalizumab",
+            "contributor_count": 31,
+            "evidence_set_id": "ev_9606796d3aecb13936ae8f1b436ad7ed",
+            "id": "c0:Not reported",
+            "trial_count": 31,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 1",
+            "cohort": "dupilumab",
+            "contributor_count": 1,
+            "evidence_set_id": "ev_5aff1922eeb96af854b8164b0837ed2e",
+            "id": "c1:Phase 1",
+            "trial_count": 1,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 1 / Phase 2",
+            "cohort": "dupilumab",
+            "contributor_count": 0,
+            "evidence_set_id": "ev_e80c248317b1960783c0255beed5e27d",
+            "id": "c1:Phase 1 / Phase 2",
+            "trial_count": 0,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 2",
+            "cohort": "dupilumab",
+            "contributor_count": 7,
+            "evidence_set_id": "ev_14b38c759159858009a00fd2df2ec2b3",
+            "id": "c1:Phase 2",
+            "trial_count": 7,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 2 / Phase 3",
+            "cohort": "dupilumab",
+            "contributor_count": 0,
+            "evidence_set_id": "ev_6b431350c12ec58bbac5ff84904d19ae",
+            "id": "c1:Phase 2 / Phase 3",
+            "trial_count": 0,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 3",
+            "cohort": "dupilumab",
+            "contributor_count": 11,
+            "evidence_set_id": "ev_67e2c27570ca5e2a7aafbcc0fb041a82",
+            "id": "c1:Phase 3",
+            "trial_count": 11,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Phase 4",
+            "cohort": "dupilumab",
+            "contributor_count": 15,
+            "evidence_set_id": "ev_899602f725316bc8fec98ebabc7af312",
+            "id": "c1:Phase 4",
+            "trial_count": 15,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Not applicable",
+            "cohort": "dupilumab",
+            "contributor_count": 0,
+            "evidence_set_id": "ev_c96bb8507b66c56273b5acbedad3f688",
+            "id": "c1:Not applicable",
+            "trial_count": 0,
+            "year": null
+          },
+          {
+            "bin_end": null,
+            "bin_start": null,
+            "category": "Not reported",
+            "cohort": "dupilumab",
+            "contributor_count": 26,
+            "evidence_set_id": "ev_03ace17239df422ceca0bcdca27f9424",
+            "id": "c1:Not reported",
+            "trial_count": 26,
+            "year": null
+          }
+        ],
+        "encoding": {
+          "series": {
+            "field": "cohort",
+            "title": "Cohort",
+            "type": "nominal"
+          },
+          "x": {
+            "field": "category",
+            "title": "phase",
+            "type": "ordinal"
+          },
+          "y": {
+            "field": "trial_count",
+            "title": "Distinct trials",
+            "type": "quantitative"
+          }
+        },
+        "title": "Asthma trials: phase counts for omalizumab versus dupilumab",
+        "type": "grouped_bar"
+      },
+      "coverage": {
+        "statistics_basis": "complete_records",
+        "count_exactness": "exact",
+        "population_coverage": "complete",
+        "evidence_coverage": "complete_contributors",
+        "fetched_count": 176,
+        "matched_count": 176
+      },
+      "warnings": [],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev_03ace17239df422ceca0bcdca27f9424",
+        "ev_0c26f7e10452b095aabae42886c71c3c",
+        "ev_12fa171301351340ff7e8b0f3ac6929a",
+        "ev_14b38c759159858009a00fd2df2ec2b3",
+        "ev_3c6bff00e36f185394d7234b22f2598a",
+        "ev_5aff1922eeb96af854b8164b0837ed2e",
+        "ev_67e2c27570ca5e2a7aafbcc0fb041a82",
+        "ev_6b431350c12ec58bbac5ff84904d19ae",
+        "ev_6ddae158de274440b34ef0a52d98426d",
+        "ev_7e9a16d1c4be4b5211e5476809dbaee8",
+        "ev_899602f725316bc8fec98ebabc7af312",
+        "ev_9606796d3aecb13936ae8f1b436ad7ed",
+        "ev_c45ead0d1387076d74b7e5c55410c6c6",
+        "ev_c96bb8507b66c56273b5acbedad3f688",
+        "ev_d6c5fbe21e9cf0b21e22b57a36f77fc3",
+        "ev_e80c248317b1960783c0255beed5e27d"
+      ],
+      "metadata": {
+        "analysis_parameters": {
+          "goal_id": "phase_counts",
+          "group_by": "phase",
+          "histogram_bins": 10,
+          "labels": [
+            "omalizumab",
+            "dupilumab"
+          ],
+          "operation": "category",
+          "relationship": "sponsor_drug",
+          "scope_ids": [
+            "scope_76a327d25122f424a52e2780f317e64d",
+            "scope_f3952d00186fddb52b1563cef414f9c0"
+          ],
+          "time_field": "start",
+          "time_grain": "year",
+          "title": "Asthma trials: phase counts for omalizumab versus dupilumab",
+          "top_n": 20,
+          "x": "trial_duration",
+          "y": "enrollment"
+        },
+        "analysis_scope": {
+          "cohort_filters": {
+            "c0": {
+              "condition": "v2 verified snapshot population",
+              "countries": [],
+              "end_year": null,
+              "enrollment_type": null,
+              "intervention_match": "any",
+              "interventions": [],
+              "phases": [],
+              "sponsor": null,
+              "start_year": null,
+              "statuses": []
+            },
+            "c1": {
+              "condition": "v2 verified snapshot population",
+              "countries": [],
+              "end_year": null,
+              "enrollment_type": null,
+              "intervention_match": "any",
+              "interventions": [],
+              "phases": [],
+              "sponsor": null,
+              "start_year": null,
+              "statuses": []
+            }
+          },
+          "dimension": "phase",
+          "operation": "category",
+          "year_bounds_field": "start_year",
+          "year_bounds_inclusive": true
+        },
+        "assumptions": [
+          "Operation: category; grouping: phase. Start-year bounds are inclusive.",
+          "omalizumab: {\"condition\":\"v2 verified snapshot population\",\"countries\":[],\"end_year\":null,\"enrollment_type\":null,\"intervention_match\":\"any\",\"interventions\":[],\"phases\":[],\"sponsor\":null,\"start_year\":null,\"statuses\":[]}",
+          "dupilumab: {\"condition\":\"v2 verified snapshot population\",\"countries\":[],\"end_year\":null,\"enrollment_type\":null,\"intervention_match\":\"any\",\"interventions\":[],\"phases\":[],\"sponsor\":null,\"start_year\":null,\"statuses\":[]}"
+        ],
+        "cohort_overlap_counts": {
+          "c0:c1": 9
+        },
+        "cohorts": [
+          {
+            "dataset_id": "ds_048c02c4a7504273b3a257fd8dcafece",
+            "enrollment_types": {
+              "ACTUAL": 79,
+              "ESTIMATED": 30
+            },
+            "estimated_start_dates": 4,
+            "filters": {
+              "condition": "v2 verified snapshot population",
+              "countries": [],
+              "end_year": null,
+              "enrollment_type": null,
+              "intervention_match": "any",
+              "interventions": [],
+              "phases": [],
+              "sponsor": null,
+              "start_year": null,
+              "statuses": []
+            },
+            "id": "c0",
+            "label": "omalizumab",
+            "missing_enrollment": 1,
+            "missing_start_year": 0,
+            "selected_trial_count": 116,
+            "source_record_count": 116
+          },
+          {
+            "dataset_id": "ds_db9f8f34531b42dba73db16cb9983db8",
+            "enrollment_types": {
+              "ACTUAL": 36,
+              "ESTIMATED": 23
+            },
+            "estimated_start_dates": 2,
+            "filters": {
+              "condition": "v2 verified snapshot population",
+              "countries": [],
+              "end_year": null,
+              "enrollment_type": null,
+              "intervention_match": "any",
+              "interventions": [],
+              "phases": [],
+              "sponsor": null,
+              "start_year": null,
+              "statuses": []
+            },
+            "id": "c1",
+            "label": "dupilumab",
+            "missing_enrollment": 1,
+            "missing_start_year": 1,
+            "selected_trial_count": 60,
+            "source_record_count": 60
+          }
+        ],
+        "completeness": "complete",
+        "country_policy": "A country count includes studies listing any site there. Country filters also restrict country-chart categories. Study-level RECRUITING does not imply each site is recruiting.",
+        "date_policy": "Year filters always use study start year; time-series x-axis uses the declared time_field. Actual and estimated start dates are included.",
+        "enrollment_policy": "Missing enrollment excluded; actual/estimated values retained and optionally filtered. Histogram bins are left-closed/right-open; last bin is right-closed.",
+        "excluded_missing_values": 0,
+        "legacy_plan": {
+          "assumptions": [],
+          "cohorts": [
+            {
+              "filters": {
+                "condition": "v2 verified snapshot population",
+                "countries": [],
+                "end_year": null,
+                "enrollment_type": null,
+                "intervention_match": "any",
+                "interventions": [],
+                "phases": [],
+                "sponsor": null,
+                "start_year": null,
+                "statuses": []
+              },
+              "id": "c0",
+              "label": "omalizumab"
+            },
+            {
+              "filters": {
+                "condition": "v2 verified snapshot population",
+                "countries": [],
+                "end_year": null,
+                "enrollment_type": null,
+                "intervention_match": "any",
+                "interventions": [],
+                "phases": [],
+                "sponsor": null,
+                "start_year": null,
+                "statuses": []
+              },
+              "id": "c1",
+              "label": "dupilumab"
+            }
+          ],
+          "group_by": "phase",
+          "histogram_bins": 10,
+          "operation": "category",
+          "relationship": "sponsor_drug",
+          "time_field": "start_year",
+          "title": "Asthma trials: phase counts for omalizumab versus dupilumab",
+          "top_n": 20
+        },
+        "lineage": [
+          {
+            "alias_handle": null,
+            "constraints_version": 1,
+            "dataset_id": "ds_048c02c4a7504273b3a257fd8dcafece",
+            "date_filter_excluded": 0,
+            "date_range": null,
+            "filters": {
+              "condition": "asthma",
+              "countries": [],
+              "end_year": null,
+              "enrollment_type": null,
+              "intervention_match": "any",
+              "interventions": [
+                "omalizumab"
+              ],
+              "phases": [],
+              "sponsor": null,
+              "start_year": null,
+              "statuses": []
+            },
+            "label": "Population",
+            "lineage": [],
+            "nct_ids": [
+              "NCT00046748",
+              "NCT00079937",
+              "NCT00096954",
+              "NCT00109187",
+              "NCT00109200",
+              "NCT00133042",
+              "NCT00139152",
+              "NCT00162773",
+              "NCT00180011",
+              "NCT00189228",
+              "NCT00208234",
+              "NCT00219323",
+              "NCT00226200",
+              "NCT00232050",
+              "NCT00242359",
+              "NCT00252135",
+              "NCT00264849",
+              "NCT00267202",
+              "NCT00283504",
+              "NCT00286416",
+              "NCT00287378",
+              "NCT00314574",
+              "NCT00329381",
+              "NCT00350376",
+              "NCT00367016",
+              "NCT00373061",
+              "NCT00377390",
+              "NCT00377572",
+              "NCT00396409",
+              "NCT00401596",
+              "NCT00434434",
+              "NCT00454051",
+              "NCT00482248",
+              "NCT00482508",
+              "NCT00495612",
+              "NCT00500539",
+              "NCT00546143",
+              "NCT00567476",
+              "NCT00624832",
+              "NCT00639691",
+              "NCT00657891",
+              "NCT00670930",
+              "NCT00691873",
+              "NCT00777764",
+              "NCT00784485",
+              "NCT00813748",
+              "NCT00829179",
+              "NCT00870584",
+              "NCT01002976",
+              "NCT01007149",
+              "NCT01113437",
+              "NCT01125748",
+              "NCT01155700",
+              "NCT01202903",
+              "NCT01328886",
+              "NCT01393340",
+              "NCT01397760",
+              "NCT01430403",
+              "NCT01460862",
+              "NCT01544348",
+              "NCT01584687",
+              "NCT01703312",
+              "NCT01716754",
+              "NCT01776177",
+              "NCT01912872",
+              "NCT01922037",
+              "NCT01976208",
+              "NCT02023151",
+              "NCT02049294",
+              "NCT02124226",
+              "NCT02293265",
+              "NCT02388997",
+              "NCT02570984",
+              "NCT02654145",
+              "NCT02658877",
+              "NCT02921178",
+              "NCT03074942",
+              "NCT03361111",
+              "NCT03476109",
+              "NCT03480815",
+              "NCT03727971",
+              "NCT04158050",
+              "NCT04195958",
+              "NCT04480242",
+              "NCT04585997",
+              "NCT04601389",
+              "NCT04607629",
+              "NCT04665141",
+              "NCT04724278",
+              "NCT04763447",
+              "NCT04778137",
+              "NCT04998604",
+              "NCT05001529",
+              "NCT05157087",
+              "NCT05270278",
+              "NCT05332067",
+              "NCT05424523",
+              "NCT05813470",
+              "NCT05938972",
+              "NCT05972213",
+              "NCT06024707",
+              "NCT06027073",
+              "NCT06261567",
+              "NCT06316414",
+              "NCT06348407",
+              "NCT06438757",
+              "NCT06456450",
+              "NCT06494345",
+              "NCT06535087",
+              "NCT06617754",
+              "NCT06771934",
+              "NCT06869382",
+              "NCT07342803",
+              "NCT07425639",
+              "NCT07786870",
+              "NCT07823842"
+            ],
+            "root_dataset_id": "ds_048c02c4a7504273b3a257fd8dcafece",
+            "root_scope_id": null
+          },
+          {
+            "alias_handle": null,
+            "constraints_version": 1,
+            "dataset_id": "ds_db9f8f34531b42dba73db16cb9983db8",
+            "date_filter_excluded": 0,
+            "date_range": null,
+            "filters": {
+              "condition": "asthma",
+              "countries": [],
+              "end_year": null,
+              "enrollment_type": null,
+              "intervention_match": "any",
+              "interventions": [
+                "dupilumab"
+              ],
+              "phases": [],
+              "sponsor": null,
+              "start_year": null,
+              "statuses": []
+            },
+            "label": "Population",
+            "lineage": [],
+            "nct_ids": [
+              "NCT01312961",
+              "NCT01854047",
+              "NCT02134028",
+              "NCT02414854",
+              "NCT02528214",
+              "NCT02573233",
+              "NCT02948959",
+              "NCT03020810",
+              "NCT03112577",
+              "NCT03387852",
+              "NCT03560466",
+              "NCT03620747",
+              "NCT03694158",
+              "NCT03782532",
+              "NCT03884842",
+              "NCT04022447",
+              "NCT04173442",
+              "NCT04203797",
+              "NCT04287621",
+              "NCT04380038",
+              "NCT04400318",
+              "NCT04442256",
+              "NCT04502862",
+              "NCT04550962",
+              "NCT04665141",
+              "NCT04743791",
+              "NCT04998604",
+              "NCT05036733",
+              "NCT05070663",
+              "NCT05097287",
+              "NCT05270278",
+              "NCT05331755",
+              "NCT05347771",
+              "NCT05478824",
+              "NCT05575037",
+              "NCT05720325",
+              "NCT05787678",
+              "NCT05938972",
+              "NCT05942222",
+              "NCT05972213",
+              "NCT06018441",
+              "NCT06064526",
+              "NCT06191315",
+              "NCT06261567",
+              "NCT06385236",
+              "NCT06461949",
+              "NCT06556264",
+              "NCT06572228",
+              "NCT06617754",
+              "NCT06818019",
+              "NCT06851403",
+              "NCT07025200",
+              "NCT07049978",
+              "NCT07309614",
+              "NCT07574294",
+              "NCT07602881",
+              "NCT07637292",
+              "NCT07721376",
+              "NCT07786870",
+              "NCT07823842"
+            ],
+            "root_dataset_id": "ds_db9f8f34531b42dba73db16cb9983db8",
+            "root_scope_id": null
+          }
+        ],
+        "metric_definition": "Distinct NCT IDs per phase; multi-valued categories may overlap.",
+        "model_assumptions": [],
+        "network_edge_limit": null,
+        "node_count_scope": null,
+        "phase_policy": "Combined phases remain one combined category. Missing phases are Not reported.",
+        "presentation_clipping": {
+          "applied": false,
+          "omitted_items": 0
+        },
+        "relationship_definition": null,
+        "relationship_limits": "Drug co-occurrence means same study, not same arm. Shared-drug sponsor edges indicate shared interventions, not collaboration or ownership.",
+        "root_scopes": [
+          "scope_76a327d25122f424a52e2780f317e64d",
+          "scope_f3952d00186fddb52b1563cef414f9c0"
+        ],
+        "sorting": "Years ascending; phases in clinical order; other categories by descending total count then label; network edges by descending weight then IDs.",
+        "source_manifests": [
+          {
+            "complete": true,
+            "dataset_id": "ds_048c02c4a7504273b3a257fd8dcafece",
+            "duplicate_count": 0,
+            "expected_count": 116,
+            "finished_at": "2026-10-31T16:53:38.713750+00:00",
+            "pages": 1,
+            "query": {
+              "query.cond": "\"asthma\"",
+              "query.intr": "(\"omalizumab\")"
+            },
+            "query_hash": "35177e86d5d78164abe150b12ec551bfddeacfe8b4515146b972f49b625c9785",
+            "raw_hash": "e9da6a96cda159ba42818be08d0ace4989ee9c53e47dffdeb6c4829e4a8f71e2",
+            "reason": null,
+            "retrieved_unique_count": 116,
+            "schema_version": "snapshot-v1",
+            "source_version_after": {
+              "apiVersion": "2.0.5",
+              "dataTimestamp": "2026-10-30T09:00:04"
+            },
+            "source_version_before": {
+              "apiVersion": "2.0.5",
+              "dataTimestamp": "2026-10-30T09:00:04"
+            },
+            "started_at": "2026-10-31T16:53:37.436271+00:00"
+          },
+          {
+            "complete": true,
+            "dataset_id": "ds_db9f8f34531b42dba73db16cb9983db8",
+            "duplicate_count": 0,
+            "expected_count": 60,
+            "finished_at": "2026-10-31T16:53:36.664024+00:00",
+            "pages": 1,
+            "query": {
+              "query.cond": "\"asthma\"",
+              "query.intr": "(\"dupilumab\")"
+            },
+            "query_hash": "ac3db0b1d0fa192e540401b80e5d8ab523d4fba88af49a74cee7768626223a91",
+            "raw_hash": "8a5dd4bb097576e41d3463bcb2513a649b6e36dd12bdff0abcd0d12e72e4b1fa",
+            "reason": null,
+            "retrieved_unique_count": 60,
+            "schema_version": "snapshot-v1",
+            "source_version_after": {
+              "apiVersion": "2.0.5",
+              "dataTimestamp": "2026-10-30T09:00:04"
+            },
+            "source_version_before": {
+              "apiVersion": "2.0.5",
+              "dataTimestamp": "2026-10-30T09:00:04"
+            },
+            "started_at": "2026-10-31T16:53:33.771088+00:00"
+          }
+        ],
+        "source_semantics": "Official ClinicalTrials.gov condition/intervention/lead-sponsor search; other filters use snapshot fields.",
+        "source_truncated": false,
+        "time_granularity": null,
+        "units": {
+          "enrollment": "participants",
+          "trial_count": "studies"
+        }
+      },
+      "alternative_renderers": [
+        "bar",
+        "table"
+      ]
+    }
+  ],
+  "questions": [],
+  "message": "Results are assembled from validated artifacts. See each chart for its scope, metric, exclusions and source evidence.",
+  "unmet_goals": [],
+  "usage": {
+    "model_calls": 7,
+    "usage_complete": true,
+    "unknown_attempts": 0,
+    "estimated_or_reserved_usd": 0.0293839,
+    "receipts": [
+      {
+        "elapsed_seconds": 3.406,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_0a7fc1dc99e14600016ae6c260041087d09d0309d37ed60f13",
+        "usage": {
+          "input_tokens": 4382,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 4256
+          },
+          "output_tokens": 133,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4515
+        }
+      },
+      {
+        "elapsed_seconds": 3.047,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_00ab2889be776b7e016ae6c262dde487d0a46ec39bdcf48fc3",
+        "usage": {
+          "input_tokens": 4879,
+          "input_tokens_details": {
+            "cache_write_tokens": 675,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 32,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 4911
+        }
+      },
+      {
+        "elapsed_seconds": 2.406,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_0068fdcdd29adad5016ae6c26756d887d0b1a9488a9ed405ba",
+        "usage": {
+          "input_tokens": 4923,
+          "input_tokens_details": {
+            "cache_write_tokens": 719,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 60,
+          "output_tokens_details": {
+            "reasoning_tokens": 22
+          },
+          "total_tokens": 4983
+        }
+      },
+      {
+        "elapsed_seconds": 2.047,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_04a590b1daa9d39e016ae6c26aaf5087d0baa1428372c475eb",
+        "usage": {
+          "input_tokens": 5057,
+          "input_tokens_details": {
+            "cache_write_tokens": 853,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 36,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5093
+        }
+      },
+      {
+        "elapsed_seconds": 2.375,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_06957ff7fac625e9016ae6c26d755487d09b80346edefd17d2",
+        "usage": {
+          "input_tokens": 5190,
+          "input_tokens_details": {
+            "cache_write_tokens": 986,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 103,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 5293
+        }
+      },
+      {
+        "elapsed_seconds": 2.203,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_050f21fba7427fb0016ae6c271d49887d0bbd9a02de5908815",
+        "usage": {
+          "input_tokens": 6457,
+          "input_tokens_details": {
+            "cache_write_tokens": 2253,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 39,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 6496
+        }
+      },
+      {
+        "elapsed_seconds": 2.843,
+        "provider": "openai",
+        "reported_model": "gpt-6.1-sol",
+        "requested_model": "gpt-6.1-sol",
+        "response_id": "resp_0fa9ceddeabe667a016ae6c274ee2087d0b8a337764e6ca4bc",
+        "usage": {
+          "input_tokens": 6529,
+          "input_tokens_details": {
+            "cache_write_tokens": 2325,
+            "cached_tokens": 4078
+          },
+          "output_tokens": 119,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 6648
+        }
+      }
+    ],
+    "cost_basis": "Versioned standard short-context model rates or explicit provider usage.cost; unknown attempts keep conservative reservations, not an invoice"
+  }
+}

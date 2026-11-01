@@ -1,0 +1,68 @@
+{
+  "version": "harness-v3-independent-online-closed-v1",
+  "planned_tasks": 2,
+  "completed_tasks": 2,
+  "episode_ids": [
+    "ep_dd66d2a67715afd0",
+    "ep_89414e78c31e40d1"
+  ],
+  "initial_bank_entries": 0,
+  "incoming_bank_counts": [
+    0,
+    1
+  ],
+  "final_bank": {
+    "entries": 1,
+    "adopted": 0,
+    "negative": 1
+  },
+  "ablations": {
+    "proactive": {
+      "completed": 2,
+      "correct_report_only": 2,
+      "model_calls": 14,
+      "usd": 0.10035360000000002,
+      "mechanism": {}
+    },
+    "disabled": {
+      "completed": 2,
+      "correct_report_only": 2,
+      "model_calls": 14,
+      "usd": 0.0998114,
+      "mechanism": {}
+    }
+  },
+  "ppc": {
+    "correct_report_only": 2,
+    "adopted_tasks": 1,
+    "editor_retrieved": 1,
+    "editor_declared_source_ids": 0,
+    "adopted_nonempty_components": 0,
+    "adopted_empty_noop": 1
+  },
+  "cumulative_development_and_online": {
+    "calls": 743,
+    "usd": 8.3686404,
+    "input_tokens": 6021380,
+    "output_tokens": 79429,
+    "unknown_usage_calls": 0,
+    "measured_api_seconds": 2463.31161403656,
+    "calls_without_latency": 0
+  },
+  "online_increment": {
+    "calls": 100,
+    "usd": 0.9943497000000008
+  },
+  "closed_cumulative_ledger": "data/harness-v3-main02/completed-development-and-online-ledger.json",
+  "closed_cumulative_ledger_sha256": "05bc3b13679117fe891353086554c7712b7d229ed0b2a4fc3fdd40a4ec2cf776",
+  "formal_bank_unchanged": true,
+  "formal_bank_sha256": "09bd78be621d54f0a108e7907597a9971416b71a0a4e01488837c734fe314ebc",
+  "limitations": [
+    "Two unused development tasks measure mechanism, not heldout efficacy.",
+    "Proactive policy is engineered; read/apply alone would not prove benefit.",
+    "This cumulative receipt already includes development; do not add development-only receipt again.",
+    "Formal execution remains subject to coordinator budget release; main01, pilot and smoke costs remain separate.",
+    "One public adoption flag selected an empty procedure; it is not a reusable framework modification or learned component. No positive online component was stored."
+  ],
+  "all_harness_closed_cost_including_pilot_smoke_and_main01": 10.2678026
+}

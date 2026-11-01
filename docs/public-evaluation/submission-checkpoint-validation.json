@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-01",
+  "kind": "intermediate_checkpoint_not_final_release",
+  "python_targeted": {
+    "passed": 152,
+    "failed": 0,
+    "seconds": 21.23,
+    "scope": "Core/NLI/TrialQA/Harness reporters; nested credential scan; package and ZIP verifier; recorded viewer and V2 exports",
+    "full_suite": false
+  },
+  "ruff": {"status": "passed", "directories": ["app", "tests", "scripts", "experiments", "evaluation"]},
+  "frontend": {"tests_passed": 14, "build": "passed", "warning": "ECharts bundle exceeds the advisory 500 kB chunk threshold"},
+  "frozen_runtime": "Root app/evaluation/experiments source remains unchanged while NLI formal execution is active. Five prepared backend patches were tested separately but are not included as root production changes in this checkpoint.",
+  "known_expected_failures": "Nine previously documented scope/scorer expected-failure cases remain until patch graduation; this targeted test run does not claim they are fixed.",
+  "formal_studies": {"Core300": "completed_and_audited", "TrialQA": "completed_and_reported", "NLI4CT": "running", "Harness_v3": "running_four_workers"},
+  "paid_calls_for_this_validation": 0,
+  "final_archive_acceptance": "pending"
+}

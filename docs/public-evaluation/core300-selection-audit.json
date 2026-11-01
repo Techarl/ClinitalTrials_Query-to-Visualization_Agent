@@ -1,0 +1,2370 @@
+{
+  "version": "core300-selection-linkage-audit-v1",
+  "generated_at": "2026-11-01T08:48:43.260128+00:00",
+  "original_report_sha256": "bcf758d42138f102d584ad7fd9c85887639455de4b031f76e589ed78cc163b5f",
+  "study_sha256": "e5b17d6cde2b9333c115c004c8018230665be13957e1c3ccd6cc646ce1c45237",
+  "original": {
+    "all": {
+      "successes": 295,
+      "denominator": 300,
+      "rate": 0.9833333333333333,
+      "wilson95": [
+        0.9615846051669054,
+        0.9928605226493666
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        0.9666666666666667,
+        0.9966666666666667
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 420,
+      "status_counts": {
+        "graded": 300
+      },
+      "incorrect_or_failed": 5,
+      "failure_code_occurrences": {
+        "status": 5,
+        "artifact": 5,
+        "dependent_selection_missing": 2,
+        "constraint": 3
+      }
+    },
+    "split": {
+      "calibration": {
+        "successes": 39,
+        "denominator": 40,
+        "rate": 0.975,
+        "wilson95": [
+          0.8711863103652591,
+          0.9955731684973186
+        ],
+        "clusters": 2,
+        "cluster_bootstrap95": [
+          0.95,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 56,
+        "status_counts": {
+          "graded": 40
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1
+        }
+      },
+      "development": {
+        "successes": 60,
+        "denominator": 60,
+        "rate": 1.0,
+        "wilson95": [
+          0.93982814785791,
+          0.9999999999999998
+        ],
+        "clusters": 3,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 84,
+        "status_counts": {
+          "graded": 60
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "heldout": {
+        "successes": 196,
+        "denominator": 200,
+        "rate": 0.98,
+        "wilson95": [
+          0.9497129130941735,
+          0.9921955735836505
+        ],
+        "clusters": 10,
+        "cluster_bootstrap95": [
+          0.96,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 280,
+        "status_counts": {
+          "graded": 200
+        },
+        "incorrect_or_failed": 4,
+        "failure_code_occurrences": {
+          "status": 4,
+          "artifact": 4,
+          "dependent_selection_missing": 2,
+          "constraint": 3
+        }
+      }
+    },
+    "family": {
+      "boundary_empty_time": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "boundary_precision": {
+        "successes": 10,
+        "denominator": 10,
+        "rate": 1.0,
+        "wilson95": [
+          0.7224672001371107,
+          0.9999999999999999
+        ],
+        "clusters": 10,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 10,
+        "status_counts": {
+          "graded": 10
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "boundary_unsupported_causality": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "compound_country_first_posted": {
+        "successes": 14,
+        "denominator": 15,
+        "rate": 0.9333333333333333,
+        "wilson95": [
+          0.7018347012621998,
+          0.9881331045067315
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1
+        }
+      },
+      "compound_phase_start": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "compound_status_completion": {
+        "successes": 14,
+        "denominator": 15,
+        "rate": 0.9333333333333333,
+        "wilson95": [
+          0.7018347012621998,
+          0.9881331045067315
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "constraint": 3,
+          "artifact": 2
+        }
+      },
+      "compound_study_type_primary_completion": {
+        "successes": 5,
+        "denominator": 5,
+        "rate": 1.0,
+        "wilson95": [
+          0.5655175352168251,
+          1
+        ],
+        "clusters": 5,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 5,
+        "status_counts": {
+          "graded": 5
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "dependent_top2": {
+        "successes": 14,
+        "denominator": 15,
+        "rate": 0.9333333333333333,
+        "wilson95": [
+          0.7018347012621998,
+          0.9881331045067315
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1,
+          "dependent_selection_missing": 1
+        }
+      },
+      "dependent_top3": {
+        "successes": 14,
+        "denominator": 15,
+        "rate": 0.9333333333333333,
+        "wilson95": [
+          0.7018347012621998,
+          0.9881331045067315
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1,
+          "dependent_selection_missing": 1
+        }
+      },
+      "dialogue_completion": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 45,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "dialogue_first_posted": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 45,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "dialogue_primary_completion": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 45,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "dialogue_start": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 45,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_country": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_histogram": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_phase": {
+        "successes": 14,
+        "denominator": 15,
+        "rate": 0.9333333333333333,
+        "wilson95": [
+          0.7018347012621998,
+          0.9881331045067315
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1
+        }
+      },
+      "single_status": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_study_type": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_time_completion": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_time_first_posted": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_time_start": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      }
+    },
+    "category": {
+      "boundary": {
+        "successes": 40,
+        "denominator": 40,
+        "rate": 1.0,
+        "wilson95": [
+          0.9123783988027135,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 40,
+        "status_counts": {
+          "graded": 40
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "compound_or_dependent": {
+        "successes": 76,
+        "denominator": 80,
+        "rate": 0.95,
+        "wilson95": [
+          0.8783772379535698,
+          0.9803864454644556
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8875,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 80,
+        "status_counts": {
+          "graded": 80
+        },
+        "incorrect_or_failed": 4,
+        "failure_code_occurrences": {
+          "status": 4,
+          "artifact": 4,
+          "dependent_selection_missing": 2,
+          "constraint": 3
+        }
+      },
+      "multi_turn": {
+        "successes": 60,
+        "denominator": 60,
+        "rate": 1.0,
+        "wilson95": [
+          0.93982814785791,
+          0.9999999999999998
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 180,
+        "status_counts": {
+          "graded": 60
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single": {
+        "successes": 119,
+        "denominator": 120,
+        "rate": 0.9916666666666667,
+        "wilson95": [
+          0.9543037087549505,
+          0.998527444266658
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.975,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 120,
+        "status_counts": {
+          "graded": 120
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1
+        }
+      }
+    },
+    "entity_group": {
+      "Crohn disease": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "asthma": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "breast cancer": {
+        "successes": 18,
+        "denominator": 20,
+        "rate": 0.9,
+        "wilson95": [
+          0.6989663547715128,
+          0.9721335187862319
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          0.9,
+          0.9
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 2,
+        "failure_code_occurrences": {
+          "status": 2,
+          "artifact": 2,
+          "dependent_selection_missing": 2
+        }
+      },
+      "depression": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "melanoma": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "migraine": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "multiple sclerosis": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "non-small cell lung cancer": {
+        "successes": 19,
+        "denominator": 20,
+        "rate": 0.95,
+        "wilson95": [
+          0.763868806553258,
+          0.9911185511992047
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          0.95,
+          0.95
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "constraint": 3,
+          "artifact": 2
+        }
+      },
+      "obesity": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "ovarian cancer": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "prostate cancer": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "psoriasis": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "rheumatoid arthritis": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "type 2 diabetes": {
+        "successes": 19,
+        "denominator": 20,
+        "rate": 0.95,
+        "wilson95": [
+          0.763868806553258,
+          0.9911185511992047
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          0.95,
+          0.95
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1
+        }
+      },
+      "ulcerative colitis": {
+        "successes": 19,
+        "denominator": 20,
+        "rate": 0.95,
+        "wilson95": [
+          0.763868806553258,
+          0.9911185511992047
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          0.95,
+          0.95
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1
+        }
+      }
+    }
+  },
+  "linkage_rescored": {
+    "all": {
+      "successes": 295,
+      "denominator": 300,
+      "rate": 0.9833333333333333,
+      "wilson95": [
+        0.9615846051669054,
+        0.9928605226493666
+      ],
+      "clusters": 15,
+      "cluster_bootstrap95": [
+        0.9666666666666667,
+        0.9966666666666667
+      ],
+      "draws": 4000,
+      "seed": 20261101,
+      "few_cluster_warning": true,
+      "planned_turns": 420,
+      "status_counts": {
+        "graded": 300
+      },
+      "incorrect_or_failed": 5,
+      "failure_code_occurrences": {
+        "status": 5,
+        "artifact": 5,
+        "dependent_selection_missing": 2,
+        "constraint": 3
+      }
+    },
+    "split": {
+      "calibration": {
+        "successes": 39,
+        "denominator": 40,
+        "rate": 0.975,
+        "wilson95": [
+          0.8711863103652591,
+          0.9955731684973186
+        ],
+        "clusters": 2,
+        "cluster_bootstrap95": [
+          0.95,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 56,
+        "status_counts": {
+          "graded": 40
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1
+        }
+      },
+      "development": {
+        "successes": 60,
+        "denominator": 60,
+        "rate": 1.0,
+        "wilson95": [
+          0.93982814785791,
+          0.9999999999999998
+        ],
+        "clusters": 3,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 84,
+        "status_counts": {
+          "graded": 60
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "heldout": {
+        "successes": 196,
+        "denominator": 200,
+        "rate": 0.98,
+        "wilson95": [
+          0.9497129130941735,
+          0.9921955735836505
+        ],
+        "clusters": 10,
+        "cluster_bootstrap95": [
+          0.96,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 280,
+        "status_counts": {
+          "graded": 200
+        },
+        "incorrect_or_failed": 4,
+        "failure_code_occurrences": {
+          "status": 4,
+          "artifact": 4,
+          "dependent_selection_missing": 2,
+          "constraint": 3
+        }
+      }
+    },
+    "family": {
+      "boundary_empty_time": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "boundary_precision": {
+        "successes": 10,
+        "denominator": 10,
+        "rate": 1.0,
+        "wilson95": [
+          0.7224672001371107,
+          0.9999999999999999
+        ],
+        "clusters": 10,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 10,
+        "status_counts": {
+          "graded": 10
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "boundary_unsupported_causality": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "compound_country_first_posted": {
+        "successes": 14,
+        "denominator": 15,
+        "rate": 0.9333333333333333,
+        "wilson95": [
+          0.7018347012621998,
+          0.9881331045067315
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1
+        }
+      },
+      "compound_phase_start": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "compound_status_completion": {
+        "successes": 14,
+        "denominator": 15,
+        "rate": 0.9333333333333333,
+        "wilson95": [
+          0.7018347012621998,
+          0.9881331045067315
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "constraint": 3,
+          "artifact": 2
+        }
+      },
+      "compound_study_type_primary_completion": {
+        "successes": 5,
+        "denominator": 5,
+        "rate": 1.0,
+        "wilson95": [
+          0.5655175352168251,
+          1
+        ],
+        "clusters": 5,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 5,
+        "status_counts": {
+          "graded": 5
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "dependent_top2": {
+        "successes": 14,
+        "denominator": 15,
+        "rate": 0.9333333333333333,
+        "wilson95": [
+          0.7018347012621998,
+          0.9881331045067315
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1,
+          "dependent_selection_missing": 1
+        }
+      },
+      "dependent_top3": {
+        "successes": 14,
+        "denominator": 15,
+        "rate": 0.9333333333333333,
+        "wilson95": [
+          0.7018347012621998,
+          0.9881331045067315
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1,
+          "dependent_selection_missing": 1
+        }
+      },
+      "dialogue_completion": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 45,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "dialogue_first_posted": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 45,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "dialogue_primary_completion": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 45,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "dialogue_start": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 45,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_country": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_histogram": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_phase": {
+        "successes": 14,
+        "denominator": 15,
+        "rate": 0.9333333333333333,
+        "wilson95": [
+          0.7018347012621998,
+          0.9881331045067315
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1
+        }
+      },
+      "single_status": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_study_type": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_time_completion": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_time_first_posted": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single_time_start": {
+        "successes": 15,
+        "denominator": 15,
+        "rate": 1.0,
+        "wilson95": [
+          0.7961166989641515,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 15,
+        "status_counts": {
+          "graded": 15
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      }
+    },
+    "category": {
+      "boundary": {
+        "successes": 40,
+        "denominator": 40,
+        "rate": 1.0,
+        "wilson95": [
+          0.9123783988027135,
+          1
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 40,
+        "status_counts": {
+          "graded": 40
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "compound_or_dependent": {
+        "successes": 76,
+        "denominator": 80,
+        "rate": 0.95,
+        "wilson95": [
+          0.8783772379535698,
+          0.9803864454644556
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.8875,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 80,
+        "status_counts": {
+          "graded": 80
+        },
+        "incorrect_or_failed": 4,
+        "failure_code_occurrences": {
+          "status": 4,
+          "artifact": 4,
+          "dependent_selection_missing": 2,
+          "constraint": 3
+        }
+      },
+      "multi_turn": {
+        "successes": 60,
+        "denominator": 60,
+        "rate": 1.0,
+        "wilson95": [
+          0.93982814785791,
+          0.9999999999999998
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 180,
+        "status_counts": {
+          "graded": 60
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "single": {
+        "successes": 119,
+        "denominator": 120,
+        "rate": 0.9916666666666667,
+        "wilson95": [
+          0.9543037087549505,
+          0.998527444266658
+        ],
+        "clusters": 15,
+        "cluster_bootstrap95": [
+          0.975,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 120,
+        "status_counts": {
+          "graded": 120
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1
+        }
+      }
+    },
+    "entity_group": {
+      "Crohn disease": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "asthma": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "breast cancer": {
+        "successes": 18,
+        "denominator": 20,
+        "rate": 0.9,
+        "wilson95": [
+          0.6989663547715128,
+          0.9721335187862319
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          0.9,
+          0.9
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 2,
+        "failure_code_occurrences": {
+          "status": 2,
+          "artifact": 2,
+          "dependent_selection_missing": 2
+        }
+      },
+      "depression": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "melanoma": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "migraine": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "multiple sclerosis": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "non-small cell lung cancer": {
+        "successes": 19,
+        "denominator": 20,
+        "rate": 0.95,
+        "wilson95": [
+          0.763868806553258,
+          0.9911185511992047
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          0.95,
+          0.95
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "constraint": 3,
+          "artifact": 2
+        }
+      },
+      "obesity": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "ovarian cancer": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "prostate cancer": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "psoriasis": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "rheumatoid arthritis": {
+        "successes": 20,
+        "denominator": 20,
+        "rate": 1.0,
+        "wilson95": [
+          0.8388748419471806,
+          1
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          1.0,
+          1.0
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 0,
+        "failure_code_occurrences": {}
+      },
+      "type 2 diabetes": {
+        "successes": 19,
+        "denominator": 20,
+        "rate": 0.95,
+        "wilson95": [
+          0.763868806553258,
+          0.9911185511992047
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          0.95,
+          0.95
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1,
+          "artifact": 1
+        }
+      },
+      "ulcerative colitis": {
+        "successes": 19,
+        "denominator": 20,
+        "rate": 0.95,
+        "wilson95": [
+          0.763868806553258,
+          0.9911185511992047
+        ],
+        "clusters": 1,
+        "cluster_bootstrap95": [
+          0.95,
+          0.95
+        ],
+        "draws": 4000,
+        "seed": 20261101,
+        "few_cluster_warning": true,
+        "planned_turns": 28,
+        "status_counts": {
+          "graded": 20
+        },
+        "incorrect_or_failed": 1,
+        "failure_code_occurrences": {
+          "status": 1
+        }
+      }
+    }
+  },
+  "changed_episodes": [],
+  "audited_dependent_turns": [
+    {
+      "episode_id": "ep_1282bfd4d464d0c2",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_13095ce06b325c48",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_1ea74c40189a6eeb",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_25ef49de77a48f46",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_32a58a9d62c93ae0",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_34ec52357ba23701",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_409157e87b152efa",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_420dafb6bf966b37",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_471049b003427237",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_48c8c5de792aeb28",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_59294b2ffabede77",
+      "turn": 1,
+      "original_correct": false,
+      "audit_correct": false,
+      "linkage_failures": [
+        "dependent_selection_missing"
+      ]
+    },
+    {
+      "episode_id": "ep_706664288981b2f0",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_880d18ae47edb51b",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_8c8ceeb734a51e76",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_9421f2ecc8d1ec33",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_a6ac341ebb26af26",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_acab7db6e54e45d3",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_b447711ebae31fa0",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_c1085cadec89949a",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_c5c96e99aeb932a3",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_c65ada9e23a9fce4",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_c913616dc21fb6cb",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_c9b2bd1c4a27ea78",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_dd49762f4b7fc14c",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_e3276466708534eb",
+      "turn": 1,
+      "original_correct": false,
+      "audit_correct": false,
+      "linkage_failures": [
+        "dependent_selection_missing"
+      ]
+    },
+    {
+      "episode_id": "ep_eba66df87f4d4473",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_ede13f73886e25fb",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_ef91b55cd9951a8d",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_f1aceb36aca6bb21",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    },
+    {
+      "episode_id": "ep_ffb16bf904285848",
+      "turn": 1,
+      "original_correct": true,
+      "audit_correct": true,
+      "linkage_failures": []
+    }
+  ],
+  "scope": "Only the three original dependency-linkage checks are replaced. All other frozen grades retained. No model rerun, no output editing, no claim of full independent semantic regrading."
+}

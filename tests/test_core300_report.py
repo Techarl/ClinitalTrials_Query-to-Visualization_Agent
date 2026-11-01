@@ -57,6 +57,31 @@ def test_fixed_denominator_failed_and_not_run_included_and_safe_export():
     assert "PRIVATE" not in json.dumps(rows) and "ANSWER" not in json.dumps(rows)
 
 
+def test_failed_turn_diagnostics_keep_actual_error_types_without_inventing_causes(tmp_path):
+    folder = tmp_path / "episode"
+    folder.mkdir()
+    value = {
+        "grade": {"correct": False, "independent_checks": []},
+        "response": {"status": "partial"},
+        "journal": [
+            {"kind": "model", "output": {"metadata": {"error_type": "APITimeoutError"}}},
+            {
+                "kind": "tool",
+                "input": {"name": "select_entities"},
+                "output": {"status": "error", "error_type": "ClientError", "message": "PRIVATE DETAIL"},
+            },
+        ],
+    }
+    (folder / "turn-1.json").write_text(json.dumps(value), encoding="utf-8")
+    result = report.audit_turns(
+        tmp_path, [{"episode_id": "episode", "planned_turns": 1, "status": "graded", "correct": False}]
+    )
+    diagnostic = result["failed_turn_diagnostics"][0]
+    assert diagnostic["model_error_types"] == ["APITimeoutError"]
+    assert diagnostic["tool_errors"] == [{"tool": "select_entities", "error_type": "ClientError"}]
+    assert "PRIVATE" not in json.dumps(result)
+
+
 @pytest.mark.parametrize(
     "mutation,match",
     [

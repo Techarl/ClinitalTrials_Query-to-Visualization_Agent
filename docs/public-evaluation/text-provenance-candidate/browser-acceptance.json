@@ -1,0 +1,15 @@
+{
+  "run_id": "vr_aadcbbe7e4404dea842137a9083a1a5c",
+  "candidate_url": "http://127.0.0.1:8012/",
+  "checks": [
+    "NCT00046748 official link and trial title visible",
+    "Exact 12 Years quotation visible",
+    "Expanded source JSON pointer and value visible",
+    "Container/document/field/quotation hashes visible",
+    "Version-drift notice visible",
+    "Internal source handle collapsed by default"
+  ],
+  "screenshot": "../../screenshots/ui-review/text-provenance-candidate.png",
+  "model_calls": 0,
+  "scope": "Manual candidate mechanism, not autonomous quality or final release acceptance"
+}
