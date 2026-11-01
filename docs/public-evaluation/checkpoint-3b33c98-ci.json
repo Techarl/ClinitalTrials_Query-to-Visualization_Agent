@@ -1,0 +1,23 @@
+{
+  "commit": "3b33c98624b366676e048158ad1e4d9ead2d12c9",
+  "run_id": 41290943239,
+  "job_id": 124801887582,
+  "url": "https://github.com/Techarl/ClinitalTrials_Query-to-Visualization_Agent/actions/runs/41290943239",
+  "conclusion": "success",
+  "pytest": {
+    "passed": 865,
+    "skipped": 2,
+    "xfailed": 9,
+    "seconds": 52.65,
+    "live_neo4j": true,
+    "environment": "GitHub Actions Ubuntu Python3.12 Neo4j2026.10.1-community"
+  },
+  "frontend": {
+    "tests_passed": 14,
+    "build": "passed"
+  },
+  "pip_check": "passed",
+  "ruff": "passed",
+  "baseline_example_verification": "passed",
+  "limits": "Known scope/scorer expected failures remain until deferred backend patch graduation. This is checkpoint CI, not final release acceptance."
+}

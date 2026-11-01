@@ -54,3 +54,7 @@
 
 另见 [数据依赖关联审计](CORE300_SELECTION_AUDIT.md)：对全部要求依赖选择的轮次核对 anchor、top-N、scope、lineage 和 artifact dependencies；原始分数与审计分数并列，其他评分规则保留。
 [冻结协议文件](public-evaluation/frozen-protocols/core300-protocol.json) 与 [执行源码归档](public-evaluation/frozen-protocols/core300-source.zip) 标识本次运行版本。
+
+完整执行证据已在评测结束后整理为 [Core300 execution ZIP](public-evaluation/core300-execution.zip)，包含原始 420 份 turn-N.json（请求/响应/工具 journal）、300 份 summary、300 份 execution identity，以及正式 report、关闭后的 ledger 和冻结元数据。[归档收据](public-evaluation/core300-execution-archive.json) 记录 ZIP SHA、大小、准确成员集合与哈希核验、递归凭据扫描结果。
+
+ZIP 不包含 SQLite/checkpoint 数据库、重复 turn-N-run.json 指针、逐题重复源码 ZIP 或重复人口快照，因此它是可审查的完整轮次记录，不是可以直接恢复会话的运行镜像。原始公开试验记录及作者模板任务另见 [Core300 sources ZIP](public-evaluation/core300-sources.zip)。不含 NLI4CT 或受限 TrialQA 数据。复现归档：`python -m scripts.archive_core_execution`；解压前先核对内部 CORE300-EXECUTION-MANIFEST.json 的全部 SHA-256。

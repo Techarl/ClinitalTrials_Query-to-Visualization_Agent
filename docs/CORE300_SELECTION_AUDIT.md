@@ -17,3 +17,5 @@
 三项旧的 dependency-linkage 检查由上述更严格的关联检查替换，其他冻结失败项逐项保留。失败任务继续进入分母；没有选择性重跑，没有借助审计结果修改执行输出。未改变总分不能证明所有其他评分规则均完备。
 
 [完整逐轮审计与原始/审计后分层统计](public-evaluation/core300-selection-audit.json) · [原始正式结果](CORE300_RESULTS.md)
+
+独立审查者可下载 [原始420轮执行记录](public-evaluation/core300-execution.zip)，以 [哈希与扫描收据](public-evaluation/core300-execution-archive.json) 及 ZIP 内部manifest核对内容。完整模型工具轨迹已保留；SQLite状态、重复运行指针和重复快照未包含，原始公开人口数据另存于core300-sources.zip。

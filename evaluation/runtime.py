@@ -24,7 +24,24 @@ def write(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(".pending")
     temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")
-    temporary.replace(path)
+    deadline = time.monotonic() + 1.0
+    original_error = None
+    original_traceback = None
+    delay = 0.025
+    while True:
+        try:
+            temporary.replace(path)
+            return
+        except PermissionError as error:
+            # Windows readers without delete sharing can temporarily prevent an
+            # otherwise atomic replacement. Retry replacement only, not writing.
+            if original_error is None:
+                original_error, original_traceback = error, error.__traceback__
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise original_error.with_traceback(original_traceback) from None
+            time.sleep(min(delay, remaining))
+            delay = min(delay * 2, 0.2)
 
 
 class PersistentBudget(Budget):

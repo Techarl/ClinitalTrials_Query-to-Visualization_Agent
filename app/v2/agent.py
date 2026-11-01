@@ -1,6 +1,7 @@
 """Bounded native-tool loop with durable decisions, tool observations and recovery."""
 
 import json
+import re
 import sqlite3
 import threading
 import time
@@ -15,6 +16,7 @@ from app.v2.context import pack
 from app.v2.contracts import ClarifyInput, FinalizeInput, HandleInput, RunResult, StopInput, TaskSpec
 from app.v2.costs import estimate
 from app.v2.store import TERMINAL
+from app.v2.tools import task_execution_hash
 
 CONTROLS = {
     "define_task": (
@@ -99,6 +101,82 @@ class NativePlanner:
 
 class LoopState(TypedDict):
     run_id: str
+
+
+def _quoted_value(value, quote, field):
+    """Conservative lexical evidence, not a claim of general semantic entailment."""
+    if isinstance(value, int) and not isinstance(value, bool):
+        return bool(re.search(rf"(?<!\w){value}(?!\w)", quote))
+    if not isinstance(value, str) or not value:
+        return False
+    aliases = {
+        ("intervention_scope", "comparison"): ("compare", "comparison", "separate cohorts", "separate groups"),
+        ("intervention_scope", "population"): ("single population", "combined population", "pooled population"),
+        ("filters.intervention_match", "all"): ("both drugs", "both medicines", "all interventions", "together"),
+        ("filters.intervention_match", "any"): ("either drug", "either medicine", "any intervention"),
+        ("date_range.field", "first_posted"): ("first posted", "first posting"),
+        ("date_range.field", "primary_completion"): ("primary completion",),
+    }
+    candidates = aliases.get((field, value), (value,))
+    if field == "filters.phases":
+        normalized = {"EARLY_PHASE1": "early phase 1", "PHASE1": "phase 1", "PHASE2": "phase 2",
+                      "PHASE3": "phase 3", "PHASE4": "phase 4", "NA": "not applicable"}
+        candidates = (value, normalized.get(value, value))
+    for candidate in candidates:
+        words = re.split(r"[\s_]+", candidate.strip())
+        pattern = r"(?<!\w)" + r"[\s_]+".join(re.escape(word) for word in words) + r"(?!\w)"
+        if re.search(pattern, quote, re.IGNORECASE):
+            return True
+    return False
+
+
+def _quoted_clear(field, quote):
+    phrases = {
+        "filters.condition": ("all conditions", "any disease", "no disease restriction"),
+        "filters.interventions": ("all interventions", "no drug restriction", "no intervention restriction"),
+        "filters.sponsor": ("all sponsors", "any sponsor", "no sponsor restriction"),
+        "filters.phases": ("all phases", "any phase", "no phase restriction"),
+        "filters.statuses": ("all statuses", "any status", "no status restriction"),
+        "filters.countries": ("all countries", "any country", "worldwide", "no country restriction"),
+        "filters.start_year": ("no lower year bound", "no start year restriction", "all start years"),
+        "filters.end_year": ("no upper year bound", "no end year restriction", "all start years"),
+        "filters.enrollment_type": ("any enrollment type", "all enrollment types", "actual and estimated enrollment"),
+        "date_range": ("all dates", "no date restriction", "no date restrictions", "without date restrictions"),
+        "date_range.lower": ("no lower date bound", "no lower bound", "without a lower date bound"),
+        "date_range.upper": ("no upper date bound", "no upper bound", "without an upper date bound"),
+    }
+    return any(_quoted_value(phrase, quote, field) for phrase in phrases.get(field, ()))
+
+
+def _supports_scope_correction(field, before, after, quote, utterance):
+    if not quote or quote not in utterance:
+        return False
+    if after is None or after == []:
+        return _quoted_clear(field, quote)
+    if field == "date_range":
+        if not isinstance(after, dict):
+            return False
+        previous = before or {}
+        changed = [key for key in ("field", "lower", "upper") if previous.get(key) != after.get(key)]
+        return bool(changed) and all(
+            _quoted_clear("date_range." + key, quote) if after.get(key) is None
+            else _quoted_value(after[key], quote, "date_range." + key)
+            for key in changed
+        )
+    if isinstance(after, list):
+        if not all(_quoted_value(value, quote, field) for value in after):
+            return False
+        dropped = [value for value in before or [] if value not in after]
+        # A model may remove its own invented list entries. If the user did mention
+        # them, require an explicit restriction/removal phrase instead of just quoting A.
+        mentioned = [value for value in dropped if _quoted_value(value, utterance, field)]
+        if mentioned:
+            # Merely quoting 'only A' from 'only A and B' must not remove B.
+            return all(re.search(r"\b(?:exclude|remove|drop|without)\s+(?:the\s+)?"
+                                 + re.escape(str(value)) + r"(?!\w)", quote, re.IGNORECASE)
+                       for value in mentioned)
+        return True
+    return _quoted_value(after, quote, field)
 
 
 def usage_report(store, rid):
@@ -308,7 +386,7 @@ class V2Agent:
             if proposed["filters"].get(key) != value:
                 raise ValueError(f"Plan must preserve this turn's explicit filter: {key}")
         for key in ("date_range", "intervention_scope"):
-            if request.get(key) is not None and proposed.get(key) != request[key]:
+            if key in request and (key == "date_range" or request[key] is not None) and proposed.get(key) != request[key]:
                 raise ValueError(f"Plan must preserve this turn's explicit {key}")
         if proposed["source_mode"] != request.get("source_mode", "full_evidence"):
             raise ValueError("Official-count overview requires explicit request permission")
@@ -331,27 +409,24 @@ class V2Agent:
                             if field.startswith("filters.")
                             else proposed[key]
                         )
-                        values = value if isinstance(value, list) else [value]
-                        if (
-                            not correction
-                            or correction.request_quote not in utterance
-                            or not values
-                            or any(
-                                v is None
-                                or not isinstance(v, (str, int))
-                                or str(v).casefold() not in correction.request_quote.casefold()
-                                for v in values
-                            )
+                        previous = (
+                            state["task"]["filters"][field.split(".")[1]]
+                            if field.startswith("filters.") else state["task"][key]
+                        )
+                        if not correction or not _supports_scope_correction(
+                            field, previous, value, correction.request_quote, utterance
                         ):
                             raise ValueError(
-                                "Scope repair requires a verbatim original-request quote containing each corrected value; explicit user constraints cannot be weakened"
+                                "Scope repair requires a verbatim original-request quote supporting changed values or an explicit clear phrase; structured user fields remain binding"
                             )
                     scope_changed = True
         validated = TaskSpec.model_validate(proposed)
-        if scope_changed:
+        execution_changed = bool(state.get("task")) and task_execution_hash(state["task"]) != task_execution_hash(validated)
+        if scope_changed or execution_changed:
             state.setdefault("scope_revisions", []).append(
                 {
                     "previous_task": state["task"],
+                    "revision_reason": "scope_changed" if scope_changed else "goal_contract_changed",
                     "previous_version": state["constraints_version"],
                     "corrections": [c.model_dump() for c in task.corrections],
                     "superseded_result_ids": list(state["result_ids"]),
@@ -359,7 +434,7 @@ class V2Agent:
             )
             state["result_ids"] = []
         state["task"] = validated.model_dump(mode="json")
-        if scope_changed or not state["constraints_version"]:
+        if execution_changed or not state["constraints_version"]:
             state["constraints_version"] += 1
         state["constraint_provenance"] = {
             "structured_user_fields": request.get("filters", {}),

@@ -1,0 +1,16 @@
+{
+  "run_id": "vr_37491c6b3e5340299c111cc9ca5242b5",
+  "base_url": "http://127.0.0.1:8014",
+  "checks": [
+    "actual release history opens completed run",
+    "official NCT00046748 link and source title",
+    "exact 12 Years quotation",
+    "expanded JSON pointer and saved field value",
+    "distinct container/document/field/quotation hashes",
+    "version drift notice",
+    "internal handle collapsed"
+  ],
+  "screenshot": "../screenshots/ui-review/release-text-provenance.png",
+  "model_calls": 0,
+  "limits": "Manual source-reading UI acceptance, not a new model-quality evaluation. Fresh ZIP installation acceptance follows separately."
+}

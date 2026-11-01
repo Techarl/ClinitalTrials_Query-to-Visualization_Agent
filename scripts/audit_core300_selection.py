@@ -131,6 +131,10 @@ def markdown(result):
         "[完整逐轮审计与原始/审计后分层统计](public-evaluation/core300-selection-audit.json) · "
         "[原始正式结果](CORE300_RESULTS.md)",
         "",
+        "独立审查者可下载 [原始420轮执行记录](public-evaluation/core300-execution.zip)，"
+        "以 [哈希与扫描收据](public-evaluation/core300-execution-archive.json) 及 ZIP 内部manifest核对内容。"
+        "完整模型工具轨迹已保留；SQLite状态、重复运行指针和重复快照未包含，原始公开人口数据另存于core300-sources.zip。",
+        "",
     ]
     if changed:
         lines += ["变动 episode：", ""]

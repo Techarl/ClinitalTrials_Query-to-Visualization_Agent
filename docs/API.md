@@ -4,7 +4,7 @@ Models are in `app/models.py`. `/openapi.json` exposes API schemas and `/capabil
 
 ## V2 portable text citations and evidence exports
 
-The frontend supports the additive `text-finding-v1` metadata contract below. **Deployment note:** its backend implementation is prepared in `data/review-followup/portable-text-provenance.patch` and must be applied after the frozen formal evaluations finish. Until then, existing answers use the legacy fallback; this section does not claim the pending backend patch is already serving requests.
+The release backend and frontend implement the additive `text-finding-v1` metadata contract below. Newly read trial/article sources retain portable provenance. Existing historical answers use the explicit legacy fallback; they are not silently enriched or reinterpreted.
 
 An answer artifact (`source_type: "answer"`) contains `metadata.answer`, `metadata.findings`, and limitations. The model supplies only each finding's `source_handle`, JSON Pointer `pointer`, and exact `quotation`. The server derives source metadata from the owned immutable record; model-provided URLs and provenance are not accepted.
 

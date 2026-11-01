@@ -26,6 +26,16 @@ from app.v2.contracts import (
 from app.v2.dates import FIELDS, in_range, source_date
 
 
+def task_execution_hash(task):
+    """Hash validated execution constraints, excluding explanation/repair bookkeeping."""
+    payload = TaskSpec.model_validate(task).model_dump(mode="json")
+    for key in ("goal", "mode", "clear_fields", "corrections"):
+        payload.pop(key)
+    for goal in payload["goals"]:
+        goal.pop("description")
+    return content_hash(payload)
+
+
 @dataclass
 class Tool:
     name: str
@@ -119,7 +129,8 @@ class ToolRegistry:
         signature = content_hash(
             {
                 "tool": name,
-                "version": "tools-v2",
+                "version": "tools-v3-task-contract",
+                "task_execution": task_execution_hash(state["task"]),
                 "constraints": state["constraints_version"],
                 "arguments": args.model_dump(mode="json"),
                 "read_skills": state.get("read_skill_ids", []) if name == "apply_skill" else None,

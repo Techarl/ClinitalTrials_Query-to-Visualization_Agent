@@ -1,0 +1,53 @@
+{
+  "run_id": "vr_37491c6b3e5340299c111cc9ca5242b5",
+  "status": "passed",
+  "manual_tools": true,
+  "finding": {
+    "pointer": "/protocolSection/eligibilityModule/minimumAge",
+    "provenance": {
+      "citation_id": "text_3970cb3a83334b662fd56b33",
+      "document_hash": "31adc60a1c363b3a93dcd4935462eb27c6cfa8f7bbbd9e7b1faa3f3343d7db65",
+      "document_id": "NCT00046748",
+      "document_pointer": "",
+      "field_value_hash": "53566c238a8f59b461f70381134357ef8061ae648f7325f1df41cbfe3486d2d8",
+      "hash_serialization": "canonical_json_v1",
+      "quotation_hash": "53566c238a8f59b461f70381134357ef8061ae648f7325f1df41cbfe3486d2d8",
+      "receipt_hash": null,
+      "resolution": "exact",
+      "retrieved_at": null,
+      "source_hash": "31adc60a1c363b3a93dcd4935462eb27c6cfa8f7bbbd9e7b1faa3f3343d7db65",
+      "source_hash_scope": "canonical_source_text_container",
+      "source_type": "clinicaltrials",
+      "title": "Efficacy and Safety of Omalizumab in Patients With Severe Persistent Asthma",
+      "url": "https://clinicaltrials.gov/study/NCT00046748",
+      "version": "text-finding-v1",
+      "version_notice": "The official URL identifies the source; its current content may differ from this saved version."
+    },
+    "quotation": "12 Years",
+    "source_field": {
+      "exact_quoted_value": "12 Years",
+      "omission_reason": null,
+      "pointer": "/protocolSection/eligibilityModule/minimumAge",
+      "serialized_character_count": 8,
+      "value": "12 Years",
+      "value_included": true
+    },
+    "source_handle": "source_text_8694ace8c3bead68cc2c4b6c940a5281"
+  },
+  "usage": {
+    "model_calls": 0,
+    "usage_complete": true,
+    "unknown_attempts": 0,
+    "estimated_or_reserved_usd": 0.0,
+    "receipts": [],
+    "cost_basis": "Versioned standard short-context model rates or explicit provider usage.cost; unknown attempts keep conservative reservations, not an invoice"
+  },
+  "checks": [
+    "HTTP source reading",
+    "server-derived identity and hashes",
+    "JSON export",
+    "text evidence export",
+    "share and revocation"
+  ],
+  "limitation": "Manual transport/UI mechanism; not model answer accuracy"
+}

@@ -269,11 +269,17 @@ def install_routes(app, settings, service_factory):
                 headers={"Content-Disposition": f'attachment; filename="{run_id}.csv"'},
             )
         if format == "evidence":
+            from app.v2.reading import TEXT_EVIDENCE_KEY, export_text_evidence
+
+            artifacts = result["artifacts"]
             result = {
                 ev: manager.store.base.evidence_page(ev, 0, 1000000)
-                for artifact in result["artifacts"]
+                for artifact in artifacts
                 for ev in artifact["evidence_ids"]
             }
+            text_evidence = export_text_evidence(artifacts)
+            if text_evidence is not None:
+                result[TEXT_EVIDENCE_KEY] = text_evidence
         return Response(
             json.dumps(result, ensure_ascii=False, indent=2),
             media_type="application/json",

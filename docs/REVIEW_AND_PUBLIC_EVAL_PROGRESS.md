@@ -1,8 +1,14 @@
 # Review fixes and public evaluation expansion
 
-This work continues from `9e107fe`; historical reports are retained. Current work is not yet a new final release.
+This work continues from `9e107fe`; historical reports are retained. The submission is prepared in an independent release worktree so ongoing frozen studies can continue unchanged.
 
-## Checkpoint prepared on 2026-11-01
+## Submission source changes
+
+The release source now includes all five tested backend corrections: inferred scope and explicit-null preservation, comparison-member retention, task execution cache identity, contiguous PubMed-page quotation validation, bounded atomic-write retries, and portable text-source provenance/export. The nine former expected-failure assertions are normal regressions in this worktree. Frozen study results still describe their original execution code, not these later corrections. Release source checks passed **919 Python tests, 2 optional-data skips, 0 xfails**, fourteen frontend tests, build, Ruff, nine schema comparisons, and all V1/V2 offline examples. Actual HTTP and browser provenance checks also passed with zero model calls. [Source receipt](release/source-validation.json), [HTTP receipt](release/http-acceptance.json), [browser receipt](release/browser-acceptance.json). Fresh ZIP installation acceptance follows after the fixed source commit; earlier checkpoint figures below are historical.
+
+## Checkpoint pushed on 2026-11-01
+
+Checkpoint `3b33c98` is pushed. Its [completed CI](public-evaluation/checkpoint-3b33c98-ci.json) reports **865 passed, 2 skipped, 9 xfailed** with real Neo4j; fourteen frontend tests and the build passed. The nine known expected failures belong to that checkpoint and are graduated to normal assertions in the release source.
 
 | Workstream | Completed evidence | Remaining |
 |---|---|---|
@@ -10,8 +16,8 @@ This work continues from `9e107fe`; historical reports are retained. Current wor
 | TrialQA | 120 questions × two conditions; 237 post-run judgments; heldout cited correctness 64/79 in both conditions | No further formal calls planned |
 | NLI4CT | Frozen 500-question / 200-answer protocol and source archive | Formal execution and complete report are running/pending |
 | Harness v3 | Twenty development tasks and two online diagnostics; full forty-task/four-arm formal study launched at four workers | Formal comparisons, costs and post-run audit |
-| UI and examples | Current-history selection fix; portable-source UI; four curated groups/five turns; credential-free read-only viewer | Final root backend patch graduation and full release acceptance |
-| Packaging | Nested ZIP/gzip credential scanning and independent archive verifier tested | Clean final commit, package, fresh extraction/install/demo |
+| UI and examples | Current-history selection fix; portable-source UI; four curated groups/five turns; credential-free read-only viewer | Final release acceptance |
+| Packaging | Nested ZIP/gzip credential scanning and independent archive verifier tested | Fixed release commit, package, fresh extraction/install/demo |
 
 See [Core results](CORE300_RESULTS.md), [dependency audit](CORE300_SELECTION_AUDIT.md), [TrialQA results](TRIALQA_PROTOCOL.md#completed-formal-study), [Harness launch](public-evaluation/harness-v3-formal-launch.json), and [recorded demo](DEMO.md). The final Harness main ceiling is $53.33 including its earlier main-stage costs; its newly available formal allowance is $43.9267027. The project gate reserves the entire $20 NLI ceiling and a $0.50 demonstration allowance, keeping the conservative new-phase bound at $99.999400907. These are budget reservations, not final expenditure or invoices.
 
@@ -32,6 +38,8 @@ Checkpoint `72d95bd` was pushed to the private repository. Its [GitHub CI](https
 - Eligibility extraction supports plain prose, hyphens, escaped bullets and inline headings. Historical corpus results are not rewritten.
 
 ## Independent checks
+
+- The complete isolated release candidate (exact `3b33c98` plus the five prepared backend patches) passed **907 unique Python tests, 2 data-unavailable skips and 0 xfails**, combining 898 offline passes with nine isolated Docker Neo4j passes. Fourteen frontend tests, build and Ruff also passed. [Receipt and reproducibility archive](public-evaluation/release-candidate-tests/receipt.json) retain exact patches, graduated tests, import attestations and test logs. Root code is still frozen for NLI, so these results do not replace final root/ZIP validation. The candidate reused locked dependencies and did not constitute a fresh installation.
 
 - A live Neo4j checkpoint passed 160 tests before the subsequent source-answer and submission changes.
 - An additional 500 deterministic mutation cases plus 21 SQL tests passed in targeted groups. They are not Agent episodes.
@@ -55,7 +63,7 @@ Checkpoint `72d95bd` was pushed to the private repository. Its [GitHub CI](https
 ## Still required before delivery
 
 - TrialQA and Core300 have complete reports and independent audits. Finish NLI and Harness with equally complete accounting; retain TrialQA's $10.280054475 and Core300's $14.2884179 estimated-or-reserved formal costs, with pilots separately accounted.
-- Apply prepared scope/scorer and infrastructure follow-ups after immutable executions finish; rerun affected checks and explicitly distinguish executed study code from final delivery code.
+- Backend follow-ups are applied in the independent release worktree. Finish its integration and package checks while preserving the original study directory.
 - Finish regression/integration/UI acceptance after all edits; record exact code/config versions for each study.
 - Report paired per-question results, input-only strata, confidence intervals and source/version limitations. Do not select favorable test subsets.
 - Preserve previous negative results and distinguish manual procedures, explicit skill use, public-feedback adoption and measured downstream benefit.

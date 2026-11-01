@@ -123,6 +123,54 @@ def aggregate(rows, planned=40):
     return result
 
 
+def summarize_mechanisms(rows):
+    """Separate editor provenance, injected procedures, and observed tool execution."""
+    editors = {}
+    for arm in ("ppc_no_memory", "ppc_memory"):
+        entries = [row[arm] for row in rows]
+        editors[arm] = {
+            "observed_tasks": len(entries),
+            "publicly_adopted_tasks": sum(bool(e["adopted"]) for e in entries),
+            "adopted_nonempty_procedure_tasks": sum(
+                bool(e["adopted"]) and bool(e["final"].get("skill", "").strip()) for e in entries
+            ),
+            "adopted_empty_procedure_tasks": sum(
+                bool(e["adopted"]) and not e["final"].get("skill", "").strip() for e in entries
+            ),
+            "final_nonempty_injected_procedure_tasks": sum(
+                bool(e["final"].get("skill", "").strip()) for e in entries
+            ),
+            "editor_retrieved_id_occurrences": sum(len(e["retrieved"]) for e in entries),
+            "editor_declared_reuse_id_occurrences": sum(len(e["applied"]) for e in entries),
+            "first_turn_public_probe_read_events": sum(len(e["executor_read_skill_ids"]) for e in entries),
+            "first_turn_public_probe_apply_events": sum(
+                len(e["executor_activated_skill_ids"]) for e in entries
+            ),
+            "combined_probe_context_clipping_tasks": sum(
+                bool(e["context_policy_effective"]) for e in entries
+            ),
+        }
+    counts = Counter()
+    for row in rows:
+        counts.update(row["mechanism"]["counts"])
+    return {
+        "editors": editors,
+        "memory_final_all_turn_tool_events": dict(counts),
+        "memory_final_tasks_with_learned_read": sum(
+            row["mechanism"]["counts"].get("learned_read", 0) > 0 for row in rows
+        ),
+        "memory_final_tasks_with_learned_apply": sum(
+            row["mechanism"]["counts"].get("learned_applied", 0) > 0 for row in rows
+        ),
+        "limits": [
+            "Editor retrieval/declarations and injected procedure text are not executor autonomous skill reading.",
+            "An adopted empty procedure is not a learned textual component; another context/policy setting may still differ.",
+            "PPC editor/adoption feedback and its read/apply lists cover the first turn only; memory-final mechanism events above cover all executed turns.",
+            "Read/activation establishes mechanism use, not causal attribution of improvement.",
+        ],
+    }
+
+
 def report(study, corpus_path):
     receipt = study / "completed-or-stopped-ledger.json"
     if not receipt.exists():
@@ -141,6 +189,18 @@ def report(study, corpus_path):
                 raise ValueError("Frozen source archive hash mismatch")
     ledger = read(receipt)
     costs = ledger_summary(ledger)
+    # Reuse the independent reconciliation, not its NLI-specific arm terminology.
+    for key in ("nli_arm_costs", "attribution_note", "stages", "embedding_attempts", "embedding_cost_usd"):
+        costs.pop(key, None)
+    costs.update(
+        recorded_input_tokens=sum(
+            ((e.get("metadata") or {}).get("usage") or {}).get("input_tokens", 0) for e in ledger["events"]
+        ),
+        recorded_output_tokens=sum(
+            ((e.get("metadata") or {}).get("usage") or {}).get("output_tokens", 0) for e in ledger["events"]
+        ),
+        token_limit="Recorded usage only; missing-usage attempts retain conservative monetary reservations.",
+    )
     if abs(costs["estimated_or_reserved_usd"] - raw["budget"]["usd"]) > 1e-8:
         raise ValueError("Closed ledger and report cost differ")
     by_id, rows = {r["episode_id"]: r for r in raw["results"]}, []
@@ -189,6 +249,15 @@ def report(study, corpus_path):
         "unrun_ids": raw["pending_or_unrun_ids"],
         "complete": len(rows) == 40 and not raw["task_exceptions"],
         "arms": aggregate(rows),
+        "mechanisms": summarize_mechanisms(raw["results"]),
+        "by_family": {
+            family: aggregate([r for r in rows if r["family"] == family], planned=count)
+            for family, count in sorted(Counter(c["family"] for c in cases).items())
+        },
+        "by_disease_group": {
+            group: aggregate([r for r in rows if r["entity_group"] == group], planned=count)
+            for group, count in sorted(Counter(c["entity_group"] for c in cases).items())
+        },
         "paired": {
             arm: paired_cluster_difference(
                 [{**row, "shared_trial_component": row["entity_group"]} for row in rows],
@@ -215,10 +284,12 @@ def report(study, corpus_path):
         "limitations": [
             "Frozen original grades and post-hoc selection-linkage audit are both retained; no candidate selection was repeated using audit results.",
             "Only forty distinct authored heldout tasks across ten disease groups; bootstrap resamples those groups and does not establish equivalence.",
+            "Development and formal tasks share twenty authored operation families; this study tests heldout disease transfer, not unseen task-family generalization.",
             "Bootstrap clusters are disease groups; this does not assert that every source trial is disjoint across disease populations.",
             "Each arm's research cost includes the same H0 execution; do not sum those columns. The global ledger counts the shared H0 once, plus every editor, rejected probe and retry.",
             "If budget/infrastructure stopped the study, unobserved tasks remain in the planned denominator; observed-only and planned outcomes are separate.",
             "Skill read/apply and editor-declared reuse are mechanism evidence, not causal attribution of benefit.",
+            "Editors and public adoption checks inspect the first/current turn only; final correctness is graded across the complete episode.",
             "Arm order is fixed within each task and provider/cache load is shared; observed latency and cost are not a randomized serving-efficiency estimate.",
         ],
     }

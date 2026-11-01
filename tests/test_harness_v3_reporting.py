@@ -1,13 +1,17 @@
 import copy
+import hashlib
 import json
+from zipfile import ZipFile
 
 import pytest
 
+from scripts.archive_harness_v3_formal import records
 from scripts.report_harness_v3 import (
     aggregate,
     audit_arm,
     report,
     retry_path,
+    summarize_mechanisms,
     validate_population,
     verify_arm_accounting,
 )
@@ -108,3 +112,120 @@ def test_arm_accounting_detects_cross_task_scope_leakage_and_retry_overspend():
     row["usd_retries"]["actual"]["usd"] = 0.21
     with pytest.raises(ValueError, match="exceeded"):
         verify_arm_accounting(row, events)
+
+
+def test_mechanism_report_distinguishes_declared_reuse_and_first_turn_from_all_turns():
+    ppc = {
+        "adopted": True,
+        "final": {"skill": " "},
+        "retrieved": ["a", "b"],
+        "applied": ["a"],
+        "executor_read_skill_ids": [],
+        "executor_activated_skill_ids": [],
+        "context_policy_effective": False,
+    }
+    row = {
+        "ppc_no_memory": copy.deepcopy(ppc),
+        "ppc_memory": copy.deepcopy(ppc),
+        "mechanism": {"counts": {"learned_read": 2, "learned_applied": 1}},
+    }
+    result = summarize_mechanisms([row])
+    editor = result["editors"]["ppc_memory"]
+    assert editor["adopted_empty_procedure_tasks"] == 1
+    assert editor["adopted_nonempty_procedure_tasks"] == 0
+    assert editor["editor_declared_reuse_id_occurrences"] == 1
+    assert editor["first_turn_public_probe_read_events"] == 0
+    assert result["memory_final_all_turn_tool_events"]["learned_read"] == 2
+    assert result["memory_final_tasks_with_learned_read"] == 1
+
+
+def test_closed_report_reconciles_all_arms_and_full_population(tmp_path):
+    cases, protocol, raw = population()
+    for case in cases:
+        case["turns"] = [{"expected": {}}]
+    corpus = tmp_path / "cases.json"
+    corpus.write_text(json.dumps({"episodes": cases}))
+    protocol["identity"]["parameters"]["source_files"] = {
+        "cases.json": hashlib.sha256(corpus.read_bytes()).hexdigest()
+    }
+    protocol["identity"]["code"] = {}
+    protocol["sha256"] = digest(protocol["identity"])
+    with ZipFile(tmp_path / "protocol.source.zip", "w"):
+        pass
+    raw.update(
+        evaluated_count=40, pending_or_unrun_ids=[], budget={"usd": 0}, prior_usd=0, combined_harness_usd=0
+    )
+    for case in cases:
+        summary = {
+            "episode_id": case["id"],
+            "correct": True,
+            "model_calls": 0,
+            "estimated_or_reserved_usd": 0,
+            "elapsed_seconds": 1,
+            "skill": "",
+        }
+        ppc = {
+            "final": summary,
+            "adopted": False,
+            "retrieved": [],
+            "applied": [],
+            "executor_read_skill_ids": [],
+            "executor_activated_skill_ids": [],
+            "context_policy_effective": False,
+        }
+        raw["results"].append(
+            {
+                "episode_id": case["id"],
+                "family": case["family"],
+                "entity_group": case["entity_group"],
+                "h0": summary,
+                "ppc_no_memory": ppc,
+                "ppc_memory": ppc,
+                "usd_retries": {
+                    "selected_trace": f"C:/study/{case['id']}/h0",
+                    "selected_summary": summary,
+                    "extra_allocation_usd": 0,
+                    "actual": {"usd": 0},
+                },
+                "costs": {
+                    scope: {"calls": 0, "usd": 0} for scope in ("h0", "no-memory", "memory", "usd-retries")
+                },
+                "mechanism": {"counts": {}},
+            }
+        )
+        for suffix in ("h0", "no-memory/final", "memory/final"):
+            path = tmp_path / case["id"] / suffix
+            path.mkdir(parents=True)
+            (path / "turn-1.json").write_text(
+                json.dumps(
+                    {
+                        "grade": {"failures": []},
+                        "response": {"artifacts": []},
+                        "journal": [],
+                    }
+                )
+            )
+    for name, value in (
+        ("protocol.json", protocol),
+        ("report.json", raw),
+        ("completed-or-stopped-ledger.json", {"events": [], "attempts": 0, "estimated_or_reserved_usd": 0}),
+    ):
+        (tmp_path / name).write_text(json.dumps(value))
+    result = report(tmp_path, corpus)
+    assert result["complete"]
+    assert result["observed_complete_task_rows"] == 40
+    assert all(arm["correct_over_planned"]["successes"] == 40 for arm in result["arms"].values())
+    assert "nli_arm_costs" not in result["formal_costs"]
+    assert len(result["by_family"]) == 20
+    assert all(v["h0"]["correct_over_planned"]["denominator"] == 2 for v in result["by_family"].values())
+
+
+def test_archive_requires_closed_receipt_and_excludes_runtime_and_active_alias(tmp_path):
+    (tmp_path / "ledger.json").write_text("must not read this")
+    with pytest.raises(ValueError, match="not closed"):
+        records(tmp_path)
+    (tmp_path / "completed-or-stopped-ledger.json").write_text("{}")
+    (tmp_path / "runtime").mkdir()
+    (tmp_path / "runtime/private.json").write_text("{}")
+    (tmp_path / "report.json").write_text("{}")
+    assert {p.name for p in records(tmp_path)} == {"completed-or-stopped-ledger.json", "report.json"}

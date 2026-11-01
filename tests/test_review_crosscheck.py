@@ -1,4 +1,4 @@
-"""Independent review reproductions; expected failures identify frozen-source defects."""
+"""Independent review reproductions; regressions for corrected scope and dependency handling."""
 
 from copy import deepcopy
 from types import SimpleNamespace
@@ -78,9 +78,6 @@ def selection_fixture():
     return expected, artifacts, journal
 
 
-@pytest.mark.xfail(
-    strict=True, reason="F10 residual: any correct selection can mask the wrong selection backing trend"
-)
 def test_frozen_scorer_rejects_correct_anchor_decoy_before_wrong_actual_trend():
     expected, artifacts, journal = selection_fixture()
     task = {"filters": Filters().model_dump(), "intervention_scope": "population"}
@@ -140,9 +137,6 @@ def test_offline_audit_binds_requested_selection_provenance(mutation):
     assert dependency_failures(expected, artifacts, journal)
 
 
-@pytest.mark.xfail(
-    strict=True, reason="F04 residual: date_range is a dict, rejected by scalar-only correction guard"
-)
 def test_date_range_can_repair_model_misread_from_explicit_request():
     agent = object.__new__(V2Agent)
     task = TaskSpec(
@@ -184,7 +178,6 @@ def repair_fixture(query, filters):
     return object.__new__(V2Agent), state, task
 
 
-@pytest.mark.xfail(strict=True, reason="F04 residual: empty lists and enum spellings cannot be corrected")
 @pytest.mark.parametrize(
     "field,before,after,query",
     [
@@ -203,7 +196,6 @@ def test_explicit_list_enum_or_null_corrections(field, before, after, query):
     assert state["task"]["filters"][field] == after
 
 
-@pytest.mark.xfail(strict=True, reason="F04 residual: explicit date clear cannot replace an inferred range")
 def test_explicit_original_request_can_clear_inferred_date_range():
     query = "Show asthma for all dates"
     agent, state, task = repair_fixture(query, {})
@@ -215,7 +207,6 @@ def test_explicit_original_request_can_clear_inferred_date_range():
     assert state["task"]["date_range"] is None
 
 
-@pytest.mark.xfail(strict=True, reason="F04 residual: quoting A can silently drop user-mentioned B")
 @pytest.mark.parametrize(
     "query,quote", [("Compare A and B for asthma", "A"), ("Show only A and B for asthma", "only A")]
 )
@@ -227,7 +218,6 @@ def test_correcting_list_cannot_drop_requested_member_without_explicit_restricti
         agent.define_task(task, state)
 
 
-@pytest.mark.xfail(strict=True, reason="F04 residual: an explicit structured null date range is ignored")
 def test_structured_null_date_range_remains_binding():
     agent, state, task = repair_fixture("Show asthma", {})
     state["request"]["date_range"] = None

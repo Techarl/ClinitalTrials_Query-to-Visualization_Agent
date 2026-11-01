@@ -1,0 +1,33 @@
+{
+  "base_commit": "3b33c98624b366676e048158ad1e4d9ead2d12c9",
+  "candidate_tree": "65aa286789d68a1a34498814ad9ce53d31d0c12d9dfd6dd825b4eac6218492d7",
+  "archive_sha256": "9488158099e67163312ac5e89c52e0f8fe7802ab79121949e55f52041ab47d54",
+  "archive_bytes": 76749,
+  "payload_files": 26,
+  "python_unique_passed": 907,
+  "python_skipped": 2,
+  "python_xfailed": 0,
+  "frontend_tests_passed": 14,
+  "build": "passed",
+  "ruff": "passed",
+  "credential_scan": {
+    "status": "passed",
+    "formats": [
+      "ZIP",
+      "gzip including concatenated members"
+    ],
+    "archives_checked": 0,
+    "members_checked": 0,
+    "work_bytes_checked": 293426,
+    "max_depth": 8,
+    "max_members": 100000,
+    "max_work_bytes": 4294967296,
+    "max_member_bytes": 536870912,
+    "scope": "Configured literal credentials and private environment filenames; not generic secret discovery"
+  },
+  "limitations": [
+    "Candidate base plus five exact patches; later root reporter changes excluded.",
+    "Not final root code, fresh dependency installation or release ZIP acceptance.",
+    "Git base source is retrievable by commit; redundant 75MB base archive excluded."
+  ]
+}

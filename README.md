@@ -4,13 +4,13 @@ A local analysis workspace that turns clinical-study questions into interactive,
 
 The React/TypeScript/ECharts workspace adds streamed progress, multiple charts, field-level citations, history, revocable read-only sharing and exports. V2 supports sourced entity aliases, monthly date fields, duration scatter plots, country maps, official-count overviews with explicitly limited sample evidence, PubMed abstracts, and actual MCP stdio/HTTP transports. The original `/analyze` contract remains compatible. Research experiments are separate opt-in commands; they do not alter the default service.
 
-Start with the [VNext guide](docs/VNEXT.md), [acceptance matrix](docs/VNEXT_PROGRESS.md), and [real smoke evidence](docs/vnext/smoke_summary.json). The baseline five examples and historical research reports below remain unchanged; VNext evaluation is reported separately.
+Start with the [Reviewer Guide](docs/REVIEWER_GUIDE.md) and [three-minute demo](docs/DEMO.md), then the [VNext guide](docs/VNEXT.md), [acceptance matrix](docs/VNEXT_PROGRESS.md), and [real smoke evidence](docs/vnext/smoke_summary.json). The baseline five examples and historical research reports below remain unchanged; VNext evaluation is reported separately.
 
 Research results: [VNext execution, repair and Harness studies](docs/VNEXT_RESEARCH.md), and [Jev passage selection with dedicated/cheap-model/rule controls](docs/PASSAGE_SELECTION_RESULTS.md). These include full traces, negative results, cost accounting and a separate observation-driven evidence-gap recovery probe. The passage study does not enable model filtering of statistical populations.
 
-The next review phase adds [public datasets and frozen evaluation](docs/PUBLIC_EVALUATION.md), [Jev fairness and controlled latency](docs/JEV_FAIRNESS_REVIEW.md), and a [browser-verified UI revision](docs/UI_REVIEW_FIXES.md). The [progress record](docs/REVIEW_AND_PUBLIC_EVAL_PROGRESS.md) distinguishes implemented fixes, completed checks and studies still running. Historical scores below refer to their original versions, not the new expanded benchmark.
+The public evaluation work includes [public datasets and frozen evaluation](docs/PUBLIC_EVALUATION.md), [Jev fairness and controlled latency](docs/JEV_FAIRNESS_REVIEW.md), and a [browser-verified UI revision](docs/UI_REVIEW_FIXES.md). The [progress record](docs/REVIEW_AND_PUBLIC_EVAL_PROGRESS.md) distinguishes implemented fixes, completed checks and studies still running. Historical scores below refer to their original versions, not the new expanded benchmark.
 
-**2026-11-01 checkpoint:** [Core300](docs/CORE300_RESULTS.md) completed at 295/300 overall and 196/200 heldout; the full dependency audit changed no grades. [TrialQA](docs/TRIALQA_PROTOCOL.md#completed-formal-study) completed both 120-question conditions, with citation-supported heldout correctness 64/79 in each. NLI4CT and the four-worker Harness formal comparison are still running. These distinct benchmarks are not combined into one success rate; this checkpoint is not the final delivery.
+**Research status at the submission snapshot:** [Core300](docs/CORE300_RESULTS.md) completed at 295/300 overall and 196/200 heldout; the full dependency audit changed no grades. [TrialQA](docs/TRIALQA_PROTOCOL.md#completed-formal-study) completed both 120-question conditions, with citation-supported heldout correctness 64/79 in each. NLI4CT and the four-worker Harness formal comparison are still running. These distinct benchmarks are not combined into one success rate. Incomplete bonus studies are reported as ongoing, without final grades. Their later results can be added as dated supplements; the submitted source and ZIP remain identifiable by their fixed revision.
 
 ## Local setup
 
@@ -48,7 +48,7 @@ Build the frontend with `npm --prefix frontend ci` and `npm --prefix frontend ru
 | Statistical reproducibility | [Five frozen examples](examples/verification.json), [core300 protocol](docs/CORE300_PROTOCOL.md), public snapshots in `docs/public-evaluation/core300-sources.zip` |
 | External evidence benchmarks | [Public evaluation index](docs/PUBLIC_EVALUATION.md), [TrialQA protocol](docs/TRIALQA_PROTOCOL.md) |
 | Research controls and limits | [Jev fairness review](docs/JEV_FAIRNESS_REVIEW.md), [controlled latency](docs/JEV_LATENCY_CONTROL.md), [Harness v3 protocol](docs/HARNESS_V3_PROTOCOL.md) |
-| Current delivery status | [Completed fixes, checks and remaining studies](docs/REVIEW_AND_PUBLIC_EVAL_PROGRESS.md) |
+| Revision and validation | [Release preparation and historical checks](docs/REVIEW_AND_PUBLIC_EVAL_PROGRESS.md); the ZIP’s `BUILD-MANIFEST.json` identifies its exact Git commit |
 
 The public evaluation protocols describe planned populations; a protocol is not a completed result. Ongoing studies receive separate final reports with failures and all attempted-call costs retained.
 
@@ -136,6 +136,8 @@ Histogram assignment uses one exact-rational boundary sequence rounded once; the
 The independent checker reads raw sources without production normalization, aggregation or Cypher compilation. It independently generates the complete expected rows/edges/nodes, including top-N order, zero buckets and role-specific contributors, and verifies hashes and 33,824 exact field values. Twenty-six schema-valid corruptions must fail its negative tests. See [verification report](examples/verification.json). Both implementations are AI-assisted and may share conceptual assumptions; semantic review remains valuable.
 
 ## Validation
+
+The submission source passed **919 Python tests, 2 optional-data skips and 0 xfails**, including real Neo4j integration; **14 frontend tests**, the production build and Ruff passed. All nine exported schemas match the models. [Exact source/test receipt](docs/release/source-validation.json), [HTTP acceptance](docs/release/http-acceptance.json), and [browser acceptance](docs/release/browser-acceptance.json) distinguish this release check from historical benchmarks. The final archive verification and fresh-install receipt accompany the ZIP.
 
 The [Round 2 review fixes](docs/ROUND3_REVIEW_RESPONSE.zh-CN.md) close F1–F4: stable histogram intervals plus direct contributor invariants, current-explicit clarification scope, durable model-attempt/outcome accounting, and budget reservations for unknown usage. The historical Round 3 [validation report](docs/ROUND3_VALIDATION.json) records 109 tests with real Neo4j in both native and Linux environments. Historical research results remain frozen.
 

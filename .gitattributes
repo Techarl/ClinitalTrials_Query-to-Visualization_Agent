@@ -10,3 +10,4 @@
 examples/v2/** -text whitespace=cr-at-eol
 docs/public-evaluation/frozen-protocols/** -text whitespace=cr-at-eol
 docs/public-evaluation/harness-v3-archives/** -text whitespace=cr-at-eol
+docs/release/** -text whitespace=cr-at-eol
