@@ -111,6 +111,7 @@ def verify_receipts(registry, artifact, state):
             raise ValueError("Literature fetch coverage mismatch")
     elif artifact.source_type == "entity" and "ranking" in artifact.metadata:
         _, _, records = registry.scope(artifact.scope_id, state)
+        raw_by_id = {r["protocolSection"]["identificationModule"]["nctId"]: r for r in records}
         expected = ranking_from_records(records, artifact.metadata["anchor"], artifact.metadata["top_n"])
         rows = artifact.metadata["ranking"]
         if len(rows) != len(expected):
@@ -121,6 +122,12 @@ def verify_receipts(registry, artifact, state):
             page = registry.store.base.evidence_page(row["evidence_set_id"], 0, 1000000)
             if page is None or {c["nct_id"] for c in page["citations"]} != set(target["contributors"]):
                 raise ValueError("Ranking relation evidence incomplete")
+            for citation in page["citations"]:
+                if any(
+                    resolve_pointer(raw_by_id[citation["nct_id"]], field["path"]) != field["value"]
+                    for field in citation["fields"]
+                ):
+                    raise ValueError("Ranking source field mismatch")
     elif artifact.source_type == "entity" and "entity_handle" in artifact.metadata:
         source = registry.store.get(artifact.metadata["entity_handle"], state["session_id"], "entity")
         if source != artifact.metadata["resolution"]:

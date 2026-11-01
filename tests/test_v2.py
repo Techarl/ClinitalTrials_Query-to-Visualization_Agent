@@ -277,6 +277,14 @@ def test_real_graph_result_dependent_cohorts(tmp_path, studies, request):
         assert len(registry.source.calls) == 1
         assert agent.run(state["run_id"]).model_dump() == result.model_dump()
         assert planner.calls == 6
+        changed = deepcopy(store.run(state["run_id"]))
+        changed["task"]["filters"]["countries"] = ["United States"]
+        with pytest.raises(ValueError, match="constraint"):
+            registry.validate(SimpleNamespace(handle=network.result_id), changed)
+        changed = deepcopy(store.run(state["run_id"]))
+        changed["task"]["goals"][1]["parameters"] = {"time_grain": "month"}
+        with pytest.raises(ValueError, match="parameters"):
+            registry.validate(SimpleNamespace(handle=trend.result_id), changed)
     finally:
         agent.close()
         ids = [folder.name for folder in service.snapshots.root.glob("ds_*")]

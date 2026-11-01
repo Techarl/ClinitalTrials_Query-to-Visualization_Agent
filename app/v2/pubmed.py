@@ -17,8 +17,9 @@ BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
 
 
 class PubMedClient:
-    def __init__(self, settings, root, client=None):
+    def __init__(self, settings, root, client=None, offline=False):
         self.settings, self.root = settings, root / "pubmed"
+        self.offline = offline
         self.root.mkdir(parents=True, exist_ok=True)
         self.client = client or httpx.Client(timeout=30)
         self.owns_client = client is None
@@ -36,6 +37,8 @@ class PubMedClient:
             if content_hash(receipt["raw"]) != receipt["raw_hash"]:
                 raise ValueError("PubMed cache integrity check failed")
             return receipt
+        if self.offline:
+            raise ValueError("replay_coverage_missing: no frozen PubMed response for this exact request")
         wire = {**params, "tool": "cheiron_trial_analysis"}
         if self.settings.ncbi_email:
             wire["email"] = self.settings.ncbi_email
@@ -135,7 +138,10 @@ class PubMedClient:
 def register_pubmed(registry):
     def publish(args, state, search):
         registry.goal(args.goal_id, state, "literature")
-        client = PubMedClient(registry.settings, registry.settings.data_directory)
+        replay = getattr(registry, "replay_pubmed_root", None)
+        client = PubMedClient(
+            registry.settings, replay or registry.settings.data_directory, offline=replay is not None
+        )
         receipts, total = [], None
         try:
             if search:

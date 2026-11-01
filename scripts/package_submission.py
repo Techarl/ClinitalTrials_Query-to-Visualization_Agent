@@ -21,8 +21,19 @@ TOP_LEVEL_FILES = (
     ".gitignore",
     ".gitattributes",
 )
-TOP_LEVEL_DIRS = ("app", "tests", "docs", "examples", "question", "scripts", "experiments", ".github")
-SKIP_PARTS = {"__pycache__", ".pytest_cache", ".ruff_cache", ".git", ".venv", "dist"}
+TOP_LEVEL_DIRS = (
+    "app",
+    "tests",
+    "docs",
+    "examples",
+    "question",
+    "scripts",
+    "experiments",
+    "evaluation",
+    "frontend",
+    ".github",
+)
+SKIP_PARTS = {"__pycache__", ".pytest_cache", ".ruff_cache", ".git", ".venv", "dist", "node_modules"}
 
 
 def main():

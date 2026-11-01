@@ -131,6 +131,7 @@ def register_overview(registry):
             },
             evidence_ids=evidence_ids,
             metadata={
+                "analysis_parameters": {"operation": "category", "group_by": args.dimension},
                 "receipts": receipts,
                 "source_version": after,
                 "filters": args.filters.model_dump(),

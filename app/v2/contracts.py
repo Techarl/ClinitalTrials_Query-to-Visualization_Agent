@@ -35,12 +35,26 @@ class RunRequest(Contract):
     language: Literal["en", "zh"] = "en"
 
 
+class GoalParameters(Contract):
+    group_by: (
+        Literal["phase", "status", "country", "sponsor", "sponsor_class", "intervention_type", "study_type"]
+        | None
+    ) = None
+    time_field: DateField | None = None
+    time_grain: Literal["year", "month"] | None = None
+    relationship: Literal["sponsor_drug", "drug_cooccurrence", "sponsor_shared_drug"] | None = None
+    histogram_bins: int | None = Field(default=None, ge=1, le=50)
+    x: Literal["enrollment", "trial_duration", "start_year", "completion_year"] | None = None
+    y: Literal["enrollment", "trial_duration", "start_year", "completion_year"] | None = None
+
+
 class Goal(Contract):
     id: str = Field(pattern=r"^[a-zA-Z0-9_-]{1,40}$")
     description: str = Field(min_length=1, max_length=600)
     kind: Literal["chart", "literature", "entity"] = "chart"
     operation: Operation | None = None
     depends_on: list[str] = Field(default_factory=list, max_length=5)
+    parameters: GoalParameters = Field(default_factory=GoalParameters)
 
 
 class TaskSpec(Contract):
@@ -55,6 +69,8 @@ class TaskSpec(Contract):
 
     @model_validator(mode="after")
     def goal_dependencies(self) -> Self:
+        if set(self.clear_fields) - (set(Filters.model_fields) | {"date_range", "intervention_scope"}):
+            raise ValueError("Unknown field requested for clearing")
         ids = [goal.id for goal in self.goals]
         if len(set(ids)) != len(ids):
             raise ValueError("Goal IDs must be unique")

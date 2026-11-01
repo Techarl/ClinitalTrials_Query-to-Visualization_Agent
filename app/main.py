@@ -48,6 +48,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             return application.state.service
 
     from app.v2.api import install_routes
+
     install_routes(application, configuration, service)
 
     def runner() -> AgentRunner:
@@ -128,26 +129,52 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @application.get("/capabilities", tags=["analysis"])
     def capabilities():
+        from app.v2.integrations import register_integrations
+        from app.v2.tools import ToolRegistry
+
+        catalog = ToolRegistry(configuration, None, application.state.v2.store)
+        register_integrations(catalog)
         return {
             "plan_schema": AnalysisPlan.model_json_schema(),
             "experiments": {"decision": False, "harness": False},
             "scope": "single-user local service; source search semantics are documented in response metadata",
-            "v2": {"schema_version": "v2.0", "runs": "/v2/runs", "events": "SSE with Last-Event-ID replay",
-                   "source_modes": ["full_evidence", "aggregate_overview"],
-                   "charts": ["bar_chart", "grouped_bar", "time_series", "histogram", "network_graph", "scatter", "country_map"]},
+            "v2": {
+                "schema_version": "v2.0",
+                "runs": "/v2/runs",
+                "events": "SSE with Last-Event-ID replay",
+                "source_modes": ["full_evidence", "aggregate_overview"],
+                "charts": [
+                    "bar_chart",
+                    "grouped_bar",
+                    "time_series",
+                    "histogram",
+                    "network_graph",
+                    "scatter",
+                    "country_map",
+                ],
+                "tools": catalog.descriptions(),
+                "sources": ["ClinicalTrials.gov", "PubMed E-utilities"],
+                "date_fields": ["start", "primary_completion", "completion", "first_posted"],
+                "limits": {
+                    "model_calls": configuration.v2_max_model_calls,
+                    "tool_calls": configuration.v2_max_tool_calls,
+                    "full_records": configuration.v2_max_source_records,
+                    "seconds": configuration.v2_max_run_seconds,
+                },
+            },
         }
 
-    frontend = PROJECT_ROOT / 'frontend' / 'dist'
+    frontend = PROJECT_ROOT / "frontend" / "dist"
     if frontend.is_dir():
-        application.mount('/assets', StaticFiles(directory=frontend / 'assets'), name='frontend-assets')
+        application.mount("/assets", StaticFiles(directory=frontend / "assets"), name="frontend-assets")
 
-        @application.get('/', include_in_schema=False)
-        @application.get('/s/{token}', include_in_schema=False)
+        @application.get("/", include_in_schema=False)
+        @application.get("/s/{token}", include_in_schema=False)
         def workspace(token: str | None = None):
-            return FileResponse(frontend / 'index.html')
+            return FileResponse(frontend / "index.html")
 
-        @application.get('/world.geojson', include_in_schema=False)
+        @application.get("/world.geojson", include_in_schema=False)
         def world_map():
-            return FileResponse(frontend / 'world.geojson', media_type='application/geo+json')
+            return FileResponse(frontend / "world.geojson", media_type="application/geo+json")
 
     return application

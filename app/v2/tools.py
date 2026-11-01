@@ -111,7 +111,7 @@ class ToolRegistry:
         signature = content_hash(
             {
                 "tool": name,
-                "version": "tools-v1",
+                "version": "tools-v2",
                 "constraints": state["constraints_version"],
                 "arguments": args.model_dump(mode="json"),
             }
@@ -165,7 +165,7 @@ class ToolRegistry:
         expected = task.filters.model_dump()
         actual = args.filters.model_dump()
         for key, value in expected.items():
-            if value in (None, [], "any"):
+            if key == "intervention_match" and len(actual["interventions"]) <= 1:
                 continue
             if key == "interventions" and task.intervention_scope == "comparison":
                 if len(actual[key]) == 1 and set(actual[key]) <= set(value):
@@ -405,12 +405,20 @@ class ToolRegistry:
         )
 
     def analyze(self, args, state):
-        self.goal(args.goal_id, state, operation=args.operation)
+        goal = self.goal(args.goal_id, state, operation=args.operation)
+        for key, value in goal.get("parameters", {}).items():
+            if value is not None and getattr(args, key) != value:
+                raise ValueError(f"Analysis would change confirmed chart parameter: {key}")
         if args.labels and len(args.labels) != len(args.scope_ids):
             raise ValueError("Provide exactly one label per scope")
         if args.operation == "network" and len(args.scope_ids) != 1:
             raise ValueError("Network analysis requires one population")
         scopes = [self.project(handle, state) for handle in args.scope_ids]
+        labels = args.labels or [
+            scope.get("label", f"Cohort {i + 1}") for i, (scope, _, _) in enumerate(scopes)
+        ]
+        if len(set(labels)) != len(labels):
+            raise ValueError("Comparison cohorts require distinct display labels")
         for scope, _, _ in scopes:
             self.check_filters(
                 SearchInput(
@@ -673,17 +681,37 @@ class ToolRegistry:
 
     def validate(self, args, state):
         artifact = self.artifact(args.handle, state)
+        kind = (
+            "literature"
+            if artifact.source_type == "pubmed"
+            else "entity"
+            if artifact.source_type == "entity"
+            else "chart"
+        )
+        parameters = artifact.metadata.get("analysis_parameters", {})
+        goal = self.goal(artifact.goal_id, state, kind, parameters.get("operation"))
+        for key, value in goal.get("parameters", {}).items():
+            if value is not None and parameters.get(key) != value:
+                raise ValueError("Prior artifact chart parameters differ from current task")
         if (
             artifact.source_type != "clinicaltrials"
             or artifact.coverage.statistics_basis != "complete_records"
         ):
             from app.v2.receipts import verify_receipts
 
+            if (
+                artifact.coverage.statistics_basis == "official_counts"
+                and artifact.metadata.get("filters") != state["task"]["filters"]
+            ):
+                raise ValueError("Official count population differs from current task")
             return verify_receipts(self, artifact, state)
         payload = self.store.get(args.handle, state["session_id"], "result")
         scopes = []
         for handle, manifest in zip(payload["scope_ids"], artifact.metadata["source_manifests"], strict=True):
             scope = self.store.get(handle, state["session_id"], "scope")
+            self.check_filters(
+                SearchInput(filters=scope["filters"], date_range=scope.get("date_range")), state
+            )
             snapshot, records = self.service.snapshots.load(manifest["dataset_id"])
             if snapshot.model_dump() != manifest or {
                 r["protocolSection"]["identificationModule"]["nctId"] for r in records

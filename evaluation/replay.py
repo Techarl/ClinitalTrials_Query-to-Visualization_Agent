@@ -9,15 +9,20 @@ class ReplayCoverageMissing(ValueError):
 
 class FrozenSource:
     def __init__(self, root):
-        self.store = SnapshotStore(root)
+        roots = root if isinstance(root, (list, tuple)) else [root]
+        self.stores = [SnapshotStore(path) for path in roots]
+        self.store = self.stores[0]
         self.index = {}
-        for manifest in sorted(self.store.root.glob("ds_*/manifest.json")):
-            snapshot, _ = self.store.load(manifest.parent.name)
-            if snapshot.complete and snapshot.schema_version == "snapshot-v1":
-                key = canonical_json(snapshot.query)
-                prior = self.index.get(key)
-                if prior is None or snapshot.finished_at > prior.finished_at:
-                    self.index[key] = snapshot
+        self.owners = {}
+        for source in self.stores:
+            for manifest in sorted(source.root.glob("ds_*/manifest.json")):
+                snapshot, _ = source.load(manifest.parent.name)
+                self.owners[snapshot.dataset_id] = source
+                if snapshot.complete and snapshot.schema_version == "snapshot-v1":
+                    key = canonical_json(snapshot.query)
+                    prior = self.index.get(key)
+                    if prior is None or snapshot.finished_at > prior.finished_at:
+                        self.index[key] = snapshot
         self.calls = []
 
     def fetch(self, query, deadline):
@@ -27,4 +32,5 @@ class FrozenSource:
             raise ReplayCoverageMissing(
                 "replay_coverage_missing: no frozen response for this exact source query"
             )
-        return self.store.load(self.index[key].dataset_id)
+        snapshot = self.index[key]
+        return self.owners[snapshot.dataset_id].load(snapshot.dataset_id)

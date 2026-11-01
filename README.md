@@ -1,8 +1,10 @@
 # ClinicalTrials Query-to-Visualization Agent
 
-A backend that turns clinical-study questions into structured visualization specifications grounded in the ClinicalTrials.gov API. GPT-6.1 Sol proposes a typed plan; fixed code and dataset-scoped Neo4j queries calculate the answer. The model does not generate executable Cypher, Python, counts or citations.
+A local analysis workspace that turns clinical-study questions into interactive, source-grounded visualizations. The VNext agent uses native model tool calls and a bounded LangGraph observation loop: results from one tool can determine the next query and its cohorts. Fixed code and dataset-scoped Neo4j queries calculate counts and evidence; the model does not generate executable Cypher, Python, counts or citations.
 
-The baseline supports clarification, persistent follow-ups, categorical/geographic counts, yearly trends, cohort comparisons, enrollment histograms, sponsor–drug networks, study-level drug co-occurrence and sponsor links through shared interventions. Decision-model and Harness experiments remain disabled.
+The React/TypeScript/ECharts workspace adds streamed progress, multiple charts, field-level citations, history, revocable read-only sharing and exports. V2 supports sourced entity aliases, monthly date fields, duration scatter plots, country maps, official-count overviews with explicitly limited sample evidence, PubMed abstracts, and actual MCP stdio/HTTP transports. The original `/analyze` contract remains compatible. Research experiments are separate opt-in commands; they do not alter the default service.
+
+Start with the [VNext guide](docs/VNEXT.md), [acceptance matrix](docs/VNEXT_PROGRESS.md), and [real smoke evidence](docs/vnext/smoke_summary.json). The baseline five examples and historical research reports below remain unchanged; VNext evaluation is reported separately.
 
 ## Local setup
 
@@ -18,7 +20,7 @@ Copy-Item .env.example .env
 
 Fill `OPENAI_API_KEY` and `NEO4J_PASSWORD` in `.env`. On the prepared machine, keep Desktop and `clinicaltrials-dev` running; URI is `bolt://127.0.0.1:7687`, user/database `neo4j`, and the password is already stored locally. Environment variables override the file. Real credentials must not enter `.env.example`.
 
-OpenRouter is optional and is never called by the baseline. Both API experiment flags remain false; the HTTP service supports baseline-v1. Isolated research commands are described in [the experiment protocol and results](docs/EXPERIMENTS.md). Main-model effort defaults to `medium`; changing to `high` is explicit and recorded.
+OpenRouter is optional and is never called by the default application. Both API experiment flags remain false; `/analyze` retains baseline-v1 and `/v2/runs` uses the observation-driven tool loop. Historical research commands are described in [the experiment protocol and results](docs/EXPERIMENTS.md). Main-model effort defaults to `medium`; changing to `high` is explicit and recorded.
 
 ```powershell
 # Read-only diagnostics; no generation or experimental calls:

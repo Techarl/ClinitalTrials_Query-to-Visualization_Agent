@@ -1,0 +1,2401 @@
+{
+  "version": "vnext-challenge-v1",
+  "split_audit": {
+    "entity_groups": {
+      "melanoma": "development",
+      "psoriasis": "calibration",
+      "asthma": "heldout",
+      "rheumatoid arthritis": "heldout"
+    },
+    "episode_count": 72,
+    "policy": "Entity-disjoint outer split, all originating dialogue turns/plan mutations grouped. Capability templates deliberately recur; this does not claim template-disjoint generalization."
+  },
+  "episodes": [
+    {
+      "id": "ep_cc08257acaf2ab",
+      "family": "phase",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, show counts by phase, with full contributor citations.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_ca3a5a1f83339e",
+      "family": "status",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, show counts by status, with full contributor citations.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "status"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_ad4aac22ce6491",
+      "family": "country",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "统计 melanoma 中涉及 pembrolizumab 的注册研究，按国家分组，并保留每个国家的完整来源。",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "country"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_8cc3a85bd3068f",
+      "family": "histogram",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, show enrollment in seven equal-width bins, retain all source contributions.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "histogram",
+                "histogram_bins": 7
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_16b2af4f069758",
+      "family": "scatter",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, plot enrollment against duration in days using exact start and completion dates. Report exclusions.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "scatter",
+                "x": "trial_duration",
+                "y": "enrollment"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_0bf9889043a7f6",
+      "family": "completion_month",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, count trials by completion month, excluding insufficient date precision explicitly.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "completion",
+                "time_grain": "month"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_157643fd976314",
+      "family": "first_posted",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, show counts by first-posted year, not by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "first_posted",
+                "time_grain": "year"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_01dfaae76c56b1",
+      "family": "date_range",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, only include primary completion dates fully within 2020-01-01 through 2025-12-31, then count by primary-completion month.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "primary_completion",
+                "time_grain": "month"
+              }
+            ],
+            "date_range": {
+              "field": "primary_completion",
+              "lower": "2020-01-01",
+              "upper": "2025-12-31"
+            }
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_398a7d1fd3fdd4",
+      "family": "sponsor_drug",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, show lead-sponsor to drug relationships.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "network",
+                "relationship": "sponsor_drug"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_3b692a49d26c98",
+      "family": "drug_cooccurrence",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, show study-level drug co-occurrence; do not claim same-arm combination treatment.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "network",
+                "relationship": "drug_cooccurrence"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_3e7b6750f6ce1b",
+      "family": "followup_clear",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, only include studies with a US location and show phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "countries": [
+                "United States"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Keep the disease and drug; only Phase 3 now, by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "countries": [
+                "United States"
+              ],
+              "phases": [
+                "PHASE3"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "start"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Remove the US restriction, retain Phase 3 and the same disease and drug; keep the annual chart.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "phases": [
+                "PHASE3"
+              ],
+              "countries": []
+            },
+            "artifacts": [
+              {
+                "operation": "time_series"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_29ecf95b351f79",
+      "family": "axis_followup",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, count by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "start"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Use completion month instead. Preserve all population constraints.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "completion",
+                "time_grain": "month"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_e8b2961b5f29d9",
+      "family": "same_entity",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "Compare Keytruda versus pembrolizumab studies for melanoma by phase. First verify their identities.",
+          "expected": {
+            "status": "needs_clarification",
+            "specific_question": true
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Treat them as one medicine. Use only pembrolizumab, retain melanoma, and show the phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_6dc7a920ed0fe8",
+      "family": "clarification",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma, compare pembrolizumab with the other drug by phase.",
+          "expected": {
+            "status": "needs_clarification",
+            "specific_question": true
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Cancel the comparison; use only pembrolizumab and retain melanoma. Show phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_a9a0faf5905d42",
+      "family": "unsupported",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, determine the causal improvement in patient survival versus placebo using only registry metadata, and recommend treatment.",
+          "expected": {
+            "status": "limited",
+            "no_charts": true
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_0555c076ef7051",
+      "family": "literature",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma studies involving pembrolizumab, show phase counts and search PubMed for exactly \"pembrolizumab melanoma randomized trial\", retrieving two abstracts. Keep article counts separate from trial counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ],
+            "literature": true
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_44fa96e93d014f",
+      "family": "phase",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, show counts by phase, with full contributor citations.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_75c8d5cdb2d4db",
+      "family": "status",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, show counts by status, with full contributor citations.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "status"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_72336c6165f8d1",
+      "family": "country",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "统计 psoriasis 中涉及 secukinumab 的注册研究，按国家分组，并保留每个国家的完整来源。",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "country"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_2202cde63bd473",
+      "family": "histogram",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, show enrollment in seven equal-width bins, retain all source contributions.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "histogram",
+                "histogram_bins": 7
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_cc386097b10b14",
+      "family": "scatter",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, plot enrollment against duration in days using exact start and completion dates. Report exclusions.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "scatter",
+                "x": "trial_duration",
+                "y": "enrollment"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_7b0318392f27bc",
+      "family": "completion_month",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, count trials by completion month, excluding insufficient date precision explicitly.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "completion",
+                "time_grain": "month"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_84149e9290de66",
+      "family": "first_posted",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, show counts by first-posted year, not by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "first_posted",
+                "time_grain": "year"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_9abca4ca0df005",
+      "family": "date_range",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, only include primary completion dates fully within 2020-01-01 through 2025-12-31, then count by primary-completion month.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "primary_completion",
+                "time_grain": "month"
+              }
+            ],
+            "date_range": {
+              "field": "primary_completion",
+              "lower": "2020-01-01",
+              "upper": "2025-12-31"
+            }
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_9a77d9b9632705",
+      "family": "sponsor_drug",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, show lead-sponsor to drug relationships.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "network",
+                "relationship": "sponsor_drug"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_b1e63d62a552a0",
+      "family": "drug_cooccurrence",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, show study-level drug co-occurrence; do not claim same-arm combination treatment.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "network",
+                "relationship": "drug_cooccurrence"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_e25b4096ff676c",
+      "family": "followup_clear",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, only include studies with a US location and show phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ],
+              "countries": [
+                "United States"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Keep the disease and drug; only Phase 3 now, by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ],
+              "countries": [
+                "United States"
+              ],
+              "phases": [
+                "PHASE3"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "start"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Remove the US restriction, retain Phase 3 and the same disease and drug; keep the annual chart.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ],
+              "phases": [
+                "PHASE3"
+              ],
+              "countries": []
+            },
+            "artifacts": [
+              {
+                "operation": "time_series"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_38179845aa1a85",
+      "family": "axis_followup",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, count by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "start"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Use completion month instead. Preserve all population constraints.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "completion",
+                "time_grain": "month"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_6005d297d92e6a",
+      "family": "same_entity",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "Compare Cosentyx versus secukinumab studies for psoriasis by phase. First verify their identities.",
+          "expected": {
+            "status": "needs_clarification",
+            "specific_question": true
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Treat them as one medicine. Use only secukinumab, retain psoriasis, and show the phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_05f030859329a2",
+      "family": "clarification",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis, compare secukinumab with the other drug by phase.",
+          "expected": {
+            "status": "needs_clarification",
+            "specific_question": true
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Cancel the comparison; use only secukinumab and retain psoriasis. Show phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_d903836fd77c37",
+      "family": "unsupported",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, determine the causal improvement in patient survival versus placebo using only registry metadata, and recommend treatment.",
+          "expected": {
+            "status": "limited",
+            "no_charts": true
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_851437361ab3d5",
+      "family": "literature",
+      "entity_group": "psoriasis",
+      "split": "calibration",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For psoriasis studies involving secukinumab, show phase counts and search PubMed for exactly \"secukinumab psoriasis randomized trial\", retrieving two abstracts. Keep article counts separate from trial counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "psoriasis",
+              "interventions": [
+                "secukinumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ],
+            "literature": true
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_2dae761d8830fd",
+      "family": "phase",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, show counts by phase, with full contributor citations.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_33503932bea124",
+      "family": "status",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, show counts by status, with full contributor citations.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "status"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_3af1310f52475c",
+      "family": "country",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "统计 asthma 中涉及 omalizumab 的注册研究，按国家分组，并保留每个国家的完整来源。",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "country"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_d2385e876de541",
+      "family": "histogram",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, show enrollment in seven equal-width bins, retain all source contributions.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "histogram",
+                "histogram_bins": 7
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_1bde8e9939a6e3",
+      "family": "scatter",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, plot enrollment against duration in days using exact start and completion dates. Report exclusions.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "scatter",
+                "x": "trial_duration",
+                "y": "enrollment"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_220bcbc3cad1ce",
+      "family": "completion_month",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, count trials by completion month, excluding insufficient date precision explicitly.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "completion",
+                "time_grain": "month"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_5ee28e3f718f50",
+      "family": "first_posted",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, show counts by first-posted year, not by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "first_posted",
+                "time_grain": "year"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_158a04ac7c13d1",
+      "family": "date_range",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, only include primary completion dates fully within 2020-01-01 through 2025-12-31, then count by primary-completion month.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "primary_completion",
+                "time_grain": "month"
+              }
+            ],
+            "date_range": {
+              "field": "primary_completion",
+              "lower": "2020-01-01",
+              "upper": "2025-12-31"
+            }
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_a742b9c90f8a60",
+      "family": "sponsor_drug",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, show lead-sponsor to drug relationships.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "network",
+                "relationship": "sponsor_drug"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_e2d7587b9ed9eb",
+      "family": "drug_cooccurrence",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, show study-level drug co-occurrence; do not claim same-arm combination treatment.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "network",
+                "relationship": "drug_cooccurrence"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_ac40de715dbf3d",
+      "family": "followup_clear",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, only include studies with a US location and show phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ],
+              "countries": [
+                "United States"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Keep the disease and drug; only Phase 3 now, by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ],
+              "countries": [
+                "United States"
+              ],
+              "phases": [
+                "PHASE3"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "start"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Remove the US restriction, retain Phase 3 and the same disease and drug; keep the annual chart.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ],
+              "phases": [
+                "PHASE3"
+              ],
+              "countries": []
+            },
+            "artifacts": [
+              {
+                "operation": "time_series"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_4bba05bd7d16c6",
+      "family": "axis_followup",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, count by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "start"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Use completion month instead. Preserve all population constraints.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "completion",
+                "time_grain": "month"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_5e7443097111b1",
+      "family": "same_entity",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "Compare Xolair versus omalizumab studies for asthma by phase. First verify their identities.",
+          "expected": {
+            "status": "needs_clarification",
+            "specific_question": true
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Treat them as one medicine. Use only omalizumab, retain asthma, and show the phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_b64d263b98a5ba",
+      "family": "clarification",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma, compare omalizumab with the other drug by phase.",
+          "expected": {
+            "status": "needs_clarification",
+            "specific_question": true
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Cancel the comparison; use only omalizumab and retain asthma. Show phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_501b14bc635145",
+      "family": "unsupported",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, determine the causal improvement in patient survival versus placebo using only registry metadata, and recommend treatment.",
+          "expected": {
+            "status": "limited",
+            "no_charts": true
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_4fa694244cefc4",
+      "family": "literature",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma studies involving omalizumab, show phase counts and search PubMed for exactly \"omalizumab asthma randomized trial\", retrieving two abstracts. Keep article counts separate from trial counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ],
+            "literature": true
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_2532f00cc29bfe",
+      "family": "phase",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, show counts by phase, with full contributor citations.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_97542c1c68ea57",
+      "family": "status",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, show counts by status, with full contributor citations.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "status"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_626f5905c66bae",
+      "family": "country",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "统计 rheumatoid arthritis 中涉及 adalimumab 的注册研究，按国家分组，并保留每个国家的完整来源。",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "country"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_1c5821f6f89afc",
+      "family": "histogram",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, show enrollment in seven equal-width bins, retain all source contributions.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "histogram",
+                "histogram_bins": 7
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_209d7886fb2ad8",
+      "family": "scatter",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, plot enrollment against duration in days using exact start and completion dates. Report exclusions.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "scatter",
+                "x": "trial_duration",
+                "y": "enrollment"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_641f290c855b2b",
+      "family": "completion_month",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, count trials by completion month, excluding insufficient date precision explicitly.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "completion",
+                "time_grain": "month"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_e519791a4e9747",
+      "family": "first_posted",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, show counts by first-posted year, not by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "first_posted",
+                "time_grain": "year"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_e947a6362ba761",
+      "family": "date_range",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, only include primary completion dates fully within 2020-01-01 through 2025-12-31, then count by primary-completion month.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "primary_completion",
+                "time_grain": "month"
+              }
+            ],
+            "date_range": {
+              "field": "primary_completion",
+              "lower": "2020-01-01",
+              "upper": "2025-12-31"
+            }
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_8e3b887a19fe84",
+      "family": "sponsor_drug",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, show lead-sponsor to drug relationships.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "network",
+                "relationship": "sponsor_drug"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_bcc7184e5491d2",
+      "family": "drug_cooccurrence",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, show study-level drug co-occurrence; do not claim same-arm combination treatment.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "network",
+                "relationship": "drug_cooccurrence"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_be14e663a1230c",
+      "family": "followup_clear",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, only include studies with a US location and show phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ],
+              "countries": [
+                "United States"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Keep the disease and drug; only Phase 3 now, by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ],
+              "countries": [
+                "United States"
+              ],
+              "phases": [
+                "PHASE3"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "start"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Remove the US restriction, retain Phase 3 and the same disease and drug; keep the annual chart.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ],
+              "phases": [
+                "PHASE3"
+              ],
+              "countries": []
+            },
+            "artifacts": [
+              {
+                "operation": "time_series"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_47d94bb9044fa0",
+      "family": "axis_followup",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, count by start year.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "start"
+              }
+            ]
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Use completion month instead. Preserve all population constraints.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "time_series",
+                "time_field": "completion",
+                "time_grain": "month"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_cba0e7db1f3522",
+      "family": "same_entity",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "Compare Humira versus adalimumab studies for rheumatoid arthritis by phase. First verify their identities.",
+          "expected": {
+            "status": "needs_clarification",
+            "specific_question": true
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Treat them as one medicine. Use only adalimumab, retain rheumatoid arthritis, and show the phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_b86bdd1af84a94",
+      "family": "clarification",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis, compare adalimumab with the other drug by phase.",
+          "expected": {
+            "status": "needs_clarification",
+            "specific_question": true
+          },
+          "parent_turn": null
+        },
+        {
+          "query": "Cancel the comparison; use only adalimumab and retain rheumatoid arthritis. Show phase counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_55aa3efa194137",
+      "family": "unsupported",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, determine the causal improvement in patient survival versus placebo using only registry metadata, and recommend treatment.",
+          "expected": {
+            "status": "limited",
+            "no_charts": true
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_a5143ceac9f8d7",
+      "family": "literature",
+      "entity_group": "rheumatoid arthritis",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For rheumatoid arthritis studies involving adalimumab, show phase counts and search PubMed for exactly \"adalimumab rheumatoid arthritis randomized trial\", retrieving two abstracts. Keep article counts separate from trial counts.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "rheumatoid arthritis",
+              "interventions": [
+                "adalimumab"
+              ]
+            },
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ],
+            "literature": true
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_be43ca02cfbaea",
+      "family": "dependent",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "Among melanoma studies involving pembrolizumab starting in 2015 through 2025, find the top three sponsors sharing drugs with Merck Sharp & Dohme LLC, show their shared-drug network and compare annual counts of the selected sponsors. ",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "start_year": 2015,
+              "end_year": 2025
+            },
+            "artifacts": [
+              {
+                "operation": "network",
+                "relationship": "sponsor_shared_drug"
+              },
+              {
+                "operation": "time_series"
+              }
+            ],
+            "dependent_selection": true
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_18b702d2e486c6",
+      "family": "dependent_entity_goal",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "Among melanoma studies involving pembrolizumab starting in 2015 through 2025, find the top three sponsors sharing drugs with Merck Sharp & Dohme LLC, show their shared-drug network and compare annual counts of the selected sponsors. Also return the ranked sponsors as a separate result.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab"
+              ],
+              "start_year": 2015,
+              "end_year": 2025
+            },
+            "artifacts": [
+              {
+                "operation": "network",
+                "relationship": "sponsor_shared_drug"
+              },
+              {
+                "operation": "time_series"
+              }
+            ],
+            "dependent_selection": true
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_805b3177c11492",
+      "family": "logic_all",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma, use pembrolizumab and nivolumab; include both medicines in each study. Show phase counts and complete evidence.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab",
+                "nivolumab"
+              ],
+              "intervention_match": "all"
+            },
+            "intervention_scope": "population",
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_5a025d45bb42ba",
+      "family": "logic_any",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma, use pembrolizumab and nivolumab; include either medicine in one combined population. Show phase counts and complete evidence.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab",
+                "nivolumab"
+              ],
+              "intervention_match": "any"
+            },
+            "intervention_scope": "population",
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_a127fcb140ea23",
+      "family": "logic_comparison",
+      "entity_group": "melanoma",
+      "split": "development",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For melanoma, use pembrolizumab and nivolumab; compare the two medicines as separate cohorts. Show phase counts and complete evidence.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "melanoma",
+              "interventions": [
+                "pembrolizumab",
+                "nivolumab"
+              ],
+              "intervention_match": "any"
+            },
+            "intervention_scope": "comparison",
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_fb11bfca96e3e4",
+      "family": "logic_all",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma, use omalizumab and dupilumab; include both medicines in each study. Show phase counts and complete evidence.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab",
+                "dupilumab"
+              ],
+              "intervention_match": "all"
+            },
+            "intervention_scope": "population",
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_f19bacdfad336a",
+      "family": "logic_any",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma, use omalizumab and dupilumab; include either medicine in one combined population. Show phase counts and complete evidence.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab",
+                "dupilumab"
+              ],
+              "intervention_match": "any"
+            },
+            "intervention_scope": "population",
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    },
+    {
+      "id": "ep_f2b353bd6b6774",
+      "family": "logic_comparison",
+      "entity_group": "asthma",
+      "split": "heldout",
+      "origin": "authored",
+      "turns": [
+        {
+          "query": "For asthma, use omalizumab and dupilumab; compare the two medicines as separate cohorts. Show phase counts and complete evidence.",
+          "expected": {
+            "status": "completed",
+            "filters": {
+              "condition": "asthma",
+              "interventions": [
+                "omalizumab",
+                "dupilumab"
+              ],
+              "intervention_match": "any"
+            },
+            "intervention_scope": "comparison",
+            "artifacts": [
+              {
+                "operation": "category",
+                "group_by": "phase"
+              }
+            ]
+          },
+          "parent_turn": null
+        }
+      ]
+    }
+  ]
+}

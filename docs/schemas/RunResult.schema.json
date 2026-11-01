@@ -1,0 +1,769 @@
+{
+  "$defs": {
+    "Advisory": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "severity": {
+          "default": "warning",
+          "enum": [
+            "info",
+            "warning"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "rule_version": {
+          "default": "chart-advisories-v1",
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "threshold": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Threshold"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "Advisory",
+      "type": "object"
+    },
+    "Artifact": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "result_id": {
+          "title": "Result Id",
+          "type": "string"
+        },
+        "goal_id": {
+          "title": "Goal Id",
+          "type": "string"
+        },
+        "source_type": {
+          "enum": [
+            "clinicaltrials",
+            "pubmed",
+            "entity"
+          ],
+          "title": "Source Type",
+          "type": "string"
+        },
+        "scope_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scope Id"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "metric": {
+          "title": "Metric",
+          "type": "string"
+        },
+        "visualization": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "$ref": "#/$defs/JsonValue"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Visualization"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "warnings": {
+          "items": {
+            "$ref": "#/$defs/Advisory"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "dependencies": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Dependencies",
+          "type": "array"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "alternative_renderers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Alternative Renderers",
+          "type": "array"
+        }
+      },
+      "required": [
+        "artifact_id",
+        "result_id",
+        "goal_id",
+        "source_type",
+        "title",
+        "metric",
+        "coverage"
+      ],
+      "title": "Artifact",
+      "type": "object"
+    },
+    "Coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "statistics_basis": {
+          "enum": [
+            "complete_records",
+            "official_counts",
+            "literature",
+            "entity"
+          ],
+          "title": "Statistics Basis",
+          "type": "string"
+        },
+        "count_exactness": {
+          "enum": [
+            "exact",
+            "not_applicable",
+            "incomplete"
+          ],
+          "title": "Count Exactness",
+          "type": "string"
+        },
+        "population_coverage": {
+          "enum": [
+            "complete",
+            "count_only",
+            "incomplete",
+            "not_applicable"
+          ],
+          "title": "Population Coverage",
+          "type": "string"
+        },
+        "evidence_coverage": {
+          "enum": [
+            "complete_contributors",
+            "sample_only",
+            "article_metadata",
+            "mapping_sources"
+          ],
+          "title": "Evidence Coverage",
+          "type": "string"
+        },
+        "fetched_count": {
+          "minimum": 0,
+          "title": "Fetched Count",
+          "type": "integer"
+        },
+        "matched_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Matched Count"
+        }
+      },
+      "required": [
+        "statistics_basis",
+        "count_exactness",
+        "population_coverage",
+        "evidence_coverage",
+        "fetched_count"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    },
+    "DateRange": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "default": "start",
+          "enum": [
+            "start",
+            "primary_completion",
+            "completion",
+            "first_posted"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "lower": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lower"
+        },
+        "upper": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Upper"
+        },
+        "precision_policy": {
+          "const": "contained",
+          "default": "contained",
+          "title": "Precision Policy",
+          "type": "string"
+        }
+      },
+      "title": "DateRange",
+      "type": "object"
+    },
+    "Filters": {
+      "additionalProperties": false,
+      "properties": {
+        "condition": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Condition"
+        },
+        "interventions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Interventions",
+          "type": "array"
+        },
+        "intervention_match": {
+          "default": "any",
+          "enum": [
+            "any",
+            "all"
+          ],
+          "title": "Intervention Match",
+          "type": "string"
+        },
+        "sponsor": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sponsor"
+        },
+        "phases": {
+          "items": {
+            "enum": [
+              "EARLY_PHASE1",
+              "PHASE1",
+              "PHASE2",
+              "PHASE3",
+              "PHASE4",
+              "NA"
+            ],
+            "type": "string"
+          },
+          "title": "Phases",
+          "type": "array"
+        },
+        "statuses": {
+          "items": {
+            "enum": [
+              "RECRUITING",
+              "NOT_YET_RECRUITING",
+              "ACTIVE_NOT_RECRUITING",
+              "ENROLLING_BY_INVITATION",
+              "COMPLETED",
+              "SUSPENDED",
+              "TERMINATED",
+              "WITHDRAWN",
+              "UNKNOWN",
+              "AVAILABLE",
+              "NO_LONGER_AVAILABLE",
+              "TEMPORARILY_NOT_AVAILABLE",
+              "APPROVED_FOR_MARKETING",
+              "WITHHELD"
+            ],
+            "type": "string"
+          },
+          "title": "Statuses",
+          "type": "array"
+        },
+        "countries": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Countries",
+          "type": "array"
+        },
+        "start_year": {
+          "anyOf": [
+            {
+              "maximum": 2200,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Year"
+        },
+        "end_year": {
+          "anyOf": [
+            {
+              "maximum": 2200,
+              "minimum": 1800,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Year"
+        },
+        "enrollment_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "ACTUAL",
+                "ESTIMATED"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Enrollment Type"
+        }
+      },
+      "title": "Filters",
+      "type": "object"
+    },
+    "Goal": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,40}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 600,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "kind": {
+          "default": "chart",
+          "enum": [
+            "chart",
+            "literature",
+            "entity"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "operation": {
+          "anyOf": [
+            {
+              "enum": [
+                "category",
+                "time_series",
+                "histogram",
+                "network",
+                "scatter"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Operation"
+        },
+        "depends_on": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 5,
+          "title": "Depends On",
+          "type": "array"
+        },
+        "parameters": {
+          "$ref": "#/$defs/GoalParameters"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ],
+      "title": "Goal",
+      "type": "object"
+    },
+    "GoalParameters": {
+      "additionalProperties": false,
+      "properties": {
+        "group_by": {
+          "anyOf": [
+            {
+              "enum": [
+                "phase",
+                "status",
+                "country",
+                "sponsor",
+                "sponsor_class",
+                "intervention_type",
+                "study_type"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Group By"
+        },
+        "time_field": {
+          "anyOf": [
+            {
+              "enum": [
+                "start",
+                "primary_completion",
+                "completion",
+                "first_posted"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Field"
+        },
+        "time_grain": {
+          "anyOf": [
+            {
+              "enum": [
+                "year",
+                "month"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Grain"
+        },
+        "relationship": {
+          "anyOf": [
+            {
+              "enum": [
+                "sponsor_drug",
+                "drug_cooccurrence",
+                "sponsor_shared_drug"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Relationship"
+        },
+        "histogram_bins": {
+          "anyOf": [
+            {
+              "maximum": 50,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Histogram Bins"
+        },
+        "x": {
+          "anyOf": [
+            {
+              "enum": [
+                "enrollment",
+                "trial_duration",
+                "start_year",
+                "completion_year"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "X"
+        },
+        "y": {
+          "anyOf": [
+            {
+              "enum": [
+                "enrollment",
+                "trial_duration",
+                "start_year",
+                "completion_year"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Y"
+        }
+      },
+      "title": "GoalParameters",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "TaskSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "goal": {
+          "maxLength": 1500,
+          "minLength": 1,
+          "title": "Goal",
+          "type": "string"
+        },
+        "mode": {
+          "default": "new",
+          "enum": [
+            "new",
+            "followup",
+            "clarification"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "filters": {
+          "$ref": "#/$defs/Filters"
+        },
+        "date_range": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DateRange"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "intervention_scope": {
+          "default": "population",
+          "enum": [
+            "population",
+            "comparison"
+          ],
+          "title": "Intervention Scope",
+          "type": "string"
+        },
+        "source_mode": {
+          "default": "full_evidence",
+          "enum": [
+            "full_evidence",
+            "aggregate_overview"
+          ],
+          "title": "Source Mode",
+          "type": "string"
+        },
+        "goals": {
+          "items": {
+            "$ref": "#/$defs/Goal"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Goals",
+          "type": "array"
+        },
+        "clear_fields": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 15,
+          "title": "Clear Fields",
+          "type": "array"
+        }
+      },
+      "required": [
+        "goal",
+        "goals"
+      ],
+      "title": "TaskSpec",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": "v2.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "session_id": {
+      "title": "Session Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "queued",
+        "running",
+        "needs_clarification",
+        "completed",
+        "partial",
+        "failed",
+        "cancelled",
+        "limited"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "task": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TaskSpec"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "artifacts": {
+      "items": {
+        "$ref": "#/$defs/Artifact"
+      },
+      "title": "Artifacts",
+      "type": "array"
+    },
+    "questions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Questions",
+      "type": "array"
+    },
+    "message": {
+      "default": "",
+      "title": "Message",
+      "type": "string"
+    },
+    "unmet_goals": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unmet Goals",
+      "type": "array"
+    },
+    "usage": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Usage",
+      "type": "object"
+    }
+  },
+  "required": [
+    "run_id",
+    "session_id",
+    "status"
+  ],
+  "title": "RunResult",
+  "type": "object"
+}

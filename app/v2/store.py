@@ -52,6 +52,7 @@ class V2Store:
                     raise StateConflict("Parent must be a completed run in this session")
                 pstate = json.loads(parent["state"])
                 prior = {
+                    "original_request": pstate.get("pending_request", pstate["request"]),
                     "task": pstate.get("task"),
                     "request": pstate["request"],
                     "result_ids": pstate.get("result_ids", []),
@@ -74,7 +75,10 @@ class V2Store:
                 "status": "queued",
                 "model_calls": 0,
                 "history": (prior or {}).get("history", []) + [request.query],
-                "versions": {"schema": "v2.0", "prompt": "tool-loop-v1", "tools": "tools-v1"},
+                "pending_request": prior["original_request"]
+                if prior and parent["status"] == "needs_clarification"
+                else request.model_dump(mode="json", exclude_unset=True),
+                "versions": {"schema": "v2.0", "prompt": "tool-loop-v2", "tools": "tools-v2"},
             }
             conn.execute(
                 "INSERT INTO v2_runs VALUES (?,?,?,?,?,?,0,0)",

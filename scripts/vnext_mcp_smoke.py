@@ -68,6 +68,23 @@ async def exercise(read, write):
         )
         assert final["status"] == "completed" and len(final["artifacts"]) == 2
         assert evidence["citations"] and literature["articles"]
+        denied = await client.call_tool("read_run", {"run_id": rid, "access_token": "not-the-session-token"})
+        assert denied.is_error
+        created = await call(
+            "create_tool_session",
+            {
+                "task": {
+                    "goal": "Cancellation acceptance",
+                    "filters": {"condition": "asthma"},
+                    "goals": [{"id": "g", "description": "phase counts"}],
+                }
+            },
+        )
+        await call("cancel_run", {"run_id": created["run_id"]})
+        cancelled = await call(
+            "search_trials", {"run_id": created["run_id"], "filters": {"condition": "asthma"}}
+        )
+        assert cancelled["status"] == "cancelled"
         return {
             "status": "passed",
             "tools": names,
@@ -77,6 +94,8 @@ async def exercise(read, write):
             "evidence_contributors": evidence["total_contributors"],
             "pmids": [a["pmid"] for a in literature["articles"]],
             "model_calls": final["usage"]["model_calls"],
+            "cross_session_token_rejected": True,
+            "cancel_before_source_call": True,
         }
 
 

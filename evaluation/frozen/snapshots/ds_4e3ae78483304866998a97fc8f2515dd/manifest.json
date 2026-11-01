@@ -1,0 +1,26 @@
+{
+  "dataset_id": "ds_4e3ae78483304866998a97fc8f2515dd",
+  "query": {
+    "query.cond": "\"asthma\"",
+    "query.intr": "(\"dupilumab\" OR \"omalizumab\")"
+  },
+  "query_hash": "1a08e6a1d790520a85c945c86ac8c60b582968fb002e40881f67f19ff0df41c6",
+  "started_at": "2026-11-01T04:05:43.072364+00:00",
+  "finished_at": "2026-11-01T04:05:44.519798+00:00",
+  "source_version_before": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "source_version_after": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "expected_count": 167,
+  "retrieved_unique_count": 167,
+  "pages": 1,
+  "duplicate_count": 0,
+  "complete": true,
+  "reason": null,
+  "raw_hash": "6efd59cf900778fa9414a14493d2502c4c042d39f69d01d6e5fa248e0d163ece",
+  "schema_version": "snapshot-v1"
+}

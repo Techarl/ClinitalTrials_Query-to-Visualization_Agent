@@ -1,0 +1,26 @@
+{
+  "dataset_id": "ds_8ded29e749d04c3fb21f78976efcbc68",
+  "query": {
+    "query.cond": "\"melanoma\"",
+    "query.intr": "(\"nivolumab\" AND \"pembrolizumab\")"
+  },
+  "query_hash": "88c3b10632b6bf2de08e3e4100088c67f202a047b74ebfaf3370fea9dfd3610d",
+  "started_at": "2026-11-01T04:05:31.368444+00:00",
+  "finished_at": "2026-11-01T04:05:34.426819+00:00",
+  "source_version_before": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "source_version_after": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-10-30T09:00:04"
+  },
+  "expected_count": 88,
+  "retrieved_unique_count": 88,
+  "pages": 1,
+  "duplicate_count": 0,
+  "complete": true,
+  "reason": null,
+  "raw_hash": "8c3b771f0ce27f38c50d5795fea0886e609c352acd119030392450d83fdce0a4",
+  "schema_version": "snapshot-v1"
+}

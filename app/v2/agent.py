@@ -10,10 +10,10 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph import END, START, StateGraph
 from openai import OpenAI
 
-from app.providers import usage_is_complete
 from app.sources import content_hash
 from app.v2.context import pack
 from app.v2.contracts import ClarifyInput, FinalizeInput, HandleInput, RunResult, StopInput, TaskSpec
+from app.v2.costs import estimate
 from app.v2.store import TERMINAL
 
 CONTROLS = {
@@ -108,20 +108,12 @@ def usage_report(store, rid):
     for entry in entries:
         reservation = entry["input"]["reservation_usd"]
         metadata = (entry["output"] or {}).get("metadata", {})
-        usage = metadata.get("usage")
         previous_unknown = entry["attempts"] - 1
         attempts += entry["attempts"]
         unknown += previous_unknown
         total += reservation * previous_unknown
-        if usage_is_complete(usage):
-            details = usage["input_tokens_details"]
-            ordinary = usage["input_tokens"] - details["cached_tokens"] - details["cache_write_tokens"]
-            cost = (
-                ordinary * 2
-                + details["cached_tokens"] * 0.1
-                + details["cache_write_tokens"] * 2.5
-                + usage["output_tokens"] * 10
-            ) / 1000000
+        cost = estimate(metadata)
+        if cost is not None:
             total += cost
         else:
             unknown += 1
@@ -133,7 +125,7 @@ def usage_report(store, rid):
         "unknown_attempts": unknown,
         "estimated_or_reserved_usd": round(total, 8),
         "receipts": receipts,
-        "cost_basis": "GPT-6.1 Sol standard list-rate estimate; unknown attempts keep byte-based reservations, not an invoice",
+        "cost_basis": "Versioned standard short-context model rates or explicit provider usage.cost; unknown attempts keep conservative reservations, not an invoice",
     }
 
 
@@ -214,6 +206,7 @@ class V2Agent:
             self.finish(state, "limited", "Model-call budget exhausted.")
             return {}
         context = pack(state, self.settings.v2_context_chars, self.context_policy, self.skill)
+        context["run_id"] = state["run_id"]
         definitions = self.definitions()
         context_bytes = len((context["system"] + context["payload"] + json.dumps(definitions)).encode())
         reservation = (context_bytes * 2.5 + 4096 * 10) / 1000000
@@ -279,7 +272,10 @@ class V2Agent:
             proposed["filters"] = filters
             if "date_range" not in task.model_fields_set and "date_range" not in task.clear_fields:
                 proposed["date_range"] = prior_task.get("date_range")
-            if "intervention_scope" not in task.model_fields_set:
+            if (
+                "intervention_scope" not in task.model_fields_set
+                and "intervention_scope" not in task.clear_fields
+            ):
                 proposed["intervention_scope"] = prior_task.get("intervention_scope", "population")
         for key, value in (request.get("filters") or {}).items():
             if proposed["filters"].get(key) != value:
@@ -290,6 +286,8 @@ class V2Agent:
         if proposed["source_mode"] != request.get("source_mode", "full_evidence"):
             raise ValueError("Official-count overview requires explicit request permission")
         if state.get("task"):
+            if not {g["id"] for g in state["task"]["goals"]} <= {g["id"] for g in proposed["goals"]}:
+                raise ValueError("Repair cannot drop already-declared task goals")
             for key in ("filters", "date_range", "intervention_scope", "source_mode"):
                 if proposed[key] != state["task"][key]:
                     raise ValueError("Repair cannot change already-confirmed task scope within a run")
