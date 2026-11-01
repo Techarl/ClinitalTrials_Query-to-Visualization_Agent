@@ -1,0 +1,5 @@
+# Optional CPU experiment environment; not production service dependencies.
+onnxruntime==1.18.1
+tokenizers==0.19.1
+tiktoken==0.7.0
+numpy==1.26.4
