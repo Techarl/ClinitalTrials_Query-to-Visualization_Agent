@@ -1,0 +1,48 @@
+{
+  "at": "2026-11-01T02:45:14.605523+00:00",
+  "source_commit": "118a0e5",
+  "code_hash": "999e32af0467ef6b0caf6d8aefbd71f7e4baa8e82ba3267cd40c3887662246ca",
+  "prompt_version": "planner-v3",
+  "native_tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "109",
+    "time": "21.720",
+    "timestamp": "2026-11-01T10:39:01.769410+08:00",
+    "hostname": "shengkai_tp_x1e"
+  },
+  "docker_tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "109",
+    "time": "14.525",
+    "timestamp": "2026-11-01T02:43:01.024320+00:00",
+    "hostname": "e184f578d2b3"
+  },
+  "ruff": "passed",
+  "pip_check": "passed",
+  "schemas": "unchanged; all five exported schemas match current contracts",
+  "example_replay": "ROUND3_EXAMPLE_REPLAY.json",
+  "example_replay_source_http_calls": 0,
+  "example_replay_model_calls": 0,
+  "targeted_live_scope": "ROUND3_LIVE_SCOPE.json",
+  "targeted_live_scope_model_calls": 2,
+  "frozen_experiments_rerun": false,
+  "historical_harness_usage_check": {
+    "calls": 238,
+    "all_complete_under_new_rule": true,
+    "unchanged_estimate_usd": 1.106343
+  },
+  "frozen_artifact_generation_commit": "5344202",
+  "frozen_semantic_report": "evals/semantic_report.json",
+  "experiment_semantic_baseline": "evals/semantic_report_ea65a0a.json",
+  "baseline_experiments": {
+    "decision": false,
+    "harness": false
+  },
+  "package_validation": "ROUND3_PACKAGE_VALIDATION.json"
+}

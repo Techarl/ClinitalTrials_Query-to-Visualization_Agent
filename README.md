@@ -72,16 +72,20 @@ Each saved run used one real planner call:
 | [Enrollment](examples/04_enrollment/response.json) | Histogram | Psoriasis/secukinumab: 149 source records; missing enrollment excluded |
 | [Shared-drug sponsor links](examples/05_shared_drugs/response.json) | Network | Rheumatoid arthritis/adalimumab: 242 source records; distinct shared interventions |
 
-These are frozen observations, not permanent live counts. Each includes the request, response, full evidence and trace. Raw source collections are under `examples/snapshots/`. All five were regenerated from the final `5344202` source, with the same runtime code hash as the release semantic evaluation and Docker image. Older snapshots remain as immutable historical artifacts.
+These are frozen observations, not permanent live counts. Each includes the request, response, full evidence and trace. Raw source collections are under `examples/snapshots/`. All five retain their frozen `5344202` generation source and original runtime hash. The current `118a0e5` engine recomputed every visualization, statistical metadata field, provenance object and full evidence collection from the frozen JSON through real Neo4j; all were unchanged. See [current replay](docs/ROUND3_EXAMPLE_REPLAY.json). Older snapshots remain as immutable historical artifacts.
 
 ```powershell
 # Offline: no database, network or model calls:
 .\.venv\Scripts\python.exe -m app.verify_examples
 ```
 
+Histogram assignment uses one exact-rational boundary sequence rounded once; the independent checker enumerates Decimal-derived intervals and also checks each contributor against the actual serialized interval, with exactly-once coverage per cohort.
+
 The independent checker reads raw sources without production normalization, aggregation or Cypher compilation. It independently generates the complete expected rows/edges/nodes, including top-N order, zero buckets and role-specific contributors, and verifies hashes and 33,824 exact field values. Twenty-six schema-valid corruptions must fail its negative tests. See [verification report](examples/verification.json). Both implementations are AI-assisted and may share conceptual assumptions; semantic review remains valuable.
 
 ## Validation
+
+The [Round 2 review fixes](docs/ROUND3_REVIEW_RESPONSE.zh-CN.md) close F1–F4: stable histogram intervals plus direct contributor invariants, current-explicit clarification scope, durable model-attempt/outcome accounting, and budget reservations for unknown usage. The current [validation report](docs/ROUND3_VALIDATION.json) records 109 tests with real Neo4j in both native and Linux environments. Historical research results remain frozen.
 
 ```powershell
 # No paid calls; graph fixtures skipped:
@@ -96,7 +100,7 @@ Tests cover pagination, empty pages, deduplication, completeness, tampering, mul
 
 `python -m app.examples` intentionally regenerates live runs and makes paid main-model calls. It is separate from offline verification.
 
-The [round-one review response](docs/ROUND2_REVIEW_RESPONSE.zh-CN.md) maps R1–R9 to fixes and regressions. The frozen [semantic cases](docs/evals/semantic_cases.json) cover 48 cases / 50 actual main-model turns across diseases, English/Chinese, AND/OR/comparison, follow-ups and repeated clarification. The final source scored 49/50, including 37/37 executable plans and 9/9 clarification turns. The difference is a full-site request that safely asked for narrower scope instead of returning unsupported. Across three passes the scores were 49/50, 50/50 and 49/50; all observations are retained. This small engineer-authored set is not a population accuracy guarantee. Expected answers never enter planner input. This measures query-to-plan semantics, independently of numerical verification.
+The [round-one review response](docs/ROUND2_REVIEW_RESPONSE.zh-CN.md) maps R1–R9 to fixes and regressions. The frozen [semantic cases](docs/evals/semantic_cases.json) cover 48 cases / 50 actual main-model turns across diseases, English/Chinese, AND/OR/comparison, follow-ups and repeated clarification. The frozen planner-v2 source scored 49/50, including 37/37 executable plans and 9/9 clarification turns. The difference is a full-site request that safely asked for narrower scope instead of returning unsupported. Across three passes the scores were 49/50, 50/50 and 49/50; all observations are retained. This small engineer-authored set is not a population accuracy guarantee. Expected answers never enter planner input. This measures query-to-plan semantics, independently of numerical verification.
 
 ```powershell
 # No paid calls: validate the case file:
@@ -105,7 +109,7 @@ The [round-one review response](docs/ROUND2_REVIEW_RESPONSE.zh-CN.md) maps R1–
 .\.venv\Scripts\python.exe -m app.semantic_eval --live
 ```
 
-See the full [semantic report](docs/evals/semantic_report.json). GitHub CI runs deterministic checks and real Neo4j fixtures with synthetic test credentials, without model keys or paid calls.
+See the preserved [semantic report](docs/evals/semantic_report.json). This is the prior planner-v2 observation, not a new planner-v3 benchmark. The current fix was checked with [targeted live scope correction](docs/ROUND3_LIVE_SCOPE.json). GitHub CI runs deterministic checks and real Neo4j fixtures with synthetic test credentials, without model keys or paid calls.
 
 The authorized research pilots are kept outside `app/`: a real Jev decision gate with an extra-GPT control, source-grounded BM25/dense/RRF candidate retrieval, and a restricted Harness² PPC/experience pilot. The [research report](docs/EXPERIMENTS.md) records the protocols, costs and limitations, including negative results. They do not change the default service.
 
@@ -118,9 +122,9 @@ docker compose up --build -d
 
 Compose uses Community Neo4j 2026.10.1, persistent volumes and one worker. API binds to loopback 8000; Neo4j host ports 7475/7688 avoid Desktop. The internal API URI is `bolt://neo4j:7687`. Stop another API on 8000 before using this alternative. An existing Neo4j volume retains its original password.
 
-Docker Desktop 25.0.3 verification passed: API image build, both service health checks, all 81 tests inside Linux, and a real 400-study analysis followed by an API restart and a 27-study Phase 3 follow-up. Source evidence, paging, snapshot reuse and completed-run idempotency were checked against the same repaired source. See [container validation](docs/DOCKER_VALIDATION.json). Native Desktop/Python execution was also exercised.
+Current Docker verification passed: API image build, both service health checks, all 109 tests inside Linux, and a real two-turn scope correction producing 400/396 comparison cohorts. See [current validation](docs/ROUND3_VALIDATION.json). Native Desktop/Python execution also passed 109 tests. The [prior restart smoke](docs/DOCKER_VALIDATION.json), generated from `5344202`, separately records a 400-study analysis, API restart and 27-study Phase 3 follow-up with evidence paging, snapshot reuse and completed-run idempotency.
 
-Including the isolated research boundary tests, both native and Linux environments passed 81 tests. A [separate fresh-volume Compose project](docs/CLEAN_DOCKER_VALIDATION.json) also passed the real analysis/restart flow and was removed afterward. Its optional port override is [scripts/compose.clean.yaml](scripts/compose.clean.yaml). The [ZIP installation check](docs/ZIP_VALIDATION.json) created a fresh venv, installed locked dependencies, passed 74 offline tests (7 live-database tests deliberately skipped), verified all five exports, and booted the API using the documented factory entry point, without credentials or paid calls.
+The historical [fresh-volume Compose check](docs/CLEAN_DOCKER_VALIDATION.json) also passed the real analysis/restart flow and was removed afterward; its optional port override is [scripts/compose.clean.yaml](scripts/compose.clean.yaml). The [current ZIP check](docs/ROUND3_PACKAGE_VALIDATION.json) extracted the package, installed its code into the previously verified environment with an identical dependency lock, passed 101 offline tests (8 database tests skipped), verified all five exports and passed `pip check`, without credentials or paid calls. The original [fresh-environment installation check](docs/ZIP_VALIDATION.json) is retained with its original source and test counts.
 
 To intentionally repeat the real two-call container smoke test (paid main-model calls):
 

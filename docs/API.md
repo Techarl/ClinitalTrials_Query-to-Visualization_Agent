@@ -102,3 +102,5 @@ Shared-drug edges can have more supporting studies than their weight. Full evide
 Citations contain dataset_id, nct_id, official URL, exact fields (JSON Pointer path and original value), and missing_fields. Missing paths can be audited against the raw snapshot; parent objects are included when available. Rules describe grouping and scope.
 
 `provenance.evidence` is a preview map with contributor_count, citations, preview_complete and full-evidence URL. Preview length is not the contributor count. Follow pagination for all references. CLI/submission exports include complete sidecars independent of the running database.
+
+Round 2 fixes: clarification scope resolves current explicitly supplied value first, then confirmed pending scope, then original/default population. Omitting the field differs from explicitly selecting population. Provider attempts/outcomes are journaled separately from checkpoints; unknown/missing usage never reports complete. Histogram counts use the same stable boundary sequence that is rendered, with the final right endpoint inclusive.

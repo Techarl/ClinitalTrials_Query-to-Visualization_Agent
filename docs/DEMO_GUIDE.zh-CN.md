@@ -1,6 +1,6 @@
 # 醒来后的检查与演示
 
-主服务地址：[API 文档](http://127.0.0.1:8000/docs)。基础版本已经修复第一轮 review 的 R1–R9，完整记录见 [修复对照](ROUND2_REVIEW_RESPONSE.zh-CN.md)。API 默认仍为 baseline；研究实验由独立命令运行。
+主服务地址：[API 文档](http://127.0.0.1:8000/docs)。基础版本已经修复第一轮 R1–R9 和第二轮 F1–F4，完整记录见 [修复对照](ROUND2_REVIEW_RESPONSE.zh-CN.md)。API 默认仍为 baseline；研究实验由独立命令运行。
 
 ## 先看三个结果
 
@@ -57,9 +57,9 @@ LangGraph 的 plan → validate → execute 三个节点足够表达当前流程
 
 ## 验证证据与边界
 
-- 本机、Linux 与 GitHub CI 跑确定性回归；研究边界加入后为 81 项。本机与容器都包括真实 Neo4j fixture。
+- 本机、Linux 与 GitHub CI 跑确定性回归；研究边界加入后为 109 项。本机与容器都包括真实 Neo4j fixture。
 - 独立 raw JSON oracle 检查完整预期项集合；26 种符合 schema 的故意破坏必须失败。
-- 语义评测与数值 oracle 分开。48 个工程编写 case / 50 轮，最终版为 49/50，之前两遍分别为 49/50 与 50/50；差异为全站请求的 unsupported/clarify 状态选择；小样本、单遍结果不能视为广泛稳定准确率。
+- 语义评测与数值 oracle 分开。48 个工程编写 case / 50 轮，保留的 planner-v2 发布版为 49/50，之前两遍分别为 49/50 与 50/50；差异为全站请求的 unsupported/clarify 状态选择；小样本、单遍结果不能视为广泛稳定准确率。
 - 全新 Compose 数据卷和 ZIP 独立安装/启动也已验证。
 
 剩余限制包括 broad source search 的 5,000 条预算、词语/品牌/缩写消歧、仅按开始年份过滤、同步单 worker、无认证/保留期清理、无前端。完整统计不能用向量 top-k 代替；数据源错误也不能被当成零条研究。
@@ -69,3 +69,5 @@ LangGraph 的 plan → validate → execute 三个节点足够表达当前流程
 阅读 [实验记录](EXPERIMENTS.md) 和各自完整 JSON。当前决策回放中，额外 GPT gate 没有提升已全部正确的 baseline；固定 Jev gate 策略出现过度澄清。BM25/embedding/RRF 提供有来源的候选，但没有证明可以自动确认医学实体。受限 Harness² 保留 PPC 与经验库及多样本对照，评分答案不进入优化运行时。多轮转录的因果边界单独披露。
 
 演示时应解释实验方法、成本和观察结果，不把“接入了模型/框架”本身当成有效性证明。
+
+第二轮收尾新增定向真实联调：scope 冲突先澄清，当前显式改为 comparison 后成功得到 400/396 两组研究。该两轮联调不是新一遍语义 benchmark。当前修复和历史实验分开记录，见 [第二轮修复对照](ROUND3_REVIEW_RESPONSE.zh-CN.md)。

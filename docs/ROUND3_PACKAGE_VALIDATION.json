@@ -1,0 +1,69 @@
+{
+  "checked_at": "2026-11-01T02:50:08.314792+00:00",
+  "status": "passed",
+  "source_commit": "118a0e5",
+  "source_code_hash": "999e32af0467ef6b0caf6d8aefbd71f7e4baa8e82ba3267cd40c3887662246ca",
+  "verified_candidate_archive_sha256": "2b4abb2454b7306fc15aaa9e6f6e99bd16407931f9d7d2e840f2e527096244e5",
+  "installation": "Extracted current ZIP; pip install --no-deps . into the previously fresh-installed validation venv; requirements.lock is byte-identical. This is not a new clean dependency installation.",
+  "prior_fresh_environment_report": "ZIP_VALIDATION.json",
+  "credentials_present": false,
+  "dependency_lock_unchanged": true,
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "8",
+    "tests": "109",
+    "time": "23.777",
+    "timestamp": "2026-11-01T10:47:23.096828+08:00",
+    "hostname": "shengkai_tp_x1e"
+  },
+  "offline_verification": {
+    "checks": [
+      {
+        "example": "01_phases",
+        "status": "verified",
+        "exact_fields_checked": 14682,
+        "evidence_sets": 9,
+        "source_records": 400,
+        "complete_item_sets_checked": true
+      },
+      {
+        "example": "02_followup_trend",
+        "status": "verified",
+        "exact_fields_checked": 3276,
+        "evidence_sets": 11,
+        "source_records": 400,
+        "complete_item_sets_checked": true
+      },
+      {
+        "example": "03_comparison",
+        "status": "verified",
+        "exact_fields_checked": 5933,
+        "evidence_sets": 16,
+        "source_records": 176,
+        "complete_item_sets_checked": true
+      },
+      {
+        "example": "04_enrollment",
+        "status": "verified",
+        "exact_fields_checked": 7265,
+        "evidence_sets": 8,
+        "source_records": 149,
+        "complete_item_sets_checked": true
+      },
+      {
+        "example": "05_shared_drugs",
+        "status": "verified",
+        "exact_fields_checked": 2668,
+        "evidence_sets": 19,
+        "source_records": 242,
+        "complete_item_sets_checked": true
+      }
+    ],
+    "network_or_database_calls": 0,
+    "model_calls": 0
+  },
+  "pip_check": "No broken requirements found.",
+  "note": "Final ZIP adds completed validation documentation. Runtime and test files are compared byte-for-byte with this tested extraction after final packaging; final archive hash and comparison are saved in dist/FINAL-VALIDATION.json."
+}

@@ -1,0 +1,66 @@
+{
+  "at": "2026-11-01T02:41:34.370422+00:00",
+  "status": "passed",
+  "kind": "current_neo4j_engine_replay_of_frozen_sources",
+  "code_hash": "999e32af0467ef6b0caf6d8aefbd71f7e4baa8e82ba3267cd40c3887662246ca",
+  "model_calls": 0,
+  "source_http_calls": 0,
+  "checks": [
+    {
+      "example": "01_phases",
+      "status": "verified",
+      "exact_fields_checked": 14682,
+      "evidence_sets": 9,
+      "source_records": 400,
+      "complete_item_sets_checked": true,
+      "visualization_unchanged": true,
+      "metadata_unchanged": true,
+      "full_evidence_unchanged": true
+    },
+    {
+      "example": "02_followup_trend",
+      "status": "verified",
+      "exact_fields_checked": 3276,
+      "evidence_sets": 11,
+      "source_records": 400,
+      "complete_item_sets_checked": true,
+      "visualization_unchanged": true,
+      "metadata_unchanged": true,
+      "full_evidence_unchanged": true
+    },
+    {
+      "example": "03_comparison",
+      "status": "verified",
+      "exact_fields_checked": 5933,
+      "evidence_sets": 16,
+      "source_records": 176,
+      "complete_item_sets_checked": true,
+      "visualization_unchanged": true,
+      "metadata_unchanged": true,
+      "full_evidence_unchanged": true
+    },
+    {
+      "example": "04_enrollment",
+      "status": "verified",
+      "exact_fields_checked": 7265,
+      "evidence_sets": 8,
+      "source_records": 149,
+      "complete_item_sets_checked": true,
+      "visualization_unchanged": true,
+      "metadata_unchanged": true,
+      "full_evidence_unchanged": true
+    },
+    {
+      "example": "05_shared_drugs",
+      "status": "verified",
+      "exact_fields_checked": 2668,
+      "evidence_sets": 19,
+      "source_records": 242,
+      "complete_item_sets_checked": true,
+      "visualization_unchanged": true,
+      "metadata_unchanged": true,
+      "full_evidence_unchanged": true
+    }
+  ],
+  "source_commit": "118a0e5"
+}

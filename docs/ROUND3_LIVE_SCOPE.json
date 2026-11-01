@@ -1,0 +1,207 @@
+{
+  "status": "passed",
+  "kind": "targeted_live_scope_correction_not_semantic_benchmark",
+  "source_commit": "118a0e5",
+  "prompt_version": "planner-v3",
+  "code_hash": "999e32af0467ef6b0caf6d8aefbd71f7e4baa8e82ba3267cd40c3887662246ca",
+  "first_status": "needs_clarification",
+  "second_status": "ok",
+  "cohorts": 2,
+  "selected_trials": [
+    400,
+    396
+  ],
+  "model_calls": 2,
+  "usage_complete": [
+    true,
+    true
+  ],
+  "requests": [
+    {
+      "query": "I want to compare the phase distributions of pembrolizumab and nivolumab in melanoma as separate cohorts. The structured scope is population; please resolve this contradiction first.",
+      "filters": {
+        "condition": "melanoma",
+        "interventions": [
+          "pembrolizumab",
+          "nivolumab"
+        ]
+      },
+      "intervention_scope": "population",
+      "language": "en"
+    },
+    {
+      "query": "Use separate cohorts, one for each drug, with the same melanoma condition.",
+      "session_id": "session_8631a4f876b94287aec9de58210fc58f",
+      "parent_run_id": "run_bdd0488e906c4d168a30a3a592e3825e",
+      "intervention_scope": "comparison",
+      "language": "en"
+    }
+  ],
+  "run_ids": [
+    "run_bdd0488e906c4d168a30a3a592e3825e",
+    "run_a2b83ac213d445089bd8bfd5fb7d8c25"
+  ],
+  "model_usage": [
+    {
+      "actual_cost": null,
+      "cost_note": "Provider cost not returned; token usage retained.",
+      "elapsed_seconds": 5.492,
+      "provider": "openai",
+      "reasoning_effort": "medium",
+      "reported_model": "gpt-6.1-sol",
+      "requested_model": "gpt-6.1-sol",
+      "response_id": "resp_0b82e5ee4a0935a4016ae6a734336c87d09212f9ebaeee85d0",
+      "usage": {
+        "input_tokens": 2525,
+        "input_tokens_details": {
+          "cache_write_tokens": 2522,
+          "cached_tokens": 0
+        },
+        "output_tokens": 118,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 2643
+      }
+    },
+    {
+      "actual_cost": null,
+      "cost_note": "Provider cost not returned; token usage retained.",
+      "elapsed_seconds": 6.123,
+      "provider": "openai",
+      "reasoning_effort": "medium",
+      "reported_model": "gpt-6.1-sol",
+      "requested_model": "gpt-6.1-sol",
+      "response_id": "resp_0c864c92652d86f0016ae6a738285c87d0a449b0196a9407fe",
+      "usage": {
+        "input_tokens": 2846,
+        "input_tokens_details": {
+          "cache_write_tokens": 468,
+          "cached_tokens": 2375
+        },
+        "output_tokens": 475,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 3321
+      }
+    }
+  ],
+  "first_questions": [
+    "Should I change the structured intervention scope to comparison and create separate pembrolizumab and nivolumab cohorts in melanoma, or keep population scope and include both drugs in every cohort? If keeping population scope, should studies include either drug (any) or both drugs (all)?"
+  ],
+  "resolved_plan": {
+    "operation": "category",
+    "cohorts": [
+      {
+        "id": "pembrolizumab",
+        "label": "Pembrolizumab in melanoma",
+        "filters": {
+          "condition": "melanoma",
+          "interventions": [
+            "pembrolizumab"
+          ],
+          "intervention_match": "any",
+          "sponsor": null,
+          "phases": [],
+          "statuses": [],
+          "countries": [],
+          "start_year": null,
+          "end_year": null,
+          "enrollment_type": null
+        }
+      },
+      {
+        "id": "nivolumab",
+        "label": "Nivolumab in melanoma",
+        "filters": {
+          "condition": "melanoma",
+          "interventions": [
+            "nivolumab"
+          ],
+          "intervention_match": "any",
+          "sponsor": null,
+          "phases": [],
+          "statuses": [],
+          "countries": [],
+          "start_year": null,
+          "end_year": null,
+          "enrollment_type": null
+        }
+      }
+    ],
+    "group_by": "phase",
+    "time_field": "start_year",
+    "relationship": "sponsor_drug",
+    "histogram_bins": 20,
+    "top_n": 10,
+    "title": "Phase distributions of pembrolizumab and nivolumab studies in melanoma",
+    "assumptions": [
+      "The confirmed comparison scope replaces the original population scope.",
+      "Condition and intervention filters use official source search semantics, including source synonyms.",
+      "Cohorts have identical non-intervention filters and may overlap; studies involving both drugs can appear in both cohorts.",
+      "Counts are distinct NCT IDs within each cohort and phase category. Combined phases remain combined categories; missing phases are not treated as zero.",
+      "No year restrictions apply. Both ACTUAL and ESTIMATED dates and enrollment values are included."
+    ]
+  },
+  "cohort_metadata": [
+    {
+      "id": "pembrolizumab",
+      "label": "Pembrolizumab in melanoma",
+      "dataset_id": "ds_06a6a6c5dbc140b3b294c6b553854cda",
+      "source_record_count": 400,
+      "selected_trial_count": 400,
+      "filters": {
+        "condition": "melanoma",
+        "interventions": [
+          "pembrolizumab"
+        ],
+        "intervention_match": "any",
+        "sponsor": null,
+        "phases": [],
+        "statuses": [],
+        "countries": [],
+        "start_year": null,
+        "end_year": null,
+        "enrollment_type": null
+      },
+      "missing_start_year": 2,
+      "estimated_start_dates": 14,
+      "missing_enrollment": 2,
+      "enrollment_types": {
+        "ACTUAL": 267,
+        "ESTIMATED": 131
+      }
+    },
+    {
+      "id": "nivolumab",
+      "label": "Nivolumab in melanoma",
+      "dataset_id": "ds_57cbd2675e34453b94d481aa32dd3a1d",
+      "source_record_count": 396,
+      "selected_trial_count": 396,
+      "filters": {
+        "condition": "melanoma",
+        "interventions": [
+          "nivolumab"
+        ],
+        "intervention_match": "any",
+        "sponsor": null,
+        "phases": [],
+        "statuses": [],
+        "countries": [],
+        "start_year": null,
+        "end_year": null,
+        "enrollment_type": null
+      },
+      "missing_start_year": 2,
+      "estimated_start_dates": 22,
+      "missing_enrollment": 3,
+      "enrollment_types": {
+        "ACTUAL": 259,
+        "ESTIMATED": 134
+      }
+    }
+  ],
+  "estimated_generation_usd": 0.0136545,
+  "cost_note": "Pinned standard list-rate estimate, not invoice. Separate from the historical experiment usage."
+}
