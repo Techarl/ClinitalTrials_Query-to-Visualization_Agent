@@ -84,3 +84,16 @@ The desktop crash interrupted the producer after six complete task records. All 
 The original retry loop was not safe to restart blindly: its accumulated budget check could stop after the first cached attempt and omit later already-completed candidates. The external [recovery wrapper](../scripts/resume_harness_v3.py) therefore returns completed task/retry records unchanged and reconstructs every saved candidate in an incomplete retry loop before admitting further work. It retains the original twenty-attempt limit, per-arm USD allowance, public-only selection and global cap. Six no-model tests cover cache reuse, candidate recovery, unknown reservations, pending-run closure, gaps and the attempt limit.
 
 This is a disclosed amendment to the execution/recovery layer, even though the archived inference source and original protocol identity remain unchanged. The wrapper has its own source hash and launch receipt in [the recovery record](public-evaluation/harness-v3-recovery.json) and [restart receipt](public-evaluation/harness-v3-recovery-launch.json). No hidden grades informed the amendment. Original run deadlines and already-recorded failed/partial states remain unchanged; interruption-affected outcomes and latency must be interpreted with this qualification. The full forty-task/four-arm run resumed with four workers at 18:02 local time, using the same remaining study ceiling.
+
+## Closed-result publication
+
+After the producer exits and writes `completed-or-stopped-ledger.json`, publish from the retained study files. The example paths below refer to local frozen data, not files redistributed by the repository:
+
+```sh
+python -m scripts.archive_harness_v3_formal --study data/harness-v3-formal05 --cases data/core300-frozen/cases.json --recovery-backup data/harness-v3-recovery01/pre-resume-records.zip --credentials-file .env
+python -m scripts.report_research_costs
+```
+
+The archive command verifies population, source identities, dependency linkage and ledger accounting before producing the English report and closed-record archive. Interrupted runs also require the immutable pre-resume backup: original ledger events must remain an exact prefix, unknown reservations must remain charged, and previously complete task results must be byte-identical. Snapshot costs are not counted again. The final budget report includes pilot, smoke, stopped infrastructure work, cumulative development/online work and formal work once each.
+
+Report preparation uses synthetic fixtures while formal execution is active. Published tables separate the forty-task denominator from observed complete records, selected final execution from all research costs, and executor skill tools from editor declarations. Fixed policy instructions appended to a runtime prompt are not counted as learned textual procedures. Shared-H0 cost columns cannot be summed, and equal retry allowance does not imply identical realized expenditure. The cross-study cost command requires the closed Harness publication and reconciles all tracked new-phase studies; its estimates exclude historical experiments, untracked application usage and unused demo allocation.

@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import math
 from collections import Counter
 from pathlib import Path
 from zipfile import ZipFile
@@ -88,7 +89,18 @@ def audit_arm(directory, episode):
 
 
 def verify_arm_accounting(row, events):
+    expected_scopes = {"h0", "no-memory", "memory", "usd-retries"}
+    if set(row["costs"]) != expected_scopes:
+        raise ValueError("Expected exactly four accounting scopes")
     for scope, claimed in row["costs"].items():
+        if (
+            type(claimed["calls"]) is not int
+            or claimed["calls"] < 0
+            or type(claimed["usd"]) not in (int, float)
+            or not math.isfinite(claimed["usd"])
+            or claimed["usd"] < 0
+        ):
+            raise ValueError("Invalid per-arm accounting value")
         suffix = f"/{row['episode_id']}/{scope}"
         selected = [e for e in events if e.get("study_scope", "").replace("\\", "/").endswith(suffix)]
         cost = sum(
@@ -98,10 +110,33 @@ def verify_arm_accounting(row, events):
         if len(selected) != claimed["calls"] or abs(cost - claimed["usd"]) > 1e-8:
             raise ValueError("Per-arm accounting differs from the complete global ledger")
     retry = row["usd_retries"]
+    actual = retry["actual"]
+    if (
+        type(actual["calls"]) is not int
+        or actual["calls"] != row["costs"]["usd-retries"]["calls"]
+        or type(actual["usd"]) not in (int, float)
+        or not math.isfinite(actual["usd"])
+        or actual["usd"] < 0
+        or abs(actual["usd"] - row["costs"]["usd-retries"]["usd"]) > 1e-8
+    ):
+        raise ValueError("Retry actual accounting differs from its ledger-backed scope")
+    if (
+        type(retry["extra_allocation_usd"]) not in (int, float)
+        or not math.isfinite(retry["extra_allocation_usd"])
+        or retry["extra_allocation_usd"] < 0
+    ):
+        raise ValueError("Invalid retry allowance")
     if abs(retry["extra_allocation_usd"] - row["costs"]["no-memory"]["usd"]) > 1e-8:
         raise ValueError("Retry allowance is not matched to its comparator")
     if retry["actual"]["usd"] > retry["extra_allocation_usd"] + 1e-8:
         raise ValueError("Retry arm exceeded its USD allowance")
+
+
+def unexplained_cost_usd(total, rows):
+    residual = total - sum(sum(scope["usd"] for scope in row["costs"].values()) for row in rows)
+    if not math.isfinite(residual) or residual < -1e-8:
+        raise ValueError("Negative unexplained cost indicates overlapping or excess arm costs")
+    return max(0.0, residual)
 
 
 def aggregate(rows, planned=40):
@@ -125,6 +160,17 @@ def aggregate(rows, planned=40):
 
 def summarize_mechanisms(rows):
     """Separate editor provenance, injected procedures, and observed tool execution."""
+
+    def procedure(entry):
+        # Runtime can append an engineering policy instruction to final.skill.
+        # An adopted empty component must not become a learned textual procedure.
+        return (
+            entry.get("composition", {})
+            .get("component", {})
+            .get("skill", entry["final"].get("skill", ""))
+            .strip()
+        )
+
     editors = {}
     for arm in ("ppc_no_memory", "ppc_memory"):
         entries = [row[arm] for row in rows]
@@ -132,11 +178,9 @@ def summarize_mechanisms(rows):
             "observed_tasks": len(entries),
             "publicly_adopted_tasks": sum(bool(e["adopted"]) for e in entries),
             "adopted_nonempty_procedure_tasks": sum(
-                bool(e["adopted"]) and bool(e["final"].get("skill", "").strip()) for e in entries
+                bool(e["adopted"]) and bool(procedure(e)) for e in entries
             ),
-            "adopted_empty_procedure_tasks": sum(
-                bool(e["adopted"]) and not e["final"].get("skill", "").strip() for e in entries
-            ),
+            "adopted_empty_procedure_tasks": sum(bool(e["adopted"]) and not procedure(e) for e in entries),
             "final_nonempty_injected_procedure_tasks": sum(
                 bool(e["final"].get("skill", "").strip()) for e in entries
             ),
@@ -165,6 +209,7 @@ def summarize_mechanisms(rows):
         "limits": [
             "Editor retrieval/declarations and injected procedure text are not executor autonomous skill reading.",
             "An adopted empty procedure is not a learned textual component; another context/policy setting may still differ.",
+            "Final nonempty injected text can include a fixed engineering policy instruction; adopted textual components are classified from composition.component.skill.",
             "PPC editor/adoption feedback and its read/apply lists cover the first turn only; memory-final mechanism events above cover all executed turns.",
             "Read/activation establishes mechanism use, not causal attribution of improvement.",
         ],
@@ -178,9 +223,7 @@ def report(study, corpus_path):
     raw, protocol, corpus = read(study / "report.json"), read(study / "protocol.json"), read(corpus_path)
     amendment_path = study / "recovery-amendment.json"
     recovery = read(amendment_path) if amendment_path.exists() else None
-    pending_tasks = {
-        item["recording"].split("/")[0] for item in (recovery or {}).get("interrupted_runs", [])
-    }
+    pending_tasks = {item["recording"].split("/")[0] for item in (recovery or {}).get("interrupted_runs", [])}
     if recovery and recovery["source_protocol_identity"] != protocol["sha256"]:
         raise ValueError("Recovery amendment belongs to another protocol")
     cases = validate_population(raw, protocol, corpus)
@@ -210,6 +253,14 @@ def report(study, corpus_path):
     )
     if abs(costs["estimated_or_reserved_usd"] - raw["budget"]["usd"]) > 1e-8:
         raise ValueError("Closed ledger and report cost differ")
+    prior_receipts = [
+        {"sha256": value["sha256"], "attempts": value["attempts"], "usd": value["usd"]}
+        for value in protocol["identity"]["parameters"].get("prior_receipts", {}).values()
+    ]
+    if abs(sum(value["usd"] for value in prior_receipts) - raw["prior_usd"]) > 1e-8:
+        raise ValueError("Prior main receipts do not reconcile with the reported total")
+    if abs(raw["combined_harness_usd"] - raw["prior_usd"] - costs["estimated_or_reserved_usd"]) > 1e-8:
+        raise ValueError("Combined main study cost does not reconcile")
     by_id, rows = {r["episode_id"]: r for r in raw["results"]}, []
     for case in cases:
         if case["id"] not in by_id:
@@ -277,8 +328,21 @@ def report(study, corpus_path):
             for arm in ARMS[1:]
         },
         "formal_costs": costs,
+        "prior_main_receipts": prior_receipts,
         "prior_main_study_usd": raw["prior_usd"],
         "combined_main_study_usd": raw["combined_harness_usd"],
+        "budget_matching": {
+            "observed_complete_task_rows": len(raw["results"]),
+            "retry_extra_allowance_usd": sum(
+                r["usd_retries"]["extra_allocation_usd"] for r in raw["results"]
+            ),
+            "retry_actual_or_reserved_usd": sum(r["usd_retries"]["actual"]["usd"] for r in raw["results"]),
+            "ppc_no_memory_incremental_usd": sum(r["costs"]["no-memory"]["usd"] for r in raw["results"]),
+            "maximum_attempts_per_task": 20,
+            "partial_or_exception_task_cost_usd": unexplained_cost_usd(
+                costs["estimated_or_reserved_usd"], raw["results"]
+            ),
+        },
         "ledger_sha256": hashlib.sha256(receipt.read_bytes()).hexdigest(),
         "protocol_sha256": protocol["sha256"],
         "reporting_source_sha256": {

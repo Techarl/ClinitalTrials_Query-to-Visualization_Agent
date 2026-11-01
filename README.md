@@ -107,7 +107,7 @@ Harness²-inspired experiments modify bounded procedures and context/experience 
 
 Protocols pin data, splits, models and execution source. Reports retain failed attempts and unknown-usage budget reservations. Crash recovery is disclosed separately for [NLI4CT](docs/NLI4CT_RECOVERY_REPORTING.md) and [Harness](docs/HARNESS_V3_PROTOCOL.md#desktop-crash-and-recovery-amendment--2026-11-01). Restricted benchmark materials remain local; public reports omit their original questions, passages and gold answers.
 
-Most recently verified [CI at `73c61d0`](https://github.com/Techarl/ClinitalTrials_Query-to-Visualization_Agent/actions/runs/41296428227) passed **937 Python tests**, with **3 skips and no expected failures**, plus **14 frontend tests** and the frontend build. This identifies the checked revision; subsequent report changes require their own checks.
+Most recently verified [CI at `5cd1b73`](https://github.com/Techarl/ClinitalTrials_Query-to-Visualization_Agent/actions/runs/41307232230) passed **969 Python tests**, with **3 skips and no expected failures**, plus **14 frontend tests** and the frontend build. This identifies the checked revision; subsequent report changes require their own checks.
 
 ## Verify and explore
 

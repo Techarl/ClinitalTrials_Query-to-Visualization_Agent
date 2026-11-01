@@ -12,6 +12,7 @@ from scripts.report_harness_v3 import (
     report,
     retry_path,
     summarize_mechanisms,
+    unexplained_cost_usd,
     validate_population,
     verify_arm_accounting,
 )
@@ -93,25 +94,67 @@ def test_linkage_audit_cannot_erase_unrelated_failures_or_missing_turns(tmp_path
     assert result["turn_failures"] == [["wrong_count"], ["missing_recorded_turn"]]
 
 
-def test_arm_accounting_detects_cross_task_scope_leakage_and_retry_overspend():
+def accounting_fixture():
     row = {
         "episode_id": "ep_01",
-        "costs": {"no-memory": {"calls": 1, "usd": 0.2}},
-        "usd_retries": {"extra_allocation_usd": 0.2, "actual": {"usd": 0.1}},
+        "costs": {
+            "h0": {"calls": 0, "usd": 0},
+            "no-memory": {"calls": 1, "usd": 0.2},
+            "memory": {"calls": 0, "usd": 0},
+            "usd-retries": {"calls": 1, "usd": 0.1},
+        },
+        "usd_retries": {"extra_allocation_usd": 0.2, "actual": {"calls": 1, "usd": 0.1}},
     }
     events = [
         {
             "study_scope": "C:\\study\\ep_01\\no-memory",
             "status": "attempted_usage_unknown",
             "reserved_upper_estimate_usd": 0.2,
-        }
+        },
+        {"study_scope": "C:/study/ep_01/usd-retries", "status": "completed", "estimated_cost_usd": 0.1},
     ]
+    return row, events
+
+
+def test_arm_accounting_detects_cross_task_scope_leakage_and_retry_overspend():
+    row, events = accounting_fixture()
     verify_arm_accounting(row, events)
     with pytest.raises(ValueError, match="Per-arm accounting"):
-        verify_arm_accounting(row, [{**events[0], "study_scope": "C:/study/ep_02/no-memory"}])
+        verify_arm_accounting(row, [{**events[0], "study_scope": "C:/study/ep_02/no-memory"}, events[1]])
     row["usd_retries"]["actual"]["usd"] = 0.21
+    row["costs"]["usd-retries"]["usd"] = 0.21
+    events[1]["estimated_cost_usd"] = 0.21
     with pytest.raises(ValueError, match="exceeded"):
         verify_arm_accounting(row, events)
+
+
+@pytest.mark.parametrize(
+    "mutation", ["remove_scope", "extra_scope", "actual_calls", "actual_usd", "nan_actual", "nan_claim"]
+)
+def test_arm_scope_and_retry_actual_mutations_are_rejected(mutation):
+    row, events = accounting_fixture()
+    if mutation == "remove_scope":
+        row["costs"].pop("h0")
+    elif mutation == "extra_scope":
+        row["costs"]["extra"] = {"calls": 0, "usd": 0}
+    elif mutation == "actual_calls":
+        row["usd_retries"]["actual"]["calls"] = 0
+    elif mutation == "actual_usd":
+        row["usd_retries"]["actual"]["usd"] = 0.08
+    elif mutation == "nan_actual":
+        row["usd_retries"]["actual"]["usd"] = float("nan")
+    else:
+        row["costs"]["usd-retries"]["usd"] = float("nan")
+    with pytest.raises(ValueError):
+        verify_arm_accounting(row, events)
+
+
+def test_unexplained_residual_rejects_overlap_and_tolerates_only_roundoff():
+    row, _ = accounting_fixture()
+    with pytest.raises(ValueError, match="Negative unexplained"):
+        unexplained_cost_usd(0.29, [row])
+    assert unexplained_cost_usd(0.3 - 1e-10, [row]) == 0
+    assert unexplained_cost_usd(0.5, [row]) == pytest.approx(0.2)
 
 
 def test_mechanism_report_distinguishes_declared_reuse_and_first_turn_from_all_turns():
@@ -137,6 +180,12 @@ def test_mechanism_report_distinguishes_declared_reuse_and_first_turn_from_all_t
     assert editor["first_turn_public_probe_read_events"] == 0
     assert result["memory_final_all_turn_tool_events"]["learned_read"] == 2
     assert result["memory_final_tasks_with_learned_read"] == 1
+    row["ppc_memory"]["composition"] = {"component": {"skill": ""}}
+    row["ppc_memory"]["final"]["skill"] = "Fixed engineering policy instruction"
+    second = summarize_mechanisms([row])["editors"]["ppc_memory"]
+    assert second["adopted_empty_procedure_tasks"] == 1
+    assert second["adopted_nonempty_procedure_tasks"] == 0
+    assert second["final_nonempty_injected_procedure_tasks"] == 1
 
 
 def test_closed_report_reconciles_all_arms_and_full_population(tmp_path):
@@ -185,7 +234,7 @@ def test_closed_report_reconciles_all_arms_and_full_population(tmp_path):
                     "selected_trace": f"C:/study/{case['id']}/h0",
                     "selected_summary": summary,
                     "extra_allocation_usd": 0,
-                    "actual": {"usd": 0},
+                    "actual": {"calls": 0, "usd": 0},
                 },
                 "costs": {
                     scope: {"calls": 0, "usd": 0} for scope in ("h0", "no-memory", "memory", "usd-retries")
