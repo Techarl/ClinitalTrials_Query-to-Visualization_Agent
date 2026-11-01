@@ -28,6 +28,9 @@ class RunRequest(Contract):
     query: str = Field(min_length=1, max_length=6000)
     session_id: str | None = None
     parent_run_id: str | None = None
+    submission_id: str | None = Field(
+        default=None, min_length=16, max_length=100, pattern=r"^[a-zA-Z0-9_-]+$"
+    )
     filters: Filters | None = None
     date_range: DateRange | None = None
     intervention_scope: Literal["population", "comparison"] | None = None
@@ -51,10 +54,18 @@ class GoalParameters(Contract):
 class Goal(Contract):
     id: str = Field(pattern=r"^[a-zA-Z0-9_-]{1,40}$")
     description: str = Field(min_length=1, max_length=600)
-    kind: Literal["chart", "literature", "entity"] = "chart"
+    kind: Literal["chart", "literature", "entity", "answer"] = "chart"
     operation: Operation | None = None
     depends_on: list[str] = Field(default_factory=list, max_length=5)
     parameters: GoalParameters = Field(default_factory=GoalParameters)
+
+
+class ScopeCorrection(Contract):
+    field: str = Field(
+        description="filters.condition, filters.interventions, date_range or intervention_scope"
+    )
+    request_quote: str = Field(min_length=1, max_length=1000)
+    reason: str = Field(min_length=1, max_length=600)
 
 
 class TaskSpec(Contract):
@@ -66,6 +77,7 @@ class TaskSpec(Contract):
     source_mode: Literal["full_evidence", "aggregate_overview"] = "full_evidence"
     goals: list[Goal] = Field(min_length=1, max_length=8)
     clear_fields: list[str] = Field(default_factory=list, max_length=15)
+    corrections: list[ScopeCorrection] = Field(default_factory=list, max_length=15)
 
     @model_validator(mode="after")
     def goal_dependencies(self) -> Self:
@@ -83,10 +95,14 @@ class TaskSpec(Contract):
 
 
 class Coverage(Contract):
-    statistics_basis: Literal["complete_records", "official_counts", "literature", "entity"]
+    statistics_basis: Literal[
+        "complete_records", "official_counts", "literature", "entity", "source_excerpts"
+    ]
     count_exactness: Literal["exact", "not_applicable", "incomplete"]
     population_coverage: Literal["complete", "count_only", "incomplete", "not_applicable"]
-    evidence_coverage: Literal["complete_contributors", "sample_only", "article_metadata", "mapping_sources"]
+    evidence_coverage: Literal[
+        "complete_contributors", "sample_only", "article_metadata", "mapping_sources", "quoted_sources"
+    ]
     fetched_count: int = Field(ge=0)
     matched_count: int | None = Field(default=None, ge=0)
 
@@ -103,7 +119,7 @@ class Artifact(Contract):
     artifact_id: str
     result_id: str
     goal_id: str
-    source_type: Literal["clinicaltrials", "pubmed", "entity"]
+    source_type: Literal["clinicaltrials", "pubmed", "entity", "answer"]
     scope_id: str | None = None
     title: str
     metric: str
@@ -185,6 +201,13 @@ class DetailInput(Contract):
     nct_id: str = Field(pattern=r"^NCT\d{8}$")
 
 
+class ReadSourceInput(Contract):
+    source_handle: str
+    pointer: str = Field(default="", max_length=300)
+    offset: int = Field(default=0, ge=0)
+    limit: int = Field(default=4000, ge=1, le=6000)
+
+
 class OverviewInput(Contract):
     filters: Filters
     goal_id: str
@@ -202,8 +225,19 @@ class ArticleInput(Contract):
     goal_id: str
 
 
+class SourceFinding(Contract):
+    source_handle: str
+    pointer: str = ""
+    quotation: str = Field(min_length=1, max_length=600)
+
+
 class FinalizeInput(Contract):
     result_ids: list[str] = Field(default_factory=list, max_length=12)
+    findings: list[SourceFinding] = Field(
+        default_factory=list,
+        max_length=8,
+        description="Exact source excerpts already read with read_source; these are shown with source handles, without asserting unsupported interpretations.",
+    )
     message: str = Field(
         default="",
         max_length=1500,

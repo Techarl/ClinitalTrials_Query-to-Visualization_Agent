@@ -53,7 +53,8 @@
             "complete_records",
             "official_counts",
             "literature",
-            "entity"
+            "entity",
+            "source_excerpts"
           ],
           "title": "Statistics Basis",
           "type": "string"
@@ -82,7 +83,8 @@
             "complete_contributors",
             "sample_only",
             "article_metadata",
-            "mapping_sources"
+            "mapping_sources",
+            "quoted_sources"
           ],
           "title": "Evidence Coverage",
           "type": "string"
@@ -136,7 +138,8 @@
       "enum": [
         "clinicaltrials",
         "pubmed",
-        "entity"
+        "entity",
+        "answer"
       ],
       "title": "Source Type",
       "type": "string"

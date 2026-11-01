@@ -1,0 +1,191 @@
+{
+  "protocol_hash": "2cd9c93aae68bce908098e424c7987a28e103cd460abe7b7b73775276fd75fc5",
+  "kind": "aborted runner smoke test; not Agent performance evidence",
+  "dataset_questions": 120,
+  "planned_questions": 2,
+  "split_counts": {
+    "heldout": 79,
+    "calibration": 22,
+    "development": 19
+  },
+  "summary": {
+    "given_sources": {
+      "planned": 2,
+      "runtime_completed": 0,
+      "correct": 0,
+      "cited_correct": 0,
+      "judge_failed_or_missing": 0,
+      "by_split": {
+        "development": {
+          "planned": 2,
+          "correct": 0
+        },
+        "calibration": {
+          "planned": 0,
+          "correct": 0
+        },
+        "heldout": {
+          "planned": 0,
+          "correct": 0
+        }
+      }
+    },
+    "frozen_retrieval": {
+      "planned": 2,
+      "runtime_completed": 0,
+      "correct": 0,
+      "cited_correct": 0,
+      "judge_failed_or_missing": 0,
+      "by_split": {
+        "development": {
+          "planned": 2,
+          "correct": 0
+        },
+        "calibration": {
+          "planned": 0,
+          "correct": 0
+        },
+        "heldout": {
+          "planned": 0,
+          "correct": 0
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "efe801ab-6433-4068-8076-8617da699e43",
+      "arm": "given_sources",
+      "status": "failed",
+      "quoted_nct_ids": [],
+      "quote_integrity": false,
+      "source_reads": 0,
+      "usage": {
+        "model_calls": 1,
+        "usage_complete": false,
+        "unknown_attempts": 1,
+        "estimated_or_reserved_usd": 0.0850075,
+        "receipts": [
+          {
+            "error_type": "AttributeError",
+            "usage": null
+          }
+        ],
+        "cost_basis": "Versioned standard short-context model rates or explicit provider usage.cost; unknown attempts keep conservative reservations, not an invoice"
+      },
+      "elapsed_seconds": 0.375,
+      "judgment": {
+        "correct": false,
+        "citations_support_answer": false,
+        "missing_or_incorrect_facts": [
+          "No published text answer"
+        ]
+      }
+    },
+    {
+      "id": "efe801ab-6433-4068-8076-8617da699e43",
+      "arm": "frozen_retrieval",
+      "status": "failed",
+      "quoted_nct_ids": [],
+      "quote_integrity": false,
+      "source_reads": 0,
+      "usage": {
+        "model_calls": 1,
+        "usage_complete": false,
+        "unknown_attempts": 1,
+        "estimated_or_reserved_usd": 0.0830725,
+        "receipts": [
+          {
+            "error_type": "AttributeError",
+            "usage": null
+          }
+        ],
+        "cost_basis": "Versioned standard short-context model rates or explicit provider usage.cost; unknown attempts keep conservative reservations, not an invoice"
+      },
+      "elapsed_seconds": 0.23400000005494803,
+      "judgment": {
+        "correct": false,
+        "citations_support_answer": false,
+        "missing_or_incorrect_facts": [
+          "No published text answer"
+        ]
+      }
+    },
+    {
+      "id": "11a7ba02-84ad-4898-a334-83eb99cc15e1",
+      "arm": "given_sources",
+      "status": "failed",
+      "quoted_nct_ids": [],
+      "quote_integrity": false,
+      "source_reads": 0,
+      "usage": {
+        "model_calls": 1,
+        "usage_complete": false,
+        "unknown_attempts": 1,
+        "estimated_or_reserved_usd": 0.0851175,
+        "receipts": [
+          {
+            "error_type": "AttributeError",
+            "usage": null
+          }
+        ],
+        "cost_basis": "Versioned standard short-context model rates or explicit provider usage.cost; unknown attempts keep conservative reservations, not an invoice"
+      },
+      "elapsed_seconds": 0.23499999998603016,
+      "judgment": {
+        "correct": false,
+        "citations_support_answer": false,
+        "missing_or_incorrect_facts": [
+          "No published text answer"
+        ]
+      }
+    },
+    {
+      "id": "11a7ba02-84ad-4898-a334-83eb99cc15e1",
+      "arm": "frozen_retrieval",
+      "status": "failed",
+      "quoted_nct_ids": [],
+      "quote_integrity": false,
+      "source_reads": 0,
+      "usage": {
+        "model_calls": 1,
+        "usage_complete": false,
+        "unknown_attempts": 1,
+        "estimated_or_reserved_usd": 0.083125,
+        "receipts": [
+          {
+            "error_type": "AttributeError",
+            "usage": null
+          }
+        ],
+        "cost_basis": "Versioned standard short-context model rates or explicit provider usage.cost; unknown attempts keep conservative reservations, not an invoice"
+      },
+      "elapsed_seconds": 0.21799999999348074,
+      "judgment": {
+        "correct": false,
+        "citations_support_answer": false,
+        "missing_or_incorrect_facts": [
+          "No published text answer"
+        ]
+      }
+    }
+  ],
+  "budget": {
+    "attempts": 0,
+    "estimated_or_reserved_usd": 0,
+    "max_estimated_usd": 1.5,
+    "price_source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+    "price_note": "Standard API list-rate estimate, not invoice; unknown calls retain conservative byte-based reservations.",
+    "events": []
+  },
+  "limits": [
+    "Frozen-corpus lookup over 102 official linked records, not full-web retrieval",
+    "All 120 questions retained in the source audit; current JSON can differ from the benchmark snapshot",
+    "Fallible automated Luna judge; no claim to reproduce the official LABBench2 scoring harness",
+    "Given-source arm has official source identities; retrieval arm gets question text only",
+    "Quote integrity verifies verbatim sources, not semantic entailment"
+  ],
+  "invalid_for_agent_scoring": true,
+  "failure_class": "budget adapter interface mismatch before any paid call",
+  "superseded_by": "trialqa-pilot-v2.json"
+}

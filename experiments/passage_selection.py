@@ -15,6 +15,7 @@ from pydantic import BaseModel, Field
 from app.config import Settings
 from app.sources import content_hash
 from app.v2.evidence_selection import Passage, pack_context
+from evaluation.protocol import execution_identity
 from evaluation.runtime import PersistentBudget, write
 from experiments.retrieval import HybridIndex
 
@@ -272,6 +273,10 @@ def main():
     corpus = json.loads(Path("evaluation/passage_selection.json").read_text(encoding="utf-8"))
     passages = [Passage.model_validate(p) for p in corpus["passages"]]
     config = {
+        "execution_identity": execution_identity(settings,
+            tokenizer="cl100k_base", embedding_model="text-embedding-3-small", embedding_dimensions=256,
+            generic_model="gpt-6-luna", generic_reasoning="low",
+            cross_encoder=json.loads((args.model_dir / "manifest.json").read_text(encoding="utf-8"))),
         "corpus_hash": content_hash(corpus),
         "protocol": corpus["protocol"],
         "relevance": RELEVANCE,

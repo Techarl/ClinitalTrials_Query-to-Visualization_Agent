@@ -71,6 +71,22 @@ def verify_extended(artifact, scopes, evidence):
         missing[label] = dropped
     seen = Counter()
     periods = sorted({key[1] for key in expected}) if args["operation"] == "time_series" else []
+    if args["operation"] == "time_series":
+        for scope, _, _ in scopes:
+            bounds = scope.get("date_range") or {}
+            if bounds.get("field") == args["time_field"]:
+                for name in ("lower", "upper"):
+                    if bounds.get(name):
+                        d = date.fromisoformat(str(bounds[name]))
+                        periods.append(str(d.year) if args["time_grain"] == "year" else d.strftime("%Y-%m"))
+            if args["time_field"] == "start":
+                for name, month in (("start_year", 1), ("end_year", 12)):
+                    year = scope.get("filters", {}).get(name)
+                    if year is not None:
+                        periods.append(
+                            str(year) if args["time_grain"] == "year" else f"{year:04d}-{month:02d}"
+                        )
+        periods = sorted(set(periods))
     if periods:
         if args["time_grain"] == "year":
             periods = [str(year) for year in range(int(periods[0]), int(periods[-1]) + 1)]

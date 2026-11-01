@@ -1,0 +1,153 @@
+{
+  "simple_task_policy_ablation": {
+    "arms": {
+      "proactive": {
+        "summary": {
+          "episode_id": "ep_9de4920e7b95036f",
+          "family": "single_phase",
+          "split": "development",
+          "origin": "authored",
+          "correct": true,
+          "turns": 1,
+          "model_calls": 5,
+          "estimated_or_reserved_usd": 0.0333623,
+          "unknown_attempts": 0,
+          "invalid_tools": 0,
+          "failures": [
+            []
+          ],
+          "elapsed_seconds": 33.968,
+          "runtime_inputs": "current and past utterances only; no labels or future answers",
+          "skill": "\nAt the beginning of a nontrivial task, search for applicable experience, read a relevant version, and activate it only when its applicability matches.",
+          "context_policy": "relevant"
+        },
+        "mechanism": {
+          "counts": {},
+          "ids": {
+            "read": [],
+            "applied": []
+          },
+          "limit": "Read/activation events establish mechanism use, not causal improvement."
+        },
+        "cost": {
+          "calls": 5,
+          "usd": 0.0333623,
+          "input_tokens": 31113,
+          "output_tokens": 377,
+          "unknown_usage_calls": 0,
+          "measured_api_seconds": 17.353490114212036,
+          "calls_without_latency": 0
+        }
+      },
+      "disabled": {
+        "summary": {
+          "episode_id": "ep_9de4920e7b95036f",
+          "family": "single_phase",
+          "split": "development",
+          "origin": "authored",
+          "correct": true,
+          "turns": 1,
+          "model_calls": 5,
+          "estimated_or_reserved_usd": 0.0329872,
+          "unknown_attempts": 0,
+          "invalid_tools": 0,
+          "failures": [
+            []
+          ],
+          "elapsed_seconds": 29.25,
+          "runtime_inputs": "current and past utterances only; no labels or future answers",
+          "skill": "",
+          "context_policy": "relevant"
+        },
+        "mechanism": {
+          "counts": {},
+          "ids": {
+            "read": [],
+            "applied": []
+          },
+          "limit": "Read/activation events establish mechanism use, not causal improvement."
+        },
+        "cost": {
+          "calls": 5,
+          "usd": 0.0329872,
+          "input_tokens": 30202,
+          "output_tokens": 381,
+          "unknown_usage_calls": 0,
+          "measured_api_seconds": 12.703492879867554,
+          "calls_without_latency": 0
+        }
+      }
+    },
+    "combined_pilot_budget": {
+      "calls": 95,
+      "usd": 0.773155,
+      "input_tokens": 648330,
+      "output_tokens": 8672,
+      "unknown_usage_calls": 1,
+      "measured_api_seconds": 30.05698299407959,
+      "calls_without_latency": 85
+    }
+  },
+  "engineered_nontrivial_probe": {
+    "episode_id": "ep_3dcc9fb13de3b2c4",
+    "exact_instruction": "ENGINEERED MECHANISM DIAGNOSTIC, not a learned policy: after defining this task and before data tools, call search_experiences with the query redundant verification chart analysis. Read one returned learned procedure with read_skill. Inspect its applicability and adopted flag, and call apply_skill only if it is adopted and applies to this task. Then complete every requested analysis. Do not claim that reading or activation demonstrates autonomous learning or improved correctness.",
+    "summary": {
+      "episode_id": "ep_3dcc9fb13de3b2c4",
+      "family": "compound_phase_start",
+      "split": "development",
+      "origin": "authored",
+      "correct": true,
+      "turns": 1,
+      "model_calls": 8,
+      "estimated_or_reserved_usd": 0.0705971,
+      "unknown_attempts": 0,
+      "invalid_tools": 0,
+      "failures": [
+        []
+      ],
+      "elapsed_seconds": 35.578,
+      "runtime_inputs": "current and past utterances only; no labels or future answers",
+      "skill": "ENGINEERED MECHANISM DIAGNOSTIC, not a learned policy: after defining this task and before data tools, call search_experiences with the query redundant verification chart analysis. Read one returned learned procedure with read_skill. Inspect its applicability and adopted flag, and call apply_skill only if it is adopted and applies to this task. Then complete every requested analysis. Do not claim that reading or activation demonstrates autonomous learning or improved correctness.",
+      "context_policy": "relevant"
+    },
+    "mechanism": {
+      "counts": {
+        "search_calls": 1,
+        "learned_read": 1,
+        "learned_applied": 1
+      },
+      "ids": {
+        "read": [
+          "skill_c430bdffa19657865bcd82f3"
+        ],
+        "applied": [
+          "skill_c430bdffa19657865bcd82f3"
+        ]
+      },
+      "limit": "Read/activation events establish mechanism use, not causal improvement."
+    },
+    "incremental": {
+      "calls": 8,
+      "usd": 0.0705971,
+      "input_tokens": 55763,
+      "output_tokens": 540,
+      "unknown_usage_calls": 0,
+      "measured_api_seconds": 22.1430082321167,
+      "calls_without_latency": 0
+    },
+    "combined_pilot": {
+      "calls": 103,
+      "usd": 0.8437521,
+      "input_tokens": 704093,
+      "output_tokens": 9212,
+      "unknown_usage_calls": 1,
+      "measured_api_seconds": 52.19999122619629,
+      "calls_without_latency": 85
+    },
+    "limit": "Engineered activation demonstration, not autonomous discovery or efficacy"
+  },
+  "immutable_combined_ledger": "data\\harness-v3-pilot01\\completed-all-pilot-ledger.json",
+  "combined_ledger_sha256": "ecc16ee50788c0134827954f631053fb5527a4dd60ef3de4395b702a7154dea4",
+  "engineered_protocol_sha256": "0f41709f6938b1311f6a33be076ec338db4f033c41a42310ab14988c00f8da03",
+  "interpretation": "Simple-task proactive and disabled arms both had zero skill use. A separately preregistered engineered compound task used a genuinely learned positive entry (one search, one read, one activation) and completed correctly. This demonstrates runtime wiring only, not autonomous reuse or causal improvement."
+}

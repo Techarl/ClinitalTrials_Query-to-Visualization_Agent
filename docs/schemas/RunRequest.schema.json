@@ -223,6 +223,21 @@
       "default": null,
       "title": "Parent Run Id"
     },
+    "submission_id": {
+      "anyOf": [
+        {
+          "maxLength": 100,
+          "minLength": 16,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Submission Id"
+    },
     "filters": {
       "anyOf": [
         {

@@ -1,0 +1,256 @@
+{
+  "historical": {
+    "scanned_records": 24,
+    "represented_records": 23,
+    "passages": 334
+  },
+  "corrected": {
+    "scanned_records": 24,
+    "represented_records": 24,
+    "passages": 365,
+    "criterion_character_coverage": 1.0
+  },
+  "policy": "All non-whitespace criterion characters retained as exact spans. Pure section headings are represented by the section property, separately counted. Historical result files unchanged.",
+  "records": [
+    {
+      "nct_id": "NCT00046748",
+      "historical_passages_present": true,
+      "current_passage_count": 15,
+      "source_characters": 2746,
+      "criterion_characters": 2300,
+      "covered_criterion_characters": 2300,
+      "pure_heading_characters": 0,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00079937",
+      "historical_passages_present": true,
+      "current_passage_count": 10,
+      "source_characters": 2774,
+      "criterion_characters": 2321,
+      "covered_criterion_characters": 2321,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00096954",
+      "historical_passages_present": true,
+      "current_passage_count": 17,
+      "source_characters": 3235,
+      "criterion_characters": 2680,
+      "covered_criterion_characters": 2680,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00109187",
+      "historical_passages_present": true,
+      "current_passage_count": 13,
+      "source_characters": 1337,
+      "criterion_characters": 1100,
+      "covered_criterion_characters": 1100,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT01295827",
+      "historical_passages_present": true,
+      "current_passage_count": 25,
+      "source_characters": 3663,
+      "criterion_characters": 3077,
+      "covered_criterion_characters": 3077,
+      "pure_heading_characters": 36,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT01704287",
+      "historical_passages_present": true,
+      "current_passage_count": 20,
+      "source_characters": 2353,
+      "criterion_characters": 1957,
+      "covered_criterion_characters": 1957,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT01789827",
+      "historical_passages_present": true,
+      "current_passage_count": 27,
+      "source_characters": 2317,
+      "criterion_characters": 1897,
+      "covered_criterion_characters": 1897,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT01866319",
+      "historical_passages_present": true,
+      "current_passage_count": 22,
+      "source_characters": 2893,
+      "criterion_characters": 2409,
+      "covered_criterion_characters": 2409,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00441337",
+      "historical_passages_present": true,
+      "current_passage_count": 10,
+      "source_characters": 725,
+      "criterion_characters": 586,
+      "covered_criterion_characters": 586,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00730639",
+      "historical_passages_present": true,
+      "current_passage_count": 18,
+      "source_characters": 2727,
+      "criterion_characters": 2304,
+      "covered_criterion_characters": 2304,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT01024231",
+      "historical_passages_present": true,
+      "current_passage_count": 22,
+      "source_characters": 2516,
+      "criterion_characters": 2103,
+      "covered_criterion_characters": 2103,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT01176461",
+      "historical_passages_present": true,
+      "current_passage_count": 36,
+      "source_characters": 5424,
+      "criterion_characters": 4547,
+      "covered_criterion_characters": 4547,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00508547",
+      "historical_passages_present": true,
+      "current_passage_count": 6,
+      "source_characters": 890,
+      "criterion_characters": 715,
+      "covered_criterion_characters": 715,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00669916",
+      "historical_passages_present": true,
+      "current_passage_count": 18,
+      "source_characters": 2500,
+      "criterion_characters": 2090,
+      "covered_criterion_characters": 2090,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00770965",
+      "historical_passages_present": true,
+      "current_passage_count": 10,
+      "source_characters": 807,
+      "criterion_characters": 634,
+      "covered_criterion_characters": 634,
+      "pure_heading_characters": 43,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00805480",
+      "historical_passages_present": true,
+      "current_passage_count": 10,
+      "source_characters": 766,
+      "criterion_characters": 597,
+      "covered_criterion_characters": 597,
+      "pure_heading_characters": 43,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT01312961",
+      "historical_passages_present": true,
+      "current_passage_count": 19,
+      "source_characters": 1961,
+      "criterion_characters": 1629,
+      "covered_criterion_characters": 1629,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT01854047",
+      "historical_passages_present": true,
+      "current_passage_count": 12,
+      "source_characters": 1340,
+      "criterion_characters": 1110,
+      "covered_criterion_characters": 1110,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT02134028",
+      "historical_passages_present": false,
+      "current_passage_count": 3,
+      "source_characters": 755,
+      "criterion_characters": 614,
+      "covered_criterion_characters": 614,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT02414854",
+      "historical_passages_present": true,
+      "current_passage_count": 14,
+      "source_characters": 2760,
+      "criterion_characters": 2283,
+      "covered_criterion_characters": 2283,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00049751",
+      "historical_passages_present": true,
+      "current_passage_count": 19,
+      "source_characters": 1293,
+      "criterion_characters": 1062,
+      "covered_criterion_characters": 1062,
+      "pure_heading_characters": 20,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00124982",
+      "historical_passages_present": true,
+      "current_passage_count": 6,
+      "source_characters": 580,
+      "criterion_characters": 452,
+      "covered_criterion_characters": 452,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00195650",
+      "historical_passages_present": true,
+      "current_passage_count": 5,
+      "source_characters": 480,
+      "criterion_characters": 370,
+      "covered_criterion_characters": 370,
+      "pure_heading_characters": 36,
+      "extraction_warning": null
+    },
+    {
+      "nct_id": "NCT00195663",
+      "historical_passages_present": true,
+      "current_passage_count": 8,
+      "source_characters": 1094,
+      "criterion_characters": 892,
+      "covered_criterion_characters": 892,
+      "pure_heading_characters": 38,
+      "extraction_warning": null
+    }
+  ]
+}

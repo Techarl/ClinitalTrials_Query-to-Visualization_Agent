@@ -1,0 +1,23 @@
+{
+  "status": "stopped after recurrent PermissionError; not efficacy results",
+  "stopped_pids": [
+    75080,
+    40292
+  ],
+  "planned_development": 20,
+  "completed_development": 2,
+  "planned_formal": 40,
+  "formal_evaluated": 0,
+  "attempts": 74,
+  "actual_or_reserved_usd": 1.0346568999999994,
+  "unknown_usage_attempts": 2,
+  "closed_ledger": "data\\harness-v3-main01\\stopped-infrastructure-ledger.json",
+  "closed_ledger_sha256": "06b659a00f88753a26067b392b4d4f3e8b05fbe225b0fe844b4c5159fe57da16",
+  "confirmed_closed_failure_receipts": [
+    "data/harness-v3-main01/development/ep_9de4920e7b95036f/memory/final/turn-1.json",
+    "data/harness-v3-main01/development/ep_eefd6e73e7f0ed18/h0/turn-1.json"
+  ],
+  "error_category": "PermissionError",
+  "exact_os_failed_path": "not retained in planner exception receipt; ledger atomic replacement suspected, not confirmed by stack",
+  "interpretation": "Do not count infrastructure failures as model reasoning failures. Preserve all costs; restart a new immutable study after isolated fix."
+}

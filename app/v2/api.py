@@ -282,7 +282,9 @@ def install_routes(app, settings, service_factory):
 
     @app.post("/v2/runs/{run_id}/share", tags=["v2"])
     def share(run_id: str):
-        state(run_id)
+        current = state(run_id)
+        if current["status"] not in TERMINAL - {"needs_clarification"}:
+            raise HTTPException(409, "Only finished analysis results can be shared")
         result = manager.result(run_id)
         public = {k: v for k, v in result.items() if k not in ("session_id", "run_id", "usage", "questions")}
         evidence = {}

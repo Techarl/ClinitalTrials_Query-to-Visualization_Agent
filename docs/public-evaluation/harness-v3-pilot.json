@@ -1,0 +1,88 @@
+{
+  "phase": "completed cost pilot; not formal evaluation",
+  "unique_questions": 1,
+  "ledger_sha256": "30f80432c986c026c3450836f16a6ffe4bc575de74efb6e8857fbfe5206b0a4b",
+  "protocol_sha256": "8406674c71829c3d9c218227477af70a78c6f8a264e6e631588f797816c4546f",
+  "calls": 85,
+  "usd_actual_or_reserved": 0.7068054999999999,
+  "unknown_usage_calls": 1,
+  "h0": {
+    "correct": true,
+    "final_calls": 5
+  },
+  "ppc_no_memory": {
+    "adopted": true,
+    "correct": true,
+    "final_calls": 4
+  },
+  "ppc_memory_empty_incoming_bank": {
+    "adopted": true,
+    "correct": true,
+    "final_calls": 4,
+    "lesson_id": "9b98550028dd53e36ddb"
+  },
+  "retry": {
+    "allowance_incremental_usd": 0.2522112,
+    "actual": {
+      "calls": 39,
+      "usd": 0.1382034,
+      "input_tokens": 235812,
+      "output_tokens": 2970,
+      "unknown_usage_calls": 0
+    },
+    "selected_correct": true,
+    "attempt_directories": 20
+  },
+  "costs": {
+    "h0": {
+      "calls": 5,
+      "usd": 0.0214115,
+      "input_tokens": 30965,
+      "output_tokens": 375,
+      "unknown_usage_calls": 0
+    },
+    "no-memory": {
+      "calls": 20,
+      "usd": 0.2522112,
+      "input_tokens": 160275,
+      "output_tokens": 2286,
+      "unknown_usage_calls": 0
+    },
+    "memory": {
+      "calls": 20,
+      "usd": 0.1678644,
+      "input_tokens": 159963,
+      "output_tokens": 2283,
+      "unknown_usage_calls": 0
+    },
+    "usd-retries": {
+      "calls": 39,
+      "usd": 0.1382034,
+      "input_tokens": 235812,
+      "output_tokens": 2970,
+      "unknown_usage_calls": 0
+    }
+  },
+  "stratified_forecast": {
+    "core_single_h0_usd": 0.01996525,
+    "core_dialogue_h0_usd": 0.0737246,
+    "core_dependent_h0_usd": 0.12700555,
+    "one_order_20dev_40formal_usd_range": [
+      47.47,
+      52.43
+    ],
+    "center_usd": 49.95,
+    "two_order_usd_range": [
+      87.66,
+      96.57
+    ],
+    "assumptions": "Cold-editor cost for both formal PPC arms; observed dialogue/dependency ratios; compound execution 1x–3x. Full retry USD allowance, not truncated single-task actual spend."
+  },
+  "limitations": [
+    "One development question; empty-bank memory arm is not a transfer test.",
+    "Snapshot hashes were separately supplemented during pilot; fresh main protocol freezes every nested raw source file before execution.",
+    "Pilot driver repeated budget-denied empty retries up to cap; no extra paid call for those denials. Fixed and regression-tested before main study.",
+    "Per-call latency added only in new main/mechanism protocol; pilot cannot claim complete end-to-end timing."
+  ],
+  "immutable_ledger_receipt": "data\\harness-v3-pilot01\\completed-cost-pilot-ledger.json"
+}

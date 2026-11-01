@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field
 from app.config import Settings
 from app.sources import content_hash
 from evaluation.contracts import Episode
+from evaluation.protocol import execution_identity, freeze
 from evaluation.runtime import PersistentBudget, run_episode, write
 
 MANUAL_SKILL = (
@@ -23,6 +24,8 @@ MANUAL_SKILL = (
 class Component(BaseModel):
     skill: str = Field(default="", max_length=1600)
     context_policy: Literal["relevant", "recent"] = "relevant"
+    source_experience_ids: list[str] = Field(default_factory=list, max_length=3)
+    experience_policy: Literal["on_gap", "proactive", "disabled"] = "on_gap"
     rationale: str = Field(max_length=700)
 
 
@@ -106,8 +109,16 @@ def public_probe(directory):
         ],
         "model_calls": response["usage"]["model_calls"],
         "estimated_or_reserved_usd": response["usage"]["estimated_or_reserved_usd"],
+        "input_tokens": sum(
+            (m.get("usage") or {}).get("input_tokens", 0) for m in response["usage"].get("receipts", [])
+        ),
+        "output_tokens": sum(
+            (m.get("usage") or {}).get("output_tokens", 0) for m in response["usage"].get("receipts", [])
+        ),
         "context_packing": [
-            e["data"]["context_packing"] for e in turn["events"] if e["type"] == "action_selected"
+            e["data"]["context_packing"]
+            for e in turn["events"]
+            if e["type"] == "action_selected" and "context_packing" in e["data"]
         ],
         "trace": str(Path(directory) / "turn-1.json"),
     }
@@ -119,6 +130,9 @@ def quality(observation):
         -len(observation["unmet_goals"]),
         -sum(o.get("status") == "error" for o in observation["observations"]),
         -observation["model_calls"],
+        -observation.get("input_tokens", 0),
+        -observation.get("output_tokens", 0),
+        -observation["estimated_or_reserved_usd"],
     )
 
 
@@ -131,8 +145,7 @@ class ExperienceBank:
         return [
             entry
             for entry in self.entries.values()
-            if entry["adopted"]
-            and (
+            if (
                 family in entry["families"]
                 or redundant
                 and entry["applicability"] == "redundant_verification"
@@ -146,17 +159,25 @@ class ExperienceBank:
             "before_errors": sum(o.get("status") == "error" for o in before["observations"]),
             "after_errors": sum(o.get("status") == "error" for o in after["observations"]),
         }
-        if not component.skill and component.context_policy == "relevant":
+        if (
+            not component.skill
+            and component.context_policy == "relevant"
+            and component.experience_policy == "on_gap"
+        ):
             return None  # No-change experiments stay in run logs, not duplicated retrievable lessons.
         applicability = (
             "redundant_verification"
             if any(o.get("tool") == "validate_result" for o in before["observations"])
             else family
         )
-        key = content_hash([component.skill, component.context_policy, applicability, adopted])[:20]
+        key = content_hash(
+            [component.skill, component.context_policy, component.experience_policy, applicability, adopted]
+        )[:20]
         if key in self.entries:
             self.entries[key]["families"] = sorted(set(self.entries[key]["families"] + [family]))
-            self.entries[key]["supporting_traces"].append(after["trace"])
+            self.entries[key]["supporting_traces"] = list(
+                dict.fromkeys([*self.entries[key]["supporting_traces"], after["trace"]])
+            )
         else:
             self.entries[key] = {
                 "id": key,
@@ -171,16 +192,49 @@ class ExperienceBank:
         return key
 
 
-def ppc(episode, settings, root, budget, baseline, bank=None):
+def ppc(episode, settings, root, budget, baseline, bank=None, frozen=Path("examples")):
+    freeze(
+        root / "ppc-protocol.json",
+        execution_identity(
+            settings,
+            episode=episode.model_dump(mode="json"),
+            baseline=str(baseline),
+            incoming_memory=list(bank.entries.values()) if bank is not None else [],
+        ),
+    )
     if (root / "ppc.json").exists():
-        return json.loads((root / "ppc.json").read_text(encoding="utf-8"))
+        cached = json.loads((root / "ppc.json").read_text(encoding="utf-8"))
+        if bank is not None:
+            if "bank_checkpoint" not in cached:
+                raise ValueError(
+                    "Legacy PPC cache has no public-feedback memory checkpoint; use a new study directory"
+                )
+            bank.entries = cached["bank_checkpoint"]
+        return cached
     start_calls = len(budget.events)
     before = public_probe(baseline)
     retrieved = bank.retrieve(episode.family, before) if bank else []
+
+    def validate_component(component):
+        component = safe_component(component)
+        if set(component.source_experience_ids) - {e["id"] for e in retrieved}:
+            raise ValueError("Component references an experience not provided to the editor")
+        filters = (before.get("task") or {}).get("filters", {})
+        names = [
+            episode.entity_group,
+            filters.get("condition"),
+            filters.get("sponsor"),
+            *filters.get("interventions", []),
+        ]
+        if any(name and name.casefold() in component.skill.casefold() for name in names):
+            raise ValueError("Reusable components cannot memorize current entity identities")
+        return component
+
     edit_system = (
         "Propose one small reusable analysis procedure or effective context selection policy. "
         "You cannot change model, budget, permissions, statistical kernels, evidence, schemas or verifiers. "
         "No task IDs, drug/disease/sponsor names, answers or future dialogue content in a component. "
+        "You may change when the executor searches/reads experience (on_gap/proactive/disabled). Cite reused lesson IDs in source_experience_ids. Negative lessons warn against failed edits; do not activate them. "
         "Seek observable fewer invalid/redundant tool calls or better completion without losing any requested goal. "
         "An empty skill is valid if no evidence supports a change. You see only public observations; no hidden scoring labels."
     )
@@ -188,6 +242,18 @@ def ppc(episode, settings, root, budget, baseline, bank=None):
         "current_request": episode.turns[0].query,
         "observed_execution": before,
         "retrieved_experience": retrieved,
+        "framework_manifest": {
+            "system_prompt": __import__("app.v2.context", fromlist=["SYSTEM"]).SYSTEM,
+            "tool_contracts": Path("app/v2/contracts.py").read_text(encoding="utf-8"),
+            "context_packing": Path("app/v2/context.py").read_text(encoding="utf-8"),
+            "tool_implementation": Path("app/v2/tools.py").read_text(encoding="utf-8"),
+            "editable": [
+                "bounded procedure text",
+                "context policy: relevant or recent",
+                "experience read policy: on_gap/proactive/disabled",
+            ],
+            "negative_experiences": "Readable lessons about rejected trials; never treat them as adopted components.",
+        },
     }
     probes, proposed = [], []
     editor_errors = []
@@ -198,7 +264,7 @@ def ppc(episode, settings, root, budget, baseline, bank=None):
             component = Component.model_validate_json(saved.read_text(encoding="utf-8"))
         else:
             try:
-                component = safe_component(
+                component = validate_component(
                     generate(
                         settings,
                         budget,
@@ -220,20 +286,27 @@ def ppc(episode, settings, root, budget, baseline, bank=None):
             settings,
             path,
             budget,
-            Path("examples"),
+            frozen,
             skill=component.skill,
             policy=component.context_policy,
+            experiences=list(bank.entries.values()) if bank is not None else [],
+            experience_policy=component.experience_policy,
         )
         probes.append(public_probe(path))
     try:
-        composed = generate(
-            settings,
-            budget,
-            Composition,
-            edit_system + " Combine only supported changes; explain observed behavior differences.",
-            {**base_input, "proposals": [c.model_dump() for c in proposed], "probe_observations": probes},
-        )
-        component = safe_component(composed.component)
+        saved = root / "composition.json"
+        if saved.exists():
+            composed = Composition.model_validate_json(saved.read_text(encoding="utf-8"))
+        else:
+            composed = generate(
+                settings,
+                budget,
+                Composition,
+                edit_system + " Combine only supported changes; explain observed behavior differences.",
+                {**base_input, "proposals": [c.model_dump() for c in proposed], "probe_observations": probes},
+            )
+            write(saved, composed.model_dump())
+        component = validate_component(composed.component)
     except Exception as error:
         editor_errors.append({"role": "composer", "error_type": type(error).__name__})
         component = Component(rationale="Composer failed; retain baseline")
@@ -244,9 +317,11 @@ def ppc(episode, settings, root, budget, baseline, bank=None):
         settings,
         combined_path,
         budget,
-        Path("examples"),
+        frozen,
         skill=component.skill,
         policy=component.context_policy,
+        experiences=list(bank.entries.values()) if bank is not None else [],
+        experience_policy=component.experience_policy,
     )
     combined = public_probe(combined_path)
     # Selection uses public fixed checks. Hidden semantic scoring remains outside the editor.
@@ -257,18 +332,28 @@ def ppc(episode, settings, root, budget, baseline, bank=None):
         settings,
         root / "final",
         budget,
-        Path("examples"),
+        frozen,
         skill=selected.skill,
         policy=selected.context_policy,
+        experiences=list(bank.entries.values()) if bank is not None else [],
+        experience_policy=selected.experience_policy,
     )
     final_observation = public_probe(root / "final")
-    # A failed semantic/evidence audit invalidates the claimed adoption, never becomes a positive lesson.
-    verified_adoption = adopt and final["correct"]
+    # Hidden labels are report-only. They must never control what subsequent tasks can read.
+    verified_adoption = adopt and quality(final_observation) > quality(before)
     lesson = (
         bank.add(episode.family, before, final_observation, component, verified_adoption) if bank else None
     )
-    applied = [
-        e["id"] for e in retrieved if e["component"]["skill"] and e["component"]["skill"] in component.skill
+    applied = [e["id"] for e in retrieved if e["id"] in selected.source_experience_ids]
+    executor_reads = [
+        o["skill_id"]
+        for o in final_observation["observations"]
+        if o.get("tool") == "read_skill" and o.get("status") == "ok"
+    ]
+    executor_applied = [
+        o["skill_id"]
+        for o in final_observation["observations"]
+        if o.get("tool") == "apply_skill" and o.get("status") == "ok"
     ]
     report = {
         "general": proposed[0].model_dump(),
@@ -276,14 +361,18 @@ def ppc(episode, settings, root, budget, baseline, bank=None):
         "composition": composed.model_dump(),
         "retrieved": [e["id"] for e in retrieved],
         "applied": applied,
+        "executor_read_skill_ids": executor_reads,
+        "executor_activated_skill_ids": executor_applied,
+        "application_limit": "Editor provenance IDs and executor activation are observable; neither alone proves behavioral benefit.",
         "adopted": verified_adoption,
-        "adoption_rule": "public completion/error/call improvement, then independent semantic/evidence audit",
+        "adoption_rule": "public completion/error/call/cost improvement only; hidden audit is report-only",
         "experience_id": lesson,
         "final": final,
         "probe_behavior": {"baseline": quality(before), "combined": quality(combined)},
         "context_policy_effective": any(p["omitted_steps"] for p in combined["context_packing"]),
         "editor_errors": editor_errors,
         "model_calls_including_editors": len(budget.events) - start_calls,
+        "bank_checkpoint": bank.entries if bank is not None else None,
     }
     write(root / "ppc.json", report)
     return report

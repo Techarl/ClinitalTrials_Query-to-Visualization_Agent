@@ -1,0 +1,35 @@
+{
+  "summary": {
+    "episode_id": "ep_9de4920e7b95036f",
+    "family": "single_phase",
+    "split": "development",
+    "origin": "authored",
+    "correct": true,
+    "turns": 1,
+    "model_calls": 5,
+    "estimated_or_reserved_usd": 0.0207532,
+    "unknown_attempts": 0,
+    "invalid_tools": 0,
+    "failures": [
+      []
+    ],
+    "elapsed_seconds": 29.14,
+    "runtime_inputs": "current and past utterances only; no labels or future answers",
+    "skill": "",
+    "context_policy": "relevant"
+  },
+  "budget": {
+    "calls": 5,
+    "usd": 0.0207532,
+    "input_tokens": 30942,
+    "output_tokens": 373,
+    "unknown_usage_calls": 0,
+    "measured_api_seconds": 12.989677906036377,
+    "calls_without_latency": 0
+  },
+  "ledger_sha256": "b61d358ae33efff462870f4f67eaa354d565eceb1a441e6f7849cdc0df4daf6b",
+  "runtime": "C:\\Users\\10664\\Projects\\cheiron_takeHome\\data\\harness-v3-capsule02\\evaluation\\runtime.py",
+  "limit": "One infrastructure smoke cannot establish that every filesystem failure is fixed.",
+  "atomic_lock_tests": "4 passed, including real Windows reader without delete sharing",
+  "scope": "Capsule-only bounded replacement patch; identical production prompt and tools; root runtime unchanged"
+}

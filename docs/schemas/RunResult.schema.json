@@ -64,7 +64,8 @@
           "enum": [
             "clinicaltrials",
             "pubmed",
-            "entity"
+            "entity",
+            "answer"
           ],
           "title": "Source Type",
           "type": "string"
@@ -163,7 +164,8 @@
             "complete_records",
             "official_counts",
             "literature",
-            "entity"
+            "entity",
+            "source_excerpts"
           ],
           "title": "Statistics Basis",
           "type": "string"
@@ -192,7 +194,8 @@
             "complete_contributors",
             "sample_only",
             "article_metadata",
-            "mapping_sources"
+            "mapping_sources",
+            "quoted_sources"
           ],
           "title": "Evidence Coverage",
           "type": "string"
@@ -435,7 +438,8 @@
           "enum": [
             "chart",
             "literature",
-            "entity"
+            "entity",
+            "answer"
           ],
           "title": "Kind",
           "type": "string"
@@ -608,6 +612,35 @@
       "type": "object"
     },
     "JsonValue": {},
+    "ScopeCorrection": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "description": "filters.condition, filters.interventions, date_range or intervention_scope",
+          "title": "Field",
+          "type": "string"
+        },
+        "request_quote": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Request Quote",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 600,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "request_quote",
+        "reason"
+      ],
+      "title": "ScopeCorrection",
+      "type": "object"
+    },
     "TaskSpec": {
       "additionalProperties": false,
       "properties": {
@@ -674,6 +707,14 @@
           },
           "maxItems": 15,
           "title": "Clear Fields",
+          "type": "array"
+        },
+        "corrections": {
+          "items": {
+            "$ref": "#/$defs/ScopeCorrection"
+          },
+          "maxItems": 15,
+          "title": "Corrections",
           "type": "array"
         }
       },

@@ -53,7 +53,7 @@ def main():
     credentials = dotenv_values(ROOT / ".env")
     secrets = [
         credentials[key].encode("utf-8")
-        for key in ("OPENAI_API_KEY", "OPENROUTER_API_KEY", "NEO4J_PASSWORD")
+        for key in ("OPENAI_API_KEY", "OPENROUTER_API_KEY", "NEO4J_PASSWORD", "HF_TOKEN")
         if credentials.get(key)
     ]
     hashes = {}

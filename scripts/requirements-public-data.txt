@@ -1,0 +1,3 @@
+# Optional adapter for the official TrialQA Parquet download.
+# Install alongside requirements.lock, in a separate research environment.
+pyarrow==19.0.1

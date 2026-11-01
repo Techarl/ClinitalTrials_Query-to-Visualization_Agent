@@ -1,0 +1,25 @@
+{
+  "recorded_at": "2026-11-01T06:19:08.600741+00:00",
+  "stage": "during pilot; supplement to pilot protocol, not a preregistration claim",
+  "manifests": {
+    "data\\core300-frozen\\snapshots\\ds_07dcd2c0a6d7472083ec15de44e6e280\\manifest.json": "589e376bb4e645643234cf310f359fe57578eb98ef5d9437b8aa41133e3e4fcd",
+    "data\\core300-frozen\\snapshots\\ds_0bdbc24714324140b2f82b947c2cab11\\manifest.json": "a8689cae76e26c902cea91460ffe1dc4a7e0fff530ea8d598334500fce733706",
+    "data\\core300-frozen\\snapshots\\ds_0d4a262c0c844bcaa9543edfa206b02c\\manifest.json": "e316fa07f5da18cf5088e61377b02128e1907b672621e2d17524400d1c08c9f0",
+    "data\\core300-frozen\\snapshots\\ds_113e143471ab41d1b3d75a150be1ca1f\\manifest.json": "67df91b850958cb30b5ff03b1bff57cf67e6b387a5cc6784504d0b7e124d89fc",
+    "data\\core300-frozen\\snapshots\\ds_117c477e444546bab855e0a4cc8db76c\\manifest.json": "674531da3ea2a3b6f8b1576cec328ce1d0844fdd1523512d674f97896bd92e34",
+    "data\\core300-frozen\\snapshots\\ds_1f6f7bb6797f42638aef1913b6331177\\manifest.json": "455a149415629facce498f2282b0604c27f7a9d7bd15ae1bd151d04ad70cc8cd",
+    "data\\core300-frozen\\snapshots\\ds_3c87a7538a004f0ea49a0b86e91bc670\\manifest.json": "2f132f7ebfc905c8adf80907c73cb223181a198e51834dd5cb6cbf011d37703d",
+    "data\\core300-frozen\\snapshots\\ds_7517c34f9e224af0ac659f6a11e9e6cc\\manifest.json": "8038708da237094dae9ff3190a6f8869a1100e22c8e0af4ab67777b3a66c1e9d",
+    "data\\core300-frozen\\snapshots\\ds_8afc7eda6e544be0ae9c7206f86639b6\\manifest.json": "cc0a26cbe98b1f965b580d1f2c809a9b67c692da9059dffc8e996e8501c33a0a",
+    "data\\core300-frozen\\snapshots\\ds_a3e219c2b6734b35901e923d6d2f01e1\\manifest.json": "07917d81720647249bcc9c6fa86d14a81c487fecf1a7fb4702fc239be06e8a9a",
+    "data\\core300-frozen\\snapshots\\ds_a958afc813a24914bd37e0f7466fc5a3\\manifest.json": "74dbd5730da6314a63df7e40b73204f9f73ad268b075b1517d3b97b6f49680f1",
+    "data\\core300-frozen\\snapshots\\ds_ab8e7eae617644e397362a1abe5b47f4\\manifest.json": "fc268d47d198174c9313b7fab1d4c7d1a1ce5ab36b605719499fcd2cd2b5a09c",
+    "data\\core300-frozen\\snapshots\\ds_bb1bf54d566c4a42940e5259d27d70ea\\manifest.json": "62dd42c32163eaa93a10313c993d708b20d115626720a2a802a53811584e2c40",
+    "data\\core300-frozen\\snapshots\\ds_c5dc196b3c784b2f8e0d54f8608ec06d\\manifest.json": "e3dd007599ef5fd63ab64c260fe5e62f9fec01735ecde2a5063d11d67e0ecc7b",
+    "data\\core300-frozen\\snapshots\\ds_c947f9cfd1874ff896079a11c8483d07\\manifest.json": "25dd28bb732126b98c0e561a0e88d6f2c2f30dd014bc08e588033e6775619824",
+    "evaluation\\frozen\\snapshots\\ds_32df02d16e6d4d43bbe53721712bdee3\\manifest.json": "4274f87275ce96931c98da640eac40e5fbc2baa53c231095ad120da339d218fd",
+    "evaluation\\frozen\\snapshots\\ds_4e3ae78483304866998a97fc8f2515dd\\manifest.json": "296413fe7a12676a35b9b8d6e6c2d1eeff55c280be4814ea75aeaf7740a136d7",
+    "evaluation\\frozen\\snapshots\\ds_82f92d4a06a4490294caf15e86e3c5d3\\manifest.json": "915d219f45fedc189b9d45b361c2defa0e8249290962c06d41f92504ef9f7850",
+    "evaluation\\frozen\\snapshots\\ds_8ded29e749d04c3fb21f78976efcbc68\\manifest.json": "3ba3f33d4a4abe32362a14f15b8b92d3431ea4b721de44497a3073c80993c1a5"
+  }
+}

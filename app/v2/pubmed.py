@@ -182,8 +182,13 @@ def register_pubmed(registry):
             },
         )
         output = registry.publish(artifact, state, {"source_handle": source_handle})
+        readable = registry.store.asset(
+            state["session_id"], state["run_id"], "source_text", {"articles": articles}
+        )
         return {
             **output,
+            "source_handle": readable,
+            "read_instruction": "Use read_source to read /articles or /articles/0/abstract before making literature claims.",
             "articles": [
                 {"pmid": item["pmid"], "title": item["title"], "citation_id": item["citation_id"]}
                 for item in articles

@@ -30,21 +30,28 @@ def eligibility_passages(study, source_path, source_sha256):
     nct_id = protocol["identificationModule"]["nctId"]
     title = protocol["identificationModule"]["briefTitle"]
     raw = protocol.get("eligibilityModule", {}).get("eligibilityCriteria", "")
-    boundaries = list(
-        re.finditer(r"(?m)^\s*(?:\* |(?:Inclusion|Exclusion)(?: Criteria)?\s*:?[ \t]*$)", raw, re.I)
+    # Split at list items, section headings and paragraph starts. Keep every
+    # non-whitespace character, including header text sharing a criterion block.
+    starts = {0}
+    starts.update(
+        m.start()
+        for m in re.finditer(
+            r"(?mi)^[ \t]*(?:\\?[-*•] |\d+[.)] |(?:Inclusion|Exclusion)\b)|(?<=\n)\n(?=\S)", raw
+        )
     )
+    boundaries = sorted(starts) + [len(raw)]
     section, result = "unspecified", []
-    for index, match in enumerate(boundaries):
-        start = match.start()
-        end = boundaries[index + 1].start() if index + 1 < len(boundaries) else len(raw)
+    for start, end in zip(boundaries, boundaries[1:]):
         while start < end and raw[start].isspace():
             start += 1
         while end > start and raw[end - 1].isspace():
             end -= 1
         value = raw[start:end]
-        if re.match(r"^(Inclusion|Exclusion)\b", value, re.I):
-            section = "exclusion" if value.lower().startswith("exclusion") else "inclusion"
-            continue
+        heading = re.match(r"^(?:\\?[-*•] )?(Inclusion|Exclusion)\b", value, re.I)
+        if heading:
+            section = heading.group(1).lower()
+            if re.fullmatch(r"(?:\\?[-*•] )?(?:Inclusion|Exclusion)(?: Criteria)?\s*:?", value, re.I):
+                continue  # Heading is represented by section; never discard its following prose.
         if not value:
             continue
         identity = hashlib.sha256(f"{nct_id}:{source_sha256}:{start}:{end}".encode()).hexdigest()[:16]

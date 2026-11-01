@@ -1,0 +1,13 @@
+{
+  "protocol_sha256": "801e07be29b877f6cfd6dd2cfb0fed8208700550fa6a0951412e9fec51efbc70",
+  "models": {
+    "gpt-6-luna": 42,
+    "typesafe/jev-1.14-20261014": 42
+  },
+  "attempts": 84,
+  "estimated_or_reserved_usd": 0.002400988000000019,
+  "unknown_attempts": 0,
+  "warmup_calls": 20,
+  "measured_calls": 64,
+  "source_archive_sha256": "d450d6320cd070a1256b75d717039394c2e5d4daa795c70ce49c53d36a0c25c2"
+}

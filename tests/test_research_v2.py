@@ -74,18 +74,19 @@ def test_semantic_scorer_rejects_unrequested_restrictions():
     assert "constraint:countries" in verdict["failures"]
 
 
-def test_experience_requires_change_and_adoption_and_deduplicates():
+def test_experience_requires_change_and_retains_negative_lessons_and_deduplicates():
     bank = ExperienceBank()
     before = {"model_calls": 6, "observations": [{"tool": "validate_result"}], "trace": "before.json"}
     after = {"model_calls": 5, "observations": [], "trace": "after.json"}
     assert bank.add("phase", before, after, Component(rationale="No change"), False) is None
     component = Component(skill="Reuse a completed verified analysis receipt.", rationale="One fewer call")
     bank.add("phase", before, after, component, False)
-    assert bank.retrieve("phase", before) == []
+    assert len(bank.retrieve("phase", before)) == 1
+    assert bank.retrieve("phase", before)[0]["adopted"] is False
     key = bank.add("phase", before, after, component, True)
     assert bank.add("year", before, after, component, True) == key
     assert len(bank.entries) == 2
-    assert bank.retrieve("other", before)[0]["id"] == key
+    assert key in {e["id"] for e in bank.retrieve("other", before)}
     assert bank.retrieve("other", {"observations": []}) == []
     with pytest.raises(ValueError, match="memorize"):
         safe_component(Component(skill="For asthma always answer 116", rationale="bad"))

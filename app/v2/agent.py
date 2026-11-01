@@ -200,6 +200,25 @@ class V2Agent:
             return {}
         if state.get("current_action"):
             return {}
+        signature = "model:" + str(state.get("decision_index", 0))
+        journal = self.store.journal(state["run_id"], signature)
+        if journal and journal["status"] == "completed":
+            # A paid, durable decision may survive a crash at the last allowed call.
+            outcome = journal["output"]
+            if not outcome.get("action"):
+                self.finish(state, "failed", "The recorded planner attempt did not return an action.")
+            else:
+                state["current_action"] = outcome["action"]
+                self.store.save(state)
+                self.store.event(
+                    state["run_id"],
+                    "action_selected",
+                    {
+                        "action": outcome["action"]["name"],
+                        "replayed": True,
+                    },
+                )
+            return {}
         usage = usage_report(self.store, state["run_id"])
         state["remaining_steps"] = self.settings.v2_max_model_calls - usage["model_calls"]
         if state["remaining_steps"] <= 0:
@@ -231,6 +250,14 @@ class V2Agent:
                 outcome = {"action": None, "metadata": {"error_type": type(error).__name__, "usage": None}}
             self.store.complete(state["run_id"], signature, outcome)
         self.store.event(state["run_id"], "usage_updated", usage_report(self.store, state["run_id"]))
+        latest = self.store.run(state["run_id"])
+        if latest["cancelled"] or time.time() >= latest["deadline_epoch"]:
+            self.finish(
+                latest,
+                "cancelled" if latest["cancelled"] else "limited",
+                "Execution stopped after the planner returned; its usage is retained.",
+            )
+            return {}
         if not outcome["action"]:
             self.finish(
                 state, "failed", "The planner did not return a valid action; call accounting is retained."
@@ -285,15 +312,60 @@ class V2Agent:
                 raise ValueError(f"Plan must preserve this turn's explicit {key}")
         if proposed["source_mode"] != request.get("source_mode", "full_evidence"):
             raise ValueError("Official-count overview requires explicit request permission")
+        scope_changed = False
         if state.get("task"):
             if not {g["id"] for g in state["task"]["goals"]} <= {g["id"] for g in proposed["goals"]}:
                 raise ValueError("Repair cannot drop already-declared task goals")
             for key in ("filters", "date_range", "intervention_scope", "source_mode"):
                 if proposed[key] != state["task"][key]:
-                    raise ValueError("Repair cannot change already-confirmed task scope within a run")
+                    fields = (
+                        [f"filters.{k}" for k in proposed[key] if proposed[key][k] != state["task"][key][k]]
+                        if key == "filters"
+                        else [key]
+                    )
+                    for field in fields:
+                        correction = next((c for c in task.corrections if c.field == field), None)
+                        utterance = request["query"]
+                        value = (
+                            proposed["filters"][field.split(".")[1]]
+                            if field.startswith("filters.")
+                            else proposed[key]
+                        )
+                        values = value if isinstance(value, list) else [value]
+                        if (
+                            not correction
+                            or correction.request_quote not in utterance
+                            or not values
+                            or any(
+                                v is None
+                                or not isinstance(v, (str, int))
+                                or str(v).casefold() not in correction.request_quote.casefold()
+                                for v in values
+                            )
+                        ):
+                            raise ValueError(
+                                "Scope repair requires a verbatim original-request quote containing each corrected value; explicit user constraints cannot be weakened"
+                            )
+                    scope_changed = True
         validated = TaskSpec.model_validate(proposed)
+        if scope_changed:
+            state.setdefault("scope_revisions", []).append(
+                {
+                    "previous_task": state["task"],
+                    "previous_version": state["constraints_version"],
+                    "corrections": [c.model_dump() for c in task.corrections],
+                    "superseded_result_ids": list(state["result_ids"]),
+                }
+            )
+            state["result_ids"] = []
         state["task"] = validated.model_dump(mode="json")
-        state["constraints_version"] += 1
+        if scope_changed or not state["constraints_version"]:
+            state["constraints_version"] += 1
+        state["constraint_provenance"] = {
+            "structured_user_fields": request.get("filters", {}),
+            "natural_language_request": request["query"],
+            "interpretation": "model_inference_with_quoted_repairs",
+        }
         return {
             "tool": "define_task",
             "status": "ok",
@@ -303,6 +375,15 @@ class V2Agent:
 
     def execute(self, graph_state):
         state = self.store.run(graph_state["run_id"])
+        if state["status"] in TERMINAL:
+            return {}
+        if state["cancelled"] or time.time() >= state["deadline_epoch"]:
+            self.finish(
+                state,
+                "cancelled" if state["cancelled"] else "limited",
+                "Execution stopped before the next action.",
+            )
+            return {}
         action = state["current_action"]
         name, arguments = action["name"], action["arguments"]
         try:
@@ -321,16 +402,58 @@ class V2Agent:
                     self.finish(state, "limited", args.reason)
                     return {}
                 else:
-                    state["result_ids"] = list(dict.fromkeys([*state["result_ids"], *args.result_ids]))
+                    excerpts = []
+                    for finding in args.findings:
+                        reads = [
+                            o
+                            for o in state["observations"]
+                            if o.get("source_handle") == finding.source_handle
+                            and o.get("pointer", "") == finding.pointer
+                            and o.get("status") == "ok"
+                            and o.get("text")
+                        ]
+                        if not any(finding.quotation in o["text"] for o in reads):
+                            raise ValueError(
+                                "Final source quotation was not present in text read during this run"
+                            )
+                        excerpts.append(
+                            f"Source {finding.source_handle}{finding.pointer}: {finding.quotation}"
+                        )
+                    state["grounded_findings"] = [f.model_dump() for f in args.findings]
+                    # An explicit final selection replaces abandoned attempts. Dependencies
+                    # are still traversed and independently verified by finish().
+                    if args.result_ids:
+                        state["superseded_result_ids"] = [
+                            h for h in state["result_ids"] if h not in args.result_ids
+                        ]
+                        state["result_ids"] = list(dict.fromkeys(args.result_ids))
                     state["finalization_note"] = args.message
                     self.finish(
                         state,
                         "completed",
-                        "Results are assembled from validated artifacts. See each chart for its scope, metric, exclusions and source evidence.",
+                        "Results are assembled from validated artifacts. See each chart for its scope, metric, exclusions and source evidence."
+                        + ("\n\nRead source excerpts:\n" + "\n\n".join(excerpts) if excerpts else ""),
                     )
                     return {}
             else:
                 observation = self.registry.call(name, arguments, state)
+                if observation.get("status") == "ok" and name == "read_skill":
+                    state["read_skill_ids"] = list(
+                        dict.fromkeys(
+                            [
+                                *state.get("read_skill_ids", []),
+                                observation["skill_id"],
+                            ]
+                        )
+                    )
+                if observation.get("status") == "ok" and name == "apply_skill":
+                    active = [
+                        s for s in state.get("active_skills", []) if s["skill_id"] != observation["skill_id"]
+                    ]
+                    state["active_skills"] = [
+                        *active[-2:],
+                        {k: observation[k] for k in ("skill_id", "version", "procedure")},
+                    ]
                 if observation.get("status") == "ok" and observation.get("result_id"):
                     state["result_ids"] = list(
                         dict.fromkeys([*state["result_ids"], observation["result_id"]])
@@ -381,7 +504,7 @@ class V2Agent:
                 valid.append(handle)
                 pending.extend(h for h in artifact.dependencies if h not in seen)
             except (ValueError, KeyError, TimeoutError) as error:
-                failures.append(type(error).__name__)
+                failures.append({"handle": handle, "error_type": type(error).__name__})
         state["result_ids"] = valid
         goals = (state.get("task") or {}).get("goals", [])
         by_goal = {goal["id"]: [] for goal in goals}
@@ -397,6 +520,16 @@ class V2Agent:
                     completed_goals.add(goal["id"])
                     break
         unmet = [goal["id"] for goal in goals if goal["id"] not in completed_goals]
+        unresolved = []
+        for failure in failures:
+            try:
+                replaced = self.registry.artifact(failure["handle"], state).goal_id in completed_goals
+            except (ValueError, KeyError):
+                replaced = False
+            if not replaced:
+                unresolved.append(failure)
+        state["rejected_result_attempts"] = failures
+        failures = unresolved
         if status == "completed" and (unmet or not goals or failures):
             status = "partial" if valid else "limited"
             message = (message + " Some declared goals are not satisfied.").strip()

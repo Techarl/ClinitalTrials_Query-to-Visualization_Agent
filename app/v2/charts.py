@@ -106,6 +106,18 @@ def temporal_or_scatter(args, scopes, store, run_id):
     if args.operation == "time_series":
         # Explicit zero buckets and a common x axis make group comparisons honest.
         keys = sorted({row["category"] for row in rows})
+        # Only bounds on the plotted date field define its display domain.
+        width = 4 if args.time_grain == "year" else 7
+        for scope, _, _ in scopes:
+            bound = scope.get("date_range") or {}
+            if bound.get("field") == args.time_field:
+                keys.extend(str(bound[k])[:width] for k in ("lower", "upper") if bound.get(k))
+            if args.time_field == "start":
+                for field, month in (("start_year", "01"), ("end_year", "12")):
+                    year = scope.get("filters", {}).get(field)
+                    if year is not None:
+                        keys.append(str(year) if width == 4 else f"{year}-{month}")
+        keys = sorted(set(keys))
         if keys:
             if args.time_grain == "year":
                 keys = [str(year) for year in range(int(keys[0]), int(keys[-1]) + 1)]

@@ -1,12 +1,14 @@
 # ClinicalTrials Query-to-Visualization Agent
 
-A local analysis workspace that turns clinical-study questions into interactive, source-grounded visualizations. The VNext agent uses native model tool calls and a bounded LangGraph observation loop: results from one tool can determine the next query and its cohorts. Fixed code and dataset-scoped Neo4j queries calculate counts and evidence; the model does not generate executable Cypher, Python, counts or citations.
+A local analysis workspace that turns clinical-study questions into interactive, source-grounded visualizations. The VNext agent uses native model tool calls and a bounded LangGraph observation loop: results from one tool can determine the next query and its cohorts. Fixed code and dataset-scoped Neo4j queries calculate counts and numerical evidence; the model does not supply executable Cypher, Python or chart counts. For qualitative answers it selects exact source quotations, which are checked against fields it actually read; interpretation remains a separate model-generated claim.
 
 The React/TypeScript/ECharts workspace adds streamed progress, multiple charts, field-level citations, history, revocable read-only sharing and exports. V2 supports sourced entity aliases, monthly date fields, duration scatter plots, country maps, official-count overviews with explicitly limited sample evidence, PubMed abstracts, and actual MCP stdio/HTTP transports. The original `/analyze` contract remains compatible. Research experiments are separate opt-in commands; they do not alter the default service.
 
 Start with the [VNext guide](docs/VNEXT.md), [acceptance matrix](docs/VNEXT_PROGRESS.md), and [real smoke evidence](docs/vnext/smoke_summary.json). The baseline five examples and historical research reports below remain unchanged; VNext evaluation is reported separately.
 
 Research results: [VNext execution, repair and Harness studies](docs/VNEXT_RESEARCH.md), and [Jev passage selection with dedicated/cheap-model/rule controls](docs/PASSAGE_SELECTION_RESULTS.md). These include full traces, negative results, cost accounting and a separate observation-driven evidence-gap recovery probe. The passage study does not enable model filtering of statistical populations.
+
+The next review phase adds [public datasets and frozen evaluation](docs/PUBLIC_EVALUATION.md), [Jev fairness and controlled latency](docs/JEV_FAIRNESS_REVIEW.md), and a [browser-verified UI revision](docs/UI_REVIEW_FIXES.md). The [progress record](docs/REVIEW_AND_PUBLIC_EVAL_PROGRESS.md) distinguishes implemented fixes, completed checks and studies still running. Historical scores below refer to their original versions, not the new expanded benchmark.
 
 ## Local setup
 
@@ -76,7 +78,7 @@ Each saved run used one real planner call:
 | [Enrollment](examples/04_enrollment/response.json) | Histogram | Psoriasis/secukinumab: 149 source records; missing enrollment excluded |
 | [Shared-drug sponsor links](examples/05_shared_drugs/response.json) | Network | Rheumatoid arthritis/adalimumab: 242 source records; distinct shared interventions |
 
-These are frozen observations, not permanent live counts. Each includes the request, response, full evidence and trace. Raw source collections are under `examples/snapshots/`. All five retain their frozen `5344202` generation source and original runtime hash. The current `118a0e5` engine recomputed every visualization, statistical metadata field, provenance object and full evidence collection from the frozen JSON through real Neo4j; all were unchanged. See [current replay](docs/ROUND3_EXAMPLE_REPLAY.json). Older snapshots remain as immutable historical artifacts.
+These are frozen observations, not permanent live counts. Each includes the request, response, full evidence and trace. Raw source collections are under `examples/snapshots/`. All five retain their frozen `5344202` generation source and original runtime hash. The Round 3 `118a0e5` engine recomputed every visualization, statistical metadata field, provenance object and full evidence collection from the frozen JSON through real Neo4j; all were unchanged. See [current replay](docs/ROUND3_EXAMPLE_REPLAY.json). Older snapshots remain as immutable historical artifacts.
 
 ```powershell
 # Offline: no database, network or model calls:
@@ -89,7 +91,7 @@ The independent checker reads raw sources without production normalization, aggr
 
 ## Validation
 
-The [Round 2 review fixes](docs/ROUND3_REVIEW_RESPONSE.zh-CN.md) close F1–F4: stable histogram intervals plus direct contributor invariants, current-explicit clarification scope, durable model-attempt/outcome accounting, and budget reservations for unknown usage. The current [validation report](docs/ROUND3_VALIDATION.json) records 109 tests with real Neo4j in both native and Linux environments. Historical research results remain frozen.
+The [Round 2 review fixes](docs/ROUND3_REVIEW_RESPONSE.zh-CN.md) close F1–F4: stable histogram intervals plus direct contributor invariants, current-explicit clarification scope, durable model-attempt/outcome accounting, and budget reservations for unknown usage. The historical Round 3 [validation report](docs/ROUND3_VALIDATION.json) records 109 tests with real Neo4j in both native and Linux environments. Historical research results remain frozen.
 
 ```powershell
 # No paid calls; graph fixtures skipped:
@@ -126,9 +128,9 @@ docker compose up --build -d
 
 Compose uses Community Neo4j 2026.10.1, persistent volumes and one worker. API binds to loopback 8000; Neo4j host ports 7475/7688 avoid Desktop. The internal API URI is `bolt://neo4j:7687`. Stop another API on 8000 before using this alternative. An existing Neo4j volume retains its original password.
 
-Current Docker verification passed: API image build, both service health checks, all 109 tests inside Linux, and a real two-turn scope correction producing 400/396 comparison cohorts. See [current validation](docs/ROUND3_VALIDATION.json). Native Desktop/Python execution also passed 109 tests. The [prior restart smoke](docs/DOCKER_VALIDATION.json), generated from `5344202`, separately records a 400-study analysis, API restart and 27-study Phase 3 follow-up with evidence paging, snapshot reuse and completed-run idempotency.
+Historical Round 3 Docker verification passed: API image build, both service health checks, all 109 tests inside Linux, and a real two-turn scope correction producing 400/396 comparison cohorts. See [Round 3 validation](docs/ROUND3_VALIDATION.json). Native Desktop/Python execution also passed 109 tests. The [prior restart smoke](docs/DOCKER_VALIDATION.json), generated from `5344202`, separately records a 400-study analysis, API restart and 27-study Phase 3 follow-up with evidence paging, snapshot reuse and completed-run idempotency.
 
-The historical [fresh-volume Compose check](docs/CLEAN_DOCKER_VALIDATION.json) also passed the real analysis/restart flow and was removed afterward; its optional port override is [scripts/compose.clean.yaml](scripts/compose.clean.yaml). The [current ZIP check](docs/ROUND3_PACKAGE_VALIDATION.json) extracted the package, installed its code into the previously verified environment with an identical dependency lock, passed 101 offline tests (8 database tests skipped), verified all five exports and passed `pip check`, without credentials or paid calls. The original [fresh-environment installation check](docs/ZIP_VALIDATION.json) is retained with its original source and test counts.
+The historical [fresh-volume Compose check](docs/CLEAN_DOCKER_VALIDATION.json) also passed the real analysis/restart flow and was removed afterward; its optional port override is [scripts/compose.clean.yaml](scripts/compose.clean.yaml). The [Round 3 ZIP check](docs/ROUND3_PACKAGE_VALIDATION.json) extracted the package, installed its code into the previously verified environment with an identical dependency lock, passed 101 offline tests (8 database tests skipped), verified all five exports and passed `pip check`, without credentials or paid calls. The original [fresh-environment installation check](docs/ZIP_VALIDATION.json) is retained with its original source and test counts.
 
 To intentionally repeat the real two-call container smoke test (paid main-model calls):
 

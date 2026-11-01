@@ -171,7 +171,10 @@ def corpus_from_traces(root, max_groups):
             turn = json.loads(turn_path.read_text(encoding="utf-8"))
             raw = turn["state"]
             semantic_failure = any(
-                f.startswith(("constraint:", "date_range:", "artifact:")) for f in turn["grade"]["failures"]
+                f.startswith(("constraint:", "date_range:", "artifact:")) or f in (
+                    "unrequested_date_range", "dependent_selection_request_mismatch",
+                    "invented_or_unrelated_cohorts", "literature_query", "literature_count",
+                ) for f in turn["grade"]["failures"]
             )
             expected = episode.turns[index].expected
             if expected["status"] == "completed" and turn["response"]["status"] != "completed":

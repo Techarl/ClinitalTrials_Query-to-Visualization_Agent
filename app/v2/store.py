@@ -35,6 +35,8 @@ class V2Store:
                 CREATE TABLE IF NOT EXISTS v2_shares (
                     token TEXT PRIMARY KEY, run_id TEXT NOT NULL, payload TEXT NOT NULL,
                     revoked INTEGER NOT NULL DEFAULT 0);
+                CREATE TABLE IF NOT EXISTS v2_submissions (
+                    id TEXT PRIMARY KEY, request_hash TEXT NOT NULL, run_id TEXT NOT NULL);
             """)
 
     def create(self, request, seconds: float) -> dict:
@@ -42,6 +44,18 @@ class V2Store:
         rid = "vr_" + uuid4().hex
         with self.base.connect() as conn:
             conn.execute("BEGIN IMMEDIATE")
+            if request.submission_id:
+                fingerprint = content_hash(request.model_dump(mode="json", exclude={"submission_id"}))
+                previous = conn.execute(
+                    "SELECT * FROM v2_submissions WHERE id=?", (request.submission_id,)
+                ).fetchone()
+                if previous:
+                    if previous["request_hash"] != fingerprint:
+                        raise StateConflict("Submission ID already belongs to a different request")
+                    row = conn.execute(
+                        "SELECT state FROM v2_runs WHERE id=?", (previous["run_id"],)
+                    ).fetchone()
+                    return json.loads(row["state"])
             conn.execute("INSERT OR IGNORE INTO v2_sessions VALUES (?,0,NULL)", (sid,))
             session = conn.execute("SELECT * FROM v2_sessions WHERE id=?", (sid,)).fetchone()
             parent_id = request.parent_run_id or session["head"]
@@ -102,6 +116,10 @@ class V2Store:
                 "INSERT INTO v2_runs VALUES (?,?,?,?,?,?,0,0)",
                 (rid, sid, parent_id, utc_now(), "queued", canonical_json(state)),
             )
+            if request.submission_id:
+                conn.execute(
+                    "INSERT INTO v2_submissions VALUES (?,?,?)", (request.submission_id, fingerprint, rid)
+                )
         self.event(rid, "run_created", {"query": request.query})
         return state
 
@@ -115,10 +133,19 @@ class V2Store:
     def save(self, state: dict, finish=False):
         with self.base.connect() as conn:
             conn.execute("BEGIN IMMEDIATE")
+            current = conn.execute(
+                "SELECT status,cancelled FROM v2_runs WHERE id=?", (state["run_id"],)
+            ).fetchone()
+            if current["status"] in TERMINAL:
+                return
+            if finish and current["cancelled"]:
+                state.update(
+                    status="cancelled",
+                    cancelled=True,
+                    current_action=None,
+                    message="Cancelled at a safe execution boundary.",
+                )
             if finish:
-                current = conn.execute("SELECT status FROM v2_runs WHERE id=?", (state["run_id"],)).fetchone()
-                if current["status"] in TERMINAL:
-                    return
                 updated = conn.execute(
                     "UPDATE v2_sessions SET version=version+1,head=? WHERE id=? AND version=?",
                     (state["run_id"], state["session_id"], state["session_version"]),
@@ -235,7 +262,9 @@ class V2Store:
     def history(self, session_id=None):
         with self.base.connect() as conn:
             rows = conn.execute(
-                "SELECT id,session_id,parent_id,created_at,status,state FROM v2_runs ORDER BY created_at DESC LIMIT 100"
+                "SELECT id,session_id,parent_id,created_at,status,state FROM v2_runs "
+                "WHERE (? IS NULL OR session_id=?) ORDER BY created_at DESC LIMIT 100",
+                (session_id, session_id),
             ).fetchall()
         return [
             {

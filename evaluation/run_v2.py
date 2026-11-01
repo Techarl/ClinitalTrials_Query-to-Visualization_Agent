@@ -8,6 +8,7 @@ from pathlib import Path
 
 from app.config import Settings
 from evaluation.contracts import Episode
+from evaluation.protocol import execution_identity, freeze
 from evaluation.runtime import PersistentBudget, run_episode, write
 
 
@@ -21,21 +22,27 @@ def main():
     parser.add_argument("--workers", type=int, default=3)
     parser.add_argument("--max-usd", type=float, default=15)
     parser.add_argument("--output", type=Path, default=Path("data/vnext-eval-v1"))
+    parser.add_argument("--cases", type=Path, default=Path("evaluation/cases_v2.json"))
+    parser.add_argument("--frozen", type=Path, default=Path("examples"))
     args = parser.parse_args()
-    corpus = json.loads(Path("evaluation/cases_v2.json").read_text(encoding="utf-8"))
+    corpus = json.loads(args.cases.read_text(encoding="utf-8"))
     episodes = [
         Episode.model_validate(e)
         for e in corpus["episodes"]
         if args.split == "all" or e["split"] == args.split
     ]
-    episodes = episodes[: args.limit] if args.limit else episodes
     if args.family:
         episodes = [e for e in episodes if e.family.startswith(args.family)]
+    episodes = episodes[: args.limit] if args.limit else episodes
     args.output.mkdir(exist_ok=True, parents=True)
     budget = PersistentBudget(args.output / "ledger.json", args.max_usd)
-    pending = [e for e in episodes if not (args.output / e.id / "summary.json").exists()]
+    pending = episodes
     settings = Settings()
-    write(
+    freeze(
+        args.output / "study.json",
+        execution_identity(settings, episodes=[e.model_dump(mode="json") for e in episodes]),
+    )
+    freeze(
         args.output / "environment.json",
         {
             "model": settings.openai_model,
@@ -55,18 +62,18 @@ def main():
                 for folder in ["app", "evaluation"]
                 for p in Path(folder).rglob("*.py")
             },
-            "case_sha256": hashlib.sha256(Path("evaluation/cases_v2.json").read_bytes()).hexdigest(),
+            "case_sha256": hashlib.sha256(args.cases.read_bytes()).hexdigest(),
             "dependency_sha256": hashlib.sha256(Path("requirements.lock").read_bytes()).hexdigest(),
             "source_manifests_sha256": {
                 p.as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
-                for folder in ["examples/snapshots", "evaluation/frozen"]
+                for folder in [str(args.frozen), "evaluation/frozen"]
                 for p in Path(folder).rglob("manifest.json")
             },
         },
     )
     with ThreadPoolExecutor(max_workers=args.workers) as executor:
         futures = {
-            executor.submit(run_episode, e, settings, args.output / e.id, budget, Path("examples")): e
+            executor.submit(run_episode, e, settings, args.output / e.id, budget, args.frozen): e
             for e in pending
         }
         for future in as_completed(futures):
@@ -75,6 +82,16 @@ def main():
                 result = future.result()
                 print(json.dumps(result, ensure_ascii=False), flush=True)
             except Exception as error:
+                write(
+                    args.output / episode.id / "failure.json",
+                    {
+                        "episode_id": episode.id,
+                        "split": episode.split,
+                        "correct": False,
+                        "runner_error": type(error).__name__,
+                        "status": "runner_failed",
+                    },
+                )
                 print(
                     json.dumps(
                         {
@@ -85,7 +102,22 @@ def main():
                     ),
                     flush=True,
                 )
-    rows = [json.loads(path.read_text(encoding="utf-8")) for path in args.output.glob("ep_*/summary.json")]
+    rows = []
+    for episode in episodes:
+        directory = args.output / episode.id
+        path = directory / "summary.json"
+        if not path.exists():
+            path = directory / "failure.json"
+        rows.append(
+            json.loads(path.read_text(encoding="utf-8"))
+            if path.exists()
+            else {
+                "episode_id": episode.id,
+                "split": episode.split,
+                "correct": False,
+                "status": "not_run",
+            }
+        )
     write(
         args.output / "report.json",
         {

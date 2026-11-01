@@ -1,6 +1,6 @@
 # VNext analysis workspace
 
-V2 adds an observation-driven agent and a React/TypeScript/ECharts client while retaining the v1 API and historical examples. The [implementation record](VNEXT_PROGRESS.md) records actual acceptance runs. See also [research results and limitations](VNEXT_RESEARCH.md) and [public-project capability comparison](VNEXT_PARITY.md).
+V2 adds an observation-driven agent and a React/TypeScript/ECharts client while retaining the v1 API and historical examples. The [implementation record](VNEXT_PROGRESS.md) records historical acceptance runs. See the newer [review work](REVIEW_AND_PUBLIC_EVAL_PROGRESS.md), [UI acceptance](UI_REVIEW_FIXES.md), and [public evaluation guide](PUBLIC_EVALUATION.md); the earlier [research results](VNEXT_RESEARCH.md) remain preserved separately.
 
 ## Start the workspace
 
@@ -40,6 +40,12 @@ flowchart LR
 
 Every attempt is journaled before invocation, and its receipt is saved before advancing the action. Completed identical tool inputs replay their result; interrupted external attempts remain recorded. Terminal state, session-head update and final event commit atomically. A concurrent completed branch remains accessible without replacing the newer session head. Startup resubmits unfinished automatic runs with their original deadlines; explicit resume is also available. Manual MCP/tool sessions are never automatically converted to paid model runs.
 
+`submission_id` makes transport retries idempotent: the same key and payload return one run, while a reused key with different input is rejected. Completed model receipts replay even when the new-call allowance is exhausted. Cancellation is rechecked after a model reply. Every requested comparison cohort must be present once, with labels bound to actual identities, before a result can complete.
+
+For textual questions, `lookup_trials` returns record handles for reading, `read_source` reads bounded source-field pages, and `publish_text_answer` retains exact quotations actually observed by the Agent. A sampled reading search is never a statistical population. Quotation integrity is checked deterministically; the model's interpretation is a separate semantic claim. JSON/share views retain these excerpts, while CSV and contributor exports apply to charts.
+
+`search_experiences`, `read_skill` and `apply_skill` let the executor read and activate immutable procedures when useful. Engineering seeds and experiment-learned lessons have separate provenance. Negative lessons are readable but cannot activate. Reading or applying a component is a mechanism observation, not evidence that it improved the answer.
+
 ## Data and interpretation
 
 - Full-evidence mode checks complete pagination, official totals, unique NCT IDs, raw hashes and source versions. Wide acquisition uses disjoint study-type partitions including an explicit unknown/other complement; overlap, changing versions or an incomplete union cannot publish a statistic.
@@ -62,7 +68,7 @@ Independent validators recompute complete rows, edges, nodes, date periods and s
 | `POST /v2/runs/{id}/resume` | Resume original run, or supply a new question with its explicit parent |
 | `POST /v2/runs/{id}/cancel` | Cancel at a safe execution boundary |
 | `GET /v2/results/{id}/evidence` | Owned result/item citations with offset/limit |
-| `GET /v2/runs/{id}/export` | JSON, CSV, or full evidence |
+| `GET /v2/runs/{id}/export` | Full result JSON (including quoted text), chart CSV, or chart contributor evidence |
 | `POST /v2/runs/{id}/share` | Immutable read-only local share snapshot |
 | `DELETE /v2/runs/{id}/shares/{token}` | Revoke a share |
 | `GET /s/{token}` | Read-only page; no session write controls |

@@ -1,0 +1,9 @@
+{
+  "run_id": "vr_b74bdeb43c59471c92d7cda47a7eb697",
+  "status": "completed",
+  "model_calls": 0,
+  "source_trial": "NCT00046748",
+  "quote": "12 Years",
+  "pointer": "/protocolSection/eligibilityModule/minimumAge",
+  "limitations": "Manual UI acceptance; not a model-generated answer."
+}

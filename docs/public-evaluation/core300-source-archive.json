@@ -1,0 +1,9 @@
+{
+  "path": "core300-sources.zip",
+  "sha256": "5533fbdbf4debed22fc81251077b9a043009995b5886881a8c7eda10b71bf844",
+  "bytes": 27519664,
+  "files": 33,
+  "credential_scan": "passed",
+  "contents": "Public ClinicalTrials.gov raw snapshots, manifests and authored template tasks only. No NLI4CT or gated TrialQA dataset.",
+  "restore": "Extract into the repository root; verify every SHA256-MANIFEST entry before evaluation."
+}

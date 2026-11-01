@@ -2,9 +2,13 @@
 
 **Jev improved selection over unfiltered hybrid order on this small benchmark, but did not beat Luna or deterministic trial-ID filtering on the heldout questions.** The useful architectural finding is to preserve structured scope first, then test text ranking only where ambiguity remains. This experiment supports the feasibility of focused evidence selection; it does not justify enabling Jev by default.
 
-The [frozen protocol](PASSAGE_SELECTION_PROTOCOL.md) and [machine-readable results](passage-selection/summary.json) describe 334 exact-source eligibility passages from 24 trials, four development questions and eight disease-disjoint heldout questions. All four primary arms receive the same hybrid top-12 candidates and a 350-token evidence cap. The answer model is GPT-6.1 Sol, medium reasoning. The actual decision model returned `typesafe/jev-1.14-20261014`; the cheap model is GPT-6 Luna. A fifth, locally frozen diagnostic filters the same pool to NCT IDs literally present in the question, without calling a ranking model.
+The [frozen protocol](PASSAGE_SELECTION_PROTOCOL.md) and [machine-readable results](passage-selection/summary.json) describe 334 exact-source eligibility passages: 24 trials were scanned, but only 23 produced passages. There are four development questions and eight disease-disjoint heldout questions. All four primary arms receive the same hybrid top-12 candidates and a 350-token evidence cap. The answer model is GPT-6.1 Sol, medium reasoning. The actual decision model returned `typesafe/jev-1.14-20261014`; the cheap model is GPT-6 Luna. A fifth, locally frozen diagnostic filters the same pool to NCT IDs literally present in the question, without calling a ranking model.
+
+A subsequent [extraction audit](public-evaluation/passage-extraction-audit.json) finds 365 passages across all 24 records with the corrected splitter, retaining every non-whitespace criterion character as an exact source span. Historical scores and archives above are unchanged; they describe the original 334-passage corpus.
 
 ## Heldout results
+
+**Latency interpretation correction:** the historical timings below include unequal HTTP client reuse. They measure those implementations, not an intrinsic model speed ranking. See the [controlled client/concurrency probe](JEV_LATENCY_CONTROL.md) and [fairness review](JEV_FAIRNESS_REVIEW.md).
 
 | Method | Required-evidence coverage in context, macro mean | Answers containing every required exact quotation / 8 | Key-evidence nDCG@5 within pool | Mean ranking seconds | Ranking + answer API cost, all 8 queries |
 |---|---:|---:|---:|---:|---:|
