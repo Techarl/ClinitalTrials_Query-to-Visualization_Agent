@@ -1,201 +1,138 @@
-# ClinicalTrials Query-to-Visualization Agent
+# TrialScope
 
-A local analysis workspace that turns clinical-study questions into interactive, source-grounded visualizations. The VNext agent uses native model tool calls and a bounded LangGraph observation loop: results from one tool can determine the next query and its cohorts. Fixed code and dataset-scoped Neo4j queries calculate counts and numerical evidence; the model does not supply executable Cypher, Python or chart counts. For qualitative answers it selects exact source quotations, which are checked against fields it actually read; interpretation remains a separate model-generated claim.
+**Clinical-trial analysis with inspectable evidence and reproducible agent experiments.**
 
-The React/TypeScript/ECharts workspace adds streamed progress, multiple charts, field-level citations, history, revocable read-only sharing and exports. V2 supports sourced entity aliases, monthly date fields, duration scatter plots, country maps, official-count overviews with explicitly limited sample evidence, PubMed abstracts, and actual MCP stdio/HTTP transports. The original `/analyze` contract remains compatible. Research experiments are separate opt-in commands; they do not alter the default service.
+TrialScope turns questions about registered studies into interactive charts and cited text answers. A bounded LangGraph tool loop reads intermediate results before choosing the next query, analysis or clarification. Deterministic code calculates statistics; immutable source snapshots preserve the evidence behind them.
 
-Start with the [Reviewer Guide](docs/REVIEWER_GUIDE.md) and [three-minute demo](docs/DEMO.md), then the [VNext guide](docs/VNEXT.md), [source validation](docs/release/source-validation.json), and [real smoke evidence](docs/vnext/smoke_summary.json). The baseline five examples and historical research reports below remain unchanged; VNext evaluation is reported separately.
+The project also studies two questions: **which evidence should enter an agent's context, and can reusable procedures improve how the agent works?** Experiments live separately from the default application, with frozen inputs, explicit controls and retained failures.
 
-Research results: [VNext execution, repair and Harness studies](docs/VNEXT_RESEARCH.md), and [Jev passage selection with dedicated/cheap-model/rule controls](docs/PASSAGE_SELECTION_RESULTS.md). These include full traces, negative results, cost accounting and a separate observation-driven evidence-gap recovery probe. The passage study does not enable model filtering of statistical populations.
+[Try recorded examples](#try-it-without-credentials) · [Run the service](#run-the-full-service) · [Research](#research) · [Technical documentation](#technical-documentation)
 
-The public evaluation work includes [public datasets and frozen evaluation](docs/PUBLIC_EVALUATION.md), [Jev fairness and controlled latency](docs/JEV_FAIRNESS_REVIEW.md), and a [browser-verified UI revision](docs/UI_REVIEW_FIXES.md). The [source validation](docs/release/source-validation.json) records release checks; the study-specific protocols and reports distinguish completed results from studies still running. Historical scores below refer to their original versions, not the new expanded benchmark.
+## What it does
 
-**Research status at the submission snapshot:** [Core300](docs/CORE300_RESULTS.md) completed at 295/300 overall and 196/200 heldout; the full dependency audit changed no grades. [TrialQA](docs/TRIALQA_PROTOCOL.md#completed-formal-study) completed both 120-question conditions, with citation-supported heldout correctness 64/79 in each. NLI4CT and the four-worker Harness formal comparison are still running. These distinct benchmarks are not combined into one success rate. Incomplete bonus studies are reported as ongoing, without final grades. Their later results can be added as dated supplements; the submitted source and ZIP remain identifiable by their fixed revision.
+- Analyze phases, enrollment, countries, dates and sponsor–drug relationships through bars, trends, histograms, scatter plots, maps and networks.
+- Discover entities from one result and use them in subsequent comparisons; preserve and explicitly revise follow-up constraints.
+- Explore streamed progress, history, explanations, contributors, quotations, exports and revocable shares in React/TypeScript/ECharts.
+- Resolve sourced entity aliases, read ClinicalTrials.gov records and PubMed abstracts, and expose the registered tool layer through HTTP, CLI and MCP.
 
-## Local setup
+## Try it without credentials
 
-Requirements: Python 3.12+, Neo4j, and an OpenAI Platform key with access to `gpt-6.1-sol` through Responses. Native verification used Windows, Python 3.12.4 and Neo4j Desktop / Neo4j 2026.10.1. Dependencies are pinned.
+Requires Python 3.12+ and Node.js 24. Create a Python environment:
 
-```powershell
+```sh
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.lock
-.\.venv\Scripts\python.exe -m pip install --no-deps -e .
-# Only if .env does not exist:
-Copy-Item .env.example .env
 ```
 
-Fill `OPENAI_API_KEY` and your own `NEO4J_PASSWORD` in `.env`. For native Neo4j, set `NEO4J_URI`, `NEO4J_USERNAME` and `NEO4J_DATABASE` to your instance; a typical local URI is `bolt://127.0.0.1:7687`. Docker Compose configures its internal URI separately. Environment variables override the file. Real credentials must not enter `.env.example`.
+Activate it with `source .venv/bin/activate` on macOS/Linux or `.\.venv\Scripts\Activate.ps1` in PowerShell, then:
 
-OpenRouter is optional and is never called by the default application. Both API experiment flags remain false; `/analyze` retains baseline-v1 and `/v2/runs` uses the observation-driven tool loop. Historical research commands are described in [the experiment protocol and results](docs/EXPERIMENTS.md). Main-model effort defaults to `medium`; changing to `high` is explicit and recorded.
-
-```powershell
-# Read-only diagnostics; no generation or experimental calls:
-.\.venv\Scripts\python.exe -m app.diagnostics
-# Start one API worker:
-.\.venv\Scripts\python.exe -m uvicorn app.main:create_app --factory --host 127.0.0.1 --port 8000
+```sh
+python -m pip install -r requirements.lock
+python -m pip install --no-deps -e .
+npm --prefix frontend ci
+npm --prefix frontend run build
+python -m uvicorn scripts.view_recorded_examples:create_app --factory --host 127.0.0.1 --port 8013
 ```
 
-Open [interactive API docs](http://127.0.0.1:8000/docs). `/health` is liveness and makes no downstream calls. This is a single-user local service; authentication and multi-tenant deployment are outside this submission.
+Open <http://127.0.0.1:8013/>. The read-only viewer verifies and displays five preserved V2 model turns, including a follow-up and a medicine comparison. Click chart values to inspect contributors and download the original results, traces and evidence. These are recorded executions on frozen data; the viewer makes no new model or database calls. [Demo guide](docs/DEMO.md) · [Recording provenance](examples/v2/README.md).
 
-## Use the workspace
+## Run the full service
 
-Build the frontend with `npm --prefix frontend ci` and `npm --prefix frontend run build`, then open the API server's root URL (normally <http://127.0.0.1:8000/>). The workspace shows streamed tool progress, result versions, inherited filters, charts and source quotations. Click a chart value to inspect its contributing studies. [The VNext guide](docs/VNEXT.md) documents the observation-driven agent, CLI, MCP, sharing and exports.
+With Docker available, create `.env` from `.env.example` if you do not already have one. Configure `OPENAI_API_KEY`, an accessible `OPENAI_MODEL`, and your own `NEO4J_PASSWORD`. Keep the experiment flags false; OpenRouter is optional for separate research commands.
 
-| Review path | What to inspect |
-| --- | --- |
-| Product and interaction | [UI acceptance and screenshots](docs/UI_REVIEW_FIXES.md), [VNext contracts](docs/VNEXT.md) |
-| Recorded V2 demonstrations | [Four examples / five real model turns](examples/v2/README.md), complete results, evidence, traces and offline verification |
-| Statistical reproducibility | [Five frozen examples](examples/verification.json), [core300 protocol](docs/CORE300_PROTOCOL.md), public snapshots in `docs/public-evaluation/core300-sources.zip` |
-| External evidence benchmarks | [Public evaluation index](docs/PUBLIC_EVALUATION.md), [TrialQA protocol](docs/TRIALQA_PROTOCOL.md) |
-| Research controls and limits | [Jev fairness review](docs/JEV_FAIRNESS_REVIEW.md), [controlled latency](docs/JEV_LATENCY_CONTROL.md), [Harness v3 protocol](docs/HARNESS_V3_PROTOCOL.md) |
-| Revision and validation | [Release source validation](docs/release/source-validation.json), [HTTP acceptance](docs/release/http-acceptance.json), and [browser acceptance](docs/release/browser-acceptance.json); the ZIP’s `BUILD-MANIFEST.json` identifies its exact Git commit |
-
-The public evaluation protocols describe planned populations; a protocol is not a completed result. Ongoing studies receive separate final reports with failures and all attempted-call costs retained.
-
-Start an automatic V2 run with `POST /v2/runs`:
-
-```json
-{"query":"For melanoma studies involving pembrolizumab, show phase counts with complete contributor evidence."}
-```
-
-Poll `GET /v2/runs/{run_id}` or consume `/v2/runs/{run_id}/events`. Follow-ups carry the returned `session_id` and the selected `parent_run_id`. Use the same `submission_id` when retrying an unchanged request after a transport failure.
-
-```powershell
-.venv/Scripts/python.exe -m app.v2.cli "For psoriasis studies involving secukinumab, plot enrollment against trial duration in days." --output data/v2-result.json
-```
-
-The V2 defaults allow 18 model calls, 24 tool calls and 900 seconds per run, subject to an estimated/reserved $2 model budget. [Reviewer guide](docs/REVIEWER_GUIDE.md) · [Recorded-demo script](docs/DEMO.md).
-
-### Compatible baseline API
-
-POST `/analyze`; only `query` is required:
-
-```json
-{"query": "How are melanoma studies involving pembrolizumab distributed across phases?"}
-```
-
-For follow-ups, send the returned `session_id` and `run_id` as `parent_run_id` with a question such as “Only Phase 3, then show studies starting each year from 2015 through 2025.” New topics do not inherit prior filters.
-
-See the [complete API/rendering contract](docs/API.md). `/openapi.json` and `/capabilities` expose machine-readable schemas. Chinese questions and `language=zh` are supported.
-
-```powershell
-.\.venv\Scripts\python.exe -m app.cli "Show the phase distribution of melanoma studies involving pembrolizumab." --output data/result.json
-```
-
-The CLI uses the same planner/execution path and exports full evidence beside the response.
-
-To exercise the deterministic pipeline with a handwritten plan and no model calls, run `python -m app.handwritten_demo` using the project interpreter. This still requires Neo4j and a live ClinicalTrials.gov connection or an existing complete cache.
-
-## Design and tradeoffs
-
-V2 uses a bounded model–tool observation loop: a typed task defines the requested goals, registered tools retrieve and calculate results, and observations inform the next model action. Source text is read through bounded pages; exact quotations must come from pages actually read. Skills can be searched, read and explicitly activated. Deterministic checks enforce scope, comparison completeness and evidence before completion. The [VNext design](docs/VNEXT.md) describes this current path and its budgets.
-
-The compatible v1 `/analyze` path used for the five historical examples retains its smaller planner workflow:
-
-- Bounded context contains the current request, structured session state, field rules and repair feedback. Raw study JSON stays outside prompts.
-- Responses structured output produces a plan, patch or clarification. Explicit-filter conflicts require clarification. Default budget is two model attempts, with SDK retries off.
-- Literal source terms define an official search universe, including source synonym behavior. Full pagination, distinct IDs, source totals and before/after timestamps are checked. Incomplete acquisition produces no chart.
-- Immutable hashed raw snapshots are authoritative; Neo4j is a derived projection. Trial identity includes dataset and NCT ID. Every supporting record in a relation path is dataset-scoped.
-- Fixed queries calculate contributors, while Python performs bins and chart assembly. Displayed items have complete contributor evidence with exact original values and JSON Pointers.
-- SQLite stores successful state, pending clarification, runs and evidence; LangGraph stores per-run checkpoints. Recovery retains original deadlines and attempted-call accounting.
-
-See [design details and limitations](docs/DESIGN.md). Presentation clipping is distinct from source truncation. Tool errors never become zero studies. There is no arbitrary query/code execution or silent model fallback.
-
-## Five actual runs
-
-For current-contract V2 recordings, start with [the curated V2 index](examples/v2/README.md). Its phase, follow-up, medicine-comparison and scatter examples retain complete evidence and source identities; the independent offline verifier checks 57,805 exact fields. A historical dependent-query failure is preserved separately, not counted among the qualified examples. These are recorded executions on frozen data, not freshly generated outputs from the final release.
-
-For an interactive, credential-free walkthrough, build the frontend and run `python -m uvicorn scripts.view_recorded_examples:create_app --factory --host 127.0.0.1 --port 8013`, then open <http://127.0.0.1:8013/>. The separate read-only viewer verifies the saved records before displaying charts and citations. It cannot start new analyses; [the demo guide](docs/DEMO.md) explains both modes.
-
-```powershell
-# V2 recordings: no database, network or model calls:
-.venv/Scripts/python.exe -m scripts.verify_v2_examples
-```
-
-The five examples below are the compatible V1 historical runs.
-
-Each saved run used one real planner call:
-
-| Example | Chart | Recorded scope |
-| --- | --- | --- |
-| [Phases](examples/01_phases/response.json) | Bar | 400 source studies |
-| [Phase 3 follow-up](examples/02_followup_trend/response.json) | Time series | Same cohort, Phase 3, start years 2015–2025; 27 studies |
-| [Drug comparison](examples/03_comparison/response.json) | Grouped bar | Asthma: 60 dupilumab / 116 omalizumab source records; overlap disclosed |
-| [Enrollment](examples/04_enrollment/response.json) | Histogram | Psoriasis/secukinumab: 149 source records; missing enrollment excluded |
-| [Shared-drug sponsor links](examples/05_shared_drugs/response.json) | Network | Rheumatoid arthritis/adalimumab: 242 source records; distinct shared interventions |
-
-These are frozen observations, not permanent live counts. Each includes the request, response, full evidence and trace. Raw source collections are under `examples/snapshots/`. All five retain their frozen `5344202` generation source and original runtime hash. The Round 3 `118a0e5` engine recomputed every visualization, statistical metadata field, provenance object and full evidence collection from the frozen JSON through real Neo4j; all were unchanged. See [current replay](docs/ROUND3_EXAMPLE_REPLAY.json). Older snapshots remain as immutable historical artifacts.
-
-```powershell
-# Offline: no database, network or model calls:
-.\.venv\Scripts\python.exe -m app.verify_examples
-```
-
-Histogram assignment uses one exact-rational boundary sequence rounded once; the independent checker enumerates Decimal-derived intervals and also checks each contributor against the actual serialized interval, with exactly-once coverage per cohort.
-
-The independent checker reads raw sources without production normalization, aggregation or Cypher compilation. It independently generates the complete expected rows/edges/nodes, including top-N order, zero buckets and role-specific contributors, and verifies hashes and 33,824 exact field values. Twenty-six schema-valid corruptions must fail its negative tests. See [verification report](examples/verification.json). Both implementations are AI-assisted and may share conceptual assumptions; semantic review remains valuable.
-
-## Validation
-
-The submission source passed **919 Python tests, 2 optional-data skips and 0 xfails**, including real Neo4j integration; **14 frontend tests**, the production build and Ruff passed. All nine exported schemas match the models. [Exact source/test receipt](docs/release/source-validation.json), [HTTP acceptance](docs/release/http-acceptance.json), and [browser acceptance](docs/release/browser-acceptance.json) distinguish this release check from historical benchmarks. The final archive verification and fresh-install receipt accompany the ZIP.
-
-The [design and validation mechanisms](docs/DESIGN.md) include stable histogram intervals plus direct contributor invariants, current-explicit clarification scope, durable model-attempt/outcome accounting, and budget reservations for unknown usage. The historical Round 3 [validation report](docs/ROUND3_VALIDATION.json) records 109 tests with real Neo4j in both native and Linux environments. Historical research results remain frozen.
-
-```powershell
-# No paid calls; graph fixtures skipped:
-.\.venv\Scripts\python.exe -m pytest -q
-# Include isolated temporary Neo4j fixtures:
-.\.venv\Scripts\python.exe -m pytest -q --live-neo4j
-.\.venv\Scripts\python.exe -m ruff check app tests
-.\.venv\Scripts\python.exe -m pip check
-```
-
-Tests cover pagination, empty pages, deduplication, completeness, tampering, multi-valued data, BIOLOGICAL interventions, missingness, snapshot isolation, evidence, follow-ups, topic changes, conflicts, bounded repair, recovery and HTTP validation. Fixtures are synthetic, not represented as real source results. A real Chinese clarification-and-answer flow was also tested.
-
-`python -m app.examples` intentionally regenerates live runs and makes paid main-model calls. It is separate from offline verification.
-
-The [design](docs/DESIGN.md) explains constraint preservation, recovery and independent verification; regression tests cover these mechanisms. The frozen [semantic cases](docs/evals/semantic_cases.json) cover 48 cases / 50 actual main-model turns across diseases, English/Chinese, AND/OR/comparison, follow-ups and repeated clarification. The frozen planner-v2 source scored 49/50, including 37/37 executable plans and 9/9 clarification turns. The difference is a full-site request that safely asked for narrower scope instead of returning unsupported. Across three passes the scores were 49/50, 50/50 and 49/50; all observations are retained. This small engineer-authored set is not a population accuracy guarantee. Expected answers never enter planner input. This measures query-to-plan semantics, independently of numerical verification.
-
-```powershell
-# No paid calls: validate the case file:
-.\.venv\Scripts\python.exe -m app.semantic_eval
-# Explicitly paid, isolated model evaluation; no CTgov/Neo4j calls:
-.\.venv\Scripts\python.exe -m app.semantic_eval --live
-```
-
-See the preserved [semantic report](docs/evals/semantic_report.json). This is the prior planner-v2 observation, not a new planner-v3 benchmark. The current fix was checked with [targeted live scope correction](docs/ROUND3_LIVE_SCOPE.json). GitHub CI runs deterministic checks and real Neo4j fixtures with synthetic test credentials, without model keys or paid calls.
-
-The authorized research pilots are kept outside `app/`: a real Jev decision gate with an extra-GPT control, source-grounded BM25/dense/RRF candidate retrieval, and a restricted Harness² PPC/experience pilot. The [research report](docs/EXPERIMENTS.md) records the protocols, costs and limitations, including negative results. They do not change the default service.
-
-## Docker and submission
-
-```powershell
-docker compose config --quiet
+```sh
 docker compose up --build -d
 ```
 
-Compose uses Community Neo4j 2026.10.1, persistent volumes and one worker. API binds to loopback 8000; Neo4j host ports 7475/7688 avoid Desktop. The internal API URI is `bolt://neo4j:7687`. Stop another API on 8000 before using this alternative. An existing Neo4j volume retains its original password.
+Open <http://127.0.0.1:8000/>; API documentation is at `/docs`. Compose builds the frontend and starts Neo4j with persistent volumes. For a native Neo4j installation, configure its URI and credentials, build the frontend as above, then run:
 
-Historical Round 3 Docker verification passed: API image build, both service health checks, all 109 tests inside Linux, and a real two-turn scope correction producing 400/396 comparison cohorts. See [Round 3 validation](docs/ROUND3_VALIDATION.json). Native Desktop/Python execution also passed 109 tests. The [prior restart smoke](docs/DOCKER_VALIDATION.json), generated from `5344202`, separately records a 400-study analysis, API restart and 27-study Phase 3 follow-up with evidence paging, snapshot reuse and completed-run idempotency.
-
-The historical [fresh-volume Compose check](docs/CLEAN_DOCKER_VALIDATION.json) also passed the real analysis/restart flow and was removed afterward; its optional port override is [scripts/compose.clean.yaml](scripts/compose.clean.yaml). The [Round 3 ZIP check](docs/ROUND3_PACKAGE_VALIDATION.json) extracted the package, installed its code into the previously verified environment with an identical dependency lock, passed 101 offline tests (8 database tests skipped), verified all five exports and passed `pip check`, without credentials or paid calls. The original [fresh-environment installation check](docs/ZIP_VALIDATION.json) is retained with its original source and test counts.
-
-To intentionally repeat the real two-call container smoke test (paid main-model calls):
-
-```powershell
-.\.venv\Scripts\python.exe scripts/smoke_docker.py --restart-api
+```sh
+python -m uvicorn app.main:create_app --factory --host 127.0.0.1 --port 8000
 ```
 
-If BuildKit cannot fetch a Docker Hub token, pull `python:3.12-slim` directly with `docker pull python:3.12-slim`, then retry the build. This worked around the registry-token timeout observed during validation. Changes to `.env` require `docker compose up -d api` to recreate the API with its new environment.
+Try: “For melanoma studies involving pembrolizumab, show phase counts with complete contributor evidence.” The `/v2/runs` API exposes status and replayable events; `/analyze` remains compatible. Default V2 limits are 18 model calls, 24 tool calls, 900 seconds and an estimated/reserved $2 model budget. [API contract](docs/API.md) · [Configuration](docs/VNEXT.md).
 
-```powershell
-.\.venv\Scripts\python.exe scripts/package_submission.py
+## Architecture and evidence
+
+```mermaid
+flowchart LR
+    Q[Question and session] --> G[Typed goals and constraints]
+    G --> A[Bounded model/tool loop]
+    A --> T[Retrieval, graph, source and analysis tools]
+    T --> O[Observations and owned evidence handles]
+    O --> A
+    A --> V[Scope, completeness and evidence checks]
+    V --> R[Charts, answers and citations]
 ```
 
-This builds `dist/cheiron-clinicaltrials-agent.zip` with an explicit allowlist and credential scan. Source, tests, docs, examples and evidence are included. `.env`, private assignment/planning notes (`question/`), local databases, downloads, environments and Git history are excluded.
+ClinicalTrials.gov snapshots are hashed and immutable. Neo4j projects retrieved populations into dataset-scoped graphs. Registered tools enforce scope and calculate chart values without executing model-generated code. SQLite stores runs, tool journals and evidence for replay and recovery.
 
-## AI use and improvements
+Passage selection never shrinks a statistical population. Incomplete acquisition cannot silently become complete; official-count mode labels sampled evidence separately. Chart values link to contributing studies and original fields. Quotations must match fields actually read, with source identity and hashes attached.
 
-The user supplied the assignment and architecture requirements. OpenAI Codex drafted, implemented, tested and revised code, prompts, tests, reference checks and docs. Deliberate choices include constrained plans, immutable snapshots, fixed calculations, scoped relationships, full evidence and bounded recovery. No code from the reference take-home repositories was copied.
+These checks establish specific invariants. Valid quotations can still fail to support an interpretation, and task understanding can fail. [Design and verification](docs/DESIGN.md).
 
-Limits include bounded source searches, imperfect semantic/entity interpretation, one execution worker, no authentication or retention cleanup, and external-source availability. V2 has a frontend, streamed progress, scatter plots and a persisted tool loop; the compatible v1 endpoint still uses synchronous execution. Exact quotation matching establishes source integrity, not the correctness of every interpretation. Experimental configurations remain isolated; using an experience component does not itself establish automatic improvement.
+## Research
+
+Results below belong to frozen execution versions. Different benchmarks measure different capabilities and are never pooled into one success rate. Failures remain in their planned denominators.
+
+| Study | Research question | Status and evidence |
+|---|---|---|
+| [Core300](docs/CORE300_RESULTS.md) | Scope, dependent analysis and verifiable statistics. | **Closed:** 295/300 overall; 196/200 heldout. Template-derived tasks span 15 disease–drug groups, including 10 heldout groups. A dependency-linkage audit changed no grades. |
+| [TrialQA adaptation](docs/TRIALQA_PROTOCOL.md#completed-formal-study) | Finding records versus receiving source handles. | **Closed:** given sources vs frozen retrieval achieved 96/120 vs 95/120 citation-supported correct answers; both achieved 64/79 heldout. Retrieval covers 102 frozen records. The automated judge is fallible; this is a project adaptation, not an official LABBench2 score. |
+| [NLI4CT evidence selection](docs/NLI4CT_RESULTS.md) | Fixed-budget evidence selection versus full source context. | **Closed:** 500 official test questions and the same frozen 200-question answer subset across five conditions; all completed. Jev retained complete evidence on 300/500 and answered 141/200 correctly. Full context: 500/500 and 160/200, with no 1024-token cap. |
+| [Harness transfer](docs/HARNESS_V3_PROTOCOL.md) | Do edited procedures and historical experience help beyond a strong baseline and budget-matched attempts? | **Ongoing:** 40 planned tasks across four conditions. Final transfer, experience-use and cost results pending; no partial grades reported. |
+
+Core300's small number of groups and repeated templates limit generalization. TrialQA did not establish a difference or equivalence between its two conditions. All 237 published TrialQA answers passed exact quotation checks, yet 20 answers judged correct lacked sufficient quoted support for all material claims. This motivates separate evaluation of answer correctness, citation support and source integrity.
+
+### NLI4CT: evidence selection under a context budget
+
+| Method | Complete necessary evidence / 500 | Correct answers / same 200 |
+|---|---:|---:|
+| Hybrid retrieval | 279 | 135 |
+| Dedicated MiniLM reranker | 291 | 138 |
+| Jev | 300 | 141 |
+| Luna | 288 | 132 |
+| Full source text, budget-exempt | 500 | 160 |
+
+Jev improved complete-evidence coverage over hybrid retrieval by **4.2 percentage points** (paired shared-trial cluster-bootstrap 95% interval **+2.0 to +6.8**). Its answer difference was **+3.0 points**, with an interval crossing zero (**−0.6 to +6.8**). Against Luna, the answer difference was **+4.5 points** (**+0.8 to +8.8**); against MiniLM it was **+1.5 points** (**−2.4 to +6.5**). These exploratory comparisons use 113 shared-trial components and no multiplicity correction; they support a configuration-specific finding, not universal Jev superiority.
+
+Full text achieved the strongest answer result, but uses more information and is exempt from the 1024-token selection limit; its complete evidence coverage is guaranteed by supplying all source sentences. Budgeted methods share a maximum 24-candidate pool and packer. This tests selection within supplied trial materials, not whole-corpus recall. The result motivates comparing evidence compression with simply reading all available material when practical. Citation membership and label correctness do not prove semantic citation support.
+
+NLI costs including pilot, aborted run and recovery were **$4.227937 estimated/reserved**, including **$0.079918** retained for ten unknown-usage attempts; these are not invoices. The formal run alone was **$4.075859 estimated/reserved**. Recovery preserved quality denominators, excluded six interrupted case/arm timings, and retained all original attempts. Formal timing has asymmetric client overhead; use the separate latency control below for that question.
+
+The [complete report](docs/NLI4CT_RESULTS.md) provides paired intervals, input strata and cost reconciliation. An [independent source-level audit](docs/public-evaluation/nli4ct-independent-audit.json) reconstructed all 2,500 case/arm rows from official records with zero discrepancies. Public sanitized case metrics support reproducing aggregate and paired statistics. Repeating the source-level audit also requires the local official dataset and saved study outputs; those raw materials are not published here.
+
+Earlier [small passage-selection experiments](docs/PASSAGE_SELECTION_RESULTS.md) did not establish Jev's advantage over a cheap model or trial-ID scope rules. Missing candidates limit every reranker; connection reuse also changes observed latency. The [fairness analysis](docs/JEV_FAIRNESS_REVIEW.md) and [controlled latency probe](docs/JEV_LATENCY_CONTROL.md) keep these effects separate from answer quality.
+
+Harness²-inspired experiments modify bounded procedures and context/experience policies. Adoption or fewer final calls alone does not demonstrate learning: editor costs, failed probes, task performance and budget-matched controls matter. Recursive self-improvement has not been established.
+
+Protocols pin data, splits, models and execution source. Reports retain failed attempts and unknown-usage budget reservations. Crash recovery is disclosed separately for [NLI4CT](docs/NLI4CT_RECOVERY_REPORTING.md) and [Harness](docs/HARNESS_V3_PROTOCOL.md#desktop-crash-and-recovery-amendment--2026-11-01). Restricted benchmark materials remain local; public reports omit their original questions, passages and gold answers.
+
+Most recently verified [CI at `73c61d0`](https://github.com/Techarl/ClinitalTrials_Query-to-Visualization_Agent/actions/runs/41296428227) passed **937 Python tests**, with **3 skips and no expected failures**, plus **14 frontend tests** and the frontend build. This identifies the checked revision; subsequent report changes require their own checks.
+
+## Verify and explore
+
+With the Python environment activated:
+
+```sh
+python -m app.verify_examples
+python -m scripts.verify_v2_examples
+python -m pytest -q
+python -m pip check
+npm --prefix frontend test
+```
+
+The two example verifiers run offline against preserved raw records. Graph tests require a configured isolated Neo4j instance and `--live-neo4j`; optional dataset tests may skip. Live research commands are separate and can incur API charges. Tests and example verification do not replace model-quality evaluation.
+
+## Technical documentation
+
+- [Agent workflow and tool surface](docs/VNEXT.md), [API and export contracts](docs/API.md), [design and limitations](docs/DESIGN.md).
+- [Public evaluation protocols](docs/PUBLIC_EVALUATION.md), [Core300 dependency audit](docs/CORE300_SELECTION_AUDIT.md), and the study reports linked above.
+- [Interactive demo](docs/DEMO.md), [recorded examples](examples/v2/README.md), [UI acceptance](docs/UI_REVIEW_FIXES.md), and [release validation](docs/release/source-validation.json).
+
+## Scope, provenance and AI assistance
+
+This single-user local service has one execution worker, no authentication and bounded budgets. Source drift, upstream availability, ambiguity, missing fields and unsupported operations remain limits. Registry co-occurrence does not establish treatment effects or sponsor collaboration. Experimental experience banks do not continuously modify the default application.
+
+OpenAI Codex assisted extensively with code, prompts, tests, reference checks and documentation. AI-assisted implementations and checkers can share conceptual mistakes; source identities, traces and negative findings remain available for inspection.
+
+A fixed historical release remains available at **[submission-v1](https://github.com/Techarl/ClinitalTrials_Query-to-Visualization_Agent/tree/submission-v1)** (`77791d7`). Its submitted artifact and verification records remain separate from subsequent personal-project research.

@@ -29,6 +29,58 @@ def read(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
+def reconcile_final_ledger(reported, persisted, study, source_archive):
+    """Accept only independently saved post-write elapsed telemetry; never alter costs."""
+    receipt = {
+        "reported_budget_sha256": digest(reported),
+        "persisted_ledger_sha256": digest(persisted),
+        "accounting_authority": "persisted ledger.json",
+        "timing_only_discrepancies": [],
+    }
+    if reported == persisted:
+        return receipt
+    # Bind this exception to the known frozen implementation, not an arbitrary run.
+    with ZipFile(source_archive) as archive:
+        source = archive.read("experiments/passage_selection.py").decode("utf-8")
+    if ('budget.after(event, metadata)' not in source
+            or 'metadata["elapsed_seconds"] = time.monotonic() - started' not in source):
+        raise ValueError("Frozen source does not establish post-write elapsed telemetry")
+    if ({k: v for k, v in reported.items() if k != "events"}
+            != {k: v for k, v in persisted.items() if k != "events"}
+            or len(reported["events"]) != len(persisted["events"])):
+        raise ValueError("Formal ledger changed beyond elapsed telemetry")
+    for index, (memory, disk) in enumerate(zip(reported["events"], persisted["events"])):
+        if memory == disk:
+            continue
+        metadata = memory.get("metadata") or {}
+        disk_metadata = disk.get("metadata") or {}
+        elapsed = metadata.get("elapsed_seconds")
+        if (memory.get("status") != "completed" or memory.get("arm") not in ("jev", "luna")
+                or memory.get("stage") is not None or "elapsed_seconds" in disk_metadata
+                or isinstance(elapsed, bool) or not isinstance(elapsed, (int, float))
+                or not math.isfinite(elapsed) or elapsed < 0
+                or {k: v for k, v in metadata.items() if k != "elapsed_seconds"} != disk_metadata
+                or {k: v for k, v in memory.items() if k != "metadata"}
+                != {k: v for k, v in disk.items() if k != "metadata"}):
+            raise ValueError("Formal ledger changed beyond elapsed telemetry")
+        case_id, passage_id = memory.get("case_id"), memory.get("passage_id")
+        if (not isinstance(case_id, str) or not case_id
+                or any(c not in "0123456789abcdef-" for c in case_id)
+                or not isinstance(passage_id, str) or not passage_id):
+            raise ValueError("Elapsed telemetry lacks a safe score identity")
+        relative = Path(case_id) / "scores" / memory["arm"] / (digest(passage_id)[:24] + ".json")
+        proof = Path(study) / relative
+        if not proof.is_file() or read(proof).get("metadata") != metadata:
+            raise ValueError("Elapsed telemetry lacks matching saved score proof")
+        receipt["timing_only_discrepancies"].append({
+            "event_index": index, "case_id": case_id, "arm": memory["arm"],
+            "added_field": "metadata.elapsed_seconds", "value": elapsed,
+            "score_file": relative.as_posix(),
+            "score_file_sha256": hashlib.sha256(proof.read_bytes()).hexdigest(),
+        })
+    return receipt
+
+
 def percentile(values, q):
     ordered = sorted(values)
     if not ordered:
@@ -405,12 +457,14 @@ def accounting(paths):
 
 def markdown(summary, costs):
     lines = [
-        "# NLI4CT 官方测试集：证据选择与固定模型回答",
+        "# NLI4CT official test split: evidence selection and fixed-model answers",
         "",
-        "主分析保留全部 **500 题**；五组回答使用事先冻结的相同 **200 题**。失败计入分母并计为不成功。",
-        "证据完整覆盖衡量选入上下文是否包含全部标注证据；回答正确衡量官方二分类结论。两者不是同一指标。",
+        "The primary analysis retains all **500 questions**. All five arms answer the same frozen subset of "
+        "**200 questions**. Failures remain in the denominators and count as unsuccessful.",
+        "Complete evidence coverage measures whether selected context retains every annotated evidence item. "
+        "Answer correctness measures agreement with the official binary label. These are distinct outcomes.",
         "",
-        "| 方法 | 完整证据 / 500 | 回答正确 / 200 | 失败 / 回答子集失败 |",
+        "| Method | Complete evidence / 500 | Correct answers / 200 | Failures / answer-subset failures |",
         "|---|---:|---:|---:|",
     ]
     for arm, row in summary["strata"]["all"]["arms"].items():
@@ -420,9 +474,9 @@ def markdown(summary, costs):
         )
     lines += [
         "",
-        "配对差异（百分点，95% 共享试验连通分量 bootstrap 区间）：",
+        "Paired differences in percentage points, with 95% bootstrap intervals over shared-trial connected components:",
         "",
-        "| 对照 | 完整证据差异 | 回答正确差异 |",
+        "| Contrast | Complete-evidence difference | Answer-correctness difference |",
         "|---|---:|---:|",
     ]
     for comparison, values in summary["strata"]["all"]["paired_differences"].items():
@@ -434,38 +488,75 @@ def markdown(summary, costs):
         lines.append(f"| {comparison} | {' | '.join(cells)} |")
     lines += [
         "",
-        "输入分层包括全文适合 1024 token 的 237 题及其补集、候选不超过 24 句的 326 题及其补集、"
-        "Single/Comparison、四类章节。各层结果及配对区间均完整保留在 JSON 中，不能挑选有利子集替代主结果。",
-        "分层于运行开始后、审查者读取结果前登记；不声称在首次执行前预注册。",
+        "Input strata include the 237 questions whose full context fits 1024 tokens and their complement, "
+        "the 326 questions with at most 24 source sentences and their complement, Single/Comparison tasks, "
+        "and four section types. All stratum results and paired intervals remain in the JSON outputs; "
+        "favorable subsets must not replace the primary results.",
+        "Strata were registered after execution began but before reviewers accessed outcomes. "
+        "This is not a claim of preregistration before the first execution.",
         "",
-        "区间使用固定种子 20261101、4000 次共享试验连通分量重采样，主集合有 113 个连通分量。"
-        "同一抽样同时应用于两方法，按题数计算差异。回答子集只重采样含回答题的分量。"
-        "绝对比例另列 Wilson 区间，仅为描述性结果：独立样本假设不符合共享试验结构，可能过窄。"
-        "分层与多重比较属于探索性分析，区间未进行多重比较校正，不据此宣称确定胜出。",
+        "Intervals use seed 20261101 and 4000 resamples of shared-trial connected components; "
+        "the primary population contains 113 components. Each draw is paired across methods, "
+        "with differences weighted by question counts. Answer-subset intervals resample only components "
+        "containing answer questions. Absolute proportions also have descriptive Wilson intervals: "
+        "their independent-sample assumption does not fit shared trials and may produce narrow intervals. "
+        "Stratification and multiple comparisons are exploratory, without multiplicity correction; "
+        "these intervals do not establish a definitive winner.",
         "",
-        "全文组不受 1024 token 选择上限限制；其余四组共享最多 24 句混合召回候选。"
-        "该实验检验给定试验材料内的证据选择，不衡量全库召回或图表正确性。"
-        "引用 ID 有效仅说明引用来自选中材料，不能证明引用支持结论。"
-        "当回答调用失败导致整组结果未保存时，证据指标也按失败计零；这是正式执行器的端到端计分口径。",
-        "1024 token 指 cl100k_base 对候选段落 JSON 的计数，包含段落标识与元数据，"
-        "不包含问题、指令、精排请求或输出，不等于各组完整链路输入相同。全文组是额外信息对照。"
-        "各组仍采用同一顺序贪心装配器：跳过放不下的候选，继续尝试后续段落，不做截断或相关性阈值筛选。",
-        "回答模型与 reasoning 来自冻结协议，五组保持一致。原始声明及完整候选元数据都提供给精排器；"
-        "Jev/Luna 另使用相同相关性 rubric，MiniLM 使用固定的查询—候选编码。"
-        "这里只比较预定系统配置，不声称各模型经过同等充分调优。",
-        "Jev−Luna 与 Jev−cross_encoder 的直接配对区间在未读取正式成绩时补充登记。"
-        "引用 ID 的集合合法性允许空列表，因此 JSON 另列非空引用率与“标签正确且有非空合法 ID”的联合指标；"
-        "该联合指标仍不证明引用的语义支持或必要证据完整覆盖。",
+        "Engineering interpretation: evidence retention and final answer quality must be considered "
+        "separately. A reranker's coverage gain need not produce a reliably measured answer gain; "
+        "the direct paired intervals above quantify that distinction. The budget-exempt full-text "
+        "control tests whether compression is worthwhile when reading all supplied material is feasible. "
+        "Its complete evidence coverage follows by construction from supplying every source sentence. "
+        "These results evaluate the frozen configurations, not universal model superiority.",
         "",
-        "正式运行中的 Jev 每段新建 HTTP 客户端，Luna 复用客户端，时延包含不同客户端实现开销，"
-        "不能当作纯模型速度排序。[独立公平时延控制](JEV_LATENCY_CONTROL.md) 已使用相同持久连接与并发验证这一影响；"
-        "其少量开发集结果与本测试质量结果分开报告。原八题研究仍保留在 [原报告](PASSAGE_SELECTION_RESULTS.md)。",
-        "排名计时不包括共享 embedding 预热和初召回，也可能包含中断恢复后的评分缓存读取；"
-        "不能用它代表端到端耗时或公平的模型服务延迟。",
+        "The full-text arm is exempt from the 1024-token selection cap. The other four arms share "
+        "up to 24 candidates from hybrid retrieval. This tests evidence selection within supplied trial "
+        "materials, not whole-corpus retrieval or chart correctness. Valid citation IDs establish membership "
+        "in selected context, not support for the conclusion. If an answer call fails before its arm result "
+        "is saved, evidence metrics also receive zero: this is the frozen runner's end-to-end scoring convention.",
+        "The 1024-token budget counts selected passage JSON with cl100k_base, including IDs and metadata. "
+        "It excludes questions, instructions, reranking requests and outputs, so complete pipeline inputs "
+        "are not equalized. Full text is an additional-information control. Budgeted arms use the same "
+        "sequential greedy packer: skip candidates that do not fit and consider later ones, without "
+        "truncation or a relevance threshold.",
+        "All five arms share the answer model and reasoning setting pinned in the protocol. Rerankers "
+        "receive the original statement and complete candidate metadata. Jev/Luna additionally share "
+        "a relevance rubric; MiniLM uses its fixed query-candidate encoding. This compares predefined "
+        "system configurations, without claiming equally extensive model-specific tuning.",
+        "Direct Jev-minus-Luna and Jev-minus-cross_encoder paired intervals were added before formal "
+        "outcomes were accessed. Citation-ID membership accepts an empty list, so the JSON also reports "
+        "nonempty citation rates and the joint outcome of a correct label with nonempty valid IDs. "
+        "That joint outcome still does not establish semantic citation support or complete necessary evidence.",
         "",
-        "费用（包括失败、预留与共享 embedding；以下为估算或提供商返回值，并非账单）：",
+        "The formal Jev implementation creates a new HTTP client per passage, while Luna reuses its client. "
+        "Observed latency therefore includes asymmetric client overhead and cannot rank pure model speed. "
+        "The [independent latency control](JEV_LATENCY_CONTROL.md) tested equal persistent connections "
+        "and concurrency; its small development-set results remain separate from this test-set quality "
+        "comparison. The original eight-question study remains in its [report](PASSAGE_SELECTION_RESULTS.md).",
+        "Ranking timers exclude shared embedding warmup and initial retrieval, and may include reads "
+        "of cached passage scores after recovery. They do not measure end-to-end task duration or fair "
+        "model-serving latency.",
+    ]
+    common_latency = summary.get("recovery_common_case_latency")
+    if common_latency:
+        lines += [
+            "", f"Descriptive ranking latency on the same {common_latency['retained_cases']} questions "
+            f"({common_latency['excluded_cases']} questions excluded only from this timing table):", "",
+            "| Arm | Same-case samples | Median seconds | p95 seconds |", "|---|---:|---:|---:|",
+        ]
+        for arm, timing in common_latency["arms"].items():
+            lines.append(f"| {arm} | {timing['successful_samples']} | "
+                         f"{timing['p50_seconds']:.3f} | {timing['p95_seconds']:.3f} |")
+        lines += ["", "Client and execution-period asymmetries remain. Full text performs no ranking, "
+                  "so its zero does not mean zero answer latency. The JSON retains all original timers "
+                  "and the separately filtered per-arm summaries; quality denominators remain unchanged."]
+    lines += [
         "",
-        "| 阶段 | 请求 | 已知费用 USD | 未知预留 USD |",
+        "Costs include failed attempts, reservations and shared embeddings. Values are estimates or "
+        "provider-reported charges, not invoices:",
+        "",
+        "| Stage | Attempts | Known cost USD | Unknown-usage reservation USD |",
         "|---|---:|---:|---:|",
     ]
     for name, row in costs["studies"].items():
@@ -474,45 +565,71 @@ def markdown(summary, costs):
         )
     formal = costs["studies"].get("formal_v2", {})
     if formal.get("nli_arm_costs"):
-        lines += ["", "正式运行按显式组别标签归属的费用（每组包括精排和回答尝试）：", "",
-                  "| 组别 | 请求 | 已知费用 USD | 未知预留 USD |", "|---|---:|---:|---:|"]
+        lines += ["", "Formal costs attributed by explicit arm tags, including ranking and answer attempts:", "",
+                  "| Arm | Attempts | Known cost USD | Unknown-usage reservation USD |", "|---|---:|---:|---:|"]
         for name, row in formal["nli_arm_costs"].items():
             lines.append(f"| {name} | {row['attempts']} | {row['known_cost_usd']:.6f} | {row['unknown_reserved_usd']:.6f} |")
-        lines += ["", "共享 embedding 与无法归属的请求单列，不平均分摊或重复加到每组。"
-                  "本地 MiniLM 的 CPU 时间没有换算成 USD；API 费用不等于完整部署成本。"
-                  "无元数据的未知请求不能可靠归类为 embedding，仍保留在总费用中。"]
+        lines += ["", "Shared embeddings and unattributed attempts are listed separately, without equal "
+                  "allocation or duplicate assignment to arms. Local MiniLM CPU time is not converted "
+                  "to USD; API charges do not represent total deployment cost. Unknown attempts without "
+                  "metadata cannot reliably be classified as embeddings but remain in total costs."]
     total = costs["totals"]
     recovery = summary.get("recovery")
     if recovery:
         previous = recovery["prior_ledger"]
         lines += [
-            "", "## 运行中断与恢复", "",
-            "桌面进程中断后，执行器从与原协议一致的冻结源码恢复，保持 500 题、相同 200 题回答子集、"
-            "五组方法和原预算上限。保存的 arm 结果与片段评分缓存继续复用。",
-            f"恢复前快照含 {recovery['snapshot_files']} 个文件，按文件名确认 "
-            f"{recovery['cases_all_five_arm_results_saved']} 题的五组结果已落盘；这不是正确率。",
-            f"报告依据恢复前文件名，保守标记 {recovery['latency_excluded_arm_count']} 个 case/arm 的计时："
-            "已有题目活动但该组结果尚未落盘，或已有失败标记。这可能包含当时尚未开始的后续组。"
-            "这些组只从延迟分位数中排除，所有质量分母和配对分析保持不变。",
-            "原始 ranking_seconds 仍保留在逐题 JSON，另列为诊断统计；缓存恢复只计剩余步骤，"
-            "不能解释为一次完整排序或完整任务耗时。保留的时间也只描述本实现，不消除连接实现和运行时段差异。",
-            f"逐项核对恢复前账本是最终账本的完整前缀，保留原有 {previous['unknown_usage_attempts']} 次未知用量"
-            f"和 ${previous['unknown_reserved_usd']:.7f} 预留；恢复后另增加 "
-            f"{recovery['new_attempts_after_restart']} 次尝试。快照费用已包含在 formal_v2 中，不再次相加。",
-            "[恢复附录与延迟排除清单](public-evaluation/nli4ct-recovery.json) 保留快照、协议和关闭记录哈希；"
-            "不公开未脱敏的中间材料。",
-            "另提供五组均完成且均无中断标记的共同题目延迟摘要，仅用于同题描述性比较；"
-            "它不替代质量主分析，也不能消除客户端实现与执行时段差异。",
+            "", "## Interruption and recovery", "",
+            "After the desktop-process interruption, execution resumed from frozen source matching the "
+            "original protocol. The 500 questions, common 200-question answer subset, five arms and "
+            "original budget ceiling were unchanged. Saved arm results and passage-score caches were reused.",
+            f"The pre-resume snapshot contains {recovery['snapshot_files']} files. Filenames establish that "
+            f"all five arm results were saved for {recovery['cases_all_five_arm_results_saved']} questions; "
+            "this is execution progress, not accuracy.",
+            f"Pre-resume filenames conservatively flag {recovery['latency_excluded_arm_count']} case/arm "
+            "timings: the case had saved activity without a saved arm result, or had a failure marker. "
+            "This can include later arms that had not started. Exclusions apply only to latency quantiles; "
+            "all quality denominators and paired analyses remain unchanged.",
+            "Original ranking_seconds remain in the per-case JSON and diagnostic summaries. A resumed "
+            "timer can cover only remaining work and cannot represent a complete ranking or task. "
+            "Retained times still describe this implementation and do not remove connection or execution-period differences.",
+            f"The pre-resume ledger was verified as an exact prefix of the final ledger, preserving "
+            f"{previous['unknown_usage_attempts']} prior unknown-usage attempts and "
+            f"${previous['unknown_reserved_usd']:.7f} in reservations. Recovery added "
+            f"{recovery['new_attempts_after_restart']} attempts. Snapshot costs are already included in "
+            "formal_v2 and are not added again.",
+            "The [recovery appendix and latency exclusions](public-evaluation/nli4ct-recovery.json) retain "
+            "snapshot, protocol and completion-receipt hashes. Unsanitized intermediate materials are not published.",
+            "A common-case latency summary additionally retains only questions for which all five arms "
+            "completed without interruption flags. It supports descriptive same-case comparison only, "
+            "without replacing the primary quality analysis or removing client and execution-period differences.",
+        ]
+    reconciliation = summary.get("final_ledger_reconciliation", {})
+    discrepancies = reconciliation.get("timing_only_discrepancies", [])
+    if discrepancies:
+        lines += [
+            "", "The final in-memory report adds elapsed-time telemetry to "
+            f"{len(discrepancies)} ledger event(s) after the ledger's last disk write. "
+            "Each addition was independently matched to the saved score metadata; all other event "
+            "fields, usage, costs, statuses and ordering are identical. Accounting uses the original "
+            "persisted ledger. Neither original was modified. Both digests and the exact timing-only "
+            "discrepancy receipt are retained in summary.final_ledger_reconciliation.",
         ]
     lines += [
         "",
-        f"总计 **{total['attempts']} 次尝试，${total['estimated_or_reserved_usd']:.6f}**；"
-        f"其中 {total['unknown_usage_attempts']} 次用量未知，保留 ${total['unknown_reserved_usd']:.6f} 额度。"
-        f"Embedding ${total['embedding_cost_usd']:.6f} 已包含在总额中。",
+        f"Total: **{total['attempts']} attempts, ${total['estimated_or_reserved_usd']:.6f}**. "
+        f"Usage is unknown for {total['unknown_usage_attempts']} attempts, retaining "
+        f"${total['unknown_reserved_usd']:.6f} in reservations. "
+        f"Embedding cost of ${total['embedding_cost_usd']:.6f} is already included.",
         "",
-        "聚合数据：[summary](public-evaluation/nli4ct-summary.json) · "
-        "[脱敏逐题指标](public-evaluation/nli4ct-cases.json) · "
-        "[费用核对](public-evaluation/nli4ct-accounting.json)。不发布问题正文、原始材料或标准答案。",
+        "Outputs: [summary](public-evaluation/nli4ct-summary.json) · "
+        "[sanitized per-case metrics](public-evaluation/nli4ct-cases.json) · "
+        "[cost reconciliation](public-evaluation/nli4ct-accounting.json). "
+        "Question text, raw materials and gold answers are not published.",
+        "The [independent official-source audit](public-evaluation/nli4ct-independent-audit.json) "
+        "reconstructs source sections, annotated evidence and answer-label scores without importing "
+        "product scoring functions. Public sanitized case metrics support aggregate and paired-statistic "
+        "reproduction; source-level reproduction also needs the local official dataset and saved study "
+        "outputs. It does not independently replay models, tokenization or billing.",
         "",
     ]
     return "\n".join(lines)
@@ -558,11 +675,11 @@ def main():
         for name, expected in protocol["identity"]["code"].items():
             if hashlib.sha256(archive.read(name)).hexdigest() != expected:
                 raise ValueError("Frozen source archive mismatch")
-    if digest(report["budget"]) != digest(read(args.study / "ledger.json")):
-        raise ValueError("Formal ledger changed since final report")
+    final_ledger = read(args.study / "ledger.json")
+    reconciliation = reconcile_final_ledger(report["budget"], final_ledger, args.study, archive_path)
     recovery = None
     if args.recovery_manifest:
-        recovery = final_recovery_audit(args.recovery_manifest, protocol, report["budget"],
+        recovery = final_recovery_audit(args.recovery_manifest, protocol, final_ledger,
                                         args.recovery_completion, ledger_summary)
         registered_plan = read(args.recovery_plan)
         expected_plan = recovery_plan(read(args.recovery_manifest), protocol)
@@ -580,6 +697,7 @@ def main():
         "source_zip_sha256": hashlib.sha256(archive_path.read_bytes()).hexdigest(),
         "strata_sha256": digest(strata),
         "report_sha256": digest(report),
+        "final_ledger_reconciliation": reconciliation,
         "main_denominator": 500,
         "answer_denominator": 200,
         "execution_contract": {

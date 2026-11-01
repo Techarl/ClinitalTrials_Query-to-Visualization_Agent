@@ -1,0 +1,81 @@
+{
+  "verified": true,
+  "planned_cases": 500,
+  "planned_answer_cases": 200,
+  "audited_case_arm_rows": 2500,
+  "official_source_passage_occurrences": 10836,
+  "summary": {
+    "hybrid": {
+      "planned": 500,
+      "answer_planned": 200,
+      "completed": 500,
+      "failed": 0,
+      "answer_failed": 0,
+      "complete_evidence": 279,
+      "answer_correct": 135,
+      "valid_citation_ids": 200,
+      "evidence_recall": 0.7899768968672618,
+      "evidence_precision": 0.7427560217560216
+    },
+    "cross_encoder": {
+      "planned": 500,
+      "answer_planned": 200,
+      "completed": 500,
+      "failed": 0,
+      "answer_failed": 0,
+      "complete_evidence": 291,
+      "answer_correct": 138,
+      "valid_citation_ids": 200,
+      "evidence_recall": 0.8217570334750175,
+      "evidence_precision": 0.7464031424457892
+    },
+    "jev": {
+      "planned": 500,
+      "answer_planned": 200,
+      "completed": 500,
+      "failed": 0,
+      "answer_failed": 0,
+      "complete_evidence": 300,
+      "answer_correct": 141,
+      "valid_citation_ids": 200,
+      "evidence_recall": 0.834214463533162,
+      "evidence_precision": 0.75213648018648
+    },
+    "luna": {
+      "planned": 500,
+      "answer_planned": 200,
+      "completed": 500,
+      "failed": 0,
+      "answer_failed": 0,
+      "complete_evidence": 288,
+      "answer_correct": 132,
+      "valid_citation_ids": 200,
+      "evidence_recall": 0.8111971658558298,
+      "evidence_precision": 0.7479314907314906
+    },
+    "full": {
+      "planned": 500,
+      "answer_planned": 200,
+      "completed": 500,
+      "failed": 0,
+      "answer_failed": 0,
+      "complete_evidence": 500,
+      "answer_correct": 160,
+      "valid_citation_ids": 200,
+      "evidence_recall": 1.0,
+      "evidence_precision": 0.719709310622421
+    }
+  },
+  "difference_count": 0,
+  "differences": [],
+  "version": "independent-official-nli-audit-v1",
+  "source_archive_sha256": "dd972c46e69a5bc5e5fb74c2105b5444722d81879ab96b214545b943e4e7ebbe",
+  "prepared_inputs_sha256": "c71b8fba22581e426879c4168d3724440cf963869b0170920cc17b0d88d6eb71",
+  "final_report_sha256": "5e9200bbae5f44420eb4b3cae27b8f83b005ba151f74d91d450ae8b5cd9d3c8d",
+  "protocol_file_sha256": "3756205c712e97fb6a345f5c393d69c461b164ef1cc6bb91c5946f87cd279ca5",
+  "completion_receipt_sha256": "a6a137b4f7f1992d192d83fa8b929b6b63baff7a4a0eb67e11f944d6a4527cb6",
+  "auditor_sha256": "8fc207c61f56a75ff16f8feee40f63673555b373dddf28a773ce34aa8946dc77",
+  "independence": "Standard-library reconstruction of official source sections and evidence indices; no product adapters, scorers or report helpers imported.",
+  "scope": "All official test cases and five saved arms, same frozen answer subset; failed cases retain the planned denominator. Does not independently reproduce selection token lengths, model/reranker inference or costs.",
+  "privacy": "Only hashes, counts and discrepancy codes are published; no statements, passages, predictions or answer keys."
+}

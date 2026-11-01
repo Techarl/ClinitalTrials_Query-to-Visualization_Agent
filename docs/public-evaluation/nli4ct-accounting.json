@@ -1,0 +1,242 @@
+{
+  "studies": {
+    "pilot": {
+      "ledger_sha256": "a7a3d3ed3e88c05c8441f585f9dc78af7ff8564a266aafacbfdc7ee16629020a",
+      "attempts": 171,
+      "known_cost_usd": 0.08953770999999994,
+      "unknown_usage_attempts": 0,
+      "unknown_reserved_usd": 0.0,
+      "estimated_or_reserved_usd": 0.08953770999999994,
+      "embedding_attempts": 1,
+      "embedding_cost_usd": 4.0520000000000005e-05,
+      "model_attempts": {
+        "text-embedding-3-small": 1,
+        "gpt-6.1-sol": 30,
+        "typesafe/jev-1.14-20261014": 70,
+        "gpt-6-luna": 70
+      },
+      "stages": {
+        "embeddings": {
+          "attempts": 1,
+          "estimated_or_reserved_usd": 4.0520000000000005e-05
+        },
+        "answer": {
+          "attempts": 30,
+          "estimated_or_reserved_usd": 0.08538999999999997
+        },
+        "ranking_or_untagged": {
+          "attempts": 140,
+          "estimated_or_reserved_usd": 0.004107190000000002
+        }
+      },
+      "nli_arm_costs": {
+        "shared_or_unattributed": {
+          "attempts": 1,
+          "known_cost_usd": 4.0520000000000005e-05,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 4.0520000000000005e-05
+        },
+        "hybrid": {
+          "attempts": 6,
+          "known_cost_usd": 0.015062,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.015062
+        },
+        "cross_encoder": {
+          "attempts": 6,
+          "known_cost_usd": 0.0160195,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.0160195
+        },
+        "jev": {
+          "attempts": 76,
+          "known_cost_usd": 0.018243290000000002,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.018243290000000002
+        },
+        "luna": {
+          "attempts": 76,
+          "known_cost_usd": 0.018020399999999995,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.018020399999999995
+        },
+        "full": {
+          "attempts": 6,
+          "known_cost_usd": 0.022152,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.022152
+        }
+      },
+      "attribution_note": "Only explicit NLI arm tags are assigned. Embedding and untagged/unknown-model attempts stay shared or unattributed; do not interpret identified embedding counts as complete when usage is missing."
+    },
+    "aborted_v1": {
+      "ledger_sha256": "dc8492830d26f2ae8adac03a7aacc4f3b8af3e3ffa8e7a0728378e59c795e197",
+      "attempts": 158,
+      "known_cost_usd": 0.06253963400000002,
+      "unknown_usage_attempts": 0,
+      "unknown_reserved_usd": 0.0,
+      "estimated_or_reserved_usd": 0.06253963400000002,
+      "embedding_attempts": 45,
+      "embedding_cost_usd": 0.00207594,
+      "model_attempts": {
+        "text-embedding-3-small": 45,
+        "gpt-6.1-sol": 15,
+        "typesafe/jev-1.14-20261014": 49,
+        "gpt-6-luna": 49
+      },
+      "stages": {
+        "embeddings": {
+          "attempts": 45,
+          "estimated_or_reserved_usd": 0.00207594
+        },
+        "answer": {
+          "attempts": 15,
+          "estimated_or_reserved_usd": 0.05738750000000001
+        },
+        "ranking_or_untagged": {
+          "attempts": 98,
+          "estimated_or_reserved_usd": 0.003076194
+        }
+      },
+      "nli_arm_costs": {
+        "shared_or_unattributed": {
+          "attempts": 45,
+          "known_cost_usd": 0.00207594,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.00207594
+        },
+        "hybrid": {
+          "attempts": 3,
+          "known_cost_usd": 0.0105915,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.0105915
+        },
+        "cross_encoder": {
+          "attempts": 3,
+          "known_cost_usd": 0.0108765,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.0108765
+        },
+        "jev": {
+          "attempts": 52,
+          "known_cost_usd": 0.011600293999999997,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.011600293999999997
+        },
+        "luna": {
+          "attempts": 52,
+          "known_cost_usd": 0.013058899999999998,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.013058899999999998
+        },
+        "full": {
+          "attempts": 3,
+          "known_cost_usd": 0.0143365,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.0143365
+        }
+      },
+      "attribution_note": "Only explicit NLI arm tags are assigned. Embedding and untagged/unknown-model attempts stay shared or unattributed; do not interpret identified embedding counts as complete when usage is missing."
+    },
+    "formal_v2": {
+      "ledger_sha256": "c02518318198746e2433f67cc952e5c522682e9edc5267eb173cb3ca19853229",
+      "attempts": 17195,
+      "known_cost_usd": 3.9959417760000284,
+      "unknown_usage_attempts": 10,
+      "unknown_reserved_usd": 0.0799175,
+      "estimated_or_reserved_usd": 4.0758592760000285,
+      "embedding_attempts": 45,
+      "embedding_cost_usd": 0.00207594,
+      "model_attempts": {
+        "text-embedding-3-small": 45,
+        "gpt-6.1-sol": 1000,
+        "typesafe/jev-1.14-20261014": 8070,
+        "gpt-6-luna": 8070,
+        "unknown": 10
+      },
+      "stages": {
+        "embeddings": {
+          "attempts": 45,
+          "estimated_or_reserved_usd": 0.00207594
+        },
+        "answer": {
+          "attempts": 1000,
+          "estimated_or_reserved_usd": 3.516299800000003
+        },
+        "ranking_or_untagged": {
+          "attempts": 16150,
+          "estimated_or_reserved_usd": 0.5574835360000028
+        }
+      },
+      "nli_arm_costs": {
+        "shared_or_unattributed": {
+          "attempts": 45,
+          "known_cost_usd": 0.00207594,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.00207594
+        },
+        "hybrid": {
+          "attempts": 200,
+          "known_cost_usd": 0.6232113,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.6232113
+        },
+        "cross_encoder": {
+          "attempts": 200,
+          "known_cost_usd": 0.6304748999999994,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.6304748999999994
+        },
+        "jev": {
+          "attempts": 8270,
+          "known_cost_usd": 0.8130535360000072,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.8130535360000072
+        },
+        "luna": {
+          "attempts": 8280,
+          "known_cost_usd": 0.9306210000000091,
+          "unknown_usage_attempts": 10,
+          "unknown_reserved_usd": 0.0799175,
+          "estimated_or_reserved_usd": 1.0105385000000056
+        },
+        "full": {
+          "attempts": 200,
+          "known_cost_usd": 0.9965050999999998,
+          "unknown_usage_attempts": 0,
+          "unknown_reserved_usd": 0.0,
+          "estimated_or_reserved_usd": 0.9965050999999998
+        }
+      },
+      "attribution_note": "Only explicit NLI arm tags are assigned. Embedding and untagged/unknown-model attempts stay shared or unattributed; do not interpret identified embedding counts as complete when usage is missing."
+    }
+  },
+  "totals": {
+    "attempts": 17524,
+    "known_cost_usd": 4.148019120000028,
+    "unknown_usage_attempts": 10,
+    "unknown_reserved_usd": 0.0799175,
+    "estimated_or_reserved_usd": 4.227936620000029,
+    "embedding_attempts": 91,
+    "embedding_cost_usd": 0.0041924
+  },
+  "duplicate_ledger_inputs_skipped": [],
+  "identical_content_ledgers_retained": [],
+  "note": "Provider-reported cost or versioned estimates, not invoices. Unknown usage retains reservations. Embedding costs are included in totals, not added again. All attempts include failures. Only the same physical input file is deduplicated. Equal-content independent files remain counted and flagged; their identity cannot be resolved from content alone. No per-response-ID deduplication: repeated attempts may be separately billable."
+}

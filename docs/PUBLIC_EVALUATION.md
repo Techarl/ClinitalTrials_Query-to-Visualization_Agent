@@ -68,14 +68,28 @@ python -m scripts.report_core300
 python -m scripts.audit_core300_selection
 ```
 
-For NLI, the explicit final command is:
+For an uninterrupted NLI run, the explicit final command is:
 
 ```powershell
 python -m scripts.report_public_nli --study data/nli4ct-official-test-v2 --inputs data/external-benchmarks/nli4ct-test-inputs.json --strata docs/public-evaluation/nli-input-strata.json --pilot data/public-pilot-nli4ct-v1/ledger.json --aborted data/nli4ct-official-test-v1/ledger.json
 ```
+
+The registered formal run was interrupted by a desktop crash and resumed from its frozen source. It **requires the additional recovery arguments** in [NLI4CT recovery reporting](NLI4CT_RECOVERY_REPORTING.md#final-command); the command above alone deliberately refuses to publish that run. The recovery audit preserves prior attempts and unknown-usage reservations and applies the outcome-blind timing exclusions without changing quality denominators.
 
 Required final inputs are the complete study `report.json` (2,500 terminal case-arm records), its unchanged `protocol.json`, `protocol.source.zip`, and final `ledger.json`, plus the input-only dataset/strata and the two historical ledgers above. The reporter does not need to open the official gold file or per-case intermediate output directories. If `report.json` is absent it exits with code 2 before reading partial data; a present but incomplete/mismatched report is rejected. Run only after the formal worker has finished. Outputs are `docs/NLI4CT_RESULTS.md` and `docs/public-evaluation/nli4ct-{summary,cases,accounting}.json`. This command neither resumes nor reruns model execution, and does not overwrite the original study outputs.
 
 The selection audit is an additional full-population check prompted by a synthetic scorer counterexample. It preserves original grades and separately binds the requested anchor/top-N to the actual selection receipt and trend scope lineage. It does not selectively rerun failed questions or overwrite the initial experiment.
 
 Detailed results are published only after planned execution completes. Historical small passage-selection and Harness reports remain separate observations with their original corpora and limitations.
+
+### Independent NLI source and score audit
+
+The [official-data audit](public-evaluation/nli4ct-independent-audit.json) reconstructs test inputs, evidence indices and labels directly from the pinned official ZIP, without importing the application's dataset adapter or scorer. It checks all 2,500 saved case-arm records against the 500 original cases, including source text mapping, candidate and selected ID membership, evidence metrics and the same 200-case answer subset. The closed formal run has zero discrepancies. Original results are preserved.
+
+To repeat the source-level audit, obtain the official archive locally and retain the closed study's per-case outputs:
+
+```powershell
+python -m scripts.audit_nli_official --study data/nli4ct-official-test-v2 --archive data/external-benchmarks/nli4ct.zip --inputs data/external-benchmarks/nli4ct-test-inputs.json --completion-receipt path/to/nli-resume-exit-2.json --producer-confirmed-stopped
+```
+
+Confirm process exit before supplying the last flag. A failed audit writes a discrepancy receipt and exits nonzero. Public sanitized per-case metrics support aggregate and paired-statistic recomputation; they do not contain the original passages, predictions or official answer keys. Repeating the source-level audit requires those local study outputs. This audit does not independently reproduce model inference, tokenization, reranker scores or provider billing.

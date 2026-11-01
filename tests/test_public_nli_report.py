@@ -1,5 +1,6 @@
 import copy
 import json
+import re
 import sys
 
 import pytest
@@ -261,3 +262,121 @@ def test_absent_report_does_not_read_partial_case_outputs_or_emit_results(tmp_pa
         report.main()
     assert error.value.code == 2
     assert not (tmp_path / "docs").exists()
+
+
+@pytest.mark.parametrize("include_recovery", [False, True])
+def test_english_markdown_preserves_results_costs_limits_and_optional_recovery(include_recovery):
+    costs = report.ledger_summary(ledger())
+    summary = {"strata": report.aggregate(validated(), draws=20)}
+    if include_recovery:
+        summary["recovery"] = {
+            "prior_ledger": costs, "snapshot_files": 14983,
+            "cases_all_five_arm_results_saved": 391, "latency_excluded_arm_count": 6,
+            "new_attempts_after_restart": 7,
+        }
+    text = report.markdown(summary, {"studies": {"formal_v2": costs}, "totals": costs})
+    assert not re.search(r"[\u4e00-\u9fff]", text)
+    assert "**500 questions**" in text and "**200 questions**" in text
+    assert "| jev | 3 | 0 | 1 / 1 |" in text
+    assert "jev-minus-luna" in text and "jev-minus-cross_encoder" in text
+    assert "| formal_v2 | 3 | 0.102000 | 0.200000 |" in text
+    assert "**3 attempts, $0.302000**" in text
+    for qualifier in (
+        "seed 20261101 and 4000", "113 components", "237 questions", "326 questions",
+        "without multiplicity correction", "not invoices", "exempt from the 1024-token",
+        "membership accepts an empty list", "end-to-end scoring convention",
+        "asymmetric client overhead", "not whole-corpus retrieval or chart correctness",
+        "Question text, raw materials and gold answers are not published",
+    ):
+        assert qualifier in text
+    assert "(JEV_LATENCY_CONTROL.md)" in text and "(PASSAGE_SELECTION_RESULTS.md)" in text
+    assert ("## Interruption and recovery" in text) is include_recovery
+    if include_recovery:
+        assert "14983 files" in text and "391 questions" in text
+        assert "6 case/arm" in text and "quality denominators and paired analyses remain unchanged" in text
+        assert "$0.2000000 in reservations" in text and "Recovery added 7 attempts" in text
+        assert "formal_v2 and are not added again" in text
+        assert "(public-evaluation/nli4ct-recovery.json)" in text
+
+
+def reconciliation_fixture(tmp_path):
+    from zipfile import ZipFile
+
+    source = tmp_path / 'protocol.source.zip'
+    with ZipFile(source, 'w') as archive:
+        archive.writestr('experiments/passage_selection.py',
+                         'budget.after(event, metadata)\nmetadata["elapsed_seconds"] = time.monotonic() - started')
+    event = {'status': 'completed', 'arm': 'luna', 'case_id': 'abc-123', 'passage_id': 'passage1',
+             'estimated_cost_usd': 0.1, 'metadata': {'usage': {'input_tokens': 12}}}
+    persisted = {'attempts': 1, 'events': [event], 'estimated_or_reserved_usd': 0.1}
+    reported = copy.deepcopy(persisted)
+    reported['events'][0]['metadata']['elapsed_seconds'] = 3.7
+    proof = tmp_path / 'abc-123' / 'scores' / 'luna' / (report.digest('passage1')[:24] + '.json')
+    proof.parent.mkdir(parents=True)
+    proof.write_text(json.dumps({'metadata': reported['events'][0]['metadata']}))
+    return reported, persisted, source, proof
+
+
+def test_exact_ledger_and_saved_timing_reconciliation_preserve_originals(tmp_path):
+    reported, persisted, source, proof = reconciliation_fixture(tmp_path)
+    before = copy.deepcopy((reported, persisted))
+    exact = report.reconcile_final_ledger(persisted, persisted, tmp_path, source)
+    assert not exact['timing_only_discrepancies']
+    receipt = report.reconcile_final_ledger(reported, persisted, tmp_path, source)
+    assert (reported, persisted) == before
+    assert receipt['reported_budget_sha256'] != receipt['persisted_ledger_sha256']
+    assert receipt['timing_only_discrepancies'][0]['value'] == 3.7
+    assert receipt['timing_only_discrepancies'][0]['score_file_sha256']
+
+
+@pytest.mark.parametrize('mutation', [
+    lambda x: x['events'][0]['metadata']['usage'].update(input_tokens=13),
+    lambda x: x['events'][0].update(estimated_cost_usd=0.2),
+    lambda x: x['events'][0].update(status='attempted_usage_unknown'),
+    lambda x: x['events'][0]['metadata'].update(extra='unknown'),
+    lambda x: x.update(attempts=2),
+    lambda x: x['events'][0].update(arm='full'),
+    lambda x: x['events'][0].update(stage='answer'),
+])
+def test_reconciliation_rejects_every_non_timing_change(tmp_path, mutation):
+    reported, persisted, source, proof = reconciliation_fixture(tmp_path)
+    mutation(reported)
+    with pytest.raises(ValueError, match='beyond elapsed'):
+        report.reconcile_final_ledger(reported, persisted, tmp_path, source)
+
+
+@pytest.mark.parametrize('elapsed', [-1, float('nan'), float('inf'), True, '3.7', None])
+def test_reconciliation_rejects_invalid_elapsed(tmp_path, elapsed):
+    reported, persisted, source, proof = reconciliation_fixture(tmp_path)
+    reported['events'][0]['metadata']['elapsed_seconds'] = elapsed
+    with pytest.raises(ValueError, match='beyond elapsed'):
+        report.reconcile_final_ledger(reported, persisted, tmp_path, source)
+
+
+@pytest.mark.parametrize('proof_change', ['missing', 'different', 'existing_elapsed'])
+def test_reconciliation_requires_exact_independent_saved_proof(tmp_path, proof_change):
+    reported, persisted, source, proof = reconciliation_fixture(tmp_path)
+    if proof_change == 'missing':
+        proof.unlink()
+    elif proof_change == 'different':
+        proof.write_text(json.dumps({'metadata': {'elapsed_seconds': 3.8}}))
+    else:
+        persisted['events'][0]['metadata']['elapsed_seconds'] = 3.6
+    with pytest.raises(ValueError):
+        report.reconcile_final_ledger(reported, persisted, tmp_path, source)
+
+
+def test_recovery_common_case_latency_is_descriptive_with_explicit_samples():
+    costs = report.ledger_summary(ledger())
+    summary = {'strata': report.aggregate(validated(), draws=20),
+               'recovery_common_case_latency': {'retained_cases': 497, 'excluded_cases': 3,
+                 'arms': {'jev': {'successful_samples': 497, 'p50_seconds': 51.453, 'p95_seconds': 161.644},
+                          'full': {'successful_samples': 497, 'p50_seconds': 0, 'p95_seconds': 0}}},
+               'final_ledger_reconciliation': {'timing_only_discrepancies': [{}]}}
+    text = report.markdown(summary, {'studies': {'formal_v2': costs}, 'totals': costs})
+    assert '| jev | 497 | 51.453 | 161.644 |' in text
+    assert 'same 497 questions' in text and '3 questions excluded only' in text
+    assert 'zero does not mean zero answer latency' in text
+    assert '1 ledger event(s)' in text and 'Neither original was modified' in text
+    assert 'nli4ct-independent-audit.json' in text
+    assert 'local official dataset and saved study outputs' in text

@@ -1,0 +1,152 @@
+{
+  "schema": "nli-recovery-latency-plan-v1",
+  "protocol_sha256": "476bb042ff5273e16975f4e638aef8ff0c85e62877ca08a6bea540c038ea86ed",
+  "snapshot_sha256": "c9d37015e4becdc20161f4a37ee2de52feb45d3fe7f2492d50158f289587dc66",
+  "snapshot_created_at": "2026-11-01T10:00:16.570654+00:00",
+  "snapshot_files": 14983,
+  "case_contents_read": false,
+  "outcomes_used": false,
+  "cases_with_any_saved_activity": 394,
+  "cases_all_five_arm_results_saved": 391,
+  "saved_arm_results": 1964,
+  "saved_arm_counts": {
+    "cross_encoder": 394,
+    "full": 391,
+    "hybrid": 394,
+    "jev": 394,
+    "luna": 391
+  },
+  "latency_exclusions": [
+    {
+      "case_id": "320ec115-31c3-47bf-a819-93d514b91eb3",
+      "arm": "luna",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 12,
+      "arm_result_saved_before_restart": false
+    },
+    {
+      "case_id": "320ec115-31c3-47bf-a819-93d514b91eb3",
+      "arm": "full",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 0,
+      "arm_result_saved_before_restart": false
+    },
+    {
+      "case_id": "dd27a6e7-3b83-4a84-bc40-5ba39617a1c1",
+      "arm": "luna",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 8,
+      "arm_result_saved_before_restart": false
+    },
+    {
+      "case_id": "dd27a6e7-3b83-4a84-bc40-5ba39617a1c1",
+      "arm": "full",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 0,
+      "arm_result_saved_before_restart": false
+    },
+    {
+      "case_id": "328417f9-8f45-4114-82d7-9396b6bc578e",
+      "arm": "luna",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 0,
+      "arm_result_saved_before_restart": false
+    },
+    {
+      "case_id": "328417f9-8f45-4114-82d7-9396b6bc578e",
+      "arm": "full",
+      "reason": "interruption_window_unsaved_arm",
+      "saved_passage_scores": 0,
+      "arm_result_saved_before_restart": false
+    }
+  ],
+  "latency_excluded_arm_count": 6,
+  "policy": "Exclude elapsed ranking times for any touched case whose arm result was absent, or with a prior failure marker. This conservatively includes possibly not-yet-started later arms. Keep every case/arm in quality denominators. Unexcluded timings are implementation observations, not end-to-end or pure model latency.",
+  "frozen_source": {
+    "identity": "476bb042ff5273e16975f4e638aef8ff0c85e62877ca08a6bea540c038ea86ed",
+    "files": 70
+  },
+  "manifest_sha256": "fb7bc11fbc03e03d106e0b1d0b0e414c94f0331b7fbbb41d022098aaa438fdc2",
+  "completion_receipt_sha256": "a6a137b4f7f1992d192d83fa8b929b6b63baff7a4a0eb67e11f944d6a4527cb6",
+  "closed_at": "2026-11-01T12:27:20.160269+00:00",
+  "reason": "Desktop application crash; frozen-source execution resumed with saved arm/passage caches",
+  "prior_ledger_preserved_as_exact_prefix": true,
+  "prior_ledger": {
+    "attempts": 13675,
+    "known_cost_usd": 3.8914732060000157,
+    "unknown_usage_attempts": 10,
+    "unknown_reserved_usd": 0.0799175,
+    "estimated_or_reserved_usd": 3.9713907060000158,
+    "embedding_attempts": 45,
+    "embedding_cost_usd": 0.00207594,
+    "model_attempts": {
+      "text-embedding-3-small": 45,
+      "gpt-6.1-sol": 1000,
+      "typesafe/jev-1.14-20261014": 6326,
+      "gpt-6-luna": 6294,
+      "unknown": 10
+    },
+    "stages": {
+      "embeddings": {
+        "attempts": 45,
+        "estimated_or_reserved_usd": 0.00207594
+      },
+      "answer": {
+        "attempts": 1000,
+        "estimated_or_reserved_usd": 3.516299800000003
+      },
+      "ranking_or_untagged": {
+        "attempts": 12630,
+        "estimated_or_reserved_usd": 0.4530149659999995
+      }
+    },
+    "nli_arm_costs": {
+      "shared_or_unattributed": {
+        "attempts": 45,
+        "known_cost_usd": 0.00207594,
+        "unknown_usage_attempts": 0,
+        "unknown_reserved_usd": 0.0,
+        "estimated_or_reserved_usd": 0.00207594
+      },
+      "hybrid": {
+        "attempts": 200,
+        "known_cost_usd": 0.6232113,
+        "unknown_usage_attempts": 0,
+        "unknown_reserved_usd": 0.0,
+        "estimated_or_reserved_usd": 0.6232113
+      },
+      "cross_encoder": {
+        "attempts": 200,
+        "known_cost_usd": 0.6304748999999994,
+        "unknown_usage_attempts": 0,
+        "unknown_reserved_usd": 0.0,
+        "estimated_or_reserved_usd": 0.6304748999999994
+      },
+      "jev": {
+        "attempts": 6526,
+        "known_cost_usd": 0.7745044660000043,
+        "unknown_usage_attempts": 0,
+        "unknown_reserved_usd": 0.0,
+        "estimated_or_reserved_usd": 0.7745044660000043
+      },
+      "luna": {
+        "attempts": 6504,
+        "known_cost_usd": 0.8647015000000065,
+        "unknown_usage_attempts": 10,
+        "unknown_reserved_usd": 0.0799175,
+        "estimated_or_reserved_usd": 0.9446190000000066
+      },
+      "full": {
+        "attempts": 200,
+        "known_cost_usd": 0.9965050999999998,
+        "unknown_usage_attempts": 0,
+        "unknown_reserved_usd": 0.0,
+        "estimated_or_reserved_usd": 0.9965050999999998
+      }
+    },
+    "attribution_note": "Only explicit NLI arm tags are assigned. Embedding and untagged/unknown-model attempts stay shared or unattributed; do not interpret identified embedding counts as complete when usage is missing."
+  },
+  "new_attempts_after_restart": 3520,
+  "accounting_note": "The final formal ledger already includes this prefix and all prior unknown reservations. Snapshot costs are disclosed, not added to the totals a second time. Retry attempts remain separate billable attempts.",
+  "registered_plan_sha256": "725a590cd9b0b8f9a089acd69b0f2d23f9943ffc5c66a10927d51562dcbac840"
+}
