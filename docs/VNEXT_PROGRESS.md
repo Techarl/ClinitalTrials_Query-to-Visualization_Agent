@@ -57,4 +57,4 @@ Official implementation references: [OpenAI function calling](https://developers
 - Atomic Jev, actual system repair, conditional cascade and execution Harness studies are complete. Cheap cascade activation was withheld after failed calibration. Harness produced zero adopted positive components. Full costs, limits and trace archives are in [VNEXT_RESEARCH.md](VNEXT_RESEARCH.md).
 - Five historical examples retain independent verification of 33,824 raw fields.
 
-The separately requested Jev passage-selection study follows this checkpoint. The earlier entity-name retrieval experiment does not establish its effectiveness.
+The separately requested [Jev passage-selection study](PASSAGE_SELECTION_RESULTS.md) is complete, including a bounded evidence-gap retrieval probe. The earlier entity-name retrieval experiment does not establish its effectiveness. The final regression with the new passage module is 144 passing tests; the 138-test counts above belong to the original VNext checkpoint.

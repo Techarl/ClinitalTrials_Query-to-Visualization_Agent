@@ -154,6 +154,17 @@ def main():
         for p in args.input.rglob("*")
         if p.is_file() and p.suffix in {".json", ".txt"}
     }
+    frozen = json.loads((args.input / "frozen-protocol.json").read_text(encoding="utf-8"))
+    frozen_sources = {}
+    for name, expected in frozen["source_code_hashes"].items():
+        contents = Path(name).read_bytes()
+        previous_archive = args.output / "traces.zip"
+        if hashlib.sha256(contents).hexdigest() != expected and previous_archive.exists():
+            with ZipFile(previous_archive) as previous:
+                contents = previous.read("source/" + name)
+        if hashlib.sha256(contents).hexdigest() != expected:
+            raise ValueError(f"Cannot export changed source as the original experiment: {name}")
+        frozen_sources[name] = contents
     for name in [
         "experiments/passage_selection.py",
         "experiments/passage_corpus.py",
@@ -162,7 +173,7 @@ def main():
         "app/v2/evidence_selection.py",
         "evaluation/passage_selection.json",
     ]:
-        payloads["source/" + name] = Path(name).read_bytes()
+        payloads["source/" + name] = frozen_sources.get(name, Path(name).read_bytes())
     if any(secret in contents for contents in payloads.values() for secret in secrets):
         raise ValueError("Credential detected in trace export")
     manifest = {name: hashlib.sha256(contents).hexdigest() for name, contents in payloads.items()}

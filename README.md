@@ -6,6 +6,8 @@ The React/TypeScript/ECharts workspace adds streamed progress, multiple charts, 
 
 Start with the [VNext guide](docs/VNEXT.md), [acceptance matrix](docs/VNEXT_PROGRESS.md), and [real smoke evidence](docs/vnext/smoke_summary.json). The baseline five examples and historical research reports below remain unchanged; VNext evaluation is reported separately.
 
+Research results: [VNext execution, repair and Harness studies](docs/VNEXT_RESEARCH.md), and [Jev passage selection with dedicated/cheap-model/rule controls](docs/PASSAGE_SELECTION_RESULTS.md). These include full traces, negative results, cost accounting and a separate observation-driven evidence-gap recovery probe. The passage study does not enable model filtering of statistical populations.
+
 ## Local setup
 
 Requirements: Python 3.12+, Neo4j, and an OpenAI Platform key with access to `gpt-6.1-sol` through Responses. Native verification used Windows, Python 3.12.4 and Neo4j Desktop / Neo4j 2026.10.1. Dependencies are pinned.

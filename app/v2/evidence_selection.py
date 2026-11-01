@@ -68,6 +68,8 @@ def pack_context(passages, ranked_ids, token_limit: int, count_tokens: Callable[
     """Pack complete passages under one serialized-context cap; no partial quotation cuts."""
     if token_limit < 1:
         raise ValueError("Context budget must be positive")
+    if count_tokens("[]") > token_limit:
+        raise ValueError("Context budget cannot fit the empty serialized container")
     by_id = {p.id: p for p in passages}
     if len(by_id) != len(passages):
         raise ValueError("Duplicate passage IDs")

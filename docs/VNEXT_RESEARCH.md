@@ -66,4 +66,4 @@ Run commands are in [VNEXT.md](VNEXT.md). `python -m evaluation.rescore_v2 <loca
 
 The six archived studies total 1,955 paid attempts and an estimated/reported $7.724572. This excludes separate browser smokes, the focused dependency regression, earlier project work and account-wide usage. OpenAI figures use recorded short-context standard rates; they are not invoices. Source APIs and Neo4j calls are not counted as model calls. No experiment is enabled by ordinary application startup or CI.
 
-The next requested study is evidence relevance and context selection. It will use a separate frozen corpus and controls; results here do not establish whether Jev is a useful passage reranker.
+The separate [evidence relevance and context-selection study](PASSAGE_SELECTION_RESULTS.md) is now complete. It uses a different frozen corpus and controls; its results must not be combined with these plan-gate scores.

@@ -47,11 +47,14 @@ The earlier 12-query experiment tested drug-name candidate lookup. Exact-name hi
 Use an isolated Python 3.12 environment with `requirements.lock` plus `experiments/requirements-rerank.txt`. Download the pinned ONNX/tokenizer files using the setup script, then run:
 
 ```powershell
-python scripts/setup_passage_reranker.py
+python -m pip install -r requirements.lock -r experiments/requirements-rerank.txt
+python -m pip install --no-deps -e .
+python -m scripts.setup_passage_reranker
+python -m scripts.register_passage_scope_control
 python -m experiments.passage_selection --split development
 python -m experiments.passage_selection --split heldout
 python -m experiments.passage_scope_control
-python scripts/report_passage_selection.py
+python -m scripts.report_passage_selection
 ```
 
 The model reads keys from the existing private `.env`. Each command is explicitly paid and opt-in, with a persisted $6 / 600-attempt cap for the whole study. Missing usage keeps its reservation. The production service does not require ONNX, tokenizers or tiktoken.

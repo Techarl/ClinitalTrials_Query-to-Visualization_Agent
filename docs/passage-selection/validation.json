@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-01",
+  "windows_full_suite": {
+    "passed": 144,
+    "seconds": 28.81,
+    "real_neo4j": true
+  },
+  "linux_passage_suite": {
+    "passed": 6,
+    "seconds": 6.36
+  },
+  "lint": "passed",
+  "isolated_research_pip_check": "passed",
+  "source_spans_verified": 334,
+  "cross_encoder_pairs": 144,
+  "cross_encoder_truncations": 0,
+  "emitted_quotations_verified": 139,
+  "prior_full_vnext_linux_suite": 138,
+  "study_source_commit": "a59f92440c81f82fef8d6cca15b014060e440c14",
+  "post_study_change": "Reject budgets too small for the empty JSON container; recorded 350-token experiment unaffected."
+}

@@ -39,6 +39,12 @@ def test_context_budget_applies_to_serialized_full_passages_without_mutation():
         pack_context(passages, ["invented"], cap, len)
 
 
+def test_context_cap_cannot_be_smaller_than_empty_serialization():
+    with pytest.raises(ValueError, match="empty serialized"):
+        pack_context([], [], 1, len)
+    assert pack_context([], [], 2, len)["tokens"] == 2
+
+
 def test_missing_or_fabricated_evidence_cannot_pass_extractive_oracle():
     _, passages = sample()
     case = {"requirements": [{"passage_ids": [p.id]} for p in passages[:2]], "counterevidence": True}
